@@ -1,0 +1,73 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="MainMenu">
+        <ul class="nav navbar-nav">
+            <li class="hide-desktopsearch">
+                <div class="input-group mobilesearch">
+                    <a>
+                        <span class="fa fa-search padding-right10 "></span> SUCHE
+                    </a>
+                </div>
+            </li>
+            <v:page.menu classActive="active">
+                <f:for each="{menu}" as="item">
+                    <li class="{f:if(condition:item.hasSubPages,then:'dropdown',else:'')} linemenu {item.class}">
+                        <f:if condition="{item.hasSubPages}">
+                            <f:then>
+                                <f:link.page pageUid="{item.uid}"
+                                             title="{item.linktext}"
+                                             class="{f:if(condition:item.hasSubPages,then:'dropdown-toggle',else:'')}"
+                                             additionalAttributes="{'data-toggle':'dropdown'}"
+                                >{item.linktext}</f:link.page>
+                            </f:then>
+                            <f:else>
+                                <f:link.page pageUid="{item.uid}"
+                                             title="{item.linktext}"
+                                             class="{f:if(condition:item.hasSubPages,then:'dropdown-toggle',else:'')}"
+                                >{item.linktext}</f:link.page>
+                            </f:else>
+                        </f:if>
+
+                        <f:if condition="{item.hasSubPages}">
+                            <ul class="dropdown-menu">
+                                <v:page.menu pageUid="{item.uid}" classActive="active">
+                                    <f:for each="{menu}" as="subItem">
+                                        <li class="{f:if(condition:subItem.hasSubPages,then:'dropdown dropdown-submenu',else:'')}">
+                                            <f:if condition="{subItem.hasSubPages}">
+                                                <f:then>
+                                                    <f:link.page pageUid="{subItem.uid}"
+                                                                 title="{subItem.linktext}"
+                                                                 class="{f:if(condition:subItem.hasSubPages,then:'dropdown-toggle',else:'')}"
+                                                                 additionalAttributes="{data-toggle: 'dropdown'}"
+                                                    >{subItem.linktext}</f:link.page>
+                                                    <ul class="dropdown-menu ">
+                                                        <v:page.menu pageUid="{subItem.uid}">
+                                                            <f:for each="{menu}" as="subSubItem">
+                                                                <li>
+                                                                    <f:link.page pageUid="{subSubItem.uid}" title="{subSubItem.linktext}">{subSubItem.linktext}</f:link.page>
+                                                                </li>
+                                                            </f:for>
+                                                        </v:page.menu>
+                                                    </ul>
+                                                </f:then>
+                                                <f:else>
+                                                    <f:link.page pageUid="{subItem.uid}"
+                                                                 title="{subItem.linktext}"
+                                                                 class="{f:if(condition:subItem.hasSubPages,then:'dropdown-toggle',else:'')}">
+                                                        {subItem.linktext}
+                                                    </f:link.page>
+                                                </f:else>
+                                            </f:if>
+                                        </li>
+                                    </f:for>
+                                </v:page.menu>
+                            </ul>
+                        </f:if>
+                    </li>
+                </f:for>
+            </v:page.menu>
+        </ul>
+    </f:section>
+</div>

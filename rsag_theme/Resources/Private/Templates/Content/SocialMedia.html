@@ -1,0 +1,172 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="socialmedia" options="{group: 'FCE'}">
+            <flux:field.select name="type" items="Twitter,Facebook,Youtube" label="Social media list"
+                               requestUpdate="true"/>
+
+            <flux:form.section name="elements">
+                <flux:form.object name="box" label="Add new">
+                    <f:if condition="({type}!='Facebook')">
+                        <flux:field.input name="title" label="Title" required="true"/>
+                    </f:if>
+                    <flux:field.input name="date" label="Date" eval="date" required="true"/>
+                    <flux:field.text name="description" label="Description" required="false"/>
+                    <f:if condition="{type}=='Facebook'">
+                        <flux:field.file name="image" label="image" allowed="jpg,png,svg" maxItems="1" minItems="0" useFalRelation="1"/>
+                    </f:if>
+                    <f:if condition="{type}=='Youtube'">
+                        <flux:field.input name="ytlink"
+                                          label="Youtube Link (example: https://www.youtube.com/watch?v=nSRIYAX1GwA)" required="true"/>
+                    </f:if>
+                    <f:if condition="({type}!='Youtube')">
+                        <flux:field.input name="link" label="Link" required="true">
+                            <flux:wizard.link/>
+                        </flux:field.input>
+                    </f:if>
+                </flux:form.object>
+            </flux:form.section>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Social Media: </strong>{type}
+        <ul>
+            <f:for each="{elements}" as="element" iteration="i">
+                <f:if condition="({type}!='Facebook')">
+                    <li>
+                        <strong>Title:</strong> {element.box.title}
+                    </li>
+                </f:if>
+            </f:for>
+        </ul>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="socialmedia">
+            <f:for each="{settings.elements}" as="element" iteration="i">
+                <f:if condition="{type}=='Twitter'">
+                    <f:then>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-top-30 no-paddingxs-left-right">
+                            <div class="col-xs-12 bloc-description">
+                                <div class="bloc-icone">
+                                    <div class="rectangle-sociaux pull-left margin-right10">
+                                        <div class="fa fa-twitter"></div>
+                                    </div>
+                                    <h3><a>{element.box.title}</a></h3>
+                                    <p class="time-uhr">
+                                        <f:format.date format="d.m.Y">{element.box.date}</f:format.date>
+                                    </p>
+                                    <p class="text-description">{element.box.description}</p>
+                                    <div class="row">
+                                        <div class="col-xs-1">
+                                            <div class="icon icon-rsag-round-arrow-1-right"></div>
+                                        </div>
+                                        <a href="{element.box.link}" class="col-xs-10 mehr-infos">Zum Beitrag</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+
+                <f:if condition="{type}=='Facebook'">
+                    <f:then>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-top-15 no-paddingxs-left-right ">
+                            <div class="bloc-image">
+                                <f:if condition="{element.box.image}!=''">
+                                    <f:then>
+                                        <img src="{f:uri.image(src: '{element.box.image}')}">
+                                    </f:then>
+                                    <f:else>
+                                        <img src="{f:uri.resource(path: 'images/Blue.png')}"/>
+                                    </f:else>
+                                </f:if>
+                                <div class="rectangle-sociauxfbc pull-left margin-right10">
+                                    <div class="fa fa-facebook"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 bloc-description bloc-descriptionfbc ">
+                                <p class="time-uhr">
+                                    <f:format.date format="d.m.Y">{element.box.date}</f:format.date>
+                                </p>
+                                <p class="text-description">
+                                    {element.box.description}
+                                </p>
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <div class="icon icon-rsag-round-arrow-1-right"></div>
+                                    </div>
+                                    <a href="{element.box.link}" class="col-xs-10 mehr-infos">Zum Beitrag</a>
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+
+                <f:if condition="{type}=='Youtube'">
+                    <f:then>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-top-15 no-paddingxs-left-right ">
+                            <div class="bloc-image">
+                                <v:condition.string.contains haystack="{element.box.ytlink}" needle="youtube.com/embed">
+                                    <f:then>
+                                        <iframe src="{element.box.ytlink}?rel=0&amp;controls=0&amp;showinfo=0 "></iframe>
+                                    </f:then>
+                                    <f:else>
+                                        <v:condition.string.contains haystack="{element.box.ytlink}"
+                                                                     needle="youtube.com">
+                                            <f:then>
+                                                <iframe src="{v:format.replace(substring: 'https://www.youtube.com/watch?v=', content: '{element.box.ytlink}', replacement: 'https://www.youtube.com/embed/')}"></iframe>
+                                            </f:then>
+                                            <f:else>
+                                                <v:condition.string.contains haystack="{element.box.ytlink}"
+                                                                             needle="youtu.be">
+                                                    <f:then>
+                                                        <iframe src="{v:format.replace(substring: 'https://youtu.be/', content: '{element.box.ytlink}', replacement: 'https://www.youtube.com/embed/')}?rel=0&amp;controls=0&amp;showinfo=0 "></iframe>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <iframe src="https://www.youtube.com/embed/{element.box.ytlink}?rel=0&amp;controls=0&amp;showinfo=0 "></iframe>
+                                                    </f:else>
+                                                </v:condition.string.contains>
+                                            </f:else>
+                                        </v:condition.string.contains>
+                                    </f:else>
+                                </v:condition.string.contains>
+                                <!--<iframe src="https://www.youtube.com/embed/{element.box.ytlink}?rel=0&amp;controls=0&amp;showinfo=0"-->
+                                <!--frameborder="0" allowfullscreen></iframe>-->
+
+                                <div class="rectangle-sociauxfbc pull-left margin-right10">
+                                    <div class="fa fa-youtube-play"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 bloc-description  ">
+                                <h3 class="fledermausnacht"><a>{element.box.title}</a></h3>
+                                <p class="time-uhr">
+                                    <f:format.date format="d.m.Y">{element.box.date}</f:format.date>
+                                </p>
+                                <p class="text-description">
+                                    {element.box.description}
+                                </p>
+                                <div class="row">
+                                    <div class="col-xs-1">
+                                        <div class="icon icon-rsag-round-arrow-1-right"></div>
+                                    </div>
+                                    <a class="col-xs-10 mehr-infos" href="{v:condition.string.contains(then: '{element.box.ytlink}', else: 'https://www.youtube.com/watch?v={element.box.ytlink}', haystack: '{element.box.ytlink}', needle: 'youtu')}" target="_blank">Zum
+                                        Video</a>
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+
+            </f:for>
+        </div>
+    </f:section>
+</div>
+

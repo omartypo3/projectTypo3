@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/Category/List.html
+-->
+
+<f:section name="content">
+	<f:if condition="{categories}">
+		<f:then>
+			<f:render section="categoryTree" arguments="{categories:categories,overwriteDemand:overwriteDemand}" />
+		</f:then>
+		<f:else>
+			<f:translate key="list_nocategoriesfound" />
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="categoryTree">
+	<div class="container categoryNews">
+		<div class="row">
+			<div class="col-xs-12 no-padding-left-right paddinglg-left-right-7-5">
+
+					<f:for each="{categories}" as="category">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 no-paddingxs-left-right padding-left-right-7-5">
+							<img src="{f:uri.image(src: '{category.item.images.0.uid}', treatIdAsReference:1)}">
+							<div class="box">
+								<div class="box-item">
+									<f:if condition="{category.item.singlePid -> v:math.round()} > 0">
+										<f:then>
+											<v:variable.set name="url" value="{f:uri.page(pageUid: '{category.item.singlePid}', absolute: '1')}" />
+										</f:then>
+									</f:if>
+									<a href="{url}">
+										{category.item.title}
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</f:for>
+				</div>
+			</div>
+		</div>
+</f:section>
+</html>

@@ -1,0 +1,28 @@
+plugin.tx_rsagtheme.view {
+	templateRootPaths.0 = EXT:rsag_theme/Resources/Private/Templates/
+	partialRootPaths.0 = EXT:rsag_theme/Resources/Private/Partials/
+	layoutRootPaths.0 = EXT:rsag_theme/Resources/Private/Layouts/
+}
+
+plugin.tx_rsagtheme {
+	pages {
+		# cat=rsag theme/pages/10; type=int+; label=Front Page pid:Enter the page id of the website frontpage/home
+		frontPagePid = 96
+
+		# cat=rsag theme/pages/50; type=int+; label=Footer Nav Menu Entry Page:Enter the pid of the footer nav page
+		footerNav = 102
+
+		# cat=rsag theme/pages/50; type=int+; label=Footer Meta Nav Menu Entry Page:Enter the pid of the footer metanav
+		footerMeta = 117
+
+		# cat=rsag theme/pages/50; type=int+; label=Footer Social Menu Entry Page - Facebook :Enter the pid of the footer social links Facebook
+		footerSocialLinksFacebook = 122
+
+		# cat=rsag theme/pages/50; type=int+; label=Footer Social Menu Entry Page - Twitter:Enter the pid of the footer social links Twitter
+		footerSocialLinksTwitter = 123
+
+		# cat=rsag theme/pages/50; type=int+; label=Footer Social Menu Entry Page - Youtube:Enter the pid of the footer social links Youtube
+		footerSocialLinksYoutube = 124
+
+	}
+}

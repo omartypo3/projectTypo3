@@ -1,0 +1,29 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+
+	<f:layout name="WithRightSidebar" />
+
+	<f:section name="Configuration">
+		<flux:form id="withRightSidebar">
+			<flux:field.checkbox name="settings.sticky" label="Sticky sidebar" />
+		</flux:form>
+		<flux:grid>
+			<flux:grid.row>
+				<flux:grid.column colPos="1" colspan="2" name="Slideshow" label="Slideshow" />
+			</flux:grid.row>
+			<flux:grid.row>
+				<flux:grid.column colPos="0" name="Content" label="Content" />
+				<flux:grid.column colPos="2" name="Sidebar" label="Sidebar" />
+			</flux:grid.row>
+		</flux:grid>
+	</f:section>
+
+	<f:section name="Content">
+		<v:content.render column="0"/>
+	</f:section>
+	<f:section name="Sidebar">
+		<v:content.render column="2"/>
+	</f:section>
+</div>

@@ -1,0 +1,63 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/List.html
+-->
+
+<f:section name="content">
+	<!--TYPO3SEARCH_end-->
+	<f:if condition="{news}">
+		<f:then>
+			<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+				<div class="container  no-paddingxs-left-right ">
+					<div style="display: flex;" class=" no-paddingxs-left-right">
+						<div class="form-group filterdate col-md-3 col-lg-3 col-sm-6 col-xs-6 no-padding-left-right ">
+							<select class="filtermonth">
+								<option value="">--Select Month--</option>
+								<option value="01">Janaury</option>
+								<option value="02">February</option>
+								<option value="03">March</option>
+								<option value="04">April</option>
+								<option value="05">May</option>
+								<option value="06">June</option>
+								<option value="07">July</option>
+								<option value="08">August</option>
+								<option value="09">September</option>
+								<option value="10">October</option>
+								<option value="11">November</option>
+								<option value="12">December</option>
+							</select>
+						</div>
+						<div class="form-group filterdate col-md-2 col-lg-2 col-sm-6 col-xs-6">
+							<select class="getall_years">
+
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+				<div class="container ">
+					<div class="row">
+						<!-- Pressemitteilungen item -->
+						<div class="margin-bottom-60 col-xs-12 col-md-12 col-lg-12 col-sm-12 no-padding-left-right padding-left-right-7-5  no-paddingxs-left-right" id="posts">
+							<f:for each="{news}" as="newsItem" iteration="iterator">
+								<f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+							</f:for>
+						</div>
+					</div>
+				</div>
+			</div>
+		</f:then>
+		<f:else>
+			<div class="no-news-found">
+				<f:translate key="list_nonewsfound" />
+			</div>
+		</f:else>
+	</f:if>
+	<!--TYPO3SEARCH_begin-->
+</f:section>
+</html>

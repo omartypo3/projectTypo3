@@ -1,0 +1,110 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="PriceList" options="{group: 'FCE'}">
+            <flux:form.sheet name="options" label="Header">
+                <flux:field.input name="title" label="single tickets" required="true"/>
+                <flux:field.input name="price" label="price headline" required="true"/>
+                <flux:field.input name="info" label="info headline" required="true"/>
+                <flux:field.select name="desktop-width" label="Select the with of the element relative to its container on desktop"
+                                   items="{
+									col-md-12: '12 / 12',
+									col-md-11: '11 / 12',
+									col-md-10: '10 / 12',
+									col-md-9: '9 / 12',
+									col-md-8: '8 / 12',
+									col-md-7: '7 / 12',
+									col-md-6: '6 / 12',
+									col-md-5: '5 / 12',
+									col-md-4: '4 / 12',
+									col-md-3: '3 / 12',
+									col-md-2: '2 / 12',
+									col-md-1: '1 / 12'}"
+                                   default="col-md-12" size="1" maxItems="1"/>
+                <flux:field.select name="tablet-width" label="Select the with of the element relative to its container on Tablet"
+                                   items="{
+									col-sm-12: '12 / 12',
+									col-sm-11: '11 / 12',
+									col-sm-10: '10 / 12',
+									col-sm-9: '9 / 12',
+									col-sm-8: '8 / 12',
+									col-sm-7: '7 / 12',
+									col-sm-6: '6 / 12',
+									col-sm-5: '5 / 12',
+									col-sm-4: '4 / 12',
+									col-sm-3: '3 / 12',
+									col-sm-2: '2 / 12',
+									col-sm-1: '1 / 12'}"
+                                   default="col-sm-12" size="1" maxItems="1"/>
+                <flux:field.select name="mobile-width" label="Select the with of the element relative to its container on Mobile"
+                                   items="{
+									col-xs-12: '12 / 12',
+									col-xs-11: '11 / 12',
+									col-xs-10: '10 / 12',
+									col-xs-9: '9 / 12',
+									col-xs-8: '8 / 12',
+									col-xs-7: '7 / 12',
+									col-xs-6: '6 / 12',
+									col-xs-5: '5 / 12',
+									col-xs-4: '4 / 12',
+									col-xs-3: '3 / 12',
+									col-xs-2: '2 / 12',
+									col-xs-1: '1 / 12'}"
+                                   default="col-xs-12" size="1" maxItems="1"/>
+            </flux:form.sheet>
+            <flux:form.sheet name="elements" label="Data">
+                <flux:form.section name="elements">
+                    <flux:form.object name="link" label="Link">
+                        <flux:field.input name="headline" label="Ticket type" required="true"/>
+                        <flux:field.input name="price" label="Ticket price" required="true"/>
+                        <flux:field.input name="url" label="Info" required="true">
+                            <flux:wizard.link/>
+                        </flux:field.input>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Ticket price list</b>
+        <h5>{title}</h5>
+    </f:section>
+
+    <f:section name="Main">
+
+        <div class="price-list {desktop-width} {tablet-width} {mobile-width}">
+            <ul>
+                <li>
+                    <a href="#" class="col-lg-8 col-md-7 col-sm-7 col-xs-7 no-padding-left-right">{settings.title}</a>
+                    <a href="#" class="col-lg-2 col-md-3 col-sm-3 col-xs-4 no-padding-righ">{settings.price}</a>
+                    <a href="#" class="col-lg-2 col-md-2 col-sm-2 col-xs-1 no-paddingxs-left-right">{settings.info}</a>
+                </li>
+                <f:for each="{settings.elements}" as="element" iteration="i">
+                    <f:if condition="{element.link.url -> v:math.round()} > 0">
+                        <f:then>
+                            <v:variable.set name="url" value="{f:uri.page(pageUid: '{element.link.url}', absolute: '1')}" />
+                        </f:then>
+                        <f:else>
+                            <v:variable.set name="url" value="{f:uri.typolink(parameter: '{element.link.url}')}" />
+                        </f:else>
+                    </f:if>
+                    <li class="{f:if(condition: i.isEven, then: 'even', else: 'odd')}">
+                        <a href="{url}" class="col-lg-8 col-md-7 col-sm-7 col-xs-7 no-padding-left-right">{element.link.headline}</a>
+                        <a href="{url}" class="col-lg-2 col-md-3 col-sm-3 col-xs-4 no-padding-righ">{element.link.price}</a>
+                        <a href="{url}"
+                           class="col-lg-2 col-md-2 col-sm-2 col-xs-1 no-paddingxs-left-right">
+                            <div class="icon icon-rsag-round-arrow-1-right"></div>
+                        </a>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+
+    </f:section>
+</div>

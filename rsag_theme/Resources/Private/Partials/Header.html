@@ -1,0 +1,140 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Header">
+        <!-- Header Bloc -->
+        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 blocTop no-paddingxs-left-right scrollheader">
+            <div class="container ">
+                <div class="row">
+                    <!-- Header -->
+                    <header class="absoluteheader">
+                        <div class="col-xs-2 col-md-2 col-lg-2 col-sm-2 ">
+                            <!-- Logo -->
+                            <a href="/" class="logo">
+                                <img src="typo3conf/ext/rsag_theme/Resources/Public/images/logo.png" alt=""/>
+                            </a><!-- Logo -->
+                        </div>
+                        <div class="col-xs-12 col-md-8 col-lg-8 col-sm-10 no-padding-left-right no-padding-right-sm">
+                            <!-- Menu -->
+                            <div id="navbar">
+                                <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                                data-target="#navbar-collapse-1" aria-expanded="false">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span hidden class="icon-closemenu">
+                                        <div data-icon="w" class="icon"></div>
+                                    </span>
+                                        </button>
+                                        <a class="navbar-brand" href="#"></a>
+                                    </div>
+                                    <div class="collapse navbar-collapse no-paddingxs-left-right" id="navbar-collapse-1">
+                                        <f:render partial="MainMenu" section="MainMenu" arguments="{_all}" />
+                                    </div><!-- /.navbar-collapse -->
+                                </nav>
+                            </div><!-- /Menu -->
+                        </div>
+
+                        <div class="col-xs-12 col-md-2 col-lg-2 col-sm-12 no-padding-left-right hidemobile">
+                            <!-- Top Link -->
+                            <ul class="topmenulink">
+                                <li>
+                                    <a href="#toggle-blocsize" class="topmenulinkitem " >
+                                        <small >A</small>
+                                        A</a>
+                                </li>
+                                <li>
+                                    <a href="#toggle-language" class="topmenulinkitem "  >DE</a>
+                                </li>
+                                <li>
+                                    <a href="#toggle-search" class="topmenulinkitem "  ><i class="fa fa-search"></i></a>
+                                </li>
+                            </ul><!-- /Top Link -->
+                        </div>
+                        <!-- Size -->
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+                            <div class="rsag-blocsize animate " hidden>
+                                <div class="puce hidemobile padding-left30"><img src="typo3conf/ext/rsag_theme/Resources/Public/images/bluepuce.png" ></div>
+                                <div class="rsag-control ">
+                                    Größenauswahl
+                                    <span class="input-group-btn ">
+                                        <button class="btn close" type="reset">
+                                            <span class="fa fa-times-circle fa-6"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <button class="selected btn " id="fontsize_opt1" ><span class="normalsize" >A</span>normal</button>
+                                    </li>
+                                    <li>
+                                        <button class=" btn " id="fontsize_opt2" ><span class="middlesize"  >A</span>mittel</button>
+                                    </li>
+                                    <li>
+                                        <button class=" btn " id="fontsize_opt3" ><span class="bigsize" >A</span>groß</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- /Size -->
+                        <!-- Language -->
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+
+                            <div class=" rsag-language animate " hidden>
+                                <div class="center puce hidemobile" > <img src="typo3conf/ext/rsag_theme/Resources/Public/images/bluepuce.png"  > </div>
+                                <div class="rsag-control ">
+                                    Sprachauswahl
+                                    <span class="input-group-btn ">
+                                        <button class="btn close " type="reset">
+                                            <span class="fa fa-times-circle fa-6"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <button class="btn-default btn selected">Deutsch</button>
+                                    </li>
+                                    <li>
+                                        <button class="btn-default btn ">Englisch</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- /Language -->
+                        <!-- Search -->
+                        <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+                            <div class=" rsag-search animate  " hidden>
+                                <div class="pull-right margin-right30 puce hidemobile " > <img src="typo3conf/ext/rsag_theme/Resources/Public/images/bluepuce.png"  > </div>
+                                <form action="" role="search">
+                                    <div class=" input-group col-xs-12 col-md-12 col-lg-12 col-sm-12">
+                                        <span class="fa fa-search"></span>
+                                        <input type="text" class=" form-control form-control-search" placeholder="">
+                                        <span class=" input-group-btn ">
+                                            <button class="btn close " type="reset">
+                                                <span class="fa fa-times-circle fa-6"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <div class="search-label col-xs-12 col-md-12 col-lg-12 col-sm-12 suchverlauf ">
+                                        Suchverlauf
+                                    </div>
+                                    <div class="search-filter col-xs-12 col-md-12 col-lg-12 col-sm-12 no-paddingxs-left-right">
+                                        <ul>
+                                            <li><a  > Fähre</a></li>
+                                            <li><a  > Tarif</a></li>
+                                            <li><a  > Preise</a></li>
+                                        </ul>
+                                        <button class="btn btn-primary ">Verlauf löschen</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /Search -->
+                    </header><!-- /Header -->
+                </div>
+            </div>
+        </div><!-- /Header Bloc -->
+
+    </f:section>
+</div>

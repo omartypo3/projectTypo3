@@ -1,0 +1,18 @@
+
+<f:layout name="TimeLine" />
+
+<f:render partial="Header" section="Header" arguments="{_all}" />
+<f:render partial="Slider" section="Slider" arguments="{_all}" />
+<f:render partial="Tabs" section="Tabs" arguments="{_all}" />
+<div class="titlegeschichte">
+    <div class="container">
+        <h1>{title}</h1>
+    </div>
+</div>
+<!--<div class="{f:if(condition: '{specialpage} == \'downloads\'', then: 'downloads')}">-->
+<f:render section="Content"/>
+<!--</div>-->
+
+<f:render partial="Footer" section="Footer" arguments="{_all}" />
+
+

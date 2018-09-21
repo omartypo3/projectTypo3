@@ -1,0 +1,80 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	 xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="news" options="{group: 'FCE'}">
+			<flux:form.sheet name="elements" label="eventNews boxes">
+				<flux:form.section name="elements">
+					<flux:form.object name="box" label="Box">
+						<flux:field.input name="specialdate" label="Date" eval="date" required="true" />
+						<flux:field.input name="timestart" label="Time Start" eval="time" required="true" />
+						<flux:field.input name="timeend" label="Time End" eval="time" required="true" />
+						<flux:field.input name="headline" label="Headline" required="true" />
+						<flux:field.text name="text" label="info" enableRichText="1" />
+						<flux:field.file name="image" label="image" allowed="jpg,png,svg" required="true" showThumbnails="1" maxItems="1" minItems="0" useFalRelation="1"  />
+						<flux:field.input name="link" label="Link" required="true">
+							<flux:wizard.link/>
+						</flux:field.input>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>EventNews Boxes</strong>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 no-padding-left-right padding-left-right-7-5">
+					<f:for each="{elements}" as="element" iteration="iteration">
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-top-15 no-paddingxs-left-right padding-left-right-7-5 ">
+							<f:if condition="{element.box.link -> v:math.round()} > 0">
+								<f:then>
+									<v:variable.set name="url" value="{f:uri.page(pageUid: '{element.box.link}', absolute: '1')}" />
+								</f:then>
+								<f:else>
+									<v:variable.set name="url" value="{f:uri.typolink(parameter: '{element.box.link}')}" />
+								</f:else>
+							</f:if>
+							<!--image & bleu bloc-->
+							<div class="bloc-image">
+								<a href="{url}">
+									<img src="{f:uri.image(src: '{element.box.image}')}"></a>
+								<div class="rectangle-copy-11">
+									<p class="text-40 text-center">{element.box.specialdate -> f:format.date(format: 'd')}</p>
+									<p class="text-08-17 text-center">{element.box.specialdate -> f:format.date(format: 'm')}|{element.box.specialdate -> f:format.date(format: '%y')}</p>
+								</div>
+							</div><!--/image & bleu bloc-->
+							<!--title & time & description & button-->
+							<div class="col-xs-12 bloc-description">
+								<h3 class="fledermausnacht">
+									<a href="#">{element.box.headline}</a>
+								</h3>
+								<p class="time-uhr">
+									{element.box.timestart-> f:format.date(format: 'H:i')} - {element.box.timeend-> f:format.date(format: 'H:i')} Uhr
+								</p>
+								<f:format.raw>{element.box.text}</f:format.raw>
+								<div class="row">
+									<div class="col-xs-1">
+										<div class="icon icon-rsag-round-arrow-1-right"></div>
+									</div>
+									<a class="col-xs-10 mehr-infos" href="{url}">
+										Mehr Infos
+									</a>
+								</div>
+							</div><!--/title & time & description & button-->
+						</div>
+					</f:for>
+				</div>
+			</div>
+		</div>
+
+	</f:section>
+</div>

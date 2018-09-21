@@ -1,0 +1,35 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="graybox" options="{group: 'FCE'}">
+			<flux:field.input name="headline" label="Headline" required="true" />
+			<flux:field.text name="text" label="Text" required="true" enableRichText="1" />
+			<flux:field.select name="icon" label="Icon" items="{icon-rsag-round-aim:'Achievement (aim)',icon-rsag-round-duration:'Duration',icon-rsag-round-money: 'Money', none: 'None'}" default="none" size="1" maxItems="1"/>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Graybox</strong><br />
+		{headline}
+	</f:section>
+
+	<f:section name="Main">
+		<div class="bloc-icon">
+			<f:if condition="{icon} == 'none'">
+				<f:then></f:then>
+				<f:else>
+					<div class="icon {icon} pull-left padding-right25"></div>
+				</f:else>
+			</f:if>
+			<div class="bloc-icon-text">
+				<h4>{headline}</h4>
+				<f:format.html>{text}</f:format.html>
+			</div>
+		</div>
+	</f:section>
+</div>

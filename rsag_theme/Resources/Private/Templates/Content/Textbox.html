@@ -1,0 +1,105 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="textbox" options="{group: 'FCE'}">
+			<flux:field.input name="headline" label="Headline" required="true" />
+			<flux:field.text name="text" label="Text" required="true" enableRichText="1" />
+			<flux:field.input name="link" label="Link" required="true"><flux:wizard.link/></flux:field.input>
+			<flux:field.select name="desktop-width" label="Select the with of the element relative to its container on desktop"
+							   items="{
+									col-md-12: '12 / 12',
+									col-md-11: '11 / 12',
+									col-md-10: '10 / 12',
+									col-md-9: '9 / 12',
+									col-md-8: '8 / 12',
+									col-md-7: '7 / 12',
+									col-md-6: '6 / 12',
+									col-md-5: '5 / 12',
+									col-md-4: '4 / 12',
+									col-md-3: '3 / 12',
+									col-md-2: '2 / 12',
+									col-md-1: '1 / 12'}"
+							   default="col-md-12" size="1" maxItems="1"/>
+			<flux:field.select name="tablet-width" label="Select the with of the element relative to its container on Tablet"
+							   items="{
+									col-sm-12: '12 / 12',
+									col-sm-11: '11 / 12',
+									col-sm-10: '10 / 12',
+									col-sm-9: '9 / 12',
+									col-sm-8: '8 / 12',
+									col-sm-7: '7 / 12',
+									col-sm-6: '6 / 12',
+									col-sm-5: '5 / 12',
+									col-sm-4: '4 / 12',
+									col-sm-3: '3 / 12',
+									col-sm-2: '2 / 12',
+									col-sm-1: '1 / 12'}"
+							   default="col-sm-12" size="1" maxItems="1"/>
+			<flux:field.select name="mobile-width" label="Select the with of the element relative to its container on Mobile"
+							   items="{
+									col-xs-12: '12 / 12',
+									col-xs-11: '11 / 12',
+									col-xs-10: '10 / 12',
+									col-xs-9: '9 / 12',
+									col-xs-8: '8 / 12',
+									col-xs-7: '7 / 12',
+									col-xs-6: '6 / 12',
+									col-xs-5: '5 / 12',
+									col-xs-4: '4 / 12',
+									col-xs-3: '3 / 12',
+									col-xs-2: '2 / 12',
+									col-xs-1: '1 / 12'}"
+							   default="col-xs-12" size="1" maxItems="1"/>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Textbox</strong><br />
+		{headline}
+	</f:section>
+
+	<f:section name="Main">
+		<div class="{desktop-width} {tablet-width} {mobile-width} no-paddingxs-left-right">
+			<div class="padding30 bloc-description margin-bottom30">
+				<h3 class="fledermausnacht">
+					<f:if condition="{link -> v:math.round()} > 0">
+						<f:then>
+							<f:link.page pageUid="{link}">
+								{headline}
+							</f:link.page>
+						</f:then>
+						<f:else>
+							<f:link.typolink parameter="{link}">
+								{headline}
+							</f:link.typolink>
+						</f:else>
+					</f:if>
+				</h3>
+
+				<f:format.html>{text}</f:format.html>
+				<div class="row">
+					<div class="col-xs-1">
+						<div class="icon icon-rsag-round-arrow-1-right"></div>
+					</div>
+					<f:if condition="{link -> v:math.round()} > 0">
+						<f:then>
+							<f:link.page pageUid="{link}" class="col-xs-10 mehr-infos">
+								Mehr Infos
+							</f:link.page>
+						</f:then>
+						<f:else>
+							<f:link.typolink parameter="{link}" class="col-xs-10 mehr-infos">
+								Mehr Infos
+							</f:link.typolink>
+						</f:else>
+					</f:if>
+				</div>
+			</div>
+		</div>
+	</f:section>
+</div>

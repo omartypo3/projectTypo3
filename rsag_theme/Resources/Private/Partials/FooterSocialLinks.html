@@ -1,0 +1,20 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="FooterSocialLinks">
+        <div class="col-sm-5 col-md-4 col-lg-3 sociaux hidden-xs">
+            <ul>
+                <li>
+                    <f:link.page pageUid="{settings.footerSocialLinksFacebook}" title="{subItem.linktext}" target="_blank"><span class="fa fa-facebook"></span></f:link.page>
+                </li>
+                <li>
+                    <f:link.page pageUid="{settings.footerSocialLinksTwitter}" title="{subItem.linktext}" target="_blank"><span class="fa fa-twitter"></span></f:link.page>
+                </li>
+                <li>
+                    <f:link.page pageUid="{settings.footerSocialLinksYoutube}" title="{subItem.linktext}" target="_blank"><span class="fa fa-youtube-play"></span></f:link.page>
+                </li>
+            </ul>
+        </div>
+    </f:section>
+</div>

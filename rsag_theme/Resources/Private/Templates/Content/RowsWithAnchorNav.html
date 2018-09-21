@@ -1,0 +1,63 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="rowswithanchornav" options="{group: 'FCE'}">
+			<flux:form.sheet name="tabs" label="Tabs">
+				<flux:form.section name="tabs">
+					<flux:form.object name="tab" label="Section">
+						<flux:field.input name="title" label="Title" required="true"/>
+						<flux:field.select name="icon" label="Icon" items="{icon-rsag-round-twitter:'Twitter',icon-rsag-round-facebook: 'Facebook', icon-rsag-round-youtube: 'Youtube / Video', icon-rsag-round-picture: 'Picture', icon-rsag-round-media-center: 'Media center', none: 'None'}" default="none" size="1" maxItems="1"/>
+						<flux:field.input name="id" label="ID" required="true"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+			<flux:grid>
+				<f:if condition="{tabs}">
+					<v:condition.type.isArray value="{tabs}">
+						<f:for each="{tabs}" as="tab" iteration="iteration">
+							<flux:grid.row>
+								<flux:grid.column name="content.{iteration.index}" label="Content of Tab: {tab.tab.title}"/>
+							</flux:grid.row>
+						</f:for>
+					</v:condition.type.isArray>
+				</f:if>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Rows with Navigation Bar</b>
+	</f:section>
+
+	<f:section name="Main">
+
+
+		<div class="greyback" style="border: none">
+			<div class="container margin-bottom-15 no-padding-left-right sociaux">
+				<ul class="padding-xs-15">
+					<f:for each="{tabs}" as="tab" iteration="iteration">
+						<li class="col-lg-2 col-md-2 no-padding-left-right">
+							<a href="#{tab.tab.id}">
+								<div class="icon icon-rsag-round-picture margin-right15 pull-left"></div>
+								<h4 class="hidden-xs">{tab.tab.title}</h4>
+							</a>
+						</li>
+					</f:for>
+				</ul>
+			</div>
+		</div>
+
+		<f:for each="{tabs}" as="tab" iteration="iteration">
+			<div class="container-fluid" id="{tab.tab.id}">
+				<flux:content.render area="content.{iteration.index}"/>
+			</div>
+		</f:for>
+
+
+	</f:section>
+</div>

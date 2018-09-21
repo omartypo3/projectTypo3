@@ -1,0 +1,71 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	xmlns:ffvh="http://typo3.org/ns/RsagTheme/FluidFlexformViewHelper/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="downloadtiles" options="{group: 'FCE'}">
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column name="col1" label="Column 1" style="width: 32%;border-right: 1px solid #CACACA; padding: 1%;"/>
+					<flux:grid.column name="col2" label="Column 2" style="width: 32%;border-right: 1px solid #CACACA; padding: 1%;"/>
+					<flux:grid.column name="col3" label="Column 3" style="width: 32%"/>
+				</flux:grid.row>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Download boxes with filter</strong>
+	</f:section>
+
+	<f:section name="Main">
+		<v:variable.set name="col1ContentElements" value="{flux:content.get(area:'col1', render:'FALSE')}" />
+		<v:variable.set name="col2ContentElements" value="{flux:content.get(area:'col2', render:'FALSE')}" />
+		<v:variable.set name="col3ContentElements" value="{flux:content.get(area:'col3', render:'FALSE')}" />
+
+		<div class="downloads">
+			<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+				<div class=" tab-content margin-top-60 margin-top-xs-20 margin-bottom-60">
+					<div class="container ">
+						<div class="row">
+							<div class="form-group filterdate col-xs-12 col-md-4 col-lg-4 col-sm-12 no-paddingxs-left-right">
+								<select class="filterdownloawd">
+									<option value="">Filter</option>
+									<f:for each="{col1ContentElements}" as="element">
+										<option><ffvh:flexform data="{element.pi_flexform}" key="title" /></option>
+									</f:for>
+									<f:for each="{col2ContentElements}" as="element">
+										<option><ffvh:flexform data="{element.pi_flexform}" key="title" /></option>
+									</f:for>
+									<f:for each="{col3ContentElements}" as="element">
+										<option><ffvh:flexform data="{element.pi_flexform}" key="title" /></option>
+									</f:for>
+								</select>
+							</div>
+							<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 no-padding-left-right">
+								<!--left elements-->
+								<div class="parentdownload col-xs-12 col-md-4 col-lg-4 col-sm-12 no-paddingxs-left-right ">
+									<flux:content.render area="col1"/>
+								</div><!--/left elements-->
+
+								<!--middle elements-->
+								<div class="parentdownload col-xs-12 col-md-4 col-lg-4 col-sm-12 no-paddingxs-left-right">
+									<flux:content.render area="col2"/>
+								</div><!--middle elements-->
+
+								<!--right elements-->
+								<div class="parentdownload col-xs-12 col-md-4 col-lg-4 col-sm-12 no-paddingxs-left-right">
+									<flux:content.render area="col3"/>
+								</div><!--/right elements-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+</div>

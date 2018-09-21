@@ -1,0 +1,64 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+	<f:section name="Configuration">
+		<flux:form id="zoneselector" options="{group: 'FCE'}">
+			<flux:field.text name="text" label="Text" />
+			<flux:form.sheet name="elements" label="Zones">
+				<flux:form.section name="elements">
+					<flux:form.object name="box" label="Zone">
+						<flux:field.input name="headline" label="Zone name" required="true"/>
+						<flux:field.input name="url" label="Link" required="true"><flux:wizard.link/></flux:field.input>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+    <f:section name="Preview">
+        <strong>Zone selector: {text}</strong>
+        <ul>
+            <f:for each="{elements}" as="element" iteration="i">
+                <li >{element.box.headline}</li>
+            </f:for>
+        </ul>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="col-xs-12 margin-top-20  margin-bottom-60 no-padding-left-right">
+            <div class="col-sm-12 no-padding-left-right">
+                <p class="col-md-7 ticketubersicht-title margin-bottom-20 margin-top-20 no-padding-left-right">
+                    {text}
+                </p>
+            </div>
+            <div class=" col-sm-12 no-padding-left-right">
+                <select class="col-md-5 col-lg-5 col-xs-12 col-sm-12 form-select padding-left-right-7-5 zone-selector"
+                        title="Linie auswählen">
+                    <option value="" selected="">Zone</option>
+                    <f:for each="{settings.elements}" as="element" iteration="i">
+                        <f:if condition="{element.box.url -> v:math.round()} > 0">
+                            <f:then>
+                                <option value="{f:uri.page(pageUid: '{element.box.url}', absolute: '1')}">
+                                    {element.box.headline}
+                                </option>
+                            </f:then>
+                            <f:else>
+                                <option value="{f:uri.typolink(parameter: '{element.box.url}')}">
+                                    {element.box.headline}
+                                </option>
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </select>
+            </div>
+            <div class=" col-sm-12 no-padding-left-right form-fields margin-bottom-60">
+                <a class="registerbutton col-md-12 col-lg-12 no-padding-left-right noWindbutton target-zone" href="">
+                    <div class="icon icon-rsag-round-arrow-1-right pull-left margin-right10 "></div>
+                    Informationen zu den Zonen
+                </a>
+            </div>
+        </div>
+    </f:section>
+</div>

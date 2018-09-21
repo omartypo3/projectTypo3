@@ -1,0 +1,30 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="bigtitletext" options="{group: 'FCE'}">
+			<flux:field.input name="headline" label="Headline" required="true"/>
+			<flux:field.text name="text" label="Text" enableRichText="1" required="true"/>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Big title and text element</strong>
+		<div class="fce-text">
+			{headline}
+		</div>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="bigtitle">
+			<h2>{headline}</h2>
+			<div class="clear">
+				<f:format.html>{text}</f:format.html>
+			</div>
+		</div>
+	</f:section>
+</div>

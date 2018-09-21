@@ -1,0 +1,72 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="presseboxes" options="{group: 'FCE'}">
+			<flux:form.sheet name="elements" label="Presse boxes">
+				<flux:form.section name="elements">
+					<flux:form.object name="box" label="Box">
+						<flux:field.input name="headline" label="Heading"  required="true"/>
+						<flux:field.input name="url" label="Link" required="true"><flux:wizard.link/></flux:field.input>
+						<flux:field.select name="icon" label="Icon"
+										   items="{none: 'None',
+										   icon-rsag-clear-press-officer:'Officier',
+										   icon-rsag-clear-press:'Presse',
+										   icon-rsag-clear-social-media:'Social media',
+										   icon-rsag-clear-press-distribute:'Distribute',
+										   icon-rsag-clear-video:'Video',
+										   icon-rsag-clear-media-center:'Media center'
+										   }"
+										   default="none" size="1" maxItems="1"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Presse Boxes</strong>
+		<ul>
+			<f:for each="{elements}" as="element" iteration="i">
+				<li>
+					<strong>Title:</strong> {element.box.headline}
+				</li>
+			</f:for>
+		</ul>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 no-paddingxs-left-right">
+			<div class="container">
+				<div class="row">
+					<div class="margin-bottom-60 col-xs-12 col-md-12 col-lg-12 col-sm-12 no-padding-left-right padding-left-right-7-5 ">
+						<f:for each="{settings.elements}" as="element" iteration="i">
+							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 no-padding-left-right imageWH-same-50">
+								<div class="press-item">
+									<f:if condition="{element.box.url -> v:math.round()} > 0">
+										<f:then>
+											<f:link.page pageUid="{element.box.url}">
+												<div class="icon {element.box.icon}"></div>
+												<h4>{element.box.headline}</h4>
+											</f:link.page>
+										</f:then>
+										<f:else>
+											<f:link.typolink parameter="{element.box.url}">
+												<div class="icon {element.box.icon}"></div>
+												<h4>{element.box.headline}</h4>
+											</f:link.typolink>
+										</f:else>
+									</f:if>
+								</div>
+							</div>
+						</f:for>
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+</div>

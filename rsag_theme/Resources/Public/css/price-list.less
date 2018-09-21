@@ -1,0 +1,58 @@
+.price-list {
+  ul {
+    list-style: none;
+    padding: 0;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+  li {
+    a {
+      &:hover {
+        color: #005091;
+      }
+      cursor: pointer;
+      text-decoration: none;
+      font-family: "Helvetica Neue LT Std 45 Light";
+      color: #4A4A4A;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    height: 44px;
+    padding: 10px 15px;
+    &:nth-child(odd) {
+      background-color: @color_white;
+    }
+    &:nth-child(even) {
+
+      background-color: @color_greylight;
+    }
+    &:hover {
+      a {
+        color: #005091;
+      }
+
+    }
+    &:first-child {
+      border-radius: 8px 8px 0 0;
+      background-color: #005091 !important;
+      padding-left: 15px;
+      padding-top: 10px;
+      height: 44px;
+      padding: 10px 15px;
+      a {
+        color: #FFFFFF;
+        font-family: "Helvetica Neue LT Std 65 Medium";
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 24px;
+        &:hover {
+          color: #FFFFFF;
+        }
+      }
+    }
+
+  }
+
+}

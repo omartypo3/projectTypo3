@@ -1,0 +1,83 @@
+plugin.tx_rsagtheme {
+	view {
+		templateRootPaths.0 = {$plugin.tx_rsagtheme.view.templateRootPaths.0}
+		partialRootPaths.0 = {$plugin.tx_rsagtheme.view.partialRootPaths.0}
+		layoutRootPaths.0 = {$plugin.tx_rsagtheme.view.layoutRootPaths.0}
+	}
+
+	settings {
+		frontPagePid = {$plugin.tx_rsagtheme.pages.frontPagePid}
+		footerNav = {$plugin.tx_rsagtheme.pages.footerNav}
+		footerMeta = {$plugin.tx_rsagtheme.pages.footerMeta}
+		footerSocialLinksFacebook = {$plugin.tx_rsagtheme.pages.footerSocialLinksFacebook}
+		footerSocialLinksTwitter = {$plugin.tx_rsagtheme.pages.footerSocialLinksTwitter}
+		footerSocialLinksYoutube = {$plugin.tx_rsagtheme.pages.footerSocialLinksYoutube}
+	}
+}
+
+config {
+	concatenateJs = 0
+	concatenateCss = 0
+	compressJs = 0
+	compressCss = 0
+}
+
+page {
+
+	headerData{
+
+		10 = TEXT
+		10.value(
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+		)
+	}
+	shortcutIcon = typo3conf/ext/rsag_theme/Resources/Public/images/favicon.ico
+
+	includeCSS {
+		bootstrap = typo3conf/ext/rsag_theme/Resources/Public/css/bootstrap.min.css
+		fontAwesome = https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
+		fontAwesome.external = 1
+		animate = typo3conf/ext/rsag_theme/Resources/Public/css/components/animate.css
+		styles = typo3conf/ext/rsag_theme/Resources/Public/css/styles.css
+
+	}
+
+	includeJS {
+		jquery1101 = typo3conf/ext/rsag_theme/Resources/Public/js/jquery-1.10.1.min.js
+		matchHeight = typo3conf/ext/rsag_theme/Resources/Public/js/jquery.matchHeight.js
+		momentWithLocales = typo3conf/ext/rsag_theme/Resources/Public/js/moment-with-locales.js
+		bootstrapDatetimepicker = typo3conf/ext/rsag_theme/Resources/Public/js/bootstrap-datetimepicker.js
+		bootstrapSelect = typo3conf/ext/rsag_theme/Resources/Public/js/bootstrap-select.js
+		filterNews = typo3conf/ext/rsag_theme/Resources/Public/js/FilterNews.js
+	}
+
+	includeJSFooter {
+		owlCarousel = typo3conf/ext/rsag_theme/Resources/Public/js/owl.carousel.js
+		main = typo3conf/ext/rsag_theme/Resources/Public/js/main.js
+		gMapsApi = https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyDqEwuQDiA3DddQXdI7oCKuJRHgEgTBslo&language=de
+		gMapsApi.external = 1
+		bootstrap = typo3conf/ext/rsag_theme/Resources/Public/js/bootstrap.min.js
+		fixedsticky = typo3conf/ext/rsag_theme/Resources/Public/js/fixedsticky.js
+		scripts = typo3conf/ext/rsag_theme/Resources/Public/js/scripts.js
+		bewerbungSelect = typo3conf/ext/rsag_theme/Resources/Public/js/bewerbungSelect.js
+		jsUpload = typo3conf/ext/rsag_theme/Resources/Public/js/jsUpload.js
+	}
+
+	headerData {
+		5 = TEXT
+		5 {
+			data = page:title
+			noTrimWrap = |<title>| - RSAG</title>|
+		}
+
+	}
+
+
+}
+
+# Content element rendering
+tt_content.stdWrap.innerWrap.cObject.default >
+plugin.tx_news.view.templateRootPaths.0 = EXT:rsag_theme/Resources/Private/ext/news/Templates/
+plugin.tx_news.view.partialRootPaths.0 = EXT:rsag_theme/Resources/Private/ext/news/Partials/
+plugin.tx_news.view.layoutRootPaths.0 = EXT:rsag_theme/Resources/Private/ext/news/Layouts/

@@ -1,0 +1,74 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	 xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="wrapper" options="{group: 'FCE'}">
+			<flux:field.select name="background" label="Select the background color of this container"
+							   items="{no-background:'No background', white-background:'White background', gray-background:'Gray background'}"
+							   default="no-background" size="1" maxItems="1" />
+
+			<flux:field.select name="container" label="Select the type of the container"
+							   items="{container: 'Container', container-fluid: 'Fluid Container'}"
+							   default="container" size="1" maxItems="1"/>
+			<flux:field.checkbox name="spaceOnTop" default="true" label="Add space above" />
+			<flux:field.checkbox name="spaceOnBottom" default="true" label="Add space below" />
+			<flux:field.checkbox name="spallGaps" default="false" label="Will the gap between columns be small?" />
+
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column name="col1" label="Column 100%" style="width: 100%"/>
+				</flux:grid.row>
+			</flux:grid>
+			<flux:field.input name="title" label="Headline"/>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<f:if condition="{container} == 'container'">
+			<f:then>
+				<h2>Wrapper Container - Content centered</h2>
+			</f:then>
+			<f:else>
+				<h2>Wrapper Fluid Container - Full-width layout</h2>
+			</f:else>
+		</f:if>
+
+		<f:if condition="{background} != 'no-background'">
+			<f:if condition="{background} == 'white-background'">
+				<f:then>
+					<v:variable.set name="bg" value="White" />
+				</f:then>
+				<f:else>
+					<v:variable.set name="bg" value="Gray" />
+				</f:else>
+			</f:if>
+		</f:if>
+
+		<div class="row-container">
+			<h3>{title}</h3>
+		</div>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 no-paddingxs-left-right {background}">
+			<div class="{container} {f:if(condition: spaceOnTop, then: 'margin-top-60')} {f:if(condition: spaceOnBottom, then: 'margin-bottom-60')}">
+				<div class="row {f:if(condition: spallGaps, then: 'negative-small-margin')}">
+					<f:render section="columns" arguments="{_all}"/>
+				</div>
+			</div>
+		</div>
+
+		<f:section name="columns">
+			<f:if condition="{title}">
+				<f:then>
+					<h2 class="title-social-media margin-bottom-20">{title}</h2>
+				</f:then>
+			</f:if>
+			<flux:content.render area="col1"/>
+		</f:section>
+	</f:section>
+</div>

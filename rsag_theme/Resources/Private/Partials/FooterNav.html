@@ -1,0 +1,39 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="FooterNav">
+        <div class="blocfooter ">
+            <div class="container">
+                <div class="row">
+                    <div class="list-container col-md-9">
+                        <div class="row">
+                            <v:page.menu.directory pages="{settings.footerNav}" as="footerItems" expandAll="true">
+                                <f:for each="{footerItems}" as="subItem">
+                                    <div class="col-xs-12 col-md-4 col-sm-6 list-column">
+                                        <div>
+                                            <h3>
+                                                <div class="pull-left hide-desktop margin-right10 icon" data-icon="d"></div>
+                                                <a>{subItem.linktext}</a>
+                                            </h3>
+                                            <ul>
+                                                <v:page.menu pageUid="{subItem.uid}">
+                                                    <f:for each="{menu}" as="subSubItem">
+                                                        <li>
+                                                            <f:link.page pageUid="{subSubItem.uid}" title="{subSubItem.linktext}">{subSubItem.linktext}</f:link.page>
+                                                        </li>
+                                                    </f:for>
+                                                </v:page.menu>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </f:for>
+                            </v:page.menu.directory>
+                        </div>
+                    </div>
+                    <f:render partial="FooterNewsletters" section="FooterNewsletters" arguments="{_all}" />
+                </div>
+            </div>
+        </div>
+    </f:section>
+</div>

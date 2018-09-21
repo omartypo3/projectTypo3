@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="rsag_theme" date="2017-11-22T10:15:59+01:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.standard">
+				<source>Standard page</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.description">
+				<source>Standard page layout</source>
+			</trans-unit>
+			<trans-unit id="flux.homepage">
+                <source>Homepage</source>
+            </trans-unit>
+            <trans-unit id="flux.homepage.description">
+                <source>Homepage Layout</source>
+            </trans-unit>
+            <trans-unit id="flux.withRightSidebar">
+                <source>Page With Right Sidebar</source>
+            </trans-unit>
+            <trans-unit id="flux.withRightSidebar.description">
+                <source>Page With Right Sidebar Layout</source>
+            </trans-unit>
+            <trans-unit id="flux.fullwidth">
+                <source>Standard - Full width</source>
+            </trans-unit>
+            <trans-unit id="flux.withRightSidebar.description">
+                <source>Standard page - Full width Layout</source>
+            </trans-unit>
+
+			<trans-unit id="flux.graybox">
+                <source>Graybox element</source>
+            </trans-unit>
+            <trans-unit id="flux.graybox.description">
+                <source>Icon with text inside a graybox</source>
+            </trans-unit>
+
+            <trans-unit id="flux.textbox">
+                <source>Textbox element</source>
+            </trans-unit>
+            <trans-unit id="flux.textbox.description">
+                <source>Textbox with a link</source>
+            </trans-unit>
+
+            <trans-unit id="flux.blockquotebox">
+                <source>Blockquote Box element</source>
+            </trans-unit>
+            <trans-unit id="flux.blockquotebox.description">
+                <source>Blockquote Box element</source>
+            </trans-unit>
+
+            <trans-unit id="flux.slideshow">
+                <source>Slideshow element</source>
+            </trans-unit>
+            <trans-unit id="flux.slideshow.description">
+                <source>Slideshow element</source>
+            </trans-unit>
+
+            <trans-unit id="flux.container">
+                <source>Container element</source>
+            </trans-unit>
+
+            <trans-unit id="flux.wrapper">
+                <source>Wrapper element</source>
+            </trans-unit>
+
+            <trans-unit id="flux.container.description">
+                <source>Select the number of columns</source>
+            </trans-unit>
+
+            <trans-unit id="flux.bigtitletext">
+                <source>Big Title and Text element</source>
+            </trans-unit>
+            <trans-unit id="flux.bigtitletext.description">
+                <source>Big Title and Text element</source>
+            </trans-unit>
+
+            <trans-unit id="flux.downloadtiles">
+                <source>Download tiles elements</source>
+            </trans-unit>
+            <trans-unit id="flux.downloadtiles.description">
+                <source>Add a download boxes with filter</source>
+            </trans-unit>
+
+            <trans-unit id="flux.downloadbox">
+                <source>Download box element</source>
+            </trans-unit>
+            <trans-unit id="flux.downloadbox.description">
+                <source>Box with download links</source>
+            </trans-unit>
+
+            <trans-unit id="flux.hoverbox">
+                <source>Hover box element</source>
+            </trans-unit>
+            <trans-unit id="flux.hoverbox.description">
+                <source>Add a box with an image and show a text and link on hover</source>
+            </trans-unit>
+
+            <trans-unit id="flux.tabscontainer">
+                <source>Tabs Container</source>
+            </trans-unit>
+            <trans-unit id="flux.tabscontainer.description">
+                <source>Tabs Container</source>
+            </trans-unit>
+
+            <trans-unit id="flux.rowswithanchornav">
+                <source>Rows With Anchor Navigation</source>
+            </trans-unit>
+            <trans-unit id="flux.rowswithanchornav.description">
+                <source>Add containers with "on page" navigation bar</source>
+            </trans-unit>
+
+            <trans-unit id="flux.bigbutton">
+                <source>Big Button Element</source>
+            </trans-unit>
+            <trans-unit id="flux.bigbutton.description">
+                <source>Add a big button</source>
+            </trans-unit>
+
+            <trans-unit id="flux.presseboxes">
+                <source>Presse Boxes</source>
+            </trans-unit>
+            <trans-unit id="flux.presseboxes.description">
+                <source>Add 6 blue boxes</source>
+            </trans-unit>
+
+            <trans-unit id="flux.PriceList">
+                <source>Price List Box</source>
+            </trans-unit>
+            <trans-unit id="flux.PriceList.description">
+                <source>Add a price list box</source>
+            </trans-unit>
+
+            <trans-unit id="flux.ticketboxes">
+                <source>Ticket boxes</source>
+            </trans-unit>
+            <trans-unit id="flux.ticketboxes.description">
+                <source>Add boxes for the ticket page</source>
+            </trans-unit>
+
+            <trans-unit id="flux.linkblock">
+                <source>Link Block</source>
+            </trans-unit>
+            <trans-unit id="flux.linkblock.description">
+                <source>Add link block</source>
+            </trans-unit>
+            <trans-unit id="flux.linkWithTextblock">
+                <source>Link with text Block</source>
+            </trans-unit>
+            <trans-unit id="flux.bilder">
+                <source>Bilder Boxes</source>
+            </trans-unit>
+             <trans-unit id="flux.bilder.description">
+                 <source>Add bilder blocs</source>
+             </trans-unit>
+
+             <trans-unit id="flux.PriceList">
+                 <source>Ticket List element</source>
+             </trans-unit>
+             <trans-unit id="flux.PriceList.description">
+                 <source>List of tickets with thier prices and info</source>
+             </trans-unit>
+
+             <trans-unit id="flux.mediaaudiovideo">
+                 <source>Mediatech audio and video element</source>
+             </trans-unit>
+             <trans-unit id="flux.mediaaudiovideo.description">
+                 <source>add audio or video element</source>
+             </trans-unit>
+
+              <trans-unit id="flux.zoneselector">
+                  <source>Zone selector</source>
+              </trans-unit>
+              <trans-unit id="flux.zoneselector.description">
+                  <source>Add a dropdown selector for different zones</source>
+              </trans-unit>
+
+              <trans-unit id="flux.timeblox">
+                    <source>Timeline Boxes</source>
+              </trans-unit>
+              <trans-unit id="flux.timeblox.description">
+                    <source>Add Timeline blocs</source>
+              </trans-unit>
+
+               <trans-unit id="flux.socialmedia">
+                    <source>Social media Boxes</source>
+               </trans-unit>
+               <trans-unit id="flux.socialmedia.description">
+                    <source>Add Twitter/Facebook/Youtube Boxes</source>
+               </trans-unit>
+
+              <trans-unit id="flux.mapbox">
+                   <source>Map box</source>
+              </trans-unit>
+              <trans-unit id="flux.mapbox.description">
+                   <source>Subway map box</source>
+              </trans-unit>
+
+               <trans-unit id="flux.socialnewsroom">
+                    <source>Social Media Newsroom</source>
+               </trans-unit>
+               <trans-unit id="flux.socialnewsroom.description">
+                        <source>Social Media container</source>
+               </trans-unit>
+
+               <trans-unit id="flux.news">
+                    <source>Event News box</source>
+               </trans-unit>
+               <trans-unit id="flux.news.description">
+                    <source>Add event News box</source>
+               </trans-unit>
+
+              <trans-unit id="flux.readmoreblock">
+                  <source>Read More</source>
+              </trans-unit>
+              <trans-unit id="flux.readmoreblock.description">
+                  <source>Add detail of trip</source>
+              </trans-unit>
+
+		</body>
+	</file>
+</xliff>

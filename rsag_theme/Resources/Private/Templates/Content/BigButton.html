@@ -1,0 +1,25 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="bigbutton" options="{group: 'FCE'}">
+			<flux:field.input name="title" label="Title" required="true" />
+			<flux:field.input name="url" label="URL" required="true"><flux:wizard.link/></flux:field.input>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<strong>Big button</strong><br />
+		{title}
+	</f:section>
+
+	<f:section name="Main">
+		<button type="button" class="btn btn-default center big-button">
+			<f:link.page pageUid="{url}">{title}</f:link.page>
+		</button>
+	</f:section>
+</div>

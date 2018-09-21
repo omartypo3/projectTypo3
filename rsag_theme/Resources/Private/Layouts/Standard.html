@@ -1,0 +1,16 @@
+
+<f:layout name="Standard" />
+
+<f:render partial="Header" section="Header" arguments="{_all}" />
+<f:render partial="Slider" section="Slider" arguments="{_all}" />
+<f:render partial="Tabs" section="Tabs" arguments="{_all}" />
+
+<!--Main content -->
+<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 no-paddingxs-left-right ">
+    <div class="container ">
+        <f:render section="Content"/>
+    </div>
+</div>
+<!--/Main content -->
+
+<f:render partial="Footer" section="Footer" arguments="{_all}" />

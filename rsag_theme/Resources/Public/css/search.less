@@ -1,0 +1,124 @@
+/*BEGIN Bloc search*/
+.rsag-search {
+
+  z-index: 100;
+
+  position: absolute;
+  right: 0;
+  top: -@space12;
+  width: @width_blocsearch;
+.puce {
+  margin-bottom: -@space2;
+  z-index: 5;
+  position: relative;
+}
+  .form-control {
+    background-color: @color_bluelight;
+    border-radius: 0;
+    border-width: 0;
+    color: @color_white;
+    padding: @space25 @space25 @space25 @space50;
+
+  }
+  .fa-search {
+    position: absolute;
+    top: @space15;
+    left: @space20;
+    .text-style(@color_white, @fonsize-icon, 1);
+    z-index: 9;
+
+  }
+  .form-control:focus {
+    border-color: @nocolor;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .input-group-btn {
+    position: absolute;
+    left: 100%;
+
+    > .btn {
+      z-index: 9;
+      margin-top: @space15;
+      margin-right: @space15;
+      color: @color_white;
+      opacity: 1;
+    }
+  }
+
+  .search-label {
+    background-color: @color_greylight;
+    padding: @space10 @space15;
+  }
+  .search-filter {
+    background-color: @color_white;
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        padding-top : @space5 ;
+        padding-bottom: @space5 ;
+
+
+        a {
+          cursor: pointer;
+          text-decoration: none;
+          font-family: @Helvetica-65-medium;
+          .text-style(@color_blue, @text16, @text22);
+          &:hover {
+            color: @color_bluelight;
+          }
+        }
+      }
+&:not(.resultsearch) li {
+  padding-right: 0 ;
+  padding-left: 0 ;
+}
+    }
+    .btn {
+      margin-bottom: @space15;
+      width: 100%;
+      color: @color_white;
+      font-family: @Helvetica-65-medium;
+      letter-spacing: 1px;
+      .text-style(@color_white, @text14, 1.2);
+      text-align: center;
+      text-transform: uppercase;
+      padding: @space12 0;
+    }
+  }
+}
+
+/*END Bloc search*/
+
+/* Result Search */
+.resultsearch {
+  list-style: none;
+  font-size: @text14;
+  font-family: @Helvetica-45-light;
+
+  li {
+    padding-right: @space25;
+    background: url(/images/arrowrightblue.png) no-repeat right;
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0;
+      .text-style(@color_blue, @text16, @text22);
+      &:hover {
+        color: @color_bluelight;
+      }
+
+    }
+    &:not(:last-child) {
+      border-bottom: 1px solid #e6e6e6;
+    }
+   /* &:hover {
+      background: url(/images/arrowrightbluehover.png) no-repeat right;
+
+    }*/
+  }
+}
+
+/* Result Search */

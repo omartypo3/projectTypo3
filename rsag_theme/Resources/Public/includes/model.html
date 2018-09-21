@@ -1,0 +1,203 @@
+<!-- Modal: Erweiterte Optionen  -->
+<div class="modal fade option-model" id="erweiterteOptionen" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header calender-head">
+                <span class="fa fa-times-circle fa-6 pull-right close" data-dismiss="modal"></span>
+                <h4 class="modal-title">Erweiterte Optionen</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="col-xs-12">
+                    <div class="col-xs-12 text-center reset resetoption">
+                        zurücksetzen
+                    </div>
+                    <div class="col-xs-12 no-padding-left-right padding-top-10">
+                                <span class="left-text">
+                                    Nur Direktverbindungen
+                                </span>
+                        <label class="switch pull-right">
+                            <input type="checkbox" checked class="checkoptionen" data-name="Nur Direktverbindungen">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 no-padding-left-right padding-top-10">
+                                <span class="left-text">
+                                    Mobilitätseinschränkungen
+                                </span>
+                        <label class="switch pull-right">
+                            <input type="checkbox" class="checkoptionen" data-name="Mobilitätseinschränkungen">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 no-padding-left-right padding-top-10">
+                                <span class="left-text">
+                                    Fahrradmitnahme
+                                </span>
+                        <label class="switch pull-right">
+                            <input type="checkbox" checked class="checkoptionen" data-name="Fahrradmitnahme">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="col-xs-12 no-padding-left-right padding-top-10">
+                                <span class="left-text col-sm-6 col-xs-6 no-padding-left-right">
+                                    Umsteigehäufigkeit
+                                </span>
+                        <div class="col-sm-6 col-xs-6 no-padding-left-right ">
+                            <select class="pull-right select-style" name="unbegrenzt" id="unbegrenzt"
+                                    data-name="Umsteigehäufigkeit">
+                                <option value="0">unbegrenzt</option>
+                                <option value="1">1 Umstieg</option>
+                                <option value="2">2 Umstiege</option>
+                                <option value="3">3 Umstiege</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 no-padding-left-right padding-top-10">
+                                <span class="left-text col-sm-6 col-xs-6 no-padding-left-right">
+                                    Umsteigezeit
+                                </span>
+                        <div class="col-sm-6 col-xs-6 no-padding-left-right ">
+                            <select class="pull-right select-style" name="normal" id="normal" data-name="Umsteigezeit">
+                                <option value="0">normal</option>
+                                <option value="1">mindestens 10 Minuten</option>
+                                <option value="2">mindestens 20 Minuten</option>
+                                <option value="3">mindestens 30 Minuten</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer calender-footer confirmoption " data-dismiss="modal">
+                <div class="text-center text-uppercase">
+                    bestätigen
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /Modal: Erweiterte Optionen -->
+
+<!-- Modal: Anfragen -->
+<div class="modal fade option-model" id="anfragen" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header calender-head">
+                <span class="fa fa-times-circle fa-6 pull-right close" data-dismiss="modal"></span>
+                <h4 class="modal-title">Ihre letzten Anfragen</h4>
+            </div>
+            <div class="modal-body row modal-tabs">
+                <!-- Tabs -->
+                <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 no-padding-left-right no-paddingxs-left-right">
+                    <div class=" ">
+                        <div class=" navigationtabs">
+                            <ul class="menu-tabs nav nav-tabs">
+                                <li class="active col-xs-6 no-paddingxs-left-right">
+                                    <a data-toggle="tab" href="#verbindungen">Verbindungen</a>
+                                </li>
+                                <li class=" col-xs-6 no-paddingxs-left-right">
+                                    <a data-toggle="tab" href="#orte">Orte</a>
+                                </li>
+                                <li class=" col-xs-6 no-paddingxs-left-right"></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 no-padding-left-right">
+
+                        <div class=" tab-content">
+                            <!-- tab 1 : verbindungen-->
+                            <div id="verbindungen" class="tab-pane active fade in ">
+                                <!-- line 1 -->
+                                <div class="col-xs-12 no-padding-left-right margin-top-15">
+                                    <div class="col-xs-8">
+                                        <div class="col-xs-1 no-padding-left-right points-img">
+                                            <div style="display: grid;">
+                                                <img src="images/greyppt.png" alt="">
+                                                <img src="images/lineppt.png" alt="">
+                                                <img src="images/blueppt.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 no-padding-left-right points-txt">
+                                            <p style="margin-bottom: 0">Rostock, Neuer Markt</p>
+                                            <p>Warnemünde Werft</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <img src="images/star.png" alt="Star" class="pionts-star">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div class="icon icon-rsag-round-arrow-1-right"></div>
+                                    </div>
+                                    <hr class="points-line"/>
+                                </div><!-- /line 1 -->
+
+                                <!-- line 2 -->
+                                <div class="col-xs-12 no-padding-left-right margin-top-15">
+                                    <div class="col-xs-8">
+                                        <div class="col-xs-1 no-padding-left-right points-img">
+                                            <div style="display: grid;">
+                                                <img src="images/greyppt.png" alt="">
+                                                <img src="images/lineppt.png" alt="">
+                                                <img src="images/blueppt.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 no-padding-left-right points-txt">
+                                            <p style="margin-bottom: 0">Rostock, Neuer Markt</p>
+                                            <p>Warnemünde Werft</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <img src="images/star.png" alt="Star" class="pionts-star">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div class="icon icon-rsag-round-arrow-1-right"></div>
+                                    </div>
+                                    <hr class="points-line"/>
+                                </div><!-- /line 2 -->
+
+                                <!-- line 3 -->
+                                <div class="col-xs-12 no-padding-left-right margin-top-15">
+                                    <div class="col-xs-8">
+                                        <div class="col-xs-1 no-padding-left-right points-img">
+                                            <div style="display: grid;">
+                                                <img src="images/greyppt.png" alt="">
+                                                <img src="images/lineppt.png" alt="">
+                                                <img src="images/blueppt.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-11 no-padding-left-right points-txt">
+                                            <p style="margin-bottom: 0">Rostock, Neuer Markt</p>
+                                            <p>Warnemünde Werft</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <img src="images/star.png" alt="Star" class="pionts-star">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <div class="icon icon-rsag-round-arrow-1-right"></div>
+                                    </div>
+                                    <hr class="points-line"/>
+                                </div><!-- /line 3 -->
+
+                            </div><!-- /tab 1 : verbindungen-->
+                            <!-- tab 2 : orte-->
+                            <div id="orte" class="tab-pane fade margin-top-15 ">
+
+                            </div><!-- /tab 2 : orte-->
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabs -->
+            </div>
+            <div class="modal-footer calender-footer " data-dismiss="modal">
+                <div class="text-center text-uppercase">
+                    Zurück
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /Modal: Anfragen -->

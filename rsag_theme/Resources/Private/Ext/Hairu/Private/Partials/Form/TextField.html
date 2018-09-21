@@ -1,0 +1,19 @@
+<f:form.validationResults for="{fieldName}">
+
+    <label class="sr-only" for="login-{fieldName}">
+      <f:translate key="{translationKey}">{defaultLabel}</f:translate>
+    </label>
+    <f:form.textfield
+      type="{fieldType}"
+      name="{fieldName}"
+      value="{fieldValue}"
+      id="login-{fieldName}"
+      placeholder="{f:translate(key: '{translationKey}', default: '{defaultLabel}')}"
+      title="{validationResults.errors.0}"
+      class="form-control"
+      additionalAttributes="{additionalAttributes}"/>
+    <f:if condition="{validationResults.errors}">
+      <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+    </f:if>
+
+</f:form.validationResults>

@@ -1,0 +1,29 @@
+button.big-button {
+  display: block;
+  margin: 0 auto;
+  min-width: @width-buttonneuigkeiten;
+  margin-top: @space20;
+  padding: @space15 0;
+  font-size: @text14;
+  line-height: 17px;
+  text-transform: uppercase;
+  font-family: @Helvetica-65-medium;
+  border-color: @color_blue;
+  border-radius: @space4 ;
+  letter-spacing: @space2;
+  background: @nocolor;
+  &:hover {
+    color: @color_white ;
+    background-color: @nocolor ;
+    border-color: @color_white;
+    &:before {
+      transform: scaleX(1);
+      background:  @color_blue ;
+      border-radius: @space4 ;
+    }
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+}

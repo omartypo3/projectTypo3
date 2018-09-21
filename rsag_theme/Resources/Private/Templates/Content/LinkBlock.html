@@ -1,0 +1,67 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="linkblock" options="{group: 'FCE'}">
+            <flux:field.input name="titlelink" label="Title Link" required="true"/>
+            <flux:field.select name="icon" label="Icon"
+                               items="{download:'Download', simple-link:'Simple link'}"
+                               default="simple-link"/>
+            <flux:field.input name="link" label="Link" required="true">
+                <flux:wizard.link/>
+            </flux:field.input>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Link block</strong><br/>
+        {titlelink}
+    </f:section>
+
+    <f:section name="Main">
+
+        <f:if condition="{icon} == 'download'">
+            <f:then>
+                <v:variable.set name="classes" value="icon-rsag-round-download"/>
+                <v:variable.set name="classe-container" value="link-download"/>
+            </f:then>
+            <f:else>
+                <v:variable.set name="classes" value="icon-rsag-round-arrow-1-right pull-left margin-right10"/>
+            </f:else>
+        </f:if>
+        <f:if condition="{link-> v:math.round()} > 0">
+            <f:then>
+                <v:variable.set name="url" value="{f:uri.page(pageUid: '{link}', absolute: '1')}" />
+            </f:then>
+            <f:else>
+                <v:variable.set name="url" value="{f:uri.typolink(parameter: '{link}')}" />
+            </f:else>
+        </f:if>
+        <f:if condition="{icon} == 'download'">
+           <f:then>
+               <p class="text-center bilder-text-download margin-top-20">
+                   <a href="{url}" class="{classe-container}">
+                       <i class="icon icon-rsag-round-download "></i>
+                        <span>{titlelink}</span>
+                   </a>
+               </p>
+           </f:then>
+            <f:else>
+                <div class=" col-sm-12 padding-left-right-7-5 form-fields margin-bottom-60">
+                    <a href="{url}" class="registerbutton col-md-12 col-lg-12 no-padding-left-right">
+                        <div class="icon {classes}"></div>
+                           {titlelink}
+                    </a>
+                </div>
+            </f:else>
+        </f:if>
+        <!--	<div class=" col-sm-12 padding-left-right-7-5 form-fields {f:if(condition: '{icon} == \'simple-link\'', then: 'margin-bottom-60')}"> -->
+
+
+
+</f:section>
+</div>

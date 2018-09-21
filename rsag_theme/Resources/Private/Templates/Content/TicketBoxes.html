@@ -1,0 +1,121 @@
+<ul xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="ticketboxes" options="{group: 'FCE'}">
+            <flux:form.sheet name="elements" label="Ticket boxes">
+                <flux:form.section name="elements">
+                    <flux:form.object name="box" label="Box">
+                        <flux:field.input name="headline" label="Heading"/>
+                        <flux:field.input name="url" label="Link" required="true">
+                            <flux:wizard.link/>
+                        </flux:field.input>
+                        <flux:field.select name="icon" label="Icon"
+                                           items="{none: 'None',
+										   icon-rsag-clear-student-ticket:'Student ticket',
+										   icon-rsag-clear-monthly-ticket-family:'Monthly ticket Family',
+										   icon-rsag-clear-monthly-ticket-bike:'Monthly Ticket Bike',
+										   icon-rsag-clear-monthly-ticket-plus:'Monthly Ticket Plus',
+										   icon-rsag-clear-mobil-60:'Mobile 60',
+										   icon-rsag-clear-mobil-60-bike:'Mobile 60 Bike',
+										   icon-rsag-clear-semester-ticket:'Semester Ticket',
+										   icon-rsag-clear-job-ticket:'Job Ticket'
+										   }"
+                                           default="none" size="1" maxItems="1"/>
+                    </flux:form.object>
+                </flux:form.section>
+                <flux:field.select name="desktop-width"
+                                   label="Select the with of the element relative to its container on desktop"
+                                   items="{
+									col-md-12: '12 / 12',
+									col-md-11: '11 / 12',
+									col-md-10: '10 / 12',
+									col-md-9: '9 / 12',
+									col-md-8: '8 / 12',
+									col-md-7: '7 / 12',
+									col-md-6: '6 / 12',
+									col-md-5: '5 / 12',
+									col-md-4: '4 / 12',
+									col-md-3: '3 / 12',
+									col-md-2: '2 / 12',
+									col-md-1: '1 / 12'}"
+                                   default="col-md-12" size="1" maxItems="1"/>
+                <flux:field.select name="tablet-width"
+                                   label="Select the with of the element relative to its container on Tablet"
+                                   items="{
+									col-sm-12: '12 / 12',
+									col-sm-11: '11 / 12',
+									col-sm-10: '10 / 12',
+									col-sm-9: '9 / 12',
+									col-sm-8: '8 / 12',
+									col-sm-7: '7 / 12',
+									col-sm-6: '6 / 12',
+									col-sm-5: '5 / 12',
+									col-sm-4: '4 / 12',
+									col-sm-3: '3 / 12',
+									col-sm-2: '2 / 12',
+									col-sm-1: '1 / 12'}"
+                                   default="col-sm-12" size="1" maxItems="1"/>
+                <flux:field.select name="mobile-width"
+                                   label="Select the with of the element relative to its container on Mobile"
+                                   items="{
+									col-xs-12: '12 / 12',
+									col-xs-11: '11 / 12',
+									col-xs-10: '10 / 12',
+									col-xs-9: '9 / 12',
+									col-xs-8: '8 / 12',
+									col-xs-7: '7 / 12',
+									col-xs-6: '6 / 12',
+									col-xs-5: '5 / 12',
+									col-xs-4: '4 / 12',
+									col-xs-3: '3 / 12',
+									col-xs-2: '2 / 12',
+									col-xs-1: '1 / 12'}"
+                                   default="col-xs-12" size="1" maxItems="1"/>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Ticket Boxes</strong>
+            <ul>
+                <f:for each="{elements}" as="element" iteration="i">
+
+                                <li>{element.box.headline}</li>
+
+                </f:for>
+        </ul>
+
+    </f:section>
+
+    <f:section name="Main">
+        <div class="margin-bottom-60 {desktop-width} {tablet-width} {mobile-width}">
+            <div class="abokarten">
+                <f:for each="{settings.elements}" as="element" iteration="i">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 no-padding-left-right imageWH-same-50">
+                        <div class="press-item">
+                            <f:if condition="{element.box.url -> v:math.round()} > 0">
+                                <f:then>
+                                    <f:link.page pageUid="{element.box.url}">
+                                        <div class="icon {element.box.icon}"></div>
+                                        <h4>{element.box.headline}</h4>
+                                    </f:link.page>
+                                </f:then>
+                                <f:else>
+                                    <f:link.typolink parameter="{element.box.url}">
+                                        <div class="icon {element.box.icon}"></div>
+                                        <h4>{element.box.headline}</h4>
+                                    </f:link.typolink>
+                                </f:else>
+                            </f:if>
+                        </div>
+                    </div>
+                </f:for>
+            </div>
+        </div>
+    </f:section>
+</div>

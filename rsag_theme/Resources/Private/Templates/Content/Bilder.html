@@ -1,0 +1,64 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content" />
+
+    <f:section name="Configuration">
+        <flux:form id="bilder" options="{group: 'FCE'}">
+            <flux:form.sheet name="options" label="General">
+                <flux:field.input name="title" label="Title" required="true"/>
+            </flux:form.sheet>
+
+            <flux:form.sheet name="elements" label="Bilder">
+                <flux:form.section name="elements">
+                        <flux:form.object name="link" label="Bilder">
+                            <flux:field.input name="headline" label="Heading" required="true"/>
+                            <flux:field.file name="image" label="image"allowed="jpg,png,svg" required="true" showThumbnails="1" maxItems="1" minItems="1" useFalRelation="1"  />
+                            <flux:field.input name="url" label="Link" required="true">
+                                <flux:wizard.link/>
+                            </flux:field.input>
+                        </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Bilder Fce Boxes:</strong> {title}
+        <ul>
+            <f:for each="{elements}" as="element" iteration="i">
+                <li>
+                    <strong>Title:</strong> {element.link.headline}
+                </li>
+            </f:for>
+        </ul>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="container ticketkauf margin-top-20 margin-bottom-60 margin-top-xs-0 padding-left-right-7-5 no-paddingxs-left-right ">
+            <div class="bilder-bloc">
+                <h2 class="title-social-media  margin-top-60 margin-bottom30">{settings.title}</h2>
+                <f:for each="{settings.elements}" as="element" iteration="i">
+                    <f:if condition="{element.link.url -> v:math.round()} > 0">
+                        <f:then>
+                            <v:variable.set name="url" value="{f:uri.page(pageUid: '{element.link.url}', absolute: '1')}" />
+                        </f:then>
+                        <f:else>
+                            <v:variable.set name="url" value="{f:uri.typolink(parameter: '{element.link.url}')}" />
+                        </f:else>
+                    </f:if>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 no-paddingxs-left-right padding-left-right-7-5 no-paddingxs-left-right">
+                            <f:image src="{element.link.image}"/>
+                              <div class="box">
+                                  <div class="box-item">
+                                       <a href="{url}">{element.link.headline}</a>
+                                   </div>
+                              </div>
+                        </div>
+                </f:for>
+            </div>
+        </div>
+    </f:section>
+</div>

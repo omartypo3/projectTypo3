@@ -1,0 +1,37 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="slideshow" options="{group: 'FCE'}">
+			<flux:field.inline.fal name="image" label="Background image (1440 x 700px)" maxItems="1" minItems="1" required="true"/>
+			<flux:field.text name="caption" label="Slide caption text" enableRichText="1" />
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Slideshow Element</b>
+		<f:format.crop maxCharacters="50">
+			{caption-> f:format.html()}
+		</f:format.crop>
+	</f:section>
+
+	<f:section name="Main">
+
+		{v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+		'backgroundImage')}
+		<div class="item active">
+			<div class="item-shadow"></div>
+			<f:image src="{v:format.url.decode(content: backgroundImage.url)}" alt="" height="700c" />
+			<f:if condition="{caption}">
+				<div class="carousel-caption-blue bottom-left carousel-caption ">
+					<f:format.html>{caption}</f:format.html>
+				</div>
+			</f:if>
+		</div>
+	</f:section>
+</div>
+

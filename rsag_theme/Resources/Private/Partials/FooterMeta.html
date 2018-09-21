@@ -1,0 +1,22 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="FooterMeta">
+        <div class="copyright">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
+                <div class="container">
+                    <v:page.menu.directory pages="{settings.footerMeta}" as="footerItems" expandAll="true">
+                        <f:for each="{footerItems}" as="subItem" iteration="iterator">
+                            <f:link.page pageUid="{subItem.uid}" title="{subItem.linktext}">{subItem.linktext}</f:link.page>
+                            <f:if condition="{iterator.isLast}">
+                                <f:then></f:then>
+                                <f:else> | </f:else>
+                            </f:if>
+                        </f:for>
+                    </v:page.menu.directory>
+                </div>
+            </div>
+        </div>
+    </f:section>
+</div>

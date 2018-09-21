@@ -1,0 +1,48 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<!--
+	=====================
+		Partials/List/Item.html
+-->
+	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-top-15 no-paddingxs-left-right padding-left-right-7-5  article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article" data-year="{f:format.date(date:newsItem.datetime, format:'Y')}" data-month="{f:format.date(date:newsItem.datetime, format:'m')}">
+		<n:excludeDisplayedNews newsItem="{newsItem}"/>
+		<div class="shaddow roundtop10 inline-bloc item">
+			<div class="bloc-image">
+				<a href="#">
+					<f:if condition="{newsItem.falMedia.0.uid}">
+						<f:then>
+							<img src="{f:uri.image(src: '{newsItem.falMedia.0.uid}', width: '500c', height: '500c-100', treatIdAsReference:1)}" alt="">
+						</f:then>
+						<f:else>
+							<img height="200">
+						</f:else>
+					</f:if>
+				</a>
+				<div class="rectangle-copy-11">
+					<div class="icon icon-rsag-clear-press"></div>
+				</div>
+			</div>
+			<div class="col-xs-12 bloc-description no-shaddow">
+				<h3 class="fledermausnacht"><a href="#">
+					{newsItem.title}<br>
+
+				</a> </h3>
+				<p class="time-uhr">{f:format.date(date:newsItem.datetime, format:'d-m-Y')}</p>
+				<p class="text-description">
+					{newsItem.bodytext -> f:format.crop(maxCharacters: '120', respectWordBoundaries:'1') -> f:format.html()}
+				</p>
+				<div class="row">
+					<div class="col-xs-1">
+						<div class="icon icon-rsag-round-arrow-1-right"></div>
+					</div>
+					<a class="col-xs-10 mehr-infos" href="#">
+						Zum Beitrag
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</html>

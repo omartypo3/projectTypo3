@@ -1,0 +1,78 @@
+/*BEGIN language*/
+.rsag-language {
+
+  z-index: 100;
+
+  position: absolute;
+  right: 0;
+  top: -@space12;
+  width: @width_bloclanguage;
+  letter-spacing: @space1;
+  .puce {
+    margin-bottom: -@space2;
+    z-index: 5;
+    position: relative;
+  }
+  .rsag-control {
+    background-color: @color_bluelight;
+    border-radius: 0px;
+    border-width: 0px;
+    color: @color_white;
+    font-size: @text14;
+    padding: @space13;
+
+    font-family: @Helvetica-75-bold;
+    text-transform: uppercase;
+  }
+  .input-group-btn {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  .input-group-btn > .btn {
+    z-index: 9;
+    margin-top: @space33;
+    margin-right: @space15;
+    color: @color_white;
+    opacity: 1;
+  }
+
+  ul {
+    list-style: none;
+    background: @color_white;
+    padding: @space13;
+    li {
+      margin-bottom: @space10;
+
+      .btn {
+        width: 100%;
+        text-align: left;
+        font-size: @btnsize;
+        line-height: 1.375;
+        font-family: @Helvetica-65-medium;
+        &.btn-default {
+          box-shadow: @shaddow-btndefault;
+          background-color: @background-btndefault;
+          color: @color_greyicone;
+          border: none;
+        }
+        &:before {
+          background-color: @color_bluelight ;
+          border-color: @color_bluelight;
+        }
+        &.selected {
+          background-color: @color_blue;
+          color: @color_white ;
+          border: none;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/*END language*/
+

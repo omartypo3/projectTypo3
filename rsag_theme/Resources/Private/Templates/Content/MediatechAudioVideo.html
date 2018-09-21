@@ -1,0 +1,70 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="mediaaudiovideo" options="{group: 'FCE'}">
+            <flux:field.input name="title" label="Title"/>
+            <flux:field.select name="type" items="Audio,Video" label="elements type" requestUpdate="true"/>
+            <flux:form.section name="elements">
+                <flux:form.object name="box" label="element">
+                    <flux:field.input name="headline" label="Box Headline" required="true"/>
+                    <flux:field.input name="description" label="Box description" required="true"/>
+                    <flux:field.input name="link" label="Box Link" required="true">
+                        <flux:wizard.link/>
+                    </flux:field.input>
+                    <f:if condition="{type}=='Video'">
+                        <f:then>
+                            <flux:field.file name="image" label="image"allowed="jpg,png,svg"  maxItems="1" minItems="1" useFalRelation="1"  />
+                        </f:then>
+                    </f:if>
+                </flux:form.object>
+            </flux:form.section>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Mediatech Boxes {type}: {title}</strong>
+        <ul>
+            <f:for each="{elements}" as="element" iteration="i">
+                <li>
+                    <strong>Title:</strong> {element.box.headline}
+                </li>
+            </f:for>
+        </ul>
+
+    </f:section>
+
+    <f:section name="Main">
+        <div class="container ticketkauf margin-top-20 margin-bottom-60 margin-top-xs-0 padding-left-right-7-5 no-paddingxs-left-right ">
+            <h2 class="title-social-media margin-top-60 margin-bottom30">{title}</h2>
+            <f:for each="{settings.elements}" as="element" iteration="i">
+                <div class="col-md-4 col-sm-6 col-xs-12  padding-left-right-7-5 bloc-img-left">
+                    <div class="col-xs-4 no-padding-left-right img-left-img">
+                        <f:if condition="{type}=='Video'">
+                            <f:then>
+                                <img src="{f:uri.image(src: '{element.box.image}')}" class="img-left"/>
+                                <a href="{element.box.link}"> <i class="fa fa-play-circle icon-play"
+                                                                 aria-hidden="true"></i></a>
+                            </f:then>
+                            <f:else>
+                                <div class="back-bleu-left dispaly-grid">
+                                    <a href="{element.box.link}"> <i class="fa fa-play-circle icon-play"
+                                                                     aria-hidden="true"></i></a>
+                                </div>
+                            </f:else>
+                        </f:if>
+                    </div>
+                    <div class="col-xs-8 img-left-centent margin-bottom-15">
+                        <h2>{element.box.headline} </h2>
+                        <p>{element.box.description}</p>
+                    </div>
+                </div>
+            </f:for>
+        </div>
+
+    </f:section>
+</div>

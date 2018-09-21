@@ -1,0 +1,49 @@
+{namespace h=PAGEmachine\Hairu\ViewHelpers}
+
+<f:layout name="Default"/>
+<f:section name="main">
+
+    <f:flashMessages/>
+
+    <h:loginForm
+            userStoragePageUid="{storagePid}"
+            pageUid="{settings.login.page}"
+            method="post"
+            class="col-xs-12 col-md-5 col-lg-5 col-sm-12 form-fields login-form">
+        <input type="hidden" name="return_url" value="{formData.return_url}"/>
+        <input type="hidden" name="redirect_url" value="{formData.redirect_url}"/>
+        <div class="form-group margin-top-30">
+            <f:render partial="Form/TextField" arguments="{
+                     fieldName: 'user',
+                     fieldType: 'text',
+                     fieldValue: formData.user,
+                     translationKey: 'username',
+                     defaultLabel: 'Username'
+                     class : 'form-control'
+                  }"/>
+        </div>
+        <div class="form-group">
+            <f:render partial="Form/TextField" arguments="{
+                    fieldName: 'pass',
+                    fieldType: 'password',
+                    translationKey: 'password',
+                    defaultLabel: 'Password',
+                    additionalAttributes: {data-rsa-encryption: ''}
+                    class : 'form-control'
+                 }"/>
+        </div>
+        <f:render partial="Form/SubmitButton" arguments="{
+                 translationKey: 'action.login',
+                 defaultLabel: 'Log in'
+                 class: 'btn btn-primary submit'
+                }"/>
+
+        <div class="form-group">
+            <a class="registerbutton" href="#">
+                <span class="icon icon-rsag-round-arrow-1-right pull-left margin-right10 "></span>
+                <span>Registration</span>
+            </a>
+        </div>
+    </h:loginForm>
+
+</f:section>

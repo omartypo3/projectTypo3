@@ -1,0 +1,43 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="downloadbox" options="{group: 'FCE'}">
+			<flux:form.sheet name="options" label="General">
+				<flux:field.input name="title" label="Title" required="true"/>
+			</flux:form.sheet>
+			<flux:form.sheet name="elements" label="Links">
+				<flux:form.section name="elements">
+					<flux:form.object name="link" label="Link">
+						<flux:field.input name="headline" label="Heading" required="true"/>
+						<flux:field.input name="url" label="Link" required="true"><flux:wizard.link/></flux:field.input>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Download Box</b>
+		<h5>{title}</h5>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="download-item" data-content="{settings.title}">
+			<h4><a>{settings.title}</a></h4>
+			<ul>
+				<f:for each="{settings.elements}" as="element" iteration="i">
+					<li class="{f:if(condition: i.isEven, then: 'even', else: 'odd')}">
+						<a href="{element.link.url}">{element.link.headline}
+							<div class="icon icon-rsag-round-download pull-right"></div>
+						</a>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:section>
+</div>
