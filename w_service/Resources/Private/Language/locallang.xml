@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Titan Tool Service extension in the FRONTEND</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="service.places">Titan Partners</label>
+			<label index="service.all">All</label>
+			<label index="service.selectMessage">Please select a section first</label>
+			<label index="service.enterZip">Enter City with State or Zip Code</label>
+            <label index="service.range">Radius Search</label>
+            <label index="service.searchButton">Search</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+			<label index="service.places">Locations</label>
+			<label index="service.all">Alle</label>
+			<label index="service.selectMessage">Bitte zuerst einen Bereich auswählen</label>
+            <label index="service.enterZip">Enter City with State or Zip Code</label>
+            <label index="service.range">Radius Search</label>
+            <label index="service.searchButton">Search</label>
+        </languageKey>
+		<languageKey index="fr" type="array">
+			<label index="service.places">Sites</label>
+			<label index="service.all">Tout</label>
+			<label index="service.selectMessage">Please select a section first</label>
+            <label index="service.enterZip">Enter City with State or Zip Code</label>
+            <label index="service.range">Radius Search</label>
+            <label index="service.searchButton">Search</label>
+        </languageKey>
+		<languageKey index="nl" type="array">
+			<label index="service.places">Vestigingen</label>
+			<label index="service.all">Alle</label>
+			<label index="service.selectMessage">Please select a section first</label>
+            <label index="service.enterZip">Enter City with State or Zip Code</label>
+            <label index="service.range">Radius Search</label>
+		</languageKey>
+	</data>
+</T3locallang>

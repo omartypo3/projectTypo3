@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Adds Header to New Content Wizard</description>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+        	<label index="service.title">Avonis Service Map Extension</label>
+			<label index="service.description">Adds a map with Titan Tool service partners and company locations</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="service.title">Avonis Servicekarten-Erweiterung</label>
+            <label index="service.description">Zeigt eine Servicekartner mit Titan Tool Servicepartnern und Standorten an</label>
+        </languageKey>
+    </data>
+</T3locallang>

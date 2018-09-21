@@ -1,0 +1,75 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+<div class="parterOuter partner-map-container" id="map-spin-target">
+
+    <f:if condition="{filter_categories}">
+        <div class="partnerFilter">
+            <div class="partnerFilterInner">
+                <ul>
+                    <f:for each="{filter_categories}" as="option">
+                        <li class="option-{option.uid}{f:if(condition:'{option.uid} == {selected_category}', then:' active test', else:'')}">
+                            <f:link.action action="map" arguments="{option:option.uid}">{option.title}</f:link.action>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </div>
+        <div class="selectwrapper">
+            <div class="selectMessage">
+                <span class="arrow-toolbox"></span>
+                <p>
+                    <f:translate key="service.selectMessage" />
+                </p>
+            </div>
+        </div>
+    </f:if>
+
+    <div class="partnerMapOuter">
+        <div id="map-canvas" class="partnerMapContainer"></div>
+    </div>
+    <div class="partnerItemsContainer">
+        <div class="partnerItemsContainerInner">
+            <p class="partnerItemsTitle">
+                <a id="partnerList" href="#" onclick="return false;" class="active"><span></span>
+                    <f:translate key="service.places" /></a>
+            </p>
+            <div class="zip-search">
+                <form name="zip-search" id="zip-search-form">
+                    <label id="zip-text" for="zip">
+                        <f:translate key="service.enterZip" />
+                    </label>
+                    <input type="text" id="zip" name="zip" value=""/>
+                    <label id="zip-range" for="range">
+                        <f:translate key="service.range" />
+                    </label>
+                    <select id="radius" name="radius">
+                        <option value="20">20 mi</option>
+                        <option value="50">50 mi</option>
+                        <option value="100">100 mi</option>
+						<option value="500">500 mi</option>
+                    </select>
+                    <button id="zip-submit" type="submit">
+                        <f:translate key="service.searchButton" />
+                    </button>
+                </form>
+            </div>
+            <div class="category-switch">
+                <f:for each="{categorys}" as="category">
+                    <div class="category-title" >{category.title}</div> <div class="category-switcher"><input name="category-switch" id="category-switch-{category.uid}" type="checkbox" value="{category.uid}" checked="checked" /><label for="category-switch-{category.uid}"></label></div>
+                </f:for>
+            </div>
+            <div class="partnerItems"></div>
+        </div>
+    </div>
+    <i class="map-top"></i>
+    <i class="map-right"></i>
+    <i class="map-bottom"></i>
+    <i class="map-left"></i>
+
+    <!--<f:link.action action="search" arguments="{lat: 23, lon: 23, radius: 100}">resole</f:link.action>-->
+
+</div>
+
+</div>

@@ -1,0 +1,62 @@
+plugin.tx_wservice {
+	view {
+		templateRootPath = {$plugin.tx_wservice.view.templateRootPath}
+		partialRootPath = {$plugin.tx_wservice.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_wservice.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_wservice.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+
+		# don't use default arguments in URL path
+		skipDefaultArguments = 1
+	}
+
+	settings {
+    	gmaps_js_path = fileadmin/template/js/google-maps.js
+	}
+}
+
+plugin.tx_wservice._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-w-service table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-w-service table th {
+		font-weight:bold;
+	}
+
+	.tx-w-service table td {
+		vertical-align:top;
+	}
+)
+
+
+
+AJAXWService = PAGE
+AJAXWService {
+  typeNum = 89657165
+  10 >
+  10 < tt_content.list.20.wservice_ajax
+  config {
+	disableAllHeaderCode = 1
+	additionalHeaders = Content-type:application/json
+	no_cache = 1
+	xhtml_cleaning = 0
+  }
+
+}

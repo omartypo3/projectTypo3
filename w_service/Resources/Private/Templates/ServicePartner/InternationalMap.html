@@ -1,0 +1,367 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+    <div class="parterOuter partner-map-container" id="map-spin-target">
+        <v:asset.script name="intMapInlineJs" fluid="true">
+            var codeshort = [],partners = [],newCoordinates = [],markerToCluster = [], infos = [];
+            var mapContainer = $('.parterOuter .partnerMapContainer');
+            var map,marker,zoom,myOptions;
+            var colors = ['#911722'];
+            var highx,lowy,highy,center_x,center_y,lats = [],lngs = [], markerAll = [],vertices;
+            var clusterOffset = [2.01, 24.5],
+            iconWagner = 'fileadmin/template/img/pin_service.png',
+            clusterImageSmall = 'fileadmin/template/img/pin_clustert.png',
+            clusterImageMid = 'fileadmin/template/img/pin_cluster_mid.png',
+            clusterImageBig = 'fileadmin/template/img/pin_cluster_long.png',
+            clusterStyles = [{
+                url: clusterImageSmall,
+                height: 54,
+                width: 84,
+                anchor: clusterOffset,
+                textColor: '#ffffff',
+                textSize: 10
+            }, {
+                url: clusterImageMid,
+                height: 54,
+                width: 84,
+                anchor: [2.4, 25.5],
+                textColor: '#ffffff',
+                textSize: 10
+            }, {
+                url: clusterImageBig,
+                height: 54,
+                width: 84,
+                anchor: [2.5, 24],
+                textColor: '#ffffff',
+                textSize: 10
+            }],
+            mcOptions1 = {
+                gridSize: 50,
+                minimumClusterSize: 2,
+                maxZoom: 10,
+                styles:clusterStyles,
+                ignoreHidden: true
+            };
+            <f:for each="{distunct}" as="distuncts">
+                codeshort.push("{distuncts.additional}");
+            </f:for>
+            <f:for each="{partners}" as="partner">
+                //Get Raw Data
+                var category = '{partner.category}',
+                additional = '{partner.additional}',
+                categoryName = '{partner.category.title}',
+                notes = '<f:format.urlencode>{partner.notes}</f:format.urlencode>',
+                lat = '{partner.lat}',
+                lng = '{partner.lng}',
+                uid = '{partner.uid}',
+                company = '{partner.company}',
+                street = '<f:format.urlencode>{partner.street}</f:format.urlencode>',
+                city = '{partner.city}',
+                country = '{partner.country}',
+                zip = '{partner.zip}',
+                phone = '<f:format.urlencode>{partner.phone}</f:format.urlencode>',
+                fax = '{partner.fax}',
+                email = '{partner.email}',
+                website = '{partner.website}';
+
+                //Format Data
+                categoryArray = category.split(":");
+                categoryUid = categoryArray[1];
+                categoryName = categoryName.split("\\n");
+                partnerAdditional = additional.split("\\n");
+                partnerNotes = '<f:format.raw>{partner.notes}</f:format.raw>';
+                partnerLat = lat;
+                partnerLng = lng;
+                partnerUid = uid;
+                partnerStreet = decodeURIComponent(street);
+                partnerStreet = partnerStreet.split("\\n");
+                partnerCompany = company.split("\\n");
+                partnerCity = city.split("\\n");
+                partnerCountry = country.split("\\n");
+                partnerZip = zip.split("\\n");
+                partnerFax = fax.split("\\n");
+                partnerEmail = email.split("\\n");
+                partnerWebsite = website.split("\\n");
+                partnerPhone = decodeURIComponent(phone);
+                partnerPhone = partnerPhone.split("\\n");
+
+                var partnerObj = {
+                    "partnerAdditional": partnerAdditional,
+                    "partnerLat": partnerLat,
+                    "partnerLng": partnerLng,
+                    "partnerUid": partnerUid,
+                    "partnerCompany": partnerCompany,
+                    "partnerStreet": partnerStreet,
+                    "partnerCity": partnerCity,
+                    "partnerCountry": partnerCountry,
+                    "partnerZip": partnerZip,
+                    "partnerFax": partnerFax,
+                    "partnerEmail": partnerEmail,
+                    "partnerWebsite": partnerWebsite,
+                    "partnerCatUid": categoryUid,
+                    "partnerPhone": partnerPhone,
+                    "partnerNotes": partnerNotes,
+                    "partnerCatName": categoryName
+                };
+
+                partners.push(partnerObj);
+
+
+            </f:for>
+            function initialize() {
+                myOptions = {
+                    zoom: 2,
+                    center: new google.maps.LatLng(10, 0),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                map = new google.maps.Map(mapContainer[0],
+                myOptions);
+                // Initialize JSONP request
+                var script = document.createElement('script');
+                var url = ['https://www.googleapis.com/fusiontables/v1/query?'];
+                url.push('sql=');
+                var query = 'SELECT name_sort, kml_4326 ,iso_a2 FROM ' +
+                '1XULuZoTOzBNiIguwxpKddIqt04SJGzSoeAdGucg';
+                var encodedQuery = encodeURIComponent(query);
+                url.push(encodedQuery);
+                url.push('&callback=drawMap');
+                url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+                script.src = url.join('');
+                var body = document.getElementsByTagName('body')[0];
+                body.appendChild(script);
+            }
+            function drawMap(data) {
+                var rows = data['rows'];
+                for (var i in rows) {
+                    if (rows[i][0] != 'Antarctica') {
+                        var codeiso_a2 = rows[i][2];
+                        var codeiso_a3 = rows[i][3];
+                        for (code = 0 ; code <= codeshort.length ; code++){
+                            if(codeiso_a2 == codeshort[code]){
+                                newCoordinates = [];
+                                var geometries = rows[i][1]['geometries'];
+                                var geometry = rows[i][1]['geometry'];
+                                if ( typeof(geometries) == "undefined") {
+                                    var geometries = [geometry];
+                                }
+                                for (var j in geometries) {
+                                    newCoordinates.push(constructNewCoordinates(geometries[j]));
+                                }
+                                var country = new google.maps.Polygon({
+                                    paths: newCoordinates,
+                                    polygon:geometries,
+                                    strokeColor: colors,
+                                    strokeOpacity: 0,
+                                    strokeWeight: 1,
+                                    codeCountry:codeshort[code],
+                                    fillColor: colors,
+                                    fillOpacity: 0.3,
+                                    name :rows[i][0]
+                                });
+                                google.maps.event.addListener(country, 'mouseover', function() {
+                                    this.setOptions({fillOpacity: 0.7});
+                                });
+                                google.maps.event.addListener(country, 'mouseout', function() {
+                                    this.setOptions({fillOpacity: 0.3});
+                                });
+                                google.maps.event.addListener(country, 'click', function () {
+                                    clickCountry(this.name,this.codeCountry,this.getPath(),rows,this.polygon);
+                                });
+                                country.setMap(map);
+                            }
+                        }
+                    }
+                }
+            }
+
+            function clickCountry(name,code,path, data,polygon){
+                var nameorgin = name ;
+                if(name){
+                    var codeorgin = code ;
+                    for (var i =0; i < polygon.length; i++) {
+                        var xy = polygon[i]['coordinates'];
+                        for (var j=0 ; j < xy.length ; j++){
+                            var object = xy[j];
+                            for (var k=0 ; k < object.length ; k++){
+                                lngs.push(object[k][0]);
+                                lats.push(object[k][1]);
+                            }
+                        }
+                    }
+                    lats.sort();
+                    lngs.sort();
+                    lowx = lats[0];
+                    lowy = lngs[0];
+                    highx = lats[lats.length - 1];
+                    highy = lngs[lngs.length - 1];
+                    center_x = lowx + (( highx - lowx) / 2);
+                    center_y = lowy + (( highy - lowy) / 2);
+                    var myOptions = {
+                        zoom: 4,
+                        center: new google.maps.LatLng(center_x, center_y),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(mapContainer[0],myOptions);
+                    zoom = map.getZoom();
+                    for (var all = 0; all < partners.length; all++) {
+                        var countryinfo = partners[all];
+                        if(countryinfo.partnerAdditional[0] === code){
+                            if(countryinfo.partnerLat != "" || countryinfo.partnerLng != ""){
+                                marker=new google.maps.Marker({
+                                    position: {lat: parseFloat(countryinfo.partnerLat), lng: parseFloat(countryinfo.partnerLng)},
+                                    icon: iconWagner,
+                                    lat:parseFloat(countryinfo.partnerLat),
+                                    lng: parseFloat(countryinfo.partnerLng),
+                                    id:countryinfo.partnerUid,
+                                });
+                                markerAll[this.id] = marker;
+                                markerToCluster.push(marker);
+                                var infowindow = new google.maps.InfoWindow({
+                                    maxWidth: 370,
+                                    pixelOffset: new google.maps.Size(-12, 0)
+                                });
+
+                                var contentString = '<div id="item-'+ countryinfo.partnerUid +'" class="dealers catid-3" data-titantool-map-category="3">';
+                                contentString = contentString + '<span class="dealerCompany">' + countryinfo.partnerCompany[0] + '</span>';
+                                contentString = contentString +  '<span class="dealerStreet">' + countryinfo.partnerStreet[0] + '</span>';
+                                contentString = contentString +  '<span class="dealerZipcode">' + countryinfo.partnerZip[0] + '&nbsp;' + countryinfo.partnerCity[0] + '</span>';
+                                if(countryinfo.partnerPhone[0]){
+                                    contentString = contentString +  '<span class="dealerPhone">Tel: ' + countryinfo.partnerPhone[0] + '</span>';
+                                }
+                                if(countryinfo.partnerFax[0]){
+                                    contentString = contentString +  '<span class="dealerFax">Fax: ' + countryinfo.partnerFax[0] + '</span><p></p>';
+                                }
+                                contentString = contentString +  '<span class="spacer"></span>';
+                                if(countryinfo.partnerWebsite[0]){
+                                    link = countryinfo.partnerWebsite[0];
+                                    link = (link.indexOf('://') === -1) ? 'http://' + link : link;
+                                    contentString = contentString +  '<span class="dealerSite">Web: <a href="' + link + '">' + countryinfo.partnerWebsite[0] + '</a></span>';
+                                }
+                                if(countryinfo.partnerEmail[0]){
+                                    contentString = contentString +  '<span class="dealerEmail">Email: <a href="mailto:' + countryinfo.partnerEmail[0] + '">' + countryinfo.partnerEmail + '</a></span>';
+                                }
+                                if(countryinfo.partnerNotes){
+                                    contentString = contentString +  '<span class="dealerNotes">' + countryinfo.partnerNotes + '</span>';
+                                }
+                                contentString = contentString +  '<span class="spacer"></span>';
+                                contentString = contentString +  '</div>';
+
+                                google.maps.event.addListener(markerAll[this.id],'click', (function(marker,contentString,infowindow){
+                                    return function() {
+                                        closeInfos();
+                                        infowindow.setContent(contentString);
+                                        infowindow.open(map,marker);
+                                        infos[0]=infowindow;
+                                    };
+                                })(marker,contentString,infowindow));
+                            }
+                        }
+                    }
+                    var codeclick = [];
+                    var rows = data;
+                    for (code = 0 ; code <= codeshort.length ; code++){
+                        if( codeorgin != codeshort[code]){
+                            codeclick.push(codeshort[code]);
+                        }
+                    }
+                    for (var i in rows) {
+                        if (rows[i][0] != 'Antarctica') {
+                            var codeiso_a2 = rows[i][2];
+                            for (code = 0 ; code <= codeclick.length ; code++){
+                                if( codeiso_a2 == codeclick[code]){
+                                    var newCoordinates = [];
+                                    var geometries = rows[i][1]['geometries'];
+                                    var geometry = rows[i][1]['geometry'];
+                                    if ( typeof(geometries) == "undefined") {
+                                        var geometries = [geometry];
+                                    }
+                                    for (var j in geometries) {
+                                        newCoordinates.push(constructNewCoordinates(geometries[j]));
+                                    }
+                                    var country = new google.maps.Polygon({
+                                        paths: newCoordinates,
+                                        polygon:geometries,
+                                        strokeColor: colors,
+                                        strokeOpacity: 0,
+                                        strokeWeight: 1,
+                                        codeCountry:codeclick[code],
+                                        fillColor: colors,
+                                        fillOpacity: 0.3,
+                                        name :rows[i][0]
+                                    });
+                                    google.maps.event.addListener(country, 'click', function () {
+                                        if(this.name != nameorgin){
+                                            lngs = [];
+                                            lats = [];
+                                            deleteMarkers(map);
+                                            clickCountry(this.name,this.codeCountry,this.getPath(),rows,this.polygon);
+                                        }
+                                    });
+                                    country.setMap(map);
+                                }
+                            }
+                        }
+                    }
+                    markerCluster = new MarkerClusterer(map, markerToCluster,mcOptions1);
+                    google.maps.event.addListener(map, 'zoom_changed', function() {
+                        zoomLevel = map.getZoom();
+                        if( zoomLevel < zoom ){
+                            var clusterStyles = [{
+                                url: '',
+                                textSize: 0
+                            }, {
+                                url: '',
+                                textSize: 0
+                            }, {
+                                url: '',
+                                textSize: 0
+                            }],
+                            mcOptions2 = {
+                                styles:clusterStyles
+                            };
+                            var markerCluster = new MarkerClusterer(map, markerToCluster,mcOptions2);
+                        }else{
+                            markerCluster = new MarkerClusterer(map, markerToCluster,mcOptions1);
+                        }
+                    });
+                }
+            }
+            function degrees_to_radians(degrees)
+            {
+                var pi = Math.PI;
+                return degrees * (pi/180);
+            }
+            function closeInfos(){
+                if(infos.length > 0){
+                    infos[0].set('marker', null);
+                    infos[0].close();
+                    infos.length = 0;
+                }
+            }
+            function deleteMarkers(map) {
+                markerToCluster = [];
+                markerCluster = new MarkerClusterer(map, markerToCluster);
+            }
+            function constructNewCoordinates(polygon) {
+                var newCoordinates = [];
+                if(polygon && typeof polygon['coordinates'] !== "undefined"){
+                    var coordinates = polygon['coordinates'][0];
+                    for (var i in coordinates) {
+                        newCoordinates.push(
+                        new google.maps.LatLng(coordinates[i][1], coordinates[i][0]));
+                    }
+                }
+                return newCoordinates;
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </v:asset.script>
+        <div class="partnerMapOuter">
+            <div id="map-canvas" class="partnerMapContainer"></div>
+        </div>
+        <i class="map-top"></i>
+        <i class="map-right"></i>
+        <i class="map-bottom"></i>
+        <i class="map-left"></i>
+    </div>
+</div>

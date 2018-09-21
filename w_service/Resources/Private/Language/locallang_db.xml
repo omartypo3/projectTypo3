@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'w_service'</description>
+	</meta>
+	<data type="array">
+        <languageKey index="default" type="array">
+
+            <label index="tx_wservice_plugin.label">Service Map</label>
+
+            <label index="tx_wservice_domain_model_category">Category</label>
+            <label index="tx_wservice_domain_model_category.title">Title</label>
+            <label index="tx_wservice_domain_model_category.parent_category">Parent Category</label>
+
+            <label index="flexform.sheets.settings">Settings</label>
+            <label index="flexform.settings.source_folders">Source folder(s)</label>
+            <label index="flexform.settings.filter_categories">Filter categories</label>
+
+            <label index="tx_wservice_domain_model_servicepartner">Service Partner</label>
+            <label index="tx_wservice_domain_model_servicepartner.name">Name</label>
+            <label index="tx_wservice_domain_model_servicepartner.company">Company</label>
+            <label index="tx_wservice_domain_model_servicepartner.street">Street</label>
+            <label index="tx_wservice_domain_model_servicepartner.zip">Zip</label>
+            <label index="tx_wservice_domain_model_servicepartner.city">City</label>
+            <label index="tx_wservice_domain_model_servicepartner.country">Country</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent">Continent</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.select">Select</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.1">North America</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.2">Australia</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.3">South America</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.4">Europe</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.5">Africa</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.6">Asia</label>
+            <label index="tx_wservice_domain_model_servicepartner.industry">Industry</label>
+            <label index="tx_wservice_domain_model_servicepartner.phone">Phone</label>
+            <label index="tx_wservice_domain_model_servicepartner.cell">Cell</label>
+            <label index="tx_wservice_domain_model_servicepartner.fax">Fax</label>
+            <label index="tx_wservice_domain_model_servicepartner.email">Email</label>
+            <label index="tx_wservice_domain_model_servicepartner.website">Website</label>
+            <label index="tx_wservice_domain_model_servicepartner.additional">Additional</label>
+            <label index="tx_wservice_domain_model_servicepartner.notes">Notes</label>
+            <label index="tx_wservice_domain_model_servicepartner.category">Category</label>
+            <label index="tx_wservice_domain_model_servicepartner.boost">Boost Entry</label>
+            <label index="tx_wservice_domain_model_servicepartner.lat">Geocode Lat</label>
+            <label index="tx_wservice_domain_model_servicepartner.lng">Geocode lng</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+
+            <label index="tx_wservice_plugin.label">Service Karte</label>
+
+            <label index="tx_wservice_domain_model_category">Kategorie</label>
+            <label index="tx_wservice_domain_model_category.title">Titel</label>
+            <label index="tx_wservice_domain_model_category.parent_category">Eltern Kategorie</label>
+
+			<label index="flexform.sheets.settings">Einstellungen</label>
+			<label index="flexform.settings.source_folders">Quellordner</label>
+			<label index="flexform.settings.filter_categories">Filterkategorien</label>
+			
+            <label index="tx_wservice_domain_model_servicepartner">Service Partner</label>
+            <label index="tx_wservice_domain_model_servicepartner.name">Name</label>
+            <label index="tx_wservice_domain_model_servicepartner.company">Unternehmen</label>
+            <label index="tx_wservice_domain_model_servicepartner.street">Straße</label>
+            <label index="tx_wservice_domain_model_servicepartner.zip">PLZ</label>
+            <label index="tx_wservice_domain_model_servicepartner.city">Stadt</label>
+            <label index="tx_wservice_domain_model_servicepartner.country">Land</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent">Kontinent</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.select">Auswählen</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.1">Nordamerika</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.2">Australien</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.3">Südamerika</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.4">Europa</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.5">Afrika</label>
+            <label index="tx_wservice_domain_model_servicepartner.continent.6">Asien</label>            
+            <label index="tx_wservice_domain_model_servicepartner.industry">Branche</label>
+            <label index="tx_wservice_domain_model_servicepartner.phone">Telefon</label>
+            <label index="tx_wservice_domain_model_servicepartner.cell">Cell</label>
+            <label index="tx_wservice_domain_model_servicepartner.fax">Fax</label>
+            <label index="tx_wservice_domain_model_servicepartner.email">Email</label>
+            <label index="tx_wservice_domain_model_servicepartner.website">Website</label>
+            <label index="tx_wservice_domain_model_servicepartner.additional">Zusätzliche Infos</label>
+            <label index="tx_wservice_domain_model_servicepartner.notes">Notes</label>
+            <label index="tx_wservice_domain_model_servicepartner.category">Kategorie</label>
+            <label index="tx_wservice_domain_model_servicepartner.boost">Eintrag hervorheben</label>
+            <label index="tx_wservice_domain_model_servicepartner.lat">Geocode Lat (kein Komma nur Punkt: 00.000000)</label>
+            <label index="tx_wservice_domain_model_servicepartner.lng">Geocode Lng (kein Komma nur Punkt: 00.000000)</label>
+        </languageKey>
+	</data>
+</T3locallang>

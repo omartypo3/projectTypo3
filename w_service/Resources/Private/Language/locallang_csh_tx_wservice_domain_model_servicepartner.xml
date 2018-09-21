@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table tx_wservice_domain_model_servicepartner</description>
+		<type>CSH</type>
+		<csh_table>tx_wservice_domain_model_servicepartner</csh_table>
+	</meta>
+	<data type="array">
+	<languageKey index="default" type="array">
+	   
+			<label index="name.description">name</label>
+			<label index="company.description">company</label>
+			<label index="street.description">street</label>
+			<label index="zip.description">zip</label>
+			<label index="city.description">city</label>
+			<label index="industry.description">industry</label>
+			<label index="phone.description">phone</label>
+			<label index="cell.description">cell</label>
+			<label index="fax.description">fax</label>
+			<label index="email.description">email</label>
+			<label index="website.description">website</label>
+			<label index="additional.description">additional</label>
+			<label index="category.description">category</label>
+		</languageKey>
+	</data>
+</T3locallang>
