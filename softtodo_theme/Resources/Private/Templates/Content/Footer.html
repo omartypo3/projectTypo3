@@ -1,0 +1,128 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="footer" options="{group: 'FCE'}">
+            <flux:form.sheet name="tun" label="Tunisia">
+
+
+                <flux:field.input name="tntitle" label="Headline"/>
+                <flux:field.input name="tnaddress" label="Address"/>
+                <flux:field.input name="tnzip" label="ZIP, city and country"/>
+                <flux:field.input name="tnphone" label="Phone"/>
+
+
+            </flux:form.sheet>
+
+            <flux:form.sheet name="deutschland" label="Deutschland">
+
+
+                <flux:field.input name="detitle" label="Headline"/>
+                <flux:field.input name="deaddress" label="Address"/>
+                <flux:field.input name="dezip" label="ZIP, city and country"/>
+                <flux:field.input name="dephone" label="Phone"/>
+
+
+            </flux:form.sheet>
+
+            <flux:form.sheet name="contact" label="Contact">
+
+
+                <flux:field.input name="ctitle" label="Headline"/>
+                <flux:field.input name="cmail" label="Info e-mail"/>
+                <flux:field.input name="cmail1" label="Info e-mail encrypt"/>
+                <flux:field.input name="cmgr" label="Manager name"/>
+                <flux:field.input name="cmgrp" label="Manager title"/>
+                <flux:field.input name="cmgrin" label="Manager linkedin profile">
+                    <flux:wizard.link/>
+                </flux:field.input>
+                <flux:field.input name="tradetxt" label="Trade Register Text"/>
+                <flux:field.input name="tradenbr" label="Trade Register Number"/>
+
+            </flux:form.sheet>
+
+            <flux:form.sheet name="social" label="Social media and Copyright">
+                <flux:form.section name="social">
+                    <flux:form.object name="sm" label="Social Media">
+                        <flux:field.input name="title" label="Social media title"/>
+                        <flux:field.input name="link" label="Social media link">
+                            <flux:wizard.link/>
+                        </flux:field.input>
+                        <flux:field.select name="icon" label="Social media icon"
+                                           items="{
+                                    fa-facebook-square: 'Facebook',
+									fa-linkedin-square: 'LinkedIn',
+									fa-twitter-square: 'Twitter',
+									fa-google-plus-square: 'Google +'}"
+                                           default="fa-facebook-square" size="1" maxItems="1"/>
+
+
+                    </flux:form.object>
+                </flux:form.section>
+                <flux:field.input name="cpr" label="Copyright text"/>
+            </flux:form.sheet>
+
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Footer Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <footer>
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <p></p><h5 class="titleblock">{tntitle}</h5>
+
+                        <p><i class="fa fa-home fa-width"></i>  &nbsp;{tnaddress},<br> {tnzip}</p>
+                        <p><a href="tel:{tnphone}" class="grey-link"><i class="fa fa-phone fa-width"></i> &nbsp;{tnphone}</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p></p><h5 class="titleblock">{detitle}</h5>
+
+                        <p><i class="fa fa-home fa-width"></i> &nbsp;{deaddress},<br>{dezip}</p>
+                        <p><a href="tel:{dephone}" class="grey-link"><i class="fa fa-phone fa-width"></i> &nbsp; {dephone}</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p></p><h5 class="titleblock">{ctitle}</h5>
+                        <div itemscope itemtype="http://schema.org/Person">
+                            <a itemprop="email" href="mailto:{cmail}" class="grey-link"><i class="fa fa-envelope-o fa-width"></i> &nbsp; {cmail1}</a>
+                        </div>
+                        &nbsp;
+                        <p>
+                            <a href="{cmgrin}" target="_blank">
+                                <i class="fa fa-linkedin-square fa-width"></i>
+                             &nbsp; {cmgr}({cmgrp})
+                            </a>
+                        </p>
+                        <p> <i class="fa fa-registered fa-width"></i>&nbsp; {tradenbr} <i
+                                style="font-size: 15px;">({tradetxt})</i>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="col-md-4 footline">
+                        <f:for each="{social}" as="element" iteration="iteration">
+                            <a href="{element.sm.link}" title="{element.sm.title}" target="_blank">
+                                <i class="fa {element.sm.icon} fa-2x fa-width"></i>
+                            </a> &nbsp;&nbsp;&nbsp;
+                        </f:for>
+                    </div>
+                    <h6 class="col-md-8 copyright">
+                        {cpr}
+                    </h6>
+
+                </div>
+            </div>
+        </footer>
+        <div class="back-to-top">
+            <i class="fa fa-angle-up"></i>
+        </div>
+    </f:section>
+</div>

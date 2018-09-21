@@ -1,0 +1,41 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="servicefce" options="{group: 'FCE'}">
+            <flux:field.inline.fal name="image" label="icon" maxItems="1" minItems="1" required="true"/>
+            <flux:field.input name="title" label="title"/>
+            <flux:field.text name="text" label="caption text" enableRichText="1"/>
+            <flux:field.select name="element-color" label="Select the color of the element"
+                               items="{primary-light: 'light blue',
+									primary-medium: 'meduim blue',
+									primary: 'blue'}"
+                               default="primary-medium" size="1" maxItems="1"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Service box Element</b>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundImage')}
+        <div class="ce-panels container">
+            <div class="ce-panels--panels-container row">
+                <div class="ce-panels--panel {element-color} col-md">
+                    <img src="{v:format.url.decode(content: backgroundImage.url)}" alt="{backgroundImage.alternative}"/>
+                    <h4 class="title ">{title}</h4>
+                    <div class="text-visible-hover">
+                        <f:format.html>{text}</f:format.html>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:section>
+</div>
+

@@ -1,0 +1,34 @@
+body {
+  font-family: roboto;
+  font-weight: $font-weight-thin;
+  font-size: $font-size-higher-25;
+  color: $color-text;
+  @media screen and (max-width: 1200px) {
+    font-size: $font-size-base;
+  }
+}
+
+.main-content-wrapper {
+  padding-top: 130px;
+  position: relative;
+  background: $color-body-bg;
+  @media screen and (max-width: $breakpoint-tablet) {
+    padding-top: 5vw;
+  }
+}
+
+.no-gaps {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    [class*='col'] {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.section-wrapper {
+  margin-top: -$navigation-bar-height;
+  padding-top: $navigation-bar-height;
+}

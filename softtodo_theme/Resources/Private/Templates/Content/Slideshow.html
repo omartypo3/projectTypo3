@@ -1,0 +1,86 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en"
+>
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="slideshow" options="{group: 'FCE'}">
+            <flux:field.inline.fal name="backgroundVideo" label="video version Mp4" allowedExtensions="mp4"/>
+            <flux:field.inline.fal name="backgroundVideo1" label="video version webm" allowedExtensions="webm"/>
+            <flux:field.inline.fal name="backgroundImage" label="Image background" />
+            <flux:field.input name="video" label="Play video text"/>
+            <flux:field.input name="link" label="Embed link video youtube">
+                <flux:wizard.link/>
+            </flux:field.input>
+            <flux:form.sheet name="elements" label="Icons">
+                <flux:form.section name="element">
+                    <flux:form.object name="icons" label="icon">
+                        <flux:field.file name="icon" label="Icon" allowed="jpg,png,svg" required="true"
+                                         showThumbnails="1" maxItems="1" minItems="0" useFalRelation="1"/>
+                        <flux:field.input name="text" label="Text"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+            <flux:form.sheet name="social" label="Slogan">
+                <flux:form.section name="slogan">
+                    <flux:form.object name="sm" label="Slogan">
+                        <flux:field.input name="title" label="Slogan"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Slideshow Element</b>
+    </f:section>
+
+    <f:section name="Main">
+
+        {v:content.resources.fal(field: 'backgroundVideo') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundVideo')}
+        {v:content.resources.fal(field: 'backgroundVideo1') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundVideo1')}
+        {v:content.resources.fal(field: 'backgroundImage') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundImage')}
+
+
+        <div  class="ce-video--inner">
+            <video preload="auto" autoplay loop="loop" muted="muted"
+                   poster="{v:format.url.decode(content: backgroundImage.url)}"><!--true-->
+                <source src="{backgroundVideo.url}" type="video/mp4">
+                <source src="{backgroundVideo1.url}" type="video/webm" />
+            </video>
+            <div class="text-slide-wrap">
+                <ul class="bxslider">
+                    <f:for each="{slogan}" as="slogan" iteration="iteration">
+                        <li class="slider-item">
+                            <span>{slogan.sm.title}</span>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+            <div id="watch-video" class="iblock">
+                {video}
+            </div>
+            <div class="slide-wrap dark-overlay">
+                <div class="container cont_slider">
+                    <f:for each="{element}" as="element" iteration="iteration">
+                        <div class="subhead fadeInLeft animated"><img src="{f:uri.image(src: '{element.icons.icon}')}" alt="icon-{element.icons.icon}" />
+                        </div>
+                        <div class="subhead bounceInLeft animated "><h2 class="subheadline">{element.icons.text}</h2></div>
+                    </f:for>
+                </div>
+            </div>
+            <div id="youtube-video" >
+                <div id="video-wrapper">
+                    <iframe id="softtodo-video" title="YouTube video player" src="{link}?controls=0&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;iv_load_policy=3&amp;wmode=opaque&amp;html5=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fwww.uberconference.com&amp;widgetid=1"></iframe>
+                </div>
+                <div id="close-video" title="Close Video" class="close"></div>
+            </div>
+        </div>
+    </f:section>
+</div>
+

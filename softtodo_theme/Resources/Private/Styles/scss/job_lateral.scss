@@ -1,0 +1,22 @@
+
+.api-jobs{
+  text-align: center;
+}
+.api-jobs .job {
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  text-align: left;
+}
+.api-jobs .job-link{
+  position: relative;
+  display: inline-block;
+  font-size: 1.65em;
+  line-height: 1.818181818;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+.api-jobs .job-link span:hover {
+  color: #0076bd;
+}

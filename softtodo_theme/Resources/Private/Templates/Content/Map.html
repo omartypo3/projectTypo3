@@ -1,0 +1,36 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="map" options="{group: 'FCE'}">
+            <flux:field.input name="text1" label="Title Deutschland"/>
+            <flux:field.input name="text2" label="Title Tunisie"/>
+            <flux:field.input name="text3" label="Address Deutschland"/>
+            <flux:field.input name="text4" label="Address Tunisie"/>
+            <flux:field.input name="latitude" label="Latitude Deutschland of the address"/>
+            <flux:field.input name="longitude" label="Longitude Deutschland of the address"/>
+            <flux:field.input name="latitude1" label="Latitude Tunisie of the address"/>
+            <flux:field.input name="longitude1" label="Longitude Tunisie of the address"/>
+            <flux:field.inline.fal name="image" label="icon" maxItems="1" minItems="1" required="true"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Map Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+        'icon')}
+        <div class="content-element ce-map container">
+            <div class="container">
+                <div id="gmap-element" class="gmap" data-text1="{text1}" data-text2="{text2}" data-text3="{text3}" data-text4="{text4}" data-latitude="{latitude}" data-longitude="{longitude}" data-latitude1="{latitude1}" data-longitude1="{longitude1}" data-icon="{icon.url}">
+                </div>
+            </div>
+        </div>
+    </f:section>
+
+</div>

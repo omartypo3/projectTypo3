@@ -1,0 +1,83 @@
+{namespace custom= SofttodoTheme\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div xmlns:v="FluidTYPO3\Vhs\ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+
+    <f:section name="MenuRight">
+        <!-- Main content wrapper Start -->
+        <div class="clearfix">
+
+
+            <div class="lateral-menu">
+                <ul>
+                    <v:page.menu pageUid="11">
+                        <f:if condition="{menu}">
+                            <f:for each="{menu}" as="curPage">
+                                <v:variable.set name="myObject"
+                                                value="{custom:flex(xmlstring: '{curPage.tx_fed_page_flexform}')}"/>
+                                <li><a href="#" data-slide="{curPage.subtitle}"><i class="fa {myObject}"
+                                                                                   aria-hidden="true"></i><span>{curPage.title}</span></a>
+                                </li>
+                            </f:for>
+                        </f:if>
+                    </v:page.menu>
+                </ul>
+
+
+            </div>
+            <div class="lateral-slides">
+                <span class="close"></span>
+
+                <v:page.menu pageUid="11">
+                    <f:if condition="{menu}">
+                        <f:for each="{menu}" as="curPage">
+                            <div class="corresponding-slide container-fluid " id="{curPage.subtitle}">
+                                <div class="content-element ce-contact container">
+                                    <h2 class="ce-headline">{curPage.title}</h2>
+                                    <div class="ce-contact--body row">
+                                        <div class="ce-contact--details col-md-12">
+                                            <f:if condition=" {curPage.subtitle} == 'Langue' || {curPage.subtitle} == 'Sprache'">
+                                                <f:then>
+                                                        <div class="api-content api-languages container">
+                                                                <div id="language-list">
+                                                                    <v:page.languageMenu>
+                                                                        <f:for each="{languageMenu}" as="langmenu" iteration="langiter">
+                                                                            <f:if condition="{langiter.index} == 0">
+                                                                                <f:then>
+                                                                                    <div>
+                                                                                        <a href="/fr/" class="language-link {f:if(condition: '{langmenu.current} == 1', then: 'active', else: '')}"> Français
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </f:then>
+                                                                                <f:else>
+                                                                                    <div>
+                                                                                        <a href="/de/" class="language-link {f:if(condition: '{langmenu.current} == 1', then: 'active', else: '')}">
+                                                                                            Deutsch
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </f:else>
+                                                                            </f:if>
+                                                                        </f:for>
+                                                                    </v:page.languageMenu>
+                                                                </div>
+
+                                                        </div>
+                                                </f:then>
+                                                <f:else>
+                                                    <v:content.render column="0"
+                                                                      pageUid="{curPage.uid}"></v:content.render>
+                                                </f:else>
+                                            </f:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:for>
+                    </f:if>
+                </v:page.menu>
+            </div>
+        </div>
+    </f:section>
+</div>

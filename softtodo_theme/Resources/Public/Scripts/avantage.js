@@ -1,0 +1,1 @@
+function check_if_in_view(){var i=$window.height(),e=$window.scrollTop(),n=e+i;$.each($animation_elements,function(){var i=$(this),o=i.outerHeight(),w=i.offset().top;w+o>=e&&w<=n?i.addClass("in-view"):i.removeClass("in-view")})}var $animation_elements=$(".animation-element"),$window=$(window);$window.on("scroll resize",check_if_in_view),$window.trigger("scroll");

@@ -1,0 +1,90 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="rounded" options="{group: 'FCE'}">
+
+            <flux:form.sheet name="elements" label="Rounded element">
+                <flux:form.section name="elements">
+                    <flux:form.object name="service" label="Element">
+                        <flux:field.input name="titre" label="Title" required="true"/>
+                        <flux:field.text name="text" label="Text" enableRichText="1" required="true"/>
+                        <flux:field.file name="image" label="image" allowed="jpg,png,svg" required="true"
+                                         showThumbnails="1" maxItems="1" minItems="0" useFalRelation="1"/>
+
+                        <flux:field.checkbox name="left" default="true" label="Text on left side"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Rounded images Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+<div class="container content-element">
+            <f:for each="{elements}" as="element" iteration="iteration">
+                <f:if condition="{element.service.left}">
+                    <f:then>
+
+                        <div class="col-sm-12 cont">
+                            <div class="container cf q2 qtext">
+                                <div class="animation-element bounce-up cf in-view">
+                                    <div class="div-parag subject development">
+                                        <div class="quote-parag">
+                                            <div class="div-text">
+                                                <div class="quote-title2">{element.service.titre}</div>
+                                                <div class="less-size">
+                                                    <f:format.html>{element.service.text}</f:format.html>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container cf q1">
+                                <div class="animation-element bounce-up cf in-view">
+                                    <div class="div-parag subject development qimage"  style='background-image: url("{f:uri.image( maxHeight:400 ,src: '{element.service.image}')}")'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+
+                    <f:else>
+                        <div class="col-sm-12 cont">
+                            <div class="container cf q1">
+                                <div class="animation-element bounce-up cf in-view">
+                                    <div class="div-parag subject development qimage" style='background-image: url("{f:uri.image( maxHeight:400 ,src: '{element.service.image}')}")' >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container cf q2 qtext">
+                                <div class="animation-element bounce-up cf in-view">
+                                    <div class="div-parag subject development">
+                                        <div class="quote-parag">
+                                            <div class="div-text">
+                                                <div class="quote-title2">{element.service.titre}</div>
+                                                <div class="less-size">
+                                                    <f:format.html>{element.service.text}</f:format.html>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:else>
+                </f:if>
+            </f:for>
+
+</div>
+    </f:section>
+
+</div>
+

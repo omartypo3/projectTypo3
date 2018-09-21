@@ -1,0 +1,37 @@
+$ce-accordion-selector: ce-accordion;
+.#{$ce-accordion-selector} {
+  .#{$ce-accordion-selector}--title  {
+    background-color: $color-primary;
+    border-right: 1rem solid $color-secondary;
+    a {
+      color: $color-body-bg;
+      margin: 0 $grid-gutter-width;
+      display: block;
+      text-transform: none;;
+      font-size: $font-size-h4;
+      &:after {
+        content: "\0002b";
+        margin: -1px 10px -1px 0px;
+        padding: 0px 15px 4px 15px;
+        vertical-align: 3px;
+        font-weight: 500;
+        float: left;
+      }
+    }
+    &.active {
+      a {
+        &:after {
+          content: "\02212";
+        }
+      }
+    }
+  }
+  h4 {
+    text-transform: capitalize;
+  }
+  ul {
+    li {
+      list-style-type: disc;
+    }
+  }
+}

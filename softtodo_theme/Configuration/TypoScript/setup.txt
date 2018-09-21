@@ -1,0 +1,148 @@
+<INCLUDE_TYPOSCRIPT: source="FILE:fileadmin/ts/lib/config.ts">
+
+plugin.tx_softtodotheme {
+	view {
+		templateRootPaths.0 = {$plugin.tx_softtodotheme.view.templateRootPaths.0}
+		partialRootPaths.0 = {$plugin.tx_softtodotheme.view.partialRootPaths.0}
+		layoutRootPaths.0 = {$plugin.tx_softtodotheme.view.layoutRootPaths.0}
+	}
+}
+
+config {
+	concatenateJs = 0
+	concatenateCss = 1
+	compressJs = 0
+	compressCss = 1
+}
+
+page = PAGE
+page{
+
+	headerData{
+
+		10 = TEXT
+		10.value(
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+		)
+	}
+	shortcutIcon = typo3conf/ext/softtodo_theme/Resources/Public/favicon.ico
+     #
+     # GOOGLE ANALYTICS
+     #
+     headerData.999 = TEXT
+          headerData.999.value (
+             <script>
+                 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                 ga('create', 'UA-114765442-1', 'auto');
+                 ga('send', 'pageview');
+             </script>
+          )
+
+    meta {
+    		site_name = Softtodo IT Solutions - IT Outsourcing Tunisia, Offshore Tunisia
+
+    		description = Softtodo IT-Solutions est une société tuniso-allemande d'ingénierie et de développement logiciel offshore en Tunisie
+
+    		description = SOFTTODO ist ein deutsch-tunesisches Unternehmen. Das Unternehmen bietet ihre Kunden hochwertige und kostengünstige Off-Shore Lösungen, um die Kosten ihrer Projekte zu sinken. Java JEE, Typo3, Drupal, Wordpress
+
+    		keywords = jee, j2e, Java, outsourcing, offshore, tunisien, JEE, PHP, Typo3, Drupal, Wordpress ,JEE Auslagerung, Qualité, Java outsourcing tunisien, JEE outsourcing tunisien, Typo3 outsourcing tunisien, Drupal outsourcing tunisien,    hochwertige IT-Dienstleistungen, Kunden, Kosten, Relevanz, Wirksamkeit, Reaktionsfähigkeit, Transparenz, layaute, Typo3, web development
+    		locale = de_DE
+    		locale.attribute = property
+    		locale:alternate {
+    			attribute = property
+    			value {
+    				1 = fr_FR
+    				2 = de_DE
+    			}
+    		}
+    	}
+	includeCSS {
+		fontAwesome = https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i
+		styles = typo3conf/ext/softtodo_theme/Resources/Public/Styles/style.css
+		#slider = typo3conf/ext/softtodo_theme/Resources/Public/Styles/slider.css
+		animate = typo3conf/ext/softtodo_theme/Resources/Public/Styles/animate.min.css
+		bxslider = typo3conf/ext/softtodo_theme/Resources/Public/Styles/jquery.bxslider.css
+	}
+
+	includeJSFooter {
+	        mapapi = https://maps.google.com/maps/api/js?key=AIzaSyBiLAdzcAQgxeo0xngCFpAhiYxmiYyPFBQ
+		mapapi.async = 1
+    		jquery = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/jquery-min.js
+		jquery.async = 1
+    		gmaps = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/gmaps.js
+		gmaps.async = 1
+    		ce-map = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/ce-map.js
+		ce-map.async = 1
+    		lateral-menu = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/jquery.lateral-menu.js
+		lateral-menu.async = 1
+    		nav = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/jquery.nav.js
+		nav.async = 1
+    		matchHeight = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/jquery.matchHeight.js
+		matchHeight.async = 1
+    		navigation = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/navigation.js
+		navigation.async = 1
+            ce-parallax = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/ce-parallax.js
+		ce-parallax.async = 1
+            ce-video = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/ce-video.js
+		ce-video .async = 1
+            scroll = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/jquery.scrollme.js
+		scroll.async = 1
+    		ce-accordion = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/ce-accordion.js
+		ce-accordion.async = 1
+    		avantage = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/avantage.js
+		avantage.async = 1
+    		bxslider = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/jquery.bxslider.js
+		bxslider.async = 1
+			slider = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/slider.js
+		slider.async = 1
+			backtotop = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/back-to-top.js
+		backtotop.async = 1
+			confirmation = typo3conf/ext/softtodo_theme/Resources/Public/Scripts/confirmation.js
+		confirmation.async = 1
+    }
+}
+
+tt_content.stdWrap.innerWrap.override = |
+plugin.tx_powermail {
+	view {
+		templateRootPaths {
+			0 = EXT:powermail/Resources/Private/Templates/
+			1 = EXT:softtodo_theme/Resources/Extensions/powermail/Templates
+		}
+
+
+		partialRootPaths {
+			0 = EXT:powermail/Resources/Private/Partials/
+			1 = EXT:softtodo_theme/Resources/Extensions/powermail/Partials
+		}
+		layoutRootPaths {
+			0 = EXT:powermail/Resources/Private/Layouts/
+			1 = EXT:softtodo_theme/Resources/Extensions/powermail/Layouts
+		}
+	}
+}
+
+
+plugin.tx_powermail.settings.setup {
+	styles {
+		numberOfColumns = 3
+		framework {
+			rowClasses = col-md-6
+		}
+	}
+}
+page.includeJS{
+    powermailJQuery = https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
+    powermailJQueryDatepicker = EXT:powermail/Resources/Public/JavaScripts/Libraries/jquery.datetimepicker.min.js
+    powermailJQueryFormValidation = EXT:powermail/Resources/Public/JavaScripts/Libraries/parsley.min.js
+    powermailJQueryTabs = EXT:powermail/Resources/Public/JavaScripts/Powermail/Tabs.min.js
+    powermailForm = EXT:powermail/Resources/Public/JavaScripts/Powermail/Form.min.js
+	powermailJQueryDatepicker.async = 1
+	powermailJQueryFormValidation.async = 1
+	powermailJQueryTabs.async = 1
+	powermailForm.async = 1
+}

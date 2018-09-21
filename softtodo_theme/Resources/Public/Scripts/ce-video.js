@@ -1,0 +1,1 @@
+var ytblinlk;$("#watch-video").click(function(o){$("#youtube-video").css("display","block"),ytblinlk=$("#softtodo-video")[0].src,$("#softtodo-video")[0].src+="&autoplay=1",o.preventDefault()}),$("#close-video").click(function(){$("#youtube-video").css("display","none"),$("#softtodo-video").attr("src",ytblinlk)});

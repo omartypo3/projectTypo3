@@ -1,0 +1,60 @@
+$ce-parallax-selector: ce-parallax;
+
+.#{$ce-parallax-selector} {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "";
+    display: block;
+    background-color: rgba($color-text, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+  .ce-headline {
+    color: $color-body-bg;
+    &:after {
+      background-color: $color-body-bg;
+    }
+  }
+  .bubbles {
+    .bubble-container {
+      margin-bottom: $small-vertical-gap;
+    }
+    .bubble {
+      height: 100%;
+      background-color: rgba($color-primary-dark, 0.7);
+      border-left: 8px solid $color-primary;
+      padding: $small-vertical-gap;
+      margin-bottom: $small-vertical-gap;
+      position: relative;
+      top: 400px;
+      transition: 1s top;
+      color: $color-body-bg;
+      >p {
+        border-left: 6px solid $color-secondary;
+        padding-left: $half-grid-gutter-width;
+      }
+    }
+    > div {
+      @include animateSequence(10);
+    }
+  }
+  &.animate {
+    top: 0;
+    .bubbles {
+      .bubble {
+        top: 0;
+      }
+    }
+  }
+  .show-more {
+    margin-bottom: $normal-vertical-gap;
+  }
+
+}

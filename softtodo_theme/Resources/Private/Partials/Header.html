@@ -1,0 +1,59 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Header">
+        <div class="navigation-bar menumobile">
+            <div class="navigation-bar--inner large">
+                <div class="container">
+                    <div class="row">
+                        <div class="logo-holder col-md-3">
+                            <h1>Softtodo IT Solutions</h1>
+                            <v:page.languageMenu>
+                                <f:for each="{languageMenu}" as="langmenu" iteration="langiter">
+                                    <f:if condition="{langmenu.current} == 1">
+                                        <f:then>
+                                            <f:if condition="{langiter.index} == 0">
+                                                <f:then>
+                                                    <a href="/fr/"><img
+                                                            src="typo3conf/ext/softtodo_theme/Resources/Public/Images/softtodo-logo.svg"
+                                                            alt="Softtodo logo"></a>
+                                                </f:then>
+                                                <f:else>
+                                                    <a href="/de/"><img
+                                                            src="typo3conf/ext/softtodo_theme/Resources/Public/Images/softtodo-logo.svg"
+                                                            alt="Softtodo logo"></a>
+                                                </f:else>
+                                            </f:if>
+                                        </f:then>
+                                    </f:if>
+
+                                </f:for>
+                            </v:page.languageMenu>
+
+                        </div>
+                        <nav class="navigation-links col-md-9">
+                            <input type="checkbox" id="nav" class="hidden">
+                            <label for="nav" class="nav-open"><i></i><i></i><i></i></label>
+                            <div class="nav-container">
+                                <ul class="navbar-nav">
+                                    <v:page.menu>
+                                        <f:if condition="{menu}">
+                                            <f:for each="{menu}" as="curPage">
+                                                <li class="{f:if(condition: '{curPage.subtitle} == Home || {curPage.subtitle} == Accueil', then: 'current', else: '')}">
+                                                    <a href="#{curPage.subtitle}">{curPage.title}</a>
+                                                    <div class="line_lower"></div>
+                                                </li>
+                                            </f:for>
+                                        </f:if>
+                                    </v:page.menu>
+                                </ul>
+                            </div>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:section>
+</div>

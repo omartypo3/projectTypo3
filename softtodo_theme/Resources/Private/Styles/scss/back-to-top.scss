@@ -1,0 +1,25 @@
+
+.back-to-top {
+  background-color: $color-overlay;
+  color: $color-body-bg;
+  height: 40px;
+  width: 40px;
+  opacity: 0;
+  cursor: pointer;
+  position: fixed;
+  bottom: 42px;
+  right: 0;
+  z-index: $z-index-highest;
+  transition: opacity 0.6s linear;
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+    font-size: 22px;
+  }
+  &.back-to-top-fadeIn {
+    transition: opacity 0.6s linear;
+    opacity: 1;
+  }
+}

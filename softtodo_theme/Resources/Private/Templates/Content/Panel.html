@@ -1,0 +1,52 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="panel" options="{group: 'FCE'}">
+            <flux:field.input name="descriptionC" label="Description"/>
+
+            <flux:form.section name="elements">
+                <flux:form.object name="box" label="Add new" >
+                    <flux:field.file name="image" label="image" allowed="jpg,png,svg" maxItems="1" minItems="0" useFalRelation="1"/>
+                    <flux:field.input name="title" label="Titre" required="true"/>
+                    <flux:field.text name="description" label="Description" required="false"/>
+                </flux:form.object>
+            </flux:form.section>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>service Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+
+        <div class="ce-panels container">
+
+            <div class="ce-panels--text">
+                <p>{descriptionC}</p>
+            </div>
+
+
+            <div class="ce-panels--panels-container row">
+                <f:for each="{settings.elements}" as="element" iteration="i">
+                <div class="ce-panels--panel primary">
+                    <div class="ce-panels--panel--content">
+                        <img src="{f:uri.image(src: '{element.box.image}')}" alt="icon-{element.box.image}">
+                        <h4 class="title ">{element.box.title}</h4>
+                    </div>
+                    <div class="text-visible-hover">
+                        <p>{element.box.description}</p>
+                    </div>
+                </div>
+                </f:for>
+
+            </div>
+        </div>
+
+    </f:section>
+
+</div>

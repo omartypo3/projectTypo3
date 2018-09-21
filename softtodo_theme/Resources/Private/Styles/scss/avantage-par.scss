@@ -1,0 +1,202 @@
+
+.div-parag {
+  position: relative;
+  display: inline-block;
+}
+
+.quote-parag {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+.container:last-of-type {
+  padding-top: 0px;
+}
+
+/*bounce up animation for the subject*/
+
+.bounce-up .subject {
+  opacity: 0;
+  -moz-transition: all 700ms ease-out;
+  -webkit-transition: all 700ms ease-out;
+  -o-transition: all 700ms ease-out;
+  transition: all 700ms ease-out;
+  -moz-transform: translate3d(0px, 200px, 0px);
+  -webkit-transform: translate3d(0px, 200px, 0px);
+  -o-transform: translate(0px, 200px);
+  -ms-transform: translate(0px, 200px);
+  transform: translate3d(0px, 200, 0px);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+}
+
+.bounce-up.in-view .subject {
+  opacity: 1;
+  -moz-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.subject {
+  width: 100%;
+  margin: 0% 1.33% 2.66% 1.33%;
+  padding: 15px;
+}
+
+/*media queries for small devices*/
+
+@media screen and (max-width: 678px) {
+  .animation-element,
+  .animation-element:nth-of-type(3n-1),
+  .animation-element:nth-of-type(3n-2),
+  .animation-element:nth-of-type(3n-0) {
+    width: 100%;
+    margin: 0px 0px 30px 0px;
+  }
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.div-parag {
+  position: relative;
+  display: inline-block;
+}
+
+.q1 {
+  width: 40%;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.q2 {
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  vertical-align: top;
+  padding: 0px;
+}
+
+.div-parag.subject.development {
+  margin: 0;
+}
+
+.div-text {
+  display: table;
+  height: 350px;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.quote-title2 {
+  color: #005fae;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 30px;
+}
+
+.qimage {
+  width: 40%;
+  background: url(../Images/team.jpg) no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+  border-radius: 50%;
+  height: 400px;
+  width: 400px;
+  border: solid 7px #092939;
+}
+
+.qtext {
+  width: 59%;
+}
+
+.cont {
+  margin-top: 25px
+}
+
+@media screen and (max-width: 1200px) {
+  .q1 {
+    margin-top: 4%;
+  }
+  .q2 {
+    padding-left: 5%;
+  }
+  .qimage {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .q1, .q2 {
+    width: 100%
+  }
+  .qimage {
+    width: 100%;
+    height: 83vw;
+  }
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .q2 {
+    @include order(2);
+    padding: 0;
+  }
+  .qtext {
+    width: 100%;
+    display: block;
+  }
+  .q1 {
+    width: 100%;
+    text-align: center;
+    @include order(1);
+  }
+  .subject {
+    float: unset;
+    padding: 0;
+  }
+  .cont {
+    @include display-flex();
+    @include flex-direction(column);
+    padding: 0;
+  }
+  .less-size p{
+    font-size: 1rem;
+  }
+}

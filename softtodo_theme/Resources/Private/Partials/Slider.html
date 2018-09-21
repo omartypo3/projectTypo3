@@ -1,0 +1,25 @@
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:section name="Slider">
+        <v:page.menu>
+            <f:if condition="{menu}">
+                <f:for each="{menu}" as="curPage">
+                    <f:if condition = "{curPage.subtitle} == 'Home' || {curPage.subtitle} == 'Accueil'">
+                        <f:then>
+                            <section id="{curPage.subtitle}">
+                                <div class="content-element ce-video node node--type-landing-page node--view-mode-header">
+
+                                    <v:content.render column="1"/>
+
+                                </div>
+                            </section>
+                        </f:then>
+                    </f:if>
+                </f:for>
+            </f:if>
+        </v:page.menu>
+
+    </f:section>
+</div>

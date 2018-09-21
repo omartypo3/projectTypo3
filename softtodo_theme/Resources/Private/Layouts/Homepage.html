@@ -1,0 +1,37 @@
+
+<f:layout name="Homepage" />
+<f:render partial="Header" section="Header" arguments="{_all}" />
+<f:render partial="Slider" section="Slider" arguments="{_all}" />
+<f:render partial="MenuRight" section="MenuRight" arguments="{_all}" />
+<!--Main content -->
+<v:page.menu>
+    <f:if condition="{menu}">
+        <f:for each="{menu}" as="curPage">
+            <f:if condition="{curPage.subtitle} == 'Home' || {curPage.subtitle} == 'Accueil'">
+                <f:then></f:then>
+                <f:else>
+                    <section id="{curPage.subtitle}" class="section-wrapper">
+                        <v:content.render column="0"
+                                          pageUid="{curPage.uid}"></v:content.render>
+                    </section>
+                </f:else>
+            </f:if>
+
+
+        </f:for>
+    </f:if>
+</v:page.menu>
+<!--/Main content -->
+
+<v:page.menu pageUid="14">
+    <f:if condition="{menu}">
+        <f:for each="{menu}" as="curPage">
+            <v:content.render column="0"
+                              pageUid="{curPage.uid}"></v:content.render>
+        </f:for>
+    </f:if>
+</v:page.menu>
+
+
+
+

@@ -1,0 +1,18 @@
+$ce-paragraphs-selector: ce-paragraph;
+.#{$ce-paragraphs-selector} {
+  background-color: $color-secondary-light-transparent;
+  margin-bottom: $small-vertical-gap;
+  .#{$ce-paragraphs-selector}--inner {
+    .#{$ce-paragraphs-selector}--title {
+      font-size: $font-size-higher-50;
+      color: $color-body-bg;
+      background-color: $color-primary-light;
+      padding: $half-grid-gutter-width;
+      border-bottom: 5px solid $color-primary-dark;
+    }
+    .#{$ce-paragraphs-selector}--body {
+      color: $color-primary-dark;
+      padding: $half-grid-gutter-width;
+    }
+  }
+}

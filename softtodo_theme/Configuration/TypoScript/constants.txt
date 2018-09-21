@@ -1,0 +1,19 @@
+plugin.tx_softtodotheme.view {
+	templateRootPaths.0 = EXT:softtodo_theme/Resources/Private/Templates/
+	partialRootPaths.0 = EXT:softtodo_theme/Resources/Private/Partials/
+	layoutRootPaths.0 = EXT:softtodo_theme/Resources/Private/Layouts/
+}
+
+mainMenu = 2, 3,4 ,5
+global {
+    languageLabels {
+    current = German
+    availableSysLanguageUids = 0,1
+    additionalParams = &L=0 || &L=1
+    availableLabels = French || German
+  }
+}
+plugin.tx_powermail.view.templateRootPaths.0 = EXT:softtodo_theme/Resources/Extensions/powermail/Templates
+plugin.tx_powermail.view.partialRootPaths.0 = EXT:softtodo_theme/Resources/Extensions/powermail/Partials
+plugin.tx_powermail.view.layoutRootPaths.0 = EXT:softtodo_theme/Resources/Extensions/powermail/Layouts
+

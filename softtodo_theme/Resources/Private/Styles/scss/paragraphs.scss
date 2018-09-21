@@ -1,0 +1,6 @@
+p {
+  margin-bottom: $small-vertical-gap;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,72 @@
+$ce-panels-selector: ce-panels;
+.#{$ce-panels-selector} {
+  position: relative;
+  .#{$ce-panels-selector}--text {
+    text-align: center;
+    font-size: $font-size-higher-75;
+    @media screen and (max-width: 1200px) {
+      font-size: $font-size-base;
+    }
+  }
+  .#{$ce-panels-selector}--panels-container {
+    margin-top: $normal-vertical-gap;
+    justify-content:  space-evenly;
+  }
+  .#{$ce-panels-selector}--panel {
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden; width: 400px;
+    height: 400px;
+    position: relative;
+
+    img {
+      height: 100px;
+      max-width: 100px;
+    }
+    &:before {
+      visibility: hidden;
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1;
+    }
+    &:hover {
+      &:before {
+        visibility: visible;
+        transition: .5s all;
+        bottom: 0;
+      }
+      .text-visible-hover {
+        opacity: 1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: 1s all;
+        z-index: 2;
+      }
+    }
+  }
+  .#{$ce-panels-selector}--panel--content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+  }
+}
+
+.text-visible-hover {
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  color: $color-body-bg;
+  padding: $grid-gutter-width;
+  font-size: $font-size-higher-25;
+  @include display-flex();
+  @include align-items(center);
+}

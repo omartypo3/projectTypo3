@@ -1,0 +1,22 @@
+$ce-contact-selector: ce-contact;
+
+.#{$ce-contact-selector} {
+  .#{$ce-contact-selector}--body {
+
+  }
+  .#{$ce-contact-selector}--details {
+
+  }
+  .#{$ce-contact-selector}--details-headline {
+    .small-detail {
+      font-size: $font-size-base;
+      vertical-align: middle;
+      img {
+        vertical-align: top;
+        width: 22px;
+        margin-top: 9px;
+      }
+    }
+  }
+}
+

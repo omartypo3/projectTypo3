@@ -1,0 +1,75 @@
+.tx-powermail {
+  .powermail--inner {
+    form {
+      .powermail_fieldwrap {
+
+      }
+      label {
+
+      }
+    }
+  }
+}
+
+.powermail_fieldwrap {
+  margin-top: $small-vertical-gap;
+  position: relative;
+  .powermail_captchaimage{
+    margin-top: 30px;
+  }
+  input, textarea {
+    box-sizing: border-box;
+    background-color: $color-body-bg;
+    border: 3px solid $color-primary;
+    outline: none;
+    font-weight: $font-weight-bold;
+    padding: 4px 8px;
+    width: 100%;
+    font-family: inherit;
+    color: $color-primary-dark;
+    font-weight: $font-weight-light;
+    &:focus {
+      border-color: $color-primary-light;
+      outline: none;
+    }
+    &[type="submit"] {
+      max-width: 200px;
+      background-color: $color-primary-dark;
+      transition: .2s all;
+      color: $color-body-bg;
+      &:hover {
+        color: $color-primary-light;
+        cursor: pointer;
+        border-color: $color-primary-light;
+      }
+    }
+    &.parsley-error {
+      border-color: $color-error;
+    }
+  }
+  .form-job & {
+    input, textarea {
+      color: $color-primary-dark;
+      &[type="submit"] {
+        color: $color-body-bg;
+      }
+
+    }
+  }
+  .parsley-errors-list {
+    padding-left: 11px;
+    position: absolute;
+    top: 44px;
+    font-size: $font-size-base;
+    li {
+      color: $color-error;
+      padding-left: 0;
+    }
+  }
+}
+
+[type="submit"] {
+  max-width: 150px;
+}
+
+

@@ -1,0 +1,13 @@
+.api-languages {
+  text-align: center;
+}
+.api-languages .language-link {
+    font-size: 1.65em;
+    font-weight: bold;
+    line-height: 1.818181818;
+    text-align: left;
+    transition: color 0.3s;
+    &.active,  &:hover{
+      color: $color-primary;
+    }
+}

@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".bxslider").bxSlider({mode:"vertical",speed:1e3,infiniteLoop:!0,easing:"ease-in-out",adaptiveHeight:!0,pager:!1,controls:!1,auto:!0,slideMargin:100,touchEnabled:!1,onSliderLoad:function(){$(".bxslider .slider-item").css({visibility:"visible"})}})});

@@ -1,0 +1,66 @@
+/* colors */
+$color-white:                       #ffffff;
+$color-body-bg:                       #fff;
+$color-text:                          #000;
+$color-primary:                       #005fae;
+$color-primary-dark:                  #123549;
+$color-primary-medium:                #0474d2;
+$color-primary-light:                 #07a3de;
+$color-secondary:                     #818285;
+$color-secondary-light:               #cfd0d1;
+$color-secondary-light-transparent:   rgba($color-secondary-light, 0.8);
+$color-secondary-transparent:         rgba($color-secondary, 0.2);
+$color-secondary-dark:                #3c3c3c;
+$color-overlay:                       rgba($color-text, 0.7);
+$color-off-white:                     #f4f4f4;
+$color-error:                         #e0533d;
+$color-footer-bg:                     #232322;
+
+/* Font weight */
+$font-weight-lighter:          100;
+$font-weight-thin:             300;
+$font-weight-normal:           400;
+$font-weight-bold:             500;
+$font-weight-bolder:           700;
+
+/* Font sizes */
+$font-size-smaller-15:        1rem - 0.15;
+$font-size-base:              1rem; // Assumes the browser default, typically `16px`
+$font-size-higher-15:         1rem + 0.15;
+$font-size-higher-25:         1rem + 0.25;
+$font-size-higher-50:         1rem + 0.50;
+$font-size-higher-75:         1rem + 0.75;
+$font-size-higher-1:          1rem + 1;
+$font-size-h2 :               4rem;
+$font-size-h3 :               2.5rem;
+$font-size-h4 :               2rem;
+$font-size-h5 :               $font-size-higher-50;
+
+/* Video */
+$ce-ce-video-opacity-overlay:         0.4;
+
+/* Spacing */
+$big-grid-gutter-width:              ($grid-gutter-width * 2);
+$half-grid-gutter-width:              ($grid-gutter-width / 2);
+$big-vertical-gap : $grid-gutter-width * 3;
+$normal-vertical-gap : $grid-gutter-width * 2;
+$small-vertical-gap : $grid-gutter-width;
+$navigation-bar-height: 1px;
+
+/* Z-index */
+
+$z-index-1: 1;
+$z-index-2: 2;
+
+/*$z-index-highest : 2147483647;*/
+$z-index-highest : 2000000000;
+$z-index-highest-1 : ($z-index-highest - 1);
+$z-index-highest-2 : ($z-index-highest - 2);
+$color-menu: rgba($color-off-white, 0.95);
+
+/* Breakpoints */
+$breakpoint-mobile: 767px;
+$breakpoint-tablet: 992px;
+$breakpoint-desktop: 1200px;
+$screen-xs-max :480px;
+$screen-ms-min:480px;

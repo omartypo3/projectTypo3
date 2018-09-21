@@ -1,0 +1,38 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="bubbles" options="{group: 'FCE'}">
+
+            <flux:form.sheet name="elements" label="bubble boxes">
+                <flux:form.section name="elements">
+                    <flux:form.object name="bubble" label="Bubble">
+                        <flux:field.text name="text" label="Text" enableRichText="1"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>bubble Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+            <div class="bubbles row">
+                <f:for each="{elements}" as="element" iteration="iteration">
+                    <div class="col-md-6 bubble-container">
+                        <div class="bubble">
+                           <f:format.raw>{element.bubble.text}</f:format.raw>
+                        </div>
+                    </div>
+                </f:for>
+            </div>
+
+
+    </f:section>
+
+</div>

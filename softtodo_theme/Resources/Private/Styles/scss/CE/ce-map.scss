@@ -1,0 +1,21 @@
+$ce-map-selector-prefix: ce-map;
+.#{$ce-map-selector-prefix} {
+  .gmap {
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .map-infoWindow {
+    p {
+      color: $color-text;
+    }
+    h5 {
+      margin-top: 6px;
+      font-size: $font-size-base;
+    }
+  }
+  .container{
+    height: 600px;
+  }
+
+
+}

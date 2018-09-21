@@ -1,0 +1,6 @@
+$ce-jobs-selector: ce-jobs;
+.#{$ce-jobs-selector} {
+  .tx-powermail {
+    display: none;
+  }
+}

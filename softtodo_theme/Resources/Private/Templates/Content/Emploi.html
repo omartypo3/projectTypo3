@@ -1,0 +1,30 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="emploi" options="{group: 'FCE'}">
+            <flux:field.input name="titre" label="Title" required="true"/>
+            <flux:field.inline.fal name="pdflink" label="pdf link" allowedExtensions="pdf" maxItems="1" minItems="1"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>offre d'emploi</strong>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'pdflink') -> v:iterator.first() -> v:variable.set(name:'pdflink')}
+                <div class="api-jobs">
+                    <div class="job">
+                        <a class="job-link" href="{pdflink.url}" title="Télécharger" target="_blank">
+                            <span class="label">{titre}</span>
+                        </a>
+                    </div>
+                </div>
+
+    </f:section>
+
+</div>

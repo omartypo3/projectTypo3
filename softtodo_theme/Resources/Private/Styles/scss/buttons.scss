@@ -1,0 +1,17 @@
+button {
+  max-width: 190px;
+  background-color: $color-primary-dark;
+  transition: .2s all;
+  color: $color-body-bg;
+  padding: 8px 28px;
+  border: none;
+  font-weight: $font-weight-lighter;
+  outline: none;
+  border-right: 7px solid $color-secondary;
+  &:hover, &:focus {
+    color: $color-off-white;
+    cursor: pointer;
+    border-color: $color-primary-medium;
+    outline: none;
+  }
+}

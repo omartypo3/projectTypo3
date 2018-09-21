@@ -1,0 +1,1 @@
+jQuery(function(o){o(window).load(function(){function t(t){o(t).scrollTop()>200?o(".back-to-top").addClass("back-to-top-fadeIn"):o(".back-to-top").removeClass("back-to-top-fadeIn")}!function(n){t(n),o(n).on("scroll touchmove",function(o){t(n)})}(window),o(".back-to-top").click(function(){o("html, body").stop().animate({scrollTop:0},500)})})});

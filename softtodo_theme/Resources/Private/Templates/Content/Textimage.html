@@ -1,0 +1,74 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="textimg" options="{group: 'FCE'}">
+
+            <flux:form.sheet name="elements" label="Text and image boxes">
+                <flux:form.section name="elements">
+                    <flux:form.object name="service" label="Element">
+                        <flux:field.text name="text" label="Text" enableRichText="1" required="true"/>
+                        <flux:field.file name="image" label="image" allowed="jpg,png,svg" required="true"
+                                         showThumbnails="1" maxItems="1" minItems="0" useFalRelation="1"/>
+                        <flux:field.checkbox name="left" default="true" label="Text on left side"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>text and image Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <div class=" ce-text-image no-gaps">
+            <f:for each="{elements}" as="element" iteration="iteration">
+                <v:variable.set name="myObject" value="{f:uri.image(src: '{element.service.image}' ,  maxHeight:400)}"/>
+                <f:if condition="{element.service.left}">
+                    <f:then>
+
+                        <div class="ce-text-image--inner row text-left">
+                            <div class="ce-text-image--text col-md">
+                                <div class="ce-text-image--text-inner">
+                                    <f:format.html>{element.service.text}</f:format.html>
+                                </div>
+                            </div>
+                            <div class="ce-text-image--image col-md" style='background-image: url("{myObject}")'>
+                                            <img  src="{f:uri.image(src: '{element.service.image}')}"
+                                                  srcset=" {f:uri.image(src: '{element.service.image}',  maxHeight:480)} 400w,
+                                             {f:uri.image(src: '{element.service.image}',  maxHeight:767)} 800w,
+                                             {f:uri.image(src: '{element.service.image}',  maxHeight:992)} 1024w,
+                                             {f:uri.image(src: '{element.service.image}',  maxHeight:1200)} 1200w"
+                                            alt="image-softtodo"/>
+                        </div>
+                    </div>
+        </f:then>
+        <f:else>
+            <div class="ce-text-image--inner row">
+                <div class="ce-text-image--image col-md" style='background-image: url("{myObject}")'><img  src="{f:uri.image(src: '{element.service.image}')}"
+                                                                                                           srcset=" {f:uri.image(src: '{element.service.image}',  maxHeight:480)} 400w,
+                                             {f:uri.image(src: '{element.service.image}',  maxHeight:767)} 800w,
+                                             {f:uri.image(src: '{element.service.image}',  maxHeight:992)} 1024w,
+                                             {f:uri.image(src: '{element.service.image}',  maxHeight:1200)} 1200w" alt="image-softtodo"
+                                              alt="image-softtodo"/>
+
+            </div>
+            <div class="ce-text-image--text col-md">
+                <div class="ce-text-image--text-inner">
+                    <f:format.html>{element.service.text}</f:format.html>
+                </div>
+            </div>
+</div>
+</f:else>
+</f:if>
+
+</f:for>
+</div>
+</f:section>
+
+
+</div>

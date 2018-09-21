@@ -1,0 +1,10 @@
+.content-element {
+  margin-top: $big-vertical-gap;
+  border-top: 1px solid transparent;
+  .ce-headline {
+    text-align: center;
+  }
+  @media screen and (max-width: 500px) {
+    margin-top:40px;
+  }
+}

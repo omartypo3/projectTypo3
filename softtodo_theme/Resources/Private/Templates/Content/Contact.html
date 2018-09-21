@@ -1,0 +1,38 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="contact" options="{group: 'FCE'}">
+
+            <flux:field.input name="manager" label="Manager Name" required="true"/>
+            <flux:field.input name="titre" label="Manager Title" required="true"/>
+            <flux:field.input name="profile" label="Manager Linedin Profile" required="true">  <flux:wizard.link/></flux:field.input>
+            <flux:field.input name="fblink" label="Facebook link"> <flux:wizard.link/></flux:field.input>
+            <flux:field.input name="inlink" label="linkedin link">  <flux:wizard.link/></flux:field.input>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Manager Contact Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="ce-contact--details col-md-12">
+            <h4 class="ce-contact--details-headline">{manager} <span class="small-detail">({titre}) <a href="{profile}" target="_blank"><img src="typo3conf/ext/softtodo_theme/Resources/Public/Images/linkedIn.svg" alt="linkedIn"></a></span></h4>
+            <p>
+                <a href="{fblink}" title="Softtodo - Facebook" target="_blank">
+                    <i class="fa fa-facebook-square fa-2x fa-width"></i>
+                </a> &nbsp;
+                <a href="{inlink}" title="Softtodo - Linkedin" target="_blank">
+                    <i class="fa fa-linkedin-square fa-2x fa-width"></i>
+                </a>
+            </p>
+        </div>
+
+
+    </f:section>
+
+</div>
