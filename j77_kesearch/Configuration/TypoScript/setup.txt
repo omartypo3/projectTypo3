@@ -1,0 +1,70 @@
+
+plugin.tx_kesearch_pi1 {
+	templateRootPaths.1 = {$plugin.tx_j77kesearch.view.templateRootPaths.default}
+	partialRootPaths.1 = {$plugin.tx_j77kesearch.view.partialRootPaths.default}
+	layoutRootPaths.1 = {$plugin.tx_j77kesearch.view.layoutRootPaths.default}
+}
+plugin.tx_kesearch_pi2 {
+	templateRootPaths.1 = {$plugin.tx_j77kesearch.view.templateRootPaths.default}
+	partialRootPaths.1 = {$plugin.tx_j77kesearch.view.partialRootPaths.default}
+	layoutRootPaths.1 = {$plugin.tx_j77kesearch.view.layoutRootPaths.default}
+}
+#plugin.tx_kesearch_pi3 {
+#	templateRootPath = {$plugin.tx_j77kesearch.view.templateRootPaths.default}
+#	partialRootPath = {$plugin.tx_j77kesearch.view.partialRootPaths.default}
+#	layoutRootPath = {$plugin.tx_j77kesearch.view.layoutRootPaths.default}
+#}
+
+plugin.tx_j77kesearch {
+	view {
+		templateRootPaths.0 = {$plugin.tx_j77kesearch.view.templateRootPaths.default}
+		partialRootPaths.0 = {$plugin.tx_j77kesearch.view.partialRootPaths.default}
+		layoutRootPaths.0 = {$plugin.tx_j77kesearch.view.layoutRootPaths.default}
+	}
+	#By default the following settings only will have relevance if you have fluidcontent_core extension loaded
+	
+	settings{
+		container {
+			types {
+				default = div
+				Example = div
+			}
+		}
+		
+	}
+	
+	_LOCAL_LANG.de.noresults =  <article><section><h3>Ihre Suche nach „%s“ ergab 0 Treffer.</h3></section></article>
+	_LOCAL_LANG.en.noresults =  <article><section><h3>Your search „%s“ did not match any documents.</h3></section></article>
+	
+	_LOCAL_LANG.de.resulttitle = Ihr Suchergebnis
+	_LOCAL_LANG.en.resulttitle = your search result
+}
+
+
+
+
+plugin.tx_kesearch_pi1 {	
+	_LOCAL_LANG.default {
+		pagebrowser_prev = <
+		pagebrowser_next = >
+	}
+	_LOCAL_LANG.en {
+		pagebrowser_prev = <
+		pagebrowser_next = >
+	}
+	_LOCAL_LANG.de {
+		pagebrowser_prev = <
+		pagebrowser_next = >
+	}
+	settings < plugin.j77_template.settings
+}
+
+plugin.tx_kesearch_pi2 {
+	settings < plugin.j77_template.settings
+}
+
+plugin.tx_kesearch_pi {
+	settings < plugin.j77_template.settings
+}
+
+

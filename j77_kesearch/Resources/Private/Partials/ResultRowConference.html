@@ -1,0 +1,25 @@
+<!--
+	=====================
+	Partials/ResultRowConference.html
+-->
+{namespace j=TYPO3\J77Kesearch\ViewHelpers}
+<f:if condition="{resultrow.type}=='customconferencecontent'">
+    <f:then>
+        <div class="result-list-item result-list-item-type-customconferencecontent">
+            <v:variable.set name="url" value="{f:format.stripTags(value: '{resultrow.teaser}')}"/>
+            <a href ="/{v:format.url.sanitizeString(string: '{url}')}">
+                <f:if condition="{j:conference(variantens: '{resultrow.orig_uid}')}">
+                    <f:then>
+                        <img src="fileadmin{j:conference(variantens: '{resultrow.orig_uid}')}"/>
+                    </f:then>
+                    <f:else>
+                        <f:image
+                                src="typo3conf/ext/theme/Resources/Public/logos/DefaultEventHeader.jpg"
+                                class="img-responsive" maxHeight="300"/>
+                    </f:else>
+                </f:if>
+                <span class="result-title"><f:format.stripTags>{resultrow.teaser}</f:format.stripTags></span>
+            </a>
+        </div>
+    </f:then>
+</f:if>

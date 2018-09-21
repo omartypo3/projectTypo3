@@ -1,0 +1,10 @@
+<!--
+	=====================
+	Partials/PageBrowser.html
+-->
+
+<f:if condition="{numberofresults} > {conf.resultsPerPage}">
+	<div class="pages_total">
+		<div class="kesearch_pagebrowser"><f:format.raw>{pagebrowser.pages_list}</f:format.raw></div>
+	</div>
+</f:if>

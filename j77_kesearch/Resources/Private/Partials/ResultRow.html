@@ -1,0 +1,24 @@
+<!--
+	=====================
+	Partials/ResultRow.html
+-->
+{namespace j=TYPO3\J77Kesearch\ViewHelpers}
+<f:if condition="{resultrow.type}=='customteamcontent'">
+    <f:then>
+        <div class="result-list-item result-list-item-type-customteamcontent">
+            <f:link.action action="show" arguments="{people : resultrow.orig_uid}" pageUid="50"
+                           extensionName="DLD" pluginName="dldfront" controller="People">
+                <f:if condition="{j:image(variantens: '{resultrow.orig_uid}')}">
+                    <f:then>
+                        <img src="fileadmin{j:image(variantens: '{resultrow.orig_uid}')}"/>
+                    </f:then>
+                    <f:else>
+                        <v:variable.set name="url" value="{f:uri.image(src:'typo3conf/ext/theme/Resources/Public/logos/DefaultPeopleImage.jpg',maxHeight:300)}"></v:variable.set>
+                        <img src="{url}" class="img-responsive"/>
+                    </f:else>
+                </f:if>
+                <span class="result-title"><f:format.raw>{resultrow.title}</f:format.raw></span>
+            </f:link.action>
+        </div>
+    </f:then>
+</f:if>

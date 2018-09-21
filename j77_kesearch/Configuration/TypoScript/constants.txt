@@ -1,0 +1,5 @@
+plugin.tx_j77kesearch.view {
+	templateRootPaths.default = EXT:j77_kesearch/Resources/Private/Templates/
+	partialRootPaths.default = EXT:j77_kesearch/Resources/Private/Partials/
+	layoutRootPaths.default = EXT:j77_kesearch/Resources/Private/Layouts/
+}

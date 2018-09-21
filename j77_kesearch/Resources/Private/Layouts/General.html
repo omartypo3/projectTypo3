@@ -1,0 +1,37 @@
+<div id="content" class="tx-kesearch-pi1" style="margin-top: 0px">
+	<section class="main">
+		<div class="container">
+			<header class="page-title"><h1 style="text-align: center">Search</h1></header>
+			<section class="box videos overview">
+				<div class="inner white clearfix">
+					<header class="box-header_search clearfix static-link">
+						<h3 class="semantic">Search results</h3>
+						<a class="fl" href="/">
+							<img  class="back-arrow" src="/typo3conf/ext/theme/Resources/Public/logos/more-arrow-orange-left.png"> Back
+						</a>
+					</header>
+					<div class="grid_4 search-results-column clearfix pfull">
+						<!-- Big search form -->
+						<form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" action="search" class="search-results-form">
+							<fieldset>
+								<input type="hidden" name="id" value="30">
+								<div class="clearfix">
+									<input type="text"  id="ke_search_searchfield_sword" name="tx_kesearch_pi1[sword]" value="{searchword -> f:format.raw()}" placeholder="search">
+									<input type="image" src="/typo3conf/ext/theme/Resources/Public/logos/search_box.png" class="search-submit" title="search">
+								</div>
+
+								<input id="kesearchpagenumber" type="hidden" name="tx_kesearch_pi1[page]" value="1">
+								<input id="resetFilters" type="hidden" name="tx_kesearch_pi1[resetFilters]" value="0">
+								<input id="sortByField" type="hidden" name="tx_kesearch_pi1[sortByField]" value="">
+								<input id="sortByDir" type="hidden" name="tx_kesearch_pi1[sortByDir]" value="">
+
+							</fieldset>
+						</form>
+						<!-- /Big search form -->
+					</div>
+					<f:render section="content" />
+				</div>
+			</section>
+		</div>
+	</section>
+</div>
