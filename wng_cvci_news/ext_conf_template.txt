@@ -1,0 +1,17 @@
+  # cat=basic//30; type=options[5,10,20,30]; label=LLL:EXT:wng_cvci_news/Resources/Private/Language/locallang_db.xlf:setting.ItemsPerPage
+  items = 20
+
+  # cat=basic; type=int; label=LLL:EXT:wng_cvci_news/Resources/Private/Language/locallang_db.xlf:setting.NbJour
+  nbJour = 5
+
+  # cat=basic; type=string; label=LLL:EXT:wng_cvci_news/Resources/Private/Language/locallang_db.xlf:setting.emailFrom
+  emailFrom = bel@wng.ch
+
+  # cat=basic; type=string; label=LLL:EXT:wng_cvci_news/Resources/Private/Language/locallang_db.xlf:setting.emailFromName
+  emailFromName = WNG EXT:WNG CVCI NEWS
+
+  # cat=basic; type=string; label=LLL:EXT:wng_cvci_news/Resources/Private/Language/locallang_db.xlf:setting.googleMapsKey
+  googleMapsKey = AIzaSyDOXAO2Axwlp5r4Ic6aerOrH1zb8nmSybU
+
+  # cat=basic; type=string; label=LLL:EXT:wng_cvci_news/Resources/Private/Language/locallang_db.xlf:setting.googleCaptchaKey
+  googleCaptchaKey = 6LftJhMUAAAAAJKfHEacXBbI8wVYk8Jv1kZehjPn

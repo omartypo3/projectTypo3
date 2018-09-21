@@ -1,0 +1,17 @@
+
+<div class="news-search-form">
+	<f:debug>{settings.listPid}</f:debug>
+	<f:form object="{overwriteDemand}" objectName="overwriteDemand" additionalParams="{id:'43'}" arguments="{overwriteDemand:overwriteDemand}" pageUid="43" method="GET">
+		<fieldset>
+
+			<f:render partial="EventSearchList/Categories" arguments="{categories: categories,settings:settings,iterator:iterator,overwriteDemand:overwriteDemand}" />
+
+			<div class="form-group">
+				<label for="news-subject"><f:translate key="search-subject" /></label>
+				<f:form.textfield id="news-subject" property="subject" class="form-control"/>
+			</div>
+
+			<f:form.submit value="{f:translate(key:'search-start')}" class="btn btn-default"/>
+		</fieldset>
+	</f:form>
+</div>

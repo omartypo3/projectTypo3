@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-01-17T09:00:00Z" product-name="wng_cvci_news">
+		<header/>
+		<body>
+			<trans-unit id="tx_news_domain_model_news" xml:space="preserve">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_is_event" xml:space="preserve">
+				<source>Is event</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_start_date" xml:space="preserve">
+				<source>Start date</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_end_date" xml:space="preserve">
+				<source>End date</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_start_time" xml:space="preserve">
+				<source>Start time</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_end_time" xml:space="preserve">
+				<source>End time</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_all_day" xml:space="preserve">
+				<source>All Day</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_price" xml:space="preserve">
+				<source>Price</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_url" xml:space="preserve">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_url_title" xml:space="preserve">
+				<source>Url Title</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_theme" xml:space="preserve">
+				<source>Theme</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_type" xml:space="preserve">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_apero" xml:space="preserve">
+				<source>Apero</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_organisor" xml:space="preserve">
+				<source>Organisor</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_form" xml:space="preserve">
+				<source>Do not display the registration form</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_participant" xml:space="preserve">
+				<source>Do not show Participants List</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_organizer" xml:space="preserve">
+				<source>Organizer</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_organizer_id" xml:space="preserve">
+				<source>Organizer Id</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_organizer_pid" xml:space="preserve">
+				<source>Organizer Pid</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_organizer_link" xml:space="preserve">
+				<source>Organizer Link</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_location" xml:space="preserve">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_location_id" xml:space="preserve">
+				<source>Location Id</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_location_pid" xml:space="preserve">
+				<source>Location Pid</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.tx_wngcvcinews_location_link" xml:space="preserve">
+				<source>Location Link</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.schedules" xml:space="preserve">
+				<source>Schedules</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.author" xml:space="preserve">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.author_email" xml:space="preserve">
+				<source>E-mail</source>
+			</trans-unit>
+
+			<trans-unit id="tx_news_domain_model_news.information" xml:space="preserve">
+				<source>Information</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.subscribe" xml:space="preserve">
+				<source>Subscribe</source>
+			</trans-unit>
+			<trans-unit id="tx_news_domain_model_news.participant_list" xml:space="preserve">
+				<source>List of participants</source>
+			</trans-unit>
+
+			<trans-unit id="tx_wngcvcinews_domain_model_location" xml:space="preserve">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.description" xml:space="preserve">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.street" xml:space="preserve">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.zip" xml:space="preserve">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.countryzone" xml:space="preserve">
+				<source>Country Zone</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.country" xml:space="preserve">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.fax" xml:space="preserve">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.email" xml:space="preserve">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.image" xml:space="preserve">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.link" xml:space="preserve">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.latitude" xml:space="preserve">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_location.longitude" xml:space="preserve">
+				<source>Longitude</source>
+			</trans-unit>
+
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer" xml:space="preserve">
+				<source>Organizer</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.description" xml:space="preserve">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.street" xml:space="preserve">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.zip" xml:space="preserve">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.countryzone" xml:space="preserve">
+				<source>Country Zone</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.country" xml:space="preserve">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.fax" xml:space="preserve">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.email" xml:space="preserve">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.image" xml:space="preserve">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_organizer.link" xml:space="preserve">
+				<source>Link</source>
+			</trans-unit>
+
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail" xml:space="preserve">
+				<source>Event Email</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.firstname" xml:space="preserve">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.lastname" xml:space="preserve">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.name" xml:space="preserve">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.company" xml:space="preserve">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.jobfield" xml:space="preserve">
+				<source>Jobfield</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.address" xml:space="preserve">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.zip" xml:space="preserve">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.city" xml:space="preserve">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.phone" xml:space="preserve">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.mobile" xml:space="preserve">
+				<source>Mobile</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.email" xml:space="preserve">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.aperitif" xml:space="preserve">
+				<source>Participation in the aperitif</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.apparaitre" xml:space="preserve">
+				<source>Allow my name to appear in the list of registered users</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.comments" xml:space="preserve">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.event" xml:space="preserve">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.user" xml:space="preserve">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.captcha" xml:space="preserve">
+				<source>Captcha</source>
+			</trans-unit>
+
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.error.empty" xml:space="preserve">
+				<source>%s must not be empty</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.error.email" xml:space="preserve">
+				<source>You must enter a valid email address</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.error.captcha" xml:space="preserve">
+				<source>You must enter a valid CAPTCHA value</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.valid.message" xml:space="preserve">
+				<source>Your registration has been taken into account !</source>
+			</trans-unit>
+
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.button.reset" xml:space="preserve">
+				<source>Cancel</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.button.submit" xml:space="preserve">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.button.valid" xml:space="preserve">
+				<source>Valid</source>
+			</trans-unit>
+			<trans-unit id="tx_wngcvcinews_domain_model_eventemail.form.note" xml:space="preserve">
+				<source>&lt;strong&gt;ATTENTION:&lt;/strong&gt; si vous ne recevez pas dans les minutes qui suivent, sur le mail que vous avez indiqué dans le formulaire, un message de confirmation de votre inscription, c'est que la procédure a échoué. Veuillez recommencer ou prendre contact avec la personne responsable de la manifestation à l'adresse mail qui figure ci-dessus. Merci!</source>
+			</trans-unit>
+
+			<trans-unit id="email.title" xml:space="preserve">
+			    <source>Invite for the event "%s"</source>
+			</trans-unit>
+			<trans-unit id="email.message" xml:space="preserve">
+			    <source>Thank you for registering to the the event "%s", on %s at %s.</source>
+			</trans-unit>
+			<trans-unit id="email.waiting" xml:space="preserve">
+			    <source>Kind regards,</source>
+			</trans-unit>
+			<trans-unit id="email.salutation" xml:space="preserve">
+			    <source>Have a good day</source>
+			</trans-unit>
+			<trans-unit id="email.sign" xml:space="preserve">
+			    <source>Chambre vaudoise du commerce et de l'industrie</source>
+			</trans-unit>
+			<trans-unit id="email.notifications" xml:space="preserve">
+			    <source>Subscriber email</source>
+			</trans-unit>
+			<trans-unit id="email.name" xml:space="preserve">
+			    <source>Name</source>
+			</trans-unit>
+			<trans-unit id="email.lastname" xml:space="preserve">
+			    <source>Last name</source>
+			</trans-unit>
+			<trans-unit id="email.company" xml:space="preserve">
+			    <source>Company</source>
+			</trans-unit>
+			<trans-unit id="email.jobfield" xml:space="preserve">
+			    <source>Job field</source>
+			</trans-unit>
+			<trans-unit id="email.address" xml:space="preserve">
+			    <source>Address</source>
+			</trans-unit>
+			<trans-unit id="email.zip" xml:space="preserve">
+			    <source>Zip</source>
+			</trans-unit>
+			<trans-unit id="email.city" xml:space="preserve">
+			    <source>City</source>
+			</trans-unit>
+			<trans-unit id="email.phone" xml:space="preserve">
+			    <source>Phone</source>
+			</trans-unit>
+			<trans-unit id="email.mobile" xml:space="preserve">
+			    <source>Mobile</source>
+			</trans-unit>
+			<trans-unit id="email.apero" xml:space="preserve">
+			    <source>Participation à l'apéritif</source>
+			</trans-unit>
+			<trans-unit id="email.notification.title" xml:space="preserve">
+			    <source>Notification for event "%s"</source>
+			</trans-unit>
+			<trans-unit id="email.comments" xml:space="preserve">
+			    <source>Comment</source>
+			</trans-unit>
+			<trans-unit id="email.event" xml:space="preserve">
+			    <source>Manifestation</source>
+			</trans-unit>
+			<trans-unit id="email.header" xml:space="preserve">
+                <source><![CDATA[
+                  Dear Madam,
+                  Dear Sir,
+                ]]></source>
+            </trans-unit>
+			<trans-unit id="email.message2" xml:space="preserve">
+                <source><![CDATA[
+                Bonjour administrateur,<br><br>
+                Un internaute vient de remplir le formulaire d'inscription.<br>
+                Voici les informations qu'il a saisies:
+                ]]></source>
+			</trans-unit>
+
+			<trans-unit id="event_location" xml:space="preserve">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="event_date" xml:space="preserve">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="event_time" xml:space="preserve">
+				<source>Time</source>
+			</trans-unit>
+			<trans-unit id="event_till" xml:space="preserve">
+				<source>to</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

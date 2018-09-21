@@ -1,0 +1,277 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace e=Wng\WngCvciNews\ViewHelpers}
+
+<f:layout name="Detail.html" />
+
+<!--
+	=====================
+		Templates/News/EventDetail.html
+-->
+
+<f:section name="content">
+	<f:if condition="{newsItem}">
+		<f:then>
+			<n:format.nothing>
+				<f:if condition="{newsItem.alternativeTitle}">
+					<f:then><n:titleTag><f:format.htmlentitiesDecode>{newsItem.alternativeTitle}</f:format.htmlentitiesDecode></n:titleTag></f:then>
+					<f:else><n:titleTag><f:format.htmlentitiesDecode>{newsItem.title}</f:format.htmlentitiesDecode></n:titleTag></f:else>
+				</f:if>
+				<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}"/>
+			</n:format.nothing>
+			<div class="header">
+				<h3>{newsItem.title}</h3>
+			</div>
+			<div class="footer" role="contentinfo">
+				<p>
+					<!-- date -->
+					<span class="news-list-date">
+                        <f:render partial="Event/Item" arguments="{newsItem: newsItem, settings:settings}"/>
+					</span>
+
+					<f:if condition="{newsItem.categories}">
+						<f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}"/>
+					</f:if>
+
+					<f:if condition="{newsItem.author}">
+						<!-- author -->
+						<span class="hidden">. </span>
+						<span class="news-list-author">
+							<f:translate key="author" arguments="{0:newsItem.author}"></f:translate>
+						</span>
+					</f:if>
+				</p>
+			</div>
+
+			<f:if condition="{newsItem.teaser}">
+				<!-- teaser -->
+				<div class="teaser-text">
+					{newsItem.teaser}
+				</div>
+			</f:if>
+
+			<f:if condition="{newsItem.contentElements}">
+				<!-- content elements -->
+				<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+			</f:if>
+
+			<f:render partial="Detail/MediaContainer" arguments="{media: newsItem.media, settings:settings}"/>
+
+			<!-- main text -->
+			<div class="news-text-wrap">
+				<f:format.html>{newsItem.bodytext}</f:format.html>
+			</div>
+
+			<div class="news-information">
+				<h3><f:translate key="tx_news_domain_model_news.information" extensionName="wng_cvci_news" /></h3>
+				<ul>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_location" extensionName="wng_cvci_news" />: {newsItem.eventAddress}</li>
+					<li><f:translate key="tx_news_domain_model_news.schedules" extensionName="wng_cvci_news" />: <f:format.date format="H:i">{newsItem.eventStartTime}</f:format.date> - <f:format.date format="H:i">{newsItem.eventEndTime}</f:format.date></li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_organizer" extensionName="wng_cvci_news" />: {newsItem.eventOrganizerName}</li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_phone" extensionName="wng_cvci_news" />: {newsItem.eventPhone}</li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_theme" extensionName="wng_cvci_news" />: <f:link.typolink parameter="{newsItem.eventTheme}" target="_blank">PDF</f:link.typolink></li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_url" extensionName="wng_cvci_news" />: <f:link.external uri="{newsItem.eventUrl}" target="_blank">{newsItem.eventUrlTitle}</f:link.external></li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_type" extensionName="wng_cvci_news" />: {newsItem.eventType}</li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_price" extensionName="wng_cvci_news" />: {newsItem.eventPrice}</li>
+					<li><f:translate key="tx_news_domain_model_news.tx_wngcvcinews_organisor" extensionName="wng_cvci_news" />: {newsItem.eventOrganisor}</li>
+					<li><f:translate key="tx_news_domain_model_news.author" extensionName="wng_cvci_news" />: {newsItem.author}</li>
+					<li><f:translate key="tx_news_domain_model_news.author_email" extensionName="wng_cvci_news" />: <f:link.email email="{newsItem.authorEmail}" /></li>
+				</ul>
+			</div>
+
+			<div id="event-google-map" class="map" style="position: relative; overflow: hidden;height: 140px;">
+				<script type="text/javascript">
+					function initMap() {
+						var map = new google.maps.Map(document.getElementById('event-google-map'), {
+							zoom: 15,
+							center: {lat: 46.5101681, lng: 6.6267274}
+						});
+						var geocoder = new google.maps.Geocoder();
+
+						geocodeAddress(geocoder, map);
+					}
+
+					function geocodeAddress(geocoder, resultsMap) {
+						var address = "{newsItem.eventAddress}";
+						geocoder.geocode({'address': address}, function(results, status) {
+							if (status === google.maps.GeocoderStatus.OK) {
+								resultsMap.setCenter(results[0].geometry.location);
+								var marker = new google.maps.Marker({
+									map: resultsMap,
+									position: results[0].geometry.location
+								});
+							} else {
+								//alert('Geocode was not successful for the following reason: ' + status);
+								jQuery('#event-google-map').after(
+										jQuery('<div></div>')
+												.attr('class', 'gm-error-box')
+												.html('No address found')
+								);
+							}
+						});
+					}
+				</script>
+
+				<![CDATA[<script src="https://maps.googleapis.com/maps/api/js?key=
+				]]>{extConf.googleMapsKey}
+				<![CDATA[&callback=initMap&language=fr" type="text/javascript"></script>]]>
+
+				<script src="https://maps.googleapis.com/maps/api/js?key=<f:format.raw value="{extConf.googleMapsKey}" />&callback=initMap&language=fr" type="text/javascript"></script>
+
+			</div>
+
+			<f:if condition="{newsItem.eventForm} == 0">
+				<f:then>
+					<div class="subscribe">
+						<h3><f:translate key="tx_news_domain_model_news.subscribe" extensionName="wng_cvci_news" /></h3>
+
+						<f:if condition="{validMessage}">
+							<f:then>
+								<div class="alert alert-success" role="alert"><f:format.html>{validMessage}</f:format.html></div>
+							</f:then>
+							<f:else>
+								<f:if condition="{errorMessage}">
+									<div class="alert alert-danger" role="alert"><f:format.html>{errorMessage}</f:format.html></div>
+								</f:if>
+
+								<f:render partial="FormErrors" arguments="{object: EventEmail}" />
+
+								<f:form action="eventDetail" controller="Event" arguments="{news: newsItem}" name="newEventEmail" object="{newEventEmail}" noCache="1" class="form-horizontal wng-cvci-news" >
+									<f:render partial="EventEmail/FormFields" arguments="{newEventEmail:newEventEmail, theme: theme, newsItem: newsItem}" />
+
+									<f:security.ifAuthenticated>
+										<f:then>
+										</f:then>
+										<f:else>
+											<div class="form-group">
+												<div class="col-sm-offset-2 col-sm-10">
+													<script src='https://www.google.com/recaptcha/api.js?explicit&hl=fr'></script>
+													<div class="g-recaptcha" data-sitekey="{extConf.googleCaptchaKey}"></div>
+												</div>
+											</div>
+										</f:else>
+									</f:security.ifAuthenticated>
+
+									<div class="form-group">
+										<div class="col-sm-offset-2 col-sm-10">
+											<f:form.button type="reset" value="Reset" class="btn btn-default" ><f:translate key="tx_wngcvcinews_domain_model_eventemail.button.reset" extensionName="wng_cvci_news" /></f:form.button>
+											<f:form.submit value="{f:translate(key:'tx_wngcvcinews_domain_model_eventemail.button.submit', extensionName:'wng_cvci_news')}" class="btn btn-primary" />
+										</div>
+									</div>
+								</f:form>
+								<div class="form-note">
+									<f:format.html><f:translate key="tx_wngcvcinews_domain_model_eventemail.form.note" extensionName="wng_cvci_news" /></f:format.html>
+								</div>
+							</f:else>
+						</f:if>
+					</div>
+				</f:then>
+			</f:if>
+
+			<f:if condition="{show}">
+				<f:then>
+					<f:if condition="{eventsEmails}">
+						<f:then>
+							<h3><f:translate key="tx_news_domain_model_news.participant_list" extensionName="wng_cvci_news" /></h3>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<td><f:translate key="tx_wngcvcinews_domain_model_eventemail.name" extensionName="wng_cvci_news" /></td>
+										<td><f:translate key="tx_wngcvcinews_domain_model_eventemail.company" extensionName="wng_cvci_news" /></td>
+									</tr>
+								</thead>
+								<tbody>
+								<f:for each="{eventsEmails}" as="eventEmail">
+									<tr>
+										<td>{eventEmail.firstname} {eventEmail.lastname}</td>
+										<td>{eventEmail.company}</td>
+									</tr>
+								</f:for>
+								</tbody>
+							</table>
+						</f:then>
+					</f:if>
+				</f:then>
+			</f:if>
+
+			<f:if condition="{settings.backPid}">
+				<!-- Link Back -->
+				<div class="news-backlink-wrap">
+					<f:link.page pageUid="{settings.backPid}">
+						<f:translate key="back-link" />
+					</f:link.page>
+				</div>
+			</f:if>
+
+			<div class="facebook">
+				<div class="like">
+					<n:social.facebook.like></n:social.facebook.like>
+				</div>
+				<div class="share">
+					<n:social.facebook.share>Share</n:social.facebook.share>
+				</div>
+				<div class="twitter">
+					<n:social.twitter>Twitter</n:social.twitter>
+				</div>
+			</div>
+
+			<!-- related things -->
+			<div class="news-related-wrap">
+
+				<f:if condition="{newsItem.relatedSorted}">
+					<!-- Related news records -->
+					<div class="news-related news-related-news">
+						<h4><f:translate key="related-news" /></h4>
+						<ul>
+							<f:for each="{newsItem.relatedSorted}" as="related">
+								<li>
+									<span class="news-related-news-date"><f:format.date format="d.m.Y">{related.datetime}</f:format.date></span>
+									<span class="hidden">. </span>
+									<e:link newsItem="{related}" settings="{settings}">
+										{related.title}
+									</e:link>
+								</li>
+
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+
+				<f:if condition="{newsItem.relatedFiles}">
+					<!-- Related files -->
+					<div class="news-related news-related-files">
+						<h4><f:translate key="related-files" /></h4>
+						<ul>
+							<f:for each="{newsItem.relatedFiles}" as="relatedFile">
+								<li>
+									<span class="news-related-files-link">
+										<a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+											{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
+										</a>
+									</span>
+									<span class="news-related-files-size">
+										{relatedFile.originalResource.size -> f:format.bytes()}
+									</span>
+								</li>
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+
+				<f:if condition="{newsItem.relatedLinks}">
+					<!-- Related links -->
+					<div class="news-related news-related-links">
+						<h4><f:translate key="related-links" /></h4>
+						<ul>
+							<f:for each="{newsItem.relatedLinks}" as="relatedLink">
+								<li>
+									<f:link.page pageUid="{relatedLink.uri}">{relatedLink.title}</f:link.page>
+								</li>
+							</f:for>
+						</ul>
+					</div>
+				</f:if>
+			</div>
+
+		</f:then>
+	</f:if>
+</f:section>

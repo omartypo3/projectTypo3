@@ -1,0 +1,54 @@
+
+plugin.tx_wngcvcinews_wngcvcinews {
+	view {
+		templateRootPaths.0 = {$plugin.tx_wngcvcinews_wngcvcinews.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_wngcvcinews_wngcvcinews.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_wngcvcinews_wngcvcinews.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_wngcvcinews_wngcvcinews.persistence.storagePid}
+	}
+}
+
+plugin.tx_wngcvcinews_wngcvcinews._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-wng-cvci-news table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-wng-cvci-news table th {
+		font-weight:bold;
+	}
+
+	.tx-wng-cvci-news table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)
+
+page.includeCSS {
+	#tx_wngcvcinews_wngcvcinews = EXT:wng_cvci_news/Resources/Public/Css/wng_events.css
+}
+
+page.includeJSFooter {
+	#tx_wngcvcinews_wngcvcinews = EXT:wng_cvci_news/Resources/Public/Js/wng_events.js
+}
+

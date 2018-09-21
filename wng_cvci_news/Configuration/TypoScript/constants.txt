@@ -1,0 +1,15 @@
+
+plugin.tx_wngcvcinews_wngcvcinews{
+	view {
+		# cat=plugin.tx_wngcvcinews_wngcvcinews/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:wng_cvci_news/Resources/Private/Templates/
+		# cat=plugin.tx_wngcvcinews_wngcvcinews/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:wng_cvci_news/Resources/Private/Partials/
+		# cat=plugin.tx_wngcvcinews_wngcvcinews/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:wng_cvci_news/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_wngcvcinews_wngcvcinews//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

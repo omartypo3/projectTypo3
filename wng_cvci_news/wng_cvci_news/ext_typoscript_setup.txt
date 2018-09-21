@@ -1,0 +1,75 @@
+# ==============================================
+# Persistence object mapping configuration
+# ==============================================
+config.tx_extbase {
+    persistence.classes {
+        GeorgRinger\News\Domain\Model\News {
+            subclasses {
+                Wng\WngCvciNews\Domain\Model\Event = Wng\WngCvciNews\Domain\Model\Event
+            }
+        }
+
+        Wng\WngCvciNews\Domain\Model\Event {
+            mapping {
+                tableName = tx_news_domain_model_news
+                #recordType = Tx_wngcvcinews
+                columns {
+                    tx_wngcvcinews_is_event.mapOnProperty = eventIsEvent
+                    tx_wngcvcinews_start_date.mapOnProperty = eventStartDate
+                    tx_wngcvcinews_end_date.mapOnProperty = eventEndDate
+                    tx_wngcvcinews_start_time.mapOnProperty = eventStartTime
+                    tx_wngcvcinews_end_time.mapOnProperty = eventEndTime
+                    tx_wngcvcinews_all_day.mapOnProperty = eventAllDay
+                    tx_wngcvcinews_organizer.mapOnProperty = eventOrganizer
+                    tx_wngcvcinews_organizer_id.mapOnProperty = eventOrganizerId
+                    tx_wngcvcinews_organizer_pid.mapOnProperty = eventOrganizerPid
+                    tx_wngcvcinews_organizer_link.mapOnProperty = eventOrganizerLink
+                    tx_wngcvcinews_location.mapOnProperty = eventLocation
+                    tx_wngcvcinews_location_id.mapOnProperty = eventLocationId
+                    tx_wngcvcinews_location_pid.mapOnProperty = eventLocationPid
+                    tx_wngcvcinews_location_link.mapOnProperty = eventLocationLink
+                    tx_wngcvcinews_price.mapOnProperty = eventPrice
+                    tx_wngcvcinews_url.mapOnProperty = eventUrl
+                    tx_wngcvcinews_url_title.mapOnProperty = eventUrlTitle
+                    tx_wngcvcinews_theme.mapOnProperty = eventTheme
+                    tx_wngcvcinews_type.mapOnProperty = eventType
+                    tx_wngcvcinews_phone.mapOnProperty = eventPhone
+                    tx_wngcvcinews_apero.mapOnProperty = eventApero
+                    tx_wngcvcinews_organisor.mapOnProperty = eventOrganisor
+                    tx_wngcvcinews_form.mapOnProperty = eventForm
+                    tx_wngcvcinews_participant.mapOnProperty = eventParticipant
+                    tx_wngcvcinews_event_emails.mapOnProperty = eventEmails
+                }
+            }
+        }
+    }
+
+    objects {
+        #GeorgRinger\News\Controller\NewsController.className = Wng\WngCvciNews\Controller\EventController
+        #Wng\WngNewsSearch\Controller\FilterController.className = Wng\WngCvciNews\Controller\EventController
+        #GeorgRinger\News\Domain\Repository\NewsRepository.className = Wng\WngCvciNews\Domain\Repository\EventRepository
+    }
+}
+
+# Event TypoScript configuration
+plugin.tx_news {
+    view {
+        event {
+            partialRootPath = {$plugin.tx_wngcvcinews_wngcvcinews.view.partialRootPath}
+            templateRootPath = {$plugin.tx_wngcvcinews_wngcvcinews.view.templateRootPath}
+        }
+    }
+
+    settings {
+        event {
+            orderByAllowed = tx_wngcvcinews_start_date,tx_wngcvcinews_start_time
+            orderBy = tx_wngcvcinews_start_date ASC, tx_wngcvcinews_start_time ASC
+
+            archived {
+                orderBy = tx_wngcvcinews_start_date DESC, tx_wngcvcinews_start_time DESC
+            }
+
+            dateField = eventStartDate
+        }
+    }
+}

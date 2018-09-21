@@ -1,0 +1,109 @@
+
+<div class="form-group">
+    <label for="firstname" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.firstname" extensionName="wng_cvci_news" /> *
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="firstname" id="firstname" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="lastname" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.lastname" extensionName="wng_cvci_news" /> *
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="lastname" id="lastname" class="form-control"  />
+    </div>
+</div>
+<div class="form-group">
+    <label for="company" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.company" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="company" id="company" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="jobfield" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.jobfield" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="jobfield" id="jobfield" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="address" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.address" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="address" id="address" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="zip" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.zip" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="zip" id="zip" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="city" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.city" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="city" id="city" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="phone" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.phone" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="phone" id="phone" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="mobile" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.mobile" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="mobile" id="mobile" class="form-control" />
+    </div>
+</div>
+<div class="form-group">
+    <label for="email" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.email" extensionName="wng_cvci_news" /> *
+    </label>
+    <div class="col-sm-10">
+        <f:form.textfield property="email" id="email" class="form-control" />
+    </div>
+</div>
+<f:if condition="{newsItem.eventApero}">
+    <div class="form-group">
+        <label for="aperitif" class="col-sm-2 control-label">
+            <f:translate key="tx_wngcvcinews_domain_model_eventemail.aperitif" extensionName="wng_cvci_news" />
+        </label>
+        <div class="col-sm-10">
+            <f:form.checkbox property="aperitif" value="1" id="aperitif" class="form-control" />
+        </div>
+    </div>
+</f:if>
+<f:if condition="{theme}">
+    <div class="form-group">
+        <label for="apparaitre" class="col-sm-2 control-label">
+            <f:translate key="tx_wngcvcinews_domain_model_eventemail.apparaitre" extensionName="wng_cvci_news" />
+        </label>
+        <div class="col-sm-10">
+            <f:form.checkbox property="apparaitre" value="1" id="apparaitre" class="form-control" />
+        </div>
+    </div>
+</f:if>
+<div class="form-group">
+    <label for="comments" class="col-sm-2 control-label">
+        <f:translate key="tx_wngcvcinews_domain_model_eventemail.comments" extensionName="wng_cvci_news" />
+    </label>
+    <div class="col-sm-10">
+        <f:form.textarea property="comments" id="comments" class="form-control" />
+    </div>
+</div>

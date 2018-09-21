@@ -1,0 +1,32 @@
+
+<f:form.validationResults for="{object}">
+    <f:if condition="{validationResults.flattenedErrors}">
+        <div class="typo3-messages">
+            <div class="alert alert-danger">
+                <div class="media">
+                    <div class="media-left">
+						<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-times fa-stack-1x"></i>
+						</span>
+                    </div>
+                    <div class="media-body">
+                        <div class="alert-message">
+
+                            <f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="propertyErrors">
+                                <f:for each="{propertyErrors}" as="propertyError">
+                                    <div class="form__field-error">
+                                        <!--{propertyPath}-{propertyError.code}-->
+                                        <f:translate key="validator.{propertyPath}.{propertyError.code}" default="{propertyError}" arguments="{propertyError.arguments}" />
+                                    </div>
+                                </f:for>
+                            </f:for>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </f:if>
+</f:form.validationResults>
