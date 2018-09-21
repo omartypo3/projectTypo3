@@ -1,0 +1,50 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+	<div class="content-dld-inner">
+<h1>Listing for Partner</h1>
+
+<f:flashMessages />
+		<f:link.action action="new"class="float-right newaction"> <i class="fa fa-plus-circle "></i>New Partner</f:link.action>
+
+<table  class="tx_dld datatable1" id="partners" >
+	<thead>
+	<tr>
+		<th><f:translate key="tx_dld_domain_model_partner.name" /></th>
+		<th><f:translate key="tx_dld_domain_model_partner.logo" /></th>
+		<th><f:translate key="tx_dld_domain_model_partner.country" /></th>
+		<th><f:translate key="tx_dld_domain_model_partner.city" /></th>
+		<th><f:translate key="tx_dld_domain_model_partner.description" /></th>
+		<th><f:translate key="tx_dld_domain_model_partner.social_linkedin_url" /></th>
+		<th><f:translate key="tx_dld_domain_model_partner.social_twitter_username" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+	<tr class="inputs">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<th></th>
+		<th></th>
+	</tr>
+	</thead>
+</table>
+
+	</div>
+</f:section>

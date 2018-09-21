@@ -1,0 +1,249 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Event</numIndex>
+										<numIndex index="1">Event->events; Event->pastEvents; Event->show; Event->nextUpcomingEvent</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Session</numIndex>
+										<numIndex index="1">Session->show; Session->program;</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">People</numIndex>
+										<numIndex index="1">People->amazing; People->show; People->list</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">Partner</numIndex>
+										<numIndex index="1">Partner->list; Partner->show</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">Main Slider</numIndex>
+										<numIndex index="1">Event->mainSlider</numIndex>
+									</numIndex>
+									<numIndex index="5">
+										<numIndex index="0">Dld Team</numIndex>
+										<numIndex index="1">People->dldteam; People->show; People->list</numIndex>
+									</numIndex>
+									<numIndex index="6">
+										<numIndex index="0">All speakers</numIndex>
+										<numIndex index="1">People->allspeakers;  People->show; People->list;</numIndex>
+									</numIndex>
+									<numIndex index="7">
+										<numIndex index="0">All List speakers</numIndex>
+										<numIndex index="1">People->show; People->list</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.eventold>
+						<TCEforms>
+							<label>Old conferences</label>
+							<displayCond>FIELD:switchableControllerActions:=:Event->mainSlider</displayCond>
+							<config>
+								<type>input</type>
+								<eval>int</eval>
+								<default>2</default>
+							</config>
+						</TCEforms>
+					</settings.eventold>
+					<settings.eventnew>
+						<TCEforms>
+							<label>Conferences recent </label>
+							<displayCond>FIELD:switchableControllerActions:=:Event->mainSlider</displayCond>
+							<config>
+								<type>input</type>
+								<eval>int</eval>
+								<default>3</default>
+							</config>
+						</TCEforms>
+					</settings.eventnew>
+
+
+					<settings.headline>
+						<TCEforms>
+							<label>Headline Text </label>
+							<displayCond>FIELD:switchableControllerActions:=:People->amazing; People->show; People->list</displayCond>
+							<config>
+								<type>input</type>
+								<size>50</size>
+							</config>
+						</TCEforms>
+					</settings.headline>
+
+					<settings.subtitle>
+						<TCEforms>
+							<label>Subtitle Text </label>
+							<displayCond>FIELD:switchableControllerActions:=:People->amazing; People->show; People->list</displayCond>
+							<config>
+								<type>input</type>
+								<size>50</size>
+							</config>
+						</TCEforms>
+					</settings.subtitle>
+
+					<settings.subtitleurl>
+						<TCEforms>
+							<label>Subtitle URL </label>
+							<displayCond>FIELD:switchableControllerActions:=:People->amazing; People->show; People->list</displayCond>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.subtitleurl>
+
+					<settings.teamlist>
+						<TCEforms>
+							<label>DLD Team Members to be displayed  </label>
+							<displayCond>FIELD:switchableControllerActions:=:People->dldteam; People->show; People->list</displayCond>
+							<config>
+								<type>select</type>
+								<foreign_table>fe_users</foreign_table>
+								<renderType>selectMultipleSideBySide</renderType>
+								<size>5</size>
+								<minitems>3</minitems>
+								<maxitems>999</maxitems>
+								<foreign_table_where>is_dld_team =1</foreign_table_where>
+							</config>
+						</TCEforms>
+					</settings.teamlist>
+					<settings.eventpageid>
+						<TCEforms>
+							<label>Event Page Id </label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.eventpageid>
+
+					<settings.sessionpageid>
+						<TCEforms>
+							<label>Session Page Id </label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.sessionpageid>
+
+					<settings.peoplepageid>
+						<TCEforms>
+							<label>People Page Id </label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.peoplepageid>
+
+					<settings.partnerpageid>
+						<TCEforms>
+							<label>Partner Page Id </label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.partnerpageid>
+					<settings.input>
+						<TCEforms>
+							<displayCond>FIELD:switchableControllerActions:=:Partner->list; Partner->show</displayCond>
+
+							<label>Partner Title</label>
+							<config>
+								<type>input</type>
+							</config>
+						</TCEforms>
+					</settings.input>
+					<settings.partenersEvent>
+						<TCEforms>
+							<label>Select method</label>
+						<displayCond>FIELD:switchableControllerActions:=:Partner->list; Partner->show</displayCond>
+						<onChange>reload</onChange>
+						<config>
+							<type>select</type>
+							<items>
+								<numIndex index="0">
+									<numIndex index="0"></numIndex>
+								</numIndex>
+								<numIndex index="1">
+									<numIndex index="0">Partner by events</numIndex>
+									<numIndex index="1">methode1</numIndex>
+								</numIndex>
+								<numIndex index="2">
+									<numIndex index="0">All partners</numIndex>
+									<numIndex index="1">methode2</numIndex>
+								</numIndex>
+
+							</items>
+						</config>
+						</TCEforms>
+					</settings.partenersEvent>
+					<settings.partenerMethodeOne>
+						<TCEforms>
+							<label>choose an event to display its partners </label>
+							<displayCond>FIELD:settings.partenersEvent:=:methode1</displayCond>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tx_dld_domain_model_event</allowed>
+								<size>1</size>
+								<minitems>1</minitems>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.partenerMethodeOne>
+					<settings.partenerMethode>
+						<TCEforms>
+							<label>choose partners </label>
+							<displayCond>FIELD:settings.partenersEvent:=:methode2</displayCond>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_dld_domain_model_partner</foreign_table>
+								<renderType>selectCheckBox</renderType>
+								<minItems>1</minItems>
+								<maxItems>999</maxItems>
+							</config>
+						</TCEforms>
+					</settings.partenerMethode>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

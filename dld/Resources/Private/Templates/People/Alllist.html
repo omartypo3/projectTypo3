@@ -1,0 +1,41 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="allspeakers">
+        <div id="speaker-list" class="all-speakers">
+            <f:widget.paginate objects="{peoples}" as="peoplep"
+                               configuration="{itemsPerPage: 20, insertAbove: 1, insertBelow: 0, maximumNumberOfLinks: 10}">
+                <f:for each="{peoplep}" as="people">
+                    <article class="speaker-item list-item">
+                        <div class="item secondary">
+                            <f:link.action action="show" arguments="{people : people.peopleId}" pageUid="50"
+                                           controller="People">
+                                <f:if condition="{f:uri.image(image:people.peopleId.image.0)}">
+                                    <f:then>
+                                        <div class="circle"
+                                             style="background-image: url('{f:uri.image(maxHeight:300,image:people.peopleId.image.0)}')">
+                                        </div>
+                                    </f:then>
+                                    <f:else>
+                                        <v:variable.set name="url"
+                                                        value="{f:uri.image(src:'{settings.urlPeople}',maxHeight:300)}"></v:variable.set>
+                                        <div class="circle"
+                                             style="background-image: url('{url}')">
+                                        </div>
+                                    </f:else>
+                                </f:if>
+                                <div class="speaker-text">
+                                    <p class="text-center orange ">{people.peopleId.firstName}
+                                        {people.peopleId.lastName}</p>
+                                    <span>{people.peopleId.company}</span>
+                                </div>
+
+                            </f:link.action>
+                        </div>
+                    </article>
+                </f:for>
+            </f:widget.paginate>
+        </div>
+    </div>
+</f:section>
+</html>

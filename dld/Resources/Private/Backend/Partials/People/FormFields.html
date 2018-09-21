@@ -1,0 +1,108 @@
+{namespace dld=DLD\Dld\ViewHelpers}
+{namespace h=DLD\Dld\ViewHelpers}
+
+<label for="username">
+    <f:translate key="tx_dld_domain_model_people.slug"/>
+</label>
+<f:form.textfield property="username"/><br/>
+<label for="email">
+    <f:translate key="tx_dld_domain_model_people.email"/>
+</label>
+<f:form.textfield property="email"/><br/>
+<label for="firstName">
+    <f:translate key="tx_dld_domain_model_people.first_name"/>
+</label>
+<f:form.textfield property="firstName"/><br/>
+<label for="lastName">
+    <f:translate key="tx_dld_domain_model_people.last_name"/>
+</label>
+<f:form.textfield property="lastName"/><br/>
+<label for="gender">
+    <f:translate key="tx_dld_domain_model_people.gender"/>
+</label>
+<f:form.radio property="gender" value="1" checked="{gender.value} == 1"/> Female
+<f:form.radio property="gender" value="0" checked="{gender.value} == 0"/> Male<br/>
+<label for="company">
+    <f:translate key="tx_dld_domain_model_people.company"/>
+</label>
+<f:form.textfield property="company"/><br/>
+<label for="title">
+    <f:translate key="tx_dld_domain_model_people.job_title"/>
+</label>
+<f:form.textfield property="title"/><br/>
+<label for="country">
+    <f:translate key="tx_dld_domain_model_people.country"/>
+</label>
+<dld:form.select property="country" options="{dld:Form.GetCountries()}"
+                 defaultOption="{f:translate(key:'pleaseChoose')}"/><br/>
+<br/>
+<label for="city">
+    <f:translate key="tx_dld_domain_model_people.city"/>
+</label>
+<f:form.textfield property="city"/><br/>
+<label for="emailPrivate">
+    <f:translate key="tx_dld_domain_model_people.email_private"/>
+</label>
+<f:form.textfield property="emailPrivate"/><br/>
+<label for="emailDefaultCc">
+    <f:translate key="tx_dld_domain_model_people.email_default_cc"/>
+</label>
+<f:form.textfield property="emailDefaultCc"/><br/>
+<label for="socialLinkedinUrl">
+    <f:translate key="tx_dld_domain_model_people.social_linkedin_url"/>
+</label>
+<f:form.textfield property="socialLinkedinUrl"/><br/>
+<label for="socialTwitterUsername">
+    <f:translate key="tx_dld_domain_model_people.social_twitter_username"/>
+</label>
+<f:form.textfield property="socialTwitterUsername"/><br/>
+<label for="isDldTeam">
+    <f:translate key="tx_dld_domain_model_people.is_dld_team"/>
+</label>
+<f:form.checkbox property="isDldTeam" value="1" checked="{people.isDldTeam} == 1"/><br/>
+<label for="isAmazingSpeaker">
+    <f:translate key="tx_dld_domain_model_people.is_amazing_speaker"/>
+</label>
+<f:form.checkbox id="amazingspeaker" property="isAmazingSpeaker" value="1" checked="{people.isAmazingSpeaker} == 1"/>
+<br/>
+<div id="speaker" class="hidden">
+    <label for="amazingSpeakerSortOrder">
+        <f:translate key="tx_dld_domain_model_people.amazing_speaker_sort_order"/>
+    </label>
+    <f:form.textfield id="amazingspeakerorder" property="amazingSpeakerSortOrder"/>
+    <br/>
+</div>
+<label for="image">
+    <f:translate key="tx_dld_domain_model_people.image"/>
+</label>
+
+<div class="input-file-container">
+    <h:form.upload property="image.0" class="input-file if1" id="my-file1">
+        <f:if condition="{resource}">
+            <f:image image="{resource}" alt="" class="image_preview"/>
+        </f:if>
+    </h:form.upload>
+
+    <label tabindex="0" for="my-file1" class="input-file-trigger ift1">Drag your media here</label>
+</div>
+<p class="file-return fr1"></p>
+<br>
+<label for="biography">
+    <f:translate key="tx_dld_domain_model_people.biography"/>
+</label>
+<f:form.textarea property="biography" cols="40" rows="15"/><br/>
+<label for="youtubevideos">
+    <f:translate key="tx_dld_domain_model_people.youtubevideos"/>
+</label>
+<f:form.textarea property="youtubevideos" cols="40" rows="15"/><br/>
+<f:if condition="{people.tags}">
+    <f:then><label for="tags">
+        <f:translate key="tx_dld_domain_model_people.tags"/>
+    </label>
+        <div class="tags">
+            <f:for each="{tags}" as="tag"><span class="tag">{tag.highrisetag}</span></f:for>
+        </div>
+    </f:then>
+</f:if>
+
+<br/>

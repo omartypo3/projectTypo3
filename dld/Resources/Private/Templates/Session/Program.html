@@ -1,0 +1,161 @@
+{namespace es = DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <section class="conference-overview">
+        <!-- the same scope a for conference overview -->
+        <f:if condition="{event.headerImage}">
+            <f:then>        <section class="conference-banner" style="background-image: url('{f:uri.image(image: event.headerImage ,maxHeight:300)}')"></f:then>
+            <f:else>
+                <v:variable.set name="url" value="{f:uri.image(src:'{settings.urlEvent}',maxHeight:300)}"></v:variable.set>
+                <section class="conference-banner" style="background-image: url('{url}')">
+            </f:else>
+        </f:if>
+
+            <div class="text-block">
+                <span class="dld-logo-white"></span>
+                <h3 class="conference-name">{event.title}</h3>
+                <h3>{event.venueId.city},
+                    <f:if condition="{event.start-> f:format.date(format:'Y')} == {end.end-> f:format.date(format:'Y')}">
+                        <f:then>
+                            <f:if condition="{event.start-> f:format.date(format:'m')} == {end.end-> f:format.date(format:'m')}">
+                                <f:then>
+                                    <f:if condition="{event.start-> f:format.date(format:'d')} == {end.end-> f:format.date(format:'d')}">
+                                        <f:then>
+                                            {end.end-> f:format.date(format:'d M')}
+                                        </f:then>
+                                        <f:else>
+                                            {event.start-> f:format.date(format:'d')}-{end.end-> f:format.date(format:'d
+                                            M')}
+                                        </f:else>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    {event.start-> f:format.date(format:'d M')}-{end.end-> f:format.date(format:'d M')}
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            {event.start-> f:format.date(format:'d M Y')}-{end.end-> f:format.date(format:'d M Y')}
+                        </f:else>
+                    </f:if>
+                </h3>
+            </div>
+        </section>
+
+        <header class="clearfix">
+            <br>
+            <div class="row clearfix">
+                <div class="col-xs-10 col-xs-push-1">
+                    <f:link.page pageUid="{event.showPage.uid}" class="btn btn-orange button-shadow">
+                        « BACK TO {event.title}
+                    </f:link.page>
+                </div>
+            </div>
+            <br>
+        </header>
+
+        <section class="program separate-program">
+            <h1 class="headline"><em>{event.title}</em> PROGRAM</h1>
+            <div class="program-header">
+                <f:for each="{dates}" as="date">
+                    <div class="program-dates">
+                        <v:variable.set name="programdate" value="{date.start-> f:format.date(format:'Y-m-d')}"/>
+                        <div class="program-day {f:if(condition:'{activeday} === {programdate}', then: 'active')}"
+                             id="day-{date.start-> f:format.date(format:'Y-m-d')}">
+
+                            {date.start-> f:format.date(format:'%A')} {date.start-> f:format.date(format:'%d %B %Y')}
+                            <div class="title">{event.title}</div>
+                        </div>
+                    </div>
+                </f:for>
+            </div>
+            <hr class="top">
+            <f:for each="{dates}" as="date">
+                <table id="{date.start-> f:format.date(format:'Y-m-d')}" class="day-schedule">
+                    <thead>
+                    <th class="time">Hour</th>
+                    <f:for each="{venues}" as="venue">
+                        <th>{venue.venueId.name}</th>
+                    </f:for>
+                    </thead>
+                    <tbody>
+                    <v:variable.set name="curdate" value="{date.start->f:format.date(format:'Y-m-d')}"/>
+                    <f:for each="{es:SessionsTime(id: event.uid, date: curdate)}" as="time" key="index">
+                        <tr class="">
+                            <td class="time" data-hour="{time.start-> f:format.date(format:'H:i')}">
+                                {time.start-> f:format.date(format:'H:i')}
+
+                            </td>
+
+                            <f:for each="{venues}" as="venue" key="it">
+                                <v:variable.set name="isempty" value="0"/>
+                                <f:for each="{es:SessionsByTime(id: event.uid, date:time.start )}" as="session"
+                                       key="index">
+
+                                    <f:if condition="{venue.venueId.uid}=={session.venueId.uid}">
+                                        <f:then>
+                                            <v:variable.set name="isempty" value="1"/>
+                                            <td class="main-location"
+                                                data-attr-starttime="{session.start-> f:format.date(format:'H:i')}"
+                                                data-attr-endtime="{session.end-> f:format.date(format:'H:i')}">
+                                                <article class="event">
+                                                    <f:link.action action="show" pluginName="dldfront"
+                                                                   pageUid="63"
+                                                                   controller="Session"
+                                                                   arguments="{session:session}">
+                                                        <h4>{session.name}</h4>
+                                                        <ul class="speakers">
+
+                                                            <f:for each="{es:SessionSpeakers(id : session.uid)}"
+                                                                   as="speaker">
+                                                                <li>
+                                                                    {speaker.peopleId.firstName}
+                                                                    {speaker.peopleId.lastName}
+
+                                                                    <span><f:if
+                                                                            condition="{speaker.peopleId.company}"><f:then>({speaker.peopleId.company})</f:then></f:if></span>
+                                                                </li>
+                                                            </f:for>
+                                                        </ul>
+                                                    </f:link.action>
+                                                </article>
+
+                                            </td>
+                                        </f:then>
+                                        <f:else>
+
+
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                                <f:if condition="{isempty}==0">
+                                    <f:then>
+                                        <td class="empty"></td>
+                                    </f:then>
+                                </f:if>
+                            </f:for>
+                        </tr>
+                    </f:for>
+                    </tbody>
+                </table>
+            </f:for>
+
+            <f:if condition="{event.programPdf}">
+                <f:then>
+                    <div class="box-header">
+                        <div class="links">
+                            <a href="{es:FileLink(fileid: event.programPdf.uid)}" class="download header-link btn btn-orange" download="">
+                                DOWNLOAD PROGRAM
+                            </a>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
+        </section>
+
+    </section>
+</f:section>
+
+</html>

@@ -1,0 +1,96 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<section class="conference-overview-top-section">
+    <f:if condition="{event.headerImage}">
+        <f:then>
+            <div class="conference-background" style="background-image: url('{f:uri.image(image: event.headerImage,maxHeight:300)}')">
+        </f:then>
+        <f:else>
+            <v:variable.set name="url" value="{f:uri.image(src:'{settings.urlEvent}')}"></v:variable.set>
+            <div class="conference-background"
+                 style="background-image: url('{url}')">
+        </f:else>
+    </f:if>
+    <f:if condition="{event.isInvitationalEvent}">
+        <f:then>
+            <f:if condition="{application}">
+                <f:then>
+                    <div class="links apply-now-popup display-apply-intro">
+                        <f:if condition="{event.type} == 'TICKETING' || {event.type} ==  'GUESTLIST'">
+                            <f:then>
+                                    <button class="btn btn-orange btn-big center-block">
+                                        <f:if condition="{buttontext}">
+                                            <f:then>{buttontext}</f:then>
+                                            <f:else>Apply now</f:else>
+                                        </f:if>
+                                    </button>
+                                </f:then>
+                        </f:if>
+                    </div>
+                    <f:link.action action="conference" pageUid="{settings.conferencePage}"
+                                   controller="Event" arguments="{event:event}" class="link"
+                                   style="display:none;"></f:link.action>
+
+                    <f:security.ifAuthenticated>
+                        <f:then>
+                            <v:asset.script name="redirectsivnup" fluid="true">
+                                $(".apply-now-popup button").click(function(){
+                                var uri = $(".link").attr('href');
+                                window.location.href = uri;
+                                });
+
+                            </v:asset.script>
+                        </f:then>
+                        <f:else>
+                            <section class="form-dialog signin-or-signup no-redirect"
+                                     data-attr-conference-id="{event.uid}">
+                                <header>
+                                    <h3 class="title">Apply</h3>
+                                </header>
+                                <div class="inner">
+
+                                    <p>Please
+                                        <f:link.action action="conference" pluginName="tx_dld_dldevent" controller="Event" pageUid="{settings.signupPage}" arguments="{event:event}"> sign in </f:link.action>
+                                        to continue with the application.
+                                    </p>
+                                    <br>
+                                    <p>If you are new at DLD, please
+                                        <f:link.action action="conference" pluginName="tx_dld_dldevent" controller="Event" pageUid="{settings.createdPage}"  arguments="{event:event}">create a new account.</f:link.action>
+                                    </p>
+                                </div>
+                            </section>
+                        </f:else>
+                    </f:security.ifAuthenticated>
+                </f:then>
+
+                <f:else>
+                    <span class="btn btn-black btn-big center-block">
+                        <f:if condition="{buttontext}">
+                            <f:then>{buttontext}</f:then>
+                            <f:else>Application Closed</f:else>
+                        </f:if>
+                </span>
+                </f:else>
+            </f:if>
+        </f:then>
+    </f:if>
+
+    </div>
+</section>
+
+<f:if condition="{event.type} == 'OPENED'">
+    <f:if condition="{XingIdentifier}">
+        <f:then>
+    <section class="section shop xing">
+        <h1 class="headline">
+            <em>Tickets</em>
+        </h1>
+        <div class="dash"></div>
+
+                <script type="text/javascript" src="https://{XingIdentifier}-modules.xing-events.com/resources/js/amiandoExport.js"> </script><iframe src="https://{XingIdentifier}-modules.xing-events.com/{XingIdentifier}.html?viewType=iframe&distributionChannel=CHANNEL_IFRAME&language=fr&useDefaults=false&resizeIFrame=true" frameborder="0" width="100%" height="650px" id="_amiandoIFrame3334124"><p>Cette page utilise des Frames. Veuillez donc utiliser un navigateur supportant les Frames pour voir le widget de la <a href="https://fr.xing-events.com/">billetterie en ligne</a>.</p></iframe>Plus de participants avec des <a href="https://fr.xing-events.com?viralRefId={XingIdentifier}&utm_campaign=ev-{XingIdentifier}&utm_medium=viral&utm_source=EventWebsite&utm_content=TextLinkBottom&utm_term=text-link" target="_blank" alt="XING Events" title="XING Events">solutions de gestion des événements en ligne</a> de XING Events.</section>
+
+            </f:then>
+        </f:if>
+</f:if>
+</html>

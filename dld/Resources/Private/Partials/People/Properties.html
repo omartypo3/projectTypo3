@@ -1,0 +1,174 @@
+{namespace dld = DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="dld-show container">
+    <div class="dld-people">
+        <div class="people-image col-md-6">
+            <f:if condition="{people.image.0}">
+                <f:then>
+                    <f:image image="{people.image.0}" class="show-image" maxHeight="300"></f:image>
+                </f:then>
+                <f:else>
+                    <f:image src="{settings.urlPeople}" class="show-image" maxHeight="300"></f:image>
+                </f:else>
+            </f:if>
+        </div>
+        <div class="people-info col-md-6">
+            <ul>
+                <li class="people-name bold">{people.firstName} {people.lastName}</li>
+                <f:if condition="{people.company}">
+                    <li class="grey">
+                        <f:translate key="tx_dld_domain_model_people.company"/>
+                        : <b>{people.company}</b></li>
+                </f:if>
+                <f:if condition="{people.title}">
+                    <li class="grey">
+                        <f:translate key="tx_dld_domain_model_event.title"/>
+                        : <b>{people.title}</b></li>
+                </f:if>
+                <f:if condition="{people.country}">
+                    <li class="grey">
+                        <f:translate key="tx_dld_domain_model_event.location"/>
+                        : <b>{people.city},
+                        <dld:form.GetCountry index="{people.country}"></dld:form.GetCountry>
+                    </b></li>
+                </f:if>
+            </ul>
+        </div>
+    </div>
+    <div class="description-container">
+        <div class="description container container-xs"><f:format.html>{people.biography}</f:format.html></div>
+    </div>
+</div>
+<f:if condition="{dld:YoutubePeople(videosID:people.youtube)} || {dld:FlickrSearchTag(tags:people.tags)}">
+    <f:then>
+        <section class="gallery">
+            <h1 class="text-center orange bold">GALLERY</h1>
+            <ul class="tablist">
+                <f:if condition="{dld:YoutubePeople(videosID:people.youtube)}">
+                    <f:then>
+                        <li class="tab"><a href="#gallery-videos" class="active">WATCH VIDEOS</a></li>
+                    </f:then>
+                </f:if>
+                <f:if condition="{dld:FlickrSearchTag(tags:people.tags)}">
+                    <f:then>
+                        <li class="tab"><a href="#gallery-photos">SEE PHOTOS</a></li>
+                    </f:then>
+                </f:if>
+            </ul>
+            <div class="gallery-container">
+                <f:if condition="{dld:YoutubePeople(videosID:people.youtube)}">
+                    <f:then>
+                        <div id="gallery-videos" class="tab-content">
+
+
+                            <div class="big-media-preloader">
+                                <v:variable.set name="firstobject"
+                                                value="{dld:YoutubePeople(videosID:people.youtube)-> v:iterator.first()}"/>
+                                <div class="big-media-container"
+                                     style="background-image: url({firstobject.2})">
+
+                                    <a class="playbutton">
+                                        <img alt="Dld14 lupe final"
+                                             src="typo3conf/ext/theme/Resources/Public/icons/playyoutube.png">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="media-list tab-images">
+                                <f:for each="{dld:YoutubePeople(videosID:people.youtube)}" as="video">
+                                    <article class="clearfix video" data-id="{video.0}">
+                                        <a class="zoom-fullscreen" rel="gallery" href="{video.2}"></a>
+                                        <a title="" href="#" class="thumbnail">
+                                            <div style="background-image: url({video.2});"></div>
+                                        </a>
+                                        <h4 class="info-box">
+                                            <a href="#">
+                                                <div class="conference-name">{video.3}</div>
+                                                <div class="title">{video.1}</div>
+                                                <div class="speaker">{video.4}</div>
+                                            </a>
+                                        </h4>
+                                    </article>
+                                </f:for>
+                            </div>
+
+                            <div class="media-gallery-info-box">
+                                <div class="conference-name">{firstobject.3}</div>
+                                <div class="second-line">
+                                    <span class="title">{firstobject.1}</span> <span
+                                        class="speakers">{firstobject.4} </span>
+                                </div>
+                                <div class="share-button">
+
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+                <f:if condition="{dld:FlickrSearchTag(tags:people.tags)}">
+                    <f:then>
+                        <div id="gallery-photos" class="tab-content">
+                            <div class="big-media-preloader">
+                                <div class="big-media-container"
+                                     style="background-image: url({dld:FlickrSearchTag(tags:people.tags)-> v:iterator.first()-> v:iterator.first()})">
+                                    <a class="zoom-fullscreen width-100" data-preview="true" rel="gallery"
+                                       href="{dld:FlickrSearchTag(tags:people.tags)-> v:iterator.first()-> v:iterator.first()}"
+                                       title="{dld:FlickrSearchTag(tags:people.tags)-> v:iterator.first()-> v:iterator.last()-> f:format.stripTags()}"
+                                       data-lightbox="{dld:FlickrSearchTag(tags:people.tags)-> v:iterator.first()-> v:iterator.last()-> f:format.stripTags()}"
+                                    >
+
+                                    </a>
+                                </div>
+                                <a class="zoombutton">
+                                    <img alt="Dld14 lupe final"
+                                         src="typo3conf/ext/theme/Resources/Public/icons/DLD14_Lupe_final.png">
+                                </a>
+                            </div>
+                            <div class="media-list tab-images">
+                                <f:for each="{dld:FlickrSearchTag(tags:people.tags)}" as="image">
+                                    <article class="clearfix"
+                                             data-large="{image-> v:iterator.first()}"
+                                             data-full="{image-> v:iterator.first()}"
+                                             data-title="{image-> v:iterator.last()-> f:format.stripTags()}">
+                                        <a title="{image-> v:iterator.last()-> f:format.stripTags()}"
+                                           class="zoom-fullscreen" rel="gallery"
+                                           data-lightbox="example-set"
+                                           data-title="{image-> v:iterator.last()-> f:format.stripTags()} aaa"
+                                           data-caption="{image-> v:iterator.last()-> f:format.stripTags()} aaa"
+                                           href="{image-> v:iterator.first()}">
+                                            <img
+                                                    data-rel="{image-> v:iterator.last()-> f:format.stripTags()}"
+                                                    src="{image-> v:iterator.first()}"
+                                                    alt="Show fullscreen"/>
+                                        </a>
+                                        <a title="" href="#" class="thumbnail">
+                                            <div style="background-image: url({image-> v:iterator.first()});">
+
+                                            </div>
+                                        </a>
+                                        <h4>
+                                            <a title="" href="#" class="title">{image-> v:iterator.last()->
+                                                f:format.stripTags()}</a>
+                                        </h4>
+                                    </article>
+                                </f:for>
+                            </div>
+                            <div class="media-gallery-info-box">
+                                <div class="conference-name"></div>
+                                <div class="second-line">
+                                    <span class="title">PHOTOS</span>
+                                    <span class="speakers">{dld:FlickrSearchTag(tags:people.tags)-> v:iterator.first()-> v:iterator.last()-> f:format.stripTags()}  </span>
+                                </div>
+                                <div class="share-button">
+
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                </f:if>
+            </div>
+
+        </section>
+    </f:then>
+</f:if>
+</html>

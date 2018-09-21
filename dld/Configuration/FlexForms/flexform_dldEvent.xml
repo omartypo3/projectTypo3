@@ -1,0 +1,183 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Function</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Section</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Conference Header Image</numIndex>
+                                        <numIndex index="1">Event->header</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Conference Title And Description</numIndex>
+                                        <numIndex index="1">Event->description</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Conference Twitter</numIndex>
+                                        <numIndex index="1">Event->twitter</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">Conference Map</numIndex>
+                                        <numIndex index="1">Event->map</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4">
+                                        <numIndex index="0">Conference Speakers</numIndex>
+                                        <numIndex index="1">Event->speakers</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5">
+                                        <numIndex index="0">Conference Program</numIndex>
+                                        <numIndex index="1">Event->program</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6">
+                                        <numIndex index="0">Conference Partners</numIndex>
+                                        <numIndex index="1">Event->partners</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7">
+                                        <numIndex index="0">Conference Gallery</numIndex>
+                                        <numIndex index="1">Event->gallery</numIndex>
+                                    </numIndex>
+                                    <numIndex index="8">
+                                        <numIndex index="0">Events might like</numIndex>
+                                        <numIndex index="1">Event->eventsMightLike</numIndex>
+                                    </numIndex>
+                                    <numIndex index="9">
+                                        <numIndex index="0">Conference signup</numIndex>
+                                        <numIndex index="1">Event->conference;Event->invited;Event->buyTicket;</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+
+                    <settings.eventid>
+                        <TCEforms>
+                            <label>Event Id</label>
+                            <config>
+                                <type>group</type>
+                                <internal_type>db</internal_type>
+                                <allowed>tx_dld_domain_model_event</allowed>
+                                <size>1</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.eventid>
+
+                    <settings.buttontext>
+                        <TCEforms>
+                            <label>Button Text</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->header</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.buttontext>
+                    <settings.application>
+                        <TCEforms>
+                            <label>Is Open Application</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->header</displayCond>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.application>
+
+                    <settings.downloadtext>
+                        <TCEforms>
+                            <label>Button Text</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->program</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.downloadtext>
+                    <settings.title>
+                        <TCEforms>
+                            <label>Title</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->program</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.title>
+
+                    <settings.pastEventsTitle>
+                        <TCEforms>
+                            <label>Label title</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->eventsMightLike</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.pastEventsTitle>
+
+                    <settings.pastEventsNumbers>
+                        <TCEforms>
+                            <label>Events numbers to display</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->eventsMightLike</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.pastEventsNumbers>
+
+                    <settings.pastEventsButtonTitle>
+                        <TCEforms>
+                            <label>Button title</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->eventsMightLike</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.pastEventsButtonTitle>
+
+                    <settings.imageshow>
+                        <TCEforms>
+                            <label>Display Photos</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->gallery</displayCond>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.imageshow>
+                    <settings.youtubeshow>
+                        <TCEforms>
+                            <label>Display Videos</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->gallery</displayCond>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.youtubeshow>
+                    <settings.partnerhedline>
+                        <TCEforms>
+                            <label>Slider Headline</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Event->partners</displayCond>
+                            <config>
+                                <type>input</type>
+                                <size>50</size>
+                            </config>
+                        </TCEforms>
+                    </settings.partnerhedline>
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

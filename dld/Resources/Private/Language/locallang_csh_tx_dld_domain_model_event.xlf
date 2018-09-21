@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-10T12:12:26Z" product-name="dld">
+		<header/>
+		<body>
+			<trans-unit id="tx_dld_domain_model_dldfront">
+				<source>DLDfront</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_dldfront.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="header_image.description">
+				<source>headerImage</source>
+			</trans-unit>
+			<trans-unit id="is_visible.description">
+				<source>isVisible</source>
+			</trans-unit>
+			<trans-unit id="slide_image.description">
+				<source>slideImage</source>
+			</trans-unit>
+			<trans-unit id="conference_image.description">
+				<source>conferenceImage</source>
+			</trans-unit>
+			<trans-unit id="program_pdf.description">
+				<source>programPdf</source>
+			</trans-unit>
+			<trans-unit id="max_invitee.description">
+				<source>maxInvitee</source>
+			</trans-unit>
+			<trans-unit id="twitter_hashtag.description">
+				<source>twitterHashtag</source>
+			</trans-unit>
+			<trans-unit id="venue_id.description">
+				<source>venueId</source>
+			</trans-unit>
+			<trans-unit id="youtube_playlist.description">
+				<source>Youtube playlist ID</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

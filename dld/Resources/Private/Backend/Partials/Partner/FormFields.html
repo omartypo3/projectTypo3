@@ -1,0 +1,80 @@
+{namespace h=DLD\Dld\ViewHelpers}
+{namespace dld=DLD\Dld\ViewHelpers}
+<label for="name">
+    <f:translate key="tx_dld_domain_model_partner.name"/>
+</label>
+<f:form.textfield property="name"/><br/>
+<label for="logo">
+    <f:translate key="tx_dld_domain_model_partner.logo"/>
+</label>
+
+
+<div class="input-file-container">
+    <h:form.upload property="logo" class="input-file if1" id="my-file1">
+        <f:if condition="{resource}">
+            <f:image image="{resource}" alt="" class="image_preview"/>
+        </f:if>
+    </h:form.upload>
+
+    <label tabindex="0" for="my-file1" class="input-file-trigger ift1">Drag your media here</label>
+</div>
+<p class="file-return fr1"></p>
+<br>
+
+
+<label for="country">
+    <f:translate key="tx_dld_domain_model_partner.country"/>
+</label>
+<dld:form.select property="country" options="{dld:Form.GetCountries()}"
+                 defaultOption="{f:translate(key:'pleaseChoose')}"/><br/>
+<label for="city">
+    <f:translate key="tx_dld_domain_model_partner.city"/>
+</label>
+<f:form.textfield property="city"/><br/>
+<label for="description">
+    <f:translate key="tx_dld_domain_model_partner.description"/>
+</label>
+<f:form.textarea property="description" cols="40" rows="15"/><br/>
+<label for="socialLinkedinUrl">
+    <f:translate key="tx_dld_domain_model_partner.social_linkedin_url"/>
+</label>
+<f:form.textfield property="socialLinkedinUrl"/><br/>
+<label for="socialTwitterUsername">
+    <f:translate key="tx_dld_domain_model_partner.social_twitter_username"/>
+</label>
+<f:form.textfield property="socialTwitterUsername"/><br/>
+<label for="operationfield">
+    <f:translate key="tx_dld_domain_model_partner.operationfield"/>
+</label>
+        <f:form.select  property="operationfield" options="{fields}"/>
+<br/>
+
+
+<script>
+    document.querySelector("html").classList.add('js');
+
+
+    function InputFileStyle(input_file, input_file_trigger, file_return) {
+
+        var fileInput2 = document.querySelector(input_file),
+            button2 = document.querySelector(input_file_trigger),
+            the_return2 = document.querySelector(file_return);
+
+        button2.addEventListener("keydown", function (event) {
+            if (event.keyCode == 13 || event.keyCode == 32) {
+                fileInput2.focus();
+            }
+        });
+        button2.addEventListener("click", function (event) {
+            fileInput2.focus();
+            return false;
+        });
+        fileInput2.addEventListener("change", function (event) {
+            the_return2.innerHTML = this.value;
+        });
+    }
+
+    InputFileStyle(".if1", ".ift1", ".fr1");
+
+
+</script>

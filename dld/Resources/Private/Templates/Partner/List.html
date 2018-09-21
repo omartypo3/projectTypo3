@@ -1,0 +1,49 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<section class="partners-section">
+		<div class="container">
+			<h1 class="orange bold text-center">{title} </h1>
+			<f:if condition ="{partners} == '' ">
+				<f:then>
+					<h4 class="text-center"><f:translate key="tx_dld_domain_model_partner.ErrorMessagePartners" /></h4>
+
+				</f:then>
+				<f:else>
+					<div class="partners-container">
+						<div class="partners-row partners-slider">
+
+							<f:for each="{partners}" as="partner">
+								<div class="item">
+									<div class="circle active" data-text-id="{partner.uid}">
+										<f:image image="{partner.logo}"class="img-responsive absolute-center"></f:image>
+									</div>
+								</div>
+							</f:for>
+						</div>
+
+						<div class="partners-description grey center-block">
+							<f:for each="{partners}" as="partner" iteration="i">
+								<div id="{partner.uid}"class="text {f:if(condition:i.isFirst , then: 'active')}">
+									<f:format.crop maxCharacters="495" respectWordBoundaries="FALSE"> <f:format.html>{partner.description}</f:format.html></f:format.crop>
+									<f:link.action action="show"  pageUid="{pageid}"controller="Partner" arguments="{partner : partner}" class="orange"  title="{partner.description}">
+										More »
+									</f:link.action>
+								</div>
+							</f:for>
+						</div>
+
+					</div>
+				</f:else>
+			</f:if>
+
+
+		</div>
+
+	</section>
+
+</f:section>
+</html>

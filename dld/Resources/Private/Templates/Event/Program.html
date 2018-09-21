@@ -1,0 +1,59 @@
+{namespace es=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{es:EventSession(id: event.uid)}">
+    <f:then>
+
+
+        <section class="program-overview">
+
+            <div class="center-block container-sm">
+                <hr class="hr-white"/>
+            </div>
+
+            <h2 class="grey text-center bold">
+                <f:if condition="{pageid.title}">
+                    <f:then>{pageid.title}</f:then>
+                    <f:else>PROGRAM:</f:else>
+                </f:if>
+            </h2>
+            <div class="program-slider container-sm">
+
+                <f:for each="{dates}" as="session" iteration="color">
+
+                    <v:variable.set name="date" value="{session.start-> f:format.date(format:'Y-m-d')}" />
+
+                    <div class="item">
+                        <f:link.action action="program" pageUid="{pageid.sessionPageID}"
+                                       controller="Session" arguments="{event:event,day :date}"  >
+                            <div class="circle"
+                                 style="background-color:{f:if(condition: color.isOdd, then: '#ffdf44', else:'#eea3c4')} ;">
+                                <div class="text-container vertical-align">
+                                    <h6 class="bold orange text-center">{session.start-> f:format.date(format:'%A')}</h6>
+                                    <p class="white text-center">{session.start-> f:format.date(format:'%d %B %Y')}
+                                    </p>
+                                </div>
+                            </div>
+                        </f:link.action>
+                    </div>
+                </f:for>
+            </div>
+            <f:if condition="{event.programPdf}">
+                <f:then>
+                    <div class="buttons-wrapper text-center center-block container container-sm">
+                        <a href="{es:FileLink(fileid: event.programPdf.uid)}" class="btn btn-white btn-big btn-shadow" target="_blank">
+                            <f:if condition="{pageid.downloadtext}">
+                                <f:then>{pageid.downloadtext}</f:then>
+                                <f:else>Download Program</f:else>
+                            </f:if>
+                            <i class="icon-pdf-white"></i></a>
+
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                </f:then>
+            </f:if>
+        </section>
+    </f:then>
+</f:if>
+</html>

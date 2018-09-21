@@ -1,0 +1,72 @@
+{namespace dld=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <section class="section">
+        <h1 class="text-center orange bold">GALLERY</h1>
+
+                <ul class="tablist">
+                    <f:if condition="{settings.youtubeshow}">
+                        <f:then>
+                            <li class="tab"><a href="#gallery-videos">Videos</a></li>
+                        </f:then>
+                    </f:if>
+                    <f:if condition="{settings.imageshow} && {dld:Flickr(albumId:event.albumId)}">
+                        <f:then>
+                            <li class="tab"><a href="#gallery-photos">Photos</a></li>
+                        </f:then>
+                    </f:if>
+                </ul>
+
+
+        <div class="gallery-container">
+            <f:if condition="{settings.imageshow} && {dld:Flickr(albumId:event.albumId)}">
+                <f:then>
+                    <div id="gallery-photos" class="tab-content">
+                        <f:for each="{dld:Flickr(albumId:event.albumId)}" as="image" iteration="iterator">
+                            <div class="gallery-item-container" id="flicker-{iterator.cycle}">
+                                <a class="gallery-item" rel="group" href="{image}">
+
+                                    <div class="gallery-item-image"
+                                         style="background-image: url('{image}');">
+                                    </div>
+                                </a>
+                            </div>
+                        </f:for>
+                    </div>
+                </f:then>
+            </f:if>
+            <f:if condition="{settings.youtubeshow} && {dld:YoutubeEvent(playListID:event.youtube_playlist)}">
+                <f:then>
+                    <div id="gallery-videos" class="tab-content">
+                        <f:for each="{dld:YoutubeEvent(playListID:event.youtube_playlist)}" as="vid"
+                               iteration="iterator">
+                            <div class="gallery-item-container" id="youtube-{iterator.cycle}">
+                                <div class="gallery-item">
+                                    <div class="gallery-item-image"
+                                         style="background-image: url('{vid.2}');">
+                                    </div>
+                                    <div class="gallery__item__image__overlay">
+                                        <a class="fancybox-media" rel="group"
+                                           href="https://www.youtube.com/embed/{vid.0}?autoplay=1">
+                                            <img alt="Play"
+                                                 src="typo3conf/ext/theme/Resources/Public/icons/galleryplay.png">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="overlay-box">
+                                    <div class="overlay-box__content">
+                                        <div class="overlay-box__content__title"><em>DLD</em> {event.title}</div>
+                                        <div class="overlay-box__content__text">{vid.1}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:for>
+                    </div>
+                </f:then>
+            </f:if>
+        </div>
+    </section>
+</f:section>
+
+</html>

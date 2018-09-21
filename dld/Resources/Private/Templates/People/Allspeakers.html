@@ -1,0 +1,84 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:flashMessages/>
+    <div class="allspeakers">
+        <p id="no-speakers">Sorry, we don't have any speaker matching those search parameters.</p>
+        <div class="filter-search"><span><f:translate key="tx_dld_domain_model_people.filter"/></span>
+            <f:translate key="tx_dld_domain_model_people.yoursearch"/>
+        </div>
+        <f:form action="allspeakers" controller="People" method="POST" class="speakerlist">
+            <div class="speakers-search">
+                <f:form.textfield type="search" property="names" id="names" name="names" placeholder="First name"
+                                  title="names"/>
+                <input value="Search" type="submit">
+            </div>
+
+            <div class="speakers-search">
+                <f:form.textfield type="search" property="lastnames" id="lastnames" name="lastnames"
+                                  placeholder="Last name"
+                                  title="names"/>
+                <input value="Search" type="submit">
+            </div>
+            <div class="speakers-search">
+                <f:form.textfield type="search" property="company" id="company" name="company" placeholder="Company"
+                                  title="company"/>
+                <input value="Search" type="submit">
+            </div>
+
+                <f:form.select id="selectevent" property="selectevent" name="selectevent">
+                      <option value="0">Conference</option>
+                    <f:for each="{events}" as="event">
+
+                        <option value="{event.uid}">{event.title}</option>
+                    </f:for>
+                </f:form.select>
+
+
+            <div class="filter-search" id="clear-filters" style="cursor: pointer">
+                <span class="red">CLEAR</span>&nbspFILTERS
+            </div>
+
+            <f:form.textfield type="hidden" id="uri_hidden"
+                              value="{f:uri.action(action: 'allspeakers' , pageType:555 )}"/>
+        </f:form>
+        <div id="speaker-list-new" class="row1 all-speakers image-grid are-images-unloaded" data-js="image-grid">
+            <!--should never and never and never and neveeeeeeeeeeer chanage the id name of this div  -->
+
+            <f:for each="{isAmazing}" as="people">
+                <div class="column speaker-item ">
+                    <div class="item secondary"
+                         style="width: 100% !important;text-align: center;outline: none !important;">
+                        <f:link.action action="show" arguments="{people : people}" pageUid="50"
+                                       controller="People">
+                            <f:if condition="{people.image}">
+                                <f:then>
+                                    <div class="circle"
+                                         style="background-image: url('{f:uri.image(maxHeight:300,image:people.image.0)}')">
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <v:variable.set name="url"
+                                                    value="{f:uri.image(src:'{settings.urlPeople}',maxHeight:300)}"></v:variable.set>
+                                    <div class="circle"
+                                         style="background-image: url('{url}')">
+                                    </div>
+                                </f:else>
+                            </f:if>
+
+                            <p class="text-center orange ">{people.firstName}
+                                {people.lastName}</p>
+                            <span style="color: #9b9b9b;">{people.company}</span>
+
+
+                        </f:link.action>
+                    </div>
+                </div>
+            </f:for>
+            <div class="loading"></div>
+        </div>
+    </div>
+    </div>
+</f:section>
+
+</html>

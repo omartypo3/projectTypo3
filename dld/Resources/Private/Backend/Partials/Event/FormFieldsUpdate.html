@@ -1,0 +1,197 @@
+{namespace h=DLD\Dld\ViewHelpers}
+<label for="title">
+    <f:translate key="tx_dld_domain_model_event.title"/>
+</label>
+<f:form.textfield property="title"/><br/>
+<label for="headerImage">
+    <f:translate key="tx_dld_domain_model_event.header_image"/>
+</label>
+
+<div class="input-file-container">
+    <h:form.upload property="headerImage" class="input-file if1" id="my-file1">
+        <f:if condition="{resource}">
+            <f:image image="{resource}" alt=""  class="image_preview"/>
+        </f:if>
+    </h:form.upload>
+
+    <label tabindex="0" for="my-file1" class="input-file-trigger ift1">Drag your media here</label>
+</div>
+<p class="file-return fr1"></p>
+<br>
+
+
+<label for="venueId">
+    <f:translate key="tx_dld_domain_model_event.venues"/>
+</label>
+<f:form.select property="venueId" options="{venues}"
+               optionValueField="uid" optionLabelField="name"/><br/>
+
+<label for="isVisible">
+    <f:translate key="tx_dld_domain_model_event.is_visible"/>
+</label>
+<f:if condition="{event}">
+    <f:then>
+        <f:form.checkbox property="isVisible" value="1"/>
+    </f:then>
+    <f:else>
+        <f:form.checkbox property="isVisible" value="1" checked="true"/>
+    </f:else>
+</f:if>
+<br/>
+<label for="slideImage">
+    <f:translate key="tx_dld_domain_model_event.slide_image"/>
+</label>
+<div class="input-file-container">
+    <h:form.upload property="slideImage" class="input-file if2" id="my-file2">
+        <f:if condition="{resource}">
+            <f:image image="{resource}" alt="" class="image_preview"/>
+        </f:if>
+    </h:form.upload>
+
+    <label tabindex="0" for="my-file2" class="input-file-trigger ift2">Drag your media here</label>
+</div>
+<p class="file-return fr2"></p>
+<br>
+
+
+<label for="conferenceImage">
+    <f:translate key="tx_dld_domain_model_event.conference_image"/>
+</label>
+
+<div class="input-file-container">
+    <h:form.upload property="conferenceImage" class="input-file if3" id="my-file3">
+        <f:if condition="{resource}">
+            <f:image image="{resource}" alt="" class="image_preview"/>
+        </f:if>
+    </h:form.upload>
+
+    <label tabindex="0" for="my-file3" class="input-file-trigger ift3">Drag your media here</label>
+</div>
+<p class="file-return fr3"></p>
+<br>
+
+<label for="programPdf">
+    <f:translate key="tx_dld_domain_model_event.program_pdf"/>
+</label>
+<h:form.upload  property="programPdf" /><br/>
+<label for="maxInvitee">
+    <f:translate key="tx_dld_domain_model_event.max_invitee"/>
+</label>
+<f:form.textfield property="maxInvitee"/><br/>
+
+<label for="twitterHashtag" data-toggle="tooltip" title="Please DO NOT add '#'">
+    <f:translate key="tx_dld_domain_model_event.twitter_hashtag"/>*
+    <f:image></f:image>
+</label>
+
+<f:form.textfield property="twitterHashtag"/><br/>
+
+
+<label for="isInvitationalEvent">
+    <f:translate key="tx_dld_domain_model_event.is_invitational_event"/>
+</label>
+<f:form.checkbox property="isInvitationalEvent" value="1"/><br/>
+<label for="applyToInviteUntil">
+    <f:translate key="tx_dld_domain_model_event.apply_to_invite_until"/>
+</label>
+<div class='input-group date' id='datetimepicker1'>
+    <f:form.textfield property="applyToInviteUntil" type="text"
+                      value="{event.applyToInviteUntil -> f:format.date(format:'d.m.Y H:i')}" class="form-control"/>
+    <span class="input-group-addon">
+		<span class="fa fa-calendar"></span>
+	</span>
+</div>
+<br/>
+
+<label for="description">
+    <f:translate key="tx_dld_domain_model_event.description"/>
+</label>
+<f:form.textarea property="description" cols="40" rows="15"/><br/>
+
+<label for="livestream">
+    <f:translate key="tx_dld_domain_model_event.livestream"/>
+</label>
+<f:form.textfield property="livestream"/><br/>
+<label for="albumId">
+    <f:translate key="tx_dld_domain_model_event.albumid"/>
+</label>
+<f:form.textfield property="albumId"/><br/>
+
+<label for="xingEventId">
+    <f:translate key="tx_dld_domain_model_event.xingEventId"/>
+</label>
+<f:form.textfield property="xingEventId"/><br/>
+<label for="type">
+    <f:translate key="tx_dld_domain_model_event.type"/>
+</label>
+<f:form.select property="type" options="{TICKETING : 'TICKETING', GUESTLIST : 'GUESTLIST', OPENED : 'OPENED'}"/><br/>
+
+<label for="tagPrefix">
+    <f:translate key="tx_dld_domain_model_event.tagPrefix"/>
+</label>
+<f:form.textfield property="tagPrefix"/><br/>
+<label for="youtubePlaylist">
+    <f:translate key="tx_dld_domain_model_event.youtubePlaylist"/>
+</label>
+<f:form.textfield property="youtubePlaylist"/><br/>
+
+
+<label>
+    <f:translate key="tx_dld_domain_model_event.partners"/>
+</label>
+<table class="tx_dld datatable1" id="partnereventedit">
+    <thead>
+    <tr>
+        <th>
+            <f:translate key="tx_dld_domain_model_partner.name"/>
+        </th>
+        <th>
+            <f:translate key="tx_dld_domain_model_partner.logo"/>
+        </th>
+        <th>
+            <f:translate key="tx_dld_domain_model_event.ispartner"/>
+        </th>
+    </tr>
+    <tr class="inputs">
+        <td></td>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+</table>
+<br/>
+
+<script>
+    document.querySelector("html").classList.add('js');
+
+    function InputFileStyle(input_file, input_file_trigger, file_return) {
+
+        var fileInput2 = document.querySelector(input_file),
+            button2 = document.querySelector(input_file_trigger),
+            the_return2 = document.querySelector(file_return);
+
+        button2.addEventListener("keydown", function (event) {
+            if (event.keyCode == 13 || event.keyCode == 32) {
+                fileInput2.focus();
+            }
+        });
+        button2.addEventListener("click", function (event) {
+            fileInput2.focus();
+            return false;
+        });
+        fileInput2.addEventListener("change", function (event) {
+            the_return2.innerHTML = this.value;
+        });
+    }
+
+    TYPO3.jQuery(document).ready(function () {
+        InputFileStyle(".if1", ".ift1", ".fr1");
+        InputFileStyle(".if2", ".ift2", ".fr2");
+        InputFileStyle(".if3", ".ift3", ".fr3");
+        if ($('.input-file ').val() == '') {
+            $('.input-file').css('margin-top', 0);
+        }
+        ;
+    });
+
+</script>

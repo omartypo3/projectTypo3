@@ -1,0 +1,29 @@
+<f:widget.paginate objects="{isAmazing}" as="peoplep"
+                   configuration="{itemsPerPage: 21, insertAbove: 1, insertBelow: 0, maximumNumberOfLinks: 10}">
+    <f:for each="{peoplep}" as="people">
+        <div class="column speaker-item ">
+            <div class="item secondary" style="width: 100% !important;text-align: center;outline: none !important;">
+                <f:link.action action="show" arguments="{people : people}" pageUid="50" controller="People" >
+                    <f:if condition="{f:uri.image(image:people.image.0)}">
+                        <f:then>
+                            <div class="circle" style="background-image: url('{f:uri.image(maxHeight:300,image:people.image.0)}')">
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <v:variable.set name="url" value="{f:uri.image(src:'{settings.urlPeople}',maxHeight:300)}"></v:variable.set>
+                            <div class="circle"
+                                 style="background-image: url('{url}')">
+                            </div>
+                        </f:else>
+                    </f:if>
+
+                    <p class="text-center orange ">{people.firstName}
+                        {people.lastName}</p>
+                    <span style="color: #9b9b9b;">{people.company}</span>
+
+
+                </f:link.action>
+            </div>
+        </div>
+    </f:for>
+</f:widget.paginate>

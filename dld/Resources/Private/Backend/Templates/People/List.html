@@ -1,0 +1,57 @@
+<f:layout name="Default"/>
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="content-dld-inner">
+        <h1>Listing for People</h1>
+
+        <f:flashMessages/>
+
+        <f:link.action action="new" class="float-right newaction"><i class="fa fa-plus-circle "></i>New People
+        </f:link.action>
+        <table class="tx_dld datatable1" id="people">
+            <thead>
+            <tr>
+                <th></th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_people.first_name"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_people.last_name"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_people.company"/>
+                </th>
+                <th>/<f:translate key="tx_dld_domain_model_people.slug"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_people.twitter"/>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr class="inputs">
+                <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+
+    </div>
+</f:section>

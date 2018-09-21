@@ -1,0 +1,55 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="content-dld-inner">
+        <h1>Dashboard</h1>
+
+        <f:flashMessages />
+        <h2>Pending to dos</h2>
+        <table  class="datatable2 display" width="100%"  cellspacing="0" >
+            <thead>
+            <tr>
+                <th><f:translate key="tx_dld_domain_model_dashboard.date" /></th>
+                <th><f:translate key="tx_dld_domain_model_dashboard.doing" /></th>
+                <th><f:translate key="tx_dld_domain_model_dashboard.affected_conference" /></th>
+                <th><f:translate key="tx_dld_domain_model_dashboard.initialed_by" /></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <f:for each="{conferences1}" as="conference">
+                <tr>
+                    <td><f:link.action action="show" arguments="{conference : conference}"> {conference.status}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{conference : conference}"> {conference.inviteestats}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{conference : conference}"> {conference.startend}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{conference : conference}"> {conference.title}</f:link.action></td>
+
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+        <h2>Upcoming conferences</h2>
+        <table  class="tx_dld datatable1" id="hometable">
+            <thead>
+                <tr>
+                    <th><f:translate key="tx_dld_domain_model_dashboard.date" /></th>
+                    <th><f:translate key="tx_dld_domain_model_dashboard.conference" /></th>
+                    <th><f:translate key="tx_dld_domain_model_dashboard.venue" /></th>
+                    <th><f:translate key="tx_dld_domain_model_dashboard.managed_by" /></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</f:section>

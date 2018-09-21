@@ -1,0 +1,104 @@
+<div xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+    <f:layout name="Default"/>
+    <f:section name="main">
+        <section class="videos search-page-container">
+            <h1 class="bold">WATCH DLD</h1>
+            <div class="partners-list row search-page-list">
+
+                <div class="filters-and-search">
+
+                    <h2><span class="red">FILTER</span>&nbsp;<span>YOUR SEARCH</span></h2>
+                    <div class="videos-search">
+                        <input id="videos-search" name="q" placeholder="Enter Keyword" type="search">
+                        <input value="Search" type="submit" class="searching">
+                    </div>
+                    <select id="conference" name="conference" class="selected">
+                        <option value="">conference</option>
+                        <f:for each="{events}" as="event">
+                            <option value="{event.uid}">{event.title}</option>
+                        </f:for>
+                    </select>
+                    <select id="speaker" name="speaker" class="">
+                        <option value="">speaker</option>
+                        <f:for each="{speakers}" as="speaker">
+                            <option value="{speaker.uid}">{speaker.firstName} {speaker.lastName}</option>
+                        </f:for>
+                    </select>
+                    <div class="videos-search">
+                        <input id="company" name="q" placeholder="Speaker's Company" type="text">
+                        <input value="Search" type="submit" class="searching">
+                    </div>
+                    <select id="category" name="category" class="">
+                        <option value="">Topics</option>
+                        <option value="Social &amp; Politics">Social &amp; Politics</option>
+                        <option value="Life &amp; Science">Life &amp; Science</option>
+                        <option value="Art &amp; Design">Art &amp; Design</option>
+                        <option value="Digital &amp; Technology">Digital &amp; Technology</option>
+                        <option value="Entrepreneurship &amp; Innovation">Entrepreneurship &amp; Innovation</option>
+                        <option value="Business &amp; Finance">Business &amp; Finance</option>
+                        <option value="Media &amp; Advertising">Media &amp; Advertising</option>
+                        <option value="Music &amp; Entertainment">Music &amp; Entertainment</option>
+                    </select>
+                    <select id="duration" name="duration" class="">
+                        <option value="">Duration</option>
+                        <option value="less_than_5">0 min - 5 min</option>
+                        <option value="less_than_10">5min - 10min</option>
+                        <option value="less_than_20">10 min - 20 min</option>
+                        <option value="more_than_20">more than 20 min</option>
+                    </select>
+
+                    <div class="links order-links text-center">
+                        <a class="header-link" id="most_viewed">
+                            <span class="btn btn-white bold button-shadow">MOST VIEWED</span>
+                        </a>
+                        <a class="header-link choosen" id="most_recent">
+                            <span class="btn btn-white bold button-shadow">MOST RECENT</span>
+                        </a>
+                    </div>
+
+                    <a class="header-link" id="clear-filters">
+                        <span class="red">CLEAR</span>&nbsp;<span>FILTERS</span>
+                    </a>
+
+                </div>
+
+                <div class="div col-md-12">
+                    <section class="youtube-gallery">
+
+                        <f:for each="{videos}" as="video">
+                            <a href="/videos/{video.id}" class="video-item" title="{video.title}">
+                                <article class="video" style="background-image: url('{video.thumbnail}');">
+                                    <span class="duration">{video.duration}</span>
+                                </article>
+                                <div class="description">
+                                    <div class="name">
+                                        <div class="conference-name ellipsis">{video.conference}</div>
+                                        <div class="talk-name ellipsis">{video.session}</div>
+                                        <div class="authors ellipsis">{video.speakers}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </f:for>
+
+                    </section>
+                    <input type="hidden" id="uriyt_hidden"
+                           value="{f:uri.action(action: 'youtubeAllVideos', pageType:135, pageUid:479 )}"/>
+                    <f:if condition="{showmore}">
+                        <f:then>
+                            <a class="btn btn-white btn-big btn-shadow" id="more-videos">
+                                LOAD MORE VIDEOS »
+                            </a>
+                        </f:then>
+                    </f:if>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </f:section>
+</div>

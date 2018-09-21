@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-10T09:12:26Z" product-name="dld">
+		<header/>
+		<body>
+			<trans-unit id="tx_dld_domain_model_dldfront">
+				<source>DLDfront</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_dldfront.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="conference_id.description">
+				<source>conferenceId</source>
+			</trans-unit>
+			<trans-unit id="ticket_id.description">
+				<source>ticketId</source>
+			</trans-unit>
+			<trans-unit id="highrise_tag_suffix.description">
+				<source>highriseTagSuffix</source>
+			</trans-unit>
+			<trans-unit id="is_locked.description">
+				<source>isLocked</source>
+			</trans-unit>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

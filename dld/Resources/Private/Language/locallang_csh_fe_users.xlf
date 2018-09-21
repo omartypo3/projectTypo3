@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-10T12:12:26Z" product-name="dld">
+		<header/>
+		<body>
+			<trans-unit id="tx_dld_domain_model_dldfront">
+				<source>DLDfront</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_dldfront.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="email_private.description">
+				<source>emailPrivate</source>
+			</trans-unit>
+			<trans-unit id="email_default_cc.description">
+				<source>emailDefaultCc</source>
+			</trans-unit>
+			<trans-unit id="social_linkedin_url.description">
+				<source>socialLinkedinUrl</source>
+			</trans-unit>
+			<trans-unit id="social_twitter_username.description">
+				<source>socialTwitterUsername</source>
+			</trans-unit>
+			<trans-unit id="is_amazing_speaker.description">
+				<source>isAmazingSpeaker</source>
+			</trans-unit>
+			<trans-unit id="amazing_speaker_sort_order.description">
+				<source>amazingSpeakerSortOrder</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

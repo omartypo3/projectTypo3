@@ -1,0 +1,89 @@
+<label for="name">
+    <f:translate key="tx_dld_domain_model_session.name"/>
+</label>
+<f:form.textfield property="name"/><br/>
+
+<label for="start">
+    <f:translate key="tx_dld_domain_model_session.start"/>
+</label>
+
+<div class='input-group  date ' id='datetimepicker1'>
+    <f:form.textfield property="start" type="text" class="form-control"
+                      value="{session.start -> f:format.date(format:'d.m.Y H:i')}"/>
+    <span class="input-group-addon">
+			<span class="fa fa-calendar"></span>
+	</span>
+</div>
+<br/>
+
+<label for="end">
+    <f:translate key="tx_dld_domain_model_session.end"/>
+</label>
+<div class='input-group date' id='datetimepicker2'>
+    <f:form.textfield property="end" type="text" class="form-control"
+                      value="{session.end -> f:format.date(format:'d.m.Y H:i')}"/>
+    <span class="input-group-addon">
+		<span class="fa fa-calendar"></span>
+	</span>
+</div>
+<br/>
+<label for="isVisible">
+    <f:translate key="tx_dld_domain_model_session.is_visible"/>
+</label>
+<f:form.checkbox property="isVisible" value="1" checked="true"/></br>
+<label for="eventId">
+    <f:translate key="tx_dld_domain_model_session.events"/>
+</label>
+<f:form.select options="{events}" property="eventId" optionValueField="uid" optionLabelField="title"   />
+<br/>
+
+<label for="venueId">
+    <f:translate key="tx_dld_domain_model_session.venues"/>
+</label>
+<f:form.select options="{venues}" property="venueId" optionValueField="uid" optionLabelField="name"  />
+<br/>
+<label for="description">
+    <f:translate key="tx_dld_domain_model_session.description"/>
+</label>
+<f:form.textarea property="description" cols="40" rows="15"/><br/>
+
+
+<label>
+    <f:translate key="tx_dld_domain_model_session.addingPeoples"/>
+</label>
+<span class="fa fa-plus" onclick="peoplesShow()"></span></br>
+
+<div id="tablePeoples" style="display: none">
+    <table class="tx_dld datatable1" id="peoplesession">
+        <thead>
+        <tr>
+            <th>
+                <f:translate key="tx_dld_domain_model_session.speakers"/>
+            </th>
+            <th>
+                <f:translate key="tx_dld_domain_model_event.IsSpeaker"/>
+            </th>
+            <th>
+                <f:translate key="tx_dld_domain_model_event.IsModerator"/>
+            </th>
+            <th>remove</th>
+        </tr>
+        <tr class="inputs">
+            <td></td>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+
+
+    </table>
+</div>
+<script>
+    function peoplesShow() {
+        $("#tablePeoples").show();
+    }
+    function removeFromSession(id) {
+        $(".remove"+id).parent('td').siblings('td').find('input[type="checkbox"]').prop('checked', false);
+    }
+</script>

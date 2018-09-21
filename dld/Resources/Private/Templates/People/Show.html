@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+    <f:flashMessages/>
+    <f:if condition="{people}">
+        <f:then>
+            <f:if condition="{currentuser}">
+                <f:then><div class="info-bar">
+                    <p>{profilevisibility}</p>
+                </div></f:then>
+            </f:if>
+            <f:render partial="People/Properties" arguments="{people:people}"/>
+        </f:then>
+        <f:else>
+            <v:content.render column="Error" pageUid="475"></v:content.render>
+        </f:else>
+    </f:if>
+
+
+</f:section>
+</html>

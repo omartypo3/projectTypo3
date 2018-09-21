@@ -1,0 +1,58 @@
+{namespace es=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{partners}">
+    <f:then>
+        <section class="partners-section">
+
+            <div class="container">
+                <f:if condition="{headline}">
+                    <f:then>   <h1 class="orange bold text-center">{headline}</h1></f:then>
+                    <f:else>   <h1 class="orange bold text-center">{event.title} PARTNERS</h1></f:else>
+                </f:if>
+
+                <div class="partners-container">
+                    <div class="partners-row partners-slider">
+
+                        <f:for each="{partners}" as="partner">
+                            <div class="item">
+                                <div class="circle active" data-text-id="{partner.partnerId.uid}">
+                                    <f:if condition="{partner.partnerId.logo}">
+                                        <f:then>
+                                            <f:image image="{partner.partnerId.logo}"
+                                                     class="img-responsive absolute-center"></f:image>
+                                        </f:then>
+                                        <f:else>
+
+                                            <img src="{settings.urlPatner}"
+                                                 class="img-responsive absolute-center" maxHeight="300">
+
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </f:for>
+                    </div>
+
+                    <div class="partners-description grey center-block">
+                        <f:for each="{partners}" as="partner" iteration="i">
+                            <div id="{partner.partnerId.uid}" class="text {f:if(condition:i.isFirst , then: 'active')}">
+                                <f:format.crop maxCharacters="495" respectWordBoundaries="FALSE">
+                                    <f:format.html> {partner.partnerId.description}</f:format.html>
+                                </f:format.crop>
+                                <f:link.action action="show" pageUid="{pageid.partnerPageID}" controller="Partner"
+                                               arguments="{partner : partner.partnerId}" class="orange"
+                                               title="{partner.partnerId.description}">
+                                    More »
+                                </f:link.action>
+                            </div>
+                        </f:for>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+    </f:then>
+</f:if>
+</html>

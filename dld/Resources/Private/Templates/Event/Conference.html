@@ -1,0 +1,155 @@
+{namespace dld= DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <!--omar said that this condition should be changed-->
+    <f:if condition="{{v:condition.iterator.contains(needle:event.tagPrefix, haystack:userevents, then: 'true', else: 'false')}">
+        <f:then>
+            <v:variable.set name="object" value="{dld:EventSearch(redirect: event1.uid)}"/>
+            <v:variable.set name="month" value="{object.start -> f:format.date(format: '%m')}"/>
+            <f:switch expression="{month}">
+                <f:case value="01">
+                    <v:variable.set name="monthly" value="January"/>
+                </f:case>
+                <f:case value="02">
+                    <v:variable.set name="monthly" value="February"/>
+                </f:case>
+                <f:case value="03">
+                    <v:variable.set name="monthly" value="March"/>
+                </f:case>
+                <f:case value="04">
+                    <v:variable.set name="monthly" value="April"/>
+                </f:case>
+                <f:case value="05">
+                    <v:variable.set name="monthly" value="May"/>
+                </f:case>
+                <f:case value="06">
+                    <v:variable.set name="monthly" value="June"/>
+                </f:case>
+                <f:case value="07">
+                    <v:variable.set name="monthly" value="July"/>
+                </f:case>
+                <f:case value="08">
+                    <v:variable.set name="monthly" value="August"/>
+                </f:case>
+                <f:case value="09">
+                    <v:variable.set name="monthly" value="September"/>
+                </f:case>
+                <f:case value="10">
+                    <v:variable.set name="monthly" value="October"/>
+                </f:case>
+                <f:case value="11">
+                    <v:variable.set name="monthly" value="November"/>
+                </f:case>
+                <f:case value="12">
+                    <v:variable.set name="monthly" value="December"/>
+                </f:case>
+            </f:switch>
+
+            <!--oussama code-->
+            <f:for each="{userTags}" as="u" key="itemkey">
+
+                <div class="invited femanager_show">
+                    <div class="container">
+                        <div class="mydld-container row">
+                            <div class="info clearfix">
+                                <section class="col-md-7 first">
+                                    <header class="box-header">
+                                        <v:variable.set name="myObject" value="{dld:EventByPrefix(prefix: itemkey)}"/>
+                                        <h3>
+                                            {monthly} {myObject.start -> f:format.date(format: '%d')},{myObject.start ->
+                                            f:format.date(format: '%Y')}</h3>
+                                    </header>
+
+                                    <div class="pboth">
+                                        <h2>
+                                            <a href="/conference/{v:format.url.sanitizeString(string: '{object.title}')}">{myObject.title}</a>
+                                        </h2>
+                                        <p class="application-note shortened">{myObject.message}</p>
+                                    </div>
+                                </section>
+                                <section class="col-md-5 last invitation-status">
+                                    <header class="box-header">
+                                        <h3>Application status:
+                                            <v:variable.set name="note" value="{dld:UserEventTag(tags: u)}"/>
+                                            <f:if condition="{note}">{note}</f:if>
+                                        </h3>
+                                    </header>
+
+                                    <div class="pboth">
+                                        <p class="status-text">We received your application and will process it as soon
+                                            as
+                                            possible. You will be notiﬁed via Email.</p>
+                                        <div class="buttons">
+                                            <span class="label applied">you are  <v:variable.set name="note"
+                                                                                                 value="{dld:UserEventTag(tags: u)}"/><f:if
+                                                    condition="{note}"><f:then>{note}</f:then><f:else>applied</f:else></f:if> ✔</span>
+                                        </div>
+                                        <v:variable.set name="canbuy" value="{dld:BuyTicket(tag: u)}"/>
+                                        <f:if condition="{canbuy}  && {myObject.type} == TICKETING">
+                                            <f:then>
+                                                <f:link.action action="buyTicket" controller="Event"
+                                                               arguments="{eventurl : '{myObject.uid}' , peopleID : '{userUid}' }"
+                                                               class="btn btn-orange space-top">buy your ticket
+                                                </f:link.action>
+                                            </f:then>
+                                        </f:if>
+
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </f:for>
+            <!--oussama code-->
+
+        </f:then>
+        <f:else>
+            <section class="conference-overview-top-section">
+
+                <f:if condition="{event.headerImage}">
+                    <f:then>
+                        <div class="conference-background"
+                             style="background-image: url('{f:uri.image(image: event.headerImage,maxHeight:300)}')">
+                    </f:then>
+                    <f:else>
+                        <v:variable.set name="url"
+                                        value="{f:uri.image(src:'{settings.urlEvent}',maxHeight:300)}"></v:variable.set>
+                        <div class="conference-background"
+                             style="background-image: url('{url}')">
+                    </f:else>
+                </f:if>
+                </div>
+            </section>
+            <section class="application-page-conference" role="main">
+
+                <h2>Why should we consider your application?</h2>
+                <p>Please provide us with a short informational text why we should invite you to {event.title} .
+                    Applications
+                    without this text won't be processed.</p>
+                <f:form action="invited" controller="Event" method="POST" class="dialog-form"
+                        pageUid="{settings.invitedpage}">
+            <span class="loup">
+                <textarea cols="50" id="body" name="tx_dld_dldevent[body]" required="required" rows="10"></textarea>
+            </span>
+                    <input type="hidden" class="zip-search-input" name="tx_dld_dldevent[id]" value="{event.uid}"
+                           size="10" maxlength="{number_digits}"/>
+                    <input type="hidden" name="tx_dld_dldevent[tagPrefix]" value="{event.tagPrefix}" size="10"
+                           maxlength="{number_digits}"/>
+
+                    <input type="hidden" id="id" name="id" value="{event.uid}"/>
+                    <div style="padding-bottom: 20px">
+                        <f:form.submit value="Submit Application" class="button"/>
+                    </div>
+                </f:form>
+            </section>
+
+        </f:else>
+    </f:if>
+
+</f:section>
+</html>

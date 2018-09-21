@@ -1,0 +1,193 @@
+{namespace es = DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<section class="section section--no-margin full-width">
+
+    <f:if condition="{event.headerImage}">
+        <f:then><div class="visual visual--small" style="background-image: url('{f:uri.image(image: event.headerImage)}')"></div></f:then>
+        <f:else> <div class="visual visual--small" style="background-image: url('{settings.urlEvent}')"></div></f:else>
+    </f:if>
+
+</section>
+<header class="clearfix">
+    <br>
+    <div class="row clearfix">
+        <div class="col-xs-10 col-xs-push-1">
+            <v:variable.set name="date" value="{session.start-> f:format.date(format:'Y-m-d')}"/>
+            <f:link.action class="btn btn-orange button-shadow" action="program" pageUid="60"
+                           controller="Session" arguments="{event:event,day :date}">
+                « BACK TO PROGRAM
+            </f:link.action>
+        </div>
+    </div>
+    <br>
+    <div class="row clearfix">
+        <f:if condition="{next} || {pervious}">
+            <f:then>
+                <div class="col-xs-10 col-xs-push-1">
+                    <f:if condition="{pervious}">
+                        <f:then>
+                            <div class="pull-left">
+
+                                <f:link.action class="btn btn-white button-shadow" action="show" pluginName="dldfront"
+                                               pageUid="{settings.sessionpageid}"
+                                               controller="Session" arguments="{session:pervious}">
+                                    « PREVIOUS SESSION
+                                </f:link.action>
+                            </div>
+                        </f:then>
+                    </f:if>
+                    <f:if condition="{next}">
+                        <f:then>
+                            <div class="pull-right">
+                                <f:link.action class="btn btn-white button-shadow" action="show" pluginName="dldfront"
+                                               pageUid="{settings.sessionpageid}"
+                                               controller="Session" arguments="{session:next}">NEXT SESSION »
+                                </f:link.action>
+                            </div>
+                        </f:then>
+                    </f:if>
+                </div>
+            </f:then>
+        </f:if>
+    </div>
+    <h1 class="bold">{session.name}</h1>
+</header>
+<section class="event-details container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="pull-left">
+                        <!-- Location -->
+                        <f:if condition="{session.venueId}">
+                            <f:then>
+                                <div class="map">
+                                    <a class="fr"
+                                       href="https://maps.google.com/?q={session.venueId.latitude},{session.venueId.longitude}"
+                                       target="_blank"
+                                       title="Open map">
+                                        <div class="maps">
+                                            <img alt="Chart?chst=d map xpin letter%26chld=pin star%257c%257ce34422%257cffffff%257cffffff|{session.venueId.latitude},{session.venueId.longitude}"
+                                                 src="http://maps.googleapis.com/maps/api/staticmap?center={session.venueId.latitude},{session.venueId.longitude}&size=420x270&sensor=false&markers=icon:http://chart.apis.google.com/chart?chst=d_map_xpin_letter%26chld=pin_star%257C%257Ce34422%257Cffffff%257Cffffff|{session.venueId.latitude},{session.venueId.longitude}
+                                         &zoom=15&key=AIzaSyDxemCDJhSDh8tX7q743ncNKVCLjHo0cz8 ">
+                                        </div>
+                                    </a>
+                                </div>
+                            </f:then>
+                        </f:if>
+                    </div>
+                </div>
+                <div class="event-details-column col-md-4 col-xs-12">
+                    <br>
+                    <!-- Event date and location -->
+                    <div class="event-date-location">
+                        <div class="day bold">
+                            <time datetime="2018-01-20">{session.start-> f:format.date(format:'D')}, {session.start->
+                                f:format.date(format:'d M Y')}
+                            </time>
+                        </div>
+                        <div class="hours bold">
+                            <time datetime=" {session.start-> f:format.date(format: 'H:i')}">
+                                {session.start-> f:format.date(format: 'H:i A')}
+                            </time>
+                            -
+                            <time datetime=" {session.end-> f:format.date(format: 'H:i')}">
+                                {session.end-> f:format.date(format: 'H:i A')}
+                            </time>
+                        </div>
+                        <div class="stage bold">
+                            {session.venueId.name}
+                        </div>
+                        <f:if condition="{session.venueId}">
+                            <f:then>
+                                <div class="address">
+                                    {session.venueId.street} {session.venueId.streetNumber}, {session.venueId.zip}
+                                    {session.venueId.city}
+                                </div>
+                            </f:then>
+                        </f:if>
+                    </div>
+                    <!-- /Event date and location -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="summary col-md-12">
+
+                    <br>
+                    <p class="summary-title col-md-12">{session.name}</p>
+                    <p>{session.description}</p>
+                </div>
+            </div>
+        </div>
+        <div class="side-columns col-md-4">
+            <f:if condition="{es:SessionSpeakers(id : session.uid)}">
+                <f:then>
+                    <div class="speakers-column">
+                        <h3>SPEAKERS</h3>
+                        <div class="speakers one-column clearfix">
+                            <div class="vcard speaker clearfix">
+
+                                <f:for each="{es:SessionSpeakers(id : session.uid)}" as="speaker">
+                                    <f:link.action action="show" pluginName="dldfront" pageUid="{settings.peoplepageid}"
+                                                   controller="People" arguments="{people:speaker.peopleId}">
+                                        <f:if condition="{speaker.peopleId.image.0}">
+                                            <f:then>
+                                                <f:image image="{speaker.peopleId.image.0}" height="55"
+                                                         width="55"></f:image>
+                                            </f:then>
+                                            <f:else>
+                                                <f:image
+                                                        src="{settings.urlPeople}"
+                                                        height="55" width="55"></f:image>
+                                            </f:else>
+                                        </f:if>
+                                        <div class="fn"> {speaker.peopleId.firstName} {speaker.peopleId.lastName}</div>
+                                        <f:if condition="{speaker.peopleId.company}">
+                                            <f:then>
+                                                <div class="company">{speaker.peopleId.company}</div>
+                                            </f:then>
+                                        </f:if>
+                                    </f:link.action>
+                                </f:for>
+                            </div>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
+            <div class="row nomargin">
+                <div class="grid_3 speakers-column">
+                </div>
+            </div>
+            <!-- /Speakers and summary -->
+            <hr>
+
+            <div class="share-buttons clearfix">
+                <div class="speakers-column">
+                    <h3>
+                        SHARE
+                        <div class="buttons-list display-inline-block">
+                            <div>
+                                <div class="addthis">
+                                    <!-- AddThis Button BEGIN -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </h3>
+                    <div class="buttons-list">
+                        <div>
+                            <ul class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                                <li><a class="addthis_button_tweet"></a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</html>

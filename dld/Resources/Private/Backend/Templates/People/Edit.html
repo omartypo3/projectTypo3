@@ -1,0 +1,27 @@
+<f:layout name="People"/>
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="content-dld-inner">
+        <h1>Edit People</h1>
+
+        <f:flashMessages/>
+
+        <f:render partial="FormErrors"/>
+
+        <f:form action="update" enctype="multipart/form-data" name="people" object="{people}">
+            <f:render partial="People/FormFields" arguments="{_all}"/>
+            <f:form.submit value="Save" class="std-btn"/>
+        </f:form>
+    </div>
+</f:section>

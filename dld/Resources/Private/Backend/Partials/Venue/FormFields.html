@@ -1,0 +1,54 @@
+<div id="venueform">
+
+    <label for="name">
+        <f:translate key="tx_dld_domain_model_venue.name"/>
+    </label>
+    <f:form.textfield id="name" property="name"/>
+    <br/>
+
+    <label for="street">
+        <f:translate key="tx_dld_domain_model_venue.street"/>
+    </label>
+    <f:form.textfield id="street" property="street"/>
+    <br/>
+    
+
+    <label for="streetNumber">
+        <f:translate key="tx_dld_domain_model_venue.street_number"/>
+    </label>
+    <f:form.textfield id="streetnumber" property="streetNumber"/>
+    <br/>
+    <label for="city">
+        <f:translate key="tx_dld_domain_model_venue.city"/>
+    </label>
+    <f:form.textfield id="city" property="city"/>
+    <br/>
+    <label for="zipcode">
+        <f:translate key="tx_dld_domain_model_venue.zipcode"/>
+    </label>
+    <f:form.textfield id="zip" property="zipcode"/>
+    <br/>
+    <label for="country">
+        <f:translate key="tx_dld_domain_model_venue.country"/>
+    </label>
+    <f:form.textfield id="country" property="country"/>
+    <br/>
+    <label for="latitude">
+        <f:translate key="tx_dld_domain_model_venue.latitude"/>
+    </label>
+    <f:form.textfield property="latitude" readonly="readonly" id="latitude"/>
+    <br/>
+    <label for="longitude">
+        <f:translate key="tx_dld_domain_model_venue.longitude"/>
+    </label>
+    <f:form.textfield property="longitude" readonly="readonly" id="longitude"/>
+    <br/>
+</div>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcEhUA1kUDLuHArhc-T8I6AeYOvjBr6xE&callback=initMap&libraries=places">
+</script>
+<div id="map"></div>
+<div class="clearfix"></div>
+
+</html>

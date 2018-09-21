@@ -1,0 +1,14 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<section class="how-to-attend-section">
+
+    <div class="container text-center">
+        <a class="no-decoration" href="https://twitter.com/hashtag/{event.twitterHashtag}" target="_blank">
+            <f:if condition="{event.twitterHashtag}">
+                <f:then><h1 class="orange bold">#{event.twitterHashtag}</h1></f:then>
+            </f:if>
+
+        </a>
+    </div>
+
+</section>
+</html>

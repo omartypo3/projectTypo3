@@ -1,0 +1,162 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	<section class="speakers-container">
+		<div class="speakers-row">
+			<f:for each="{peoples -> v:iterator.chunk(count: 4)}" as="people" iteration="c">
+				<!--{c.cycle}-->
+				<f:for each="{people -> v:iterator.chunk(count: 2)}" as="pe" iteration="cycle">
+					<!--{cycle.cycle}-->
+					<f:if condition="{cycle.cycle} % 4 >= 2">
+						<f:then>
+							<div class="speakers-col even hidden-sm hidden-xs">
+								<f:for each="{pe -> v:iterator.chunk(count: 2)}" as="p">
+									<f:for each="{p}" as="pi"  iteration="it">
+										<f:if condition="{it.cycle} % 4 == 1">
+											<f:then>
+										<a href="#">
+											<f:for each="{pi.image}" as="img">
+												<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+													<div class="filter" style="background-color: rgba(255, 0, 0, 0.5);"></div>
+												</div>
+											</f:for>
+										</a>
+											</f:then>
+											<f:else>
+											<a href="#">
+												<f:for each="{pi.image}" as="img">
+													<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+														<div class="filter" style="background-color: rgba(0, 0, 255, 0.5);"></div>
+													</div>
+												</f:for>
+											</a>
+											</f:else>
+										</f:if>
+
+									</f:for>
+								</f:for>
+							</div>
+						</f:then>
+						<f:else>
+							<div class="speakers-col odd hidden-sm hidden-xs">
+								<f:for each="{pe -> v:iterator.chunk(count: 2)}" as="p">
+									<f:for each="{p}" as="pi"  iteration="it">
+										<f:if condition="{it.cycle} % 4 == 1">
+											<f:then>
+												<a href="#">
+													<f:for each="{pi.image}" as="img">
+														<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+															<div class="filter" style="background-color: rgba(0, 255, 0, 0.5);"></div>
+														</div>
+													</f:for>
+												</a>
+											</f:then>
+											<f:else>
+												<a href="#">
+													<f:for each="{pi.image}" as="img">
+														<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+															<div class="filter" style="background-color: rgba(255, 153, 0, 0.5);"></div>
+														</div>
+													</f:for>
+												</a>
+											</f:else>
+										</f:if>
+
+									</f:for>
+								</f:for>
+							</div>
+						</f:else>
+					</f:if>
+				</f:for>
+
+			</f:for>
+
+
+                                    <!-------------------MOBILE------------------------------------>
+			<f:for each="{peoples -> v:iterator.chunk(count: 6)}" as="people" iteration="cy">
+				<!--{cy.cycle}-->
+				<f:for each="{people -> v:iterator.chunk(count: 3)}" as="pe" iteration="cyc">
+
+						<f:if condition="{cyc.cycle} == 1 ">
+							<f:then>
+								<div class="speakers-col even mobile visible-sm visible-xs">
+									<f:for each="{pe}" as="p" iteration="it">
+										<a href="#">
+											<f:for each="{p.image}" as="img" >
+												<f:if condition="{it.cycle} == 1 ">
+												<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+													<div class="filter" style="background-color: rgba(255, 0, 0, 0.5);"></div>
+												</div>
+												</f:if>
+												<f:if condition="{it.cycle} == 2 ">
+													<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+														<div class="filter" style="background-color: rgba(0, 0, 255, 0.5);"></div>
+													</div>
+												</f:if>
+												<f:if condition="{it.cycle} == 3 ">
+													<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+														<div class="filter" style="background-color: rgba(0, 255, 0, 0.5);"></div>
+													</div>
+												</f:if>
+											</f:for>
+										</a>
+									</f:for>
+								</div>
+							</f:then>
+							<f:else>
+								<div class="speakers-col odd mobile visible-sm visible-xs">
+									<f:for each="{pe}" as="p" iteration="it">
+										<a href="#">
+											<f:for each="{p.image}" as="img" >
+												<f:if condition="{it.cycle} == 1 ">
+													<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+														<div class="filter" style="background-color: rgba(0, 255, 0, 0.5);"></div>
+													</div>
+												</f:if>
+												<f:if condition="{it.cycle} == 2 ">
+													<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+														<div class="filter" style="background-color: rgba(255, 0, 0, 0.5);"></div>
+													</div>
+												</f:if>
+												<f:if condition="{it.cycle} == 3 ">
+													<div class="speaker-tile" style="background-image: url('{f:uri.image(src:'{img.originalResource.publicUrl}')}')">
+														<div class="filter" style="background-color: rgba(255, 153, 0, 0.5);"></div>
+													</div>
+												</f:if>
+											</f:for>
+										</a>
+									</f:for>
+								</div>
+							</f:else>
+						</f:if>
+				</f:for>
+
+			</f:for>
+
+
+
+
+
+
+
+			<!--<div class="centered text-center">-->
+				<!--<h1 class="bold">AMAZING SPEAKERS</h1>-->
+				<!--&lt;!&ndash;<a href="#">Meet them all »</a>&ndash;&gt;-->
+			<!--</div>-->
+		</div>
+	</section>
+
+</f:section>
+</html>

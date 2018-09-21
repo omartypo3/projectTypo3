@@ -1,0 +1,217 @@
+{namespace es=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<section class="conference-overview-top-section">
+    <f:if condition="{event.headerImage}">
+        <f:then>
+            <div class="conference-background" style="background-image: url('{f:uri.image(image: event.headerImage)}')">
+        </f:then>
+        <f:else>
+            <div class="conference-background"
+                 style="background-image: url('{settings.urlEvent}')">
+        </f:else>
+    </f:if>
+
+
+    <span class="btn btn-black btn-big center-block">Application Closed</span>
+
+
+    </div>
+</section>
+
+<section class="how-to-attend-section">
+
+    <div class="container text-center">
+
+        <h1 class="orange bold">{event.title}</h1>
+
+        <p class="grey">{event.description}</p>
+
+
+    </div>
+
+</section>
+<section class="how-to-attend-section">
+
+    <div class="container text-center">
+        <a class="no-decoration" href="https://twitter.com/hashtag/{event.twitterHashtag}" target="_blank">
+            <h1 class="orange bold">#{event.twitterHashtag}</h1>
+        </a>
+    </div>
+
+</section>
+<section class="location-section">
+
+    <div class="map-container">
+        <div id="dld-map" style="height: 350px; position: relative; overflow: hidden;" lat="{event.venueId.latitude}"
+             long="{event.venueId.longitude}" zoom="13"
+             marker-image="typo3conf/ext/theme/Resources/Public/icons/pin.svg">
+        </div>
+
+        <div class="location-details text-center absolute-center">
+
+            <h5 class="orange bold">MAIN LOCATION </h5>
+
+            <p class="grey">{event.venueId.name}<br> {event.venueId.street} {event.venueId.streetNumber},
+                {event.venueId.zipcode} {event.venueId.city}</p>
+
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination={event.venueId.latitude},{event.venueId.longitude}"
+               class="orange bold"
+               target="_blank">Get directions »</a>
+        </div>
+
+        <div id="center-map"><i class="icon-close-orange pointer"></i></div>
+    </div>
+
+    <div class="location-speakers-container">
+
+        <div class="location-speakers-slider  flickity-enabled is-draggable">
+            <f:for each="{es:EventSpeakers(uid: event.uid)}" as="speaker">
+                <div class="item secondary">
+                    <f:link.action class="speaker-container" action="show" pageUid="{pageid.peoplepageid}"
+                                   controller="People" arguments="{people:speaker}">
+                        <f:if condition="{speaker.image.0}">
+                            <f:then>
+                                <div class="circle"
+                                     style="background-image: url('{f:uri.image(image: speaker.image.0)}')">
+                                </div>
+                            </f:then>
+                            <f:else>
+                                <div class="circle"
+                                     style="background-image: url('{settings.urlPeople}')">
+                                </div>
+                            </f:else>
+                        </f:if>
+
+                        <p class="text-center orange ellipsis">{speaker.firstName}{speaker.lastName}</p>
+                        <p class="text-center grey ellipsis">{speaker.company}</p>
+                    </f:link.action>
+                </div>
+            </f:for>
+        </div>
+
+        <f:link.action action="list" pageUid="{pageid.peoplepageid}" controller="People"
+                       class="btn btn-white btn-big btn-shadow center-block">{event.title} Speakers »
+        </f:link.action>
+
+    </div>
+
+</section>
+<section class="program-overview">
+
+    <div class="center-block container-sm">
+        <hr class="hr-white"/>
+    </div>
+
+    <h2 class="grey text-center bold">PROGRAM:</h2>
+    <div class="program-slider container-sm">
+        <f:for each="{es:EventSession(id: event.uid)}" as="session" iteration="color">
+            <div class="item">
+                <a href="/DLDBerlin/program">
+                    <div class="circle"
+                         style="background-color:{f:if(condition: color.isOdd, then: '#ffdf44', else:'#eea3c4')} ;">
+                        <div class="text-container vertical-align">
+                            <h6 class="bold orange text-center">{session -> f:format.date(format:'%A')}</h6>
+                            <p class="white text-center">{session -> f:format.date(format:'%d %B %Y')}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </f:for>
+    </div>
+
+    <div class="buttons-wrapper text-center center-block container container-sm">
+        <a href="{event.programPdf}" class="btn btn-white btn-big btn-shadow" target="_blank">Download Program <i
+                class="icon-pdf-white"></i></a>
+
+
+        <div class="clearfix"></div>
+
+    </div>
+
+</section>
+<section class="partners-section">
+
+    <div class="container">
+
+        <h1 class="orange bold text-center">{event.title} PARTNERS</h1>
+
+        <div class="partners-container">
+            <div class="partners-row partners-slider">
+
+                <f:for each="{partners}" as="partner">
+                    <div class="item">
+                        <div class="circle active" data-text-id="{partner.partnerId.uid}">
+                            <f:if condition="{partner.partnerId.logo}">
+                                <f:then>
+                                    <f:image image="{partner.partnerId.logo}"
+                                             class="img-responsive absolute-center"></f:image>
+                                </f:then>
+                                <f:else>
+
+                                    <img src="{settings.urlPatner}"
+                                         class="img-responsive absolute-center">
+
+                                </f:else>
+                            </f:if>
+                        </div>
+                    </div>
+                </f:for>
+            </div>
+
+            <div class="partners-description grey center-block">
+                <f:for each="{partners}" as="partner" iteration="i">
+                    <div id="{partner.partnerId.uid}" class="text {f:if(condition:i.isFirst , then: 'active')}">
+                        <f:format.crop maxCharacters="495" respectWordBoundaries="FALSE">
+                            {partner.partnerId.description}
+                        </f:format.crop>
+                        <f:link.action action="show" pageUid="{pageid.partnerpageid}" controller="Partner"
+                                       arguments="{partner : partner.partnerId}" class="orange"
+                                       title="{partner.partnerId.description}">
+                            More »
+                        </f:link.action>
+                    </div>
+                </f:for>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="events-section">
+
+    <h1 class="text-center orange bold">
+        YOU MIGHT LIKE THIS:
+    </h1>
+
+    <div class="slider-wrapper">
+        <div class="events-slider">
+            <f:for each="{pastevents}" as="pastevent">
+                <div class="item" data-attibute-type="conference">
+                    <f:link.action action="show" pageUid="{pageid.eventpageid}" arguments="{event : pastevent}"
+                                   target="_blank">
+                        <div class="box small-box">
+                            <div class="video-container relative-container"
+                                 style="background-image: url('{f:uri.image(image: pastevent.conferenceImage)}')">
+                            </div>
+                            <div class="text-container">
+                                <h5 class="orange bold ellipsis" title="{pastevent.title}">{pastevent.title}</h5>
+                                <p class="dark-grey ellipsis" title="{pastevent.start -> f:format.date(format:'Y')}">
+                                    {pastevent.start -> f:format.date(format:'Y')}</p>
+                            </div>
+                        </div>
+                    </f:link.action>
+                </div>
+            </f:for>
+        </div>
+
+        <f:link.action action="list" class="btn btn-white btn-big btn-shadow center-block">View all events »
+        </f:link.action>
+
+    </div>
+
+</section>
+
+
+</html>

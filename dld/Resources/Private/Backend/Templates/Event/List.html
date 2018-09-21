@@ -1,0 +1,69 @@
+{namespace dld = DLD\Dld\ViewHelpers}
+<f:layout name="Default"/>
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+    <div class="content-dld-inner">
+        <h1>Listing for Event</h1>
+        <f:flashMessages/>
+        <f:link.action action="new" class="float-right newaction"><i class="fa fa-plus-circle "></i>New event
+        </f:link.action>
+        <table class="tx_dld datatable1" id="events">
+            <thead>
+            <tr>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.status"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.invitee_stats"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.start_end"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.title"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.sessions"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.location"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.twitter"/>
+                </th>
+                <th>
+                    <f:translate key="tx_dld_domain_model_event.tagPrefix"/>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr class="inputs">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+
+
+    </div>
+</f:section>

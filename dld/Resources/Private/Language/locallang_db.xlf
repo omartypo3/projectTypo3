@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-10T12:12:26Z" product-name="dld">
+		<header/>
+		<body>
+			<trans-unit id="tx_dld_domain_model_dldfront">
+				<source>DLDfront</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_dldfront.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_dldevent">
+            	<source>DLD Event</source>
+            </trans-unit>
+            <trans-unit id="tx_dld_domain_model_dldevent.description">
+            	<source></source>
+            </trans-unit>
+			<trans-unit id="tx_dld_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.header_image">
+				<source>Header Image</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.is_visible">
+				<source>Is Visible</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.slide_image">
+				<source>Slide Image</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.conference_image">
+				<source>Conference Image</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.program_pdf">
+				<source>Program Pdf</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.max_invitee">
+				<source>Max Invitee</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.show_page">
+				<source>Single View Page ID</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.twitter_hashtag">
+				<source>Twitter Hashtag</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.venue_id">
+				<source>Venue Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_event.livestream">
+				<source>Live Stream URL</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people">
+				<source>People</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.email_private">
+				<source>Email Private</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.youtubevideos">
+				<source>Youtube Videos</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.email_default_cc">
+				<source>Email Default Cc</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.social_linkedin_url">
+				<source>Social Linkedin Url</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.social_twitter_username">
+				<source>Social Twitter Username</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.is_amazing_speaker">
+				<source>Is Amazing Speaker</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.amazing_speaker_sort_order">
+				<source>Amazing Speaker Sort Order</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_people.is_dld_team">
+            	<source>Is DLD team</source>
+            </trans-unit>
+			<trans-unit id="fe_users.tx_extbase_type.Tx_Dld_People">
+				<source>DLD Conference People</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session">
+				<source>Session</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.slugname">
+				<source>Slug name</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.is_visible">
+				<source>Is Visible</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.event_id">
+				<source>Event Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_session.venue_id">
+				<source>Venue Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue">
+				<source>Venue</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.street_number">
+				<source>Street Number</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.zipcode">
+				<source>Zipcode</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_venue.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner">
+				<source>Partner</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.social_linkedin_url">
+				<source>Social Linkedin Url</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.social_twitter_username">
+				<source>Social Twitter Username</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_partner.operationfield">
+				<source>Fields of operation</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_setting">
+				<source>Setting</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_setting.field">
+				<source>Field</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_setting.value">
+				<source>Value</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_sessionpeople">
+				<source>Session People</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_sessionpeople.is_speaker">
+				<source>Is Speaker</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_sessionpeople.is_moderator">
+				<source>Is Moderator</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_sessionpeople.sort_order">
+				<source>Sort Order</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_sessionpeople.session_id">
+				<source>Session Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_sessionpeople.people_id">
+				<source>People Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner">
+				<source>Event Partner</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner.partner_status">
+				<source>Partner Status</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner.sort_order">
+				<source>Sort Order</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner.event_id">
+				<source>Event Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner.partner_id">
+				<source>Partner Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner.session_id">
+				<source>Session Id</source>
+			</trans-unit>
+			<trans-unit id="tx_dld_domain_model_eventpartner.session_id">
+            	<source>Session Id</source>
+           	</trans-unit>
+           	<trans-unit id="tx_dld_domain_model_event.xing_event_id">
+                  <source>Xing Event Id</source>
+             </trans-unit>
+             	<trans-unit id="tx_dld_domain_model_event.youtube_playlist">
+                  <source>Youtube playlist</source>
+             </trans-unit>
+            <trans-unit id="tx_dld_domain_model_event.xing_type">
+                   <source>Type</source>
+             </trans-unit>
+             <trans-unit id="tx_dld_domain_model_eventticket">
+                   <source>Event Ticket</source>
+             </trans-unit>
+            <trans-unit id="tx_dld_domain_model_event.tag_prefix">
+                  <source>Tag Prefix</source>
+            </trans-unit>
+             <trans-unit id="tx_dld_domain_model_eventticket.conference_id">
+                   <source>Conference Id</source>
+             </trans-unit>
+             <trans-unit id="tx_dld_domain_model_eventticket.highrise_tag_suffix">
+                   <source>Highrise Tag Id</source>
+             </trans-unit>
+             <trans-unit id="tx_dld_domain_model_eventticket.is_locked">
+                   <source>Is Locked</source>
+             </trans-unit>
+             <trans-unit id="tx_dld_domain_model_eventticket.ticket_id">
+                        <source>Ticket Id</source>
+              </trans-unit>
+             <trans-unit id="tx_dld_domain_model_eventticket.name">
+                   <source>name</source>
+             </trans-unit>
+
+		</body>
+	</file>
+</xliff>

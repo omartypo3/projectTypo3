@@ -1,0 +1,28 @@
+
+<f:layout name="Venue" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="content-dld-inner">
+<h1>New Venue  <f:link.action class= "close-page" action="list">x</f:link.action></h1>
+
+<f:flashMessages />
+
+<f:render partial="FormErrors" />
+
+<f:form action="create"  enctype="multipart/form-data"  name="newVenue" object="{newVenue}">
+<f:render partial="Venue/FormFields" />
+	<f:form.submit value="Create Venue" class="std-btn" />
+</f:form>
+    </div>
+</f:section>

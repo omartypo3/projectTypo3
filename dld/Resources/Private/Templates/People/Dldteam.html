@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+
+    <f:flashMessages/>
+    <f:if condition="{peoples}">
+        <f:then>
+            <div class="dldteam-container container">
+                <header class="page-header">
+                    <h1 class="bold"><span class="red">Meet</span> the DLD Team</h1>
+                </header>
+                <div class="team">
+                    <f:for each="{peoples}" as="people">
+                        <div class="dldteam-member">
+                            <f:link.action action="show" arguments="{people : people}">
+                                <f:if condition="{people.image.0}">
+                                    <f:then>
+                                        <div class="dldteam-img"
+                                             style="background-image: url('{f:uri.image(image:people.image.0,maxHeight:300)}')"></div>
+                                    </f:then>
+                                    <f:else>
+                                        <v:variable.set name="url"
+                                                        value="{f:uri.image(src:'{settings.urlPeople}',maxHeight:300)}"></v:variable.set>
+                                        <div class="dldteam-img"
+                                             style="background-image: url('{url}')"></div>
+                                    </f:else>
+                                </f:if>
+                            </f:link.action>
+                            <div class="dldteam-name">{people.firstName} {people.lastName}</div>
+                            <div class="dldteam-title">{people.title}</div>
+                        </div>
+                    </f:for>
+                </div>
+            </div>
+        </f:then>
+    </f:if>
+
+</f:section>
+</html>

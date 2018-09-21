@@ -1,0 +1,45 @@
+namespace speakers=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+    <div class="events-section">
+        <h1 class="text-center orange bold">{title}</h1>
+        <div class="slider-wrapper">
+            <div class="events" >
+                <div class="flickity-viewport">
+                    <f:for each="{pastEvents}" as="pastEvent">
+                        <f:link.page pageUid="{pastEvent.showPage.uid}">
+                            <div class="box small-box">
+                                <div class="video-container relative-container" style="background-image: url('{f:uri.image(image: pastEvent.conferenceImage,maxHeight:300)}')">
+                                </div>
+                                <div class="text-container">
+                                    <h5 class="orange bold ellipsis" title="DLD New York 18">{pastEvent.title}</h5>
+                                    <p class="dark-grey ellipsis" title="2018"><f:format.date format="Y">{pastEvent.start}</f:format.date></p>
+                                </div>
+                            </div>
+                        </f:link.page>
+                    </f:for>
+                </div>
+            </div>
+            <a href="{f:uri.page(pageUid: eventPageId)}" class="btn btn-white btn-big btn-shadow center-block">{pastEventsButtonTitle}  »</a>
+        </div>
+    </div>
+    <script src='https://npmcdn.com/flickity@2/dist/flickity.pkgd.js'></script>
+    <script>
+        var $carousel = $('.flickity-viewport').flickity();
+    </script>
+</f:section>
+
+</html>

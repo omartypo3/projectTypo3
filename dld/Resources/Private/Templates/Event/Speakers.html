@@ -1,0 +1,47 @@
+{namespace es=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{es:EventSpeakers(uid: event.uid)}">
+    <f:then>
+        <section class="location-section">
+            <div class="location-speakers-container">
+
+                <div class="location-speakers-slider  flickity-enabled is-draggable">
+                    <f:for each="{es:EventSpeakers(uid: event.uid)}" as="speaker">
+                        <div class="item secondary">
+
+                            <f:link.action class="speaker-container" action="show" pageUid="{pageid.peoplePageID}"
+                                           controller="People" arguments="{people:speaker}">
+                                <f:if condition="{speaker.image.0}">
+                                    <f:then>
+                                        <div class="circle"
+                                             style="background-image: url('{f:uri.image(image: speaker.image.0,maxHeight:300)}')">
+                                        </div>
+                                    </f:then>
+                                    <f:else>
+                                        <v:variable.set name="url" value="{f:uri.image(src:'{settings.urlPeople}',maxHeight:300)}"></v:variable.set>
+                                        <div class="circle"
+                                             style="background-image: url('{url}')">
+                                        </div>
+
+                                    </f:else>
+                                </f:if>
+
+                                <p class="text-center orange ellipsis">{speaker.firstName}{speaker.lastName}</p>
+                                <p class="text-center grey ellipsis">{speaker.company}</p>
+                            </f:link.action>
+                        </div>
+                    </f:for>
+                </div>
+
+                <f:link.action action="list" pageUid="{pageid.peoplePageID}" controller="People"
+                               class="btn btn-white btn-big btn-shadow center-block">{event.title} Speakers »
+                </f:link.action>
+
+
+            </div>
+        </section>
+    </f:then>
+</f:if>
+
+</html>

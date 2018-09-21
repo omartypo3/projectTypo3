@@ -1,0 +1,30 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{event.venueId}">
+    <f:then>
+        <section class="location-section">
+
+            <div class="map-container">
+                <div id="dld-map" style="height: 350px; position: relative; overflow: hidden;"
+                     lat="{event.venueId.latitude}"
+                     long="{event.venueId.longitude}" zoom="13"
+                     marker-image="typo3conf/ext/theme/Resources/Public/icons/pin.svg">
+                </div>
+
+                <div class="location-details text-center absolute-center">
+
+                    <h5 class="orange bold">MAIN LOCATION </h5>
+
+                    <p class="grey">{event.venueId.name}<br> {event.venueId.street} {event.venueId.streetNumber},
+                        {event.venueId.zipcode} {event.venueId.city}</p>
+
+                    <a href="https://www.google.com/maps/dir/?api=1&amp;destination={event.venueId.latitude},{event.venueId.longitude}"
+                       class="orange bold"
+                       target="_blank">Get directions »</a>
+                </div>
+
+                <div id="center-map"><i class="icon-close-orange pointer"></i></div>
+            </div>
+        </section>
+    </f:then>
+</f:if>
+</html>

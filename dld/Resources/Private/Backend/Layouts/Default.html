@@ -1,0 +1,76 @@
+{namespace cur=DLD\Dld\ViewHelpers}
+<f:be.container
+		includeCssFiles="{
+		dataTables:'{f:uri.resource(path:\'Datatable/css/jquery.dataTables.css\')}',
+		jquerydata: '{f:uri.resource(path:\'Datatable/css/jquery-ui.min.css\')}',
+		jquerydata: '{f:uri.resource(path:\'../../../../../../typo3_src/typo3/sysext/backend/Resources/Public/Css/backend.css\')}',
+        customdata: '{f:uri.resource(path:\'Datatable/css/styles.css\')}',
+        backend_style : '{f:uri.resource(path:\'css/backend_style.css\')}'
+
+        }"
+
+		includeJsFiles="{
+		datajs: '{f:uri.resource(path:\'Datatable/js/jquery.min.js\')}',
+         dataTablesjs: '{f:uri.resource(path:\'Datatable/js/datamainjs.js\')}'
+
+
+         }"
+
+>
+	<div class="typo3-fullDoc">
+		<div class="menu-dld">
+			<ul>
+				<li  class="home {f:if(condition: '{cur:ConrtollerName()}==\'Dashboard\'', then: 'active')}" >
+					<f:link.action action="home" controller="Dashboard">
+						<div class="logo-dld"><img src="../typo3conf/ext/dld/Resources/Public/Datatable/images/logo-dld.svg" ></div>
+					</f:link.action>
+				</li>
+				<li  class="{f:if(condition: '{cur:ConrtollerName()}==\'Event\'', then: 'active')}" >
+					<f:link.action action="list" controller="Event">Events</f:link.action>
+				</li>
+				<li class="{f:if(condition: '{cur:ConrtollerName()}==\'Session\'', then: 'active')}">
+					<f:link.action action="list" controller="Session">Sessions</f:link.action>
+				</li>
+				<li class="{f:if(condition: '{cur:ConrtollerName()}==\'Venue\'', then: 'active')}">
+					<f:link.action action="list" controller="Venue">Venues</f:link.action>
+				</li>
+				<li class="{f:if(condition: '{cur:ConrtollerName()}==\'People\'', then: 'active')}">
+					<f:link.action action="list" controller="People">People</f:link.action>
+				</li>
+				<li class="{f:if(condition: '{cur:ConrtollerName()}==\'Partner\'', then: 'active')}">
+					<f:link.action action="list" controller="Partner">Partners</f:link.action>
+				</li>
+				<li class="{f:if(condition: '{cur:ConrtollerName()}==\'Setting\'', then: 'active')}">
+					<f:link.action action="list" controller="Setting">Settings</f:link.action>
+				</li>
+			</ul>
+			<div class="highrish_mailchimp" style="float:right">
+				<ul>
+					<li>
+						<f:link.external target="_blank" uri="https://dld.highrisehq.com/" defaultScheme="https">
+							<img src="../typo3conf/ext/dld/Resources/Public/Datatable/images/highrise.svg" >
+						</f:link.external>
+					</li>
+					<li>
+						<f:link.external target="_blank" uri="https://admin.mailchimp.com" defaultScheme="https">
+							<img src="../typo3conf/ext/dld/Resources/Public/Datatable/images/mailchimp.svg" >
+						</f:link.external>
+					</li>
+
+				</ul>
+
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div id="typo3-docbody">
+
+			<div id="typo3-inner-docbody">
+				<f:flashMessages/>
+
+				<f:render section="content"/>
+
+			</div>
+		</div>
+	</div>
+
+</f:be.container>

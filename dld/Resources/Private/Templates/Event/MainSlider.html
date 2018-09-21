@@ -1,0 +1,82 @@
+{namespace speakers=DLD\Dld\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+
+<f:section name="main">
+    <section class="main-big-slider-wrapper">
+        <div class="main-big-slider">
+            <f:for each="{eventToBeDisplayed}" as="event">
+                <f:if condition="{event.slideImage}">
+                    <f:then>
+                        <div class="item primary"
+                             style="background-image:url('{f:uri.image(image:event.slideImage,maxHeight:300)}')">
+                    </f:then>
+                    <f:else>
+                        <div class="item primary"
+                             style="background-image:url('{f:uri.image(src:'EXT:dld/Resources/Public/pic-3.jpg',maxHeight:300)}')">
+                    </f:else>
+                </f:if>
+                <div class="slide-overlay">
+                    <f:link.page pageUid="{event.showPage.uid}">
+                        <h2 class="orange title bold">{event.title}</h2>
+
+                        <h2 class="white location bold">{event.venueId.city}{f:if(condition: '{event.venueId.city} &&
+                            {event.start}', then: ',',)}
+                            <f:format.date format="M d">{event.start}</f:format.date>
+                        </h2>
+                    </f:link.page>
+                    <f:if condition="{event.isInvitationalEvent}">
+                        <f:then>
+
+                            <f:if condition="{speakers:GetApplicationStatus(eventpage:event.showPage.uid)}">
+                                <f:then>
+                                    <f:link.page pageUid="{event.showPage.uid}" class="btn btn-black">Application closed »
+                                    </f:link.page>
+
+                                </f:then>
+                                <f:else>
+                                    <f:link.page pageUid="{event.showPage.uid}" class="btn btn-orange">Apply now »
+                                    </f:link.page>
+                                </f:else>
+                            </f:if>
+
+                        </f:then>
+                    </f:if>
+                    <f:if condition="{event.liveStream}">
+                        <f:then>
+                            <f:link.external uri="{event.liveStream}" class="btn btn-white">Live Stream »
+                            </f:link.external>
+                        </f:then>
+                    </f:if>
+                </div>
+                <div class="secondary-small-slider">
+
+                    <f:for each="{speakers:EventSpeakers(uid: event.uid)}" as="p">
+                        <f:if condition="{p.image}">
+                            <f:then>
+
+                                <div class="item secondary">
+                                    <f:link.action class="speaker-container" action="show"
+                                                   pageUid="{settings.peoplepageid}"
+                                                   controller="People" arguments="{people:p}">
+                                        <div class="speaker-container">
+
+                                            <div class="circle"
+                                                 style="background-image: url('{f:uri.image(src:'{p.image.0.originalResource.publicUrl}',maxHeight:300)}')"></div>
+                                            <p class="text-center orange">{p.firstName} {p.lastName}</p>
+                                            <span>{p.company}</span>
+                                        </div>
+                                    </f:link.action>
+                                </div>
+                            </f:then>
+                        </f:if>
+
+                    </f:for>
+                </div>
+        </div>
+        </f:for>
+        </div>
+    </section>
+</f:section>
+</html>

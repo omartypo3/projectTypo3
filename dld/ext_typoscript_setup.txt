@@ -1,0 +1,44 @@
+config.tx_extbase {
+    persistence {
+        updateReferenceIndex = 1
+        classes {
+            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+                subclasses {
+                    Tx_Dld_People = DLD\Dld\Domain\Model\People
+                }
+            }
+
+            DLD\Dld\Domain\Model\People {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_Dld_People
+                }
+            }
+
+            DLD\Dld\Domain\Model\FileReference {
+                mapping {
+                    tableName = sys_file_reference
+                    columns {
+                        uid_local.mapOnProperty = originalFileIdentifier
+                    }
+                }
+            }
+
+            DLD\Dld\Domain\Model\Page {
+                mapping {
+                    tableName = pages
+                    recordType >
+                    columns {
+                        uid.mapOnProperty = uid
+                        hidden.mapOnProperty = hidden
+
+                    }
+                }
+            }
+        }
+    }
+
+    objects {
+        TYPO3\CMS\Extbase\Domain\Model\FileReference.className = DLD\Dld\Domain\Model\FileReference
+    }
+}

@@ -1,0 +1,20 @@
+<div xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+    <f:layout name="Default"/>
+    <f:section name="main">
+        <div class="container">
+            <f:for each="{albums}" as="album">
+                <a class="flickr-dld-album col-lg-3 col-md-4 col-sm-6 col-xs-6"
+                   href="{album.3}" target="_blank">
+                    <div class="flickr-album-image" style="background-image: url({album.2})"></div>
+                    <div class="flickr-album-gradient"></div>
+                    <div class="flickr-album-text">
+                        <div class="title">{album.1}</div>
+                        <div class="subtitle">{album.0} photos</div>
+                    </div>
+                </a>
+            </f:for>
+        </div>
+    </f:section>
+</div>

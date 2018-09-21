@@ -1,0 +1,159 @@
+{namespace eventsearch= DLD\Dld\ViewHelpers}
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+    <f:layout name="Default"/>
+    <f:section name="main">
+        <f:if condition ="{event1}">
+            <f:then>
+                <v:variable.set name="object" value="{eventsearch:EventSearch(redirect: event1.uid)}"/>
+                <v:variable.set name="month" value="{object.start -> f:format.date(format: '%m')}"/>
+                <f:switch expression="{month}">
+                    <f:case value="01">
+                        <v:variable.set name="monthly" value="January"/>
+                    </f:case>
+                    <f:case value="02">
+                        <v:variable.set name="monthly" value="February"/>
+                    </f:case>
+                    <f:case value="03">
+                        <v:variable.set name="monthly" value="March"/>
+                    </f:case>
+                    <f:case value="04">
+                        <v:variable.set name="monthly" value="April"/>
+                    </f:case>
+                    <f:case value="05">
+                        <v:variable.set name="monthly" value="May"/>
+                    </f:case>
+                    <f:case value="06">
+                        <v:variable.set name="monthly" value="June"/>
+                    </f:case>
+                    <f:case value="07">
+                        <v:variable.set name="monthly" value="July"/>
+                    </f:case>
+                    <f:case value="08">
+                        <v:variable.set name="monthly" value="August"/>
+                    </f:case>
+                    <f:case value="09">
+                        <v:variable.set name="monthly" value="September"/>
+                    </f:case>
+                    <f:case value="10">
+                        <v:variable.set name="monthly" value="October"/>
+                    </f:case>
+                    <f:case value="11">
+                        <v:variable.set name="monthly" value="November"/>
+                    </f:case>
+                    <f:case value="12">
+                        <v:variable.set name="monthly" value="December"/>
+                    </f:case>
+                </f:switch>
+                <div class="invited femanager_show">
+                    <div class="container">
+                        <div class="mydld-container row">
+                            <div class="info clearfix">
+                                <section class="col-md-7 first">
+                                    <header class="box-header">
+                                        <h3>{monthly} {object.start -> f:format.date(format: '%d')},{object.start ->
+                                            f:format.date(format: '%Y')}</h3>
+                                    </header>
+
+                                    <div class="pboth">
+                                        <h2><a href="/conference/{v:format.url.sanitizeString(string: '{object.title}')}">{object.title}</a></h2>
+                                        <p class="application-note shortened">{object.message}</p>
+                                    </div>
+                                </section>
+                                <section class="col-md-5 last invitation-status">
+                                    <header class="box-header">
+                                        <h3>Application status:</h3>
+                                    </header>
+
+                                    <div class="pboth">
+                                        <p class="status-text">We received your application and will process it as soon as
+                                            possible. You will be notiﬁed via Email.</p>
+                                        <div class="buttons">
+                                            <span class="label applied">You applied ✔</span>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <v:variable.set name="month" value="{event.start -> f:format.date(format: '%m')}"/>
+                <f:switch expression="{month}">
+                    <f:case value="01">
+                        <v:variable.set name="monthly" value="January"/>
+                    </f:case>
+                    <f:case value="02">
+                        <v:variable.set name="monthly" value="February"/>
+                    </f:case>
+                    <f:case value="03">
+                        <v:variable.set name="monthly" value="March"/>
+                    </f:case>
+                    <f:case value="04">
+                        <v:variable.set name="monthly" value="April"/>
+                    </f:case>
+                    <f:case value="05">
+                        <v:variable.set name="monthly" value="May"/>
+                    </f:case>
+                    <f:case value="06">
+                        <v:variable.set name="monthly" value="June"/>
+                    </f:case>
+                    <f:case value="07">
+                        <v:variable.set name="monthly" value="July"/>
+                    </f:case>
+                    <f:case value="08">
+                        <v:variable.set name="monthly" value="August"/>
+                    </f:case>
+                    <f:case value="09">
+                        <v:variable.set name="monthly" value="September"/>
+                    </f:case>
+                    <f:case value="10">
+                        <v:variable.set name="monthly" value="October"/>
+                    </f:case>
+                    <f:case value="11">
+                        <v:variable.set name="monthly" value="November"/>
+                    </f:case>
+                    <f:case value="12">
+                        <v:variable.set name="monthly" value="December"/>
+                    </f:case>
+                </f:switch>
+                <div class="invited femanager_show">
+                    <div class="container">
+                        <div class="mydld-container row">
+                            <div class="info clearfix">
+                                <section class="col-md-7 first">
+                                    <header class="box-header">
+                                        <h3>{monthly} {event.start -> f:format.date(format: '%d')},{event.start ->
+                                            f:format.date(format: '%Y')}</h3>
+                                    </header>
+
+                                    <div class="pboth">
+                                        <h2><a href="/conference/{v:format.url.sanitizeString(string: '{event.title}')}">{event.title}</a></h2>
+                                        <p class="application-note shortened">{text}</p>
+                                    </div>
+                                </section>
+                                <section class="col-md-5 last invitation-status">
+                                    <header class="box-header">
+                                        <h3>Application status:</h3>
+                                    </header>
+
+                                    <div class="pboth">
+                                        <p class="status-text">We received your application and will process it as soon as
+                                            possible. You will be notiﬁed via Email.</p>
+                                        <div class="buttons">
+                                            <span class="label applied">You applied ✔</span>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
+
+
+    </f:section>
+</div>

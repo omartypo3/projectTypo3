@@ -1,0 +1,132 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:if condition="{pastevents-> f:count()}!=0 || {events-> f:count()}!=0">
+        <f:then>
+            <section class="how-to-attend-section">
+                <div class="container text-center">
+                    <h1 class="orange bold">Upcoming Conferences</h1>
+                </div>
+            </section>
+            <section class="conference-listing">
+                <f:for each="{events}" as="event">
+                    <f:link.page pageUid="{event.showPage.uid}">
+                        <div class="conference-item">
+                            <div class="container container-xs">
+                                <div class="row">
+                                    <div class="col-sm-5 hidden-xs">
+
+                                        <f:if condition="{event.conferenceImage}">
+                                            <f:then>
+                                                <f:image image="{event.conferenceImage}"
+                                                         class="img-responsive" maxHeight="300"/>
+                                            </f:then>
+                                            <f:else>
+                                                <f:image
+                                                        src="{settings.urlEvent}"
+                                                        class="img-responsive" maxHeight="300"/>
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-12">
+                                        <h3 class="orange bold">{event.title}</h3>
+                                        <p class="date dark-grey">{event.start-> f:format.date(format:'M
+                                            d')}</p>
+                                        <f:if condition="{event.conferenceImage}">
+                                            <f:then>
+                                                <f:image image="{event.conferenceImage}"
+                                                         class="img-responsive visible-xs" maxHeight="300"/>
+                                            </f:then>
+                                            <f:else>
+                                                <f:image
+                                                        src="{settings.urlEvent}"
+                                                        class="img-responsive visible-xs" maxHeight="300"/>
+                                            </f:else>
+                                        </f:if>
+
+
+                                        <div class="dark-grey">
+                                            <f:format.crop maxCharacters="250"><f:format.html>{event.description}</f:format.html></f:format.crop>
+                                        </div>
+                                        <span class="orange">More »</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:link.page>
+                </f:for>
+                <f:if condition="{pastevents}">
+                    <f:then>
+                        <div  id="archive"></div>
+                        <div class="conference-divider text-center bold">
+                            <i class="icon icon-caret-down"></i>Past Conferences<i class="icon icon-caret-down"></i>
+                        </div>
+                    </f:then>
+                </f:if>
+                <f:for each="{pastevents}" as="event">
+
+                    <f:link.page pageUid="{event.showPage.uid}">
+                        <div class="conference-item">
+                            <div class="container container-xs">
+                                <div class="row">
+                                    <div class="col-sm-5 hidden-xs">
+                                        <f:if condition="{event.conferenceImage}">
+                                            <f:then>
+                                                <f:image image="{event.conferenceImage}"
+                                                         class="img-responsive " maxHeight="300"/>
+                                            </f:then>
+                                            <f:else>
+                                                <f:image
+                                                        src="{settings.urlEvent}"
+                                                        class="img-responsive" maxHeight="300"/>
+                                            </f:else>
+                                        </f:if>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-12">
+                                        <h3 class="orange bold">{event.title}</h3>
+                                        <p class="date dark-grey">{event.start-> f:format.date(format:'M
+                                            d')}</p>
+
+                                        <f:if condition="{event.conferenceImage}">
+                                            <f:then>
+                                                <f:image image="{event.conferenceImage}"
+                                                         class="img-responsive visible-xs"/>
+                                            </f:then>
+                                            <f:else>
+                                                <f:image
+                                                        src="{settings.urlEvent}"
+                                                        class="img-responsive visible-xs" maxHeight="300"/>
+                                            </f:else>
+                                        </f:if>
+
+                                        <div class="dark-grey">
+                                            <f:format.crop maxCharacters="250"><f:format.html>{event.description}</f:format.html></f:format.crop>
+                                        </div>
+                                        <span class="orange">More »</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:link.page>
+
+                </f:for>
+                <div class="mytest"></div>
+                <a href="#" id="showmore" class="btn btn-white btn-big btn-shadow center-block load-more"
+                   data-attr-next-page="2" data-attr-city="{city}" data-attr-max-page="{maxpage}">Show more »</a>
+                <input type="hidden" id="uri_hiddekpn" value="{f:uri.action(action: 'pastEvents', pageType:235)}"/>
+            </section>
+        </f:then>
+        <f:else>
+            <section class="no-events-section">
+                <div class="container text-center">
+                    <h1 class="orange bold">
+                        <f:image src="typo3conf/ext/theme/Resources/Public/icons/magnify.svg" width="60"/>
+                        SORRY !
+                    </h1>
+                    <p> We don't have any events in this region. But we will come Soon.</p>
+                </div>
+            </section>
+        </f:else>
+    </f:if>
+</f:section>
+</html>

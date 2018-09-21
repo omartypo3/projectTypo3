@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="partner-info row">
+    <div class="partner-name bold">{partner.name}</div>
+    <div class="col-md-4">
+        <f:image image="{partner.logo}" class="partner-logo" maxHeight="300"></f:image>
+    </div>
+    <div class="partner-details col-md-8">
+        <ul>
+            <f:if condition="{partner.name}">
+                <li><label class="black">
+                    <f:translate key="tx_dld_domain_model_people.company"/>: </label>{partner.name}</li>
+            </f:if>
+            <f:if condition="{partner.operationfield}">
+                <li><label class="black">
+                    <f:translate key="tx_dld_domain_model_partner.operationfield"/>: </label>{partner.operationfield}</li>
+            </f:if>
+            <li>
+                <label class="black">
+                    <f:translate key="tx_dld_domain_model_partner.socialss"/>:
+                </label>
+                <f:if condition="{partner.socialLinkedinUrl}">
+                    <span><a href="{partner.socialLinkedinUrl}" target="_blank"> Linkedin</a></span>
+                </f:if>
+
+                <f:if condition="{partner.socialTwitterUsername}">
+                    <span><a href="https://twitter.com/{partner.socialTwitterUsername}" target="_blank">Twitter</a></span>
+                </f:if>
+            </li>
+        </ul>
+        <f:if condition="{partner.description}">
+            <div class="black partner-description">
+                <f:format.html>{partner.description}</f:format.html>
+            </div>
+        </f:if>
+    </div>
+</div>
+
+</div>
+</html>

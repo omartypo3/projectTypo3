@@ -1,0 +1,272 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+    <section class="speakers-container">
+        <f:if condition="{peoples}">
+            <f:then>
+                <div class="speakers-row">
+
+                    <f:for each="{peoples -> v:iterator.chunk(count: 4)}" as="people" iteration="c">
+                        <!--{c.cycle}-->
+
+                        <f:for each="{people -> v:iterator.chunk(count: 2)}" as="pe" iteration="cycle">
+                            <!--{cycle.cycle}-->
+                            <f:if condition="{cycle.cycle} % 4 >= 2">
+                                <f:then>
+                                    <div class="speakers-col even hidden-sm hidden-xs">
+                                        <f:for each="{pe -> v:iterator.chunk(count: 2)}" as="p">
+                                            <f:for each="{p}" as="pi" iteration="it">
+                                                <f:if condition="{pi.isAmazingSpeaker} == 1">
+                                                    <f:then>
+                                                        <f:if condition="{it.cycle} % 4 == 1">
+                                                            <f:then>
+                                                                <f:link.action action="show"
+                                                                               pageUid="{settings.peoplepageid}"
+                                                                               arguments="{people : pi}">
+                                                                    <!--{pi}-->
+                                                                    <f:for each="{pi.image}" as="img"
+                                                                           iteration="Iterator">
+                                                                        <f:if condition="{Iterator.isLast}">
+                                                                            <f:then>
+                                                                                <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                                <div class="speaker-tile">
+                                                                                    <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                                    <!--<f:image image="{img}"
+                                                                                             class="speaker-image" height="150"></f:image>-->
+                                                                                    <div class="filter"></div>
+                                                                                </div>
+                                                                            </f:then>
+                                                                        </f:if>
+                                                                    </f:for>
+                                                                </f:link.action>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:link.action action="show"
+                                                                               pageUid="{settings.peoplepageid}"
+                                                                               arguments="{people : pi}">
+                                                                    <f:for each="{pi.image}" as="img"
+                                                                           iteration="Iterator">
+                                                                        <f:if condition="{Iterator.isLast}">
+                                                                            <f:then>
+                                                                                <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                                <div class="speaker-tile">
+                                                                                    <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                                    <!--<f:image image="{img}"
+                                                                                             class="speaker-image" height="150"></f:image>-->
+                                                                                    <div class="filter"></div>
+                                                                                </div>
+                                                                            </f:then>
+                                                                        </f:if>
+                                                                    </f:for>
+                                                                </f:link.action>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                </f:if>
+                                            </f:for>
+                                        </f:for>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <div class="speakers-col odd hidden-sm hidden-xs">
+                                        <f:for each="{pe -> v:iterator.chunk(count: 2)}" as="p">
+                                            <f:for each="{p}" as="pi" iteration="it">
+                                                <f:if condition="{pi.isAmazingSpeaker} == 1">
+                                                    <f:then>
+                                                        <f:if condition="{it.cycle} % 4 == 1">
+                                                            <f:then>
+                                                                <f:link.action action="show"
+                                                                               pageUid="{settings.peoplepageid}"
+                                                                               arguments="{people : pi}">
+                                                                    <f:for each="{pi.image}" as="img"
+                                                                           iteration="Iterator">
+                                                                        <f:if condition="{Iterator.isLast}">
+                                                                            <f:then>
+                                                                                <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                                <div class="speaker-tile">
+                                                                                    <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                                    <!--<f:image image="{img}"
+                                                                                             class="speaker-image" height="150"></f:image>-->
+                                                                                    <div class="filter"></div>
+                                                                                </div>
+                                                                            </f:then>
+                                                                        </f:if>
+                                                                    </f:for>
+                                                                </f:link.action>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:link.action action="show"
+                                                                               pageUid="{settings.peoplepageid}"
+                                                                               arguments="{people : pi}">
+                                                                    <f:for each="{pi.image}" as="img"
+                                                                           iteration="Iterator">
+                                                                        <f:if condition="{Iterator.isLast}">
+                                                                            <f:then>
+                                                                                <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                                <div class="speaker-tile" >
+                                                                                    <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                                    <!--<f:image image="{img}"
+                                                                                             class="speaker-image" height="150"></f:image>-->
+                                                                                    <div class="filter"></div>
+                                                                                </div>
+                                                                            </f:then>
+                                                                        </f:if>
+                                                                    </f:for>
+                                                                </f:link.action>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                </f:if>
+                                            </f:for>
+                                        </f:for>
+                                    </div>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+
+                    </f:for>
+
+
+                    <!-------------------MOBILE------------------------------------>
+                    <f:for each="{peoples -> v:iterator.chunk(count: 6)}" as="people" iteration="cy">
+                        <!--{cy.cycle}-->
+                        <f:for each="{people -> v:iterator.chunk(count: 3)}" as="pe" iteration="cyc">
+
+                            <f:if condition="{cyc.cycle} == 1 ">
+                                <f:then>
+                                    <div class="speakers-col even mobile visible-sm visible-xs">
+                                        <f:for each="{pe}" as="p" iteration="it">
+                                            <f:link.action action="show" pageUid="{settings.peoplepageid}"
+                                                           arguments="{people : p}">
+                                                <f:if condition="{p.isAmazingSpeaker} == 1">
+                                                    <f:then>
+
+                                                        <f:for each="{p.image}" as="img" iteration="Iterator">
+                                                            <f:if condition="{Iterator.isLast}">
+                                                                <f:then>
+                                                                    <f:if condition="{it.cycle} == 1 ">
+                                                                        <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                        <div class="speaker-tile" >
+                                                                            <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                            <div class="filter"></div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                    <f:if condition="{it.cycle} == 2 ">
+                                                                        <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                        <div class="speaker-tile" >
+                                                                            <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                            <div class="filter"></div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                    <f:if condition="{it.cycle} == 3 ">
+                                                                        <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                        <div class="speaker-tile" >
+                                                                            <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                            <div class="filter"></div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                </f:then>
+                                                            </f:if>
+                                                        </f:for>
+                                                    </f:then>
+                                                </f:if>
+                                            </f:link.action>
+                                        </f:for>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <div class="speakers-col odd mobile visible-sm visible-xs">
+                                        <f:for each="{pe}" as="p" iteration="it">
+                                            <f:link.action action="show" pageUid="{settings.peoplepageid}"
+                                                           arguments="{people : p}">
+                                                <f:if condition="{p.isAmazingSpeaker} == 1">
+                                                    <f:then>
+                                                        <f:for each="{p.image}" as="img" iteration="Iterator">
+                                                            <f:if condition="{Iterator.isLast}">
+                                                                <f:then>
+                                                                    <f:if condition="{it.cycle} == 1 ">
+                                                                        <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                        <div class="speaker-tile" >
+                                                                            <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                            <div class="filter"></div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                    <f:if condition="{it.cycle} == 2 ">
+                                                                        <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                        <div class="speaker-tile" >
+                                                                            <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                            <div class="filter"></div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                    <f:if condition="{it.cycle} == 3 ">
+                                                                        <v:variable.set name="url" value="{f:uri.image(image:'{img}',maxHeight:150)}"></v:variable.set>
+
+                                                                        <div class="speaker-tile" >
+                                                                            <div class="speaker-image" style="background-image: url('{url}')"></div>
+                                                                            <div class="filter"></div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                </f:then>
+                                                            </f:if>
+                                                        </f:for>
+                                                    </f:then>
+                                                </f:if>
+                                            </f:link.action>
+                                        </f:for>
+                                    </div>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+
+                    </f:for>
+                    <div class="centered text-center">
+                        <h1 class="bold">
+                            <f:if condition="{settings.headline}">
+                                <f:then>{settings.headline}</f:then>
+                                <f:else>AMAZING SPEAKERS</f:else>
+                            </f:if>
+                        </h1>
+                        <f:if condition="{settings.subtitleurl}">
+                            <f:then>
+                                <f:link.page pageUid="{settings.subtitleurl}">
+                                    {settings.subtitle}
+
+                                </f:link.page>
+                            </f:then>
+                            <f:else>
+                                <f:link.page pageUid="6">
+                                    Meet them all »
+                                </f:link.page>
+                            </f:else>
+                        </f:if>
+
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+    </section>
+
+</f:section>
+</html>
