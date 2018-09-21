@@ -1,0 +1,51 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="textonly" label="#14 - colored box" description="A Colored Box for text only with extra styling options" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/lightboxyoutube.png', group: 'New Templating', sorting: '300'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 1400}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:field.input name="heading" label="Heading"/>
+				<flux:field.text name="text" label="Text" enableRichText="TRUE"/>
+				<flux:field.select name="background" label="choose a background color of the box" items="{red-background:'Red Background'}" default="red-background" size="1" maxItems="1"/>
+			</flux:form.sheet>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<table style="width: 100%;">
+			<tr>
+				<td style="width: 100%; padding: 1%;">
+					<f:if condition="{heading}">
+						<f:then><h2>{heading}</h2></f:then>
+					</f:if>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 100%; padding: 1%;">
+					<f:if condition="{text}">
+						<f:then>
+							<p>{text -> f:format.html()}</p>
+						</f:then>
+					</f:if>
+				</td>
+			</tr>
+		</table>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="colored-box {background}">
+			<div class="box-header">
+				{heading}
+			</div>
+			<div class="box-content">
+				<f:format.html>{text}</f:format.html>
+			</div>
+		</div>
+	</f:section>
+</div>

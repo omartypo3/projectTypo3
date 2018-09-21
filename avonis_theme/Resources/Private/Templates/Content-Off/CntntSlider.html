@@ -1,0 +1,47 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="cntntslider" label="Content slider" wizardTab="New Templating">
+			<flux:form.sheet name="options">
+				<flux:form.section name="slider" label="Content-Slider">
+					<flux:form.object name="slide" label="Add content slider element">
+						<flux:field.select name="image-text-position" label="Position of Image if set:" items="{image-left:'Image left', image-right:'Image right'}" default="image-right" size="1" maxItems="1"/>
+						<flux:field.file name="image" label="Image"/>
+						<flux:field.text name="text" label="Text" enableRichText="TRUE"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Content Slider</b>
+		<p></p>
+		<p></p>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="fslider testimonial testimonial-full bottommargin" data-animation="fade" data-arrows="false">
+			<div class="flexslider">
+				<div class="slider-wrap">
+					<f:for each="{settings.slider}" as="slide" iteration="i">
+						<div class="slide {slide.slide.image-text-position}">
+							<div class="testi-image">
+								<f:image src="{slide.slide.image}" alt="Image {i.cycle}" width="320"></f:image>
+							</div>
+							<div class="testi-content">
+								<f:format.crop maxCharacters="400">
+									<f:format.html>{slide.slide.text}</f:format.html>
+								</f:format.crop>
+							</div>
+						</div>
+					</f:for>
+				</div>
+			</div>
+		</div>
+	</f:section>
+</div>

@@ -1,0 +1,83 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="imageslider" label="#7 - simple image slider for any size" description="A full width map with addable markers" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/imageslider.png', group: 'New Templating', sorting: '700'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 700}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+
+				<flux:field.input name="heading" label="Heading"/>
+				<flux:form.section name="slider">
+					<flux:form.object name="slide">
+						<flux:field.file name="image" label="Image"/>
+						<flux:field.input name="target" label="Link">
+							<flux:wizard.link/>
+						</flux:field.input>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+			<flux:form.sheet name="style" label="Customise styles">
+
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Image Slider</b>
+
+		<f:for each="{slider}" as="slide" iteration="i">
+			<f:image src="{slide.slide.image}" alt="Image {i.cycle}" height="40" width="40"></f:image>
+		</f:for>
+
+	</f:section>
+
+	<f:section name="Main">
+		<f:if condition="{heading}">
+			<p style="font-size: {heading-size}" class="csc-firstHeader {heading-align} {heading-color}">{heading}</p>
+		</f:if>
+		<div id="oc-images" class="owl-carousel image-carousel carousel-widget" data-margin="20" data-nav="true" data-pagi="false" data-items-xxs="2" data-items-xs="2" data-items-sm="3" data-items-md="3">
+
+			<f:for each="{settings.slider}" as="slide" iteration="i">
+				<div class="oc-item">
+					<div class="iportfolio">
+						<div class="portfolio-image">
+							<f:if condition="{slide.slide.target -> v:math.round()} > 0">
+								<f:then>
+									<f:link.page pageUid="{slide.slide.target}">
+										<f:image src="{slide.slide.image}" alt="Image {i.cycle}" height="300"/>
+									</f:link.page>
+									<div class="portfolio-overlay">
+										<a href="{slide.slide.image}" class="left-icon" data-lightbox="image">
+											<i class="icon-line-plus"></i></a>
+										<a href="{slide.slide.target}" class="right-icon">
+											<i class="icon-line-ellipsis"></i></a>
+									</div>
+								</f:then>
+								<f:else>
+									<a href="{slide.slide.target}">
+										<f:image src="{slide.slide.image}" alt="Image {i.cycle}" height="300"></f:image>
+									</a>
+									<div class="portfolio-overlay">
+										<a href="{slide.slide.image}" class="left-icon" data-lightbox="image">
+											<i class="icon-line-plus"></i></a>
+										<a href="{slide.slide.target}" class="right-icon">
+											<i class="icon-line-ellipsis"></i></a>
+									</div>
+								</f:else>
+							</f:if>
+						</div>
+					</div>
+				</div>
+			</f:for>
+
+		</div>
+	</f:section>
+</div>

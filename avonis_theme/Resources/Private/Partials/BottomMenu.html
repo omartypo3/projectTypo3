@@ -1,0 +1,19 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="BottomMenu">
+        <v:page.menu title="{item.linktext}" pageUid="15" levels="1" excludePages="">
+            <f:for each="{menu}" as="item" iteration="i">
+                <li>
+                    <f:link.page pageUid="{item.uid}" title="{item.linktext}">
+                         {item.linktext}
+                    </f:link.page>
+                </li>
+            </f:for>
+        </v:page.menu>
+    </f:section>
+</div>

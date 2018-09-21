@@ -1,0 +1,60 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="textonly" label="#3 - regular text element" description="An element for text only with extra styling options" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/lightboxyoutube.png', group: 'New Templating', sorting: '300'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 300}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:field.input name="heading" label="Heading"/>
+				<flux:field.text name="text" label="Text" enableRichText="TRUE"/>
+			</flux:form.sheet>
+			<flux:form.sheet name="style" label="Customise styles">
+
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-red:'Red', heading-color-grey:'Grey', heading-color-black:'Black', heading-color-white:'White'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 58px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+				<flux:field.select name="heading-weight" label="Heading weight:" items="{normal:'Normal', bold:'Bold'}" default="normal" size="1" maxItems="1"/>
+				<flux:field.select name="text-color" label="Text Color:" items="{text-color-tr:'Titan Red', text-color-grey:'Grey', text-color-black:'Black', text-color-white:'White'}" default="text-color-black" size="1" maxItems="1"/>
+				<flux:field.select name="text-weight" label="Text weight:" items="{text-weight-bold:'Bold', text-weight-nbold:'none-bold'}" default="text-weight-nbold" size="1" maxItems="1"/>
+				<flux:field.select name="text-align" label="Text alignment:" items="{text-align-left:'Left', center:'Center', tright:'Right'}" default="text-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="text-size" label="Text size:" items="{text-size-small:'Small', text-size-big:'Big'}" default="text-size-small" size="1" maxItems="1"/>
+				<flux:field.select name="fce-boxed" label="Text in a Box Y/N:" items="{fce-boxed:'Boxed', fce-nonboxed:'Not Boxed'}" default="fce-nonboxed" size="1" maxItems="1"/>
+			</flux:form.sheet>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<table style="width: 100%;">
+			<tr>
+				<td style="width: 100%; padding: 1%;">
+					<f:if condition="{heading}">
+						<f:then><h2>{heading}</h2></f:then>
+					</f:if>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 100%; padding: 1%;">
+					<f:if condition="{text}">
+						<f:then>
+							<p>{text -> f:format.html()}</p>
+						</f:then>
+					</f:if>
+				</td>
+			</tr>
+		</table>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="only-text-fce {fce-boxed}">
+			<p style="font-size: {heading-size}; line-height: {heading-size}; font-weight: {heading-weight};" class="csc-firstHeader {heading-align} {heading-color} {heading-weight}">{heading}</p>
+			<div class="{text-weight} {text-color} {text-align} {text-size}">
+				<f:format.html>{text}</f:format.html>
+			</div>
+		</div>
+	</f:section>
+</div>

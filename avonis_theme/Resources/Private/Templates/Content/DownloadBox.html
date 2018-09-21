@@ -1,0 +1,69 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="downloadlinks" label="#9 - A box for a list of download links" description="This element provides grey box, with a headline and a list of downloadable files or videos. Also it provides a mail-to link." options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/downloadlinks.png', group: 'New Templating', sorting: '900'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 900}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:field.input name="heading" label="Headline of these box"/>
+				<flux:field.inline.fal name="files" multiple="true" maxItems="20" label="Add files for download here - set the title whithin the childelements (make use of the 'Override' function)"/>
+				<flux:field.input name="email" label="Email Address - this will apear at the end of the box and is optional"/>
+			</flux:form.sheet>
+			<flux:form.sheet name="style" label="Customise styles">
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+			</flux:form.sheet>
+		</flux:form>
+		<flux:field.select name="icon" label="Icon:" items="{icon-files:'Manual/Brochure', icon-youtube-play:'Video'}" default="icon-files" size="1" maxItems="1"/>
+
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Download Links</b>
+		<ul class="sidenav">
+			<f:for each="{v:content.resources.fal(field: 'files')}" as="file">
+				<li>
+					<a href="{file.url}" target="_blank">
+						<i class="{f:if(condition:'{0:{file.mimetype}} == {0:\'application/pdf\'}', then: 'icon-files', else: 'icon-youtube-play')}"></i>
+						{file.title} <i class="icon-chevron-right"></i>
+					</a>
+				</li>
+			</f:for>
+			<li>
+				<a href="mailto:{email}"><i class="icon-mail"></i>Mail Us<i class="icon-chevron-right"></i></a>
+			</li>
+		</ul>
+	</f:section>
+
+	<f:section name="Main">
+
+		<div id="download-links">
+			<f:if condition="{heading}">
+				<p style="font-size: {heading-size}" class="csc-firstHeader {heading-align} {heading-color}">{heading}
+				</p>
+			</f:if>
+			<ul class="sidenav">
+				<f:for each="{v:content.resources.fal(field: 'files')}" as="file">
+					<li>
+						<a href="{file.url}" target="_blank">
+							<i class="{f:if(condition:'{0:{file.mimetype}} == {0:\'application/pdf\'}', then: 'icon-files', else: 'icon-youtube-play')}"></i>
+							{file.title} <i class="icon-chevron-right"></i>
+						</a>
+					</li>
+				</f:for>
+				<f:if condition="{email}">
+					<li>
+						<f:link.email email="{email}">
+							<i class="icon-mail"></i>Mail Us<i class="icon-chevron-right"></i>
+						</f:link.email>
+					</li>
+				</f:if>
+			</ul>
+		</div>
+	</f:section>
+</div>

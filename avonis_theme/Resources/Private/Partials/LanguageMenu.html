@@ -1,0 +1,51 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="LanguageMenu">
+
+            <a href="#" class="language-selector">
+                <v:page.languageMenu defaultIsoFlag="de" hideNotTranslated="1" useCHash="0">
+
+                    <f:for each="{languageMenu}" as="langmenu">
+                        <f:if condition="{langmenu.current} == 1">
+                            <f:image
+                                    src="/typo3conf/ext/avonis_theme/Resources/Public/images/SVG/{langmenu.flag}.svg"
+                                    width="20" height="20"/>
+                        </f:if>
+                    </f:for>
+                </v:page.languageMenu>
+                <v:page.languageMenu defaultIsoFlag="de" hideNotTranslated="1" useCHash="0">
+                    <ul class="language-menu">
+                        <f:for each="{languageMenu}" as="langmenu" iteration="langiter">
+                            <f:if condition="{langiter.index} == 0">
+                                <f:then>
+                                    <li class="langcode-{langmenu.flag}">
+                                        <a href="{langmenu.url}">
+                                            <f:image
+                                                    src="/typo3conf/ext/avonis_theme/Resources/Public/images/SVG/{langmenu.flag}.svg"
+                                                    width="20" height="20"/>
+                                        </a>
+                                    </li>
+                                </f:then>
+                                <f:else>
+                                    <li class="langcode-{langmenu.flag}">
+                                        <a href="{langmenu.url}">
+                                            <f:image
+                                                    src="/typo3conf/ext/avonis_theme/Resources/Public/images/SVG/{langmenu.flag}.svg"
+                                                    width="20" height="20"/>
+                                        </a>
+                                    </li>
+                                </f:else>
+                            </f:if>
+
+                        </f:for>
+                    </ul>
+                </v:page.languageMenu>
+            </a>
+
+    </f:section>
+</div>

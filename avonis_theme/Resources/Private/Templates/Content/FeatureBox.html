@@ -1,0 +1,69 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="offers" label="#4 - Feature Box" description="This adds a block with - at least 4 blocks - of prominent content elements" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/offers.png', group: 'New Templating', sorting: '400'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 400}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:field.input name="heading" label="Heading"/>
+				<flux:form.section name="elements" label="Add at least 4 blocks">
+					<flux:form.object name="square">
+						<flux:field.input name="backgroundColor" label="Background color">
+							<flux:wizard.colorPicker/>
+						</flux:field.input>
+						<flux:field.select name="icon" label="Icon" items="{icon-mail: 'Message', icon-chat-3: 'Chat', icon-line2-arrow-up: 'Arrow up', icon-line2-arrow-up: 'Arrow up', icon-line2-social-dropbox:'Dropbox'}" default="icon-mail" size="1" maxItems="1"/>
+						<flux:field.input name="title" label="Title"/>
+						<flux:field.text name="text" label="Text"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+
+			<flux:form.sheet name="style" label="Customise styles">
+
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black', heading-color-white:'White'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+			</flux:form.sheet>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Offers</b>
+
+		<p>Elements: {elements -> f:count()}</p>
+
+	</f:section>
+
+	<f:section name="Main">
+		<div class="section sections-offers">
+			<div class="container">
+				<div class="row">
+
+					<div class="offers clearfix">
+						<f:if condition="{heading}">
+							<p style="font-size: {heading-size}" class="csc-firstHeader {heading-align} {heading-color}">
+								{heading}
+							</p>
+						</f:if>
+						<f:for each="{elements}" as="element" iteration="i">
+							<div class="offer offer-{i.cycle} col-xs-6" style="background-color:{element.square.backgroundColor};border-color:{element.square.backgroundColor}">
+								<div class="offer_icon">
+									<i class="{element.square.icon}"></i>
+								</div>
+								<div class="offer_content">
+									<h4 class="offer_title">{element.square.title}</h4>
+									<div class="offer_text">{element.square.text}</div>
+								</div>
+							</div>
+						</f:for>
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+</div>

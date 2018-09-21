@@ -1,0 +1,47 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+
+<f:layout name="SidebarRight" />
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+
+    <f:section name="Configuration">
+        <flux:form id="SidebarRight" label="Normal page with sidebar right" options="{icon: '../typo3conf/ext/avonis_theme/Resources/Public/images/layouts/FullWidth-Full.jpg'}">
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="0" name="Content" label="Content" colspan="3"/>
+                    <flux:grid.column colPos="1" name="Sidebar" label="Sidebar" />
+                </flux:grid.row>
+            </flux:grid>
+
+            <flux:field.input name="settings.pageClass" default="" label="Custom Class" />
+            <flux:field.input name="settings.menuRoot" default="" label="Set the start of the pagetree for the menu">
+                <flux:wizard.link/>
+            </flux:field.input>
+            <flux:field.input name="settings.breadcrumbEntryLevel" default="0" label="Set the breadcrumb entryLevel" eval="int"/>
+            <flux:form.section name="settings.headermenu" label="Items of the top right header menu">
+                <flux:form.object name="menuitem" label="Menu item">
+                    <flux:field.relation table="pages" maxItems="1" name="settings.itemlink" label="Menu item">
+                        <flux:wizard.link/>
+                    </flux:field.relation>
+                </flux:form.object>
+            </flux:form.section>
+            <flux:field.checkbox name="settings.hideLogin" default="" label="Should the login section should be hidden?" />
+            <flux:field.checkbox name="settings.hideSearch" default="" label="Should the global search field should be hidden?" />
+            <flux:field.checkbox name="settings.aselogo" default="" label="Should we use the ASE logo" />
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <v:content.render column="0"/>
+    </f:section>
+    <f:section name="Sidebar">
+        <v:content.render column="1"/>
+    </f:section>
+
+
+</div>

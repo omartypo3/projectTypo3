@@ -1,0 +1,38 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="seperator" label="#10 - big seperation headline" description="Use this element to add a big underlined headline to structure the content" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/seperator.png', group: 'New Templating', sorting: '1000'}">
+            <flux:form.option name="Fluidcontent" value="{sorting: 1000}"/>
+
+            <flux:form.sheet name="data" label="Basic">
+
+                <flux:field.input name="heading" label="Heading"/>
+            </flux:form.sheet>
+            <flux:form.sheet name="style" label="Customise styles">
+
+                <flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+            <flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+            <flux:field.select name="seperator-style" label="Seperator style:" items="{seperator-style-red:'Titan Red Line', seperator-style-flare:'Flare', seperator-style-double:'Heading with border top and bottom', seperator-style-double-yellow:'Heading with border top and bottom yellow'}" default="seperator-style-red" size="1" maxItems="1"/>
+            </flux:form.sheet>
+
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Seperator</b>
+        <p>{heading}</p>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="seperator {f:if(condition: '{seperator-style} == "seperator-style-double"', then: 'double')}{f:if(condition: '{seperator-style} == "seperator-style-double-yellow"', then: 'double')}">
+            <div class="{seperator-style}">
+                <p style="font-size: {heading-size}" class="csc-firstHeader center {heading-color}">{heading}</p>
+            </div>
+        </div>
+    </f:section>
+</div>

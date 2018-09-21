@@ -1,0 +1,33 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="FooterMenu">
+        <!-- Hidden Top Area -->
+          <ul class="footerMenu">
+            <v:page.menu.directory pages="{settings.menuRoot}">
+                <f:for each="{menu}" as="menuPage" iteration="iteration">
+                    <li class="level-1" id="page-id-{menuPage.uid}">
+                        <span class="mobile-toggle">{menuPage.title}</span>
+                        <a href="{menuPage.link}">{menuPage.title}</a>
+                        <f:if condition="{menuPage.hasSubPages}">
+                            <ul class="submenu">
+                                <v:page.menu pageUid="{menuPage.uid}" classActive="active" as="submenu">
+                                    <f:for each="{submenu}" as="subMenuPage">
+                                        <li class="level-2">
+                                            <a class="{subMenuPage.class}" href="{subMenuPage.link}">
+                                                {subMenuPage.title}</span></a>
+                                        </li>
+                                    </f:for>
+                                </v:page.menu>
+                            </ul>
+                        </f:if>
+                    </li>
+                </f:for>
+            </v:page.menu.directory>
+          </ul>
+    </f:section>
+</div>

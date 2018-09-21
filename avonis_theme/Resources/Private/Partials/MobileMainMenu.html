@@ -1,0 +1,73 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+	<f:section name="MobileMainMenu">
+		<nav id="mp-menu" class="mp-menu mp-overlap">
+			<div class="mp-level" data-level="1">
+				<h2 class="icon">Titantool</h2>
+				<ul>
+					<v:page.menu.directory pages="{settings.menuRoot}" title="{item.linktext}" levels="3" excludePages="">
+						<f:for each="{menu}" as="item" iteration="i">
+							<f:if condition="{item.hasSubPages}">
+								<f:then>
+									<li class="icon icon-arrow-left {item.class}">
+										<f:link.page pageUid="{item.uid}" title="{item.linktext}">{item.linktext}
+										</f:link.page>
+										<div class="mp-level" data-level="2">
+											<h2>{item.linktext}</h2>
+											<a class="mp-back" href="#">back</a>
+											<ul class="sublevel-1">
+												<v:page.menu pageUid="{item.uid}">
+													<f:for each="{menu}" as="subItem">
+														<f:if condition="{subItem.hasSubPages}">
+															<f:then>
+																<li class="icon icon-arrow-left {subItem.class}">
+																	<f:link.page pageUid="{subItem.uid}" title="{subItem.linktext}">
+																		{subItem.linktext}
+																	</f:link.page>
+																	<div class="mp-level" data-level="3">
+																		<h2>{subItem.linktext}</h2>
+																		<a class="mp-back" href="#">back</a>
+																		<ul class="sublevel-2">
+																			<v:page.menu pageUid="{subItem.uid}">
+																				<f:for each="{menu}" as="subItem2">
+																					<li class="icon icon-arrow-left {subItem2.class}" data-link="{subItem2.url}">
+																						<f:link.page pageUid="{subItem2.uid}" title="{subItem2.linktext}">
+																							{subItem2.linktext}
+																						</f:link.page>
+																					</li>
+																				</f:for>
+																			</v:page.menu>
+																		</ul>
+																	</div>
+																</li>
+															</f:then>
+															<f:else>
+																<li class="icon {subItem.class}">
+																	<f:link.page pageUid="{subItem.uid}" title="{subItem.linktext}">
+																		{subItem.linktext}
+																	</f:link.page>
+																</li>
+															</f:else>
+														</f:if>
+													</f:for>
+												</v:page.menu>
+											</ul>
+										</div>
+									</li>
+								</f:then>
+								<f:else>
+									<li class="icon">
+										<f:link.page pageUid="{item.uid}" title="{item.linktext}">{item.linktext}
+										</f:link.page>
+									</li>
+								</f:else>
+							</f:if>
+						</f:for>
+					</v:page.menu.directory>
+				</ul> <!-- First level -->
+			</div>
+		</nav>
+	</f:section>
+</div>

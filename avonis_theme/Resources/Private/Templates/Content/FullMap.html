@@ -1,0 +1,93 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+	<f:section name="Configuration">
+
+		<flux:form id="fullmap" label="#5 - Full width google map" description="A full width map with addable markers" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/fullmap.png', group: 'New Templating', sorting: '500'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 500}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+
+				<flux:field.input name="heading" label="Headline of the map"/>
+				<flux:field.input name="centeraddress" label="Center the map at this adress (e.g. 1600 Pennsylvania Ave NW, Washington, DC 20500, USA)" default="New York, USA"/>
+				<flux:field.input name="zoom" label="Zoom level of the map (from 0 - showing the whole world, to 20 - showing every fireplug )" default="10"/>
+				<flux:field.select name="maptype" label="Type of the shown map" items="{roadmap:'Roadmap', satellite:'Satellite', hybrid:'Hybrid (mix of roadmap and satellite'}" default="roadmap" size="1" maxItems="1"/>
+
+				<flux:form.section name="maps" label="Pins on the map">
+					<flux:form.object name="map" label="Map pin">
+						<flux:field.input name="address" label="Address for Pin (e.g. 1600 Pennsylvania Ave NW, Washington, DC 20500, USA)"/>
+						<flux:field.input name="text" label="Popup Text (for line break use -> <br>)"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+			<flux:form.sheet name="style" label="Customise styles">
+
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+        <b>Full width map</b>
+
+        <p>With several options e.g. the possibility to add pins</p>
+
+
+    </f:section>
+
+    <f:section name="Main">
+
+        <f:if condition="{heading}">
+            <div class="container clearfix">
+                <p style="font-size: {heading-size}" class="csc-firstHeader {heading-align} {heading-color}">{heading}</p>
+            </div>
+        </f:if>
+
+	    <div id="google-map-{record.uid}" style="height: 400px; margin-bottom: 20px;" class="gmap"></div>
+
+	    <script type="text/javascript" src="https://maps.google.com/maps/api/js"></script>
+        <script type="text/javascript" src="typo3conf/ext/avonis_theme/Resources/Public/js/jquery.gmap.js"></script>
+        <script type="text/javascript">
+	        $ ('#google-map-{record.uid}').gMap (<![CDATA[{
+		        ]]>
+                address : '{centeraddress}',
+		        maptype : '{maptype}',
+                zoom    : {zoom},
+                markers : [
+                <f:for each="{settings.maps}" as="pin" iteration="i">
+                    <f:if condition="{i.isLast} == 1">
+                        <f:then>
+                            <![CDATA[{]]>
+                                address: "{pin.map.address}",
+                                html: "<f:format.html>{pin.map.text}</f:format.html>"
+                            <![CDATA[}]]>
+                        </f:then>
+                        <f:else>
+                            <![CDATA[{]]>
+                                address: "{pin.map.address}",
+                                html: "<f:format.html>{pin.map.text}</f:format.html>"
+                            <![CDATA[}]]>,
+                        </f:else>
+                    </f:if>
+                </f:for>
+                ],
+                doubleclickzoom: false,
+                controls: {
+                    panControl: true,
+                    zoomControl: true,
+                    mapTypeControl: false,
+                    scaleControl: false,
+                    streetViewControl: false,
+                    overviewMapControl: false
+                }
+            <![CDATA[}]]>);
+        </script>
+    </f:section>
+</div>

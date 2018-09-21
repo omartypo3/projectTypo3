@@ -1,0 +1,59 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="YTVideo" label="Youtube embed" description="Embed a Youtube Video" wizardTab="New Templating">
+
+			<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+			<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+			<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+
+			<flux:field.input name="heading" label="Heading"/>
+			<flux:field.input name="ytlink" label="Youtube Embed Code"/>
+
+			<f:comment>
+				<flux:field.input name="width" label="Width of the Youtube player (default = 560)" default="560"/>
+				<flux:field.input name="height" label="Height of the Youtube player (default = 315)" default="315"/>
+			</f:comment>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Youtube embed Video</b>
+		<table style="width: 100%;">
+			<tr>
+				<td style="width: 48%; padding: 1%;">
+					<f:if condition="{image}">
+						<f:then>
+							<f:image src="{image}" width="200"/>
+						</f:then>
+					</f:if>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 48%; padding: 1%;">
+					<f:if condition="{ytlink}">
+						<f:then>
+							<p>{ytlink}</p>
+						</f:then>
+					</f:if>
+				</td>
+			</tr>
+		</table>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="youtube-element {fce-boxed}">
+			<f:if condition="{heading}">
+				<p style="font-size: {heading-size}" class="csc-firstHeader {heading-align} {heading-color}">{heading}
+				</p>
+			</f:if>
+			<iframe src="{ytlink}" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</f:section>
+</div>
+
+

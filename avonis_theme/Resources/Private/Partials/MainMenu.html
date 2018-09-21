@@ -1,0 +1,72 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+	<f:section name="MainMenu">
+		<nav id="mainmenu">
+			<section>
+				<ul>
+					<v:page.menu.directory pages="{settings.menuRoot}" title="{item.linktext}" levels="3" excludePages="">
+						<f:render section="mainMenu" arguments="{_all}"/>
+					</v:page.menu.directory>
+				</ul> <!-- First level -->
+				<!-- Remplaced when solr is ready -->
+			</section>
+		</nav>
+	</f:section>
+
+	<f:section name="mainMenu">
+		<f:for each="{menu}" as="item" iteration="i">
+			<li>
+				<f:link.page pageUid="{item.uid}" title="{item.linktext}">{item.linktext}</f:link.page>
+				<f:if condition="{item.hasSubPages}">
+					<div class="navChild clr">
+						<div class="navBackground"></div>
+						<ul class="normalSub">
+							<h2>{item.linktext}</h2>
+							<v:page.menu pageUid="{item.uid}">
+								<f:for each="{menu}" as="subItem">
+									<li class="firstSublvl">
+										<f:link.page pageUid="{subItem.uid}" title="{subItem.linktext}" class="firstSublvlLink">
+											{subItem.linktext}
+										</f:link.page>
+										<f:if condition="{subItem.hasSubPages}">
+											<ul class="secondSub">
+												<h2>{subItem.linktext}</h2>
+												<v:page.menu pageUid="{subItem.uid}">
+													<f:for each="{menu}" as="subItem2">
+														<li class="secondSublvl">
+															<f:link.page pageUid="{subItem2.uid}" title="{subItem2.linktext}" class="secondSublvlLink">
+																{subItem2.linktext}
+															</f:link.page>
+															<ul>
+																<li>
+																	<f:link.page pageUid="{subItem2.uid}" title="{subItem2.linktext}">
+																		<h5>{subItem2.linktext}</h5>
+																		<figure>
+																			<f:if condition="{v:resource.record.fal(table:'pages', field:'media', uid:'{subItem2.uid}', record:'{uid: subItem2.uid}')->f:count()} > 0">
+																				<v:resource.record.fal table="pages" field="media" uid="{subItem2.uid}" record="{uid: subItem2.uid}" as="media">
+																					<f:if condition="{media.0.type}==2">
+																						<img data-original="{media.0.url}" class="lazy">
+																					</f:if>
+																				</v:resource.record.fal>
+																			</f:if>
+																		</figure>
+																	</f:link.page>
+																</li>
+															</ul> <!-- Fourth level -->
+														</li>
+													</f:for>
+												</v:page.menu>
+											</ul> <!-- Third level -->
+										</f:if>
+									</li>
+								</f:for>
+							</v:page.menu>
+						</ul> <!-- Second level -->
+					</div>
+				</f:if>
+			</li>
+		</f:for>
+	</f:section>
+</div>

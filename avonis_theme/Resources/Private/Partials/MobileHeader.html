@@ -1,0 +1,35 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+ <div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+    <f:section name="MobileHeader">
+       <!--Mobile Header
+        ============================================= -->
+        <f:if condition="{settings.hideLogin}">
+            <f:else>
+                <div class="fe-user" id="fe-user-login-button-mobile">
+                    <f:link.page pageUid="1362">Rep Log-In
+                        <img src="fileadmin/template/img/lock.png" width="11" height="11" class="lock-icon-white">
+                        <img src="fileadmin/template/img/lock-black.png" width="11" height="11" class="lock-icon-black">
+                    </f:link.page>
+                </div>
+            </f:else>
+        </f:if>
+        <span id="app-like-icons">
+            <f:if condition="{settings.hideLogin}">
+                <f:else>
+                    <a href="search/" class="mobile-icon search">Search</a>
+                </f:else>
+            </f:if>
+            <a href="dealers-service-centers/" class="mobile-icon map">Dealers &amp; Service Centers</a><a href="" id="" class="app-like-menu" title="Menu">Menu</a>
+       </span>
+       <span id="toggle-mp-menu">
+          <a href="#" id="trigger" class="menu-trigger" title="Menu">Menu</a>
+       </span>
+       <f:render partial="MobileMainMenu" section="MobileMainMenu" arguments="{_all}"/>
+       <!-- #Mobile Header end -->
+  </f:section>
+</div>
+
+

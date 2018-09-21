@@ -1,0 +1,310 @@
+page {
+    includeCSS {
+        #googleapi = https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic
+        #roboto.external = 1
+
+        themeBootstrap = typo3conf/ext/avonis_theme/Resources/Public/style/bootstrap.css
+        themeStylezz = typo3conf/ext/avonis_theme/Resources/Public/style/stylez.css
+        themebeSwiper = typo3conf/ext/avonis_theme/Resources/Public/style/swiper.css
+        themeDark = typo3conf/ext/avonis_theme/Resources/Public/style/dark.css
+        themeFontIcons = typo3conf/ext/avonis_theme/Resources/Public/style/font-icons.css
+        themeAnimate = typo3conf/ext/avonis_theme/Resources/Public/style/animate.css
+        themeMPopup = typo3conf/ext/avonis_theme/Resources/Public/style/magnific-popup.css
+        themeResponsive = typo3conf/ext/avonis_theme/Resources/Public/style/responsive.css
+        themeResponsiveCustom = typo3conf/ext/avonis_theme/Resources/Public/style/custom-responsive.css
+        themeCustom = typo3conf/ext/avonis_theme/Resources/Public/style/custom.css
+    }
+
+    includeJS{
+        # REVOLUTION JS FILES
+        themepunchtools =
+        themepunchrevolution =
+
+        #SLIDER REVOLUTION 5.0 EXTENSIONS
+        revolutionactions    =
+        revolutioncarousel    =<
+        revolutionkenburn    =
+        revolutionlayeranimation    =
+        revolutionmigration    =
+        revolutionnavigation    =
+        revolutionparallax    =
+        revolutionslideanims    =
+        revolutionvideo   =
+    }
+
+    includeJSFooter {
+        #jquery = typo3conf/ext/avonis_theme/Resources/Public/js/jquery.js
+
+        # REVOLUTION JS FILES
+        themepunchtools = fileadmin/template/js/revolution-slider/jquery.themepunch.tools.min.js
+        themepunchrevolution = fileadmin/template/js/revolution-slider/jquery.themepunch.revolution.min.js
+
+        #SLIDER REVOLUTION 5.0 EXTENSIONS
+        revolutionactions    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.actions.min.js
+        revolutioncarousel    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.carousel.min.js
+        revolutionkenburn    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.kenburn.min.js
+        revolutionlayeranimation    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.layeranimation.min.js
+        revolutionmigration    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.migration.min.js
+        revolutionnavigation    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.navigation.min.js
+        revolutionparallax    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.parallax.min.js
+        revolutionslideanims    = fileadmin/template/js/revolution-slider/extensions/revolution.extension.slideanims.min.js
+        revolutionvideo   = fileadmin/template/js/revolution-slider/extensions/revolution.extension.video.min.js
+
+        themePlugins = typo3conf/ext/avonis_theme/Resources/Public/js/plugins.js
+#        themeGMapApi = https://maps.google.com/maps/api/js
+#        themeGMapApi.external = 1
+#
+#        themeGMap = typo3conf/ext/avonis_theme/Resources/Public/js/jquery.gmap.js
+        themeFunctions = typo3conf/ext/avonis_theme/Resources/Public/js/functions.js
+
+
+        mainjs = typo3conf/ext/avonis_theme/Resources/Public/js/main.js
+
+        jsscripts =
+        browserJqueryPlugin = typo3conf/ext/avonis_theme/Resources/Public/js/jquery.browser.min.js
+        fixjsscripts = typo3conf/ext/avonis_theme/Resources/Public/js/jscripts.js
+    }
+
+#    bodyTag >
+#    bodyTagCObject >
+#    bodyTagCObject.value >
+#    bodyTagCObject = USER
+#    bodyTagCObject.userFunc = Avonis\AvonisTheme\Util\BodyTagHelper->buildBodyTag
+
+    # bodyTag
+    bodyTag >
+    bodyTagCObject >
+    bodyTagCObject = TEXT
+    bodyTagCObject.value = stretched no-transition
+    bodyTagCObject.wrap = <body class="|">
+
+    10 >
+}
+
+config {
+    concatenateJs = 0
+    concatenateCss = 0
+    compressJs = 0
+    compressCss = 0
+
+}
+tt_content.stdWrap.innerWrap.cObject.default.default{
+    wrap >
+    10 >
+}
+
+# Remove all wraps around the image
+# Remove some wraps
+#tt_content.image.20.imageStdWrap.dataWrap >
+#tt_content.image.20.imageStdWrapNoWidth.dataWrap >
+#tt_content.image.20.imageColumnStdWrap.dataWrap >
+
+# Redefine the layout switch with only one default case
+#tt_content.image.20.layout >
+#tt_content.image.20.layout = CASE
+#tt_content.image.20.layout.key.field = imageorient
+#tt_content.image.20.layout.default = TEXT
+#tt_content.image.20.layout.default.value = ###IMAGES### ###TEXT###
+
+# Remove the wrap around the image subtext
+#tt_content.textpic.20.text.wrap = |
+
+# Define a new rendering method without wraps
+#tt_content.image.20.rendering.noWraps {
+#  imageRowStdWrap.dataWrap = |
+#  noRowsStdWrap.wrap =
+#  oneImageStdWrap.dataWrap = |
+#  imgTagStdWrap.wrap = |
+#  editIconsStdWrap.wrap = |
+#  caption.wrap = |
+#}
+# Set this as active rendering method
+#tt_content.image.20.renderMethod = noWraps
+
+
+# Main Menu
+lib.mainmenu.30.special.value = 1455
+lib.mainmenuMobile.2.10.special.value = 1455
+
+
+page.includeJSFooterlibs.powermailJQuery = https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+page.footerData.9993 = TEXT
+page.footerData.9993.value (
+<script type="text/javascript">
+    /******************************************
+     -  PREPARE PLACEHOLDER FOR SLIDER  -
+     ******************************************/
+    var tpj=jQuery;
+    var revapi;
+
+    tpj(document).ready(function() {
+
+        revapi = tpj("#rev_slider").show().revolution({
+            sliderType:"standard",
+            jsFileLocation:"",
+            sliderLayout:"auto",
+            dottedOverlay:"none",
+            delay:9000,
+
+            navigation: {
+                keyboardNavigation:"off",
+                keyboard_direction: "horizontal",
+                mouseScrollNavigation:"off",
+                onHoverStop:"on",
+                touch:{
+                    touchenabled:"on",
+                    swipe_threshold: 75,
+                    swipe_min_touches: 1,
+                    swipe_direction: "horizontal",
+                    drag_block_vertical: false
+                }
+                ,
+                tabs: {
+                    style:"zeus",
+                    enable:false,
+                    width:100,
+                    height:30,
+                    min_width:100,
+                    wrapper_padding:0,
+                    wrapper_color:"transparent",
+                    wrapper_opacity:"0",
+                    tmp:'<span class="tp-tab-title">{{title}}</span>',
+                    visibleAmount: 0,
+                    hide_onmobile: true,
+                    hide_under:480,
+                    hide_onleave:false,
+                    hide_delay:200,
+                    direction:"horizontal",
+                    span:true,
+                    position:"inner",
+                    space:1,
+                    h_align:"left",
+                    v_align:"top",
+                    h_offset:30,
+                    v_offset:30
+                }
+            },
+
+            responsiveLevels:[1240,1024,778,500],
+            gridwidth:[1230,1024,767,480],
+            gridheight:[720,720,480,360],
+            lazyType:"none",
+            parallax: {
+                type:"scroll",
+                origo:"enterpoint",
+                speed:400,
+                levels:[5,10,15,20,25,30,35,40,45,50],
+            },
+            shadow:0,
+            spinner:"off",
+            stopLoop:"off",
+            stopAfterLoops:0,
+            stopAtSlide:0,
+            shuffle:"off",
+            autoHeight:"off",
+            disableProgressBar:"on",
+            hideThumbsOnMobile:"off",
+            hideSliderAtLimit:0,
+            hideCaptionAtLimit:0,
+            hideAllCaptionAtLilmit:0,
+            startWithSlide:0,
+            fallbacks: {
+                simplifyAll:"off",
+                nextSlideOnWindowFocus:"off",
+                disableFocusListener:"off"
+            }
+        });
+
+
+        var slider = jQuery('#rev_slider');
+
+        if(!slider.length) return;
+
+        // text to be used for the tabs, edit as needed
+        var tabText = [];
+        slider.find("li").each(function(){
+            var tabTitle = $(this).data('title');
+            if(tabTitle){
+                tabText.push(tabTitle);
+            }
+        });
+
+        var tabContainer = jQuery(".tp-tabs-inner-wrapper"),
+                slides = slider.find('li.true-slide'),
+                len = slides.length,
+                wid = Math.max(100 / len) + '%',
+                tabs = [];
+
+        slides.each(function(i) {
+            var span = jQuery('<span />').text(tabText[i]);
+            span.addClass('tp-tab-title');
+            var spanContainer = tabs[i] = jQuery('<div class="tps-tab" />').css('width', wid);
+            spanContainer.on('click', tabClick);
+            span.appendTo(spanContainer);
+            if(i === 0) spanContainer.addClass('selected');
+            spanContainer.appendTo(tabContainer);
+        });
+
+        function tabClick() {
+            for(var i = 0; i < len; i++) {
+                var tab = tabs[i];
+                if(tab[0] !== this) {
+                    tab.removeClass('selected');
+                }
+                else {
+                    tab.addClass('selected');
+                    revapi.revshowslide(i+1);
+                }
+            }
+        }
+
+        revapi.bind('revolution.slide.onafterswap', function(e, data) {
+
+            // get current slide number
+            var currentSlide = data.slideIndex;
+            var totalSlides = revapi.revmaxslide();
+
+            for(var i = 0; i < len; i++) {
+                var tab = tabs[i];
+                if(i+1 !== currentSlide) {
+                    tab.removeClass('selected');
+                }
+                else {
+                    tab.addClass('selected');
+                }
+            }
+
+        });
+
+    });
+
+    function displaySliderTabs() {
+        var windowWidth = $(window).width();
+
+        if(windowWidth < 767){
+            $('.tp-tabs').hide();
+        }
+        else $('.tp-tabs').show();
+    }
+
+    displaySliderTabs();
+    $(window).resize(function() {
+        displaySliderTabs();
+    });
+
+</script>
+)
+
+
+#Powermail
+plugin.tx_powermail {
+    view {
+        templateRootPath = EXT:avonis_theme/Resources/Private/Templates/Ext/Powermail/Templates/
+        partialRootPath = EXT:avonis_theme/Resources/Private/Templates/Ext/Powermail/Partials/
+        layoutRootPath = EXT:avonis_theme/Resources/Private/Templates/Ext/Powermail/Layouts/
+    }
+}
+
+page.includeJSFooterlibs.powermailJQueryFormValidation =
+
+

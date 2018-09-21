@@ -1,0 +1,114 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="offers" label="#13 - Home Slider" description="Main slider" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/offers.png', group: 'New Templating', sorting: '400'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 1300}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:form.section name="elements" label="Add 6 elements">
+					<flux:form.object name="box">
+						<flux:field.input name="title" label="Title"/>
+						<flux:field.file name="image" label="Image"/>
+						<flux:field.text name="text" label="Text"/>
+						<flux:field.input name="target" label="Link">
+							<flux:wizard.link/>
+						</flux:field.input>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>#13 - Home Slider</b>
+		<f:if condition="{elements -> f:count()} == 1">
+			<f:then>
+				<p>Just one element, so no slider, just an image is shown</p>
+			</f:then>
+			<f:else>
+				<p>More than one element, so a slider is shown</p>
+				<p>Elements: {elements -> f:count()}</p>
+			</f:else>
+		</f:if>
+
+	</f:section>
+
+	<f:section name="Main">
+
+		<f:if condition="{elements -> f:count()} == 1">
+			<f:then>
+				<f:render section="singleImage" arguments="{_all}" />
+			</f:then>
+			<f:else>
+				<f:render section="slider" arguments="{_all}" />
+			</f:else>
+
+		</f:if>
+
+	</f:section>
+
+	<f:section name="slider">
+		<section id="slider" class="revslider-wrap clearfix">
+			<div class="rev_slider_wrapper">
+				<!-- START REVOLUTION SLIDER 5.0 auto mode -->
+				<div id="rev_slider" class="rev_slider"  data-version="5.0">
+					<ul>
+						<f:for each="{elements}" as="element" iteration="i">
+
+							<!-- SLIDE  -->
+							<li class="true-slide" data-index="rs-125{i.cycle}" data-transition="slideoverhorizontal" data-slotamount="7"  data-easein="default" data-easeout="default" data-masterspeed="1500"  data-thumb="http://placehold.it/320x200/"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1000" data-fsslotamount="7" data-saveperformance="off"  data-title="{element.box.title}" data-description="">
+
+								<!-- MAIN IMAGE -->
+								<img src="{element.box.image}"  alt=""  width="1920" height="1280" data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+
+								<!-- LAYER NR. 1 -->
+								<div class="tp-caption News-Title   tp-resizeme rs-parallaxlevel-0"
+										id="slide-1255-layer-1"
+										data-x="['left','left','left','left']" data-hoffset="['30','30','30','30']"
+										data-y="['top','top','top','top']" data-voffset="['100','100','100','100']"
+										data-width="550"
+										data-height="200"
+										data-whitespace="normal"
+										data-transform_idle="o:1;"
+
+										data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
+										data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+										data-start="500"
+										data-splitin="none"
+										data-splitout="none"
+										data-responsive_offset="on">
+									<h2>{element.box.title}</h2>
+									<p>{element.box.text}</p>
+									<v:page.link class="custom button button-red button-not-rounded button-2d b-default-size tright " pageUid="{element.box.target}">
+										More Information
+									</v:page.link>
+
+								</div>
+
+							</li>
+						</f:for>
+						<!--Empty slide to fix last slide bug-->
+						<li data-index="rs-5555555" data-transition="slideoverhorizontal"></li>
+					</ul>
+					<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+					<div class="tp-tabs tp-span-wrapper inner zeus nav-pos-hor-left nav-pos-ver-bottom nav-dir-horizontal" style="max-width: 100%; max-height: 30px; overflow: visible; position: absolute; padding: 0px; top: 100%; transform: matrix(1, 0, 0, 1, 0, -30); left: 0px; width: 1840px; height: 30px;">
+						<div class="tp-tab-mask" style="max-width: 1840px; max-height: 30px; overflow: hidden; position: relative; left: 0px; transform: matrix(1, 0, 0, 1, 0, 0); height: 30px; width: 1539px;">
+							<div class="tp-tabs-inner-wrapper" style="position: relative; width: 1539px; height: 30px; left: 0px;">
+
+							</div>
+						</div>
+					</div>
+				</div><!-- END REVOLUTION SLIDER -->
+			</div><!-- ENF OF SLIDER WRAPPER -->
+		</section>
+	</f:section>
+
+	<f:section name="singleImage">
+		<f:image src="{elements.1.box.image}" alt="{elements.1.box.title}" class="slider-image" />
+	</f:section>
+</div>

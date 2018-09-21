@@ -1,0 +1,40 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="fullwidthimage" label="#11 - An full width gray box with two overlaying content areas" description="Adds a box, with two areas to add every type of content with a gray background" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/fullwidthimage.png', group: 'New Templating', sorting: '600'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 1100}"/>
+
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column name="colleft" label="first column (left - 50% width)" style="width: 50%"/>
+					<flux:grid.column name="colright" label="second column (right - 50% width)" style="width: 50%"/>
+				</flux:grid.row>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Full width gray box with 50/50 content</b>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="row clearfix common-height gray-background">
+			<div class="col-md-6 center">
+				<div>
+					<flux:content.render area="colleft"/>
+				</div>
+			</div>
+
+			<div class="col-md-6 center">
+				<div>
+					<flux:content.render area="colright"/>
+				</div>
+			</div>
+
+		</div>
+	</f:section>
+</div>

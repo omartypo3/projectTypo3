@@ -1,0 +1,23 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Startpage"/>
+<div class="titan-container {settings.pageClass}">
+  <div class="mp-pusher" id="mp-pusher">
+      <div id="wrapper" class="clearfix">
+         <f:render partial="MobileHeader" section="MobileHeader" arguments="{_all}"/>
+         <div class="scroller">
+              <f:render partial="Header" section="Header" arguments="{_all}"/>
+              <section id="content">
+                  <div class="content-wrap">
+                      <div class="container-fullwidth clearfix">
+                          <f:render section="Content"/>
+                          <div class="clear"></div>
+                      </div>
+                  </div>
+              </section><!-- #content end -->
+              <f:render partial="Footer" section="Footer" arguments="{_all}"/>
+        </div>
+       </div>
+  </div>
+</div>

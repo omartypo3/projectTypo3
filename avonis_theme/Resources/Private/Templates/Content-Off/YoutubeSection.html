@@ -1,0 +1,43 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="YTSection" label="Youtube section" description="A full width section with Youtube video" wizardTab="New Templating">
+
+			<flux:field.select name="heading-color" label="Text Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+			<flux:field.select name="heading-size" label="Text size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+
+			<flux:field.input name="heading" label="Text"/>
+			<flux:field.input name="start" label="Seconds to start the Video (e.g. 20)" default="1"/>
+			<flux:field.input name="stop" label="Seconds to end the Video (e.g. 60)" default="60"/>
+			<flux:field.input name="height" label="Height of the section (e.g. 600)" default="600"/>
+			<flux:field.input name="ytlink" label="Youtube link"/>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Youtube Section</b>
+
+	</f:section>
+
+	<f:section name="Main">
+		<div class="section yt-bg-player nomargin dark" data-quality="hd1080" data-start="{start}" data-stop="{stop}" data-video="{ytlink}" style="height: {height}px;">
+			<div class="container vertical-middle center clearfix">
+				<a href="{ytlink}" target="_blank">
+					<i class="i-plain i-large icon-line-video divcenter" data-animate="fadeInDown"></i></a>
+				<div class="emphasis-title nomargin" data-animate="fadeInUp">
+					<f:if condition="{heading}">
+						<p style="font-size: {heading-size}" class="csc-firstHeader center {heading-color}">{heading}
+						</p>
+					</f:if>
+				</div>
+			</div>
+		</div>
+	</f:section>
+</div>
+
+

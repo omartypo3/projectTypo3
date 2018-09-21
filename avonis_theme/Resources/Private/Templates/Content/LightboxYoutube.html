@@ -1,0 +1,90 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="lightboxyoutube" label="#8 - Youtube Video in a lightbox" description="This element adds a preview image, which opens a Youtube video in a lightbox at click" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/lightboxyoutube.png', group: 'New Templating', sorting: 800}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 800}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:field.input name="heading" label="Heading of the element (optional)"/>
+				<flux:field.inline.fal name="image" label="The preview image, which triggers the lightbox" required="1" maxItems="1" minItems="1"/>
+				<flux:field.input name="ytlink" label="The Youtube Video ID (just the last part of the url like 'FCoRXwo7RXQ' from https://www.youtube.com/watch?v=FCoRXwo7RXQ)" required="true"/>
+			</flux:form.sheet>
+			<flux:form.sheet name="style" label="Customise styles">
+                
+                <flux:field.checkbox name="teasersize" label="The image have teaser size" default="1"/>
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+				<flux:field.select name="fce-boxed" label="Should the text apear in a box?" items="{fce-boxed:'Boxed', fce-nonboxed:'Not Boxed'}" default="fce-nonboxed" size="1" maxItems="1"/>
+			</flux:form.sheet>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Youtube Lightbox</b> {v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+		'image')}
+
+		<table style="width: 100%;">
+			<tr>
+				<td style="width: 48%; padding: 1%;">
+					<f:if condition="{image}">
+						<f:then>
+							{v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+							'image')}
+							<f:image treatIdAsReference="1" src="{image.id}" class="yt-image" title="{image.title}" alt="{image.alternative}" width="200"/>
+						</f:then>
+					</f:if>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 48%; padding: 1%;">
+					<f:if condition="{ytlink}">
+						<f:then>
+							<a href="https://www.youtube.com/watch?v={ytlink}" target="_blank">
+
+								<p>Opens https://www.youtube.com/watch?v={ytlink} in a lightbox</p>
+							</a>
+						</f:then>
+					</f:if>
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 48%; padding: 1%;">
+					<f:if condition="{heading}">
+						<f:then><h2>{heading}</h2></f:then>
+					</f:if>
+				</td>
+			</tr>
+		</table>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="youtube-popup {fce-boxed}">
+			<f:if condition="{heading}">
+				<p style="font-size:{heading-size}" class="csc-firstHeader {heading-align} {heading-color}">{heading}
+				</p>
+			</f:if>
+			<div class="wrap-ytlink">
+				<a href="https://www.youtube.com/watch?v={ytlink}?rel=0&showinfo=0" data-lightbox="iframe">
+					{v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name: 'image')}
+					<f:if condition="{teasersize}==0">
+					  <f:then>
+					    <f:image treatIdAsReference="1" src="{image.id}" class="yt-image" title="{image.title}" alt="{image.alternative}"/>
+					  </f:then>
+					  <f:else>
+					     <f:image treatIdAsReference="1" src="{image.id}" class="yt-image" title="{image.title}" alt="{image.alternative}" width="331c" height="248c"/>
+					  </f:else>
+					</f:if>
+					<div class="overlay">
+						<div class="overlay-wrap"><i class="icon-youtube-play"></i></div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</f:section>
+</div>

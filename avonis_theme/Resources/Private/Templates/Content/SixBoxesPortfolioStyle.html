@@ -1,0 +1,66 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="offers" label="#12 - 6 Boxes Portfolio Style" description="This adds a block with - 6 blocks - of prominent content elements" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/offers.png', group: 'New Templating', sorting: '400'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 1200}"/>
+
+			<flux:form.sheet name="data" label="Basic">
+				<flux:form.section name="elements" label="Add 6 blocks">
+					<flux:form.object name="box">
+						<flux:field.file name="image" label="Image"/>
+						<flux:field.input name="target" label="Link">
+							<flux:wizard.link/>
+						</flux:field.input>
+						<flux:field.input name="caption-title" label="Caption Title"/>
+						<flux:field.text name="caption-text" label="Caption Text"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+
+			<flux:form.sheet name="style" label="Customise styles">
+
+				<flux:field.select name="heading-color" label="Heading Color:" items="{heading-color-tr:'Titan Red', heading-color-grey:'Grey', heading-color-black:'Black', heading-color-white:'White'}" default="heading-color-tr" size="1" maxItems="1"/>
+				<flux:field.select name="heading-align" label="Heading alignment:" items="{heading-align-left:'Left', center:'Center', tright:'Right'}" default="heading-align-left" size="1" maxItems="1"/>
+				<flux:field.select name="heading-size" label="Heading size:" items="{20px:'Small', 30px:'Default', 40px:'Larger', 50px:'Larger +', 60px:'Larger ++', 70px:'Largest', 80px:'the Biggest'}" default="30px" size="1" maxItems="1"/>
+			</flux:form.sheet>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Boxes</b>
+
+		<p>Elements: {elements -> f:count()}</p>
+
+	</f:section>
+
+	<f:section name="Main">
+
+		<div class="sections-portfolio">
+			<div class="row">
+				<div id="portfolio" class="portfolio grid-container portfolio-3 portfolio-nomargin clearfix portfolio-notitle">
+
+					<f:for each="{elements}" as="element" iteration="i">
+						<article class="portfolio-item pf-media pf-icons col-md-4" >
+							<div class="portfolio-image">
+								<v:page.link pageUid="{element.box.target}">
+									<f:image src="{element.box.image}" alt="Image {i.cycle}" style="visibility: visible; opacity: 1; display: block;"></f:image>
+								</v:page.link>
+							</div>
+							<div class="portfolio-desc" style="margin-top: 89px;">
+								<h3><v:page.link pageUid="{element.box.target}">{element.box.caption-title}</v:page.link></h3>
+								<span>{element.box.caption-text}</span>
+							</div>
+						</article>
+					</f:for>
+
+				</div>
+			</div>
+		</div>
+
+	</f:section>
+</div>

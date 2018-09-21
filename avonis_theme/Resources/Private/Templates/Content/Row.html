@@ -1,0 +1,223 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="threecolcontent" label="#1 - [CONTAINER] Choose between number of columns" description="A container, where you can choose 1, 2 or 3 columns aswell as the background color" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/threecolcontent.png', group: 'New Templating', sorting: 1}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 100}"/>
+
+			<flux:field.select name="background" label="choose a background of the whole container" items="{white-background:'White Background', grey-background:'Grey Background', black-background:'Black Background', dark-background:'Dark Background', image:'use a background image'}" default="white-background" size="1" maxItems="1" requestUpdate="true"/>
+			<f:if condition="{background} == 'image'">
+				<flux:field.inline.fal name="image" label="The background image" required="1" maxItems="1" minItems="1"/>
+			</f:if>
+			<flux:field.select name="row-count" label="Anzahl der Spalten" items="{
+			col-100: '1 col - 100%',
+			col-70-30: '2 cols - 70% / 30%',
+			col-30-70: '2 cols - 30% / 70%',
+			col-50-50: '2 cols - 50% / 50%',
+			col-50-50-container: '2 cols - 50% / 50% - Container normal width',
+			col-60-40: '2 cols - 60% / 40%',
+			col-40-60: '2 cols - 40% / 60%',
+			col-33-33-33: '3 cols - 33 % / 33% / 33%',
+			col-25-25-25-25: '4 cols - 25% / 25% / 25% / 25%',
+			col-100-container: '1 col - 100% - content centered'}" default="col-100" size="1" maxItems="1"/>
+			<flux:field.select name="divider" label="Vertical Column Divider" items="{
+			vdivider: 'Yes',
+			no-divider: 'No'}" default="no-divider" size="1" maxItems="1"/>
+			<flux:field.input name="class" label="Class (add space between classes for multiple elements)"/>
+			<flux:field.input name="container-height" label="Container height (px)"/>
+			<flux:field.select name="vertical-center" label="Center content vertically" items="{vertical-center:'Yes', no-vertical-center:'No'}" default="no-vertical-center" size="1" maxItems="1"/>
+			<flux:grid>
+				<flux:grid.row>
+					<f:if condition="{row-count} == 'col-33-33-33'">
+						<flux:grid.column name="col1" label="1. column 33%" style="width: 33%"/>
+						<flux:grid.column name="col2" label="2. column 33%" style="width: 33%"/>
+						<flux:grid.column name="col3" label="3. column 33%" style="width: 33%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-100'">
+						<flux:grid.column name="col1" label="Column 100%" style="width: 100%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-100-container'">
+						<flux:grid.column name="col1" label="Colum 100% - Content centered" style="width: 100%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-50-50'">
+						<flux:grid.column name="col1" label="1. column 50%" style="width: 50%"/>
+						<flux:grid.column name="col2" label="2. column 50%" style="width: 50%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-50-50-container'">
+						<flux:grid.column name="col1" label="1. column 50%" style="width: 50%"/>
+						<flux:grid.column name="col2" label="2. column 50%" style="width: 50%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-25-25-25-25'">
+						<flux:grid.column name="col1" label="1. column 25%" style="width: 25%"/>
+						<flux:grid.column name="col2" label="2. column 25%" style="width: 25%"/>
+						<flux:grid.column name="col3" label="3. column 25%" style="width: 25%"/>
+						<flux:grid.column name="col4" label="4. column 25%" style="width: 25%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-70-30'">
+						<flux:grid.column name="col1" label="1. column 70%" style="width: 70%"/>
+						<flux:grid.column name="col2" label="2. column 30%" style="width: 30%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-30-70'">
+						<flux:grid.column name="col1" label="1. column 30%" style="width: 30%"/>
+						<flux:grid.column name="col2" label="2. column 70%" style="width: 70%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-40-60'">
+						<flux:grid.column name="col1" label="1. column 40%" style="width: 40%"/>
+						<flux:grid.column name="col2" label="2. column 60%" style="width: 60%"/>
+					</f:if>
+					<f:if condition="{row-count} == 'col-60-40'">
+						<flux:grid.column name="col1" label="1. column 60%" style="width: 60%"/>
+						<flux:grid.column name="col2" label="2. column 40%" style="width: 40%"/>
+					</f:if>
+				</flux:grid.row>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<flux:widget.grid/>
+	</f:section>
+
+	<f:section name="Main">
+		<f:if condition="{background} == 'image'">
+			<f:then>
+				{v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name: 'image')}
+				<div class="{background} image-background {class}" style="background-image: url({image.url});">
+					<div class="container">
+						<f:render section="columns" arguments="{_all}"/>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="color-background {background} {class}">
+					<f:render section="columns" arguments="{_all}"/>
+				</div>
+			</f:else>
+		</f:if>
+
+	</f:section>
+
+	<f:section name="columns">
+		<f:if condition="{row-count} == 'col-33-33-33'">
+			<f:then>
+				<div class="col_one_third">
+					<flux:content.render area="col1"/>
+				</div>
+				<div class="col_one_third">
+					<flux:content.render area="col2"/>
+				</div>
+				<div class="col_one_third col_last">
+					<flux:content.render area="col3"/>
+				</div>
+				<div class="clear"></div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-100'">
+			<f:then>
+				<div class="col_full">
+					<flux:content.render area="col1"/>
+				</div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-100-container'">
+			<f:then>
+				<div class="col_full center_content">
+					<flux:content.render area="col1"/>
+				</div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-50-50'">
+			<f:then>
+				<div class="col_half {divider}">
+					<flux:content.render area="col1"/>
+				</div>
+				<div class="col_half col_last">
+					<flux:content.render area="col2"/>
+				</div>
+				<div class="clear"></div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-50-50-container'">
+			<f:then>
+				<div class="container clearfix" style="{f:if(condition: '{container-height} > 0', then: 'height: {container-height}px;')}">
+					<div class="col_half {divider} {f:if(condition: '{vertical-center} ==\'vertical-center\' ', then: 'vertical-center')}">
+						<flux:content.render area="col1"/>
+					</div>
+					<div class="col_half col_last {f:if(condition: '{vertical-center} ==\'vertical-center\' ', then: 'vertical-center')}">
+						<flux:content.render area="col2"/>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-70-30'">
+			<f:then>
+				<div class="col_two_third {divider}">
+					<flux:content.render area="col1"/>
+				</div>
+				<div class="col_one_third col_last">
+					<flux:content.render area="col2"/>
+				</div>
+				<div class="clear"></div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-30-70'">
+			<f:then>
+				<div class="col_one_third {divider}">
+					<flux:content.render area="col1"/>
+				</div>
+				<div class="col_two_third col_last">
+					<flux:content.render area="col2"/>
+				</div>
+				<div class="clear"></div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-40-60'">
+			<f:then>
+				<div class="container clearfix" style="{f:if(condition: '{container-height} > 0', then: 'height: {container-height}px;')}">
+					<div class="col_two_fifth {divider} {f:if(condition: '{vertical-center} ==\'vertical-center\' ', then: 'vertical-center')}">
+						<flux:content.render area="col1"/>
+					</div>
+					<div class="col_three_fifth col_last {f:if(condition: '{vertical-center} ==\'vertical-center\' ', then: 'vertical-center')}">
+						<flux:content.render area="col2"/>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-60-40'">
+			<f:then>
+				<div class="container clearfix" style="{f:if(condition: '{container-height} > 0', then: 'height: {container-height}px;')}">
+					<div class="col_three_fifth {divider} {f:if(condition: '{vertical-center} ==\'vertical-center\' ', then: 'vertical-center')}">
+						<flux:content.render area="col1"/>
+					</div>
+					<div class="col_two_fifth col_last {f:if(condition: '{vertical-center} ==\'vertical-center\' ', then: 'vertical-center')}">
+						<flux:content.render area="col2"/>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == 'col-25-25-25-25'">
+			<f:then>
+				<div class="col_one_fourth">
+					<flux:content.render area="col1"/>
+				</div>
+				<div class="col_one_fourth">
+					<flux:content.render area="col2"/>
+				</div>
+				<div class="col_one_fourth">
+					<flux:content.render area="col3"/>
+				</div>
+				<div class="col_one_fourth col_last">
+					<flux:content.render area="col4"/>
+				</div>
+				<div class="clear"></div>
+			</f:then>
+		</f:if>
+	</f:section>
+
+</div>

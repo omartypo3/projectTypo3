@@ -1,0 +1,28 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="SidebarRight"/>
+<div class="titan-container  {settings.pageClass}">
+    <div class="mp-pusher" id="mp-pusher">
+        <div id="wrapper" class="clearfix">
+            <f:render partial="MobileHeader" section="MobileHeader" arguments="{_all}"/>
+            <div class="scroller">
+                <f:render partial="Header" section="Header" arguments="{_all}"/>
+                <section id="content" class="with-sidebar">
+                    <div class="content-wrap">
+                        <div class="container clearfix">
+                            <f:render partial="Breadcrumb" section="Breadcrumb" arguments="{_all}"/>
+                            <div class="postcontent nobottommargin clearfix">
+                                <f:render section="Content"/>
+                            </div>
+                            <div class="sidebar right-sidebar nobottommargin col_last clearfix">
+                                <f:render section="Sidebar"/>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- #content end -->
+                <f:render partial="Footer" section="Footer" arguments="{_all}"/>
+            </div>
+        </div>
+    </div>
+</div>

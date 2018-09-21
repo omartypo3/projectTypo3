@@ -1,0 +1,47 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="fullwidthimage" label="#6 - An full width image with two overlaying content areas" description="Adds a big image, with two areas to add every type of content within the image" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/fullwidthimage.png', group: 'New Templating', sorting: '600'}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 600}"/>
+
+			<flux:field.inline.fal name="image" label="This image is used as the background (at least width 1200px)" required="1" maxItems="1" minItems="1"/>
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column name="colleft" label="first column (left - 50% width)" style="width: 50%"/>
+					<flux:grid.column name="colright" label="second column (right - 50% width)" style="width: 50%"/>
+				</flux:grid.row>
+			</flux:grid>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Full width image with 50/50 content</b>
+	</f:section>
+
+	<f:section name="Main">
+		<section id="slider" class="swiper_wrapper full-screen clearfix">
+			<div class="swiper-container swiper-parent">
+				<div class="swiper-wrapper">
+					{v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name: 'image')}
+					<div class="swiper-slide dark" style="background-image: url('{image.url}')">
+						<div class="container clearfix">
+							<div class="slider-caption">
+								<div class="col_half" data-caption-animate="fadeInUp">
+									<flux:content.render area="colleft"/>
+								</div>
+								<div class="col_half col_last" data-caption-animate="fadeInUp">
+									<flux:content.render area="colright"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</f:section>
+</div>

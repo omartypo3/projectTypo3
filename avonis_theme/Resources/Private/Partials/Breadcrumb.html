@@ -1,0 +1,43 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<f:section name="Breadcrumb">
+		<f:if condition="{settings.hideBreadcrumb}">
+			<f:else>
+				<v:page.breadCrumb as="rootlinePages" pageUid="{page.uid}" entryLevel="{settings.breadcrumbEntryLevel}" showHiddenInMenu="1">
+					<f:if condition="{rootlinePages}">
+						<section class="breadcrumbs">
+							<ul>
+								<f:for each="{rootlinePages}" as="rootlinePage" iteration="iteration">
+									<f:if condition="{rootlinePage.current}">
+										<f:then>
+											<li class="active{f:if(condition: useBreadcrumbLabel, then: ' first-breadcrumb-item')}">
+												<f:if condition="{rootlinePage.nav_title}">
+													<f:then>{rootlinePage.nav_title}</f:then>
+													<f:else>{rootlinePage.title}</f:else>
+												</f:if>
+											</li>
+										</f:then>
+										<f:else>
+											<li {f:if(condition: useBreadcrumbLabel, then:
+											'class="first-breadcrumb-item"')}>
+											<a href="{rootlinePage.link}">
+												<f:if condition="{rootlinePage.nav_title}">
+													<f:then>{rootlinePage.nav_title}</f:then>
+													<f:else>{rootlinePage.title}</f:else>
+												</f:if>
+											</a>
+											<img src="fileadmin/template/img/arrao_bread.png">
+											</li>
+										</f:else>
+									</f:if>
+								</f:for>
+							</ul>
+						</section>
+					</f:if>
+				</v:page.breadCrumb>
+			</f:else>
+		</f:if>
+	</f:section>
+
+</div>

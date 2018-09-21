@@ -1,0 +1,139 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="content-selector" label="#17 - Content selector"
+				   description="This element provides a selectbox, which toggles the content within the respective area "
+				   options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/button.png', group: 'New Templating', sorting: 2}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 1600}"/>
+
+			<flux:field.select name="rowCount" label="Select the number of content areas/dropdown options"
+							   items="{
+									1: '1 retailer',
+									2: '2 retailers',
+									3: '3 retailers',
+									4: '4 retailers',
+									5: '5 retailers',
+									6: '6 retailers',
+									7: '7 retailers',
+									8: '8 retailers',
+									9: '9 retailers',
+									10: '10 retailers',
+									11: '11 retailer',
+									12: '12 retailers',
+									13: '13 retailers',
+									14: '14 retailers',
+									15: '15 retailers',
+									16: '16 retailers',
+									17: '17 retailers',
+									18: '18 retailers',
+									19: '19 retailers',
+									20: '20 retailers',
+									21: '21 retailer',
+									22: '22 retailers',
+									23: '23 retailers',
+									24: '24 retailers',
+									25: '25 retailers',
+									26: '26 retailers',
+									27: '27 retailers',
+									28: '28 retailers',
+									29: '29 retailers',
+									30: '30 retailers',
+									31: '31 retailers',
+									32: '32 retailers',
+									33: '33 retailers',
+									34: '34 retailers',
+									35: '35 retailers',
+									36: '36 retailers',
+									37: '37 retailers',
+									38: '38 retailers',
+									39: '39 retailers',
+									40: '40 retailers',
+									41: '41 retailers',
+									42: '42 retailers',
+									43: '43 retailers',
+									44: '44 retailers',
+									45: '45 retailers',
+									46: '46 retailers',
+									47: '47 retailers',
+									48: '48 retailers',
+									49: '49 retailers',
+									50: '50 retailers'
+									}"
+							   default="1" size="1" maxItems="1" requestUpdate="1"/>
+
+			<v:iterator.for from="1" to="50" iteration="i">
+				<f:if condition="{i.index} == 1">
+					<f:then>
+						<flux:field.input name="option.1" label="Retailer 1" default="Retailer 1"/>
+					</f:then>
+					<f:else>
+						<flux:field.input name="option.{i.index}" label="Retailer {i.index}"
+										  default="Retailer {i.index}" displayCond="FIELD:rowCount:>=:{i.index}"/>
+					</f:else>
+				</f:if>
+			</v:iterator.for>
+
+			<flux:grid>
+				<f:if condition="{rowCount}">
+					<f:then>
+						<v:variable.set name="limit" value="{rowCount}" />
+					</f:then>
+					<f:else>
+						<v:variable.set name="limit" value="50" />
+					</f:else>
+				</f:if>
+				<v:iterator.for from="1" to="{v:variable.get(name: 'limit')}" iteration="i">
+					<!--Strange Logic but it works only like that-->
+					<f:if condition="{v:variable.get(name: 'option.{v:math.subtract(a: \'{i.index}\',  b: \'1\')}') -> f:count()} > 1">
+						<f:then></f:then>
+						<f:else>
+							<flux:grid.row>
+								<flux:grid.column name="col{i.index}" label="{v:variable.get(name: 'option.{v:math.subtract(a: \'{i.index}\',  b: \'1\')}')} - Content"/>
+							</flux:grid.row>
+						</f:else>
+					</f:if>
+				</v:iterator.for>
+			</flux:grid>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<h3>Content selector</h3>
+		<f:if condition="{rowCount} > 1">
+			<f:then>
+				<h3>{rowCount} Content areas</h3>
+			</f:then>
+			<f:else>
+				<h3>One Content area</h3>
+			</f:else>
+		</f:if>
+		<flux:widget.grid/>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="container clearfix content-selector-container">
+			<div class="col_one_fourth col_last">
+				<select id="content-selector-dropdown" name="template-contactform-service" class="sm-form-control">
+					<option value="content-area-0"></option>
+					<v:iterator.for from="1" to="{rowCount}" iteration="i">
+						<option value="content-area-{i.index}"><v:variable.get name="option.{v:math.subtract(a: '{i.index}',  b: '1')}" /></option>
+					</v:iterator.for>
+				</select>
+			</div>
+			<div class="clear"></div>
+			<div class="col_full">
+				<div id="content-area-0"></div>
+				<v:iterator.for from="1" to="{rowCount}" iteration="i">
+					<div id="content-area-{i.index}">
+						<flux:content.render area="col{i.index}"/>
+					</div>
+				</v:iterator.for>
+			</div>
+		</div>
+	</f:section>
+</div>

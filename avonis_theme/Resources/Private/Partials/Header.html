@@ -1,0 +1,56 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Header">
+        <!-- Header
+        ============================================= -->
+        <header class="headWrap">
+            <hgroup>
+                <div class="logo">
+                    <f:link.page pageUid="{settings.menuRoot}">
+                        <f:if condition="{settings.aselogo}">
+                            <f:then>
+                                <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/ase-logo.png" class="ase-logo">
+                                <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/logo.png" class="titan-logo">
+                            </f:then>
+                            <f:else>
+                                <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/logo.png" class="ase-logo">
+                            </f:else>
+                        </f:if>
+                        <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/TITAN-shield.png" class="logo-mobile">
+                        <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/titanlogo-medium.png" class="logo-tablet">
+                    </f:link.page>
+                </div>
+                <f:if condition="{settings.hideLogin}">
+                	<f:else>
+                        <div class="fe-user" id="fe-user-login-button">
+                            <a href="nc/login/" style="border: none;">Rep Log-In
+                                <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/lock.png" width="11" height="11" class="lock-icon-white">
+                                <img src="/typo3conf/ext/avonis_theme/Resources/Public/images/lock-black.png" width="11" height="11" class="lock-icon-black">
+                            </a>
+                        </div>
+                    </f:else>
+                </f:if>
+
+                <ul class="topMenu">
+                    <f:for each="{settings.headermenu}" as="menuitem" iteration="i">
+
+                        <v:variable.set name="itemuid" value="{menuitem.menuitem.settings.itemlink}"/>
+                        <li>
+                            <f:link.page pageUid="{itemuid}" title="{v:page.info(pageUid : itemuid, field: 'title')}">
+                                <v:page.info pageUid="{itemuid}" field="title"/>
+                            </f:link.page>
+                        <li>
+                    </f:for>
+                </ul>
+            </hgroup>
+        </header><!-- #header end -->
+        <f:render partial="MainMenu" section="MainMenu" arguments="{_all}"/>
+    </f:section>
+</div>
+
+

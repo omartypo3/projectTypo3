@@ -1,0 +1,88 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="portfoliogrid" label="#16 - Portfolio Grid" description="Portfolio Grid , could choose between 2 ,3 and 4 elements per row" options="{icon: '/typo3conf/ext/avonis_theme/Resources/Public/Icons/Content/threecolcontent.png', group: 'New Templating', sorting: 1}">
+			<flux:form.option name="Fluidcontent" value="{sorting: 1500}"/>
+			<flux:field.select name="row-count" label="Anzahl der Spalten" items="{
+			2: '2 per row',
+			3: '3 per row',
+			4: '4 per row'}"/>
+			<flux:field.input name="class" label="Class (add space between classes for multiple elements)"/>
+			<flux:grid>
+				<flux:grid.row>
+					<f:if condition="{row-count} == '2'">
+						<flux:grid.column name="col1" label="1. column 50%" style="width: 50%"/>
+						<flux:grid.column name="col2" label="2. column 50%" style="width: 50%"/>
+					</f:if>
+					<f:if condition="{row-count} == '3'">
+						<flux:grid.column name="col1" label="1. column 33%" style="width: 33%"/>
+						<flux:grid.column name="col2" label="2. column 33%" style="width: 33%"/>
+						<flux:grid.column name="col3" label="3. column 33%" style="width: 33%"/>
+					</f:if>
+					<f:if condition="{row-count} == '4'">
+						<flux:grid.column name="col1" label="1. column 25%" style="width: 25%"/>
+						<flux:grid.column name="col2" label="2. column 25%" style="width: 25%"/>
+						<flux:grid.column name="col3" label="3. column 25%" style="width: 25%"/>
+						<flux:grid.column name="col4" label="4. column 25%" style="width: 25%"/>
+					</f:if>
+				</flux:grid.row>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<flux:widget.grid/>
+	</f:section>
+
+	<f:section name="Main">
+		<div id="portfolio" class="portfolio grid-container portfolio-{row-count} clearfix {class}">
+			<f:render section="columns" arguments="{_all}"/>
+		</div>
+	</f:section>
+
+	<f:section name="columns">
+		<f:if condition="{row-count} == '2'">
+			<f:then>
+			   <f:for each="{0:1, 1:2}" as="fcol">
+					<flux:content.render area="col{fcol}" render="1" as="contentElements">
+						  <f:for each="{contentElements}" as="contentElement">
+	                       	<div class="portfolio-item">
+	                       		<f:format.html  parseFuncTSPath="">{contentElement}</f:format.html>
+	                       	</div>
+	                      </f:for>
+	                </flux:content.render>
+               </f:for>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == '3'">
+			<f:then>
+			   <f:for each="{0:1, 1:2, 2:3}" as="fcol">
+					<flux:content.render area="col{fcol}" render="1" as="contentElements">
+						  <f:for each="{contentElements}" as="contentElement">
+	                       	<div class="portfolio-item">
+	                       		<f:format.html  parseFuncTSPath="">{contentElement}</f:format.html>
+	                       	</div>
+	                      </f:for>
+	                </flux:content.render>
+               </f:for>
+			</f:then>
+		</f:if>
+		<f:if condition="{row-count} == '4'">
+			<f:then>
+			   <f:for each="{0:1, 1:2, 2:3,3:4}" as="fcol">
+					<flux:content.render area="col{fcol}" render="1" as="contentElements">
+						  <f:for each="{contentElements}" as="contentElement">
+	                       	<div class="portfolio-item">
+	                       		<f:format.html  parseFuncTSPath="">{contentElement}</f:format.html>
+	                       	</div>
+	                      </f:for>
+	                </flux:content.render>
+               </f:for>
+			</f:then>
+		</f:if>
+	</f:section>
+</div>

@@ -1,0 +1,76 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Footer">
+    <footer class="footer-top">
+    	<section>
+		     <div class="socialHold"><a href="https://www.facebook.com/titansprayers" target="_blank" class="socialHolderFirst"><div class="footerFacebook"></div></a>
+				  	<a href="https://twitter.com/titantool" target="_blank" class="socialHolderSecond"><div class="footerTwitter"></div></a></div>
+						<!-- AddThis Button BEGIN -->
+						<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+						<a class="addthis_button_email at300b" target="_blank" title="Email" href="#"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(132, 132, 132);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Email" alt="Email" class="at-icon at-icon-email" style="width: 32px; height: 32px;"><g><g fill-rule="evenodd"></g><path d="M27 22.757c0 1.24-.988 2.243-2.19 2.243H7.19C5.98 25 5 23.994 5 22.757V13.67c0-.556.39-.773.855-.496l8.78 5.238c.782.467 1.95.467 2.73 0l8.78-5.238c.472-.28.855-.063.855.495v9.087z"></path><path d="M27 9.243C27 8.006 26.02 7 24.81 7H7.19C5.988 7 5 8.004 5 9.243v.465c0 .554.385 1.232.857 1.514l9.61 5.733c.267.16.8.16 1.067 0l9.61-5.733c.473-.283.856-.96.856-1.514v-.465z"></path></g></svg></span></a>
+						<div class="atclear"></div></div>
+
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5284d41f65613f01"></script>
+						<!-- AddThis Button END -->
+
+					    <!-- AddThis Follow BEGIN -->
+						<div class="addthis_toolbox addthis_32x32_style addthis_default_style">
+						<a class="addthis_button_youtube_follow at300b" addthis:userid="TitanSpeeflo" href="http://www.youtube.com/user/TitanSpeeflo?sub_confirmation=1" target="_blank" title="Follow on YouTube"><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px; background-color: rgb(205, 32, 31);"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="YouTube" alt="YouTube" class="at-icon at-icon-youtube" style="width: 32px; height: 32px;"><g><path d="M13.73 18.974V12.57l5.945 3.212-5.944 3.192zm12.18-9.778c-.837-.908-1.775-.912-2.205-.965C20.625 8 16.007 8 16.007 8c-.01 0-4.628 0-7.708.23-.43.054-1.368.058-2.205.966-.66.692-.875 2.263-.875 2.263S5 13.303 5 15.15v1.728c0 1.845.22 3.69.22 3.69s.215 1.57.875 2.262c.837.908 1.936.88 2.426.975 1.76.175 7.482.23 7.482.15 0 .08 4.624.072 7.703-.16.43-.052 1.368-.057 2.205-.965.66-.69.875-2.262.875-2.262s.22-1.845.22-3.69v-1.73c0-1.844-.22-3.69-.22-3.69s-.215-1.57-.875-2.262z" fill-rule="evenodd"></path></g></svg></span><span class="addthis_follow_label">YouTube</span></a>
+						<div class="atclear"></div></div>
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5284d2db26bbfac6"></script>
+					    <!-- AddThis Follow END -->
+                        <nav id="language-menu"><a href="#" title="Language Selection" onclick="return false;">Choose
+                            Region</a>
+                            <ul style="display: none;">
+                                <li class="us"><a href="https://www.titantool.com/" onfocus="blurLink(this);">US / Canada
+                                    Website</a></li>
+                                <li class="en"><a href="https://www.titantool.com/contact/international-website/"
+                                                  onfocus="blurLink(this);">International Website</a></li>
+                            </ul>
+                        </nav>
+		</section>
+    </footer>
+    <footer class="footer-content">
+    	<section>
+    		<div class="footerMenuWrap">
+                <f:render partial="FooterMenu" section="FooterMenu" arguments="{_all}"/>
+                <div class="footer-contact">
+                        <div class="footer-headline">Customer Service</div>
+                        <div class="contact">
+                                Phone: 1-800-526-5362<br>
+                                Fax: 1-800-528-4826<br>
+                         </div>
+                </div>
+                <div class="footer-contact">
+                        <div class="footer-headline">Address</div>
+                        <div class="contact">
+                                Titan Tool<br>
+                                1770 Fernbrook Lane<br>
+                                Plymouth, MN 55447
+                        </div>
+                </div>
+        </div><!-- End footerMenuWrap -->
+    </section>
+   </footer>
+   <footer class="footer-bottom">
+   	<section>
+   		<li class="level-1 left"><div class="copyright">Copyright ©{f:format.date(date: '', format: 'Y')}&nbsp;Titan Tool Inc.</div></li>
+   		<ul class="bottomMenu">
+            <li class="level-1 left"><a href="mailto:webmaster@titantool.com">Webmaster</a></li>
+            <li class="level-1 left"><f:link.page pageUid="86">Contact Us</f:link.page></li>
+            <li class="level-1 left"><f:link.page pageUid="87">Warranty</f:link.page></li>
+            <li class="level-1 right"><f:link.page pageUid="76">Rep Tools</f:link.page></li>
+            <li class="level-1 right"><f:link.page pageUid="8">Dealers &amp; Service Centers</f:link.page></li>
+            <li class="level-1 right"><f:link.page pageUid="79">About</f:link.page></li>
+            <li class="level-1 right"><f:link.page pageUid="78">Contact us</f:link.page></li>
+            <li class="level-1 right"><f:link.page pageUid="9">Support</f:link.page></li>
+   		</ul>
+   	</section>
+   </footer>
+</f:section>
+</div>
