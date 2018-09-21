@@ -1,0 +1,16 @@
+{
+  "name": "softtodo-template",
+  "version": "1.0.0",
+  "description": "gulp task runner for Softtodo template",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar Jmal",
+  "license": "ISC"
+}
