@@ -1,0 +1,168 @@
+footer {
+  background: $color-footer;
+  padding: 60px 0;
+  color: $color-body-bg;
+  .footer-menu {
+    @media screen and (min-width: $screen-lg-min) {
+      padding-left: 0;
+    }
+    ul {
+      float: left;
+      display: block;
+      padding-left: 0;
+      padding-right: 20px;
+
+      li {
+        list-style-type: none;
+        text-align: left;
+        vertical-align: top;
+        width: 100%;
+        line-height: 2em;
+        a {
+          color: $color-body-bg;
+          font-size: 11px;
+          text-transform: uppercase;
+          text-decoration: none;
+          &:hover {
+            color: $color-primary;
+          }
+        }
+        &.current {
+          a {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+    ul:last-child {
+      padding-left: 0;
+      li {
+        margin: 0;
+      }
+      @media screen and (max-width: $screen-sm-max) {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: $screen-md-max) {
+      width: 100%;
+      ul {
+        float: left;
+        display: block;
+        padding-left: 0;
+        padding-right: 20px;
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+    @media screen and (max-width: $screen-sm-max) {
+      ul {
+        width: 100%;
+        padding-left: 0 !important;
+      }
+    }
+  }
+
+  .footer-social {
+    display: block;
+    padding: 0;
+    margin-top: 0;
+    li {
+      display: inline-block;
+      margin-right: 7px;
+      a {
+        display: block;
+        height: $social-media-size;
+        width: $social-media-size;
+        background: $color-social-media;
+      }
+    }
+
+    .facebook {
+      a {
+        &:hover {
+          background: #3b5998;
+        }
+      }
+    }
+
+    .twitter {
+      a {
+        &:hover {
+          background: #4099FF;
+        }
+      }
+    }
+    .google {
+      a {
+        &:hover {
+          background: #d34836;
+        }
+      }
+    }
+    .youtube {
+      a {
+        &:hover {
+          background: #d3011e;
+        }
+      }
+    }
+    .linkedin {
+      a {
+        &:hover {
+          background: #3b5998;
+        }
+      }
+    }
+    .pinterest {
+      a {
+        &:hover {
+          background: #982034;
+        }
+      }
+    }
+    .instagram {
+      a {
+        &:hover {
+          background: #039881;
+        }
+      }
+    }
+  }
+
+  .socialmedia {
+    text-align: left;
+    .logo-footer {
+      a {
+        display: block;
+        height: 63px;
+        background-color: #3a3a3a;
+        position: relative;
+        margin: 25px 0 0 0;
+        width: 140px;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.copyright {
+  margin-top: 30px;
+  text-align: center;
+  border-top: 1px solid $color-body-bg;
+  span{
+    display: block;
+    margin: 20px 0;
+    font-size: 12px;
+  }
+}
+.titleblock {
+  font-size: 2em;
+  margin: 0;
+}
+@media screen and (max-width: 500px) {
+  footer .footer-menu ul:last-child, footer .footer-menu ul, .socialmedia{padding-left: 20px;}
+
+  }
+

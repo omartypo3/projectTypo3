@@ -1,0 +1,38 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="partners" options="{group: 'FCE'}">
+            <flux:field.select name="moins" label="Select the nb de Clinet/moins"
+                         items="{1: '1', 2: '2',3:'8'}"
+                          default="1" size="1" maxItems="1"/>
+             <flux:field.input name="text" label="Title" />
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+       <strong>Partners Box </strong>
+            </br>{text}
+    </f:section>
+
+    <f:section name="Main">
+        <f:if condition="{moins} == '1'">
+            <v:variable.set name="class" value="bg_grey"/>
+        </f:if>
+        <f:if condition="{moins} == '2'">
+            <v:variable.set name="class" value="bg_orange"/>
+        </f:if>
+        <f:if condition="{moins} == '3'">
+            <v:variable.set name="class" value="bg_green"/>
+        </f:if>
+        <div class="sater_bloc">
+            <div class="sater_bloc_logo">
+                <img src="typo3conf/ext/sater_theme/Resources/Public/Images/sater_solar.jpg" width="200" alt="Sater logo">
+            </div>
+            <div class="sater_bloc_text {class}">{text}</div>
+        </div>
+    </f:section>
+</div>

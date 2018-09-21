@@ -1,0 +1,310 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="container" options="{group: 'FCE'}">
+            <flux:field.select name="row-count" label="Select the number of columns and the aspect ratio"
+                               items="{
+									col-100: 'One Column - 100%',
+									col-20-80: '2 columns - ratio 20% / 80%',
+									col-70-30: '2 columns - ratio 70% / 30%',
+									col-30-70: '2 columns - ratio 30% / 70%',
+									col-50-50: '2 columns - ratio 50% / 50%',
+									col-60-40: '2 columns - ratio 60% / 40%',
+									col-40-60: '2 columns - ratio 40% / 60%',
+									col-33-33-33: '3 columns - ratio 33 % / 33% / 33%',
+									col-25-25-25-25: '4 columns - ratio 25% / 25% / 25% / 25%'}"
+                               default="col-100" size="1" maxItems="1"/>
+
+            <flux:field.select name="container" label="Select the type of the container"
+                               items="{container: 'Container', container-fluid: 'Fluid Container'}"
+                               default="container" size="1" maxItems="1"/>
+            <flux:field.input name="classs" label="Classe"/>
+            <flux:field.checkbox name="spaceOnTop" default="true" label="Add space above"/>
+            <flux:field.checkbox name="spaceOnBottom" default="true" label="Add space below"/>
+            <flux:field.input name="title" label="Title"/>
+            <flux:grid>
+                <flux:grid.row>
+                    <f:if condition="{row-count} == 'col-33-33-33'">
+                        <flux:grid.column name="col1" label="1. Column - width 33%"
+                                          style="width: 32%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 33%"
+                                          style="width: 32%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col3" label="3. Column - width 33%" style="width: 32%"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-100'">
+                        <flux:grid.column name="col1" label="Column 100%" style="width: 100%"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-50-50'">
+                        <flux:grid.column name="col1" label="1. Column - width 50%"
+                                          style="width: 49%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 50%" style="width: 49%"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-25-25-25-25'">
+                        <flux:grid.column name="col1" label="1. Column - width 25%"
+                                          style="width: 24%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 25%"
+                                          style="width: 24%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col3" label="3. Column - width 25%"
+                                          style="width: 24%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col4" label="4. Column - width 25%" style="width: 24%"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-70-30'">
+                        <flux:grid.column name="col1" label="1. Column - width 70%"
+                                          style="width: 69%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 30%" style="width: 30%"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-30-70'">
+                        <flux:grid.column name="col1" label="1. Column - width 30%"
+                                          style="width: 30%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 70%" style="width: 68%; padding: 1%;"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-20-80'">
+                        <flux:grid.column name="col1" label="1. Column - width 20%"
+                                          style="width: 20%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 80%" style="width: 79%; padding: 1%;"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-40-60'">
+                        <flux:grid.column name="col1" label="1. Column - width 40%"
+                                          style="width: 40%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 60%" style="width: 59%"/>
+                    </f:if>
+                    <f:if condition="{row-count} == 'col-60-40'">
+                        <flux:grid.column name="col1" label="1. Column - width 60%"
+                                          style="width: 59%;border-right: 1px solid #CACACA; padding: 1%;"/>
+                        <flux:grid.column name="col2" label="2. Column - width 40%" style="width: 40%"/>
+                    </f:if>
+
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <f:if condition="{container} == 'container'">
+            <f:then>
+                <h2>Container - Content centered</h2>
+            </f:then>
+            <f:else>
+                <h2>Fluid Container - Full-width layout</h2>
+            </f:else>
+        </f:if>
+        <div class="row-container">
+            <f:if condition="{row-count} == 'col-33-33-33'">
+                <h3>3 Column - ratio 33 % / 33% / 33%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-100'">
+                <h3>Grid: One Column - 100%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-50-50'">
+                <h3>Grid: 2 Columns - ratio 50% / 50%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-20-80'">
+                <h3>Grid: 2 Columns - ratio 20% / 80%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-25-25-25-25'">
+                <h3>Grid: 4 Columns - ratio 25% / 25% / 25% / 25%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-70-30'">
+                <h3>Grid: 2 Columns - ratio 70% / 30%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-30-70'">
+                <h3>Grid: 2 Columns - ratio 30% / 70%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-40-60'">
+                <h3>Grid: 2 Columns - ratio 40% / 60%</h3>
+            </f:if>
+            <f:if condition="{row-count} == 'col-60-40'">
+                <h3>Grid: 2 Columns - ratio 60% / 40%</h3>
+            </f:if>
+
+        </div>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="{container} {classs} {f:if(condition: spaceOnTop, then: 'margin-top-40')} {f:if(condition: spaceOnBottom, then: 'margin-bottom-40')}">
+            <f:render section="columns" arguments="{_all}"/>
+        </div>
+
+        <f:section name="columns">
+            <f:if condition="{row-count} == 'col-100'">
+                <f:then>
+                    <flux:content.render area="col1"/>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-33-33-33'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+                            <flux:content.render area="col2"/>
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-lg-4 col-sm-4">
+                            <flux:content.render area="col3"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-50-50'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-6">
+                            <flux:content.render area="col2"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-20-80'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-10">
+                            <flux:content.render area="col2"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-70-30'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-4">
+                            <flux:content.render area="col2"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-30-70'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-8">
+                            <flux:content.render area="col2"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-40-60'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-7">
+                            <flux:content.render area="col2"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-60-40'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-5">
+                            <flux:content.render area="col2"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+            <f:if condition="{row-count} == 'col-25-25-25-25'">
+                <f:then>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <flux:content.render area="col1"/>
+                        </div>
+                        <div class="col-md-3">
+                            <flux:content.render area="col2"/>
+                        </div>
+                        <div class="col-md-3">
+                            <flux:content.render area="col3"/>
+                        </div>
+                        <div class="col-md-3">
+                            <flux:content.render area="col4"/>
+                        </div>
+                    </div>
+                    <f:if condition="{title}">
+                        <f:then>
+                            <h3>{title}</h3>
+                        </f:then>
+                    </f:if>
+                </f:then>
+            </f:if>
+
+        </f:section>
+
+    </f:section>
+
+</div>

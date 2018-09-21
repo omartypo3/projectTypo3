@@ -1,0 +1,117 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en"
+>
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="Formulaire" options="{group: 'FCE'}">
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Formulaire Element</b>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="formaulaire">
+            <div class="form-group">
+                <p>Vous projettez d'adopter notre produit pour...</p>
+                <select class="form-control" id="produit">
+                    <option value="maison" goto="{f:uri.page(pageUid: '{settings.residentiel}')}">Votre maison et/ou appartement</option>
+                    <option value="commercial" goto="{f:uri.page(pageUid: '{settings.industriel}')}">Votre local commercial</option>
+                    <option value="industrielle" goto="{f:uri.page(pageUid: '{settings.industriel}')}">Votre firme industrielle</option>
+                    <option value="agricole">Votre terrain agricole</option>
+                </select>
+                <select class="form-control produit" id="agricole" parent="agricole">
+                    <option value="avec STEG" goto="{f:uri.page(pageUid: '{settings.agriculture}')}">et vous êtes raccordé à la STEG</option>
+                    <option value="sans STEG" goto="{f:uri.page(pageUid: '{settings.agriculture}')}">et vous n'êtes pas raccordé à la STEG</option>
+                </select>
+            </div>
+            <div class="form-group" >
+                <p>Votre projet est basé à</p>
+                <select class="form-control" id="Country">
+                    <option value="Ariana">Ariana</option>
+                    <option value="Béja">Béja</option>
+                    <option value="Ben Arous">Ben Arous</option>
+                    <option value="Bizerte">Bizerte</option>
+                    <option value="Gabès">Gabès</option>
+                    <option value="Gafsa">Gafsa</option>
+                    <option value="Jendouba">Jendouba</option>
+                    <option value="Kairouan">Kairouan</option>
+                    <option value="Kasserine">Kasserine</option>
+                    <option value="kébili">kébili</option>
+                    <option value="Le Kef">Le Kef</option>
+                    <option value="Mahdia">Mahdia</option>
+                    <option value="La Manouba">La Manouba</option>
+                    <option value="Médenie">Médenie</option>
+                    <option value="Monastir">Monastir</option>
+                    <option value="Nabeul">Nabeul</option>
+                    <option value="Sfax">Sfax</option>
+                    <option value="Sidi Bouzid">Sidi Bouzid</option>
+                    <option value="Saliana">Saliana</option>
+                    <option value="Saliana">Saliana</option>
+                    <option value="Sousse">Sousse</option>
+                    <option value="Tataouine">Tataouine</option>
+                    <option value="Tozeur">Tozeur</option>
+                    <option value="Tunis">Tunis</option>
+                    <option value="Zaghouan">Zaghouan</option>
+                </select>
+                <select class="form-control city" id="Sfax" parent="Sfax">
+                    <option value="Agereb">Agereb</option>
+                    <option value="Bir Ali Ben Khalifa">Bir Ali Ben Khalifa</option>
+                    <option value="El Amra">El Amra</option>
+                    <option value="El Hencha">El Hencha</option>
+                    <option value="Graiba">Graiba</option>
+                    <option value="Jebiniana">Jebiniana</option>
+                    <option value="Kerkennah">Kerkennah</option>
+                    <option value="Mahrès">Mahrès</option>
+                    <option value="Menzel Chaker">Menzel Chaker</option>
+                    <option value="Sakiet Eddaier">Sakiet Eddaier</option>
+                    <option value="Sakiet Ezzit">Sakiet Ezzit</option>
+                    <option value="Sfax Ouest">Sfax Ouest</option>
+                    <option value="Sfax Sud">Sfax Sud</option>
+                    <option value="Sfax Ville">Sfax Ville</option>
+                    <option value="Skhira">Skhira</option>
+                    <option value="Thyna">Thyna</option>
+                </select>
+                <select class="form-control city" id="Tunis" parent="Tunis">
+                    <option value="Bab el Bhar">Bab el Bhar</option>
+                    <option value="Bab Souika">Bab Souika</option>
+                    <option value="Carthage">Carthage</option>
+                    <option value="Cité El Khadhra">Cité El Khadhra</option>
+                    <option value="Djebel Jelloud">Djebel Jelloud</option>
+                    <option value="EL Kabaria">EL Kabaria</option>
+                    <option value="El Menzah">El Menzah</option>
+                    <option value="El Omrane">El Omrane</option>
+                    <option value="El Omrane Supérieur">El Omrane Supérieur</option>
+                    <option value="El Ouardia">El Ouardia</option>
+                    <option value="Ettahrir">Ettahrir</option>
+                    <option value="Ezzouhour">Ezzouhour</option>
+                    <option value="Hrairia">Hrairia</option>
+                    <option value="La Goulette">La Goulette</option>
+                    <option value="La Marsa">La Marsa</option>
+                    <option value="Le Bardo">Le Bardo</option>
+                    <option value="Le Kram">Le Kram</option>
+                    <option value="Médina">Médina</option>
+                    <option value="Séjoumi">Séjoumi</option>
+                    <option value="Sidi el Bechir">Sidi el Bechir</option>
+                    <option value="Sidi Hassine">Sidi Hassine</option>
+                </select>
+            </div>
+            <div class="form-group" >
+                <p>Nous avons déja fait connaissance</p>
+                <select class="form-control" id="connaissance">
+                    <option value="trouver"  goto="{f:uri.page(pageUid: '{settings.trouver}')}">et vous avez des questions</option>
+                    <option value="trouver"  goto="{f:uri.page(pageUid: '{settings.trouver}')}">et vous voulez faire une réclammation</option>
+                    <option value="trouver"  goto="{f:uri.page(pageUid: '{settings.trouver}')}">Autre</option>
+                 </select>
+            </div>
+            <div class="form-group" >
+                <p><a href="{f:uri.page(pageUid: '{settings.representant}')}">Nous avons déja fait connaissance</a></p>
+            </div>
+        </div>
+    </f:section>
+</div>
+

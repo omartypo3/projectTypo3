@@ -1,0 +1,17 @@
+.article-readmore{
+
+  .readmore{
+    height: 100%;
+    overflow: hidden;
+    text-align: left;
+    transition: height 200ms ease;
+  }
+  .readmore-toggle{
+    display: block;
+    width: 100%;
+    text-align: right;
+    clear: both;
+    height: 40px;
+    margin-top: 20px;
+  }
+}

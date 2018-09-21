@@ -1,0 +1,32 @@
+plugin.tx_satertheme.view {
+	templateRootPaths.0 = EXT:sater_theme/Resources/Private/Templates/
+	partialRootPaths.0 = EXT:sater_theme/Resources/Private/Partials/
+	layoutRootPaths.0 = EXT:sater_theme/Resources/Private/Layouts/
+}
+
+# cat=template/seiten/; type=links; label= Residentiel ID
+plugin.tx_satertheme.settings.residentiel = 2
+
+# cat=template/seiten/; type=links; label= Industriel ID
+plugin.tx_satertheme.settings.industriel = 3
+
+# cat=template/seiten/; type=links; label= Agriculture ID
+plugin.tx_satertheme.settings.agriculture = 4
+
+# cat=template/seiten/; type=links; label= Trouver ID
+plugin.tx_satertheme.settings.trouver = 9
+
+# cat=template/seiten/; type=links; label= Representant ID
+plugin.tx_satertheme.settings.representant = 10
+
+# cat=template/seiten/; type=links; label= HeaderMenu ID Folder
+plugin.tx_satertheme.settings.HeaderMenu = 5
+
+# cat=template/seiten/; type=links; label= RightHeader ID Folder
+plugin.tx_satertheme.settings.RightHeader = 17
+
+# cat=template/seiten/; type=links; label= Tel ID Folder
+plugin.tx_satertheme.settings.Tel = 55
+
+# cat=template/seiten/; type=links; label= Footer ID Folder
+plugin.tx_satertheme.settings.Footer = 12

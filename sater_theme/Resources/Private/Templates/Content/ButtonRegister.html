@@ -1,0 +1,35 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="bouton" options="{group: 'FCE'}">
+            <flux:form.sheet name="elements" label="bouton">
+                        <flux:field.input name="label" label="Label" required="true"/>
+                        <flux:field.input name="link" label="Lien" required="true">
+                            <flux:wizard.link/>
+                        </flux:field.input>
+
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+       <strong>Contact Box</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <f:if condition="{link-> v:math.round()} > 0">
+            <f:then>
+                <v:variable.set name="url" value="{f:uri.page(pageUid: '{link}', absolute: '1')}" />
+            </f:then>
+            <f:else>
+                <v:variable.set name="url" value="{f:uri.typolink(parameter: '{link}')}" />
+            </f:else>
+        </f:if>
+            <a href="{url}">{label}</a>
+
+    </f:section>
+</div>

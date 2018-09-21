@@ -1,0 +1,19 @@
+<f:layout name="FullImage"/>
+<f:render partial="Header" section="Header" arguments="{_all}"/>
+<f:render partial="Image" section="Image" arguments="{_all}"/>
+
+<!--/Main content -->
+
+<v:page.menu pageUid="{settings.Footer}">
+    <f:if condition="{menu}">
+        <f:for each="{menu}" as="curPage">
+            <v:content.render column="0"
+                              pageUid="{curPage.uid}"></v:content.render>
+        </f:for>
+    </f:if>
+</v:page.menu>
+
+
+
+
+

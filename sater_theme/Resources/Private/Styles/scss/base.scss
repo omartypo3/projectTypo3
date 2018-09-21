@@ -1,0 +1,45 @@
+body {
+  font-family: $font-family-light;
+  font-size: $font-size-base;
+  line-height: 1.45;
+  color: $color-text;
+  font-weight: $font-weight-thinest;
+  text-align: center;
+  background: $color-body-bg;
+  height: 100%;
+  p{
+    text-align: left;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: $color-primary;
+  color: $color-body-bg;
+}
+
+.main-content.main-content {
+  margin-top: $grid-gutter-width;
+  margin-bottom: $grid-gutter-width * 2;
+  padding-top: 1px;
+  min-height: calc(100vh - 436px);
+
+  @media screen and (max-width: $screen-sm-max){
+    margin-top: ($grid-gutter-width * 2) + 60px;
+  }
+}
+.container-left{
+  text-align: left;
+}
+ul {
+  list-style-type: square;
+}
+.margin-top-40{
+  margin-top:40px;
+}
+.margin-bottom-40 {
+  margin-bottom:40px;
+}

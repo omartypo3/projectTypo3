@@ -1,0 +1,8 @@
+$ce-full-image-selector: ".ce-full-image";
+#{$ce-full-image-selector} {
+  img {
+    width: 100%;
+    display: block;
+    max-width: 1920px;
+  }
+}

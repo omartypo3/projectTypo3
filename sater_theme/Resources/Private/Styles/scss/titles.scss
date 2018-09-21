@@ -1,0 +1,15 @@
+.headline-bar {
+  background-color: $color-dark;
+  h1 {
+    text-transform: uppercase;
+    &.active{
+      color:$color-primary;
+    }
+  }
+}
+
+h1 {
+  font-size: $font-size-h1;
+  color: $color-grey-light;
+  margin: 12px 0;
+}

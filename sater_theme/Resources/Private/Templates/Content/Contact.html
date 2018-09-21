@@ -1,0 +1,44 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="contact" options="{group: 'FCE'}">
+            <flux:form.sheet name="elements" label="contact">
+                <flux:form.section name="elements">
+                    <flux:form.object name="contact" label="Nouveau commerciale">
+                        <flux:field.input name="region" label="Region" />
+                        <flux:field.input name="adresse" label="Adresse" />
+                        <flux:field.input name="email" label="Email" required="true"/>
+                        <flux:field.input name="telephone" label="Telephone" required="true"/>
+                        <flux:field.input name="fax" label="fax"/>
+                        <flux:field.input name="mobile" label="Mobile"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+       <strong>Contact Box</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="content-element contact-element">
+            <f:for each="{elements}" as="element" iteration="i">
+            <fieldset>
+                <legend>{element.contact.region}</legend>
+                <div class="information">
+                    <f:if condition="{element.contact.adresse} != ''}"><span><b>Adresse:</b> {element.contact.adresse}</span></f:if>
+                    <f:if condition="{element.contact.email} != ''}"> <span><b>Email:</b> {element.contact.email}</span></f:if>
+                    <f:if condition="{element.contact.telephone} != ''}"><span><b>Telephone:</b> {element.contact.telephone}</span></f:if>
+                    <f:if condition="{element.contact.fax} != ''}"> <span><b>Fax:</b> {element.contact.fax}</span></f:if>
+                    <f:if condition="{element.contact.mobile} != ''}"> <span><b>Mobile:</b> {element.contact.mobile}</span></f:if></div>
+            </fieldset>
+            </f:for>
+
+        </div>
+    </f:section>
+</div>

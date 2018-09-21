@@ -1,0 +1,66 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en"
+>
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="slideshow" options="{group: 'FCE'}">
+            <flux:field.inline.fal name="backgroundImage" label="Image background" />
+            <flux:form.sheet name="social" label="Slogan">
+                <flux:form.section name="slogan">
+                    <flux:form.object name="sm" label="Slogan">
+                        <flux:field.input name="title" label="Slogan"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Slideshow Element</b>
+    </f:section>
+
+    <f:section name="Main">
+
+        {v:content.resources.fal(field: 'backgroundImage') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundImage')}
+        <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas="">
+            <div id="container" class="page-wrapper page-wrapper--node">
+
+                <header id="header">
+                    <div class="navigation-wrapper--sticky headroom headroom--top headroom--not-bottom">
+                        <div class="navigation-wrapper">
+                            <div class="region region--header-first">
+                                <div id="block-rumble-branding" class="block block-system block-system-branding-block">
+                                    <!--<div class="site-name">
+                                        <img src="/typo3conf/ext/sater_theme/Resources/Public/Images/logo.png" alt="Softtodo logo">
+                                    </div>-->
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="region region--header-third">
+                        <section role="article" class="node node--type-landing-page node--view-mode-header">
+
+                            <div class="media-wrapper">
+                                <img src="{backgroundImage.url}">
+                            </div>
+
+
+                            <h1 class="headline">It's all about your story</h1>
+
+                        </section>
+
+                    </div>
+
+                </header>
+
+            </div>
+
+        </div>
+
+    </f:section>
+</div>
+

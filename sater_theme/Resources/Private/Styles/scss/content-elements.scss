@@ -1,0 +1,4 @@
+.content-element {
+  margin-top: $grid-gutter-width;
+  @include clearfix();
+}

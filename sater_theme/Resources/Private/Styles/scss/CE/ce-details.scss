@@ -1,0 +1,16 @@
+$ce-details-selector: ".ce-details";
+#{$ce-details-selector} {
+  >div {
+    text-align: left;
+  }
+  #{$ce-details-selector}--row {
+    margin-bottom: $spacing-vertical-paragraphs;
+  }
+  #{$ce-details-selector}--label {
+
+  }
+  #{$ce-details-selector}--value {
+    font-family: $font-family-medium;
+    font-weight: $font-weight-bold;
+  }
+}

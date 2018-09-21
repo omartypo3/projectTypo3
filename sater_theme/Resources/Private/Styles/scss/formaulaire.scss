@@ -1,0 +1,25 @@
+.formaulaire{
+  padding: 30px;
+  .form-group{
+    text-align: left;
+    padding: 20px;
+    label{
+      margin:10px 0px;
+    }
+    .produit{
+      display:none;
+      &.showproduit{
+        margin: 20px 0px;
+        display:block;
+      }
+    }
+    .city{
+      display:none;
+      &.showcity{
+        margin: 20px 0px;
+        display:block;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,38 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="nbrRow" options="{group: 'FCE'}">
+            <flux:form.sheet name="value" label="value of columns">
+                <flux:form.section name="value">
+                    <flux:form.object name="value" label="value">
+                        <flux:field.input name="valeur" label="value of table"/>
+                        <flux:field.checkbox name="activevalue" default="false" label="valeur important?"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <f:for each="{value}" as="values" iteration="iterator">
+            <f:if condition="{iterator.isFirst}">
+                <f:then>
+                    <strong>row of column {values.value.valeur}</strong>
+                </f:then>
+            </f:if>
+        </f:for>
+
+    </f:section>
+    <f:section name="Main">
+        <tr>
+            <f:for each="{value}" as="values">
+                <td class="{f:if(condition:'{values.value.activevalue} == 1',then:'active',else:'')}">
+                    {values.value.valeur}
+                </td>
+            </f:for>
+        </tr>
+    </f:section>
+</div>

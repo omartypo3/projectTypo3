@@ -1,0 +1,73 @@
+.control-label {
+  width: 100%;
+}
+
+input#femanager_field_submit, input[type="submit"] {
+  display: block;
+  background-color: $color-primary;
+  padding: 15px;
+  border: none;
+  color: #ffffff;
+  margin: 15px 0 0 0;
+}
+
+.col-sm-10.col-sm-offset-2 {
+  margin: 15px 0 0 0;
+}
+
+input, .form-control {
+  display: block;
+  width: 100%;
+  padding: .5rem .75rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: .25rem;
+}
+
+.bg-danger {
+    color: #fff;
+    background-color: rgb(240, 42, 20);
+  border-radius: 5px;
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.login-form {
+  width: 500px;
+}
+.container-gender{
+  .ce-table table th{
+    padding: 8px 5px;
+  }
+  .ce-table table td{
+    padding: 8px 0;
+  }
+  .ce-table.content-element {
+    overflow-x: hidden;
+  }
+  ul {
+    text-align: left;
+  }
+}
+.femanager_fieldset{
+  .col-sm-10 {
+    width: 100%;
+  }
+  .radio {
+    width: 13%;
+    display: inline-block;
+    text-align: center;
+  }
+}
+@media screen and (max-width: $screen-size-mobile) {
+  .footer-menu ul {
+    width: 100%;
+  }
+  .login-form {
+    width: 100%;
+  }
+}

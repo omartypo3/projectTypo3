@@ -1,0 +1,31 @@
+$font-path: '../';
+
+@font-face {
+  font-family:"Gotham SSm Book";
+  font-style:normal;
+  font-weight:normal;
+  src:url("#{$font-path}Fonts/GothamSSm-Book.eot");
+  src:url("#{$font-path}Fonts/GothamSSm-Book.eot?#iefix") format("embedded-opentype"),
+  url("#{$font-path}Fonts/GothamSSm-Book.woff") format("woff"),
+  url("#{$font-path}Fonts/GothamSSm-Book.ttf") format("truetype")
+}
+
+@font-face {
+  font-family:"Gotham SSm Light";
+  font-style:normal;
+  font-weight:normal;
+  src:url("#{$font-path}Fonts/GothamSSm-Light.eot");
+  src:url("#{$font-path}Fonts/GothamSSm-Light.eot?#iefix") format("embedded-opentype"),
+  url("#{$font-path}Fonts/GothamSSm-Light.woff") format("woff"),
+  url("#{$font-path}Fonts/GothamSSm-Light.ttf") format("truetype")
+}
+
+@font-face {
+  font-family:"Gotham SSm Medium";
+  font-style:normal;
+  font-weight:normal;
+  src:url("#{$font-path}Fonts/GothamSSm-Medium.eot");
+  src:url("#{$font-path}Fonts/GothamSSm-Medium.eot?#iefix") format("embedded-opentype"),
+  url("#{$font-path}Fonts/GothamSSm-Medium.woff") format("woff"),
+  url("#{$font-path}Fonts/GothamSSm-Medium.ttf") format("truetype")
+}

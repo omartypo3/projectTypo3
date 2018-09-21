@@ -1,0 +1,23 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="sample" options="{group: 'FCE'}">
+            <flux:field.input name="text" label="text" required="true"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+       <strong>sample Box</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="sample">
+            <p>{text}</p>
+        </div>
+
+    </f:section>
+</div>

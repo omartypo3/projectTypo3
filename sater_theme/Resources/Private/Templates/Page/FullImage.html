@@ -1,0 +1,21 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+
+	<f:layout name="FullImage" />
+
+	<f:section name="Configuration">
+		<flux:form id="fullimage"  options="{icon: 'typo3conf/ext/sater_theme/Resources/Public/Images/layouts/HomePage.png'}">
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column colPos="1" name="Image" label="Image ou Video" />
+				</flux:grid.row>
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Image">
+		<v:content.render column="1"/>
+	</f:section>
+</div>

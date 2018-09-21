@@ -1,0 +1,333 @@
+{namespace custom= SaterTheme\ViewHelpers}
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:section name="Header">
+        <v:variable.set name="curpage" value="{v:page.info(field:'uid')}"/>
+        <v:variable.set name="curpar" value="{v:page.info(field:'pid')}"/>
+        <header>
+            <!-- Mobile Navigation -->
+            <div class="mobile-navigation">
+                <label class="mobile-navigation-opener" for="mobile-navigation-opener-input">
+                    <div class="mobile-navigation-icon">
+                        <span></span>
+                    </div>
+                </label>
+                <input id="mobile-navigation-opener-input" type="checkbox"/>
+                <div class="collapsed-mobile-navigation">
+                    <div class="mobile-navigation-header">
+                        <ul>
+                            <f:security.ifAuthenticated>
+                                <f:then>
+                                    <v:page.menu pageUid="{settings.Tel}">
+                                        <li class="right-side">
+                                            <f:if condition="{menu}">
+                                                <f:for each="{menu}" as="curPage">
+                                                    <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                        <f:then>
+                                                            <a class="tel" href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <a class="tel" href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:for>
+                                            </f:if>
+                                        </li>
+                                    </v:page.menu>
+                                    <v:page.menu pageUid="{settings.RightHeader}">
+                                        <f:if condition="{menu}">
+                                            <f:for each="{menu}" as="curPage">
+                                                <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                    <f:then>
+                                                        <f:if condition="{curPage.title}!='Login'">
+                                                            <f:then>
+                                                                <li class="right-side current">
+                                                                    <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                </li>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:cObject typoscriptObjectPath="lib.logOut"/>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:if condition="{curPage.title}!='Login'">
+                                                            <f:then>
+                                                                <li class="right-side">
+                                                                    <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                </li>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:cObject typoscriptObjectPath="lib.logOut"/>
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:for>
+                                        </f:if>
+                                    </v:page.menu>
+                                </f:then>
+                                <f:else>
+                                    <v:page.menu pageUid="{settings.Tel}">
+                                        <li class="right-side">
+                                            <f:if condition="{menu}">
+                                                <f:for each="{menu}" as="curPage">
+                                                    <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                        <f:then>
+                                                            <a class="tel" href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <a class="tel" href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:for>
+                                            </f:if>
+                                        </li>
+                                    </v:page.menu>
+                                    <v:page.menu pageUid="{settings.RightHeader}">
+                                        <f:if condition="{menu}">
+                                            <f:for each="{menu}" as="curPage">
+                                                <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                    <f:then>
+                                                        <li class="current">
+                                                            <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                        </li>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <li>
+                                                            <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                        </li>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:for>
+                                        </f:if>
+                                    </v:page.menu>
+                                </f:else>
+                            </f:security.ifAuthenticated>
+                            <li>
+                                <label class="mobile-navigation-closer" for="mobile-navigation-opener-input">
+                                    <span>
+                                        <img src="typo3conf/ext/sater_theme/Resources/Public/Images/menu_close.svg"
+                                             alt="Close">
+                                    </span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mobile-navigation-body">
+                        <div class="mobile-navigation-links">
+                            <ul class="link-list">
+                                <v:page.menu pageUid="{settings.HeaderMenu}">
+                                    <f:if condition="{menu}">
+                                        <f:for each="{menu}" as="curPage">
+                                            <f:if condition="({curPage.shortcut} == {curpage}) || ( {curpar} == {curPage.shortcut}) ">
+                                                <f:then>
+                                                    <li class="first-list">
+                                                        <a href="{curPage.link}">{curPage.title}</a>
+                                                        <v:page.menu pageUid="{curPage.shortcut}"
+                                                                     class="sub-link-list"/>
+                                                    </li>
+                                                </f:then>
+                                                <f:else>
+                                                    <li class="first-list">
+                                                        <a href="{curPage.link}">{curPage.title}</a>
+                                                        <v:page.menu pageUid="{curPage.shortcut}"
+                                                                     class="sub-link-list"/>
+                                                </f:else>
+                                            </f:if>
+                                        </f:for>
+                                    </f:if>
+                                </v:page.menu>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- END Mobile Navigation -->
+            <!-- Desktop Navigation -->
+            <div class="navigation-bar">
+                <div class="navigation-bar--inner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="logo-holder col-md-2">
+                                <a href="/"><img src="typo3conf/ext/sater_theme/Resources/Public/Images/logo.png"
+                                                 alt="Softtodo logo"></a>
+                            </div>
+                            <nav class="navigation-links col-md-10">
+                                <div class="nav-container">
+                                    <ul class="navbar-nav pull-right">
+                                        <v:page.menu pageUid="{settings.HeaderMenu}">
+                                            <f:if condition="{menu}">
+                                                <f:for each="{menu}" as="curPage">
+                                                    <f:if condition="({curPage.shortcut} == {curpage}) || ( {curpar} == {curPage.shortcut}) ">
+                                                        <f:then>
+                                                            <li class="current">
+                                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                            </li>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <li>
+
+                                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+
+                                                            </li>
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:for>
+                                            </f:if>
+                                        </v:page.menu>
+                                        <li class="vertical-bar">|</li>
+                                        <f:security.ifAuthenticated>
+                                            <f:then>
+                                                <v:page.menu pageUid="{settings.RightHeader}">
+                                                    <f:if condition="{menu}">
+                                                        <f:for each="{menu}" as="curPage">
+                                                            <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                                <f:then>
+                                                                    <f:if condition="{curPage.title}!='Login'">
+                                                                        <f:then>
+                                                                            <li class="right-side current">
+                                                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                            </li>
+                                                                        </f:then>
+                                                                        <f:else>
+                                                                            <f:cObject
+                                                                                    typoscriptObjectPath="lib.logOut"/>
+                                                                        </f:else>
+                                                                    </f:if>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <f:if condition="{curPage.title}!='Login'">
+                                                                        <f:then>
+                                                                            <li class="right-side">
+                                                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                            </li>
+                                                                        </f:then>
+                                                                        <f:else>
+                                                                            <f:cObject
+                                                                                    typoscriptObjectPath="lib.logOut"/>
+                                                                        </f:else>
+                                                                    </f:if>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:for>
+                                                    </f:if>
+                                                </v:page.menu>
+                                            </f:then>
+                                            <f:else>
+                                                <v:page.menu pageUid="{settings.Tel}">
+                                                    <li class="right-side">
+                                                    <f:if condition="{menu}">
+                                                        <f:for each="{menu}" as="curPage">
+                                                            <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                                <f:then>
+                                                                        <a class="tel" href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                </f:then>
+                                                                <f:else>
+                                                                        <a class="tel" href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:for>
+                                                    </f:if>
+                                                    </li>
+
+                                                </v:page.menu>
+                                                <v:page.menu pageUid="{settings.RightHeader}">
+                                                    <f:if condition="{menu}">
+                                                        <f:for each="{menu}" as="curPage">
+                                                            <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                                                                <f:then>
+                                                                    <li class="right-side current">
+                                                                        <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                    </li>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <li class="right-side">
+                                                                        <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                    </li>
+                                                                </f:else>
+                                                            </f:if>
+                                                        </f:for>
+                                                    </f:if>
+                                                </v:page.menu>
+                                            </f:else>
+                                        </f:security.ifAuthenticated>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Desktop Navigation -->
+            <f:if condition="( {v:page.menu(pageUid: curpage)} && !{v:page.info( field:'is_siteroot')} ) || ( !{v:page.info(  pageUid:curpar , field:'is_siteroot')} && {v:page.menu(pageUid: curpar)}  ) ">
+                <f:then>
+                    <div class="sub-navigation-bar">
+                        <div class="navigation-bar--inner">
+                            <div class="container">
+                                <div class="row">
+                                    <nav class="navigation-links col-md-12 pull-right">
+                                        <div class="nav-container">
+                                            <ul class="navbar-nav pull-right">
+                                                <f:if condition="{v:page.menu(pageUid: curpage)}">
+                                                    <f:then>
+                                                        <v:page.menu pageUid="{v:page.info(field:'uid')}">
+                                                            <f:if condition="{menu}">
+                                                                <f:for each="{menu}" as="curPage">
+                                                                    <li class="{f:if(condition: '{curPage.active}', then: 'current', else: '')}">
+                                                                        <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                    </li>
+                                                                </f:for>
+                                                            </f:if>
+                                                        </v:page.menu>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <v:page.menu pageUid="{curpar}">
+                                                            <f:if condition="{menu}">
+                                                                <f:for each="{menu}" as="curPage">
+                                                                    <li class="{f:if(condition: '{curPage.active}', then: 'current', else: '')}">
+                                                                       <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                                                    </li>
+                                                                </f:for>
+                                                            </f:if>
+                                                        </v:page.menu>
+                                                    </f:else>
+                                                </f:if>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </f:then>
+            </f:if>
+
+            <!-- start headline bar-->
+
+
+            <v:page.menu>
+                <f:if condition="{menu}">
+                    <div class="headline-bar">
+                        <div class="container">
+                            <f:for each="{menu}" as="curPage">
+                                <v:variable.set name="myObject"
+                                                value="{custom:flex(xmlstring: '{curPage.tx_fed_page_flexform}')}"/>
+                                <f:if condition="{curPage.active} && {myObject.settings.menu}">
+                                    <f:then>
+
+                                        <h1 class="{f:if(condition: '{myObject.settings.active}==1', then: 'active', else: '')}">
+                                            {myObject.settings.menu}</h1>
+
+                                    </f:then>
+                                </f:if>
+                            </f:for>
+                        </div>
+                    </div>
+                </f:if>
+            </v:page.menu>
+            <!-- end Headline bar--->
+        </header>
+    </f:section>
+</div>

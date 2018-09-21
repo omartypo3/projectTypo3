@@ -1,0 +1,137 @@
+plugin.tx_satertheme {
+	view {
+		templateRootPaths.0 = {$plugin.tx_satertheme.view.templateRootPaths.0}
+		partialRootPaths.0 = {$plugin.tx_satertheme.view.partialRootPaths.0}
+		layoutRootPaths.0 = {$plugin.tx_satertheme.view.layoutRootPaths.0}
+	}
+	settings{
+         residentiel = {$plugin.tx_satertheme.settings.residentiel}
+         industriel = {$plugin.tx_satertheme.settings.industriel}
+         agriculture = {$plugin.tx_satertheme.settings.agriculture}
+         trouver = {$plugin.tx_satertheme.settings.trouver}
+         representant = {$plugin.tx_satertheme.settings.representant}
+         HeaderMenu = {$plugin.tx_satertheme.settings.HeaderMenu}
+         RightHeader = {$plugin.tx_satertheme.settings.RightHeader}
+         Tel = {$plugin.tx_satertheme.settings.Tel}
+         Footer = {$plugin.tx_satertheme.settings.Footer}
+    }
+}
+
+config {
+	concatenateJs = 0
+	concatenateCss = 0
+	compressJs = 0
+	compressCss = 0
+    tx_realurl_enable = 1
+    spamProtectEmailAddresses = 1
+    spamProtectEmailAddresses_atSubst = @
+    uniqueLinkVars = 1
+    simulateStaticDocuments = 0
+    linkVars = L
+    absRelPath = /
+    absRefPrefix = /
+    prefixLocalAnchors = all
+}
+page = PAGE
+page{
+
+	headerData{
+
+		10 = TEXT
+		10.value(
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+		)
+	}
+	shortcutIcon = typo3conf/ext/sater_theme/Resources/Public/favicon.ico
+	includeCSS {
+		styles = typo3conf/ext/sater_theme/Resources/Public/Styles/style.css
+		slidervideo = typo3conf/ext/sater_theme/Resources/Public/Styles/immersive-slider.css
+	}
+	includeJS{
+	  jquery = typo3conf/ext/sater_theme/Resources/Public/Scripts/jquery-min.js
+
+	}
+	includeJSFooter {
+            timelinejs = https://cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js
+    		matchHeight = typo3conf/ext/sater_theme/Resources/Public/Scripts/jquery.matchHeight.js
+    		carousel = typo3conf/ext/sater_theme/Resources/Public/Scripts/jquery.jcarousel.min.js
+    		slider = typo3conf/ext/sater_theme/Resources/Public/Scripts/CE/ce-slider.js
+    		navigation = typo3conf/ext/sater_theme/Resources/Public/Scripts/navigation.js
+    		#tabs = typo3conf/ext/sater_theme/Resources/Public/Scripts/jquery.easytabs.js
+    		login = typo3conf/ext/sater_theme/Resources/Public/Scripts/login.js
+    		sliderVideo = typo3conf/ext/sater_theme/Resources/Public/Scripts/jquery.immersive-slider.js
+    		main = typo3conf/ext/sater_theme/Resources/Public/Scripts/main.js
+    }
+
+}
+plugin.tx_powermail {
+	view {
+		templateRootPaths {
+			0 = EXT:powermail/Resources/Private/Templates/
+			1 = EXT:sater_theme/Resources/Private/Templates/Ext/powermail/Templates
+		}
+
+
+		partialRootPaths {
+			0 = EXT:powermail/Resources/Private/Partials/
+			1 = EXT:sater_theme/Resources/Private/Templates/Ext/powermail/Partials
+		}
+		layoutRootPaths {
+			0 = EXT:powermail/Resources/Private/Layouts/
+			1 = EXT:sater_theme/Resources/Private/Templates/Ext/powermail/Layouts
+		}
+	}
+}
+plugin.tx_femanager {
+	view {
+		templateRootPaths {
+			0 = EXT:femanager/Resources/Private/Templates/
+			1 = EXT:sater_theme/Resources/Private/Templates/Ext/femanager/Templates
+		}
+		partialRootPaths {
+			0 = EXT:femanager/Resources/Private/Partials/
+			1 = EXT:sater_theme/Resources/Private/Templates/Ext/femanager/Partials
+		}
+		layoutRootPaths {
+			0 = EXT:femanager/Resources/Private/Layouts/
+			1 = EXT:sater_theme/Resources/Private/Templates/Ext/femanager/Layouts
+		}
+	}
+}
+page.includeJS{
+    powermailJQuery = https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js
+    powermailJQueryDatepicker = EXT:powermail/Resources/Public/JavaScripts/Libraries/jquery.datetimepicker.min.js
+    powermailJQueryFormValidation = EXT:powermail/Resources/Public/JavaScripts/Libraries/parsley.min.js
+    powermailJQueryTabs = EXT:powermail/Resources/Public/JavaScripts/Powermail/Tabs.min.js
+    powermailForm = EXT:powermail/Resources/Public/JavaScripts/Powermail/Form.min.js
+	powermailJQueryDatepicker.async = 1
+	powermailJQueryFormValidation.async = 1
+	powermailJQueryTabs.async = 1
+	powermailForm.async = 1
+}
+
+[usergroup = 1]
+lib.logOut = COA_INT
+lib.logOut {
+    10 = COA
+    10{
+        20 = TEXT
+        20.typolink.parameter = 29
+        20.typolink.returnLast = url
+        20.wrap = <li class="right-side"><form id="logoutform" action="index.php?id=10" method="post">
+        30 = COA
+        30 {
+            wrap = <a href="javascript:{}" onclick="document.getElementById('logoutform').submit(); return false;"><span class="logoutcolor">Logout</span></a>
+            10 = TEXT
+            10.value = <input type="hidden" name="logintype" value="logout" />
+            20 = TEXT
+            20.value = <input type="hidden" name="redirect_url" value="" />
+            30 = TEXT
+            30.value = </form></li>
+        }
+    }
+
+
+}
+[global]

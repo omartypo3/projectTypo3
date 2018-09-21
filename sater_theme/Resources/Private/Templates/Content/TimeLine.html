@@ -1,0 +1,114 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="timeLine" options="{group: 'FCE'}">
+            <flux:field.input name="headline" label="Headline"/>
+            <flux:field.text name="text" label="Description" enableRichText="true"/>
+            <flux:field.inline.fal name="image" label="Image" maxItems="1" minItems="1"/>
+            <flux:field.input name="titleLink" label="Title of Link"/>
+            <flux:field.input name="link" label="Link">
+                <flux:wizard.link/>
+            </flux:field.input>
+            <flux:field.input name="start" label="date" eval="date"/>
+
+            <flux:form.sheet name="date" label="date">
+                <flux:form.section name="date">
+                    <flux:form.object name="date" label="Date">
+                        <flux:field.input name="headline1" label="Headline"/>
+                        <flux:field.text name="text1" label="Description" enableRichText="true"/>
+                        <flux:field.file name="image1" label="image" showThumbnails="1" maxItems="1" minItems="1" useFalRelation="1"/>
+                        <flux:field.input name="titleLink1" label="Title of Link"/>
+                        <flux:field.input name="link1" label="Link">
+                            <flux:wizard.link/>
+                        </flux:field.input>
+                        <flux:field.input name="startdate1" label="date" eval="date"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>TimeLine Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+        'Image')}
+        <div id="timeline1"></div>
+        <v:asset.script name="timelineJs" fluid="true">
+            var headline = "{headline}";
+            var text = "{text}";
+            /*var image = "{Image.url}";*/
+            var date = "{start -> f:format.date(format: 'Y,m')}";
+            <f:if condition="{link -> v:math.round()} > 0">
+                <f:then>
+                    <v:variable.set name="url" value="{f:uri.page(pageUid: '{link}', absolute: '1')}" />
+                </f:then>
+                <f:else>
+                    <v:variable.set name="url" value="{f:uri.typolink(parameter: '{link}')}" />
+                </f:else>
+            </f:if>
+            var link = "<a href='{url}' target='_blank'>{titleLink}</a>";
+            var headline1 = [], text1 = [],image1 = [],link1 =[],date1 =[];
+            <f:for each="{date}" as="element">
+                    <f:if condition="{element.date.link1 -> v:math.round()} > 0">
+                        <f:then>
+                            <v:variable.set name="url1" value="{f:uri.page(pageUid: '{element.date.link1}', absolute: '1')}" />
+                        </f:then>
+                        <f:else>
+                            <v:variable.set name="url1" value="{f:uri.typolink(parameter: '{element.date.link1}')}" />
+                        </f:else>
+                    </f:if>
+                    headline1.push("{element.date.headline1}");
+                    text1.push("{element.date.text1}");
+                   /* image1.push("{f:uri.image(src: '{element.date.image1}')}");*/
+                    link1.push("<a href='{url1}' target='_blank'>{element.date.titleLink1}</a>");
+                    date1.push("{element.date.startdate1 -> f:format.date(format: 'Y,m')}");
+            </f:for>
+
+                 var listDate = [];
+                for (var i = 0 ; i <= headline1.length -1 ; i++){
+
+                    listDate.push({"startDate": date1[i], "headline":headline1[i],"text":text1[i],"asset":{"media":"","credit":link1[i]}});
+
+                }
+                var myJSON = JSON.stringify(listDate);
+                var div = myJSON;
+                str = jQuery.parseJSON(myJSON);
+                     var obj ={
+                        "timeline":
+                        {
+                            "headline": headline,
+                            "type":"default",
+                            "startDate": date ,
+                            "text": text ,
+                            "asset":
+                            {
+                                "media": "",
+                                "credit": link ,
+                            },
+                            "date": str
+                        }
+                    }
+
+
+                $(document).ready(function() {
+                    createStoryJS({
+                    type:		'timeline',
+                    width:		'100%',
+                    height:		'800',
+                    source:		obj,
+                    embed_id:	'timeline1'
+                    });
+
+            });
+
+        </v:asset.script>
+
+    </f:section>
+</div>

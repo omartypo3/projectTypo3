@@ -1,0 +1,84 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="footer" options="{group: 'FCE'}">
+            <flux:field.inline.fal name="image" label="Logo" maxItems="1" minItems="1"/>
+            <flux:field.input name="copyright" label="Copyright"/>
+            <flux:form.section name="social">
+                <flux:form.object name="sm" label="Social Media">
+                    <flux:field.select name="icon" label="Social media Type"
+                                       items="{
+                                    facebook: 'Facebook',
+                                    twitter: 'Twitter',
+                                    google: 'Google +',
+                                    youtube: 'YouTube',
+                                    linkedin: 'Linkedin',
+                                    pinterest: 'Pinterest',
+									instagram: 'Instagram'}"
+                                       default="fa-facebook-square" size="1" maxItems="1"/>
+                    <flux:field.input name="link" label="Social media link">
+                        <flux:wizard.link/>
+                    </flux:field.input>
+
+                </flux:form.object>
+            </flux:form.section>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Footer Boxes</strong>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+        'Image')}
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="socialmedia col-md-5">
+                        <div class="logo-footer">
+                            <a href="/"> <img src="{Image.url}" alt="{Image.alternative}"></a>
+                        </div>
+                        <ul class="footer-social">
+                            <f:for each="{social}" as="element" iteration="iteration">
+                                <li class="{element.sm.icon}">
+                                    <a href="{element.sm.link}" target="_blank">
+                                        <img src="typo3conf/ext/sater_theme/Resources/Public/Images/SocialMedia/{element.sm.icon}.svg"
+                                             alt="{element.sm.icon}"/>
+                                    </a></li>
+                            </f:for>
+                        </ul>
+
+                    </div>
+                    <div class="menufooter footer-menu col-md-7">
+
+                        <v:page.menu>
+                            <f:if condition="{menu}">
+                                <v:variable.set name="group" value="{menu -> v:iterator.chunk(count: 3)}"/>
+                                <f:for each="{group}" as="Curpage">
+                                    <ul>
+                                        <f:for each="{Curpage}" as="grouppage">
+
+                                            <li class="{f:if(condition: '{grouppage.active}', then: 'current', else: '')}">
+                                                <f:link.page pageUid="{grouppage.uid}" title="{grouppage.linktext}">
+                                                    {grouppage.linktext}
+                                                </f:link.page>
+                                            </li>
+
+                                        </f:for>
+                                    </ul>
+
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </div>
+                </div>
+                <div class="copyright"><span>{copyright}</span></div>
+            </div>
+        </footer>
+    </f:section>
+</div>

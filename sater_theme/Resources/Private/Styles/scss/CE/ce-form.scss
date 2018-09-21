@@ -1,0 +1,35 @@
+$ce-form-selector: ".ce-form";
+#{$ce-form-selector} {
+  form {
+    input {
+      font-size: $font-size-standard;
+      padding: 15px;
+      display: block;
+      width: 100%;
+      background: $color-body-bg none;
+      border: 1px solid $color-grey;
+      border-radius: 0;
+      color: $color-grey;
+      font-weight: $font-weight-thinest;
+      line-height: 24px;
+      margin-bottom: 12px;
+      outline: none;
+      opacity: .8;
+      margin-right: 1%;
+      &:focus {
+        border-color: $color-primary;
+        -webkit-box-shadow: 0 0 5px 0 $color-primary;
+        box-shadow: 0 0 5px 0 $color-primary;
+        opacity: 1;
+      }
+    }
+    .form-group {
+      float: left;
+      width: 50%;
+      padding-right: 8px;
+      @media screen and (max-width: $screen-sm-max){
+        width: 100%;
+      }
+    }
+  }
+}

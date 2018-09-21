@@ -1,0 +1,76 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="sliderVideo" options="{group: 'FCE'}">
+            <flux:form.sheet name="elements" label="slider">
+                <flux:form.section name="elements">
+                    <flux:form.object name="slider" label="Bilder">
+                        <flux:field.file name="image" label="image" showThumbnails="1" maxItems="1" minItems="1"
+                                         useFalRelation="1"/>
+                        <flux:field.file name="video" label="Video" showThumbnails="1"
+                                         useFalRelation="1"/>
+                        <flux:field.input name="header1" label="Header"/>
+                        <flux:field.text name="description1" label="description" enableRichText="true"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Slider with Image or Video</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="wrapper">
+            <div id="immersive_slider">
+                <f:for each="{elements}" as="element" iteration="i">
+                    <f:if condition="{element.slider.video}">
+                        <f:then>
+                            <div class="slide video">
+                                <video  src="{f:uri.image(src:'{element.slider.video}')}"  frameborder="0"  webkitallowfullscreen loop="true" controls meet mozallowfullscreen allowfullscreen></video>
+
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div class="slide">
+                                <div class="content">
+                                    <h2>{element.slider.header1}</h2>
+                                    <f:format.raw>{element.slider.description1}</f:format.raw>
+                                </div>
+
+                                <div class="image">
+
+                                    <img src="{f:uri.image(src:'{element.slider.image}')}" alt="Slider-{i.cycle}"
+                                         width="320c" height="370c"/>
+                                </div>
+
+
+                            </div>
+                        </f:else>
+                    </f:if>
+                </f:for>
+
+
+                <a href="#" class="is-prev">&laquo;</a>
+                <a href="#" class="is-next">&raquo;</a>
+            </div>
+        </div>
+        <script>
+            $(document).ready( function() {
+                $("#immersive_slider").immersive_slider({
+                    container: ".main",
+                    cssBlur: false,
+                    pagination: true,
+                    loop: true,
+                    autoStart: 10000
+
+                });
+            });
+        </script>
+    </f:section>
+</div>

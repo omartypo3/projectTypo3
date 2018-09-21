@@ -1,0 +1,49 @@
+/* colors */
+$color-body-bg:                       #fff;
+$color-black:                         #000;
+$color-text:                          #4f504b;
+$color-titles:                        #262722;
+$color-primary:                       #F3A500;
+$color-secondary:                     rgba(0, 0, 0, 0.7);
+$color-footer:                        #3a3a3a;
+$color-social-media:                  #828282;
+$color-mobile-nav-header:             #333333;
+$color-dark:                          #4b4b4c;
+$color-grey:                          #b7b7b7;
+$color-grey-light:                    #ececec;
+
+
+/* Font family */
+$font-family-light: "Gotham SSm Light", Arial, sans-serif;
+$font-family-book: "Gotham SSm Book", Arial, sans-serif;
+$font-family-medium: "Gotham SSm Medium", Arial, sans-serif;
+
+/* Font weight */
+$font-weight-thinest:          200;
+$font-weight-thin:             300;
+$font-weight-normal:           400;
+$font-weight-bold:             500;
+$font-weight-bolder:           700;
+
+/* Font sizes */
+$font-size-base:              17px;
+$font-size-standard:          15px;
+$font-size-middle:            13px;
+$font-size-small:             9.3px;
+$font-size-h1:                24px;
+
+/* Spacing */
+$letter-spacing: 2px;
+$spacing-vertical-paragraphs: 12px;
+
+/* Z-index */
+$z-index-1: 1;
+$z-index-2: $z-index-1 + 1;
+
+$z-index-highest : 2147483647;
+$z-index-highest-1 : ($z-index-highest - 1);
+$z-index-highest-2 : ($z-index-highest-1 - 1);
+$social-media-size: 32px;
+
+$screen-size-mobile: 500px;
+$screen-xs10-max:900px

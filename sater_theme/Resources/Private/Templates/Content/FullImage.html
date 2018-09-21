@@ -1,0 +1,37 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="image" options="{group: 'FCE'}">
+            <flux:field.inline.fal name="image" label="Image"/>
+            <flux:field.inline.fal name="video" label="Video" allowedExtensions='mp4'/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+
+            <strong> Image ou video Box</strong>
+
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'image') -> v:iterator.first() -> v:variable.set(name:
+        'Image')}
+        {v:content.resources.fal(field: 'video') -> v:iterator.first() -> v:variable.set(name:
+        'Video')}
+            <f:if condition="{Video}">
+                <f:then>
+                    <video preload="none" autoplay="" loop="loop" muted="muted" poster="{Image.url}">
+                        <source src="{Video.url}" type="video/mp4">
+                    </video>
+                </f:then>
+                <f:else>
+                    <img src="{Image.url}" alt="{Image.alternative}">
+                </f:else>
+            </f:if>
+
+    </f:section>
+</div>

@@ -1,0 +1,73 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="table" options="{group: 'FCE'}">
+            <flux:form.sheet name="header" label="Header of table">
+                <flux:form.section name="header">
+                    <flux:form.object name="header" label="header">
+                        <flux:field.input name="headline" label="Headline"/>
+                        <flux:field.checkbox name="active" default="false" label="valeur important?"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+            <flux:form.sheet name="indice" label="indices">
+                <flux:form.section name="indice">
+                    <flux:form.object name="indice" label="indice">
+                        <flux:field.input name="caractere" label="caractère indice"/>
+                        <flux:field.input name="title" label="caractère title"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+            <flux:form.sheet name="details" label="details">
+                <flux:form.section name="details">
+                    <flux:form.object name="details" label="details">
+                        <flux:field.input name="label" label="details label"/>
+                        <flux:field.text name="value" label="details value"/>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column name="rowtable" label="row 100%" style="width: 100%"/>
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <strong>Table Boxes</strong>
+    </f:section>
+    <f:section name="Main">
+        <div class="ce-table content-element">
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <f:for each="{header}" as="element">
+                        <th class="{f:if(condition:'{element.header.active} == 1',then:'active',else:'')}">
+                            {element.header.headline}
+                        </th>
+                    </f:for>
+                </tr>
+                </thead>
+                <flux:content.render area="rowtable"/>
+            </table>
+        </div>
+        <div class="indices container">
+            <f:for each="{indice}" as="indices">
+                <strong>{indices.indice.caractere}</strong> <span>{indices.indice.title}</span>
+            </f:for>
+        </div>
+        <div class="ce-details content-element container">
+            <f:for each="{details}" as="detail">
+                <div class="ce-details--row row">
+                    <div class="ce-details--label col-sm-3">{detail.details.label}:</div>
+                    <div class="ce-details--value col-sm-9"> <f:format.raw>{detail.details.value}</f:format.raw></div>
+                </div>
+            </f:for>
+        </div>
+    </f:section>
+</div>

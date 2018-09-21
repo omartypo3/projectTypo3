@@ -1,0 +1,14 @@
+$ce-map-selector-prefix: ce-map;
+.#{$ce-map-selector-prefix} {
+  .gmap {
+    height: 600px !important;
+  }
+  .map-infoWindow {
+    p {
+      color: $color-text;
+    }
+    h5 {
+      margin-top: 6px;
+    }
+  }
+}

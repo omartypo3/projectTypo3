@@ -1,0 +1,22 @@
+.contact-element {
+  fieldset{
+    border: 1px $color-footer solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  legend{
+    margin-left: 0;
+    margin-right: 0px;
+    padding: 0.2em 0.8em;
+    text-align: left;
+    color: $color-primary;
+  }
+  .information {
+    span{
+      display: block;
+      text-align: left;
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
+}
