@@ -1,0 +1,19 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<f:section name="Slideshow">
+		<f:if condition="{v:content.get(column:1) -> v:iterator.first()}">
+			<v:content.render column="1" as="slideshowContentElements">
+				<section id="slider" class="swiper_wrapper clearfix fluidSlider">
+					<div class="swiper-container swiper-parent swiper-container-horizontal">
+						<div class="swiper-wrapper">
+							<v:content.render column="1"/>
+						</div>
+						<div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+						<div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+					</div>
+				</section>
+			</v:content.render>
+		</f:if>
+	</f:section>
+</div>

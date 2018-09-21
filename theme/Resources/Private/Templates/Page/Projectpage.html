@@ -1,0 +1,42 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Project"/>
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Configuration">
+        <flux:form id="project" label="Projekt Single Template" options="{icon: '../typo3conf/ext/theme/Resources/Public/images/layouts/single_project.jpg'}">
+
+            <flux:field.tree table="sys_category" parentField="parent" maxItems="99" maxLevels="10" expandAll="0" name="projectcategory" size="10" width="900" label="Projectcategory" required="1">
+                <flux:wizard.add label="Add System Categories" hideParent="0" table="sys_category" pid="0" setValue="prepend" />
+            </flux:field.tree>
+
+            <flux:field.tree table="sys_category" parentField="parent" maxItems="1" maxLevels="10" expandAll="0" name="difficulty" size="10" width="900" label="Difficulty" required="1">
+                <flux:wizard.add label="Add System Categories" hideParent="0" table="sys_category" pid="0" setValue="prepend" />
+            </flux:field.tree>
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="1" name="Slideshow" label="Slideshow"/>
+                </flux:grid.row>
+                <flux:grid.row>
+                    <flux:grid.column colPos="0" name="Content" label="Content" />
+                </flux:grid.row>
+                <flux:grid.row>
+                    <flux:grid.column colPos="2" name="Materialliste" label="Materialliste" />
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <v:content.render column="0"/>
+    </f:section>
+    <f:section name="Materialliste">
+        <v:content.render column="2"/>
+    </f:section>
+
+</div>

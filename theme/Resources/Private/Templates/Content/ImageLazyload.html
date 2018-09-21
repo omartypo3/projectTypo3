@@ -1,0 +1,50 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="imagelazyload" label="Image lazyload"
+                   description="Using Lazy Load for big images will make the page load faster."
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/lazyload.png', wizardTab: 'FCE', sorting: 2}">
+            <flux:field.input name="headline" label="Headline"/>
+            <flux:field.file name="image" label="Image"/>
+            <flux:field.input name="width" label="Width"/>
+            <flux:field.input name="height" label="Height"/>
+            <flux:field.checkbox name="loader" default="TRUE" label="Gif loader"/>
+            <flux:field.checkbox name="lightbox" default="FALSE" label="open Lightbox on Click"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <small><i>Image Lazyload</i></small>
+        <h5>{headline} {image.title}</h5>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="image-box">
+            <f:if condition="{headline}">
+                <f:then>
+                    <h4>{headline}</h4>
+                </f:then>
+            </f:if>
+            <f:if condition="{lightbox}">
+                <f:then>
+                    <a href="/{image}" title="" class="lightbox" style="border: none;">
+                        <img data-src="/{image}" alt="" class="img-responsive {f:if(condition: loader, then: 'lazy-with-loader', else: 'lazy')}"
+                             {f:if(condition: width, then: 'width=\'{width}\'')}
+                        {f:if(condition: height, then: 'height=\'{height}\'')} />
+                        <div class="resize"></div>
+                    </a>
+                </f:then>
+                <f:else>
+                    <img data-src="/{image}" alt="" class="img-responsive {f:if(condition: loader, then: 'lazy-with-loader', else: 'lazy')}"
+                         {f:if(condition: width, then: 'width=\'{width}\'')}
+                    {f:if(condition: height, then: 'height=\'{height}\'')} />
+                </f:else>
+            </f:if>
+        </div>
+    </f:section>
+</div>

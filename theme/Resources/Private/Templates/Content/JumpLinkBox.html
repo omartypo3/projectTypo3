@@ -1,0 +1,35 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="centredtext" label="Jump link box" description="Jump link box for e.g. material list"
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/Sprunglink.png', wizardTab: 'FCE', sorting: 2}">
+            <flux:field.input name="heading" label="Headline (uniform presentation - no adjustment necessary)" required="true"/>
+            <flux:field.input name="description" label="Description" />
+            <flux:field.input name="containerid" label="Container ID" required="true"/>
+            <flux:field.input name="buttontext" label="Button Link Text" required="true"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Jump link to #{containerid}</b>
+        <p>{heading} - {description}</p>
+    </f:section>
+
+
+    <f:section name="Main">
+        <div class="row backProcess Sprunglinkbox">
+           <div class="col-md-8 col-sm-8 npl">
+               <h3>{heading}</h3>
+               <p>{description}</p>
+           </div>
+            <div class="col-md-4 col-sm-4 npr tright">
+                <a href="{v:page.absoluteUrl()}#{containerid}" class="sprunglink button button-rounded button-fce">{buttontext}</a>
+            </div>
+        </div>
+    </f:section>
+</div>

@@ -1,0 +1,95 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="tooltip" label="Tooltip"
+				   description="This element adds an image with multiple Hover Tooltips"
+				   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/tooltip.png', wizardTab: 'FCE', sorting: 3}">
+
+			<flux:form.sheet name="options" label="General">
+				<flux:field.file name="image" label="Image"/>
+				<flux:field.input name="imageWidth" label="Image width in px"/>
+			</flux:form.sheet>
+			<flux:form.sheet name="tooltips" label="Tooltips elements">
+				<flux:form.section name="tooltip">
+					<flux:form.object name="element" label="Tooltip">
+						<flux:field.input name="title" label="Heading"/>
+						<flux:field.input name="xdistance" label="Distance x Axis in%"/>
+						<flux:field.input name="ydistance" label="Distance y Axis in%"/>
+						<flux:field.input name="index" label="Tooltip number"/>
+						<flux:field.text name="text" label="Text" enableRichText="1" />
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Tooltip</b>
+		<p>Elements</p>
+		<ul>
+			<f:for each="{tooltip}" as="item">
+				<li>
+					{item.element.title}
+				</li>
+			</f:for>
+		</ul>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="market-tooltip-holder">
+			<f:if condition="{imageWidth}">
+				<f:then>
+					 <img  class="lazyload" data-sizes="auto" 
+						data-srcset="{f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '414c')} 414w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '828c')} 828w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1024c')} 1024w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1280c')} 1280w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1680c')} 1680w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '2048c')} 2048w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '2560c')} 2560w"
+						alt="{element.box.title}"
+						width="{imageWidth}c"
+					/>
+   					<noscript>
+   						<f:image src="/{image}" alt="" width="{imageWidth}c"/>
+					</noscript>
+				</f:then>
+				<f:else>
+					 <img  class="lazyload" data-sizes="auto" 
+						data-srcset="{f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '414c')} 414w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '828c')} 828w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1024c')} 1024w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1280c')} 1280w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1680c')} 1680w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '2048c')} 2048w,
+			            {f:uri.image( src: '{image}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '2560c')} 2560w"
+						alt="{element.box.title}"
+					/>
+   					<noscript>
+   						<f:image src="/{image}" alt=""/>
+					</noscript>
+				</f:else>
+			</f:if>
+			<f:for each="{settings.tooltip}" as="element" iteration="i">
+				<f:render section="tooltip-content" arguments="{_all}"/>
+			</f:for>
+		</div>
+	</f:section>
+
+	<f:section name="tooltip-content">
+		<div class="rt-tooltip tooltipstered" data-x="{element.element.xdistance}" data-y="{element.element.ydistance}">
+			{element.element.index}
+			<div class="hide">
+				<div class="rt-tooltip-holder">
+					<div class="rt-tooltip-title">{element.element.title}</div>
+					<div class="rt-tooltip-content">{element.element.text}</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+
+</div>

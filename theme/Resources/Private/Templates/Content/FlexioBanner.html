@@ -1,0 +1,132 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="html5banner" label="Flexio HTML5 Banner" description="HTML5 Banner"
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/html5banner.jpg', wizardTab: 'FCE', sorting: 2}">
+
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <h5>FLEXIO HTML5 Banner</h5>
+    </f:section>
+
+    <f:section name="Main">
+
+        <style>
+            #scalecontainer{
+                -moz-transform-origin: left top;
+                -webkit-transform-origin: left top;
+                -ms-transform-origin: left top;
+                -o-transform-origin: left top;
+                transform-origin: left top;
+                /*width: 560px;*/
+                margin: 0 auto;
+                margin-bottom: 200px;
+            }
+        </style>
+
+        <!-- copy these lines to your document head: -->
+
+
+        <v:asset.style path="EXT:theme/Resources/Public/FlexioBanner/Wagner_Flexio_300x250_expandable.hyperesources/fonts.css" name="Wagner_Flexio_300x250_expandable_font" />
+
+        <script type="text/javascript">
+            EBModulesToLoad = ['Video'];
+        </script>
+
+        <script type="text/javascript" src="http://ds.serving-sys.com/BurstingScript/EBLoader.js"></script>
+
+        <script type="text/javascript">
+            var videoEl;
+
+            function checkInit() {
+                if (!EB.isInitialized()) {
+                    EB.addEventListener(EBG.EventName.EB_INITIALIZED, wait); // checks if the EB object is initialized, if no - launches the function "wait" which loops back to the function "checkInit" until the EB object is initialized. if it is done initializing - will run the "onInit" function.
+                } else {
+                    onInit();
+                }
+            }
+
+            function onInit() {
+                EB.initExpansionParams(200, 0, 560, 300);
+                var videoModule = new EBG.VideoModule(videoEl);
+            }
+
+            function wait() { //loops back to the checkInit function until the EB object is initialized.
+                checkInit();
+            }
+
+            window.addEventListener('load', function () {
+                videoEl = document.getElementById("video");
+                checkInit();
+            }, false);
+        </script>
+
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <script type="text/javascript" language="javascript">
+            var alsoenlarge = true;
+
+            $(function(){
+                if(isScalePossible()){
+                    //$('body').css({overflow:'hidden'});
+//                    $('#scalecontainer').css({position: 'absolute', margin: 0});
+
+                    // Run scale function on start
+                    scaleSite();
+                    scaleSite();
+
+                    // Run scale function on browser resize
+                    $(window).resize(scaleSite);
+                }
+            });
+
+            function scaleSite()
+            {
+                containerw = window.innerWidth * 1; /* The width of the div, currently set to half of the window's width */
+                containerh = 600; /* The maximum possible height of the div; the recommend size for this is equal to or larger than the H of the element. */
+                sitew = $('#scalecontainer').width();
+                siteh = $('#scalecontainer').height();
+                f = containerw/sitew;
+                f = containerh/siteh<f?containerh/siteh:f;
+                if(!alsoenlarge && f>1) f = 1;
+                $('#scalecontainer').css({
+                    "-moz-transform"    : "scale("+f+")",
+                    "-webkit-transform" : "scale("+f+")",
+                    "-ms-transform"     : "scale("+f+")",
+                    "-o-transform"      : "scale("+f+")",
+                    "transform"         : "scale("+f+")",
+                    "left"              : ((containerw-(sitew*f))/2)+"px",
+                    "top"               : "0px"
+                });
+            }
+
+            function isScalePossible()
+            {
+                can = 'MozTransform' in document.body.style;
+                if(!can) can = 'webkitTransform' in document.body.style;
+                if(!can) can = 'msTransform' in document.body.style;
+                if(!can) can = 'OTransform' in document.body.style;
+                if(!can) can = 'transform' in document.body.style;
+                if(!can) can = 'Transform' in document.body.style;
+                return can;
+            }
+        </script>
+
+        <div class="col_full center_content">
+            <div id="scalecontainer">
+                <div id="wagnerflexio300x250expandable_hype_container" style="position:relative;overflow:hidden;width:560px;height:300px;">
+                    <script type="text/javascript" charset="utf-8" src="typo3conf/ext/theme/Resources/Public/FlexioBanner/Wagner_Flexio_300x250_expandable.hyperesources/wagnerflexio300x250expandable_hype_generated_script.js?58052"></script>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </f:section>
+</div>

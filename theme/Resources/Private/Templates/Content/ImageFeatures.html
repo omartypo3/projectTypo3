@@ -1,0 +1,92 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="imagefeatures" label="Large picture with text and button"
+				   description="Use an entire width of an element that is 2/3 of an image and implements 1/3 flow text and a CTA-button"
+				   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/imagefeatures.png', wizardTab: 'FCE', sorting: 5}">
+			<flux:field.input name="heading" label="Main Heading"/>
+			<flux:field.select name="align" label="Main Heading position" items="{center:'centered', default:'links'}" default="center" size="1" maxItems="1"/>
+			<flux:field.inline.fal name="backgroundImage" label="Background image (aspect ratio 13: 5 - at least 1300 x 500px)" required="1" maxItems="1" minItems="1"/>
+
+			<flux:field.input name="caption" label="Over-heading (in small font above the heading - optional)"/>
+			<flux:field.input name="title" label="Heading"/>
+			<flux:field.select name="titleselect" label="Heading as" items="{h2:'h2', h3:'h3'}" default="h2" size="1" maxItems="1"/>
+			<flux:field.text name="text" label="Text - max 500 characters" enableRichText="TRUE"/>
+			<flux:field.input name="buttontext" label="Button text"/>
+			<flux:field.input name="buttonlink" label="Button link (page, file, e-mail or externally possible)">
+				<flux:wizard.link/>
+			</flux:field.input>
+			<flux:field.input name="buttontextyoutube" label="Text of Youtube button"/>
+			<flux:field.input name="videolink" label="Youtube Video ID for the youtube button - example: 'FCoRXwo7RXQ' from https://www.youtube.com/watch?v=FCoRXwo7RXQ"/>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Large picture with text and button</b>
+		<h5>{heading}</h5>
+		<flux:widget.grid/>
+	</f:section>
+
+	<f:section name="Main">
+		<div class="section section-image-features">
+			<f:if condition="{heading}">
+				<h2 class="heading {align}">{heading}</h2>
+			</f:if>
+			{v:content.resources.fal(field: 'backgroundImage') -> v:iterator.first() -> v:variable.set(name:'image')}
+			<div class="row clearfix feature-image" >
+				<div class="col-lg-8 col-md-8 feature-image" style="background-image: url('<f:uri.image treatIdAsReference="1" src="{image.id}" width="1200c"/>')">
+							<img
+                                class="lazyload"
+                                data-sizes="auto"
+                                data-srcset="{f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '414c', height: '414c')} 414w,
+                                             {f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '828c', height: '828c')} 828w,
+                                             {f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1024c', height: '1024c')} 1024w,
+                                             {f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1280c', height: '1280c')} 1280w,
+                                             {f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '1680c', height: '1680c')} 1680w,
+                                             {f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '2048c', height: '2048c')} 2048w,
+                                             {f:uri.image( src: '{image.id}', crop: '{image.crop -> f:format.raw()}', absolute: '1', width: '2560c', height: '2560c')} 2560w"
+                                alt="{image.alternative}" title="{image.title}" />
+                        <noscript>
+                            <f:image treatIdAsReference="1" src="{image.id}" title="{image.title}" alt="{image.alternative}" width="1200c"/>
+                        </noscript>
+
+			</div>
+			<div class="col-lg-4 col-md-4 feature-text">
+				<span class="fce-caption">{caption}</span>
+
+				<f:if condition="{titleselect} == 'h2'">
+					<f:then>
+						<h2 class="fce-title">{title}</h2>
+					</f:then>
+					<f:else>
+						<h3 class="fce-title">{title}</h3>
+					</f:else>
+
+				</f:if>
+
+				<div class="fce-text">
+					<f:format.crop maxCharacters="500">
+						{text-> f:format.html()}
+					</f:format.crop>
+				</div>
+
+				<f:if condition="{buttonlink}">
+						<f:link.page pageUid="{buttonlink}" class="button button-border button-rounded button-large button-fce">
+							{buttontext}
+						</f:link.page>
+				</f:if>
+
+				<f:if condition="{videolink}">
+					<a href="https://www.youtube.com/watch?v={videolink}" data-lightbox="iframe" class="section-link button button-border button-rounded button-large button-fce">
+						{buttontextyoutube}
+					</a>
+				</f:if>
+			</div>
+		</div>
+</div>
+</f:section>
+</div>

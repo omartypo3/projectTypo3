@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "MyriadProCondensed";
+  src: url('fonts/myriadpro-cond.eot');
+  src: url('fonts/myriadpro-cond.eot?#iefix') format('embedded-opentype'), url('fonts/myriadpro-cond.woff') format('woff'), url('fonts/myriadpro-cond.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Bebas Neue";
+  src: url('fonts/Bebas-Neue.eot');
+  src: url('fonts/Bebas-Neue.eot?#iefix') format('embedded-opentype'), url('fonts/Bebas-Neue.svg#Bebas Neue') format('svg'), url('fonts/Bebas-Neue.woff') format('woff'), url('fonts/Bebas-Neue.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

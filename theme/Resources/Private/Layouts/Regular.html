@@ -1,0 +1,35 @@
+{namespace inspirationsTool=FluidTYPO3\inspirationsTool\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="ProjectList"/>
+
+<div class="containers">
+    <div class="mp-pusher" id="mp-pusher">
+        <f:cObject typoscriptObjectPath="lib.mainmenuMobile"/>
+        <div class="scroller">
+            <header class="headWrap">
+                <hgroup>
+                    <f:cObject typoscriptObjectPath="lib.logo"/>
+                </hgroup>
+            </header>
+            <nav id="mainmenu">
+                <section class="inner-mainmenu">
+                    <f:cObject typoscriptObjectPath="lib.mainmenuNew"/>
+                    <div class="search">
+                        <f:cObject typoscriptObjectPath="lib.searchbox"/>
+                    </div>
+                </section>
+            </nav>
+            <f:render partial="Slideshow" section="Slideshow" arguments="{_all}"/>
+
+            <div class="projectWrapper list">
+                <section id="content">
+                    <div class="container">
+                        <f:render section="Content"/>
+                    </div>
+                </section>
+            </div>
+            <f:cObject typoscriptObjectPath="lib.footer"/>
+        </div>
+    </div>
+</div>

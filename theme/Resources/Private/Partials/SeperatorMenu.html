@@ -1,0 +1,19 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<f:section name="SeperatorMenu">
+		<f:if condition="{settings.FooterMenuId}">
+		   <ul class="seperator-menu visible-lg">
+	       	<v:page.menu pageUid="{settings.FooterMenuId}" showHiddenInMenu="true">
+					<f:for each="{menu}" as="item" iteration="i">
+					     <li>
+					    	<f:link.page pageUid="{item.uid}" title="{item.link}">
+		                       {item.linktext}
+		                    </f:link.page>
+		                 </li>
+				    </f:for>
+		    </v:page.menu>
+		   </ul>
+		</f:if>
+	</f:section>
+</div>

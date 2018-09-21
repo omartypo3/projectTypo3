@@ -1,0 +1,34 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Furnopage" />
+
+<div class="mp-pusher furno-landing-page" id="mp-pusher">
+    <f:cObject typoscriptObjectPath="lib.mainmenuMobile" />
+    <div class="scroller">
+        <header class="headWrap">
+            <hgroup>
+                <f:cObject typoscriptObjectPath="lib.logo" />
+            </hgroup>
+        </header>
+
+        <nav id="mainmenu">
+            <section class="inner-mainmenu">
+                <f:cObject typoscriptObjectPath="lib.mainmenuNew" />
+                <div class="search">
+                    <f:cObject typoscriptObjectPath="lib.searchbox" />
+                </div>
+
+            </section>
+        </nav>
+        <div class="furno-landing">
+            <div class="container">
+                <div class="grid col-md-12 margin-bottom">
+                    <f:render section="Content" />
+                </div>
+            </div>
+        </div>
+
+        <f:cObject typoscriptObjectPath="lib.footer" />
+    </div>
+</div>

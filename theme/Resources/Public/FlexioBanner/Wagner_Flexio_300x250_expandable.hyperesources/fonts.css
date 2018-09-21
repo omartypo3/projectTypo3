@@ -1,0 +1,18 @@
+@font-face {
+	font-family: stratum_medium;
+	src: url('Stratum1-Medium.ttf.js');
+}
+
+@font-face {
+	font-family: stratum_black;
+	src: url('Stratum1-Black.ttf.js');
+}
+
+#revol-list {
+	list-style: none;
+}
+
+#revol-list li:before {
+	content: '\30FB';
+	margin-left: -15px;
+}

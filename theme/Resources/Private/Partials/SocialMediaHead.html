@@ -1,0 +1,25 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <f:section name="SocialMedia">
+        <f:if condition="{settings.socialicon.facebook.enable} == 'show'">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={f:uri.page(pageUid:itemuid,absolute:1)}" class="social-icon si-borderless si-facebook" target="_blank">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+            </a>
+        </f:if>
+        <f:if condition="{settings.socialicon.youtube.url}">
+            <f:link.typolink parameter="{settings.socialicon.youtube.url}" class="social-icon si-borderless si-youtube" target="_blank">
+                <i class="icon-youtube"></i>
+                <i class="icon-youtube"></i>
+            </f:link.typolink>
+        </f:if>
+        <f:if condition="{settings.socialicon.youku.url}">
+            <f:link.typolink parameter="{settings.socialicon.youku.url}" class="social-icon si-borderless si-youtube" target="_blank">
+                <i class="icon-youku"></i>
+                <i class="icon-youku"></i>
+            </f:link.typolink>
+        </f:if>
+    </f:section>
+</div>

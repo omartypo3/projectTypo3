@@ -1,0 +1,138 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="contentboxes" label="Content Boxes (with image / text and / or video)"
+				   description="This element adds a definable grid of tiles, which can also be used as a gallery"
+				   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/contentboxes.png', wizardTab: 'FCE', sorting: 3}">
+			<flux:form.sheet name="options" label="General">
+				<flux:field.input name="heading" label="Heading"/>
+				<flux:field.select name="align" label="Heading position" items="{center:'centered', default:'links'}" default="center" size="1" maxItems="1"/>
+				<flux:field.select name="itemsperrow" label="Number of items per row" items="{col-md-6: '2', col-md-4: '3',col-md-3: '4'}" default="col-md-3" size="1" maxItems="1"/>
+				<flux:field.select name="textposition" label="Text Position" items="{text-inside:'Inside', text-outside:'Outside'}" default="text-inside" size="1" maxItems="1"/>
+			</flux:form.sheet>
+			<flux:form.sheet name="elements" label="Tiling">
+				<flux:form.section name="elements">
+					<flux:form.object name="box" label="One tile">
+						<flux:field.file name="image" label="Background image (aspect ratio 3: 2 - at least 825 x 550px)"/>
+						<flux:field.input name="caption" label="Over-heading (in small font above the heading - optional)"/>
+						<flux:field.input name="title" label="Heading"/>
+						<flux:field.text name="text" label="Text - max 180 characters" enableRichText="TRUE"/>
+						<flux:field.input name="ytlink" label="Youtube Video ID (example: https://www.youtube.com/watch?v=FCoRXwo7RXQ - ID = 'FCoRXwo7RXQ')"/>
+						<flux:field.input name="buttonlink" label="Link of this tile (page, file, e-mail or externally possible) - optional - will not be played if a Youtube link is available. - For external links please use the linkbrowser.">
+							<flux:wizard.link/>
+						</flux:field.input>
+
+						<flux:field.select name="color" label="Text Color" items="{text-black:'Black', text-white:'White', text-wagner-yellow:'Wagner Yellow'}" default="text-black" size="1" maxItems="1"/>
+					</flux:form.object>
+				</flux:form.section>
+			</flux:form.sheet>
+		</flux:form>
+	</f:section>
+	<f:section name="Preview">
+		<b>Image tiles</b>
+		<p>Element</p>
+		<ul>
+			<f:for each="{elements}" as="element">
+				<li>
+					<f:if condition="{element.box.title}==''">
+						<f:then>
+							<f:image src="/{element.box.image}" width="150"/>
+						</f:then>
+						<f:else>
+							{element.box.title}
+						</f:else>
+					</f:if>
+				</li>
+			</f:for>
+		</ul>
+		<flux:widget.grid/>
+	</f:section>
+
+	<f:section name="Main">
+
+		<f:if condition="{settings.elements -> f:count()} == 1">
+			<f:if condition="{itemsperrow} == 'col-md-6'">
+				<v:variable.set name="coloffset" value="col-md-offset-3" />
+			</f:if>
+			<f:if condition="{itemsperrow} == 'col-md-4'">
+				<v:variable.set name="coloffset" value="col-md-offset-4" />
+			</f:if>
+			<f:if condition="{itemsperrow} == 'col-md-3'">
+				<v:variable.set name="coloffset" value="col-md-offset-5" />
+			</f:if>
+		</f:if>
+
+		<div class="section section-box">
+			<f:if condition="{heading}">
+				<h2 class="heading {align}">{heading}</h2>
+			</f:if>
+			<div class="row common-height clerafix">
+				<f:for each="{settings.elements}" as="element" iteration="i">
+					<div class="{itemsperrow} {v:variable.get(name: 'coloffset')} col-sm-6 box-item">
+						<f:if condition="{element.box.ytlink}">
+							<f:then>
+								<a href="https://www.youtube.com/watch?v={element.box.ytlink}" data-lightbox="iframe" class="section-link">
+									<f:render section="element-content" arguments="{_all}"/>
+								</a>
+							</f:then>
+							<f:else>
+
+								<f:if condition="{element.box.buttonlink}">
+									<f:then>
+										<f:if condition="{element.box.buttonlink -> v:math.round()} > 0">
+											<f:then>
+												<f:link.page pageUid="{element.box.buttonlink}" class="section-link">
+													<f:render section="element-content" arguments="{_all}"/>
+												</f:link.page>
+											</f:then>
+											<f:else>
+												<f:link.typolink parameter="{element.box.buttonlink}" class="section-link">
+													<f:render section="element-content" arguments="{_all}"/>
+												</f:link.typolink>
+											</f:else>
+										</f:if>
+									</f:then>
+									<f:else>
+										<f:render section="element-content" arguments="{_all}"/>
+									</f:else>
+								</f:if>
+
+							</f:else>
+						</f:if>
+
+					</div>
+				</f:for>
+			</div>
+		</div>
+	</f:section>
+
+	<f:section name="element-content">
+        <img  class="lazyload" data-sizes="auto" 
+			data-srcset="{f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '414c')} 414w,
+            {f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '828c')} 828w,
+            {f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '1024c')} 1024w,
+            {f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '1280c')} 1280w,
+            {f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '1680c')} 1680w,
+            {f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '2048c')} 2048w,
+            {f:uri.image( src: '{element.box.image}', crop: '{element.box.image.crop -> f:format.raw()}', absolute: '1', width: '2560c')} 2560w"
+			alt="{element.box.title}"  width="600"
+		/>
+   		<noscript>
+   			<f:image src="/{element.box.image}" alt="{element.box.title}" width="600c"/>
+		</noscript>
+		<div class="box-content {element.box.color} {textposition}">
+			<span class="fce-caption">{element.box.caption}</span>
+			<h3 class="fce-title {f:if(condition: '{element.box.caption}', then: 'fce-title-caption')}">{v:variable.get(name: 'element.box.title')}</h3>
+			<div class="fce-text">
+				<f:format.crop maxCharacters="180">
+					{v:variable.get(name: 'element.box.text')-> f:format.html()}
+				</f:format.crop>
+			</div>
+		</div>
+	</f:section>
+
+</div>

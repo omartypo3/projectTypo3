@@ -1,0 +1,74 @@
+{namespace inspirationsTool=FluidTYPO3\inspirationsTool\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Project"/>
+
+<div class="containers">
+    <div class="mp-pusher" id="mp-pusher">
+        <f:cObject typoscriptObjectPath="lib.mainmenuMobile"/>
+        <div class="scroller">
+            <header class="headWrap">
+                <hgroup>
+                    <f:cObject typoscriptObjectPath="lib.logo"/>
+                </hgroup>
+            </header>
+
+            <nav id="mainmenu">
+                <section class="inner-mainmenu">
+                    <f:cObject typoscriptObjectPath="lib.mainmenuNew"/>
+                    <div class="search">
+                        <f:cObject typoscriptObjectPath="lib.searchbox"/>
+                    </div>
+                </section>
+            </nav>
+
+            <f:render partial="Slideshow" section="Slideshow" arguments="{_all}"/>
+            <div class="projectWrapper single">
+                <section class="container contentHeader">
+                    <div class="col-md-6 npl">
+                        <h2>
+                            <f:link.page pageUid="{ListHome}"><span class="smal">{Projectcategories} <i class="icon-angle-right"></i></span> </f:link.page>
+                            <v:page.info field="title"/>
+                        </h2>
+                    </div>
+                    <div class="col-md-6 npr projectSubMen">
+                        <ul>
+                            <li>
+                                {Difficulty}
+                            </li>
+                            <li>
+                                <f:link.page pageUid="{ListHome}"><f:translate key="inspirationsTool.aProject" htmlEscape="false" /></f:link.page>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear hr"></div>
+                    <div class="noprint">
+                        <div class="col-md-8 socialBox npl">
+                            <p class="feft"><f:translate key="inspirationsTool.share" htmlEscape="false" /></p>
+                            <f:render partial="SocialMedia" section="SocialMedia"/>
+                        </div>
+                        <div class="col-md-4 npr">
+                            <p class="fright">
+                                <a href="javascript:window.print()" class="print printlink infoLink"><f:translate key="inspirationsTool.print" htmlEscape="false" /></a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="content">
+                    <div class="container">
+                        <f:render section="Content"/>
+                    </div>
+                </section>
+
+                <section id="Materialliste">
+                    <div class="container">
+                        <f:render section="Materialliste"/>
+                    </div>
+                </section>
+            </div>
+
+            <f:cObject typoscriptObjectPath="lib.footer"/>
+        </div>
+    </div>
+</div>

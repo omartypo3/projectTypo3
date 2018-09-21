@@ -1,0 +1,104 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+	<f:layout name="Content"/>
+
+	<f:section name="Configuration">
+		<flux:form id="slideshow"
+				   label="Slideshow Element" description="For use in a 'Slideshow'-capable page area. A picture, flow text, and a link can be stored"
+				   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/slideshow.png', wizardTab: 'FCE', sorting: 4}">
+
+			<flux:field.inline.fal name="backgroundImage" label="Background image (aspect ratio 19: 5 - at least 1900 x 500px)" maxItems="1" minItems="0"/>
+			<flux:field.inline.fal name="backgroundVideo" label='Video: please select an "mp4" video file' maxItems="1" minItems="0" allowedExtensions="mp4"/>
+
+			<flux:field.input name="caption" label="Over-heading (in small font above the heading - optional)"/>
+			<flux:field.input name="title" label="Heading"/>
+			<flux:field.text name="text" label="Text - max 400 characters" enableRichText="TRUE"/>
+			<flux:field.input name="buttontext" label="Button Text"/>
+			<flux:field.input name="buttonlink" label="Link of the button (page, file, e-mail or externally possible)">
+				<flux:wizard.link/>
+			</flux:field.input>
+			<flux:field.select name="verticalposition" label="Vertical position" items="{slider-caption-top: 'Top', slider-caption-bottom: 'Bottom'}" default="slider-caption-top" size="1" maxItems="1"/>
+			<flux:field.select name="horizontalposition" label="Horizontal position" items="{slider-caption-left: 'Left', slider-caption-right: 'Right'}" default="slider-caption-left" size="1" maxItems="1"/>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+		<b>Slideshow Element</b>
+		<h5>{title}</h5>
+	</f:section>
+
+	<f:section name="Main">
+		{v:content.resources.fal(field: 'backgroundImage') -> v:iterator.first() -> v:variable.set(name:
+		'backgroundImage')}
+		{v:content.resources.fal(field: 'backgroundVideo') -> v:iterator.first() -> v:variable.set(name:
+		'backgroundVideo')}
+			
+		<f:if condition="{backgroundVideo.url}">
+			<f:then>
+				<div 
+					class="swiper-slide dark">
+					<!-- VIDEO -->
+					<f:if condition="{backgroundVideo}">
+						<video preload="auto" autoplay loop muted class="slider-video" width="100%" style="visibility: visible; width: 100%;" poster="{backgroundImage.url}">
+							<source src="{backgroundVideo.url}" type="video/mp4">
+						</video>
+						<button class="mute-video">toggle</button>
+					</f:if>
+					<!-- END VIDEO -->
+					<f:render section="slide-content" arguments="{_all}"/>
+				</div>
+			</f:then>
+			<f:else>
+				<div 
+					class="swiper-slide dark lazyload" 
+					data-sizes="auto" 
+					data-bgset="{v:uri.image( src: '{backgroundImage.url}', width: '414c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '828c')} 2x [(max-width: 414px) and (max-height: 736px)] |{v:uri.image( src: '{backgroundImage.url}', width: '736c', relative: '0')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '1472c')} 2x [(max-width: 736px) and (max-height: 414px)] |{v:uri.image( src: '{backgroundImage.url}', width: '768c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '1536c')} 2x [(max-width: 768px) and (max-height: 1024px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '800c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '1600c')} 2x [(max-width: 800px) and (max-height: 1280px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '1024c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '2048c')} 2x [(max-width: 1024px) and (max-height: 768px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '1024c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '2048c')} 2x [(max-width: 1024px) and (max-height: 1366px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '1280c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '2560c')} 2x [(max-width: 1280px) and (max-height: 800px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '1366c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '2732c')} 2x [(max-width: 1366px) and (max-height: 1024px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '2560c')} 1x, {v:uri.image( src: '{backgroundImage.url}', width: '5120c')} 2x [(max-width: 2560px)] |
+					{v:uri.image( src: '{backgroundImage.url}', width: '5120c')} [(max-width: 5120px)]">
+					<f:render section="slide-content" arguments="{_all}"/>
+				</div>
+			</f:else>
+		</f:if>	
+    </f:section>
+    <f:section name="slide-content">
+    	<div class="clearfix">
+			<f:if condition="{title}">
+				<div id="slider-caption" class="slider-caption slider-caption-right slider-caption-bg custom-caption-pos {verticalposition} {horizontalposition}">
+					<span class="fce-caption" data-caption-animate="fadeInUp" data-caption-delay="100">{caption}</span>
+					<div class="fce-title" data-caption-animate="fadeInUp" data-caption-delay="100">{title}</div>
+					<div class="fce-text slide-cap-text" data-caption-animate="fadeInUp" data-caption-delay="100" >
+						<f:format.crop maxCharacters="400">
+							{text-> f:format.html()}
+						</f:format.crop>
+					</div>
+					<f:if condition="{buttonlink}">
+						<f:then>
+							<div data-caption-animate="fadeInUp" data-caption-delay="100">
+								<f:if condition="{buttonlink -> v:math.round()} > 0">
+									<f:then>
+										<f:link.page pageUid="{buttonlink}" class="button centred-button button-rounded button-fce">
+											{buttontext}
+										</f:link.page>
+									</f:then>
+									<f:else>
+										<f:link.typolink parameter="{buttonlink}" class="button centred-button button-rounded button-fce">
+											{buttontext}
+										</f:link.typolink>
+									</f:else>
+								</f:if>
+							</div>
+
+						</f:then>
+					</f:if>
+				</div>
+			</f:if>
+		</div>
+    </f:section>
+</div>

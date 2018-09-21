@@ -1,0 +1,63 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="accordion" label="Accordion" description="This element adds Accordion element"
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/Accordion.png', wizardTab: 'FCE', sorting: 3}">
+            <flux:form.sheet name="options" label="General">
+                <flux:field.input name="number" label="Item number"/>
+                <flux:field.input name="actitle" label="Title (Item Heading)"/>
+                <flux:field.text name="description" label="Description (folded)" validate="'trim'"
+                                 enableRichText="1"/>
+                <flux:field.checkbox name="fullwidth" label="Text in full width"/>
+                <flux:field.inline.fal name="bild" label="Image" showThumbs="true" allowedExtensions="'gif,jpg,jpeg,tif,tiff,bmp,pcx,tga,png,pdf,ai,svg'" />
+                <flux:field.checkbox name="fullwidthimg" label="Image in full width"/>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <b>Accordion Element</b>
+        <p>{number} - {actitle}</p>
+        <flux:widget.grid/>
+    </f:section>
+
+    <f:section name="Main">
+            <div class="accordionWrap">
+                <div class="accordionHeadline ">
+                    <h3><span class="roundNumber">{number}</span>{actitle}</h3>
+                </div>
+                <div class="accordionContent">
+
+                    <f:if condition="{fullwidth}">
+                        <f:then>
+                            <div class="description col-md-12">
+                                <f:format.html>{description}</f:format.html>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div class="description col-lg-8 col-md-10 col-xs-12">
+                                <f:format.html>{description}</f:format.html>
+                            </div>
+                        </f:else>
+                    </f:if>
+
+
+                    <div class="clear"></div>
+
+                    <f:if condition="{bild}">
+                        <div class="images col-md-12">
+                            {v:content.resources.fal(field: 'bild') -> v:iterator.first() -> v:variable.set(name: 'bild')}
+                            <f:image class="img-responsive {f:if(condition: fullwidthimg, then: 'img-full-width', else: '')}"
+                                     treatIdAsReference="1" src="{bild.id}" title="{bild.title}" alt="{bild.alternative}" crop="{bild.crop}"/>
+                        </div>
+                        <div class="clear"></div>
+                    </f:if>
+                </div>
+            </div>
+    </f:section>
+
+</div>

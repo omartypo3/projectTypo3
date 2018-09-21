@@ -1,0 +1,41 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="MainMenu">
+        <f:if condition="{settings.mainmenu}">
+            <f:then>
+             <f:for each="{settings.mainmenu}" as="menuitem" iteration="i">
+                <v:variable.set name="itemuid" value="{menuitem.menuitem.settings.itemlink}"/>
+                <li>       
+                   <f:link.page pageUid="{itemuid}" title="{v:page.info(pageUid : itemuid, field: 'title')}">
+                    <v:page.info pageUid="{itemuid}" field="title"/>
+                   </f:link.page>
+                <li>
+             </f:for>
+            </f:then>
+            <f:else>
+                <v:page.menu title="{item.linktext}" levels="2">
+                    <f:for each="{menu}" as="item" iteration="i">
+                        <li>
+                            <f:link.page pageUid="{item.uid}" title="{item.linktext}" class="first-level">
+                                <div>{item.linktext}</div>
+                            </f:link.page>
+                        </li>
+                    </f:for>
+                </v:page.menu>
+            </f:else>
+        </f:if>
+        <f:if condition="{settings.mainmenuanchor}!=''">
+            <f:for each="{settings.mainmenuanchor}" as="item" iteration="i">
+                <li>
+                    <f:link.page section="{item.menuitem.anchor}">{item.menuitem.title}</f:link.page>
+                </li>
+            </f:for>
+        </f:if>
+
+    </f:section>
+</div>

@@ -1,0 +1,49 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Furnopage"/>
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:flux="http://fedext.net/ns/flux/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Configuration">
+        <flux:form id="startseite" label="Furno Template" options="{icon: '../typo3conf/ext/theme/Resources/Public/images/layouts/furno.jpg'}">
+            <flux:field.relation table="pages" maxItems="1" name="settings.CustomMenuLink" label="Page Menu Custom">
+              <flux:wizard.suggest />
+            </flux:field.relation>
+            <flux:form.section name="settings.mainmenu" label="Main Menu Pages">
+                <flux:form.object name="menuitem" label="Page">
+                    <flux:field.relation table="pages" maxItems="1" name="settings.itemlink" label="Page Menu Item">
+                        <flux:wizard.suggest />
+                    </flux:field.relation>
+                </flux:form.object>
+            </flux:form.section>
+
+            <flux:form.section name="settings.mainmenuanchor" label="Main Menu Anchor">
+                <flux:form.object name="menuitem" label="Anchor">
+                    <flux:field.input name="title" label="Anchor Title"/>
+                    <flux:field.input name="anchor" label="Insert an element ID without \'#\'"/>
+                </flux:form.object>
+            </flux:form.section>
+            <flux:field.select name="settings.socialicon.facebook.enable" label="Social Icon - Facebook" items="{ show: 'Show', hide: 'Hide'}" default="show" size="1" maxItems="1"/>
+            <flux:field.input name="settings.socialicon.youtube.url" label="Youtube Channel URL">
+                <flux:wizard.link label="Link" activeTab="url"/>
+            </flux:field.input>
+            <flux:field.input name="settings.socialicon.youku.url" label="Youku Channel URL">
+                <flux:wizard.link label="Link" activeTab="url"/>
+            </flux:field.input>
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="0" name="Content" label="Content" />
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <v:content.render column="0"/>
+    </f:section>
+
+</div>

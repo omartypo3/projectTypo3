@@ -1,0 +1,31 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Header">
+        <header id="header" class="headWrap borderImage">
+            <div id="header-wrap">
+                <div class="clearfix">
+                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+                    <div class="container">
+                        <div id="logo" class="landlogo">
+                            <a data-dark-logo="/typo3conf/ext/theme/Resources/Public/images/logo.jpg" class="standard-logo" href="<f:uri.page pageUid='{settings.CustomMenuLink}'  />"><img alt="Wagner Logo" src="/typo3conf/ext/theme/Resources/Public/images/logo.jpg"></a>
+                            <a data-dark-logo="/typo3conf/ext/theme/Resources/Public/images/logo.jpg" class="retina-logo" href="<f:uri.page pageUid='{settings.CustomMenuLink}'  />"><img alt="Wagner Logo" src="/typo3conf/ext/theme/Resources/Public/images/logo.jpg"></a>
+                        </div>
+                        <nav id="primary-menu">
+                            <ul>
+                                <f:render partial="MainMenu" section="MainMenu" arguments="{_all}" />
+                            </ul>
+                            <div id="header-social-media" class="social-media clearfix center">
+                                <f:render partial="SocialMediaHead" section="SocialMedia" arguments="{_all}" />
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </f:section>
+</div>

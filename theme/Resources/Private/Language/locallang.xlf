@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="theme" date="2016-08-23T12:38:56+02:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.standard">
+				<source>Example page</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.description">
+				<source>Description can be entered in LLL file locallang.xlf of extension test</source>
+			</trans-unit>
+            <trans-unit id="fluidpage_page_type">
+                Fluid Page
+            </trans-unit>
+			<trans-unit id="flux.example">
+				<source>Example element</source>
+			</trans-unit>
+			<trans-unit id="flux.example.description">
+				<source>Small example element</source>
+			</trans-unit>
+			<trans-unit id="flux.example.fields.settings.helloWorld">
+				<source>Example input</source>
+			</trans-unit>
+            <trans-unit id="inspirationsTool.schwierigkeitsgrad">
+            	<source>Difficulty</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.kategorie">
+                <source>Categorie</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.select">
+                                        <source>Please select</source>
+
+                                    </trans-unit>
+            <trans-unit id="inspirationsTool.filter">
+                <source>Filter</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.zProject">
+                <source>Random Project</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.aProject">
+                <source>All Projects</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.share">
+                <source>Share</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.print">
+                <source>Print</source>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.or">
+                            <source>or</source>
+                        </trans-unit>
+		</body>
+	</file>
+
+</xliff>

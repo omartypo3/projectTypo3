@@ -1,0 +1,68 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="FooterMenu">
+                <f:if condition="{settings.mainmenu}">
+                  <f:then>
+                    <f:for each="{settings.mainmenu}" as="menuitem" iteration="i">
+                          <v:variable.set name="itemuid" value="{menuitem.menuitem.settings.itemlink}"/>
+                          <div class="widget widget_links clearfix">
+                              <h4>        
+                                  <f:link.page pageUid="{itemuid}">
+                                        <v:page.info pageUid="{itemuid}" field="title"/>
+                                   </f:link.page>
+                              </h4>
+                              <ul class="inline-list">
+                                  <v:page.menu.directory pages="{itemuid}" levels="1" as="footermenu">  
+                                      <f:if condition="{subPages}">            
+                                          <f:for each="{footermenu}" as="item" iteration="i">
+                                               <li>
+                                                  <f:link.page pageUid="{item.uid}" title="{item.link}">
+                                                     {item.linktext}
+                                                  </f:link.page>
+                                               </li>
+                                          </f:for>      
+                                      </f:if>                              
+                                  </v:page.menu.directory>
+                              </ul>
+                          </div>
+                    </f:for>
+                  </f:then>
+                  <f:else>
+                      <v:page.menu title="{item.linktext}" levels="2">
+                        <f:for each="{menu}" as="item" iteration="i">
+                                <div class="widget widget_links clearfix">
+                                 <h4>{item.linktext}</h4>
+                                    <f:if condition="{item.hasSubPages}">
+                                      <ul class="inline-list">
+                                        <v:page.menu pageUid="{item.uid}">
+                                            <f:for each="{menu}" as="subItem">
+                                                <li>
+                                                     <f:link.page pageUid="{subItem.uid}" title="{subItem.linktext}">
+                                                       {subItem.linktext}
+                                                    </f:link.page>
+                                                </li>
+                                            </f:for>
+                                          </v:page.menu>
+                                        </ul>
+                                    </f:if>
+                                 </div>
+                        </f:for>
+                    </v:page.menu>
+                  </f:else>
+                </f:if>
+                <f:if condition="{settings.mainmenuanchor}!=''">
+                  <f:for each="{settings.mainmenuanchor}" as="item" iteration="i">
+                    <div class="widget widget_links clearfix">
+                      <h4>
+                          <f:link.page section="{item.menuitem.anchor}">{item.menuitem.title}</f:link.page>
+                      </h4>
+                    </div>
+                  </f:for>
+               </f:if>
+    </f:section>
+</div>

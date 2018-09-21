@@ -1,0 +1,34 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="centredtext" label="Promo Box" description="Example: Furno Promo Box"
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/promobox.png', wizardTab: 'FCE', sorting: 2}">
+            <flux:field.input name="heading" label="Headline (uniform presentation - no adjustment necessary)" required="true"/>
+            <flux:field.input name="buttonlink"
+                              label="Link of this tile (page, file, e-mail or externally possible) - For external links please use the linkbrowser. ">
+                <flux:wizard.link/>
+            </flux:field.input>
+            <flux:field.input name="buttontext" label="Button Link Text" required="true"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <small><i>Promo Box</i></small>
+         <h5>{heading}</h5>
+        <div class="fce-text">
+            {text-> f:format.html()}
+        </div>
+    </f:section>
+
+    <f:section name="Main">
+        <div class="promo promo-dark promo-uppercase bottommargin">
+            <h3>{heading}</h3>
+            <f:link.page pageUid="{buttonlink}" class="button">{buttontext}</f:link.page>
+        </div>
+    </f:section>
+</div>

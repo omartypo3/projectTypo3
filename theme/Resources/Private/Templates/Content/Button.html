@@ -1,0 +1,47 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="centredtext" label="Yellow button" description="Use this element to create a yellow button"
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/yellowbutton.png', wizardTab: 'FCE', sorting: 2}">
+            <flux:field.input name="text" label="Button Text" required="true"/>
+            <flux:field.input name="link" label="Link" required="true"><flux:wizard.link/></flux:field.input>
+            <flux:field.select name="size" label="Select the size" items="{ infoLink: 'normal', infoLinkbig: 'big'}" default="infoLink" size="1" maxItems="1"/>
+            <flux:field.select name="align" label="Position of the button" items="{ left: 'Left', center: 'Center', right: 'Right'}" default="left" size="1" maxItems="1"/>
+
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <small><i>Yellow button</i></small>
+        <div class="fce-text">
+            {text}
+            {link}
+        </div>
+    </f:section>
+
+    <f:section name="Main">
+        <f:if condition="{link}">
+            <f:then>
+                <div class="FCEButtonElement btnAlign{align}">
+                    <f:if condition="{link -> v:math.round()} > 0">
+                        <f:then>
+                            <f:link.page pageUid="{link}" class="{f:if(condition: '{size} == \'infoLinkbig\'', then: 'infoLinkbig')} infoLink">
+                                {text}
+                            </f:link.page>
+                        </f:then>
+                        <f:else>
+                            <f:link.typolink parameter="{link}" class="{f:if(condition: '{size} == \'infoLinkbig\'', then: 'infoLinkbig')} infoLink">
+                                {text}
+                            </f:link.typolink>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+        </f:if>
+    </f:section>
+</div>

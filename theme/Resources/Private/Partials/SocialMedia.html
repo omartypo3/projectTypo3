@@ -1,0 +1,31 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <f:section name="SocialMedia">
+            <!--<a href="https://www.facebook.com/sharer/sharer.php?u={f:uri.page(pageUid:itemuid,absolute:1)}" class="social-icon si-borderless si-facebook" target="_blank">
+                <i class="icon-facebook"></i>
+                <i class="icon-facebook"></i>
+            </a>-->
+            
+
+            <a href="https://twitter.com/intent/tweet?hashtags=WagnerGroup,{v:page.info(pageUid : itemuid, field: 'title')}" class="social-icon si-borderless si-twitter" target="_blank">
+                <i class="icon-twitter"></i>
+                <i class="icon-twitter"></i>
+            </a>
+
+<!--           <a href="#" class="social-icon si-borderless si-instagram" target="_blank">
+                <i class="icon-instagram"></i>
+                <i class="icon-instagram"></i>
+            </a>-->
+
+            <!--<a href="#" data-pin-log="button_pinit_bookmarklet" data-pin-href="https://de.pinterest.com/pin/create/button/" class="social-icon si-borderless si-pinterest" onclick='return false;'>
+                <i class="icon-pinterest"></i>
+                <i class="icon-pinterest"></i>
+            </a>-->
+
+            <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+    </f:section>
+</div>
+

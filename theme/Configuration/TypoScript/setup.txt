@@ -1,0 +1,264 @@
+plugin.tx_theme {
+    view {
+        templateRootPaths.0 = EXT:theme/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:theme/Resources/Private/Partials/
+        layoutRootPaths.0 = EXT:theme/Resources/Private/Layouts/
+    }
+
+    #By default the following settings only will have relevance if you have fluidcontent_core extension loaded
+    settings {
+        container {
+            types {
+                default = div
+                Example = div
+            }
+        }
+    }
+
+    persistence {
+        storagePid = 0
+    }
+}
+
+config.tx_extbase {
+    objects {
+        TYPO3\CMS\Extbase\Domain\Model\Category {
+            className = Avonis\Theme\Domain\Model\Categories
+        }
+        TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository {
+            className = Avonis\Theme\Domain\Repository\CategoriesRepository
+        }
+    }
+    persistence {
+        classes {
+            Avonis\Theme\Domain\Model\Categories {
+                mapping {
+                    tableName = sys_category
+                }
+            }
+        }
+    }
+}
+
+page {
+    includeCSS {
+        googleapi = https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i
+
+        themeBootstrap = typo3conf/ext/theme/Resources/Public/style/css/bootstrap.css
+        themeCustom = typo3conf/ext/theme/Resources/Public/style/custom.css
+        themebeSwiper = typo3conf/ext/theme/Resources/Public/style/css/swiper.css
+        themeDark = typo3conf/ext/theme/Resources/Public/style/css/dark.css
+        themeFontIcons = typo3conf/ext/theme/Resources/Public/style/css/font-icons.css
+        themeAnimate = typo3conf/ext/theme/Resources/Public/style/css/animate.css
+        themeMPopup = typo3conf/ext/theme/Resources/Public/style/css/magnific-popup.css
+        themeResponsive = typo3conf/ext/theme/Resources/Public/style/css/responsive.css
+        themeCustomResponsive = typo3conf/ext/theme/Resources/Public/style/custom-responsive.css
+        themeCustomPrint = typo3conf/ext/theme/Resources/Public/style/custom-print.css
+    }
+
+    includeJSLibs {
+        jquery = typo3conf/ext/theme/Resources/Public/js/jquery-1.11.0.js
+        respimage = typo3conf/ext/theme/Resources/Public/js/lazysizes/ls.respimg.min.js
+        respimage.disableCompression = 1
+        lsparentfit = typo3conf/ext/theme/Resources/Public/js/lazysizes/ls.parent-fit.min.js
+        lsparentfit.disableCompression = 1
+        lsbgset = typo3conf/ext/theme/Resources/Public/js/lazysizes/ls.bgset.min.js
+        lsbgset.disableCompression = 1
+        lazysizes = typo3conf/ext/theme/Resources/Public/js/lazysizes/lazysizes.min.js
+        lazysizes.disableCompression = 1
+        lazyload = typo3conf/ext/theme/Resources/Public/js/lazyload.min.js
+    }
+
+    includeJSFooter {
+        #jquery = typo3conf/ext/theme/Resources/Public/js/jquery.js
+        themePlugins = typo3conf/ext/theme/Resources/Public/js/plugins.js
+        themeMaps = https://maps.google.com/maps/api/js
+        themeMaps.external = 1
+        themeGMaps = typo3conf/ext/theme/Resources/Public/js/plugins/jquery.gmap.js
+        themeFunctions = typo3conf/ext/theme/Resources/Public/js/functions.js
+        themeHoverint = typo3conf/ext/theme/Resources/Public/js/plugins/hoverIntent.js
+    }
+
+    headerData {
+        5 >
+        5 = TEXT
+        5 {
+            data = page:title
+            noTrimWrap = |<title>| - WAGNER</title>|
+        }
+
+        9090 = COA
+        9090 {
+            10 = TEXT
+            10 {
+                data = page:title
+                wrap = <meta property="og:title" content="|" />
+            }
+
+            20 = TEXT
+            20 {
+                value = article
+                wrap = <meta property="og:type" content="|">
+            }
+            30 = TEXT
+            30 {
+                typolink {
+                    parameter.data = tsfe:id
+                    parameter.insertData = 1
+                    useCacheHash = 1
+                    addQueryString = 1
+                    addQueryString.method = get
+                    addQueryString.exclude = id
+                    forceAbsoluteUrl = 1
+                    returnLast = url
+                }
+                wrap = <meta property="og:url" content="|">
+            }
+            40 = TEXT
+            40 {
+                data = page:title
+                wrap = <meta property="og:site_name" content="|">
+            }
+            50 = TEXT
+            50 {
+                data = page:description
+                required = 1
+                stripHtml = 1
+                wrap = <meta property="og:description" content="|">
+            }
+            60 = FILES
+            60 {
+                references {
+                    table = pages
+                    uid.data = page:uid
+                    fieldName = media
+                }
+                renderObj = TEXT
+                renderObj {
+                    typolink {
+                        parameter.data = file:current:publicUrl
+                        forceAbsoluteUrl = 1
+                        returnLast = url
+                    }
+                    wrap = |,
+                }
+                stdWrap {
+                    listNum = 0
+                    ifEmpty.cObject = TEXT
+                    ifEmpty.cObject.typolink {
+                        parameter = fileadmin/template/img/logo-wagner.png
+                        forceAbsoluteUrl = 1
+                        returnLast = url
+                    }
+                    wrap = <meta property="og:image" content="|">
+                }
+            }
+            70 = FILES
+            70 {
+                references {
+                    table = pages
+                    uid.data = page:uid
+                    fieldName = media
+                }
+                renderObj = TEXT
+                renderObj {
+                    typolink {
+                        parameter.data = file:current:publicUrl
+                        forceAbsoluteUrl = 1
+                        returnLast = url
+                    }
+                    wrap = |,
+                }
+                stdWrap {
+                    listNum = 0
+                    ifEmpty.cObject = TEXT
+                    ifEmpty.cObject.typolink {
+                        parameter = fileadmin/template/img/logo-wagner.png
+                        forceAbsoluteUrl = 1
+                        returnLast = url
+                    }
+                    wrap = <link rel="image_src" href="|">
+                }
+            }
+        }
+    }
+
+
+    #    bodyTag >
+    #    bodyTagCObject >
+    #    bodyTagCObject.value >
+    #    bodyTagCObject = USER
+    #    bodyTagCObject.userFunc = Avonis\AvonisTheme\Util\BodyTagHelper->buildBodyTag
+
+    # bodyTag
+    bodyTag >
+    bodyTagCObject >
+    bodyTagCObject = TEXT
+    bodyTagCObject.value = stretched no-transition
+    bodyTagCObject.wrap = <body class="|">
+
+    10 >
+}
+
+config {
+    concatenateJs = 0
+    concatenateCss = 0
+    compressJs = 0
+    compressCss = 0
+}
+
+tt_content.stdWrap.innerWrap.cObject.default.default {
+    wrap >
+    10 >
+}
+
+tt_content.table.20.stdWrap.wrap =  <div class="tablewrap" style="overflow-x:auto;">|</div>
+lib.parseFunc_RTE.externalBlocks.table.stdWrap.wrap = <div class="tablewrap" style="overflow-x:auto;">|</div>
+
+/*
+* To be placed inside a typoscript setup file. example: typo3conf/ext/theme/Configuration/TypoScript/setup.txt
+* receivers - name of the dropdown in the backend > WEB/Page > formular > edit (plugin) > Plugin > Mail to Receiver
+* Heimwerk/Handwerk/Industrie/PR/Sonstiges have to be identical to the 
+* backend > Mails > Form Overview > Kontakt > Ihr anliegen > options
+* text after the | sign. These values are also visible on the confirmation page unless configured otherwise.
+* .value = xxx@xxx.com -> these values are not visible and can be changed to anything
+*/
+
+plugin.tx_powermail.settings.setup.receiver.predefinedReceiver {
+				receivers {
+						email = CASE
+						email {
+							key.data = GP:tx_powermail_pi1|field|receiver
+							Heimwerk = TEXT
+							Heimwerk.value = heimwerk@wagner-group.com
+							Handwerk = TEXT
+						 	Handwerk.value = handwerk@wagner-group.com
+							Industrie = TEXT
+							Industrie.value = industrie@wagner-group.com
+							PR = TEXT
+							PR.value = pr@wagner-group.com
+							Sonstiges = TEXT
+							Sonstiges.value = sonstiges@wagner-group.com
+						}
+					}
+			}
+
+page.includeJSFooter {
+    #furnojquery = http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
+    #furnojquery.external = 1
+    furnofancybox = typo3conf/ext/theme/Resources/Public/js/Furno/jquery.fancybox.pack.js
+    furnoscrolltofixed = typo3conf/ext/theme/Resources/Public/js/Furno/jquery-scrolltofixed-min.js
+    furnoisotope = typo3conf/ext/theme/Resources/Public/js/Furno/isotope.min.js
+    lazyload = typo3conf/ext/theme/Resources/Public/js/jquerylazy/jquery.lazy.min.js
+    dotdotdot = typo3conf/ext/theme/Resources/Public/js/plugins/jquery.dotdotdot.min.js
+    attributeobserver = typo3conf/ext/theme/Resources/Public/js/plugins/jQuery.AttributeObserver.js
+    furnomain = typo3conf/ext/theme/Resources/Public/js/Furno/main.js
+    custom = typo3conf/ext/theme/Resources/Public/js/custom.js
+}
+
+#https://jira.avonis.com/browse/WAGNER-2069
+# Fix the JS conflict
+page.includeJSFooter.themeMaps >
+page.includeJSFooter.themeGMaps >
+
+tt_content.stdWrap.replacement >

@@ -1,0 +1,51 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns:flux="http://fedext.net/ns/flux/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="centredtext" label="Centered text element"
+                   description="Use this element to create a centered text with heading as optical separation"
+                   options="{icon: '/typo3conf/ext/theme/Resources/Public/Icons/Content/centredtext.png', wizardTab: 'FCE', sorting: 2}">
+            <flux:field.input name="heading" label="Headline (uniform presentation - no adjustment necessary)"/>
+            <flux:field.select name="titleselect" label="Headline as" items="{h2:'h2', h3:'h3'}" default="h2" size="1" maxItems="1"/>
+            <flux:field.text name="text" label="Text - max 300 characters" enableRichText="1" />
+            <flux:field.select name="color" label="Background Color" items="{background-black:'Black', background-white:'White', background-yellow:'Wagner Yellow'}" default="background-white" size="1" maxItems="1"/>
+
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <small><i>Centered text element</i></small>
+        <div class="fce-text">
+            {heading}
+        </div>
+        <div class="fce-text">
+            {text-> f:format.html()}
+        </div>
+    </f:section>
+
+    <f:section name="Main">
+       <div class="section section-centred-text nomargin center {color}">
+           <f:if condition="{heading}">
+               <f:if condition="{titleselect} == 'h2'">
+                   <f:then>
+                       <h2 class="heading center">{heading}</h2>
+                   </f:then>
+                   <f:else>
+                       <h3 class="heading center">{heading}</h3>
+                   </f:else>
+
+               </f:if>
+           </f:if>
+           <f:if condition="{text}">
+               <div class="fce-text">
+                   {text-> f:format.html()}
+               </div>
+           </f:if>
+
+       </div>
+    </f:section>
+</div>

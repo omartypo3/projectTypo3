@@ -1,0 +1,69 @@
+/*-----------------------------------------------------------------------------------
+	custom-print.less
+-----------------------------------------------------------------------------------*/
+@import "less/print.less";
+
+@media print{
+  body {
+    display:table;
+    table-layout:fixed;
+    padding-top:2.5cm;
+    padding-bottom:2.5cm;
+    height:auto;
+  }
+  img{
+    width:80%;
+    height:auto;
+  }
+  table {
+    border-spacing: 0;
+    line-height: 1.25em;
+  }
+
+  #slider{
+    display:none
+  }
+  .noprint, .Sprunglinkbox, .projectSubMen{
+    display: none
+  }
+  .accordionContent{
+    display: block;
+  }
+
+  .container {
+    position: inherit;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  #content{
+    h1, h2{
+      font-size: 17pt !important;
+      line-height: 19pt !important;
+    }
+    h3{
+      font-size: 14pt !important;
+      line-height: 16pt !important;
+    }
+    a, p, li, td, th{
+      font-size: 12pt !important;
+      line-height: 14pt !important;
+    }
+  }
+
+  #Materialliste {
+    margin-top: 10px;
+    .contenttable{
+      margin-left: 1%;
+      max-width: 99%;
+      width: 99% !important;
+      min-width: 99%;
+      td:last-child {
+        display: block;
+        min-height:46px;
+      }
+    }
+  }
+
+}

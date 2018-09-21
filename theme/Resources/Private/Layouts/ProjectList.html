@@ -1,0 +1,131 @@
+{namespace inspirationsTool=FluidTYPO3\inspirationsTool\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="ProjectList"/>
+
+<div class="containers">
+    <div class="mp-pusher" id="mp-pusher">
+        <f:cObject typoscriptObjectPath="lib.mainmenuMobile"/>
+        <div class="scroller">
+            <header class="headWrap">
+                <hgroup>
+                    <f:cObject typoscriptObjectPath="lib.logo"/>
+                </hgroup>
+            </header>
+            <nav id="mainmenu">
+                <section class="inner-mainmenu">
+                    <f:cObject typoscriptObjectPath="lib.mainmenuNew"/>
+                    <div class="search">
+                        <f:cObject typoscriptObjectPath="lib.searchbox"/>
+                    </div>
+                </section>
+            </nav>
+            <f:render partial="Slideshow" section="Slideshow" arguments="{_all}"/>
+
+            <div class="projectWrapper list">
+                <section id="content">
+                    <div class="container">
+                        <f:render section="Content"/>
+                    </div>
+                </section>
+
+                <section id="browse">
+                    <div class="container">
+                        <div class="filter row">
+                            <div class="col-md-1">
+                                <p class="grayHeadliner"><f:translate key="inspirationsTool.filter" htmlEscape="false" /></p>
+                            </div>
+
+                            <div class="col-md-3 npl select">
+                                <select name="difficulty" class="difficultySelect">
+                                    <option value=""><f:translate key="inspirationsTool.select" htmlEscape="false" /></option>
+
+                                    <optgroup label="{f:translate(key: 'inspirationsTool.schwierigkeitsgrad')}">
+                                        <f:for each="{allDifficulty}" as="diff">
+                                            <option value="{diff.name}">{diff.title} ({diff.count})</option>
+                                        </f:for>
+                                    </optgroup>
+
+                                    <optgroup label="{f:translate(key: 'inspirationsTool.kategorie')}">
+                                    <f:for each="{allCategories}" as="cat">
+                                        <option value="{cat.name}">{cat.title} ({cat.count})</option>
+                                    </f:for>
+                                    </optgroup>
+
+                                </select>
+                            </div>
+
+
+                            <div class="col-md-4 col-md-offset-4 randomBtn">
+                                <f:link.page pageUid="{randomProject}" class="button centred-button button-rounded button-fce"> <f:translate key="inspirationsTool.zProject" htmlEscape="false" /> </f:link.page>
+                            </div>
+                        </div>
+                         
+                        <div class="mainList row">
+                            <f:for each="{projects}" as="project">
+                                <div class="col-md-4 projectItem {project.classes}" id="projectItem_{project.page.uid}">
+                                    <f:if condition="{project.titlepage.0.title}">
+                                        <f:then>
+                                            <f:if condition="{project.image} == 0">
+                                                <f:then>
+                                                    <f:link.page pageUid="{project.page.uid}" class="projectItemWrap" >
+                                                         <div class="bottom">
+                                                            {project.titlepage.0.title}
+                                                            <p class="headerchange">
+                                                                <span class="cat">{project.categories}</span>
+                                                                <span class="diff">{project.diff}</span>
+                                                            </p>
+                                                        </div>
+                                                    </f:link.page>
+                                                </f:then>
+                                                <f:else>
+                                                      <f:link.page pageUid="{project.page.uid}" class="projectItemWrap" style="background-image:url(<f:uri.image src='{project.image}'/>);background-repeat: no-repeat;">
+                                                           <div class="bottom">
+                                                                {project.titlepage.0.title}
+                                                                <p class="headerchange">
+                                                                    <span class="cat">{project.categories}</span>
+                                                                    <span class="diff">{project.diff}</span>
+                                                                </p>
+                                                            </div>
+                                                        </f:link.page>
+                                                </f:else>
+                                            </f:if>
+                                        </f:then>
+                                        <f:else>
+                                             <f:if condition="{project.image} == 0">
+                                                <f:then>
+                                                      <f:link.page pageUid="{project.page.uid}" class="projectItemWrap" >
+                                                        <div class="bottom">
+                                                            {project.page.title}
+                                                            <p class="headerchange">
+                                                                <span class="cat">{project.categories}</span>
+                                                                <span class="diff">{project.diff}</span>
+                                                            </p>
+                                                        </div>
+                                                        </f:link.page>
+                                                </f:then>
+                                                <f:else>
+                                                      <f:link.page pageUid="{project.page.uid}" class="projectItemWrap" style="background-image:url(<f:uri.image src='{project.image}' />);background-repeat: no-repeat;">
+                                                            <div class="bottom">
+                                                                {project.page.title}
+                                                                <p class="headerchange">
+                                                                    <span class="cat">{project.categories}</span>
+                                                                    <span class="diff">{project.diff}</span>
+                                                                </p>
+                                                            </div>
+                                                        </f:link.page>
+                                                </f:else>
+                                            </f:if>         
+                                        </f:else>
+                                    </f:if>    
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <f:cObject typoscriptObjectPath="lib.footer"/>
+            <script>$json='<f:format.html parseFuncTSPath="">{randomArray}</f:format.html>'; var jsonPars = JSON.parse($json);</script>
+        </div>
+    </div>
+</div>

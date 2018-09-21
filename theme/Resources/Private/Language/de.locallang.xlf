@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="theme" date="2016-08-23T12:38:56+02:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.standard">
+				<source>Example page</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.description">
+				<source>Description can be entered in LLL file locallang.xlf of extension test</source>
+			</trans-unit>
+			<trans-unit id="flux.example">
+				<source>Example element</source>
+			</trans-unit>
+			<trans-unit id="flux.example.description">
+				<source>Small example element</source>
+			</trans-unit>
+			<trans-unit id="flux.example.fields.settings.helloWorld">
+				<source>Example input</source>
+			</trans-unit>
+            <trans-unit id="fluidpage_page_type">
+                Fluid Page
+            </trans-unit>
+			<trans-unit id="flux.content.isotope.configuration.isotope.description">
+                <source>Dieses Element fügt ein definierbares Raster aus Kacheln ein, welches auch als Galerie genutzt werden kann</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements">
+                <source>Kacheln</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements.box">
+                <source>Eine Kachel</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements.title">
+                <source>Überschrit</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements.index">
+                <source>Index</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements.image">
+                <source>Hintergrundbild</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements.text">
+                <source>Fließtext - max 500 Zeichen</source>
+            </trans-unit>
+            <trans-unit id="flux.content.isotope.configuration.isotope.elements.ytlink">
+                <source>Youtube Video ID (aus https://www.youtube.com/watch?v=6jEDQR069hQ ID=6jEDQR069hQ)</source>
+            </trans-unit>
+
+
+
+
+
+            <trans-unit id="inspirationsTool.schwierigkeitsgrad">
+            	<source>Difficulty</source>
+            	<target>Schwierigkeitsgrad</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.kategorie">
+                <source>Categorie</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.filter">
+                <source>Filter</source>
+                <target>Filter</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.select">
+                <source>Please select</source>
+                <target>Bitte wählen</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.zProject">
+                <source>Random Project</source>
+                <target>Zufälliges Projekt</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.aProject">
+                <source>All Projects</source>
+                <target>Alle Projekte</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.share">
+                <source>Share</source>
+                <target>Mit anderen Teilen</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.print">
+                <source>Print</source>
+                <target>Drucken</target>
+            </trans-unit>
+            <trans-unit id="inspirationsTool.or">
+                <source>or</source>
+                <target>oder</target>
+            </trans-unit>
+		</body>
+	</file>
+
+</xliff>

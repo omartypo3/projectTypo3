@@ -1,0 +1,41 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:v="http://fedext.net/ns/vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
+    <f:section name="Footer">
+        <footer id="footer" class="dark">
+            <div class="container">
+                <!-- Footer Widgets
+                ============================================= -->
+                <div class="footer-widgets-wrap center clearfix">
+                    <f:if condition="{settings.disablefootermenu} != '1'">
+                        <f:render partial="FooterMenu" section="FooterMenu" arguments="{_all}" />
+                    </f:if>
+                    <div id="footer-social-media" class="social-media clearfix center">
+                       <f:render partial="SocialMediaHead" section="SocialMedia" arguments="{_all}" />
+                    </div>
+                </div><!-- .footer-widgets-wrap end -->
+            </div>
+            <!-- Copyrights
+            ============================================= -->
+            <div id="copyrights" class="full-copyright">
+                <div class="container clearfix">
+                    <div class="col_half">
+                        <div class="mini-logo">
+                            <f:image src="/typo3conf/ext/theme/Resources/Public/images/mini-logo.jpg" alt="Wagner Group" height="45" width="120" />
+                        </div>
+                        <div class="copyright-text">
+                          &copy; Wagner Group {f:format.date(date: '', format: 'Y')}
+                        </div>
+                    </div>
+                    <div class="col_half col_last tright">
+                       <f:render partial="SeperatorMenu" section="SeperatorMenu" arguments="{_all}" />
+                    </div>
+                </div>
+            </div><!-- #copyrights end -->
+        </footer>
+    </f:section>
+</div>
