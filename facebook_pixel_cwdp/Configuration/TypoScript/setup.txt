@@ -1,0 +1,50 @@
+
+## Define custom categories
+# customsubcategory=domains=Domain Settings
+plugin.tx_facebook_pixel_cwdp.settings {
+	enable = 1
+	tiggerOnlyIfFacebookIsReferer = 1
+	popup {
+		cookieLiveTime = 2000
+		headline = Facebook Pixel
+		message (
+            Auf dieser Website wird das Besucheraktions-Pixel von Facebook für statistische Zwecke verwendet. Mit Hilfe eines Cookies kann so nachvollzogen werden, wie unsere Marketingmaßnahmen auf Facebook aufgenommen und verbessert werden können. Über Ihr Einverständnis hiermit würden wir uns sehr freuen.
+		)
+		messagebr (
+            Informationen zum "Besucheraktions-Pixel", zu Cookies und dem Ihnen zustehenden Widerspruchsrecht erhalten Sie in unserer
+		)
+		buttonTexteInformationen = Datenschutzerklärung
+		buttonTextEnable = Ich bin mit der Verwendung des Besucheraktions-Pixels von Facebook einverstanden
+		buttonTextDisable = Ich widerspreche
+	}
+	pixels = 1708659996105310
+}
+
+page.77834 = USER
+page.77834  {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	extensionName = FacebookPixelCwdp
+	pluginName = Main
+	vendorName = Avonis
+	switchableControllerActions {
+		Main {
+			1 = pixel
+		}
+	}
+	view < plugin.tx_facebook_pixel_cwdp.view
+	persistence < plugin.tx_facebook_pixel_cwdp.persistence
+	settings < plugin.tx_facebook_pixel_cwdp.settings
+}
+
+page {
+    includeJSFooter {
+        jquery = fileadmin/template/js/jquery-1.9.1.min.js
+    	cookie = typo3conf/ext/facebook_pixel_cwdp/Resources/Private/js/jquery.cookies.js
+    	facebookpixel = typo3conf/ext/facebook_pixel_cwdp/Resources/Private/js/facebookpixel.js
+
+    }
+}
+
+
+
+

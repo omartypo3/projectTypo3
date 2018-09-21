@@ -1,0 +1,17 @@
+## Define custom categories
+# customsubcategory=domains=Domain Settings
+plugin.tx_facebook_pixel_cwdp {
+	enable = 1
+	tiggerOnlyIfFacebookIsReferer = 1
+	popup {
+		cookieLiveTime = 2000
+		message (
+            Auf dieser Website wird das Besucheraktions-Pixel von Facebook für statistische Zwecke verwendet. Mit Hilfe eines Cookies kann so nachvollzogen werden, wie unsere Marketingmaßnahmen auf Facebook aufgenommen und verbessert werden können. Über Ihr Einverständnis hiermit würden wir uns sehr freuen.
+            Informationen zum "Besucheraktions-Pixel", zu Cookies und dem Ihnen zustehenden Widerspruchsrecht erhalten Sie in unserer ###Datenschutzerklärung###.
+		)
+		dataProtectionPage = 1234
+		buttonText = Ich bin mit der Verwendung des Besucheraktions-Pixels von Facebook einverstanden
+	}
+	pixel = 123456789
+}
+

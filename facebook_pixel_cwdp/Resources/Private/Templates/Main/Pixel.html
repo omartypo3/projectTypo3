@@ -1,0 +1,18 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:if condition="{idpage} == 540">
+	<f:else>
+		<a href="#facebook-pixel-request-content" id="facebook-pixel-request" class="hidden"></a>
+		<div id="facebook-pixel-request-content" data-pixel="{settings.pixels}" style="margin: auto 20px;">
+			<h3>{settings.popup.headline}</h3>
+			<p>
+				{settings.popup.message} <br> {settings.popup.messagebr} <a id="Informationen" class="btn Informationen" href="de/kontakt/impressum/#Datenschutz-point" target="_blank"> {settings.popup.buttonTexteInformationen}. </a>
+			</p>
+			<f:link.action action="modifyPixel" arguments="{enable: 1}" additionalAttributes="{data-avonis-enable-pixel: '1'}" class="btn">
+				<strong>{settings.popup.buttonTextEnable}</strong>
+			</f:link.action>
+			<f:link.action action="modifyPixel" arguments="{enable: 0}" additionalAttributes="{data-avonis-enable-pixel: '0'}" class="btn disable">
+				<strong>{settings.popup.buttonTextDisable}</strong>
+			</f:link.action>
+		</div>
+	</f:else>
+</f:if>
