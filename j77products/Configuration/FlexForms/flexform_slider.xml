@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Main slider</numIndex>
+										<numIndex index="1">Slider->list</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.Slider-maschine>
+						<TCEforms>
+							<label>Maschine</label>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_j77products_domain_model_maschine</foreign_table>
+				                <renderType>selectMultipleSideBySide</renderType>
+				                <size>5</size>
+				                <minitems>0</minitems>
+				                <maxitems>999</maxitems>
+							</config>
+						</TCEforms>
+					</settings.Slider-maschine>
+					<settings.Slider-Selection>
+						<TCEforms>
+							<label>Prozessanlage</label>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_j77products_domain_model_prozessanlage</foreign_table>
+				                <renderType>selectMultipleSideBySide</renderType>
+				                <size>5</size>
+				                <minitems>0</minitems>
+				                <maxitems>999</maxitems>
+							</config>
+						</TCEforms>
+					</settings.Slider-Selection>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

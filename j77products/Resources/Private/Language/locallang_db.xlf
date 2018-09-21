@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-05-08T11:56:21Z" product-name="j77products">
+		<header/>
+		<body>
+			<trans-unit id="tx_j77products_domain_model_maschine">
+				<source>Maschine</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschine.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschine.teaserbild">
+				<source>Teaserbild</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschine.teasertext">
+				<source>Teasertext</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschine.vorschaugrafik">
+				<source>Vorschaugrafik</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschine.elemente">
+				<source>Elemente</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente">
+				<source>Maschinenelemente</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.element">
+				<source>Element</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.beschreibungstext">
+				<source>Beschreibungstext</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.bild">
+				<source>Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.chargengroesse">
+				<source>Chargengröße</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.dichtung">
+				<source>Dichtung</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.dispergierkammer">
+				<source>Dispergierkammer</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.drehzahl">
+				<source>Drehzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.durchsatzfluessigkeit">
+				<source>Durchsatzflüssigkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.einsaugleistungpulver">
+				<source>Einsaugleistung Pulver</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.funktionsbild1">
+				<source>Funktionsbild 1</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.funktionsbild2">
+				<source>Funktionsbild 2</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.hauptbild">
+				<source>Hauptbild</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.lagerflansch">
+				<source>Lagerflansch</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.leistung">
+				<source>Leistung</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.linkespalte">
+				<source>Linke Spalte</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.maschinenvariante">
+				<source>Maschinenvariante</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.maximaleviskositaet">
+				<source>Maximale Viskosität</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.optionen">
+				<source>Optionen</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.rechtespalte">
+				<source>Rechte Spalte</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.schergeschwindigkeit">
+				<source>Schergeschwindigkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.spannung">
+				<source>Spannung</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.tauchteil">
+				<source>Tauchteil</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.umfangsgeschwindigkeit">
+				<source>Umfangsgeschwindigkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.werkzeugschaft">
+				<source>Werkzeugschaft</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.ueberschrift">
+				<source>Überschrift</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.downloadrepeater">
+				<source>Downloads</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_maschinenelemente.iconrepeater">
+				<source>Icons</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_download">
+				<source>Download</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_download.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_download.datei">
+				<source>Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_category">
+				<source>Kategorie</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_icon.icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_icon.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_weitereanforderungen">
+				<source>Weitere Anforderungen</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_weitereanforderungen.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_weitereanforderungen.wert">
+				<source>Wert</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_prozessanlage">
+				<source>Prozessanlage</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_prozessanlage.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_prozessanlage.teaserbild">
+				<source>Teaserbild</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_prozessanlage.elemente">
+				<source>Elemente</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente">
+				<source>Anlagenelemente</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.element">
+				<source>Element</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.anlagen">
+				<source>Anlagen</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.maschinerel">
+				<source>Maschine</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.ansatzgroesse">
+				<source>Ansatzgröße</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.anwendungsbereich">
+				<source>Anwendungsbereich</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.automatisierungsgrad">
+				<source>Automatisierungsgrad</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.autor">
+				<source>Autor</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.beschreibungstext">
+				<source>Beschreibungstext</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.bild">
+				<source>Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.branche">
+				<source>Branche</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.branchenicon">
+				<source>Branchen-Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.endprodukte">
+				<source>Endprodukte</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.fuellstoffanteil">
+				<source>Füllstoffanteil</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.kapazitaet">
+				<source>Kapazität</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.linkespalte">
+				<source>Linke Spalte</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.platzbedarf">
+				<source>Platzbedarf</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.portraitbild">
+				<source>Portraitbild</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.pulverzufuehrung">
+				<source>Pulverzuführung</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.rechtespalte">
+				<source>Rechte Spalte</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.reinigungsfaehigkeit">
+				<source>Reinigungsfähigkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.zitat">
+				<source>Zitat</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.ueberschrift">
+				<source>Überschrift</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_anlagenelemente.weitereanforderungrepeater">
+				<source>Weitere Anforderungen</source>
+			</trans-unit>
+			<trans-unit id="tx_j77products_domain_model_slider">
+				<source>Slider</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
