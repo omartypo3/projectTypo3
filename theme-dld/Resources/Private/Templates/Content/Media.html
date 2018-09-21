@@ -1,0 +1,56 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="media" options="{group: 'FCE',icon: '../typo3conf/ext/theme/Resources/Public/logos/apple-touch.png'}">
+            <flux:form.sheet name="elements" label="Tab Navigation">
+                <flux:form.section name="elements">
+                    <flux:form.object name="navigation" label="Element">
+                        <flux:field.input name="titre" label="Title" required="true"/>
+                        <flux:field.input name="id" label="Tab ID" required="true"/>
+                        <flux:field.input name="url" label="Content page" required="true">
+                            <flux:wizard.link activeTab="page"/>
+                        </flux:field.input>
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Media Content Element</strong><br>
+        <strong>Tabs :</strong><br>
+        <f:for each="{elements}" as="element" iteration="iteration">
+            <p>Tab title: {element.navigation.titre}</p>
+            <p>Tab page Content: id:
+                <f:for each="{element.navigation.url-> v:iterator.explode(glue: 't3://page?uid=')}" as="link" iteration="iteration">
+                    <f:if condition="{iteration.isLast}">
+                        {link}
+                    </f:if>
+                </f:for>
+            </p><br>
+        </f:for>
+    </f:section>
+
+    <f:section name="Main">
+        <section class="multiple-buttons multiple-buttons-media">
+            <f:for each="{elements}" as="element" iteration="iteration">
+                <a href="{element.navigation.id}" class="tab btn btn-big btn-white tab-swap-btn" >{element.navigation.titre}</a>
+            </f:for>
+        </section>
+            <f:for each="{elements}" as="element" iteration="iteration">
+
+                <section id="{element.navigation.id}" class="media-content {f:if(condition: '{iteration.isLast}', then: '' , else:'container')}">
+                    <f:for each="{element.navigation.url-> v:iterator.explode(glue: 't3://page?uid=')}" as="link" iteration="iteration">
+                        <f:if condition="{iteration.isLast}">
+                            <v:content.render column="DLD Content" limit="1" pageUid="{link}"/>
+                        </f:if>
+                    </f:for>
+                </section>
+            </f:for>
+    </f:section>
+</div>
+

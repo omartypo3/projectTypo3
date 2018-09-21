@@ -1,0 +1,110 @@
+{namespace custom= Theme\ViewHelpers}
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:section name="Footer">
+        <v:variable.set name="settings-plugin" value="{custom:GetPluginSettings(pluginname: 'tx_dld_dldevent')}"/>
+        <footer class="relative-container">
+            <div class="left-background hidden-xs" style="background-color: #FFF9AD;"></div>
+            <div class="right-background hidden-xs" style="background-color: #a2c7f3;"></div>
+            <div class="container relative-container">
+                <div class="row">
+                    <div class="right-background-filler hidden-xs" style="background-color: #a2c7f3;"></div>
+                    <div class="col-sm-4 col-sm-push-8 newsletter" style="background-color: #a2c7f3;">
+                        <img src="typo3conf/ext/theme/Resources/Public/icons/nl-icon.svg" alt=""
+                             class="newsletter-logo center-block">
+
+                        <p class="bold text-center white">Get the DLD-Newsletter now!</p>
+                        <form action="//dld.us7.list-manage.com/subscribe/post?u=f1984f0145e957e5e55a9bc50&amp;id=1716ffa7b9"
+                              method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate=""
+                              onsubmit="Newsletter.closeNewsletterForm();">
+                            <input type="email" value="" name="EMAIL" class="no-border" placeholder="Enter email address..."
+                                   required="">
+                            <input type="submit" class="btn btn-orange" value="Send">
+                        </form>
+                    </div>
+                    <div class="col-sm-8 col-sm-pull-4 links" style="background-color: #FFF9AD;">
+                    <p class="grey bold">Events around the world:</p>
+
+                    <ul class="list-inline text-uppercase events">
+                        <v:page.menu pageUid="36">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <li>
+                                        <f:link.action action="events" extensionName="DLD" pluginName="dldfront"
+                                                       pageUid="4" controller="Event"
+                                                       arguments="{offset:0,city:curPage.linktext}" class="orange bold">
+                                            {curPage.linktext}
+                                        </f:link.action>
+                                    </li>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </ul>
+
+                    <br><br>
+
+                    <p class="grey bold">DLD Media:</p>
+                    <ul class="list-inline subpages">
+                        <v:page.menu pageUid="26">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <f:if condition="{curPage.linktext}=='Privacy'">
+                                        <f:then>
+                                            <li><a href="javascript:void(0)" class="grey" onclick="gdbrcockie();">{curPage.linktext}</a></li>
+                                        </f:then>
+                                        <f:else>
+                                            <li><a href="{curPage.link}" class="grey">{curPage.linktext}</a></li>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </ul>
+                    <br><br>
+
+                    <p class="grey bold follow-us">Follow us</p>
+                    <ul class="list-inline social social-links">
+                        <v:page.menu pageUid="11">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <f:if condition="{curPage.linktext}=='facebook'">
+                                        <f:then>
+                                            <li><a href="{curPage.link}" target="_blank"><i
+                                                    class="icon icon-social icon-facebook-white"></i></a></li>
+                                        </f:then>
+                                    </f:if>
+                                    <f:if condition="{curPage.linktext}=='twitter'">
+                                        <f:then>
+                                            <li><a href="{curPage.link}" target="_blank"><i
+                                                    class="icon icon-social icon-twitter-white"></i></a></li>
+                                        </f:then>
+                                    </f:if>
+                                    <f:if condition="{curPage.linktext}=='instagram'">
+                                        <f:then>
+                                            <li><a href="{curPage.link}" target="_blank"><i
+                                                    class="icon icon-social icon-instagram-white"></i></a></li>
+                                        </f:then>
+                                    </f:if>
+                                    <f:if condition="{curPage.linktext}=='youtube'">
+                                        <f:then>
+                                            <li><a href="{curPage.link}" target="_blank"><i
+                                                    class="icon icon-social icon-youtube-white"></i></a></li>
+                                        </f:then>
+                                    </f:if>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </ul>
+
+                </div>
+                </div>
+            </div>
+            <div class="copyright grey text-center relative-container">© 2005-{f:format.date(date: "now", format: "%y")}
+                {settings.copyright}
+            </div>
+
+        </footer>
+    </f:section>
+</div>

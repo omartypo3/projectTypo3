@@ -1,0 +1,23 @@
+.standard-page-content.without-image.no-border.no-horizontal-spacing{
+  padding: 0px;
+  .standard-page-content.without-image.no-border.no-horizontal-spacing.privancy{
+    margin-top: 90px;
+    padding: 0px;
+    h2{
+      font-family: "HelveticaNeueCondensedBlack";
+    }
+
+    th, td {
+      vertical-align: top;
+    }
+    ul{
+      padding-left: 0;
+      li{
+        list-style-type: none;
+      }
+    }
+    ol{
+      padding-left: 15px;
+    }
+  }
+}

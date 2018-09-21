@@ -1,0 +1,42 @@
+.partner-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  .partner-name {
+    text-align: center;
+    font-size: 36px;
+  }
+  .partner-details {
+    ul {
+      list-style: none;
+      padding: 0 0 15px 0;
+      li {
+        label {
+          padding: .2em .6em .3em;
+          padding-bottom: 0;
+          padding-top: 0;
+          margin-bottom: 0;
+        }
+        span {
+          &:after {
+            content: ', ';
+          }
+          &:last-child{
+            &:after {
+              content: ' ';
+            }
+
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.partner-logo {
+  width: 100%;
+  height: auto;
+}
+.partner-description{
+    margin-left: 10px;
+  }

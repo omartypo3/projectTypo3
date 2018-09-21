@@ -1,0 +1,41 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="header" options="{group: 'FCE',icon: '../typo3conf/ext/theme/Resources/Public/logos/apple-touch.png'}">
+            <flux:field.input name="header" label="header with color "/>
+            <flux:field.input name="header1" label="header without color"/>
+            <flux:field.select name="itemsperrow" label="Number of line after header"
+                               items="{Line-1: 'One line', Line-2: 'Two lines',Line-3: 'None'}"
+                               default="Line-1" size="1" maxItems="1"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Header of page</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <f:if condition="{itemsperrow} == 'Line-1'">
+            <div class="page-header-test one-line">
+                <h1 class="bold"><span class="red">{header}</span> {header1}</h1>
+            </div>
+        </f:if>
+        <f:if condition="{itemsperrow} == 'Line-2'">
+            <div class="page-header-test two-line">
+                <h1 class="bold"><span class="red">{header}</span> {header1}</h1>
+                <hr>
+            </div>
+        </f:if>
+        <f:if condition="{itemsperrow} == 'Line-3'">
+            <div class="page-header-test default">
+                <h1 class="bold"><span class="red">{header}</span> {header1}</h1>
+            </div>
+        </f:if>
+
+    </f:section>
+</div>

@@ -1,0 +1,201 @@
+.allspeakers {
+  .filter-search {
+    font-size: 20px;
+    font-family: 'HelveticaNeueCondensedBlack';
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 17px;
+    margin-bottom: 10px;
+    span {
+      color: $color-primary;
+    }
+
+  }
+  #clear-filters {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    cursor: pointer;
+
+  }
+  form {
+    &.speakerlist {
+      text-align: center;
+    }
+    .loup {
+      font-size: 18px;
+      color: $purpley-grey;
+      //&:after{
+      //  font-family: FontAwesome;
+      //
+      //
+      //
+      //  content: '\f002';
+      //  position: relative;
+      //  // right: 0px;
+      //  right: 35px;
+      //  padding: 25px 10px 0 0;
+      //  display: inline-block;
+      //  font-size: inherit;
+      //  text-rendering: auto;
+      //  -webkit-font-smoothing: antialiased;
+      //  -moz-osx-font-smoothing: grayscale;
+      //  transform: translate(0, 0);
+      //}
+      &.select {
+        &:after {
+          content: '';
+          margin-right: 15px;
+        }
+      }
+    }
+    input, select {
+      /* padding: 6px 12px;
+         color: #9b9b9b;
+         font-family: "HelveticaNeueMedium", sans-serif;
+         webkit-appearance: textfield;
+         cursor: text;
+         padding: 1px;
+         border-width: 2px;
+         border-style: inset;
+         border-color: initial;
+         border-image: initial;
+         position: relative;
+         border-radius: 0px;
+         top: 0;
+         right: 0;
+         margin-top: 20px;
+         padding: 5px;*/
+      position: relative;
+      top: 0;
+      right: 0;
+      margin-top: 20px;
+      width: 250px;
+      height: 35px;
+      padding: 5px;
+      width: 80%;
+    }
+    select.selected {
+      color: #db4114;
+    }
+  }
+
+  .speaker-item {
+    display: inline-block;
+    transition-duration: 1s;
+    //padding: 60px;
+    .circle {
+      border-radius: 50%;
+      height: 130px;
+      width: 130px;
+      border: 10px solid white;
+      margin: 0 auto 5px;
+      background-position: center;
+      background-size: cover;
+    }
+    .speaker-text {
+      backface-visibility: hidden;
+      -webkit-filter: blur(0);
+      filter: blur(0);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      text-align: center;
+    }
+    p {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .loading {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(/typo3conf/ext/theme/Resources/Public/icons/spinner.gif);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 40px;
+
+  }
+}
+
+.speakers-page {
+  &.backgound-grey {
+    background-color: #F3F3F3;
+  }
+  .tx-dld {
+    background-color: inherit;
+    min-height: 400px;
+    padding: 20px 10px;
+  }
+  #no-speakers {
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'HelveticaNeue';
+    margin: 40px 0px;
+  }
+
+  .page-header-test {
+    padding: 40px 10px 10px 10px;
+
+  }
+}
+
+body.spinner-on .spinner {
+  display: block;
+}
+
+.spinner {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url(/typo3conf/ext/theme/Resources/Public/icons/spinner.gif);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 40px;
+}
+
+#speaker-list-new ul.f3-widget-paginator {
+  bottom: 0px;
+  /* margin-bottom: 50px; */
+  position: absolute;
+  li {
+    display: inline-block;
+  }
+}
+
+.allspeakers form  .speakers-search {
+  position: relative;
+  input[type="submit"] {
+    top: 28px;
+    background: transparent url(/typo3conf/ext/theme/Resources/Public/icons/loop.png) no-repeat 50% 0;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-indent: -9999px;
+    position: absolute;
+    z-index: 10;
+    left: auto !important;
+    right: 11% !important;
+  }
+}
+
+.allspeakers .select {
+  position: relative;
+  right: 7px;
+}
+
+#speaker-list-new.all-speakers {
+  margin-top: 20px;
+}

@@ -1,0 +1,85 @@
+.signin-or-signup{
+  display: none;
+}
+.ui-dialog {
+  background: #f0f0f0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  z-index: 1;
+  .ui-dialog-titlebar {
+    height: 0px;
+  }
+  .ui-dialog-titlebar-close {
+    background: transparent url(/typo3conf/ext/theme/Resources/Public/icons/login-close.png) no-repeat 0 0;
+    width: 10px;
+    height: 10px;
+    display: block;
+    text-indent: -9999px;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    border: 0;
+    &:hover{
+      background-position: 0 -10px;
+    }
+  }
+  .bordericon{
+    border: 0;
+  }
+  .form-dialog.signin-or-signup {
+    min-width: 460px;
+    header {
+      background-color: #eee;
+      padding: 20px 40px 18px 40px;
+      font: normal 28px/30px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+      h3 {
+        font: normal 24px/30px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+        color: #333;
+      }
+    }
+    .inner {
+      padding: 40px 40px;
+      background-color: white;
+    }
+    .create-account {
+      outline: none;
+      cursor: pointer;
+      color: #db4114;
+      padding: 0px;
+      background-color: inherit;
+      font:inherit;
+    }
+  }
+}
+.ui-widget-overlay {
+  background: #000;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.60;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.application-page-conference{
+  margin:20px;
+}
+.invited.femanager_show{
+  padding-top:0px;
+  .buttons {
+    background: #999;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    span {
+      font-size: 14px;
+      font-weight: bold;
+      padding: 2px 12px 3px;
+      color: white;
+
+    }
+  }
+}

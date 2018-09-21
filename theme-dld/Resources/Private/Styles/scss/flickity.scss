@@ -1,0 +1,22 @@
+.flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.events-section .text-container {
+  height: 114px;
+  padding-top: 25px;
+}
+.flickity-prev-next-button.previous {
+  left: 0;
+  background: url(/typo3conf/ext/theme/Resources/Public/icons/arrow-small-left.svg) no-repeat center;
+  background-size: 12px;
+}
+.flickity-prev-next-button.next {
+  right: 0;
+  background: url(/typo3conf/ext/theme/Resources/Public/icons/arrow-small-right.svg) no-repeat center;
+  background-size: 12px;
+}
+.big-box:first-child + .small-box, .small-box:first-child + .small-box, .speaker-media .media-container .media-item:first-child + .small-box, .speaker-media .media-container .big-box:first-child + .media-item, .speaker-media .media-container .small-box:first-child + .media-item, .speaker-media .media-container .media-item:first-child + .media-item {
+  margin-top: 0px;
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="rsag_theme" date="2017-11-22T10:15:59+01:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.standard">
+				<source>Standard page</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.description">
+				<source>Standard page layout</source>
+			</trans-unit>
+			<trans-unit id="flux.homepage">
+                <source>Homepage</source>
+            </trans-unit>
+            <trans-unit id="flux.homepage.description">
+                 <source>Homepage Layout</source>
+            </trans-unit>
+            <trans-unit id="flux.container">
+                <source>Container element</source>
+            </trans-unit>
+            <trans-unit id="flux.container.description">
+                <source>Select the number of columns</source>
+            </trans-unit>
+            <trans-unit id="flux.footer">
+                   <source>Footer box element</source>
+             </trans-unit>
+            <trans-unit id="flux.footer.description">
+                   <source>Footer box element</source>
+            </trans-unit>
+            <trans-unit id="flux.bouton">
+                   <source>Registration button</source>
+            </trans-unit>
+            <trans-unit id="flux.bouton.description">
+                  <source>Sign up Form</source>
+            </trans-unit>
+            <trans-unit id="flux.descriptionText">
+                  <source>Description Text</source>
+            </trans-unit>
+            <trans-unit id="flux.descriptionPrivancy">
+                  <source>Description Privancy</source>
+            </trans-unit>
+            <trans-unit id="flux.descriptionText.description">
+                  <source>Description Text</source>
+            </trans-unit>
+            <trans-unit id="flux.header">
+                  <source>Header page Title</source>
+            </trans-unit>
+            <trans-unit id="flux.header.description">
+                  <source>Header page title</source>
+            </trans-unit>
+            <trans-unit id="flux.image">
+                 <source>Image block</source>
+            </trans-unit>
+            <trans-unit id="flux.image.description">
+                 <source>Image block</source>
+            </trans-unit>
+            <trans-unit id="flux.slider">
+                 <source>Slider Image</source>
+            </trans-unit>
+            <trans-unit id="flux.slider.description">
+                 <source>Slider Image</source>
+            </trans-unit>
+            <trans-unit id="flux.dld">
+                 <source>DlD Section Logo</source>
+            </trans-unit>
+            <trans-unit id="flux.dld.description">
+                 <source>DlD Section Logo</source>
+            </trans-unit>
+            <trans-unit id="flux.ErrorPage">
+                 <source>404 page</source>
+            </trans-unit>
+            <trans-unit id="flux.ErrorPage.description">
+				<source>404 page layout</source>
+			</trans-unit>
+            <trans-unit id="flux.pageNotFound">
+                 <source>Page Not Found description</source>
+            </trans-unit>
+            <trans-unit id="flux.pageNotFound.description">
+				<source>Page Not Found description</source>
+			</trans-unit>
+			<trans-unit id="flux.media">
+                <source>Media Content Element</source>
+            </trans-unit>
+			<trans-unit id="flux.media.description">
+				<source>Media Content Element</source>
+			</trans-unit>
+			<trans-unit id="flux.album">
+                <source>Flickr Content Element</source>
+            </trans-unit>
+			<trans-unit id="flux.album.description">
+				<source>Display All albums in flickr account</source>
+			</trans-unit>
+			<trans-unit id="flux.popup">
+                <source>forget password popup Element</source>
+            </trans-unit>
+			<trans-unit id="flux.popup.description">
+				<source>forget password popup</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

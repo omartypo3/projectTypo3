@@ -1,0 +1,395 @@
+.femanager_show, .femanager_edit {
+  background: $color-gray-front;
+  padding-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 26px;
+  .title-dld {
+    text-align: center;
+    color: $color-gray;
+    font-size: 38px;
+    margin-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    padding-top: 41px;
+  }
+
+.row{
+  margin-right: 0;
+  margin-left: 0;
+}
+  .mydld-name {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .mydld-container {
+    max-width: 1140px;
+    margin-top: 25px;
+    background: $plain-white;
+    @include box-shadow(0px 13px 35px -23px rgba(0, 0, 0, 0.69));
+    padding-top: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    .mydld-box {
+      list-style-type: none;
+      padding-left: 20px;
+      padding-right: 20px;
+      li {
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+      .header{
+        margin-left: 0px;
+        margin-right: -15px;
+        margin-bottom: 10px;
+        label{
+          padding-right: 0px;
+          padding-left: 0px;
+          margin-right: 10px;
+          margin-bottom: 5px;
+        }
+      }
+      .visibility-description{
+        padding-top: 20px;
+        margin-bottom: 10px;
+        margin-right: -15px;
+        min-height: 30px;
+        margin-bottom: 10px;
+        max-width: 340px;
+        color: black;
+      }
+      .span-titles {
+        padding: 10px;
+        font-size: 80%;
+        font-weight: bold;
+        color: $color-primary;
+      }
+
+
+
+
+      .person-bio-icon{
+        display: inline-block;
+        margin-left: 3px;
+        position: relative;
+        width: 22px;
+      }
+    }
+    .mydld-menu {
+      list-style-type: none;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-bottom: 0px;
+      a {
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      .black-link {
+        font-weight: bold;
+        font-style: normal;
+        font-family: "HelveticaNeueMedium", sans-serif;
+        color: black;
+        a {
+          color: $color-font-gray;
+          &:hover {
+            color: $color-primary;
+            text-decoration: underline;
+          }
+        }
+        .required{
+          color: $color-primary;
+        }
+
+        .view-your-page {
+          position: relative;
+          display: inline-block;
+          left: 4px;
+          height: 22px;
+          width: 22px;
+          float: none;
+          top: 5px;
+          right: 12px;
+          margin: 0 7px 0 0;
+          margin-top: -10px;
+          background-image: url(/typo3conf/ext/femanagerextended/Resources/Public/Icons/info_icon.png);
+          cursor: pointer;
+        }
+        input[type="submit"] {
+          background-color: unset;
+          color: $color-font-gray;
+          font-family: "HelveticaNeueMedium", sans-serif;
+          font: unset;
+          padding: 0;
+          &:hover {
+            color: $color-primary;
+            text-decoration: underline;
+          }
+        }
+      }
+      .passwordlink{
+        font-weight: bold;
+        color: #D8D8D8;
+      }
+    }
+    .blue-link a {
+      color: $color-blue;
+      text-decoration: underline;
+      font-weight: bold;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+    textarea{
+      font: normal 16px/19px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, serif;
+      font-style: normal;
+      font-variant-ligatures: normal;
+      font-variant-caps: normal;
+      font-variant-numeric: normal;
+      font-variant-east-asian: normal;
+      font-weight: normal;
+      font-stretch: normal;
+      font-size: 16px;
+      line-height: 19px;
+      font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, serif;
+      color: #000;
+      background: #d8d8d8;
+      padding: 7px 10px 8px 10px;
+      margin: 0;
+      border: none;
+      -webkit-box-shadow: inset 0 2px 2px rgba(14,18,20,0.19);
+      -moz-box-shadow: inset 0 2px 2px rgba(14,18,20,0.19);
+      box-shadow: inset 0 2px 2px rgba(14,18,20,0.19);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      width: 370px;
+    }
+    input[type="text"] {
+      border: 1px solid #9b9b9b;
+
+      outline: none;
+
+      font-size: 14px;
+
+      padding: 8px 12px;
+      width: 280px;
+
+      border-radius: 4px;
+
+      color: #9b9b9b;
+
+      font-family: "HelveticaNeueMedium", sans-serif;
+      &.long {
+        width: 390px;
+      }
+    }
+
+    input[type="submit"].btn{
+      font-size: 14px;
+      border-radius: 0;
+      font-weight: 400;
+      font-family: inherit;
+      border: 2px solid buttonface;
+      border-style: outset;
+      padding: 1px 6px;
+      line-height: 20px;
+    }
+    
+
+    .mydld-box {
+      .femanager_fieldset {
+        padding-right: 10px;
+        label {
+          width: 26%;
+          margin-right: 0;
+          padding-left: 5px;
+        }
+        .controls{
+          padding-left: 0;
+        }
+        select {
+          width: auto;
+          color: #9b9b9b;
+        }
+      }
+    }
+    img {
+      width: 120px;
+      height: auto;
+      margin-right: 15px;
+    }
+    .person-bio-icon{
+      display: inline-block;
+      margin-left: 3px;
+      position: absolute;
+      width: 22px;
+      right: 5px;
+      height: auto;
+      margin-right: 0;
+    }
+  }
+  .invitedmsg {
+    padding-top: 25px;
+    margin-top: 25px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    .title {
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      font: bold 16px/20px Arial, serif;
+      color: #000;
+    }
+  }
+  input[type="text"], input[type="email"], input[type="number"], select, input[type="password"], .form-control {
+    border: 1px solid $purpley-grey;
+    outline: none;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: $color-font-gray;
+  }
+}
+
+.femanager_invitation_new {
+
+  .title-dld {
+    text-align: center;
+    color: #808081;
+    font-size: 38px;
+    background: #e7e7e7;
+    padding: 100px 0 25px 0;
+    margin-bottom: 50px;
+  }
+  fieldset {
+    margin: 0 auto;
+    .person-bio-icon{
+      display: none;
+    }
+    label {
+      width: 20%;
+    }
+    input, .form-control {
+      color: $color-font-gray;
+    }
+    @media screen and (min-width: 770px) {
+      div .col-sm-10 {
+        width: 80%;
+      }
+      .col-sm-offset-2 {
+        margin-left: 23%;
+      }
+    }
+
+  }
+  @media screen and (max-width: 770px) {
+    .col-sm-offset-2 {
+      margin-left: 4%;
+    }
+  }
+
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+  z-index: 1;
+}
+
+.popup {
+
+  margin: 150px auto;
+  background: #fff;
+  border-radius: 5px;
+  width: 500px;
+  position: relative;
+  padding-bottom: 50px;
+
+  .line {
+    margin: 15px 0 15px 15px;
+  }
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .close:hover {
+    color: #06D85F;
+  }
+  .content {
+    max-height: 30%;
+  }
+  fieldset {
+    width: 100%;
+    .femanager_submit div {
+      text-align: left;
+      margin-top: 15px;
+    }
+  }
+  .center {
+    text-align: center;
+    .btn {
+      border-radius: 0;
+      vertical-align: top;
+    }
+  }
+  @media screen and (max-width: $screen-size-mobile) {
+    width: 100%;
+  }
+
+}
+
+.disable {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.tooltipsy {
+  font: normal 12px/15px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+  padding: 10px;
+  max-width: 300px;
+  color: #303030;
+  background-color: white;
+  border: 1px solid black;
+  position: absolute;
+  width: 300px;
+  bottom: 22px;
+  left: -128px;
+  display: none;
+}
+
+.tooltip-container {
+  display: inline;
+  position: relative;
+  i {
+    &:hover{
+      &+.tooltipsy {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration" >
+        <flux:form id="slider" options="{group: 'FCE',icon: '../typo3conf/ext/theme/Resources/Public/logos/apple-touch.png'}">
+            <flux:field.inline.fal name="backgroundImage" label="Slider Image" />
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Slider image</strong>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'backgroundImage') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundImage')}
+        <v:variable.set name="url" value="{f:uri.image(src:'{backgroundImage.url}')}"></v:variable.set>
+        <section class="section section--no-margin full-width">
+            <div class="visual visual--small" style="background-image: url('{url}')">
+            </div>
+        </section>
+    </f:section>
+</div>

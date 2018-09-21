@@ -1,0 +1,54 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration" >
+        <flux:form id="dld" options="{group: 'FCE' ,icon: '../typo3conf/ext/theme/Resources/Public/logos/apple-touch.png'}">
+            <flux:field.text name="text" label="text "  />
+            <flux:field.inline.fal name="backgroundImage" label="logo" />
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>DlD Section Logo</strong>
+    </f:section>
+
+    <f:section name="Main">
+        {v:content.resources.fal(field: 'backgroundImage') -> v:iterator.first() -> v:variable.set(name:
+        'backgroundImage')}
+        <div class="dld-logo-section-top"></div>
+        <div class="dld-logo-section dld-logo-section-spacer"></div>
+        <section class="dld-logo-section dld-logo-section-content">
+
+            <div class="spacer"></div>
+
+            <div class="container-xs">
+
+                <div class="left text-right orange bold">
+                    <f:format.raw>{text}</f:format.raw>
+                </div>
+
+                <div class="right orange bold uppercase">
+                    <img alt="{backgroundImage.alternative}" class="logo img-responsive" src="{backgroundImage.url}">
+                    <div class="locations">
+                        <v:page.menu pageUid="36">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <span>{curPage.linktext}</span>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+        <div class="dld-logo-section-bottom"></div>
+    </f:section>
+</div>

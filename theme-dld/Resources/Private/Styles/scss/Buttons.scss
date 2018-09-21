@@ -1,0 +1,40 @@
+.create-account {
+  clear: both;
+  text-align: center;
+  font: bold 16px/20px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+  padding: 20px 40px;
+  background-color: #f2f2f2;
+  color: $color-primary;
+
+  a, a:link, a:active, a:visited {
+    text-decoration: underline;
+    color: $color-primary;
+    font: bold 16px/20px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial;
+    &:hover{
+      color:$color-primary-gradient;
+    }
+  }
+}
+.location-section .location-speakers-container .btn-big {
+  bottom: 0px;
+  position: relative;
+  z-index: 1000;
+  &.center-block{
+    display: table;
+  }
+}
+#mc_embed_signup{
+  form#mc-embedded-subscribe-form{
+    padding-top: 18px;
+    margin-bottom: 20px;
+  }
+}
+#mc_embed_signup input.button {
+  font-family: 'HelveticaNeueCondensedBlack';
+  max-width: 210px;
+}
+
+.contact.contact#mc_embed_signup input.email {
+  width: 100%;
+  max-width: 600px;
+}

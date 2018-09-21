@@ -1,0 +1,26 @@
+<f:layout name="Standard"/>
+<div id="side-menu" class="side-menu-movable">
+    <f:render partial="HeaderMobile" section="HeaderMobile" arguments="{_all}"/>
+</div>
+<div class="content-wrapper side-menu-movable">
+    <div id="header" class="side-menu-movable">
+        <f:render partial="Header" section="Header" arguments="{_all}"/>
+    </div>
+    <f:if condition="{v:page.info(field: 'uid')}==1">
+        <f:then>
+            <v:variable.set name="myClass" value="class-home" />
+        </f:then>
+        <f:else>
+            <v:variable.set name="myClass" value="" />
+        </f:else>
+    </f:if>
+    <div id="content" class="{myClass}">
+        <f:render section="Content"/>
+    </div>
+
+    <!--/Main content -->
+    <div id="footer">
+        <f:render partial="Footer" section="Footer" arguments="{_all}"/>
+    </div>
+
+</div>

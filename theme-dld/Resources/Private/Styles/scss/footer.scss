@@ -1,0 +1,111 @@
+footer {
+  /*background: linear-gradient(to left, $lightblue 36%, $lightblue 42%, $lightblue 40%, $parchment 39%, $parchment 100%);*/
+  .links {
+    padding: 40px 15px 30px;
+
+   p, a {
+    font-size: 15px;
+   }
+
+   .icon-social {
+    width: 40px;
+    height: 40px;
+    padding-left: 40px;
+    display: block;
+    background-size: contain !important;
+   }
+  }
+
+  .subpages a {
+   font-family: $font-default;
+    color: $tomato;
+  }
+
+  .newsletter {
+    padding: 40px 15px 30px;
+
+   p {
+    font-size: 19px;
+    margin: 30px 0 30px;
+   }
+
+   input[type="email"], .btn {
+    width: 80%;
+    padding: 11px 15px;
+    font-size: 17px;
+    display: block;
+    margin: 20px auto;
+   }
+
+  }
+  .copyright {
+   z-index: 100;
+   background-color: $plain-white;
+   font-size: 10px;
+   padding: 20px 15px;
+  }
+  .left-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 35%;
+  }
+  .right-background, .right-background-filler {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 65%;
+    right: 0;
+  }
+  .right-background-filler {
+    left: 66.66666667%;
+  }
+}
+
+
+@media screen and (max-width: $viewport-medium) {
+  footer {
+    background: none;
+    .newsletter{
+      background: $lightblue;
+    }
+    .links {
+      background: $parchment;
+      text-align: center;
+
+      p {
+        font-size: 18px;
+
+        &.follow-us {
+          font-size: 28px;
+        }
+      }
+      .events {
+        li {
+          display: block;
+        }
+      }
+      .events a {
+        font-size: 35px;
+        line-height: 1.36;
+      }
+
+      .subpages {
+        li {
+          display: block;
+        }
+      }
+      .subpages a {
+        font-size: 17px;
+        line-height: 1.80;
+      }
+
+      .icon-social {
+        width: 60px;
+        height: 60px;
+        padding-left: 60px;
+      }
+    }
+  }
+}

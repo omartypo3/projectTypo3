@@ -1,0 +1,170 @@
+plugin.tx_theme {
+    view {
+        templateRootPaths.0 = {$plugin.tx_theme.view.templateRootPaths.0}
+        partialRootPaths.0 = {$plugin.tx_theme.view.partialRootPaths.0}
+        layoutRootPaths.0 = {$plugin.tx_theme.view.layoutRootPaths.0}
+    }
+
+    settings {
+        copyright = {$plugin.tx_theme.settings.copyright}
+    }
+}
+
+config {
+    concatenateJs = 0
+    concatenateCss = 0
+    compressJs = 0
+    compressCss = 0
+}
+
+page = PAGE
+page {
+    headerData {
+        10 = TEXT
+        10.value (
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+        )
+    }
+
+    shortcutIcon = typo3conf/ext/theme/Resources/Public/favicon.ico
+    includeCSS {
+        bootstrapcss = typo3conf/ext/theme/Resources/Public/css/bootstrap.min.css
+        slickcss = typo3conf/ext/theme/Resources/Public/css/slick.min.css
+        flickitycss = typo3conf/ext/theme/Resources/Public/css/flickity.min.css
+        fancyBox = typo3conf/ext/theme/Resources/Public/css/jquery.fancybox.css
+        lightbox = typo3conf/ext/theme/Resources/Public/css/lightbox.min.css
+        styles = typo3conf/ext/theme/Resources/Public/styles/style.css
+        font = https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+    }
+
+    includeJS {
+        jquery = typo3conf/ext/theme/Resources/Public/js/jquery-3.3.1.min.js
+        jquery-ui = https://code.jquery.com/ui/1.12.1/jquery-ui.js
+    }
+
+    includeJSFooter {
+        jsload = typo3conf/ext/newsextended/Resources/public/JavaScript/jquery-ias.min.js
+        jsession = typo3conf/ext/theme/Resources/Public/js/jquery.session.js
+        mainload = typo3conf/ext/newsextended/Resources/public/JavaScript/main.js
+        bootstrap = typo3conf/ext/theme/Resources/Public/js/bootstrap.min.js
+        slick = typo3conf/ext/theme/Resources/Public/js/slick.js
+        flickity = typo3conf/ext/theme/Resources/Public/js/flickity.pkgd.min.js
+        masonry = typo3conf/ext/theme/Resources/Public/js/masonry.pkgd.min.js
+        fancybox = typo3conf/ext/theme/Resources/Public/js/jquery.fancybox.min.js
+        paroller = typo3conf/ext/theme/Resources/Public/js/paroller/jquery.paroller.js
+        map = https://maps.googleapis.com/maps/api/js?key=AIzaSyBcEhUA1kUDLuHArhc-T8I6AeYOvjBr6xE
+        #dldmap = typo3conf/ext/theme/Resources/Public/js/DldMap.js
+        #cookiebar = typo3conf/ext/theme/Resources/Public/js/jquery.cookiebar.js
+        #jquerycookiebarSetup = typo3conf/ext/theme/Resources/Public/js/cookie_messages/cookieBar.en.js
+        eventPagination = typo3conf/ext/theme/Resources/Public/js/eventPagination.js
+        eventProgram = typo3conf/ext/theme/Resources/Public/js/event-progam.js
+        eventGallery = typo3conf/ext/theme/Resources/Public/js/eventGallery.js
+        fancyBox = typo3conf/ext/theme/Resources/Public/js/jquery.fancybox.js
+        lightBox = typo3conf/ext/theme/Resources/Public/js/lightbox.js
+        peopleGallery = typo3conf/ext/theme/Resources/Public/js/peopleGallery.js
+        youtubeajax = typo3conf/ext/theme/Resources/Public/js/youtubeLoadMore.js
+        media = typo3conf/ext/theme/Resources/Public/js/media.js
+        signup = typo3conf/ext/theme/Resources/Public/js/signup.js
+        tooltopsy = typo3conf/ext/theme/Resources/Public/js/tooltipsy.min.js
+        main = typo3conf/ext/theme/Resources/Public/js/app.js
+    }
+}
+
+plugin.tx_femanager {
+    view {
+        templateRootPaths {
+            0 = EXT:femanager/Resources/Private/Templates/
+            1 = EXT:theme/Resources/ext/femanager/Templates/
+        }
+
+        partialRootPaths {
+            0 = EXT:femanager/Resources/Private/Partials/
+            1 = EXT:theme/Resources/ext/femanager/Partials/
+        }
+
+        layoutRootPaths {
+            0 = EXT:femanager/Resources/Private/Layouts/
+            1 = EXT:theme/Resources/ext/femanager/Layouts/
+        }
+    }
+
+    settings {
+        invitation.validation {
+            company {
+                required = 1
+            }
+
+            title {
+                required = 1
+            }
+
+            country {
+                required = 1
+            }
+
+            city {
+                required = 1
+            }
+
+            firstName {
+                required = 1
+            }
+
+            lastName {
+                required = 1
+            }
+
+            terms {
+                required = 1
+            }
+        }
+
+        header = Activate your account
+        bodytext = You have signed up successfully. A message with activation instructions has just been sent to your email address.
+        tooltipText = This is your personal Page. You can modify the data and biography shown in this Page by editing your profile. When you edit your Profile, you can also decide if you make the Page visible for the public, only for other DLD members or just for you.
+        mydldpage = 10
+    }
+}
+
+plugin.tx_femanager.settings.new.validation.captcha.captcha = 1
+plugin.tx_femanager.settings.edit.validation.captcha.captcha = 1
+config {
+    tx_realurl_enable = 1
+    spamProtectEmailAddresses = 1
+    spamProtectEmailAddresses_atSubst = @
+    uniqueLinkVars = 1
+    simulateStaticDocuments = 0
+    linkVars = L
+    absRelPath = /
+    absRefPrefix = /
+    prefixLocalAnchors = all
+}
+
+plugin.tx_femanager {
+    _LOCAL_LANG {
+        # Field Labels
+        default.tx_femanager_domain_model_user\.termslinktext = terms of use
+        default.tx_femanager_domain_model_user\.terms = I agree to the
+        default.tx_femanager_domain_model_user\.title = Job title
+        default.titleInvitationProfile = My DLD - Create Account
+        default.tx_femanager_domain_model_user.operations = Field/s of operation
+    }
+}
+
+[userFunc = TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('felogin')]
+    plugin.tx_felogin_pi1 {
+        exposeNonexistentUserInForgotPasswordDialog = 1
+        welcomeHeader_stdWrap.wrap = <header class="page-title"> <h1> | </h1></header>
+        errorHeader_stdWrap.wrap = <header id="worng-password" class="page-title"> <h1> | </h1></header>
+    }
+
+    plugin.tx_felogin_pi1._LOCAL_LANG.default {
+        username = Email
+        password = Password
+        permalogin = Stay logged
+        login = Sign in
+        reset_password = Send
+        forgot_password = Forgot password?
+    }
+[global]

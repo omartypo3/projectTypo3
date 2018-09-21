@@ -1,0 +1,127 @@
+.dldteam-container {
+  padding: 20px 0;
+  .team {
+    margin: 0;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .page-header{
+    span{
+      color: #db4114;
+    }
+  }
+  .dldteam-member {
+    @media screen and (max-width: $viewport-medium) {
+      margin: 0 auto;
+    }
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0 20px;
+    flex-basis: 25%;
+    width: 25%;
+    margin-top: 20px;
+    @media screen and (max-width: 1220px){
+      width: 33.333%;
+    }
+    @media screen and (max-width: 992px){
+      width: 50%;
+    }
+    .dldteam-img {
+      border-radius: 50%;
+      border: 10px solid #f1f1f1;
+      margin-bottom: 20px;
+      width: 280px;
+      height: 280px;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+      @media screen and (max-width: 768px){
+        width: 180px;
+        height: 180px;
+      }
+      @media screen and (max-width: 458px){
+        width: 120px;
+        height: 120px;
+      }
+    }
+    .dldteam-name {
+      text-align: center;
+      color: $color-primary;
+      font-weight: bold;
+    }
+    .dldteam-title {
+      text-align: center;
+      color: $color-gray;
+    }
+  }
+  .meet-dld-team {
+    font-size: 36px;
+    font-weight: bold;
+    font-family: "HelveticaNeueBold", sans-serif;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    span {
+      color: $color-primary;
+    }
+  }
+}
+
+.dld-show {
+  .dld-people {
+    .people-image {
+      text-align: right;
+    }
+    .people-info {
+      font-size: 16px;
+      margin-top: 40px;
+      .people-name {
+        font-size: 56px;
+        color: $tomato;
+        line-height: 1.1;
+
+      }
+      ul {
+        list-style-type: none;
+      }
+    }
+    @media screen and (max-width: $viewport-large) {
+      ul {
+        text-align: center;
+        padding: 0;
+      }
+      .people-image {
+        text-align: center;
+      }
+    }
+  }
+  .show-image {
+    height: auto;
+    width: 400px;
+    text-align: right;
+    webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    @media screen and (max-width: $viewport-medium) {
+      height: auto;
+      min-height: auto;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .description-container {
+    text-align: center;
+    .description {
+      margin: 0 auto;
+      width: 100%;
+      display: inline-block;
+      position: relative;
+      text-align: left;
+      padding: 20px 0 40px 0;
+      border-bottom: 15px solid #eee;
+    }
+  }
+
+}

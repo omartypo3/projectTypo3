@@ -1,0 +1,135 @@
+.news{
+
+  padding: 0;
+  position: relative;
+  background-color: white;
+}
+.dld-logo-section{
+  &.dld-logo-section-spacer{
+    visibility: hidden;
+    background-color: white;
+    padding: 100px 0 150px;
+    position: relative;
+    z-index: -1;
+  }
+  &.dld-logo-section-content {
+    background-color: white;
+    background: url(/typo3conf/ext/theme/Resources/Public/logos/dld-logo__background.png) repeat center;
+    padding: 100px 0 120px;
+    position: relative;
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+    height: 500px;
+    padding-top: 600px;
+    top: 0;
+    padding-bottom: 1000px;
+    bottom: 0;
+    .container-xs {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 690px;
+      .right {
+        display: inline-block;
+        max-width: 460px;
+        font-size: 16px;
+        position: relative;
+        text-align: left;
+        &.orange {
+          color: #e44315;
+        }
+        &.uppercase {
+          text-transform: uppercase;
+        }
+        img {
+          height: auto;
+          width: 460px;
+        }
+        .locations {
+          position: absolute;
+          span {
+            margin-right: 2px;
+          }
+        }
+      }
+      .left {
+        font-size: 30px;
+        line-height: 0.97;
+        display: inline-block;
+        margin-right: 5px;
+        &.orange {
+          color: #e44315;
+        }
+      }
+
+    }
+  }
+}
+.dld-logo-section-top {
+  box-shadow: 0px 3px 6px #AAA;
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  top: 0;
+  position: relative;
+}
+.dld-logo-section-bottom {
+  box-shadow: 0px -3px 6px #AAA;
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  bottom: 0;
+  position: relative;
+}
+.tx-dld{
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  background-color: white;
+}
+@media only screen and (max-width: $viewport-large) and (min-width: $screen-size-mobile-2){
+  #content{
+    .dld-logo-section-spacer{
+      height:350px;
+    }
+    .dld-logo-section-content{
+      padding-top:150px;
+    }
+    .dld-logo-section .locations span {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-mobile-1){
+  #content{
+    .dld-logo-section-spacer{
+      height:400px;
+    }
+    .dld-logo-section-content{
+      padding-top:200px;
+    }
+    .dld-logo-section .locations {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .dld-logo-section.dld-logo-section-content .container-xs .right img{
+      width:80vw;
+    }
+  }
+}
+@media screen and (max-width: $viewport-small-phone){
+
+  #header .search-container.text-center {
+    top: -75px;
+  }
+  #content{
+    .dld-logo-section-content{
+      padding-top:150px;
+    }
+  }
+  #header .search-container {
+    top: -75px;
+  }
+}

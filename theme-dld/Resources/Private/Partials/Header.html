@@ -1,0 +1,149 @@
+{namespace custom= Theme\ViewHelpers}
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:section name="Header">
+        <input type="hidden" id="dldredirect" value="{custom:user(redirect:'')}"/>
+        <!-- Mobile Navigation -->
+        <header class="header-wrapper">
+            <div class="top-bounce-fix"></div>
+            <div class="oval"></div>
+
+            <div class="far-right">
+                <i id="search-button" class="icon icon-magnify pointer"></i>
+                <ul class="social-links no-margin list-inline hidden-sm hidden-xs">
+                    <v:page.menu pageUid="11">
+                        <f:if condition="{menu}">
+                            <f:for each="{menu}" as="curPage">
+                                <f:if condition="{curPage.linktext}=='facebook'">
+                                    <f:then>
+                                        <li><a href="{curPage.link}" target="_blank"><i
+                                                class="icon icon-social icon-facebook"></i></a></li>
+                                    </f:then>
+                                </f:if>
+                                <f:if condition="{curPage.linktext}=='twitter'">
+                                    <f:then>
+                                        <li><a href="{curPage.link}" target="_blank"><i
+                                                class="icon icon-social icon-twitter"></i></a></li>
+                                    </f:then>
+                                </f:if>
+                                <f:if condition="{curPage.linktext}=='instagram'">
+                                    <f:then>
+                                        <li><a href="{curPage.link}" target="_blank"><i
+                                                class="icon icon-social icon-instagram"></i></a></li>
+                                    </f:then>
+                                </f:if>
+                                <f:if condition="{curPage.linktext}=='youtube'">
+                                    <f:then>
+                                        <li><a href="{curPage.link}" target="_blank"><i
+                                                class="icon icon-social icon-youtube"></i></a></li>
+                                    </f:then>
+                                </f:if>
+                            </f:for>
+                        </f:if>
+                    </v:page.menu>
+                </ul>
+                <i id="side-menu-button" class="icon icon-menu pointer visible-sm visible-xs"></i>
+            </div>
+            <div class="container container-xs">
+                <div class="left pull-left">
+                    <ul class="nav-links no-margin list-inline">
+                        <v:page.menu pageUid="3">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')} ||{curPage.active} ">
+                                        <f:then>
+                                            <li class="active current">
+                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                            </li>
+                                        </f:then>
+                                        <f:else>
+                                            <li>
+                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                            </li>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </ul>
+                </div>
+                <div class="text-center logo-wrapper">
+                    <a href="/"><img src="typo3conf/ext/theme/Resources/Public/logos/logo.svg" alt="Logo" class="logo"></a>
+                </div>
+                <div class="right pull-right">
+                    <ul class="nav-links no-margin list-inline">
+                        <v:page.menu pageUid="7">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')} || {curPage.active}">
+                                        <f:then>
+                                            <li class="active current">
+                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                            </li>
+                                        </f:then>
+                                        <f:else>
+                                            <li>
+                                                <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                                            </li>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </ul>
+                </div>
+            </div>
+
+
+        </header>
+        <div class="search-container text-center">
+            <div class="container container-xs no-padding relative-container">
+                <!--<input type="text" id="search-input" placeholder="Search...">
+                <i id="search-submit" class="icon icon-magnify pointer"></i>-->
+                <form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1" action="search">
+                    <fieldset class="kesearch_searchbox">
+
+                        <input type="hidden" name="id" value="30">
+                        <div class="kesearchbox">
+                            <input type="text" id="search-input" name="tx_kesearch_pi1[sword]" value=""
+                                   placeholder="Search...">
+                            <button type="submit" class="btnSearch"><i id="search-submit"
+                                                                       class="icon icon-magnify pointer"></i></button>
+                            <div class="clearer">&nbsp;</div>
+                        </div>
+
+                        <input id="kesearchpagenumber" type="hidden" name="tx_kesearch_pi1[page]" value="1">
+                        <input id="resetFilters" type="hidden" name="tx_kesearch_pi1[resetFilters]" value="0">
+                        <input id="sortByField" type="hidden" name="tx_kesearch_pi1[sortByField]" value="">
+                        <input id="sortByDir" type="hidden" name="tx_kesearch_pi1[sortByDir]" value="">
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <!-- end Headline bar--->
+    </f:section>
+</div>
+
+<ul class="nav-links no-margin list-inline">
+    <v:page.menu pageUid="3">
+        <f:if condition="{menu}">
+            <f:for each="{menu}" as="curPage">
+                <f:if condition="{curPage.shortcut} == {v:page.info(field:'uid')}">
+                    <f:then>
+                        <li class="current">
+                            <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                        </li>
+                    </f:then>
+                    <f:else>
+                        <li>
+                            <a href="{curPage.link}"><span>{curPage.title}</span></a>
+                        </li>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </f:if>
+    </v:page.menu>
+</ul>

@@ -1,0 +1,60 @@
+@mixin box-shadow($props...) {
+  -webkit-box-shadow: $props;
+  -moz-box-shadow: $props;
+  box-shadow: $props;
+}
+
+@mixin transition($transition...) {
+  -moz-transition:    $transition;
+  -o-transition:      $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin media($types) {
+  @each $type in $types {
+    @if $type == xs {
+      @media only screen and (max-width: $viewport-small - 1) {
+        @content;
+      }
+    }
+
+    @if $type == sm {
+      @media only screen and (min-width: $viewport-small) and (max-width: $viewport-medium - 1) {
+        @content;
+      }
+    }
+
+    @if $type == md {
+      @media only screen and (min-width: $viewport-medium) and (max-width: $viewport-large - 1) {
+        @content;
+      }
+    }
+
+    @if $type == lg {
+      @media only screen and (min-width: $viewport-large) and (max-width: $viewport-extra-large - 1) {
+        @content;
+      }
+    }
+
+    @if $type == xl {
+      @media only screen and (min-width: $viewport-extra-large) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin background-linear-gradient($prop...) {
+  background: -webkit-linear-gradient($prop); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($prop); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($prop); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($prop); /* Standard syntax */
+}
+
+@mixin background-radial-gradient($prop...) {
+  background: -webkit-radial-gradient($prop); /* For Safari 5.1 to 6.0 */
+  background: -o-radial-gradient($prop); /* For Opera 11.1 to 12.0 */
+  background: -moz-radial-gradient($prop); /* For Firefox 3.6 to 15 */
+  background: radial-gradient($prop); /* Standard syntax */
+}

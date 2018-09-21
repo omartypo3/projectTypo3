@@ -1,0 +1,43 @@
+#cookie-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  line-height: 40px;
+  background: $colorcoockie;
+  border-top: 1px solid $bordercoockie;
+  width: 100%;
+  text-align: center;
+  .cookies-eu-content-holder {
+    display: inline-block;
+    padding: 0 20px;
+    line-height: 26px;
+  }
+  .cookies-eu-button-holder {
+    display: inline-block;
+    padding-right: 20px;
+    .cookies-eu-ok {
+      background-color: $color-primary;
+      background-image: -webkit-linear-gradient(top, $color-primary, $color-primary);
+      border: 1px solid $color-primary;
+      border-radius: 2px;
+      color: #fff;
+      display: inline-block;
+      font-size: 11px;
+      font-weight: bold;
+      height: 24px;
+      line-height: 20px;
+      margin-right: 0px;
+      min-width: 26px;
+      outline: 0;
+      padding: 0 11px;
+      text-align: center;
+      white-space: nowrap;
+      margin: 0 5px;
+      cursor: default;
+    }
+    .cookies-eu-link {
+      color: $color-primary;
+    }
+  }
+
+}

@@ -1,0 +1,28 @@
+section.xing{
+  max-width: 100%;
+  width: 1440px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  .dash{
+    border-top: solid 2px #aaaaaa;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  em{
+    color: #e44315;
+    font-style: normal;
+  }
+  h1{
+    font-family: 'HelveticaNeueCondensedBlack';
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    XXX_text-transform: uppercase;
+    color: #000000;
+    margin: 0.8em 0;
+    text-align: center;
+  }
+}

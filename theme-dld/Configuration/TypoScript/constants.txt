@@ -1,0 +1,10 @@
+plugin.tx_theme.view {
+	templateRootPaths.0 = EXT:theme/Resources/Private/Templates/
+	partialRootPaths.0 = EXT:theme/Resources/Private/Partials/
+	layoutRootPaths.0 = EXT:theme/Resources/Private/Layouts/
+}
+styles.content.loginform.templateFile = typo3conf/ext/theme/Resources/Private/Templates/FrontendLogin.html
+# cat=template/seiten/; type=links; label= Copyright
+plugin.tx_theme.settings.copyright = Hubert Burda Media Holding KG / DLD Media GmbH - All rights reserved.
+# cat=plugin.tx_news/seiten/; type=links; label= Pagedetail
+plugin.tx_news.settings.pagedetail = 29

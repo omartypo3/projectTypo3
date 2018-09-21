@@ -1,0 +1,88 @@
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="popup"
+                   options="{group: 'FCE',icon: '../typo3conf/ext/theme/Resources/Public/logos/apple-touch.png'}">
+            <flux:field.input name="title" label="Popup title" required="1"></flux:field.input>
+            <flux:field.text name="body" label="Popup text" required="1" enableRichText="1"></flux:field.text>
+            <flux:field.select name="type" label="Popup type"
+                               items="{
+                           0:{0:'Password Reset Success',1:'user-found-popup'},
+                           1:{0:'Password Reset fail',1:'user-not-found-popup'},
+                           2:{0:'Profile Completed',1:'complete-profile'}
+                           }"
+            />
+            <flux:field.checkbox name="button" label="Display Button" default="0"></flux:field.checkbox>
+            <flux:field.input name="buttontext" label="Button Text"></flux:field.input>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>popup content element</strong>
+        <p>Used for :
+            <f:if condition="{type} == 'user-found-popup'"><f:then>Password Reset Success</f:then></f:if>
+            <f:if condition="{type} == 'user-not-found-popup'"><f:then>Password Reset fail</f:then></f:if>
+            <f:if condition="{type} == 'sign-up-failed'"><f:then>Sign up failed</f:then></f:if>
+        </p>
+    </f:section>
+
+    <f:section name="Main">
+
+        <div id="{type}" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{title}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <f:format.raw>{body}</f:format.raw>
+                        <f:if condition="{button} == 1">
+                            <f:then><a href="#" class="red-button popup-close">{buttontext}</a><div class="clearfix"></div></f:then>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <f:if condition="{type} =='user-not-found-popup'">
+            <f:then>
+                <div id="sign-up-popup" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="forget-popup" class="modal fade" role="dialog">
+                    <div class="modal-dialog modal-dialog-centered">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Forgot Password</h4>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+        </f:if>
+
+    </f:section>
+</div>

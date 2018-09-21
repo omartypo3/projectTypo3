@@ -1,0 +1,24 @@
+{namespace custom= Theme\ViewHelpers}
+<div xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:layout name="Content"/>
+
+    <f:section name="Configuration">
+        <flux:form id="descriptionPrivancy" options="{group: 'FCE',icon: '../typo3conf/ext/theme/Resources/Public/logos/apple-touch.png'}">
+            <flux:field.text name="description" label="description" enableRichText="1"/>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Preview">
+        <strong>Description Privancy</strong>
+    </f:section>
+
+    <f:section name="Main">
+        <section class="standard-page-content without-image no-border no-horizontal-spacing privancy">
+                <f:format.raw>{description}</f:format.raw>
+        </section>
+    </f:section>
+</div>
