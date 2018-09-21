@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-21T03:03:26Z" product-name="pk_eventmaps">
+		<header/>
+		<body>
+			<trans-unit id="tx_pk_eventmaps_domain_model_pkeventmap">
+				<source>Event Map</source>
+			</trans-unit>
+			<trans-unit id="tx_pk_eventmaps_domain_model_pkeventmap.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="date.description">
+				<source>date</source>
+			</trans-unit>
+			<trans-unit id="aktionszeit.description">
+				<source>aktionszeit</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>location</source>
+			</trans-unit>
+			<trans-unit id="street.description">
+				<source>street</source>
+			</trans-unit>
+			<trans-unit id="streetnumber.description">
+				<source>streetnumber</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="moderator.description">
+				<source>moderator</source>
+			</trans-unit>
+			<trans-unit id="informations.description">
+				<source>informations</source>
+			</trans-unit>
+			<trans-unit id="fon.description">
+				<source>fon</source>
+			</trans-unit>
+			<trans-unit id="fax.description">
+				<source>fax</source>
+			</trans-unit>
+			<trans-unit id="mail.description">
+				<source>mail</source>
+			</trans-unit>
+			<trans-unit id="lon.description">
+				<source>lon</source>
+			</trans-unit>
+			<trans-unit id="lat.description">
+				<source>lat</source>
+			</trans-unit>
+						<trans-unit id="general.month.1">
+                            <source>Januar</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.2">
+                            <source>Februar</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.3">
+                            <source>März</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.4">
+                            <source>April</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.5">
+                            <source>Mai</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.6">
+                            <source>Juni</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.7">
+                            <source>Juli</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.8">
+                            <source>August</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.9">
+                            <source>September</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.10">
+                            <source>Oktober</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.11">
+                            <source>November</source>
+                        </trans-unit>
+            			<trans-unit id="general.month.12">
+                            <source>Dezember</source>
+                        </trans-unit>
+		</body>
+	</file>
+</xliff>

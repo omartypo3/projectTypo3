@@ -1,0 +1,72 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluclass/ViewHelpers" data-namespace-typo3-fluclass="true">
+<f:layout name="Default"/>
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+       <div class="tx_pkeventmaps map">
+        <div class="eventAddressesAndMap">
+            <div class="eventBoxSlclasseLine">
+                <div class="eventAddressesContainer col-md-6 np">
+                    <div class="stickyHeadliner">
+                        <p><span class="eventDate col-md-2 col-smx-2">Datum</span>
+                            <span class="eventStreet col-md-4 col-smx-4">Hornbach Baumarkt</span>
+                            <span class="eventTime col-md-3 np col-smx-3">Aktionszeit</span>
+                            <span class="eventModerator col-md-3 col-smx-3">Moderation</span>
+                        </p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="eventAddressesScrollableContent">
+                        <div class="eventAddressesContent makerList">
+                         <f:groupedFor each="{events->v:iterator.sort(order: 'DESC', sortBy: 'month')}" as="eventsByDate" groupBy="month" groupKey="mon">
+                                 
+                                <div class="addressBreak">
+                                    <p>
+                                        {f:translate(id: 'general.month.{mon}')}
+                                    </p>
+                                </div>
+
+                               <f:for each="{eventsByDate->v:iterator.sort(order: 'DESC', sortBy: 'date')}" as="event">
+                                        <v:variable.set name="dateeven" value="{f:format.date(date: '{event.date}', format: 'd.m.Y')}" />
+                                        <v:variable.set name="datenow" value="{f:format.date(date: 'now', format: 'd.m.Y')}" />
+                                        <v:variable.set name="dateevencalcul" value="{dateeven-> f:format.date(format: 'U')}" />
+                                        <v:variable.set name="datenowcalcul" value="{f:format.date(date: '{datenow}', format: 'U')}" />
+                                        <address id="markerId{event.uid}" class="makerListItem {f:if(condition: '{dateevencalcul} < {datenowcalcul}', then: 'outdated-class')}">
+                                                <div class="addressInformations">
+                                                        <p>
+                                                            <span class="eventDate col-md-2 col-smx-2">{event.date -> f:format.date(format: 'd.m.Y')}</span>
+                                                            <span class="eventStreet col-md-4 col-smx-4">{event.zip} {event.city} <br/>{event.street} {event.streetnumber}</span>
+                                                            <span class="eventTime col-md-3 np col-smx-3">{event.aktionszeit}</span>
+                                                            <span class="eventModerator col-md-3 col-smx-3">{event.moderator}</span>
+                                                        </p>
+                                                    <div class="clear"></div>
+                                                </div>
+                                        </address>
+                                         
+                                </f:for>
+                            </f:groupedFor>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 eventMapWrapper np">
+                    <div class="map_canvas"></div>
+                </div>
+                <div class="clearfix clear"></div>
+            </div>
+        </div>
+    </div>
+    <script>var markerdataJson = '<f:format.html parseFuncTSPath="">{json}</f:format.html>';
+    var markerdata = JSON.parse(markerdataJson);</script>
+
+</f:section>
+</html>
