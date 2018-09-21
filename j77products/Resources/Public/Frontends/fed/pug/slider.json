@@ -1,0 +1,80 @@
+{
+    "fields": {
+        "repeater_1519315092534": {
+            "type": "repeater",
+            "type_name": "Wiederholung (Repeater)",
+            "name": "items",
+            "label": "Elemente",
+            "required": false,
+            "subfields": {
+                "img_1519315108135": {
+                    "type": "img",
+                    "type_name": "Bild",
+                    "name": "image",
+                    "label": "Bild",
+                    "required": false,
+                    "subfields": [],
+                    "conditions": [],
+                    "id": "img_1519315108135",
+                    "order": 0,
+                    "params": [],
+                    "description": ""
+                },
+                "input_1519315116392": {
+                    "type": "input",
+                    "type_name": "Eingabefeld (Einzeilig)",
+                    "name": "title",
+                    "label": "Titel",
+                    "required": false,
+                    "subfields": [],
+                    "conditions": [],
+                    "id": "input_1519315116392",
+                    "order": 1,
+                    "params": [],
+                    "description": ""
+                },
+                "textarea_1519315132404": {
+                    "type": "textarea",
+                    "type_name": "Eingabefeld (Mehrzeilig)",
+                    "name": "subtitle",
+                    "label": "Beschreibung",
+                    "required": false,
+                    "subfields": [],
+                    "conditions": [],
+                    "id": "textarea_1519315132404",
+                    "order": 2,
+                    "params": {
+                        "rows": "3"
+                    },
+                    "description": ""
+                },
+                "link_1521538876568": {
+                    "type": "link",
+                    "type_name": "Link \/ URL",
+                    "name": "link",
+                    "label": "Verlinkung",
+                    "required": false,
+                    "subfields": [],
+                    "conditions": [],
+                    "id": "link_1521538876568",
+                    "order": 3,
+                    "params": [],
+                    "description": ""
+                }
+            },
+            "conditions": [],
+            "id": "repeater_1519315092534",
+            "order": 0,
+            "params": {
+                "min": "0",
+                "max": "0"
+            },
+            "description": ""
+        }
+    },
+    "name": "Slider (Hero)",
+    "description": "",
+    "icon": null,
+    "is_hidden_contentelement": 0,
+    "id": "slider"
+}
