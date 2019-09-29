@@ -1,0 +1,106 @@
+{namespace kf = LeadGeneration\ContactForm\ViewHelpers}
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="row heading">
+        <div class="col-6">
+            <h1>Listing for Event</h1>
+        </div>
+        <div class="col-6 text-right">
+            <button class="btn btn-primary" id="export" disabled> Export</button>
+        </div>
+    </div>
+    <v:variable.set name="myObject" value="{kf:GetUser()}"/>
+    <input type="hidden" id="exporturl" value="{f:uri.action(action: 'export', pageType: 1249058993)}">
+
+    <input type="hidden" id="eventsurl" value="{f:uri.action(action: 'list', pageType: 1249058993)}">
+    <input class="form-control" id="keyword" placeholder="Search ..." type="text">
+
+    <div class="table-responsive">
+        <table class="tx_contactform table mt-5 table-striped table-bordered ">
+            <thead>
+            <tr>
+                <th></th>
+                <th>
+                    <f:translate key="tx_contactform_domain_model_event.name"/>
+                </th>
+                <th>
+                    <f:translate key="tx_contactform_domain_model_event.start_date"/>
+                </th>
+                <th>
+                    <f:translate key="tx_contactform_domain_model_event.end_date"/>
+                </th>
+                <th>
+                    <f:translate key="tx_contactform_domain_model_event.place"/>
+                </th>
+                <f:if condition="{myObject.groupData.title.1 -> f:format.case(mode: 'upper')}== ADMIN ">
+                    <f:then>
+                        <th></th>
+                        <th></th>
+                    </f:then>
+                </f:if>
+            </tr>
+            </thead>
+
+
+            <f:for each="{events}" as="event">
+                <tr>
+                    <td>​<input type="checkbox" class="toexport" value="{event.uid}" ​​​​​​​​​​​​​​​​​/></td>
+                    <td>
+                        <f:link.action action="show" pluginName="feevents" controller="Event"
+                                       arguments="{event : event}"> {event.name}
+                        </f:link.action>
+                    </td>
+                    <td>
+                        <f:link.action action="show" pluginName="feevents" controller="Event"
+                                       arguments="{event : event}"> {event.startDate ->->f:format.date(format: 'd/m/Y')}
+                        </f:link.action>
+                    </td>
+                    <td>
+                        <f:link.action action="show" pluginName="feevents" controller="Event"
+                                       arguments="{event : event}"> {event.endDate ->->f:format.date(format: 'd/m/Y')}
+                        </f:link.action>
+                    </td>
+                    <td>
+                        <f:link.action action="show" pluginName="feevents" controller="Event"
+                                       arguments="{event : event}"> {event.place}
+                        </f:link.action>
+                    </td>
+                    <f:if condition="{myObject.groupData.title.1 -> f:format.case(mode: 'upper')}== ADMIN ">
+                        <f:then>
+                            <td>
+                                <f:link.action action="edit" pluginName="feevents" controller="Event"
+                                               arguments="{event : event}">Edit
+                                </f:link.action>
+                            </td>
+                            <td>
+                                <f:link.action action="delete" pluginName="feevents" controller="Event"
+                                               arguments="{event : event}">Delete
+                                </f:link.action>
+                            </td>
+                        </f:then>
+                    </f:if>
+
+                </tr>
+            </f:for>
+        </table>
+    </div>
+    <f:if condition="{myObject.groupData.title.1 -> f:format.case(mode: 'upper')}== ADMIN ">
+        <f:then>
+            <f:link.action action="new" class="btn btn-primary">New Event</f:link.action>
+        </f:then>
+    </f:if>
+</f:section>
+</html>

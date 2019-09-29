@@ -1,0 +1,73 @@
+{namespace pj=Pingag\PingagJobs\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelper}
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <v:asset.style path="EXT:pingag_jobs/Resources/Public/Css/job-style.css" name="job-style" content="footer" standalone="1" />
+
+    <div class="job-detail dd type{job.type} type{job.type.uid}">
+        <div class="row">
+            <div class="col-sm-8 ">
+
+                <div class="intro">
+                    <f:format.html>{job.intro}</f:format.html>
+                </div>
+
+                <h1><f:format.raw>{job.title}</f:format.raw></h1>
+
+                <div class="info-section">
+                	
+                    <f:if condition="{job.type.uid} == 16">
+                     	<f:then><h4><f:translate key="detail.headings.tasksdu"/></h4></f:then>
+                        <f:else><h4><f:translate key="detail.headings.tasks"/></h4></f:else>
+                    </f:if>
+                    
+                    
+                    <f:format.raw>{job.tasks}</f:format.raw>
+                </div>
+                <div class="info-section">
+                   
+                    <f:if condition="{job.type.uid} == 16">
+                     	<f:then><h4><f:translate key="detail.headings.profiledu"/></h4></f:then>
+                        <f:else><h4><f:translate key="detail.headings.profile"/></h4></f:else>
+                    </f:if>
+                    
+                    <f:format.html>{job.profile}</f:format.html>
+                </div>
+                <div class="info-section">
+                    <h4><f:translate key="detail.headings.offer"/></h4>
+                    <f:format.html>{job.offer}</f:format.html>
+                </div>
+                <div class="info-section">
+                    <h4><f:translate key="detail.headings.location"/></h4>
+                    <f:format.html>{job.location}</f:format.html>
+                </div>
+                <div class="info-section">
+                    <f:format.html>{job.contact}</f:format.html>
+                </div>
+
+            </div>
+            <div class="col-sm-4 sidebar">
+                <div class="info">
+                    <h3>
+                        <a href="{job.applyFormUrl}" target="_blank">
+                            <f:translate key="detail.apply" />
+                        </a>
+                    </h3>
+                    <h3>
+                        <a href="mailto:?body={f:uri.page(addQueryString: 1, absolute: 1, noCacheHash: 1)}">
+                            <f:translate key="detail.share" />
+                        </a>
+                    </h3>
+                    <h3>
+                        <a href="#" onclick="window.print();return false;">
+                            <f:translate key="detail.print" />
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</f:section>

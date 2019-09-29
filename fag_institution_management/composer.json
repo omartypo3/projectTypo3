@@ -1,0 +1,28 @@
+{
+    "name": "frontal/fag-institution-management",
+    "type": "typo3-cms-extension",
+    "description": "Allows the administration of various institutions.",
+    "authors": [
+        {
+            "name": "Roland Kneub\u00fchler",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "FRONTAL\\FagInstitutionManagement\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FRONTAL\\FagInstitutionManagement\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "fag_institution_management": "self.version",
+        "typo3-ter/fag-institution-management": "self.version"
+    }
+}

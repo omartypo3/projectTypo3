@@ -1,0 +1,161 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<input type="hidden" class="array" name="array" data-array="{json}"/>
+
+<legend class="powermail_legend">Kontaktdaten</legend>
+<div class="row">
+    <div
+            class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_fname form-group col-sm-12  ce-spaceafter-2">
+        <label for="powermail_field_fname" class="control-label col-sm-12" title=""> Anzahl
+            Personen </label>
+        <div class="field-wrap col-sm-2 col-xs-5">
+            <f:form.textfield property="teilnehmeraktuell"
+                              class="powermail_input form-control Anzahl-personen-input private2-input" type="number"
+                              additionalAttributes="{max:0 , min:0 ,required: 'required'}"/>
+        </div>
+        <div class="age-error-msg col-sm-12 col-xs-12" style="display:none">
+            Die Anzahl Personen überschreitet das Maximum an möglichen verfügbaren Plätzen von 20!
+            Bitte reduzieren Sie die Anzahl oder buchen Sie ein zusätzliches, angrenzendes
+            Zeitfenster hinzu. Hinweis: Die maximale Gruppengrösse beträgt zweimal 20.
+        </div>
+    </div>
+</div>
+<f:form.textfield type="hidden" name="gruppentyp" id="gruppentyp-third"/>
+<f:form.textfield type="hidden" name="datum" class="datum"/>
+<f:form.textfield type="hidden" name="event" value="{eventid}"/>
+
+<div class="row">
+    <div
+            class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_fname col-sm-6 col-md-7 form-group">
+        <label class="control-label col-sm-12" title="">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.gruppenname"/>
+        </label>
+        <div class="field-wrap col-sm-12 ce-spaceafter-1">
+            <f:form.textfield property="gruppenname" class="form-control "
+                              additionalAttributes="{required: 'required'}"/>
+
+        </div>
+    </div>
+    <div
+            class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_fname form-group col-sm-6 col-md-5">
+
+        <label class="control-label col-sm-12" title="">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.durchschnittsalter"/>
+        </label>
+        <div class="field-wrap col-sm-12 ce-spaceafter-0">
+            <f:form.textfield property="durchschnittsalter" class="form-control durchschnittsalter-input"
+                              additionalAttributes="{required: 'required'}"/>
+        </div>
+        <div class="durch-error-msg col-sm-12" style="display:none;">
+            Der Durchschnittsalter der Schulklasse darf nicht höher als 18 sein!
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="powermail_fieldwrap powermail_fieldwrap_type_radio powermail_fieldwrap_anrede_01 form-group col-sm-12">
+        <label class="control-label col-sm-12" title="">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.anrede"/>
+        </label>
+        <div class="field-wrap col-sm-12">
+            <div class="row">
+                <div class="radio col-sm-1">
+                    <label>
+
+                        <f:form.textfield property="anrede" class="powermail_radio black-label"
+                                          id="powermail_field_anrede_01_2" type="radio" value="Frau"
+                                          additionalAttributes="{required: 'required'}"/>
+                        Frau
+                    </label>
+                </div>
+                <div class="radio col-sm-1">
+                    <label>
+                        <f:form.textfield property="anrede" class="powermail_radio black-label"
+                                          id="powermail_field_anrede_01_2" type="radio" value="Herr"
+                                          additionalAttributes="{required: 'required'}"/>
+
+                        Herr
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="powermail_fieldwrap form-group col-sm-6">
+        <label for="vorname" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.vorname"/>
+        </label>
+        <div class="field-wrap col-sm-12">
+            <f:form.textfield property="vorname" class="form-control " additionalAttributes="{required: 'required'}"/>
+        </div>
+    </div>
+    <div class="powermail_fieldwrap form-group stretched-input col-sm-6">
+        <label for="name" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.name"/>
+        </label>
+        <div class="field-wrap col-sm-12 stretched-input">
+            <f:form.textfield property="name" class="form-control " additionalAttributes="{required: 'required'}"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div
+            class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_fname form-group col-sm-12  stretched-input">
+        <label class="control-label col-sm-12 " title="">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.funktion"/>
+            <span class="egg-color"> - optional</span> </label>
+        <div class="field-wrap col-sm-12 stretched-input">
+            <f:form.textfield property="funktion" class="form-control "/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="powermail_fieldwrap  form-group col-sm-6">
+        <label for="strasse" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.strasse"/>
+        </label>
+        <div class="field-wrap col-sm-12">
+            <f:form.textfield property="strasse" class="form-control" additionalAttributes="{required: 'required'}"/>
+        </div>
+    </div>
+    <div class="powermail_fieldwrap form-group stretched-input  col-sm-6">
+        <label for="ortPLZ" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.ort_p_l_z"/>
+        </label>
+        <div class="field-wrap col-sm-12 stretched-input">
+            <f:form.textfield property="ortPLZ" class="form-control " additionalAttributes="{required: 'required'}"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="powermail_fieldwrap  form-group col-sm-6">
+        <label for="email" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.email"/>
+        </label>
+        <div class="field-wrap col-sm-12">
+            <f:form.textfield type="email" property="email" class="form-control "
+                              additionalAttributes="{required: 'required'}"/>
+        </div>
+    </div>
+    <div class="powermail_fieldwrap  form-group stretched-input col-sm-6">
+        <label for="telefon" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.telefon"/>
+        </label>
+        <div class="field-wrap col-sm-12 stretched-input">
+            <f:form.textfield property="telefon" class="form-control " additionalAttributes="{required: 'required'}"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="powermail_fieldwrap powermail_fieldwrap_type_textarea powermail_fieldwrap_bemerkungen form-group col-sm-12">
+        <label for="bemerkung" class="control-label col-sm-12">
+            <f:translate key="tx_fagbesichtigung_domain_model_anfrage.bemerkung"/>
+            <span class="egg-color"> - optional</span>
+        </label>
+        <div class="field-wrap col-sm-12">
+            <f:form.textarea property="bemerkung" rows="5" cols="20"
+                             class="powermail_textarea form-control "/>
+        </div>
+    </div>
+</div>
+
+</html>

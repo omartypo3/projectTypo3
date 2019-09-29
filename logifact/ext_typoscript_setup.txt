@@ -1,0 +1,41 @@
+#config.tx_extbase{
+#    persistence{
+#        classes{
+#            GeorgRinger\News\Domain\Model\News {
+#                subclasses {
+#                    0 = Goldland\BpiWaeschereien\Domain\Model\NewsDefault
+#                }
+#            }
+#            Goldland\BpiWaeschereien\Domain\Model\NewsDefault {
+#                mapping {
+#                    recordType = 0
+#                    tableName = tx_news_domain_model_news
+#                }
+#            }
+#        }
+#    }
+#    objects {
+#        GeorgRinger\News\Controller\NewsController.className = Goldland\BpiWaeschereien\Controller\NewsController
+#        GeorgRinger\News\ViewHelpers\Widget\Controller\PaginateController =  Goldland\BpiWaeschereien\ViewHelpers\Widget\Controller\PaginateController
+#    }
+#}
+#
+plugin.tx_news {
+    view {
+        templateRootPaths.1 = EXT:logifact/Resources/Ext/News/Private/Templates/
+        partialRootPaths.1 = EXT:logifact/Resources/Ext/News/Private/Partials/
+        layoutRootPaths.1 = EXT:logifact/Resources/Ext/News/Private/Layouts/
+    }
+
+}
+plugin.tx_form {
+    view {
+        partialRootPaths {
+            1 = EXT:logifact/Resources/Ext/Form/Frontend/Partials/
+        }
+        templateRootPaths {
+            1 = EXT:logifact/Resources/Ext/Form/Frontend/Templates/
+        }
+
+    }
+}

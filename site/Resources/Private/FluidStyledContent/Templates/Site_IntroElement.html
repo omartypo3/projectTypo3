@@ -1,0 +1,33 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<section class="intro" id="intro-{data.uid}-section">
+    <f:if condition="{image -> f:cObject(typoscriptObjectPath: 'lib.pageResources')}!=''">
+        <f:then>
+            <f:cObject typoscriptObjectPath="lib.pageResources"/>
+        </f:then>
+    </f:if>
+    <f:if condition="{video -> f:cObject(typoscriptObjectPath: 'lib.pageResourcesVideo')}!=''">
+        <f:then>
+            <video id="introVideo" class="intro__video" autoplay muted loop>
+                <source src="{video -> f:cObject(typoscriptObjectPath: 'lib.pageResourcesVideo')}" type="video/mp4">
+                //The return of the #SGEagles Eintracht Frankfurt in the USA
+                Your browser does not support the video tag.
+            </video>
+        </f:then>
+    </f:if>
+
+    <div class="container-fluid intro__container">
+        <div class="row">
+            <div class="col-md-5 ml-auto">
+                <h1 class="intro__title">{data.header}</h1>
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+            <div class="local-scroll">
+                <p>{data.subheader}</p>
+                <a class="scroll-down">
+                    <img src="typo3conf/ext/site/Resources/Public/img/svg/arrow_down.svg" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>

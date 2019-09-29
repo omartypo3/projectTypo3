@@ -1,0 +1,519 @@
+#-----------------------------
+# TCEMAIN
+#-----------------------------
+TCEMAIN {
+    permissions {
+        user = show, editcontent, edit, delete, new
+        group = show, editcontent, edit, delete, new
+        everybody =
+        groupid = 1
+    }
+    table{
+        tt_content {
+            disablePrependAtCopy = 1
+            disableHideAtCopy = 0
+        }
+        pages {
+            disablePrependAtCopy = 1
+            disableHideAtCopy = 0
+        }
+    }
+}
+
+#-----------------------------
+# RTE
+#-----------------------------
+RTE {
+
+    # set RTE stuff here!
+default.preset = goldlandconfig
+
+}
+
+#-----------------------------
+# Backend-Layouts
+#-----------------------------
+mod.web_layout.BackendLayouts {
+
+    # define backend layouts here!
+1 {
+            title = Default
+            config {
+                backend_layout {
+                    colCount = 1
+                    rowCount = 3
+                    rows {
+                        1 {
+                            columns {
+                                1 {
+                                    name = Header
+                                    colPos = 1
+
+                                }
+                            }
+                        }
+                        2 {
+                            columns {
+                                1 {
+                                    name = Content
+                                    colPos = 0
+
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+     }
+    	2 {
+            title = Profile
+            config {
+                            backend_layout {
+                                colCount = 1
+                                rowCount = 2
+                                rows {
+                                    1 {
+                                        columns {
+                                            1 {
+                                                name = Header
+                                                colPos = 2
+
+                                            }
+                                        }
+                                    }
+                                    2 {
+                                        columns {
+                                            1 {
+                                                name = Content
+                                                colPos = 3
+
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+
+     }
+     3 {
+                 title = nocols
+                    config {
+                                             backend_layout {
+                                                 colCount = 1
+                                                 rowCount = 1
+                                                 rows {
+
+                                                     1{
+                                                         columns {
+                                                             1 {
+                                                                 name = Content
+                                                                 colPos = 4
+
+                                                             }
+                                                         }
+                                                     }
+
+                                                 }
+                                             }
+                                         }
+
+             }
+
+             4 {
+                 title = Footer
+                 config {
+                     backend_layout {
+                         colCount = 5
+                         rowCount = 1
+                         rows {
+                             1 {
+                                 columns {
+                                     1 {
+                                         name = Service_Telefon
+                                         colPos = 5
+                                     }
+                                     2 {
+                                         name = Anfahrt_Kontakt
+                                         colPos = 6
+                                     }
+                                     3 {
+                                         name = Footer_Navi
+                                         colPos = 7
+                                     }
+                                     4 {
+                                         name = Fernwartung_OnlineShop
+                                         colPos = 8
+                                     }
+                                     5 {
+                                         name = Newsletter_Anmeldung
+                                         colPos = 9
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+
+
+}
+
+
+#----------------------------------
+# define custom content elements
+#----------------------------------
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+
+        logifact_hero_element {
+            iconIdentifier = content-beside-text-img-above-center
+            title = Hero Image Element
+            description =
+            tt_content_defValues {
+                CType = logifact_hero_element
+            }
+        }
+        logifact_camaliga_slider_element {
+                iconIdentifier = content-carousel
+                title = Camaliga Slider Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_camaliga_slider_element
+                }
+        }
+
+
+        logifact_slider_element {
+                iconIdentifier = content-carousel-image
+                title = Slider  Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_slider_element
+                }
+        }
+        logifact_opinion_element {
+                iconIdentifier = content-carousel-html
+                title = Customer Opinion Slider Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_opinion_element
+                }
+        }
+
+        logifact_tabs_element {
+                iconIdentifier = content-tab
+                title = Tabs Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_tabs_element
+                }
+        }
+        logifact_teaser_big_element {
+                iconIdentifier = content-beside-text-img-left
+                title = Big Teasers Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_teaser_big_element
+                }
+        }
+        logifact_network_service_element {
+                iconIdentifier = content-text-columns
+                title = Network Service Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_network_service_element
+                }
+        }
+        logifact_software_solutions_element {
+                iconIdentifier = content-inside-text-img-right
+                title = Commercial software solutions Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_software_solutions_element
+                }
+        }
+        logifact_services_element {
+                iconIdentifier = content-bullets
+                title = Services Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_services_element
+                }
+        }
+        logifact_product_element {
+                iconIdentifier = content-beside-text-img-left
+                title = Products Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_product_element
+                }
+        }
+        logifact_training_element {
+                iconIdentifier = content-beside-text-img-right
+                title = Training Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_training_element
+                }
+        }
+        logifact_support_element {
+                iconIdentifier = content-text-columns
+                title = Support Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_support_element
+                }
+        }
+        logifact_cobra_element {
+                iconIdentifier = content-beside-text-img-right
+                title = Cobra Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_cobra_element
+                }
+        }
+        logifact_cobra_products_element {
+                iconIdentifier = content-menu-card
+                title = Cobra Products Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_cobra_products_element
+                }
+        }
+        logifact_header_text_element {
+                iconIdentifier = content-header
+                title = Header Text Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_header_text_element
+                }
+        }
+        logifact_team_element {
+                iconIdentifier = content-carousel
+                title = Team Members Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_team_element
+                }
+        }
+        logifact_file_tabs_element {
+                iconIdentifier = content-tab
+                title = Team Members Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_file_tabs_element
+                }
+        }
+        logifact_teaser_element {
+                iconIdentifier = content-beside-text-img-above-center
+                title = Teaser Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_teaser_element
+                }
+        }
+        logifact_download_element {
+                iconIdentifier = actions-download
+                title = Donwload Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_download_element
+                }
+        }
+        logifact_footer_buttons_element {
+                iconIdentifier = content-menu-pages
+                title = Footer Buttons Element
+                description =
+                tt_content_defValues {
+                    CType = logifact_footer_buttons_element
+                }
+        }
+
+        # add more custom elements here!
+    }
+    show := addToList( logifact_hero_element ,  logifact_camaliga_slider_element , logifact_slider_element , logifact_opinion_element , logifact_tabs_element , logifact_teaser_big_element , logifact_network_service_element , logifact_software_solutions_element , logifact_services_element , logifact_product_element , logifact_training_element , logifact_support_element , logifact_cobra_element , logifact_cobra_products_element , logifact_header_text_element , logifact_team_element , logifact_file_tabs_element , logifact_teaser_element , logifact_download_element , logifact_footer_buttons_element )
+}
+mod.wizards.newContentElement.wizardItems {
+menu.show = removeFromList(*)
+special.show := removeFromList(div, shortcut)
+}
+#-------------------------
+# TCEFORM
+#-------------------------
+TCEFORM {
+
+
+    pages {
+        media.config.appearance.fileUploadAllowed = 0
+        layout.disabled = 1
+        backend_layout.removeItems = -1
+        backend_layout_next_level.removeItems = -1
+    }
+
+    sys_file_collection {
+        files.config.appearance.fileUploadAllowed = 0
+        description.disabled = 1
+    }
+
+    tt_content {
+
+        # config your backend forms for tt_content elements here!
+
+        image {
+            config.appearance.fileUploadAllowed = 0
+        }
+        media {
+            config.appearance.fileUploadAllowed = 0
+        }
+        assets {
+            config.appearance.fileUploadAllowed = 0
+        }
+
+    }
+}
+#----------------------------------------------#
+#          grid element configuration          #
+#----------------------------------------------#
+# Page TSConfig:
+tx_gridelements.setup {
+
+	1 {
+	   title = Two columns - ratio 50% / 50%
+	        config {
+    			colCount = 2
+    			rowCount = 1
+    			rows {
+    				1 {
+    					columns {
+    						1 {
+    							name = Col1
+    							colPos = 4
+    						}
+    						2 {
+    							name = Col 2
+    							colPos = 5
+    						}
+    					}
+    				}
+    			}
+    		}
+
+
+	        iconIdentifier = content-text-columns
+	}
+	2 {
+	        title = One column - ratio 100%
+	        config {
+    			colCount = 1
+    			rowCount = 1
+    			rows {
+    				1 {
+    					columns {
+    						1 {
+    							name = Col1
+    							colPos = 1
+    							allowed {
+
+    							}
+    						}
+    					}
+    				}
+    			}
+    		}
+
+
+	        iconIdentifier = content-panel
+	}
+	3 {
+	        title = Four columns - ratio 25%/25%/25%/25%
+	        config {
+    			colCount = 4
+    			rowCount = 1
+    			rows {
+    				1 {
+    					columns {
+    						1 {
+    							name = Col1
+    							colPos = 6
+    							allowed {
+
+    							}
+    						}
+    					2 {
+    							name = Col1
+    							colPos = 7
+    							allowed {
+
+    							}
+    						}
+    					3{
+    							name = Col1
+    							colPos = 8
+    							allowed {
+
+    							}
+    						}
+    					4{
+    							name = Col1
+    							colPos = 9
+    							allowed {
+
+    							}
+    						}
+    					}
+    				}
+    			}
+    		}
+
+
+	        iconIdentifier = content-menu-thumbnail
+	}
+	4 {
+	        title = Three columns - ratio 33%/33%/33%
+	        config {
+    			colCount = 3
+    			rowCount = 1
+    			rows {
+    				1 {
+    					columns {
+    						1 {
+    							name = Col1
+    							colPos = 10
+    							allowed {
+
+    							}
+    						}
+    					2 {
+    							name = Col2
+    							colPos = 11
+    							allowed {
+
+    							}
+    						}
+    					3{
+    							name = Col3
+    							colPos = 12
+    							allowed {
+
+    							}
+    						}
+
+    					}
+    				}
+    			}
+    		}
+
+
+	        iconIdentifier = content-menu-thumbnail
+	}
+}
+#----------------------------------------------#
+#            Language configuration            #
+#----------------------------------------------#
+mod.SHARED{
+    defaultLanguageFlag = de
+    defaultLanguageLabel = Deutsch
+}

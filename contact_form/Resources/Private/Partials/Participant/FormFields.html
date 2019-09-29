@@ -1,0 +1,191 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="form-group ">
+    <label for="event" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.event"/>*
+    </label>
+    <f:form.select property="event" options="{events}" optionValueField="uid" optionLabelField="name"
+                   class="form-control" additionalAttributes="{required :'1'}"/>
+</div>
+<div class="form-group ">
+    <label for="gender" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.gender"/>*
+    </label>
+    <f:form.select property="gender" options="{Male: 'Male', Female: 'Female'}" class="form-control" additionalAttributes="{required :'1'}"/>
+</div>
+<div class="form-group ">
+
+    <label for="title" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.title"/>*
+    </label>
+    <f:form.textfield property="title" class="form-control" additionalAttributes="{required :'1'}"/>
+</div>
+
+<div class="form-group ">
+    <label for="firstName" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.first_name"/>*
+    </label>
+    <f:form.textfield property="firstName" class="form-control" additionalAttributes="{required :'1'}"/>
+</div>
+<div class="form-group ">
+    <label for="lastName" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.last_name"/>*
+    </label>
+    <f:form.textfield property="lastName" class="form-control" additionalAttributes="{required :'1'}"/>
+</div>
+<div class="form-group ">
+    <label for="email" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.email"/>*
+    </label>
+    <f:form.textfield type="email" property="email" class="form-control" additionalAttributes="{required :'1'}"/>
+</div>
+<div class="form-group ">
+    <label for="company" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.company"/>
+    </label>
+    <f:form.textfield property="company" class="form-control"/>
+</div>
+<div class="form-group ">
+    <label for="city" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.city"/>
+    </label>
+    <f:form.textfield property="city" class="form-control"/>
+</div>
+<div class="form-group ">
+    <label for="country" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.country"/>
+    </label>
+    <v:form.select property="country" class="form-control">
+        <v:form.select.optgroup label="{f:translate(key: 'quickselect')}">
+            <f:for each="{cummon}" as="country">
+                <v:form.select.option value="{country.shortNameEn}"> {country.shortNameEn}</v:form.select.option>
+            </f:for>
+        </v:form.select.optgroup>
+        <v:form.select.optgroup data="{countries}" label="{f:translate(key: 'othercountries')}">
+            <f:for each="{countries}" as="country">
+                <v:form.select.option value="{country.shortNameEn}"> {country.shortNameEn}</v:form.select.option>
+            </f:for>
+        </v:form.select.optgroup>
+    </v:form.select>
+</div>
+<hr>
+
+
+<div class="form-group">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="interventionalPulmonologist" class="custom-control-input" value="1"/>
+        <label for="interventionalPulmonologist" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.interventional_pulmonologist"/>
+        </label>
+
+    </div>
+
+</div>
+
+
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="pneumologist" value="1" class="custom-control-input"/>
+        <label for="pneumologist" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.pneumologist"/>
+        </label>
+    </div>
+</div>
+
+
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="thoracicSurgeon" value="1" class="custom-control-input"/>
+        <label for="thoracicSurgeon" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.thoracic_surgeon"/>
+        </label>
+
+    </div>
+</div>
+
+
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="generalPractitioner" value="1" class="custom-control-input"/>
+        <label for="generalPractitioner" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.general_practitioner"/>
+        </label>
+    </div>
+</div>
+
+
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="distributor" value="1" class="custom-control-input"/>
+        <label for="distributor" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.distributor"/>
+        </label>
+
+    </div>
+</div>
+
+
+<div class="form-group other_check">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <input type="checkbox"  value="1" class="custom-control-input"/>
+        <label for="specialistOther" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.specialist_other"/>
+        </label>
+    </div>
+
+    <f:form.textfield property="specialistOther" class="form-control"/>
+</div>
+
+<hr>
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="informationProductPortfolio" value="1" class="custom-control-input"/>
+        <label for="informationProductPortfolio" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.information_product_portfolio"/>
+        </label>
+
+    </div>
+</div>
+
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="informaztionClinicalEvidence" value="1" class="custom-control-input"/>
+        <label for="informaztionClinicalEvidence" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.informaztion_clinical_evidence"/>
+        </label>
+
+    </div>
+</div>
+
+<div class="form-group other_check">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <input type="checkbox" value="1" class="custom-control-input"/>
+        <label for="informationOther" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.information_other"/>
+        </label>
+    </div>
+    <f:form.textfield property="informationOther" class="form-control"/>
+</div>
+
+<hr>
+<div class="form-group ">
+    <div class="checkbox custom-control custom-checkbox big-check">
+        <f:form.checkbox property="contact" value="1" class="custom-control-input"/>
+        <label for="contact" class="custom-control-label">
+            <f:translate key="tx_contactform_domain_model_participant.contact"/>
+        </label>
+
+    </div>
+</div>
+<div class="form-group ">
+    <label for="contactReason" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.contact_reason"/>
+    </label>
+    <f:form.textfield property="contactReason" class="form-control"/>
+</div>
+<div class="form-group ">
+    <label for="capturedBy" class="control-label">
+        <f:translate key="tx_contactform_domain_model_participant.captured_by"/>
+    </label>
+    <f:form.textfield property="capturedBy" class="form-control"/>
+</div>
+</html>

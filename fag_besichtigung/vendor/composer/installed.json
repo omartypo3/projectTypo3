@@ -1,0 +1,53 @@
+[
+    {
+        "name": "postfinancecheckout/sdk",
+        "version": "1.1.15",
+        "version_normalized": "1.1.15.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pfpayments/php-sdk.git",
+            "reference": "8a49134cf76598a2e623d9716d00f923b16c7e57"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pfpayments/php-sdk/zipball/8a49134cf76598a2e623d9716d00f923b16c7e57",
+            "reference": "8a49134cf76598a2e623d9716d00f923b16c7e57",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "php": ">=5.4"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8"
+        },
+        "time": "2019-04-17T20:22:18+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PostFinanceCheckout\\Sdk\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "customweb GmbH",
+                "homepage": "https://customweb.com"
+            }
+        ],
+        "description": "PostFinance Checkout SDK for PHP",
+        "homepage": "https://www.postfinance.ch",
+        "keywords": [
+            "api",
+            "payment",
+            "php",
+            "postfinancecheckout",
+            "sdk"
+        ]
+    }
+]

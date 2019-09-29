@@ -1,0 +1,111 @@
+{namespace fag=FRONTAL\FagExtbase\ViewHelpers}
+{namespace inst=FRONTAL\FagInstitutionManagement\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div class="city-council-view">
+
+		<f:flashMessages />
+
+		<f:if condition="{peoples}">
+			<f:then>
+				<div class="row">
+					<f:for each="{peoples}" as="people" iteration="iterator">
+						<div class="col-sm-6 col-md-3">
+							<div class="city-council-item">
+								<div class="image">
+									<f:if condition="{people.image}">
+										<f:then>
+											<fag:responsiveImage src="{people.image.0.uid}" treatIdAsReference="1" imageTyposcript="{file:{maxW:500}}" cropRatio="{settings.showCityCouncil.image.cropRatio}" alt="{people.image.0.title}" />
+										</f:then>
+										<f:else>
+											<fag:responsiveImage src="4620" treatIdAsReference="0" imageTyposcript="{file:{maxW:500}}" cropRatio="{settings.showCityCouncil.image.cropRatio}" alt="{people.image.0.title}" />
+										</f:else>
+									</f:if>
+								</div>
+								<div class="city-council-list-content">
+									<h3>
+										<span class="city-council-list-header-title">
+											{people.firstName} {people.lastName}
+										</span>
+									</h3>
+
+									<f:if condition="{people.title}">
+										<f:then>
+											<f:if condition="{people.titleAgency}">
+												<f:then>
+													<f:comment><!-- title and title agency are set --></f:comment>
+													<span class="city-council-list-title">
+														<p>{people.titleAgency}</p>
+													</span>
+												</f:then>
+												<f:else>
+													<f:comment><!-- only title is set --></f:comment>
+													<span class="city-council-list-title">
+														<p>{people.title}</p>
+													</span>
+												</f:else>
+											</f:if>
+										</f:then>
+									</f:if>
+
+									<f:comment><!-- phone --></f:comment>
+									<f:if condition="{people.telephone}">
+										<span class="city-council-list-phone">
+											<p><span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{people.telephone}</p>
+										</span>
+									</f:if>
+
+									<f:comment><!-- mobile phone --></f:comment>
+									<f:if condition="{people.mobilephone}">
+										<span class="city-council-list-mobilephone">
+											<p><span class="mobilephone-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{people.mobilephone}</p>
+										</span>
+									</f:if>
+
+									<f:comment><!-- email --></f:comment>
+									<f:if condition="{people.email}">
+										<span class="city-council-list-mail">
+											<p><span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span><f:link.email email="{people.email}" title="E-Mail"><inst:formatEmail email="{people.email}" /></f:link.email></p>
+										</span>
+									</f:if>
+
+									<div class="categories-wrapper">
+										<div class="categories">
+											<f:if condition="{people.roles}">
+													<f:for each="{people.roles}" as="role">
+														<f:if condition="{role.institution.detailSite}">
+															<f:then>
+																<span class="institution">
+																	<f:link.typolink class="more" parameter="{role.institution.detailSite}">
+																		{role.institution.title}
+																	</f:link.typolink>
+																</span>
+															</f:then>
+															<f:else>
+															<span class="institution">
+																<f:link.action pageUid="432" action="show" arguments="{institution : role.institution}" class="more">
+																	{role.institution.title}
+																</f:link.action>
+															</span>
+															</f:else>
+														</f:if>
+													</f:for>
+											</f:if>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</f:for>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="alert alert-info">
+					<f:translate key="personsNoResults" />
+				</div>
+			</f:else>
+		</f:if>
+	</div>
+</f:section>

@@ -1,0 +1,493 @@
+{namespace fag=FRONTAL\FagExtbase\ViewHelpers}
+{namespace inst=FRONTAL\FagInstitutionManagement\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="institution-single-view {f:if(condition:'{institutions -> f:count()} > 1',then:'multi-institutions')} {f:if(condition:'{actionMethodName} == \'specialShowAction\'',then:'accordeon-institutions')}">
+
+		<f:flashMessages />
+
+		<f:if condition="{institutions}">
+			<f:for each="{institutions}" as="institution">
+				<f:if condition="{institution.uid}">
+					<f:then>
+						<f:render section="accordeon" arguments="{_all}" />
+					</f:then>
+					<f:else>
+							<f:format.raw>{institution}</f:format.raw>
+					</f:else>
+				</f:if>
+			</f:for>
+		</f:if>
+</div>
+</f:section>
+
+<f:section name="accordeon">
+	<f:if condition="{institution.images}">
+		<f:if condition="{institutions -> f:count()} > 1">
+			<f:else>
+				<div class="images">
+					<div class="institution-single-flexslider">
+						<ul class="slides">
+							<f:for each="{institution.images}" as="image" iteration="iterator">
+								<li class="item-{iterator.cycle}">
+										<fag:responsiveImage src="{image.uid}" treatIdAsReference="1" imageTyposcript="{file:{maxW:500}}" cropRatio="{settings.showInstitution.image.cropRatio}" alt="{image.title}" />
+								</li>
+							</f:for>
+						</ul>
+					</div>
+				</div>
+			</f:else>
+		</f:if>
+	</f:if>
+
+	<div class="t3ddy t3ddy-accordion">
+			<div class="panel-group" role="tablist" aria-multiselectable="true">
+					<div class="accordeon panel panel-default">
+							<div class="panel-heading" role="tab" id="panel-heading-{institution.uid}">
+											<h3 class="panel-heading">
+													<a data-toggle="collapse" href="#panel-body-{institution.uid}" aria-expanded="false" aria-controls="panel-body-{institution.uid}" class="{f:if(condition:'{institutionCount} > 1',then:'collapsed')}">
+														<span class="institution-accordeon-header-title">
+																{institution.title}
+
+																<f:if condition="{institutions -> f:count()} > 1">
+																	<span class="pull-right state-symbol-wrapper">
+																		<span class="circle-plus">
+																			<span class="circle">
+																				<span class="horizontal"></span>
+																				<span class="vertical"></span>
+																			</span>
+																		</span>
+																	</span>
+																</f:if>
+
+														</span>
+													</a>
+
+													<f:if condition="{institution.institutionContactLabel}">
+														<span class="contact-label">
+															<p class="title">{institution.institutionContactLabel}</p>
+														</span>
+													</f:if>
+
+													<span class="institution-accordeon-header-left col-sm-6 pull-left">
+														<f:if condition="{institution.firstName}">
+															<f:if condition="{institution.lastName">
+																<span class="name">
+																	{institution.firstName} {institution.lastName}
+																</span>
+															</f:if>
+														</f:if>
+														<f:if condition="{institution.company}">
+															<span class="company">
+																{institution.company}
+															</span>
+														</f:if>
+														<f:if condition="{institution.address}">
+															<span class="address">
+																{institution.address}
+															</span>
+														</f:if>
+														
+														<f:if condition="{institution.zip}">
+																{institution.zip}
+														</f:if>
+		
+														<f:if condition="{institution.city}">
+															{institution.city}
+														</f:if>
+													</span>
+													<span class="institution-accordeon-header-right col-sm-6 pull-left">
+
+														<f:if condition="{institution.phone}">
+															<span class="phone">
+																<span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{institution.phone}
+															</span>
+														</f:if>
+
+														<f:if condition="{institution.mobile}">
+															<span class="mobile">
+																<span class="mobile-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{institution.mobile}
+															</span>
+														</f:if>
+
+														<f:if condition="{institution.fax}">
+															<span class="fax">
+																<span class="fax-icon"><fag:svgToHtml path="{f:uri.image(src:4580, treatIdAsReference:0, absolute:0)}" /></span>{institution.fax}
+															</span>
+														</f:if>
+
+														<f:if condition="{institution.email}">
+															<span class="mail">
+																<f:link.email email="{institution.email}">
+																	<span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span>{institution.email}
+																</f:link.email>
+															</span>
+														</f:if>
+
+														<f:if condition="{institution.www}">
+															<span class="www">
+																<f:link.typolink parameter="{institution.www}" target="_blank">
+																	<span class="www-icon"><fag:svgToHtml path="{f:uri.image(src:4569, treatIdAsReference:0, absolute:0)}" /></span><inst:formatWww www="{institution.www}" />
+																</f:link.typolink>
+															</span>
+														</f:if>
+													</span>
+													<span class="clearfix"></span>
+											</h3>
+							</div>
+							<div class="panel-collapse collapse {f:if(condition:'{institutionCount} <= 1',then:'in')}" id="panel-body-{institution.uid}" aria-labelledby="panel-heading-{institution.uid}" role="tabpanel" aria-expanded="false">
+									<div class="panel-body {f:if(condition:'{institution.events}',then:'has-events')} {f:if(condition:'{institution.links}',then:'has-links')}">
+											<hr>
+											<f:if condition="{institution.images}">
+												<f:if condition="{institutions -> f:count()} > 1">
+													<div class="images">
+														<div class="institution-single-flexslider-list">
+															<ul class="slides">
+																<f:for each="{institution.images}" as="image" iteration="iterator-images">
+																	<li class="item-{iterator-images.cycle}">
+																		<fag:responsiveImage src="{image.uid}" treatIdAsReference="1" imageTyposcript="{file:{maxW:500}}" cropRatio="{settings.listInstitution.image.multi.cropRatio}" alt="{image.originalResource.name}" />
+																	</li>
+																</f:for>
+															</ul>
+														</div>
+													</div>
+												</f:if>
+											</f:if>
+
+											<f:if condition="{institution.roles}">
+												<div class="institution-contact {f:if(condition: '{institution.roles -> f:count()} > 0', else: 'institution-contact-not-available')}">
+													<div class="row">
+															<f:for each="{institution.roles}" as="role">
+																	<div class="col-sm-12 role-title">
+																			<p class="title">{role.title}</p>
+																	</div>
+																	<div class="col-sm-6">
+																			<p>{role.user.0.firstName} {role.user.0.lastName}</p>
+
+																			<f:comment><!-- check if role has a company --></f:comment>
+																			<f:if condition="{role.company}">
+																					<f:then>
+																							<p>{role.company}</p>
+																					</f:then>
+																					<f:else>
+																						<f:if condition="{role.user.0.company}">
+																							<f:if condition="{role.hideCompany}">
+																								<p>{role.user.0.company}</p>
+																							</f:if>
+																						</f:if>
+																					</f:else>
+																			</f:if>
+
+																			<f:comment><!-- check if role has an address--></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.address}">
+																					<f:then>
+																							<p>{role.address}</p>
+																					</f:then>
+																					<f:else>
+																						<f:if condition="{role.user.0.address}">
+																							<f:if condition="{role.hideAddress}">
+																								<p>{role.user.0.address}</p>
+																							</f:if>
+																						</f:if>
+																					</f:else>
+																			</f:if>
+																			
+																			<f:comment><!-- check if role has a zip and city--></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.zip}">
+																					<f:if condition="{role.city}">
+																							<f:then>
+																									<p>{role.zip} {role.city}</p>
+																							</f:then>
+																							<f:else>
+																								<f:if condition="{role.user.0.zip}">
+																									<f:if condition="{role.user.0.city}">
+																										<f:if condition="{role.hideZip}">
+																											<f:else>
+																												<f:if condition="{role.hideCity}">
+																													<f:else>
+																														<p>{role.user.0.zip} {role.user.0.city}</p>
+																													</f:else>
+																												</f:if>
+																											</f:else>
+																										</f:if>
+																									</f:if>
+																								</f:if>
+																							</f:else>
+																					</f:if>
+																			</f:if>
+																	</div>
+																	<div class="col-sm-6">
+																			
+																			<f:comment><!-- check if role has a phone number--></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.phone}">
+																					<f:then>
+																							<p><span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{role.phone}</p>
+																					</f:then>
+																					<f:else>
+																						<f:if condition="{role.user.0.telephone}">
+																							<f:if condition="{role.hidePhone}">
+																								<f:else>
+																									<p><span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{role.user.0.telephone}</p>
+																								</f:else>
+																							</f:if>
+																						</f:if>
+																					</f:else>
+																			</f:if>
+
+																			<f:comment><!-- check if role has a fax number --></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.fax}">
+																					<f:then>
+																							<p><span class="fax-icon"><fag:svgToHtml path="{f:uri.image(src:4580, treatIdAsReference:0, absolute:0)}" /></span>{role.fax}</p>
+																					</f:then>
+																					<f:else>
+																						<f:if condition="{role.user.0.fax}">
+																							<f:if condition="{role.hideFax}">
+																								<f:else>
+																									<p><span class="fax-icon"><fag:svgToHtml path="{f:uri.image(src:4580, treatIdAsReference:0, absolute:0)}" /></span>{role.user.0.fax}</p>
+																								</f:else>
+																							</f:if>
+																						</f:if>
+																					</f:else>
+																			</f:if>
+
+																			<f:comment><!-- chekc if role has a mobile number --></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.mobile}">
+																					<f:then>
+																						<p><span class="mobile-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{role.mobile}</p>
+																					</f:then>
+																					<f:else>
+																						<f:if condition="{role.user.0.mobilephone}">
+																							<f:if condition="{role.hideMobile}">
+																								<f:else>
+																									<p><span class="mobile-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{role.user.0.mobilephone}</p>
+																								</f:else>
+																							</f:if>
+																						</f:if>
+																					</f:else>
+																			</f:if>
+
+																			<f:comment><!-- check if role has an email --></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.email}">
+																					<f:then>
+																							<p class="email"><span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span><f:link.email email="{role.email}" title="E-Mail">{role.email}</f:link.email></p>
+																					</f:then>
+																					<f:else>
+																						<f:if condition="{role.user.0.email}">
+																							<f:if condition="{role.hideEmail}">
+																								<f:else>
+																									<p class="email"><span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span><f:link.email email="{role.user.0.email}" title="E-Mail">{role.user.0.email}</f:link.email></p>
+																								</f:else>
+																							</f:if>
+																						</f:if>
+																					</f:else>
+																			</f:if>
+
+																			<f:comment><!-- check if role has a www --></f:comment>
+																			<f:comment><!-- otherwise use user data --></f:comment>
+																			<f:if condition="{role.www}">
+																				<f:then>
+																						<p class="www pull-right"><span class="www-icon"><f:link.typolink parameter="{role.www}" target="_blank"><fag:svgToHtml path="{f:uri.image(src:4569, treatIdAsReference:0, absolute:0)}" /></f:link.typolink></span></span></p>
+																				</f:then>
+																				<f:else>
+																					<f:if condition="{role.user.0.www}">
+																						<f:if condition="{role.hideWww}">
+																							<f:else>
+																								<p class="www pull-right"><span class="www-icon"><f:link.typolink parameter="{role.user.0.www}" target="_blank"><fag:svgToHtml path="{f:uri.image(src:4569, treatIdAsReference:0, absolute:0)}" /></f:link.typolink></span></span></p>
+																							</f:else>
+																						</f:if>
+																					</f:if>
+																				</f:else>
+																			</f:if>																									
+																	</div>
+															</f:for>
+													</div>
+												</div>
+											</f:if>
+
+											<div class="description">
+												<f:format.html>{institution.description}</f:format.html>
+											</div>
+
+											<div class="categories">
+													<f:for each="{institution.categories}" as="category">
+															<span class="category-item">
+																	{category.title}
+															</span>
+													</f:for>
+											</div>
+
+											<f:if condition="{institution.logo}">
+												<div class="institution-logo">
+													<fag:responsiveImage src="{institution.logo.uid}" treatIdAsReference="1" imageTyposcript="{file:{maxW:500,maxH:200}}" alt="{institution.logo.title}" />
+												</div>
+											</f:if>
+
+											<f:comment><!-- Events for institution--></f:comment>
+											<f:if condition="{institution.events}">
+													<div class="institution-events-list container">
+															<hr>
+															<div class="row">
+																	<f:for each="{institution.events}" as="event">
+																		<f:if condition="{f:format.date(date: event.start, format: 'Y-m-d')} < {f:format.date(date: actualDate, format: 'Y-m-d')}">
+																			<f:else>
+																				<div class="institution-event">
+																						<div class="col-sm-3 date">
+																								<span class="event-arrow"></span>
+																								<span class="day">
+																										<f:format.date format="%d">{event.start}</f:format.date>
+																								</span>
+																								<span class="month">
+																										<f:format.date format="%B">{event.start}</f:format.date>
+																								</span>
+																						</div>
+																						<div class="col-sm-9">
+																								<h5>{event.title}</h5>
+																								<f:if condition="{event.teaserText}">
+																										<f:then>
+																												<f:format.html><f:format.crop maxCharacters="{settings.cropMaxCharacters}" respectWordBoundaries="1">{event.teaserText}</f:format.crop></f:format.html>
+																										</f:then>
+																										<f:else>
+																												<f:format.crop maxCharacters="{settings.cropMaxCharacters}" respectWordBoundaries="1"><f:format.stripTags>{event.bodyText}</f:format.stripTags></f:format.crop>
+																										</f:else>
+																								</f:if>
+																						</div>
+																						<div class="clearfix"></div>
+																						<f:link.action
+																						controller="Event"
+																						action="show"
+																						extensionName="fagcalendar"
+																						pluginName="Calendarview"
+																						pageUid="422"
+																						arguments="{event:event}"
+																						class="more">
+																						<f:translate key="tx_faginstitutionmanagement_domain_model_event.more" />
+																					</f:link.action>
+																				</div>
+																			</f:else>																					
+																		</f:if>
+																	</f:for>
+															</div>
+													</div>
+											</f:if>
+
+											<f:comment><!-- links for institution --></f:comment>
+											<f:if condition="{institution.links}">
+												<div class="links">
+													<h4>Onlinedienste</h4>
+													<f:for each="{institution.links}" as="link" iteration="links-iterator">
+														<f:if condition="{links-iterator.isFirst}">
+															<div class="row divider">
+																<hr>
+															</div>
+														</f:if>
+														<div class="row link-row {f:if(condition:'{links-iterator.isFirst}',then:'first-link')}">
+																<div class="col-sm-9 col-xs-7">
+																		<span class="link-title">{link.title}</span>
+																</div>
+																<div class="col-sm-3 col-xs-5">
+																		<span class="linklist pull-right">
+																				<f:if condition="{link.link}">
+																						<f:if condition="{link.linkTarget}">
+																								<f:then>
+																										<f:link.external class="link-external" uri="{link.link}" target="_blank">
+																												<f:render partial="Icons/LinkExternal" />
+																										</f:link.external>
+																								</f:then>
+																								<f:else>
+																										<f:link.page target="" class="link-internal" pageUid="{link.link}">
+																												<f:render partial="Icons/LinkDefault" />
+																										</f:link.page>
+																								</f:else>
+																						</f:if> 
+																				</f:if>
+																				<f:if condition="{link.linkDownload}">
+																						<f:link.page class="link-file" pageUid="{link.linkDownload}" target="_blank">
+																								<f:render partial="Icons/File" arguments="{type: link.linkDownloadIcon}" />
+																						</f:link.page>
+																				</f:if>
+																				<f:if condition="{link.linkForm}">
+																						<f:if condition="{link.price}">
+																								<f:then>
+																										<f:link.page 
+																												class="link-form" 
+																												additionalParams="{
+																														link: link.uid
+																												}"
+																												additionalAttributes="{
+																														data-toggle: 'tooltip', 
+																														data-placement: 'right'
+																												}"
+																												title="{link.price} CHF"
+																												pageUid="{link.linkForm}">
+																												<f:render partial="Icons/Basket" />
+																										</f:link.page>
+																								</f:then>
+																								<f:else>
+																										<f:link.page 
+																												class="link-form" 
+																												additionalParams="{
+																														link: link.uid
+																												}"
+																												pageUid="{link.linkForm}">
+																												<f:render partial="Icons/Basket" />
+																										</f:link.page>
+																								</f:else>
+																						</f:if>
+																				</f:if>
+																		</span>
+																</div>															
+															</div>
+															<div class="row divider">
+																<hr>
+															</div>
+													</f:for>
+												</div>
+											</f:if>
+									</div>
+							</div>
+					</div>
+			</div>
+	</div>
+
+	<f:if condition="{institution.images -> f:count()} > 0">
+		<fag:pageRenderer.addJsFooterInlineCode name="fag_institution_management">
+
+				$('h3.panel-title > a').click(function() {
+					$(this).closest('.accordeon').find('.institution-single-flexslider').flexslider({
+					<f:for each="{settings.flexslider}" as="settingValue" key="settingProperty" iteration="iterator">
+						{settingProperty}: {settingValue -> f:format.raw()}<f:if condition="{iterator.isLast}"><f:else>,</f:else></f:if> </f:for>
+					});
+				});
+
+				$('h3.panel-heading > a').click(function(){
+					$(this).closest('.accordeon').find('.institution-single-flexslider-list').flexslider({
+						<f:for each="{settings.flexslider}" as="settingValue" key="settingProperty" iteration="iterator">
+						{settingProperty}: {settingValue -> f:format.raw()}<f:if condition="{iterator.isLast}"><f:else>,</f:else></f:if> </f:for>
+					});
+				});
+
+		</fag:pageRenderer.addJsFooterInlineCode>
+	</f:if>
+</f:section>
+
+<f:section name="Headline">
+
+    <div class="row">
+				<div class="col-sm-9">
+            <div class="link-headline">
+                <b>{title}</b>    
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+</f:section>

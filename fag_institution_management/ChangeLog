@@ -1,0 +1,42 @@
+19-08-22 Agentur Frontal AG <rk@frontal.ch>
+	- clean code
+	- sort events on list view
+	* v1.8.7
+
+19-08-15 Agentur Frontal AG <rk@frontal.ch>
+	- add new field for management deputy and management deputy position
+	- adjust fluid template for institutions with own detail site
+	* v1.8.6
+
+19-08-14 Agentur Frontal AG <rk@frontal.ch>
+	- add new field detail Site for institutions
+	* v1.8.5
+
+19-08-13 Agentur Frontal AG <rk@frontal.ch>
+	- change TCA definition to sort events on institutions
+	* v1.8.2
+
+19-08-12 Agentur Frontal AG <rk@frontal.ch>
+	- add possibility to show a person in register
+	- add switchable controller actions
+	* v1.8
+
+19-05-07 Agentur Frontal AG <rk@frontal.ch>
+	- add possibility to select content elements in plugin to
+	- add possibility to place more than one plugin on the same site
+	- add new fields on user model to define management and management position
+	- add switchable controller actions
+	* v1.7
+
+19-06-05 Agentur Frontal AG  <rk@frontal.ch>
+	- add service to clean personslist
+	- change ordering in user repository
+	- add possibility to invite a user for frontend editing
+	- clean backend mask for edit user
+	- add own Evaluation for username field
+	* v1.6
+
+19-05-11 Agentur Frontal AG  <rk@frontal.ch>
+	- add new model for links
+	- add new fields for model rule to override user base data 
+	* v1.5

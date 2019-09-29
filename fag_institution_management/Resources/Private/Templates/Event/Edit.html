@@ -1,0 +1,64 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <f:render partial="Institution/breadCrumb"/>
+    <div class="Institution-s2d">
+        <f:form action="update" name="event" object="{event}" enctype="multipart/form-data">
+            <div class="formbody">
+                <f:render partial="Event/EventUpdate" arguments="{_all}"/>
+                <div class="submit_container">
+                    <f:form.hidden property="institution" value="{event.institution}"/>
+                    <div class="deleteLink submit_container">
+                        <a href="javascript:{}" class="deleteTermin button" style="margin-right: 1em;"><i
+                                class="fa fa-trash"></i>Termin löschen</a>
+                        <input type="hidden" id="deleteeventlink"
+                               value=" {f:uri.action(action: 'delete', arguments: {event: event})}">
+                        <f:form.submit value="Termin speichern"/>
+                    </div>
+                </div>
+            </div>
+        </f:form>
+        <div class="toDelete--wrapper image" style="display: none;">
+            <div class="inside">
+                <p>Soll das Bild entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+                <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                <button id="bt_confirme"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!</button>
+                <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+            </div>
+        </div>
+        <div class="toDelete--wrapper date" style="display: none;">
+            <div class="inside">
+                <p>Soll das Bild entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+                <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                <button id="bt_confirmdate" index="0"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!</button>
+                <button class="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+            </div>
+        </div>
+        <div class="toDelete--wrapper downloads" style="display: none;">
+            <div class="inside">
+                <p>Soll das Bild entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+                <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                <button class="bt_confirmdownloadsupdate" index="0"><i class="fa fa-trash" aria-hidden="true"></i>
+                    Löschen!
+                </button>
+                <button class="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+            </div>
+        </div>
+        <div class="toDelete--wrapper links" style="display: none;">
+            <div class="inside">
+                <p>Soll das Bild entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+                <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                <button id="bt_confirmlinks" index="0"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!</button>
+                <button class="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+            </div>
+        </div>
+        <div id="confirmMessage" class="toDelete--wrapper">
+            <div class="inside">
+                <p class="changeMessage">Soll der Termin mit allen dazugehörigen Inhalten gelöscht werden?</p>
+                <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                <button id="bt_confirmevent"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!</button>
+                <button id="bt_cancelevent"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+            </div>
+        </div>
+    </div>
+</f:section>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-08-07T12:15:55Z" product-name="pingag_jobs">
+		<header/>
+		<body>
+			<trans-unit id="list.filter.type">
+				<source>All vacancies</source>
+			</trans-unit>
+			<trans-unit id="list.filter.section">
+				<source>All working areas</source>
+			</trans-unit>
+			<trans-unit id="list.filter.location">
+				<source>All locations</source>
+			</trans-unit>
+			<trans-unit id="list.noitems">
+				<source>No vacancies for your filter criteria were found.</source>
+			</trans-unit>
+			<trans-unit id="detail.apply">
+				<source>Apply</source>
+			</trans-unit>
+			<trans-unit id="detail.share">
+				<source>Recommend</source>
+			</trans-unit>
+			<trans-unit id="detail.print">
+				<source>Print</source>
+			</trans-unit>
+			<trans-unit id="detail.headings.tasks">
+				<source>Your tasks</source>
+			</trans-unit>
+			<trans-unit id="detail.headings.profile">
+				<source>Your profile</source>
+			</trans-unit>
+			<trans-unit id="detail.headings.offer">
+				<source>We provide</source>
+			</trans-unit>
+			<trans-unit id="detail.headings.location">
+				<source>Medbase location</source>
+			</trans-unit>
+			<trans-unit id="list.headings.title">
+				<source>Job title</source>
+			</trans-unit>
+			<trans-unit id="list.headings.quota">
+				<source>Workload</source>
+			</trans-unit>
+			<trans-unit id="list.headings.section">
+				<source>Working area</source>
+			</trans-unit>
+			<trans-unit id="list.headings.location">
+				<source>Location</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

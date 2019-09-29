@@ -1,0 +1,59 @@
+<main>
+    <h3 class="kp-head-inst ">{institution.title}</h3>
+    <f:comment>
+        <f:link.external class="kp-externallink " uri="{institution.www}" target="_blank">Zum
+            Eintrag auf der
+            Website <i class="fa fa-external-link-square" aria-hidden="true"></i></f:link.external>
+
+    </f:comment>
+
+    <div class="kp-nav-inst ">
+        <!-- indexer::stop -->
+        <nav class="mod_customnav kopla-navTabBar kopla-navTabBar">
+
+            <a href="#" class="invisible">Navigation überspringen</a>
+
+            <ul class="level_1 clearfix tab">
+                <li class=" trail">
+                    <f:link.action pageUid="{settings.start}" action="edit"
+                                   arguments="{institution:'{institution.uid}'}"
+                                   class="trail"
+                                   title="Start">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <span class="navText">Start</span>
+                    </f:link.action>
+                </li>
+                <f:comment>
+                    <li class="first">
+                        <f:link.action pageUid="{settings.personen}"
+                                       arguments="{institution:'{institution.uid}'}" title="Personen"
+                                       class="first personen">
+                            <i class="fa fa-users" aria-hidden="true"></i> <span class="navText">Personen</span>
+                        </f:link.action>
+                    </li>
+                </f:comment>
+
+                <li>
+                    <f:link.action action="nextStep" pageUid="{settings.termine}"
+                                   arguments="{institution:'{institution.uid}'}" title="Termine">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> <span class="navText">Termine</span>
+                    </f:link.action>
+                </li>
+                <li>
+                    <a href="#"><b>BETA-Version</b></a>
+                </li>
+            </ul>
+            <ul class="tab" style="border:none;">
+                <li style="border:none;">&nbsp;</li>
+                <li style="border:none;">&nbsp;</li>
+                <li style="border:none; text-transform: none;">
+                    <div>Bitte melden Sie Fehler direkt an Tony Steinmann ts@frontal.ch</div>
+                    <div>Die Bearbeitung für Ansprechpartner ist noch nicht verfügbar.</div>
+                </li>
+            </ul>
+        </nav>
+        <!-- indexer::continue -->
+    </div>
+
+
+</main>

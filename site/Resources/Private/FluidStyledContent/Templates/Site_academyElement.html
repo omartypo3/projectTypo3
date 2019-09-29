@@ -1,0 +1,21 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<section class="academy" id="academy-{data.uid}-section" style="background: url({f:uri.image(image: '{files.0}')}) no-repeat top center; background-size: cover;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-1">
+                <video id="academyVideo" class="academy__video" poster="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'placeholderVideocontent')}">
+                    <source src="{f:uri.image(image: '{video.0}')}" type="video/mp4">
+                    //The return of the #sgeagles Eintracht Frankfurt in the USA
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="col-md-4 academy__content">
+                <div class="academy-logo">
+                    <img class="academy__tv-logo" src="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'academyTvLogo')}" alt="eintracht tv">
+                </div>
+                <h2 class="academy__title">{data.header}</h2>
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+        </div>
+    </div>
+</section>

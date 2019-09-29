@@ -1,0 +1,38 @@
+<div class="element_3spaltig">
+    <f:for as="product" each="{products}" key="i">
+        <div class="col{i}">
+            <div class="csc-textpic csc-textpic-center csc-textpic-above">
+                <div class="csc-textpic-imagewrap">
+                    <div class="csc-textpic-center-outer">
+                        <div class="csc-textpic-center-inner">
+                            <div class="csc-textpic-image csc-textpic-last">
+                                <f:variable name="img"
+                                            value="{f:uri.image(image: '{product.files.0}')}"/>
+                                <img
+                                        src="{img}"
+                                        alt="" width="607" height="178">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="csc-header csc-header-n2">
+                <h1>{product.data.title}</h1>
+            </div>
+
+            <f:format.html>{product.data.content}</f:format.html>
+            <p class="bodytext">
+                <f:if condition="{product.data.link -> v:math.round()} > 0">
+                    <f:then>
+                        <v:variable.set name="url" value="{f:uri.page(pageUid: '{product.data.link}', absolute: '1')}" />
+                    </f:then>
+                    <f:else>
+                        <v:variable.set name="url" value="{f:uri.typolink(parameter: '{product.data.link}')}" />
+                    </f:else>
+                </f:if>
+                <a href="{url}"  class="download">{product.data.link_title}</a>
+            </p>
+        </div>
+    </f:for>
+</div>

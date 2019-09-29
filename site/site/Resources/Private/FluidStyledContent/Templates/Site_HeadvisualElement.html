@@ -1,0 +1,9 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<f:if condition="{files.0}">
+    <f:then>
+        <div class="headvisual" id="headvisual-{data.uid}-section" style="background-image:url('{f:uri.image(image: '{files.0}')}');"></div>
+    </f:then>
+    <f:else>
+        <div class="headvisual" id="headvisual-{data.uid}-section"></div>
+    </f:else>
+</f:if>

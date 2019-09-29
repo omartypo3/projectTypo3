@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9;IE=10;IE=Edge" />
+  <link rel="stylesheet" href="css/swiper.css" />
+  <link rel="stylesheet" href="css/style.min.css" />
+
+  <!-- <link rel="shortcut icon" type="image/png" href="img/favicon.png" /> -->
+  <title>Eintracht</title>
+</head>
+
+<body>
+  <header class="container-fluid">
+    <div class="row">
+      <div class="header d-flex col-md-12">
+        <a class="navbar-brand header-nav mr-auto" href="#">
+          <img class="header-nav__logo" src="img/logo/eintracht_logo.png" alt="eintracht logo" />
+          <img class="header-nav__signet" src="img/logo/eintracht_signet.png" alt="eintracht logo" />
+        </a>
+        <ul class="nav header-lang">
+          <li class="header-lang__item ">
+            <span class="header-lang__title">fr</span>
+            <a class="nav-link">
+              <img class="header-lang__icon" src="img/svg/countries/france.svg" alt="france language icon" />
+            </a>
+          </li>
+          <li class="header-lang__item">
+            <span class="header-lang__title">de</span>
+            <a class="nav-link">
+              <img class="header-lang__icon" src="img/svg/countries/germany.svg" alt="germany language icon" />
+            </a>
+          </li>
+          <li class="header-lang__item">
+            <span class="header-lang__title">jp</span>
+            <a class="nav-link">
+              <img class="header-lang__icon" src="img/svg/countries/japan.svg" alt="japan language icon" />
+            </a>
+          </li>
+          <li class="header-lang__item">
+            <span class="header-lang__title">cn</span>
+            <a class="nav-link">
+              <img class="header-lang__icon" src="img/svg/countries/china.svg" alt="china language icon" />
+            </a>
+          </li>
+          <li class="header-lang__item">
+            <span class="header-lang__title">ar</span>
+            <a class="nav-link">
+              <img class="header-lang__icon" src="img/svg/countries/uae.svg" alt="uae language icon" />
+            </a>
+          </li>
+          <li id="chosen-lang" class="header__chosen-lang">
+            <span class="header-lang__title">en</span>
+            <a class="nav-link">
+              <img class="header-lang__icon" src="img/svg/countries/uk.svg" alt="uk language icon" />
+            </a>
+          </li>
+        </ul>
+        <nav class="header__menu-icon align-self-center">
+          <img class="header__menu--open" src="img/svg/nav_open.svg" alt="open navigation image">
+          <img class="header__menu--close close-menu" src="img/svg/nav_close.svg" alt="close navigation image">
+        </nav>
+      </div>
+    </div>
+
+  </header>
+  <div class="navigation container-fluid ">
+    <div class="navigation__bg"></div>
+    <div class="row w-100 h-100 d-flex align-items-center">
+      <div class="navigation__items col-md-10 col-lg-7 ml-auto align-items-center">
+        <ul>
+          <li class="nav-link navigation__item"><a href="">Building bridges</a></li>
+          <li class="nav-link navigation__item navigation__item--margin"><a href="">Why internationalize</a></li>
+          <li class="nav-link navigation__item navigation__item--margin"><a href="">Three pillars</a></li>
+          <li class="nav-link navigation__item"><a href="">Partners & projects</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-to-sections">
+    <div class="scroll-to-sections__pagination">
+      <button id="previous" class="button--up"></button>
+      <span id="intro" class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+      <span id="why-inter" class="swiper-pagination-bullet"></span>
+      <span id="three-pillars" class="swiper-pagination-bullet"></span>
+      <span id="quotes" class="swiper-pagination-bullet"></span>
+      <span id="sgeagles" class="swiper-pagination-bullet"></span>
+      <span id="newsroom" class="swiper-pagination-bullet"></span>
+      <button id="next" class="button--down"></button>
+    </div>
+  </div>
+  <section class="intro" id="intro-section">
+    <video id="introVideo" class="intro__video" autoplay muted loop>
+      <source src="img/video/thereturn.mp4" type="video/mp4">
+      //The return of the #SGEagles Eintracht Frankfurt in the USA
+      Your browser does not support the video tag.
+    </video>
+    <div class="container-fluid intro__container">
+      <div class="row">
+        <div class="col-md-5 ml-auto">
+          <h1 class="intro__title">Building bridges</h1>
+          <p class="intro__desc">An Eintracht Frankfurt International Concept</p>
+        </div>
+      </div>
+      <div class="local-scroll">
+        <p>See more</p>
+        <a class="scroll-down">
+          <img src="img/svg/arrow_down-primary.svg" alt="">
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="why-inter" id="why-inter-section">
+    <div class="container-fluid">
+      <div class="row  justify-content-md-center">
+        <div class="col-md-7">
+          <h2 class="why-inter__title--desktop">Why Internationalize?</h2>
+          <h2 class="why-inter__title--mobile">Why Interna- tionalize?</h2>
+
+          <p class="why-inter__desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            At vero eos et accusam et justo duo dolores et ea rebum.
+            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </p>
+        </div>
+        <div class="col-md-3 col-lg-2 offset-lg-1 why-inter__buttons">
+          <a href="#" class="custom-btn custom-btn--medium">club</a>
+          <a href="#" class="custom-btn custom-btn--medium">region</a>
+          <a href="#" class="custom-btn custom-btn--medium">values</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="three-pillars">
+    <div class="container-fluid three-pillars__container">
+      <div class="row">
+        <div class="col-sm-12 col-lg-8 mx-auto">
+          <h2 class="three-pillars__title">three pillars</h2>
+          <h3 class="three-pillars__sub-title">Optionale Zwischenheadline</h3>
+          <p class="three-pillars__desc">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+            clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit
+            amet, consetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.
+          </p>
+          <!-- in destop view -->
+          <div class="three-pillars__pillars text-left">
+            <img src="img/pillar/pillars_desktop.png" alt="pillars">
+            <div class="d-flex justify-content-around">
+              <a href="#" class="custom-btn custom-btn--small">see more</a>
+              <a href="#" class="custom-btn custom-btn--small">see more</a>
+              <a href="#" class="custom-btn custom-btn--small">see more</a>
+            </div>
+
+          </div>
+          <!-- mobile view -->
+          <div class="three-pillars__slider swiper-container">
+            <div class="swiper-wrapper pb-4 mb-5">
+              <div class="swiper-slide three-pillars__slide">
+                <img src="img/pillar/pillar_mobile_1.png" alt="pillar business network">
+                <a href="#" class="custom-btn custom-btn--medium">see more</a>
+              </div>
+              <div class="swiper-slide three-pillars__slide">
+                <img src="img/pillar/pillar_mobile_2.png" alt="pillar youth">
+                <a href="#" class="custom-btn custom-btn--medium">see more</a>
+              </div>
+              <div class="swiper-slide three-pillars__slide">
+                <img src="img/pillar/pillar_mobile_3.png" alt="pillar first team">
+                <a href="#" class="custom-btn custom-btn--medium">see more</a>
+              </div>
+            </div>
+            <div class="swiper__pagination--hybrid">
+              <div class="slider__btn three-pillars__btn--prev nav--prev"></div>
+              <div class="slider__pagination three-pillars__pagination p-relative"></div>
+              <div class=" slider__btn three-pillars__btn--next nav--next"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-lg-10 mx-auto">
+          <div class="row radial-indicator text-center">
+            <div class="col-md-2 col-4 m-auto p-0 ">
+              <span id="radial0" class="radial-indicator__item"></span>
+              <p class="radial-indicator__title">countries</p>
+              <p id="radial0InitValue" class="radial-indicator__value">7</p>
+              <p id="radial0MaxValue" class="radial-indicator__value">28</p>
+            </div>
+            <div class="col-md-2 col-4 m-auto p-0 ">
+              <span id="radial1" class="radial-indicator__item"></span>
+              <p class="radial-indicator__title">continents</p>
+              <p id="radial1InitValue" class="radial-indicator__value">5</p>
+              <p id="radial1MaxValue" class="radial-indicator__value">20</p>
+            </div>
+            <div class="col-md-2 col-4 m-auto p-0 ">
+              <span id="radial2" class="radial-indicator__item"></span>
+              <p class="radial-indicator__title">players</p>
+              <p id="radial2InitValue" class="radial-indicator__value">1000</p>
+              <p id="radial2MaxValue" class="radial-indicator__value">1100</p>
+            </div>
+            <div class="col-md-2 col-4 m-auto p-0 ">
+              <span id="radial3" class="radial-indicator__item"></span>
+              <p class="radial-indicator__title">coaches</p>
+              <p id="radial3InitValue" class="radial-indicator__value">10</p>
+              <p id="radial3MaxValue" class="radial-indicator__value">40</p>
+            </div>
+            <div class="col-md-2 col-4 m-auto p-0 ">
+              <span id="radial4" class="radial-indicator__item"></span>
+              <p class="radial-indicator__title">partnerships</p>
+              <p id="radial4InitValue" class="radial-indicator__value">10</p>
+              <p id="radial4MaxValue" class="radial-indicator__value">40</p>
+            </div>
+            <div class="col-md-2 col-4 m-auto p-0 ">
+              <span id="radial5" class="radial-indicator__item"></span>
+              <p class="radial-indicator__title">camps</p>
+              <p id="radial5InitValue" class="radial-indicator__value">99</p>
+              <p id="radial5MaxValue" class="radial-indicator__value">200</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="quotes">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 swiper-container quotes__slides">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img class="quotes__slide-bg" src="img/background/bg_quote_bobic_desktop.png" alt="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                    <img class="quotes__quote-img" src="img/svg/quote.svg" alt="quote-img">
+                    <p class="quotes__quote">“ Therefore, as a club, we have to have a high presence internationally.
+                      Our goal is to create that through grassroots measures: football academies,
+                      football projects, football schools”</p>
+                    <h3 class="quotes__quote-author">- fredi bobic -</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img class="quotes__slide-bg" src="img/background/bg_quote_bobic_desktop.png" alt="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                    <img class="quotes__quote-img" src="img/svg/quote.svg" alt="quote-img">
+                    <p class="quotes__quote">“ Therefore, as a club, we have to have a high presence internationally.
+                      Our goal is to create that through grassroots measures: football academies,
+                      football projects, football schools”</p>
+                    <h3 class="quotes__quote-author">- Lorem ipsum dolor -</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img class="quotes__slide-bg" src="img/background/bg_quote_bobic_desktop.png" alt="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                    <img class="quotes__quote-img" src="img/svg/quote.svg" alt="quote-img">
+                    <p class="quotes__quote">“ Therefore, as a club, we have to have a high presence internationally.
+                      Our goal is to create that through grassroots measures: football academies,
+                      football projects, football schools”</p>
+                    <h3 class="quotes__quote-author">- fredi bobic -</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img class="quotes__slide-bg" src="img/background/bg_quote_bobic_desktop.png" alt="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                    <img class="quotes__quote-img" src="img/svg/quote.svg" alt="quote-img">
+                    <p class="quotes__quote">“ Therefore, as a club, we have to have a high presence internationally.
+                      Our goal is to create that through grassroots measures: football academies,
+                      football projects, football schools”</p>
+                    <h3 class="quotes__quote-author">- Lorem ipsum dolor -</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img class="quotes__slide-bg" src="img/background/bg_quote_bobic_desktop.png" alt="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                    <img class="quotes__quote-img" src="img/svg/quote.svg" alt="quote-img">
+                    <p class="quotes__quote">“ Therefore, as a club, we have to have a high presence internationally.
+                      Our goal is to create that through grassroots measures: football academies,
+                      football projects, football schools”</p>
+                    <h3 class="quotes__quote-author">- fredi bobic -</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img class="quotes__slide-bg" src="img/background/bg_quote_bobic_desktop.png" alt="">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                    <img class="quotes__quote-img" src="img/svg/quote.svg" alt="quote-img">
+                    <p class="quotes__quote">“ Therefore, as a club, we have to have a high presence internationally.
+                      Our goal is to create that through grassroots measures: football academies,
+                      football projects, football schools”</p>
+                    <h3 class="quotes__quote-author">- Lorem ipsum dolor -</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper__pagination--hybrid">
+            <div class="slider__btn quotes__btn--prev nav--prev"></div>
+            <div class="slider__pagination quotes__pagination p-relative"></div>
+            <div class="slider__btn quotes__btn--next nav--next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sgeagles-bg" style="background: url('img/background/bg_partnersprojects.jpg') no-repeat bottom center; background-size: cover;">
+    <section class="sgeagles">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 offset-md-1">
+            <video id="sgeaglesVideo" class="sgeagles__video" poster="img/video/video-placeholder.png">
+              <source src="/img/video/thereturn.mp4" type="video/mp4">
+              //The return of the #SGEagles Eintracht Frankfurt in the USA
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="col-md-4 sgeagles__content">
+            <img class="sgeagles__tv-logo" src="img/svg/eintracht_tv_logo.svg" alt="eintracht tv">
+            <h2 class="sgeagles__title">#SGEagles</h2>
+            <p>Transferring the advantages of the financial, economic and logistical hub of Frankfurt to target markets
+              around the globe..</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sgeagles2">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 sgeagles-partners">
+            <div class="row">
+              <div class="col-md-6 offset-md-1">
+                <h2 class="sgeagles-partners__title">Partners & Projects</h2>
+              </div>
+              <div class="col-md-4">
+                <p>Transporting the three Building Bridges pillars of 1st team activities, youth development and business
+                  networks.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="swiper-container sgeagles-partners__swiper col-md-11 mx-auto">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="card sgeagles-partners__card">
+                      <div class="sgeagles-partners__card-header">
+                        <p class="card-title sgeagles-partners__country-title">abu dhabi</p>
+                        <img class="sgeagles-partners__country-icon" src="img/svg/countries/uae.svg" alt="uae flag">
+                      </div>
+                      <img class="sgeagles-partners__card-img card-img-top" src="img/partners/abu-dhabi.jpg"
+                        alt="article uae img">
+                      <div class="card-body sgeagles-partners__card-body">
+                        <h3 class="sgeagles-partners__title">Al Mascari Holding </h3>
+                        <p class="card-text sgeagles-partners__desc">Lorem ipsum dolor sit amet, consetetur sadipscing
+                          elitr,
+                          sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                          voluptua.
+                          At vero eos et accusam et justo duo dolores et ea rebum.
+                          Stet clita kasd gubergren</p>
+                      </div>
+                      <div class="card-body sgeagles-partners__card-btn">
+                        <a href="#" class="custom-btn custom-btn--medium">More</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card sgeagles-partners__card">
+                      <div class="sgeagles-partners__card-header">
+                        <p class="card-title sgeagles-partners__country-title">india</p>
+                        <img class="sgeagles-partners__country-icon" src="img/svg/countries/india.svg" alt="india flag">
+                      </div>
+                      <img class="sgeagles-partners__card-img card-img-top" src="img/partners/india.jpg"
+                        alt="article india img">
+                      <div class="card-body sgeagles-partners__card-body">
+                        <h3 class="sgeagles-partners__title">DAMAN</h3>
+                        <p class="card-text sgeagles-partners__desc">Hammed  Hammed Hammed Hammedonsetetur sadipscing
+                          elitr,
+                          sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                          voluptua.
+                          At vero eos et accusam et justo duo dolores et ea rebum.
+                          Stet clita kasd gubergrenLorem ipsum dolor sit amet, consetetur sadipscing
+                    
+                        
+                          Stet clita kasd gubergren</p>
+                      </div>
+                      <div class="card-body sgeagles-partners__card-btn">
+                        <a href="#" class="custom-btn custom-btn--medium">More</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card sgeagles-partners__card">
+                      <div class="sgeagles-partners__card-header">
+                        <p class="card-title sgeagles-partners__country-title">japan</p>
+                        <img class="sgeagles-partners__country-icon" src="img/svg/countries/japan.svg" alt="japan flag">
+                      </div>
+                      <img class="sgeagles-partners__card-img card-img-top" src="img/partners/japan.jpg"
+                        alt="article japan img">
+                      <div class="card-body sgeagles-partners__card-body">
+                        <h3 class="sgeagles-partners__title">Jikei Group</h3>
+                        <p class="card-text sgeagles-partners__desc">Lorem ipsum dolor sit amet, consetetur sadipscing
+                          elitr,
+                          sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                          voluptua.
+                          At vero eos et accusam et justo duo dolores et ea rebum.
+                          Stet clita kasd gubergren</p>
+                      </div>
+                      <div class="card-body sgeagles-partners__card-btn">
+                        <a href="#" class="custom-btn custom-btn--medium">More</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="card sgeagles-partners__card">
+                      <div class="sgeagles-partners__card-header">
+                        <p class="card-title sgeagles-partners__country-title">usa</p>
+                        <img class="sgeagles-partners__country-icon" src="img/svg/countries/usa.svg" alt="usa flag">
+                      </div>
+                      <img class="sgeagles-partners__card-img card-img-top" src="img/partners/usa.jpg"
+                        alt="article usa img">
+                      <div class="card-body sgeagles-partners__card-body">
+                        <h3 class="sgeagles-partners__title">EF Michigan Academy </h3>
+                        <p class="card-text sgeagles-partners__desc">Lorem ipsum dolor sit amet, consetetur sadipscing
+                          elitr,
+                          sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                          voluptua.
+                          At vero eos et accusam et justo duo dolores et ea rebum.
+                          Stet clita kasd gubergren</p>
+                      </div>
+                      <div class="card-body sgeagles-partners__card-btn">
+                        <a href="#" class="custom-btn custom-btn--medium">More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper__pagination--hybrid">
+                  <div class="slider__btn sgeagles-partners__btn--prev nav--prev"></div>
+                  <div class="slider__pagination p-relative"></div>
+                  <div class="slider__btn sgeagles-partners__btn--next nav--next"></div>
+                </div>
+                
+  
+              </div>
+  
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </section>
+  </div>
+ 
+  <div class="slant-up-white--desk" style="background-image: url('img/svg/slant_up_white_desktop.svg');">
+  </div>
+
+  <div class="slant-up-white--mobile" style="background-image: url('img/svg/slant_up_white_mobile.svg');">
+  </div>
+  <section class="newsroom">
+    <div class="container-fluid text-center">
+      <h2 class="newsroom__title">newsroom</h2>
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <!-- <iframe id="newsroom__iframe" src="" frameBorder="0"></iframe> -->
+          <script type="text/javascript" id="wb-QTEL5ccf122579f37iv7o"
+            src="https://app.newsroom.co/embed.js?newsroom=eintrachtbuildingbridges&embed_id=wb-QTEL5ccf122579f37iv7o&embed_type=web">
+          </script>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mx-auto text-center newsroom__button">
+          <a href="#" class="custom-btn custom-btn--big">load more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="slant-up-black--desk" style="background-image: url('img/svg/slant_up_black_desktop.svg');"></div>
+  <div class="slant-up-black--mobile" style="background-image: url('img/svg/slant_up_black_mobile.svg');"></div>
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto">
+          <div class="footer__partners-list">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo1.png"
+                      alt="partners logo 1"></a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo2.png" alt="partners logo 2">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo3.png" alt="partners logo 3">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo4.png" alt="partners logo 4">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo5.png" alt="partners logo 5">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo1.png" alt="partners logo 6">
+                  </a></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo6.png" alt="partners logo 7">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo7.png" alt="partners logo 8">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo8.png" alt="partners logo 9">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo9.png" alt="partners logo 10">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo9.png" alt="partners logo 11">
+                  </a></div>
+              </div>
+              <div class="col-md-2">
+                <div class="footer__partners-image"><a href="#"><img src="img/logos/logo6.png" alt="partners logo 12">
+                  </a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer__menu">
+            <div class="footer__copyright px-2">
+              <p>Eintracht Frankfurt © 2019</p>
+            </div>
+            <div class="footer-menu px-2">
+              <ul class="footer-menu__items">
+                <li class="footer-menu__item"><a href="#">Building Bridges</a></li>
+                <li class="footer-menu__item"><a href="#">Why Internationalize</a></li>
+                <li class="footer-menu__item"><a href="#">Three Pillars</a></li>
+                <li class="footer-menu__item"><a href="#">Partners & Projects </a></li>
+                <li class="footer-menu__item"><a href="#">Impressum </a></li>
+                <li class="footer-menu__item"><a href="#">Datenschutz</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-social__links">
+            <ul>
+              <li class="footer-social__link"><a href="#" target="_blank"><img src="img/svg/contact_facebook.svg"
+                    alt="facebook icon">
+                </a>
+              </li>
+              <li class="footer-social__link"><a href="#" target="_blank"><img src="img/svg/contact_instagram.svg"
+                    alt="instagram icon">
+                </a>
+              </li>
+              <li class="footer-social__link"><a href="#" target="_blank"><img src="img/svg/contact_youtube.svg"
+                    alt="youtube icon"> </a>
+              </li>
+              <li class="footer-social__link"><a href="#" target="_blank"><img src="img/svg/contact_mail.svg"
+                    alt="mail icon"> </a>
+              </li>
+              <li class="footer-social__link"><a href="#" target="_blank"><img src="img/svg/contact_twitter.svg"
+                    alt="twitter icon"> </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scroll.js"></script>
+  <script src="js/radialIndicator.js"></script>
+  <script src="js/swiper.js"></script>
+  <script src="js/scripts.min.js"></script>
+
+</body>
+
+</html>

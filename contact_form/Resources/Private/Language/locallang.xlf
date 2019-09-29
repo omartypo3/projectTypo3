@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-10-17T09:59:31Z" product-name="contact_form">
+		<header/>
+		<body>
+			<trans-unit id="tx_contactform_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.start_date">
+				<source>Start Date</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.end_date">
+				<source>End Date</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant">
+				<source>Participant</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.gender">
+				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.academic_title">
+				<source>Academic Title</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.first_name">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.last_name">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.company">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.interventional_pulmonologist">
+				<source>Interventional Pulmonologist</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.pneumologist">
+				<source>Pneumologist</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.thoracic_surgeon">
+				<source>Thoracic Surgeon</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.general_practitioner">
+				<source>General Practitioner (GP)</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.distributor">
+				<source>Distributor</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.specialist_other">
+				<source>Other:</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.information_product_portfolio">
+				<source>Sent product portfolio</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.informaztion_clinical_evidence">
+				<source>Sent clinical evidence</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.information_other">
+				<source>Sent other materials / topics of the discussion:</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.contact">
+				<source>Make contact by sales representative</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.contact_reason">
+				<source>Reason for contact:</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.captured_by">
+				<source>Contact at Pulmonx:</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.mandatory">
+				<source>Mandatory field</source>
+			</trans-unit>
+
+			<trans-unit id="user.firstname">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="user.lastname">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="user.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="user.password">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="user.rpeatpassword">
+				<source>Confirm Password</source>
+			</trans-unit>
+			<trans-unit id="user.oldpassword">
+				<source>Old Password</source>
+			</trans-unit>
+			<trans-unit id="user.usergroup">
+				<source>User Group</source>
+			</trans-unit>
+
+			<trans-unit id="submit">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="reset">
+				<source>Reset</source>
+			</trans-unit>
+			<trans-unit id="quickselect">
+				<source>Quick Select</source>
+			</trans-unit>
+			<trans-unit id="othercountries">
+				<source>Other Countries</source>
+			</trans-unit>
+            <trans-unit id="flux.Admin">
+                 <source>Admin page</source>
+            </trans-unit>
+            <trans-unit id="flux.Admin.description">
+				<source>Admin page layout</source>
+			</trans-unit>
+            <trans-unit id="flux.Backend">
+                 <source>Backend page</source>
+            </trans-unit>
+            <trans-unit id="flux.Backend.description">
+				<source>Backend page layout</source>
+			</trans-unit>
+            <trans-unit id="flux.Contact">
+                 <source>Contact page</source>
+            </trans-unit>
+            <trans-unit id="flux.Contact.description">
+				<source>Contact page layout</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,131 @@
+plugin.tx_faginstitutionmanagement {
+	
+	settings {
+		appendContentUidToFilterSessionName = 1
+		homeNextStep=459
+		institutionenverwalten= 460
+		meinedatenverwalten=461
+		anmeldungen=462
+		start=464
+		stammdatenbearbeiten=465
+		neuespasswort=466
+		personen=467
+		Personbearbeiten=468
+		Suchmaske=469
+		suchresultate=470
+		NeuePerson=471
+		termine=472
+		Neuetermin=473
+		userfolder=30
+		terminBearbeiten=474
+		login=29
+		##
+		## Searching
+		## 
+		searchFields = title,last_name,first_name
+		# searchFields = title,last_name,first_name,roles.institution.title
+
+		cropMaxCharacters = 150
+
+		# categories
+		categories1 {
+			active = 1
+			multiple = 0
+			parentCategory = 26
+		}
+		categories2 {
+			active = 0
+			multiple = 0
+			parentCategory = 0
+		}
+		categories3 {
+			active = 0
+			multiple = 1
+			parentCategory = 0
+		}
+
+		listInstitution {
+			limit =
+			image {
+				cropRatio = 4:3
+
+				multi {
+					cropRatio = 16:9
+				}
+			}
+		}
+
+		listPeople {
+			managementUid = 467
+			deputyUid = 550
+		}
+
+		showInstitution {
+			image {
+				cropRatio = 800:450
+			}
+		}
+
+		showCityCouncil {
+			image {
+				cropRatio = 278:187
+			}
+			pid = 418
+			respectStoragePage = 1
+		}
+
+		# Flexslider settings
+		# see: https://github.com/woothemes/FlexSlider/wiki/FlexSlider-Properties
+		flexslider {
+			animation = 'slide'
+			directionNav = false
+		}
+	}
+
+
+
+	view {
+		templateRootPaths {
+			100 =  {$plugin.tx_faginstitutionmanagement.view.templateRootPath}
+		}
+		partialRootPaths {
+			100 = {$plugin.tx_faginstitutionmanagement.view.partialRootPath}
+		}
+		layoutRootPaths {
+			100 = {$plugin.tx_faginstitutionmanagement.view.layoutRootPath}
+		}
+
+		# for mails - set path for ALL templates
+		mailTemplateRootPath = {$plugin.tx_faginstitutionmanagement.view.templateRootPath}
+		mailPartialRootPath = {$plugin.tx_faginstitutionmanagement.view.partialRootPath}
+		mailLayoutRootPath = {$plugin.tx_faginstitutionmanagement.view.layoutRootPath}
+	}
+
+	persistence {
+		storagePid = {$plugin.tx_faginstitutionmanagement.persistence.storagePid}
+	}
+
+	features {
+	}
+	
+}
+
+
+page {
+	includeJSFooter {
+		timepicker=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/timepicker.js
+		LoginStepfastLiveFilterJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/jquery.fastLiveFilter.js
+		LoginSteptablesorterJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/tablesorter.js
+		AddJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/add.js
+		tippyJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/tippy.all.min.js
+		tinymceJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/tinymce.js
+		personenJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/personen.js
+		fagInstitutionManagament = EXT:fag_institution_management/Resources/Public/JavaScript/FagInstitutionManagement.js
+		LoginStepJs=typo3conf/ext/fag_institution_management/Resources/Public/JavaScript/kopla.js
+	}
+	includeCSS {
+		timepicker = typo3conf/ext/fag_institution_management/Resources/Public/Css/timepicker.css
+		LoginStepCss= EXT:fag_institution_management/Resources/Public/Css/kopla.css
+		fagInstitutionManagement = base/Extensions/FagInstitutionManagement/Less/Styles.less
+	}
+}

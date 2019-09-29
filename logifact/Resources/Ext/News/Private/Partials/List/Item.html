@@ -1,0 +1,54 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<!--
+	=====================
+		Partials/List/Item.html
+-->
+
+<div class="inhalt_news articletype-0 topnews">
+
+    <div class="beitrag">
+        <figure class="beitrag_bild">
+
+            <div class="news-img-wrap">
+                <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}">
+                    <f:if condition="{newsItem.falMedia.0}">
+                        <f:then><img src="{f:uri.image(image:newsItem.falMedia.0)}"  width="587" height="215" alt=""></f:then>
+                        <f:else>
+                            <f:image src="{settings.list.media.dummyImage}" title="" alt="" maxWidth="587" maxHeight="215" />
+                        </f:else>
+                    </f:if>
+                </n:link>
+            </div>
+
+        </figure>
+        <div class="beitrag_datum_headline_text_mehr">
+            <!-- date -->
+            <div class="beitrag_datum">
+                <f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+
+            </div>
+
+            <!-- header -->
+            <div class="beitrag_headline">
+                <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}"> {newsItem.title}
+                </n:link>
+            </div>
+
+            <!-- teaser text -->
+            <div class="beitrag_text">
+                <div itemprop="description">
+                    {newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.html()}
+                </div>
+
+                <div class="beitrag_mehr">
+                    <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}">
+                        Weiterlesen
+                    </n:link>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>

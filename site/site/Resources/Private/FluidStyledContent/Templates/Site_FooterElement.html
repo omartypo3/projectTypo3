@@ -1,0 +1,58 @@
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <div class="footer__partners-list">
+                    <div class="row">
+                        <f:for as="partner" each="{partnerfooters}" iteration="i">
+                            <f:if condition="{i.cycle} < 7">
+                                <f:then>
+                                    <div class="col-md-2">
+                                        <div class="footer__partners-image"><a
+                                                href="{f:uri.page(pageUid: '{partner.data.link}', absolute: '1')}"><img
+                                                src="{f:uri.image(image: '{partner.files.0}')}"/> </a>
+                                        </div>
+                                    </div>
+                                </f:then>
+                            </f:if>
+
+                        </f:for>
+                    </div>
+                    <div class="row">
+                        <f:for as="partnerrow1" each="{partnerfootersrow1}" iteration="j">
+                            <f:if condition="{j.cycle} < 7">
+                                <f:then>
+                                    <div class="col-md-2">
+                                        <div class="footer__partners-image"><a
+                                                href="{f:uri.page(pageUid: '{partnerrow1.data.link}', absolute: '1')}"><img
+                                                src="{f:uri.image(image: '{partnerrow1.files.0}')}"/> </a>
+                                        </div>
+                                    </div>
+                                </f:then>
+                            </f:if>
+                        </f:for>
+                    </div>
+                </div>
+                <div class="footer__menu">
+                    <div class="footer__copyright px-2">
+                        <p>{data.subheader}</p>
+                    </div>
+                    <div class="footer-menu px-2">
+                        <f:cObject typoscriptObjectPath="lib.navifooter"/>
+                    </div>
+                </div>
+                <div class="footer-social__links">
+                    <ul>
+                        <f:for as="social" each="{socials}">
+                            <li class="footer-social__link"><a
+                                    href="{f:uri.page(pageUid: '{social.data.link}', absolute: '1')}"
+                                    target="_blank"><img src="{f:uri.image(image: '{social.files.0}')}"/>
+                            </a>
+                            </li>
+                        </f:for>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

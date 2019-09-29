@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file target-language="en" source-language="de" datatype="plaintext" original="messages" date="2018-10-10T13:58:25Z" product-name="job">
+		<header/>
+		<body>
+			<trans-unit id="tx_waeschereien_frontend.additonalinformation">
+				<source>Weitere Informationen</source>
+				<target>additional Information</target>
+			</trans-unit>
+			<trans-unit id="tx_waeschereien_frontend.pressecontact">
+				<source>Pressekontakt</source>
+				<target>Press contact</target>
+			</trans-unit>
+			<trans-unit id="tx_waeschereien_frontend.readmore">
+				<source>Weiterlesen</source>
+				<target>Continue reading</target>
+			</trans-unit>
+			<trans-unit id="tx_waeschereien_frontend.Telefon">
+				<source>Telefon</source>
+				<target>Phone</target>
+			</trans-unit>
+			<trans-unit id="tx_waeschereien_frontend.E-Mail">
+				<source>E-Mail:</source>
+				<target>E-Mail:</target>
+			</trans-unit>
+			<trans-unit id="tx_waeschereien_frontend.Fax">
+				<source>Fax:</source>
+				<target>Fax:</target>
+			</trans-unit>
+			<trans-unit id="tx_waeschereien_frontend.results">
+				<source>Ergebnisse pro Seite</source>
+				<target>Results per page</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,25 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Inhaltstyp</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.sidebarText>
+                        <TCEforms>
+                            <label>Text für Sidebar</label>
+                            <config>
+                                <type>text</type>
+                                <cols>30</cols>
+                                <rows>5</rows>
+                                <enableRichtext>1</enableRichtext>
+                            </config>
+                        </TCEforms>
+                    </settings.sidebarText>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

@@ -1,0 +1,34 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <div class="Institution-s2d">
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.Neuetermin}">
+        <div class="mod_article first last block"
+             id="kopla-meine-institutionen-verwalten-termine-neuen-termin-erstellen">
+            <div class="ce_form last tableless block">
+                <f:form action="create" enctype="multipart/form-data" name="newEvent" object="{newEvent}">
+                    <f:render partial="institution/newEvent" arguments="{_all}"/>
+                    <f:form.submit value="Create new" class="std-btn"/>
+                </f:form>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.terminBearbeiten}">
+        <f:render partial="Institution/Header" arguments="{eventuid:eventuid}"/>
+
+        <f:form action="eventUpdate" name="event" object="{event}" enctype="multipart/form-data">
+            <div class="formbody">
+                <f:render partial="Institution/eventUpdate" arguments="{eventuid:event.uid}"/>
+                <div class="submit_container">
+                    <f:comment>
+                        <button type="submit" id="ctrl_1117" value="Speichern">
+                            <i class="fa fa-floppy-o"></i> Speichern
+                        </button>
+                    </f:comment>
+                    <f:form.submit value="Speichern"/>
+                </div>
+            </div>
+        </f:form>
+    </f:if>
+    </div>
+</f:section>

@@ -1,0 +1,11 @@
+{namespace gl = Logifacttheme\Logifact\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:flashMessages />
+
+<f:if condition="{formConfiguration}">
+	<!--<gl:render overrideConfiguration="{formConfiguration}" settings="{settings}" />-->
+	<formvh:render overrideConfiguration="{formConfiguration}" />
+
+</f:if>
+
+</html>

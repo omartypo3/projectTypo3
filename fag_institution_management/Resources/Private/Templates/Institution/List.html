@@ -1,0 +1,208 @@
+{namespace fag=FRONTAL\FagExtbase\ViewHelpers}
+{namespace inst=FRONTAL\FagInstitutionManagement\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<f:if condition="{settings.disableFilterBox} != 1">
+		<f:render partial="Institution/Filter" arguments="{_all}" />
+	</f:if>
+
+	<f:if condition="{searchCategorie}">
+		<h3>{searchCategorie}</h3>
+	</f:if>
+
+	<div class="t3ddy t3ddy-accordion">
+		<div class="panel-group" role="tablist" aria-multiselectable="true">
+			<f:if condition="{institutions}">
+				<f:then>
+					<f:for each="{institutions}" as="institution">
+						<div class="accordeon panel panel-default">
+								<div class="panel-heading" role="tab" id="panel-heading-{institution.uid}">
+									<h3 class="panel-heading">
+											<a class="collapsed" data-toggle="collapse" href="#panel-body-{institution.uid}" aria-expanded="false" aria-controls="panel-body-{institution.uid}">
+												<span class="institution-accordeon-header-title">
+													{institution.title}
+
+													<span class="pull-right state-symbol-wrapper">
+														<span class="circle-plus">
+															<span class="circle">
+																<span class="horizontal"></span>
+																<span class="vertical"></span>
+															</span>
+														</span>
+													</span>
+												</span>
+											</a>
+
+											<span class="institution-accordeon-header-left col-sm-6 pull-left">
+												<f:if condition="{institution.firstName}">
+													<f:if condition="{institution.lastName">
+														<span class="name">
+															{institution.firstName} {institution.lastName}
+														</span>
+													</f:if>
+												</f:if>
+												<f:if condition="{institution.address}">
+													<span class="address">
+														{institution.address}
+													</span>
+												</f:if>
+												
+												<f:if condition="{institution.zip}">
+														{institution.zip}
+												</f:if>
+
+												<f:if condition="{institution.city}">
+													{institution.city}
+												</f:if>
+											</span>
+											<span class="institution-accordeon-header-right col-sm-6 pull-left">
+
+												<f:if condition="{institution.phone}">
+													<span class="phone">
+														<span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{institution.phone}
+													</span>
+												</f:if>
+
+												<f:if condition="{institution.mobile}">
+													<span class="mobile">
+														<span class="mobile-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{institution.mobile}
+													</span>
+												</f:if>
+
+												<f:if condition="{institution.fax}">
+													<span class="fax">
+														<span class="fax-icon"><fag:svgToHtml path="{f:uri.image(src:4580, treatIdAsReference:0, absolute:0)}" /></span>{institution.fax}
+													</span>
+												</f:if>
+
+												<f:if condition="{institution.email}">
+													<span class="mail">
+														<f:link.email email="{institution.email}">
+															<span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span>{institution.email}
+														</f:link.email>
+													</span>
+												</f:if>
+
+												<f:if condition="{institution.www}">
+													<span class="www">
+														<f:link.typolink parameter="{institution.www}" target="_blank">
+															<span class="www-icon"><fag:svgToHtml path="{f:uri.image(src:4569, treatIdAsReference:0, absolute:0)}" /></span><inst:formatWww www="{institution.www}" />
+														</f:link.typolink>
+													</span>
+												</f:if>
+											</span>
+											<span class="clearfix"></span>
+									</h3>
+								</div>
+								<div class="panel-collapse collapse" id="panel-body-{institution.uid}" aria-labelledby="panel-heading-{institution.uid}" role="tabpanel" aria-expanded="false">
+										<div class="panel-body {f:if(condition:'{institution.events}',then:'has-events')}">
+											<hr>
+
+											<f:if condition="{institution.logo}">
+												<div class="institution-logo">
+													<fag:responsiveImage src="{institution.logo.uid}" treatIdAsReference="1" imageTyposcript="{file:{maxW:500}}" cropRatio="{settings.listInstitution.image.cropRatio}" alt="{institution.logo.title}" />
+												</div>
+											</f:if>
+
+											<f:if condition="{institution.roles}">
+												<div class="roles">
+													<f:for each="{institution.roles}" as="role" iteration="iterator">
+													
+													<f:comment>
+														<f:if condition="{iterator.cycle} == 1">
+															<f:debug>{role}</f:debug>
+														</f:if>
+													</f:comment>
+													
+													<f:render partial="Institution/Role" arguments="{role:role, iterator:iterator}" />
+														
+												</f:for>
+												</div>
+											</f:if>
+
+											<f:if condition="{institution.categories}">
+												<div class="categories {f:if(condition:'{institution.description}',else:'no-description')}">
+													<f:for each="{institution.categories}" as="category">
+														<span class="category-item">
+															{category.title}
+														</span>
+													</f:for>
+												</div>
+											</f:if>
+
+											<div class="description {f:if(condition:'{institution.categories -> f:count()} > 0',else:'description-with-gap')} {f:if(condition:'{institution.description}',else:'no-description')}">
+												<f:format.html>{institution.description}</f:format.html>
+											</div>
+
+											<f:comment><!-- Events for institution--></f:comment>
+											<f:if condition="{institution.events}">
+												<div class="institution-events-list container">
+													<div class="row">
+														<f:for each="{institution.events}" as="event" iteration="events-iterator">
+															<f:comment><!-- show event only if it begins in the future --></f:comment>
+															<f:if condition="{f:format.date(date: event.start, format: 'Y-m-d')} < {f:format.date(date: actualDate, format: 'Y-m-d')}">
+																<f:else>
+																	<div class="institution-event">
+
+																			<f:if condition="{events-iterator.isFirst}">
+																				<hr>
+																			</f:if>
+
+																			<div class="col-sm-3 date">
+																				<span class="event-arrow"></span>
+																				<span class="day">
+																					<f:format.date format="%d">{event.start}</f:format.date>
+																				</span>
+																				<span class="month">
+																					<f:format.date format="%B">{event.start}</f:format.date>
+																				</span>
+																			</div>
+																			<div class="col-sm-9">
+																				<h5>{event.title}</h5>
+																				<f:if condition="{event.teaserText}">
+																					<f:then>
+																						<f:format.html><f:format.crop maxCharacters="{settings.cropMaxCharacters}" respectWordBoundaries="1">{event.teaserText}</f:format.crop></f:format.html>
+																					</f:then>
+																					<f:else>
+																						<f:format.crop maxCharacters="{settings.cropMaxCharacters}" respectWordBoundaries="1"><f:format.stripTags>{event.bodyText}</f:format.stripTags></f:format.crop>
+																					</f:else>
+																				</f:if>
+																			</div>
+																			<div class="clearfix"></div>
+																			<f:link.action
+																				controller="Event"
+																				action="show"
+																				extensionName="fagcalendar"
+																				pluginName="Calendarview"
+																				pageUid="422"
+																				arguments="{event:event}"
+																				class="more">
+																				<f:translate key="tx_faginstitutionmanagement_domain_model_event.more" />
+																			</f:link.action>
+																		</div>
+																</f:else>
+															</f:if>
+														</f:for>
+													</div>
+												</div>
+											</f:if>
+										</div>
+								</div>
+						</div>
+					</f:for>
+				</f:then>
+				<f:else>
+					<div class="alert alert-info">
+						<f:translate key="institutionNoResults" />
+					</div>
+				</f:else>
+			</f:if>
+		</div>
+	</div>
+
+</f:section>

@@ -1,0 +1,54 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+
+
+        <section class="sgeagles2" id="partner-{data.uid}-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-1">
+                                <h2 class="sgeagles2-partners__title">{data.subheader}</h2>
+                            </div>
+                            <div class="col-md-4">
+                                <f:format.html>{data.body_text}</f:format.html>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="swiper-container sgeagles-partners__swiper col-md-11 mx-auto">
+                                <div class="swiper-wrapper">
+                                    <f:for as="partner" each="{partners}">
+                                        <div class="swiper-slide">
+                                            <div class="card sgeagles-partners__card">
+                                                <div class="sgeagles-partners__card-header">
+                                                    <p class="card-title sgeagles-partners__country-title">{partner.data.country}</p>
+                                                    <img class="sgeagles-partners__country-icon" src="{f:uri.image(image: '{partner.icon.0}')}"
+                                                         alt="{partner.data.country} flag">
+                                                </div>
+                                                <img class="sgeagles-partners__card-img card-img-top"
+                                                     src="{f:uri.image(image: '{partner.files.0}', cropVariant:'desktop')}"
+                                                     alt="article {partner.data.country} img">
+                                                <div class="card-body sgeagles-partners__card-body">
+                                                    <h3 class="sgeagles-partners__title">{partner.data.title}</h3>
+                                                    <p class="card-text sgeagles-partners__desc">{partner.data.content -> f:format.crop(maxCharacters:350)}</p>
+                                                </div>
+                                                <div class="card-body sgeagles-partners__card-btn">
+                                                    <a href="{f:uri.page(pageUid: '{partner.data.link}', absolute: '1')}" class="custom-btn custom-btn--medium">{partner.data.link_title}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </f:for>
+                                </div>
+                                <div class="swiper__pagination--hybrid">
+                                    <div class="slider__btn sgeagles-partners__btn--prev nav--prev"></div>
+                                    <div class="slider__pagination p-relative"></div>
+                                    <div class="slider__btn sgeagles-partners__btn--next nav--next"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>

@@ -1,0 +1,1158 @@
+{namespace in=FRONTAL\FagInstitutionManagement\ViewHelpers}
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:render partial="Institution/breadCrumb"/>
+
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.homeNextStep}">
+        <div id="wrapper" class="Institution-s2d">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+                    <div row="">
+                        <main class="Institution-s2d">
+
+                            <div class="mod_article first last block" id="kopla">
+
+                                <h3>Herzlich willkommen im Administrationsinterface von Frontal.</h3>
+                                <p>Hier können Sie Ihre persönliche Daten kontrollieren und bearbeiten und Ihre
+                                    Institutionen
+                                    verwalten.<br>Sie sind angemeldet als <strong>{user.firstName }
+                                        {user.lastName}</strong> mit der
+                                    E-Mail Adresse
+                                    <strong>{user.email}</strong>.</p>
+
+                                <!-- indexer::stop -->
+
+                                <nav class="mod_customnav block">
+
+                                    <v:page.menu pageUid="{settings.homeNextStep}">
+                                        <ul class="kp-homeNav">
+                                            <f:for each="{menu}" as="item">
+                                                <li class="first">
+                                                    <f:if condition="{item.uid} == {settings.institutionenverwalten}">
+                                                        <f:then>
+                                                            <f:if condition="{in:IsAdmin(user: user.uid)}">
+                                                                <f:then>
+                                                                    <f:link.page pageUid="{item.uid}"
+                                                                                 title="{item.linktext}">
+                                                                        {item.linktext}
+                                                                    </f:link.page>
+                                                                </f:then>
+                                                            </f:if>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:link.page pageUid="{item.uid}" title="{item.linktext}">
+                                                                {item.linktext}
+                                                            </f:link.page>
+                                                        </f:else>
+                                                    </f:if>
+
+                                                </li>
+                                            </f:for>
+                                        </ul>
+                                    </v:page.menu>
+
+                                </nav>
+
+
+                                <!-- indexer::continue -->
+
+
+                            </div>
+                        </main>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.institutionenverwalten}">
+        <div id="wrapper" class="Institution-s2d">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+                    <div row="">
+                        <main class="Institution-s2d">
+
+                            <div class="mod_article last block" id="institutionen-benutzer">
+
+                                <h3 class="ce_headline first">
+                                    Meine Institutionen verwalten</h3>
+
+                                <div class="data--liste">
+                                    <section class="kp-inst-list verwalter">
+                                        <ul id="kp-inst-list">
+                                            <f:if condition="{institutionAdmin}">
+                                                <f:then>
+                                                    <f:for each="{institutionAdmin}" as="items">
+                                                        <f:comment>
+                                                            <f:if condition="{in:IsInstitutionAdmin( user:user.uid , institution: items.uid)}">
+                                                                <f:then>
+                                                                    <li>
+															<span class="kp-inst-list-name">
+																{items.title}
+															</span>
+                                                                        <f:for each="{items.categories}" as="categor">
+																<span class="kp-inst-list-kategorie">
+																	{categor.title}
+																</span>
+                                                                        </f:for>
+                                                                        <span class="kp-inst-list-icons">
+
+																<f:link.action pageUid="{settings.start}" action="edit"
+                                                                               arguments="{institution:items.uid}"><i
+                                                                        class="fa fa-pencil"
+                                                                        aria-hidden="true"></i></f:link.action>
+															</span>
+
+                                                                    </li>
+                                                                </f:then>
+                                                            </f:if>
+                                                        </f:comment>
+                                                        <li>
+															<span class="kp-inst-list-name">
+																{items.title}
+															</span>
+                                                            <f:for each="{items.categories}" as="categor" iteration="i">
+																<span class="kp-inst-list-kategorie">
+                                                                    <f:if condition="{i.isFirst}">
+                                                                        {categor.title}
+                                                                    </f:if>
+
+																</span>
+                                                            </f:for>
+                                                            <span class="kp-inst-list-icons">
+
+																<f:link.action pageUid="{settings.start}" action="edit"
+                                                                               arguments="{institution:items.uid}"><i
+                                                                        class="fa fa-pencil"
+                                                                        aria-hidden="true"></i></f:link.action>
+															</span>
+
+                                                        </li>
+
+                                                    </f:for>
+
+                                                </f:then>
+                                                <f:else>
+                                                    <li class="no-entries is-hidden">Keine Einträge gefunden</li>
+                                                </f:else>
+                                            </f:if>
+                                        </ul>
+                                    </section>
+                                </div>
+
+
+                                <div class="toDelete--wrapper">
+                                    <div class="inside">
+                                        <p>Soll die Institution mit allen dazugehörigen Inhalten gelöscht werden?</p>
+                                        <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                                        <button id="bt_confirm"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!
+                                        </button>
+                                        <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </main>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.meinedatenverwalten}">
+        <div id="wrapper" class="Institution-s2d">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+
+                    <main class="Institution-s2d">
+                        <!-- indexer::stop -->
+                        <div class="mod_article first last block" id="kopla-meine-daten-verwalten">
+
+
+                            <f:if condition="{institution}">
+                                <f:then>
+                                    <!-- Member Daten //-->
+                                    <h3 class="ce_headline kp-head-user first">
+                                        Meine Daten verwalten</h3>
+                                    <div class="core--meineDaten MeineDaten">
+                                        <section class="MeineDaten-section">
+                                            <div class="MeineDaten-intro">
+                                                <h4>Stammdaten</h4>
+                                                <div class="explanation">
+                                                    Diese Daten werden standardmässig in allen Institutionen angezeigt
+                                                    bei denen Sie als
+                                                    Ansprechperson eingetragen sind. Sie können aber bei jedem Ihrer
+                                                    Einträge Ihre Daten
+                                                    individuell
+                                                    anpassen oder ausblenden.
+                                                </div>
+                                                <div class="MeineDaten-intro-data"><span><strong>Vorname:</strong>
+														{user.firstName} </span><span><strong>Name: </strong>{user.lastName}
+													</span><span><strong>E-Mail:</strong>
+														{user.email }</span></div>
+                                                <div class="MeineDaten-intro-edit">
+
+                                                    <f:link.action pageUid="{settings.stammdatenbearbeiten}"
+                                                                   action="editUser" arguments="{user:user.uid}">
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                        Stammdaten bearbeiten
+                                                    </f:link.action>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="MeineDaten-section">
+                                            <div>
+                                                <h4>Meine Institutionen</h4>
+                                                <div class="explanation">
+                                                    Für jede Institution der Sie angehören können Sie frei bestimmen,
+                                                    welche Ihrer Kontaktdaten
+                                                    angezeigt werden. Lassen Sie das jeweilige Feld leer, werden keine
+                                                    Daten angezeigt. Mit der
+                                                    Checkbox können Sie die Einträge aus Ihren Stammdaten übernehmen
+                                                    oder Sie tragen für diese
+                                                    Institution individuelle Angaben ein.
+                                                </div>
+                                            </div>
+
+                                            <div id="kp_be_daten_insitution">
+                                                <f:for each="{institution}" as="items">
+
+                                                    <section class="ce_accordionStart ce_accordion block"
+                                                             id="kp_ac_institutionData_1">
+                                                        <div
+                                                                class="toggler                               ui-accordion-header                               ui-state-default                               ui-accordion-icons                               ui-corner-all"
+                                                                role="tab" id="ui-id-1" aria-controls="ui-id-2"
+                                                                aria-selected="false"
+                                                                aria-expanded="false" tabindex="0">
+                                                            {items.title}
+                                                        </div>
+
+                                                        <div
+                                                                class="accordion                              ui-accordion-content                              ui-helper-reset                              ui-widget-content                              ui-corner-bottom                              ui-accordion-content"
+                                                                id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel"
+                                                                aria-hidden="true">
+                                                            <div>
+
+                                                                <div class="ce_text block">
+                                                                    <div class="formWrapper_1"
+                                                                         style="position: relative;">
+                                                                        <div class="verwalter explanation">
+                                                                            <f:for each="{institution}"
+                                                                                   as="itemsAdmin">
+                                                                                <f:if condition="{itemsAdmin.uid} == {items.uid}">
+                                                                                    Die Institution wird durch
+                                                                                    <f:for each="{itemsAdmin.feUsers}"
+                                                                                           as="feUser" iteration="i">
+                                                                                        <f:if condition="{i.isLast}">
+                                                                                            <f:then>
+                                                                                                <span class="sp-admin-right"
+                                                                                                      data-identar="{feUser.uid}">
+                                                                                                    <span>  {feUser.firstName} </span>
+                                                                                                    <span>  {feUser.lastName} </span>
+                                                                                                    <span> <strong>E-Mail:</strong> {feUser.email }</span>
+                                                                                                </span>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                 <span class="sp-admin-right "
+                                                                                                       data-identar="{feUser.uid}">
+                                                                                                    <span>  {feUser.firstName} </span>
+                                                                                                    <span>  {feUser.lastName} </span>
+                                                                                                    <span><strong>E-Mail:</strong> {feUser.email }</span>
+                                                                                                    ,
+                                                                                                 </span>
+                                                                                            </f:else>
+                                                                                        </f:if>
+                                                                                    </f:for>
+                                                                                    <f:for each="{itemsAdmin.roles}"
+                                                                                           as="role" iteration="j">
+                                                                                        <f:if condition="{j.isLast}">
+                                                                                            <f:then>
+                                                                                                <f:if condition="{role.isadmin} == TRUE">
+                                                                                                    <span class="sp-admin-right"
+                                                                                                          data-identar="{role.user.0.uid}">
+                                                                                                        <span>  {role.user.0.firstName} </span>
+                                                                                                        <span>  {role.user.0.lastName} </span>
+                                                                                                        <span><strong>E-Mail:</strong> {role.user.0.email }</span>
+                                                                                                    </span>
+                                                                                                </f:if>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                <f:if condition="{role.isadmin} == TRUE">
+
+                                                                                                    <span class="sp-admin-right"
+                                                                                                          data-identar="{role.user.0.uid}">
+                                                                                                        <span>  {role.user.0.firstName} </span>
+                                                                                                        <span>  {role.user.0.lastName} </span>
+                                                                                                        <span><strong>E-Mail:</strong> {role.user.0.email }</span>
+                                                                                                        ,
+                                                                                                    </span>
+                                                                                                </f:if>
+                                                                                            </f:else>
+                                                                                        </f:if>
+
+
+                                                                                    </f:for>
+                                                                                    verwaltet
+                                                                                </f:if>
+                                                                            </f:for>
+                                                                        </div>
+                                                                        <f:variable name="roleinst"
+                                                                                    value="{in:GetRole(user:'{user.uid}', institution:'{items.uid}')}"></f:variable>
+                                                                        <div class="ce_form tableless block">
+                                                                            <f:form action="roleUpdate"
+                                                                                    name="role"
+                                                                                    object="{role}">
+                                                                                <div class="formbody">
+                                                                                    <fieldset class="StammDatenEdit">
+                                                                                        <!-- <div class="widget widget-explanation explanation">
+                                                                                            <p>Dieser Abschnitt ist nur
+                                                                                                für den Verwalter
+                                                                                                sichtbar und dient dazu,
+                                                                                                die Stammdaten der
+                                                                                                Person direkt zu
+                                                                                                bearbeiten. Zudem können
+                                                                                                Sie hier für die Person
+                                                                                                ein Bild hochladen.</p>
+                                                                                        </div> -->
+                                                                                        <!-- Admin -->
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1293">
+                                                                                                Position in der
+                                                                                                Institution </label>
+                                                                                            <f:form.textfield
+                                                                                                    name="title"
+                                                                                                    value="{roleinst.title}"/>
+                                                                                        </div>
+                                                                                        <f:if condition="{roleinst.show_in_register}!=0">
+                                                                                            <f:then>
+                                                                                                <div class="widget widget-checkbox">
+                                                                                                    <fieldset
+                                                                                                            id="ctrl_1294"
+                                                                                                            class="checkbox_container">
+                                                                                                        <input name="published"
+                                                                                                               value="1"
+                                                                                                               type="hidden">
+                                                                                                        <span>
+                                                                                                    <input type="checkbox"
+                                                                                                           id="opt_1294_0"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[show]"
+                                                                                                           value="1"
+                                                                                                           checked
+                                                                                                    >
+                                                                                                    <label
+                                                                                                            id="lbl_1294_0"
+                                                                                                            for="opt_1294_0">Daten auf der Webseite anzeigen? </label></span>
+                                                                                                    </fieldset>
+                                                                                                </div>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                <div class="widget widget-checkbox">
+                                                                                                    <fieldset
+                                                                                                            id="ctrl_1294"
+                                                                                                            class="checkbox_container">
+                                                                                                        <input name="published"
+                                                                                                               value=""
+                                                                                                               type="hidden">
+                                                                                                        <span>
+                                                                                                    <input type="checkbox"
+                                                                                                           id="opt_1294_0"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[show]"
+                                                                                                           value="1"
+                                                                                                    >
+                                                                                                    <label
+                                                                                                            id="lbl_1294_0"
+                                                                                                            for="opt_1294_0">Daten auf der Webseite anzeigen? </label></span>
+                                                                                                    </fieldset>
+                                                                                                </div>
+                                                                                            </f:else>
+                                                                                        </f:if>
+
+                                                                                        <fieldset>
+                                                                                            <legend>E-Mail Adresse
+                                                                                            </legend>
+                                                                                            <label>E-Mail
+                                                                                                Adresse</label>
+                                                                                            <div class="inputs">
+                                                                                                <f:if condition="{roleinst.email} && !{roleinst.hide_email}">
+                                                                                                    <f:then>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.email}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-mail]"
+                                                                                                               readonly
+                                                                                                               style="display: none;">
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[email]"
+                                                                                                               value="{roleinst.email}"
+                                                                                                               style="display: block;">
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.email}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-mail]"
+                                                                                                               style="display: block;"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[email]"
+                                                                                                               value="{roleinst.email}"
+                                                                                                               style="display: none;">
+                                                                                                    </f:else>
+                                                                                                </f:if>
+                                                                                            </div>
+                                                                                            <f:if condition="{roleinst.email} && !{roleinst.hide_email}">
+                                                                                                <f:then>
+                                                                                                    <input type="checkbox"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideEmail]"
+                                                                                                           id="{items.uid}-mail">
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <input type="checkbox"
+                                                                                                           checked="checked"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideEmail]"
+                                                                                                           id="{items.uid}-mail">
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                            <label
+                                                                                                    for="{items.uid}-mail">E-Mail
+                                                                                                Adresse aus Stammdaten
+                                                                                                übernehmen?</label>
+                                                                                        </fieldset>
+                                                                                        <fieldset>
+                                                                                            <legend>Telefonnummer
+                                                                                            </legend>
+                                                                                            <label>Telefonnummer</label>
+                                                                                            <div class="inputs">
+                                                                                                <f:if condition="{roleinst.phone} && !{roleinst.hide_phone}">
+                                                                                                    <f:then>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.telephone}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-phone]"
+                                                                                                               style="display: none;"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[phone]"
+                                                                                                               value="{roleinst.phone}"
+                                                                                                               style="display: block;">
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.telephone}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-phone]"
+                                                                                                               style="display: block;"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[phone]"
+                                                                                                               value="{roleinst.phone}"
+                                                                                                               style="display: none;">
+                                                                                                    </f:else>
+                                                                                                </f:if>
+
+                                                                                            </div>
+                                                                                            <f:if condition="{roleinst.phone} && !{roleinst.hide_phone}">
+                                                                                                <f:then>
+                                                                                                    <input type="checkbox"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hidePhone]"
+                                                                                                           id="{items.uid}-phone">
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <input type="checkbox"
+                                                                                                           checked="checked"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hidePhone]"
+                                                                                                           id="{items.uid}-phone">
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                            <label
+                                                                                                    for="{items.uid}-phone">Telefonnummer
+                                                                                                Adresse aus Stammdaten
+                                                                                                übernehmen?</label>
+                                                                                        </fieldset>
+                                                                                        <fieldset>
+                                                                                            <legend>Mobile</legend>
+                                                                                            <label>Mobile</label>
+                                                                                            <div class="inputs">
+                                                                                                <f:if condition="{roleinst.mobile} && !{roleinst.hide_mobile}">
+                                                                                                    <f:then>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.mobilephone}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-mobile]"
+                                                                                                               readonly
+                                                                                                               style="display: none;">
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[mobile]"
+                                                                                                               value="{roleinst.mobile}"
+                                                                                                               style="display: block;">
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.mobilephone}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-mobile]"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[mobile]"
+                                                                                                               value="{roleinst.mobile}"
+                                                                                                               style="display: none;">
+                                                                                                    </f:else>
+                                                                                                </f:if>
+
+                                                                                            </div>
+                                                                                            <f:if condition="{roleinst.mobile} && !{roleinst.hide_mobile}">
+                                                                                                <f:then>
+                                                                                                    <input type="checkbox"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideMobile]"
+                                                                                                           id="{items.uid}-mobile">
+
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <input type="checkbox"
+                                                                                                           checked="checked"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideMobile]"
+                                                                                                           id="{items.uid}-mobile">
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                            <label
+                                                                                                    for="{items.uid}-mobile">Mobile
+                                                                                                aus Stammdaten
+                                                                                                übernehmen?</label>
+                                                                                        </fieldset>
+                                                                                        <fieldset>
+                                                                                            <legend>Strasse und
+                                                                                                Hausnummer
+                                                                                            </legend>
+                                                                                            <label>Strasse und
+                                                                                                Hausnummer</label>
+                                                                                            <div class="inputs">
+                                                                                                <f:if condition="{roleinst.address} && !{roleinst.hide_address}">
+                                                                                                    <f:then>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.address}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-address]"
+                                                                                                               readonly
+                                                                                                               style="display: none;">
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[address]"
+                                                                                                               value="{roleinst.address}"
+                                                                                                               style="display: block;">
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.address}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-address]"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[address]"
+                                                                                                               value="{roleinst.address}"
+                                                                                                               style="display: none;">
+                                                                                                    </f:else>
+                                                                                                </f:if>
+
+                                                                                            </div>
+                                                                                            <f:if condition="{roleinst.address} && !{roleinst.hide_address}">
+                                                                                                <f:then>
+                                                                                                    <input type="checkbox"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideAddress]"
+                                                                                                           id="{items.uid}-address">
+
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <input type="checkbox"
+                                                                                                           checked="checked"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideAddress]"
+                                                                                                           id="{items.uid}-address">
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                            <label
+                                                                                                    for="{items.uid}-address">Strasse
+                                                                                                und Hausnummer aus
+                                                                                                Stammdaten
+                                                                                                übernehmen?</label>
+                                                                                        </fieldset>
+                                                                                        <fieldset>
+                                                                                            <legend>Postleitzahl
+                                                                                            </legend>
+                                                                                            <label>PLZ</label>
+                                                                                            <div class="inputs">
+                                                                                                <f:if condition="{roleinst.zip} && !{roleinst.hide_zip}">
+                                                                                                    <f:then>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.zip}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-zip]"
+                                                                                                               readonly
+                                                                                                               style="display: none;">
+                                                                                                        <input type="text"
+                                                                                                               value="{user.zip}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[zip]"
+                                                                                                               style="display: block;">
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.zip}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-zip]"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               value="{roleinst.zip}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[zip]"
+                                                                                                               style="display: none;">
+                                                                                                    </f:else>
+                                                                                                </f:if>
+
+
+                                                                                            </div>
+                                                                                            <f:if condition="{roleinst.zip} && !{roleinst.hide_zip}">
+                                                                                                <f:then>
+                                                                                                    <input type="checkbox"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideZip]"
+                                                                                                           id="{items.uid}-zip">
+
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <input type="checkbox"
+                                                                                                           checked="checked"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideZip]"
+                                                                                                           id="{items.uid}-zip">
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                            <label
+                                                                                                    for="{items.uid}-zip">PLZ
+                                                                                                aus Stammdaten
+                                                                                                übernehmen?</label>
+                                                                                        </fieldset>
+                                                                                        <fieldset>
+                                                                                            <legend>Ort</legend>
+                                                                                            <label>Ort</label>
+                                                                                            <div class="inputs">
+                                                                                                <f:if condition="{roleinst.city} && !{roleinst.hide_city}">
+                                                                                                    <f:then>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.city}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-city]"
+                                                                                                               readonly
+                                                                                                               style="display: none;">
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[city]"
+                                                                                                               value="{roleinst.city}"
+                                                                                                               style="display: block;">
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                        <input type="text"
+                                                                                                               value="{user.city}"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[user-city]"
+                                                                                                               readonly>
+                                                                                                        <input type="text"
+                                                                                                               name="tx_faginstitutionmanagement_nextsteplogin[city]"
+                                                                                                               value="{roleinst.city}"
+                                                                                                               style="display: none;">
+                                                                                                    </f:else>
+                                                                                                </f:if>
+
+                                                                                            </div>
+                                                                                            <f:if condition="{roleinst.city} && !{roleinst.hide_city}">
+                                                                                                <f:then>
+                                                                                                    <input type="checkbox"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideCity]"
+                                                                                                           id="{items.uid}-city">
+
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <input type="checkbox"
+                                                                                                           checked="checked"
+                                                                                                           value="1"
+                                                                                                           class="input-switch"
+                                                                                                           name="tx_faginstitutionmanagement_nextsteplogin[hideCity]"
+                                                                                                           id="{items.uid}-city">
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                            <label
+                                                                                                    for="{items.uid}-city">Ort
+                                                                                                aus Stammdaten
+                                                                                                übernehmen?</label>
+                                                                                        </fieldset>
+
+                                                                                        <f:form.hidden property="user.0"
+                                                                                                       value="{user.uid}"/>
+                                                                                        <f:form.hidden name="roleid"
+                                                                                                       value="{roleinst.uid}"/>
+                                                                                        <f:form.hidden name="instid"
+                                                                                                       value="{items.uid}"/>
+                                                                                        <!-- Admin => END -->
+
+                                                                                        <div class="submit_container">
+                                                                                            <input type="submit"
+                                                                                                   id="ctrl_1319"
+                                                                                                   class="submit fa-floppy-o"
+                                                                                                   value="Speichern">
+                                                                                            <!-- <button type="submit" id="ctrl_1319" value="Speichern">
+                                                                                        <i class="fa fa-floppy-o"></i> Speichern        </button> -->
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                            </f:form>
+                                                                        </div>
+                                                                        <div class="formLoadScreen_1 formLoaderGlobal invisible"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </f:for>
+                                            </div>
+
+
+                                        </section>
+                                </f:then>
+                                <f:else>
+                                    <div class="data--liste">
+
+                                        <section>
+                                            <h3>Meine Anmeldungen</h3>
+                                            <ul class="Anmeldung-list">
+                                                <p>Zur Zeit sind keine Anmeldungen verfügbar.</p>
+                                            </ul>
+                                        </section>
+                                    </div>
+                                </f:else>
+                            </f:if>
+
+                            <!-- INSTITUTIONEN //-->
+
+                        </div>
+
+
+                </div> <!-- indexer::continue -->
+
+
+                </main>
+
+
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.anmeldungen}">
+        <div id="wrapper" class="Institution-s2d">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+                    <div row="">
+                        <main class="Institution-s2d">
+                            <!-- indexer::stop -->
+                            <div class="mod_article first last block" id="kopla-anmeldungen">
+
+                                <div class="data--liste">
+
+                                    <section>
+                                        <h3>Meine Anmeldungen</h3>
+                                        <ul class="Anmeldung-list">
+                                            <p>Zur Zeit sind keine Anmeldungen verfügbar.</p>
+                                        </ul>
+                                    </section>
+                                </div>
+
+
+                                <div id="aeDialog" class="toDelete--wrapper">
+                                    <div class="inside">
+                                        <p class="changeMessage"></p>
+                                        <button id="bt_confirm_anm_err"><i class="fa fa-check-circle"
+                                                                           aria-hidden="true"></i>Ok
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- indexer::continue -->
+
+
+                        </main>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.personen}">
+
+        <div id="barba-wrapper" class="Institution-s2d">
+            <div class="barba-container">
+                <div>
+                    <main class="Institution-s2d">
+                        <!-- indexer::stop -->
+
+                        <!-- indexer::continue -->
+
+                        <h3 class="kp-head-inst ">{detailsInstitution.title}</h3>
+                        <f:comment>
+                            <f:link.external class="kp-externallink " uri="{detailsInstitution.www}" target="_blank">Zum
+                                Eintrag auf der
+                                Website <i class="fa fa-external-link-square" aria-hidden="true"></i></f:link.external>
+                        </f:comment>
+                        <div class="kp-nav-inst ">
+                            <!-- indexer::stop -->
+                            <nav class="mod_customnav kopla-navTabBar kopla-navTabBar">
+
+                                <a href="#" class="invisible">Navigation überspringen</a>
+                                <ul class="level_1 clearfix tab">
+                                    <li class="first ">
+                                        <f:link.action pageUid="{settings.start}" action="edit"
+                                                       arguments="{institution:id_url}"
+                                                       class="trail"
+                                                       title="Start">
+                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                            <span class="navText">Start</span>
+                                        </f:link.action>
+                                    </li>
+                                    <f:comment>
+                                        <li class="trail">
+                                            <f:link.action pageUid="{settings.personen}"
+                                                           arguments="{institution:id_url}" title="Personen"
+                                                           class="trail">
+
+
+                                                <i class="fa fa-users" aria-hidden="true"></i> <span class="navText">Personen</span>
+                                            </f:link.action>
+                                        </li>
+                                    </f:comment>
+                                    <li>
+                                        <f:link.action pageUid="{settings.termine}" arguments="{institution:id_url}"
+                                                       title="Termine">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> <span class="navText">Termine</span>
+                                        </f:link.action>
+                                    </li>
+                                    <li>
+                                        <a href="#"><b>BETA-Version</b></a>
+                                    </li>
+                                </ul>
+                                <ul class="tab" style="border:none;">
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none; text-transform: none;">
+                                        <div>Bitte melden Sie Fehler direkt an Tony Steinmann ts@frontal.ch</div>
+                                        <div>Die Bearbeitung für Ansprechpartner ist noch nicht verfügbar.</div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            </nav>
+                            <!-- indexer::continue -->
+                        </div>
+                        <div class="mod_article first last block" id="kopla-meine-institutionen-verwalten-start">
+                            <div class="buttonContainer">
+                                <f:link.action pageUid="{settings.Suchmaske}" action="addUser"
+                                               arguments="{institution:id_url}"
+                                               class="button">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Neue Person
+                                    hinzufügen
+                                </f:link.action>
+                            </div>
+
+                            <div class="explanation">
+                                Zum Ändern der Reihenfolge auf der Webseite können Sie die Personen durch Klick auf das
+                                <i
+                                        class="fa fa-sort"></i> Symbol per Drag-and-Drop verschieben.
+
+                            </div>
+                            <div class="personen-list-wrappar">
+                                <ol class="personenListe">
+                                    <f:for each="{userDetails}" as="itemDetails">
+                                        <f:if condition="{itemDetails}">
+                                            <li class="personWrapper">
+                                            <span class="sortIcon"><i
+                                                    class="fa fa-sort"></i></span><span
+                                                    class="personLabel">{itemDetails.firstName} {itemDetails.lastName}</span>
+                                                <f:variable name="userrole"
+                                                            value="{in:GetRole(user:'{itemDetails.uid}', institution:'{id_url}')}"></f:variable>
+                                                <f:if condition="{userrole.isadmin}">
+                                                    <f:then><span
+                                                            class="adminIcon is-admin">darf die Institution verwalten</span>
+                                                    </f:then>
+                                                </f:if>
+                                                <span class="KoplaEntriesList-item-icons">
+                                                <span class="editIcon">
+													<f:link.action pageUid="{settings.Personbearbeiten}"
+                                                                   action="personen"
+                                                                   arguments="{idPerson:itemDetails.uid}"><i
+                                                            class="fa fa-pencil"></i></f:link.action>
+                                                </span>
+
+
+
+
+
+																								<span class="deletIcon"><a
+                                                                                                        href="javascript:{}"><i
+                                                                                                        class="fa fa-trash"></i></a></span>
+                                            <input
+                                                    class="personLinkId" type="hidden"
+                                                    value="{f:uri.action(action: 'deleteUser',absolute:1, arguments: {institution:id_url,idPerson:itemDetails.uid})}">
+
+                                                <input
+                                                        class="personsortId" type="hidden"
+                                                        value="{itemDetails.uid}">
+                                            </span>
+                                            </li>
+                                        </f:if>
+
+                                    </f:for>
+                                    <input type="hidden" id="urlsorting"
+                                           value="{f:uri.action(action: 'updateSorting' ,absolute:1)}">
+                                </ol>
+                            </div>
+                            <div class="toDelete--wrapper">
+                                <div class="inside">
+                                    <p>Soll die Person aus dieser Institution entfernt werden?</p>
+                                    <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                                    <button id="bt_confirm"><i class="fa fa-trash" aria-hidden="true"></i> Entfernen!
+                                    </button>
+                                    <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen
+                                    </button>
+                                </div>
+                            </div>
+                    </main>
+
+
+                </div>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.termine}">
+
+        <div id="barba-wrapper" class="Institution-s2d">
+            <div class="barba-container">
+                <div>
+                    <main class="Institution-s2d">
+                        <h3 class="kp-head-inst ">{detailsInstitution.title}</h3>
+                        <f:comment>
+                            <f:link.external class="kp-externallink " uri="{detailsInstitution.www}" target="_blank">Zum
+                                Eintrag auf der
+                                Website <i class="fa fa-external-link-square" aria-hidden="true"></i></f:link.external>
+                        </f:comment>
+                        <div class="kp-nav-inst ">
+                            <nav class="mod_customnav kopla-navTabBar kopla-navTabBar">
+
+                                <a href="#" class="invisible">Navigation überspringen</a>
+                                <ul class="level_1 clearfix tab">
+                                    <li class="first ">
+
+                                        <f:link.action pageUid="{settings.start}" action="edit"
+                                                       arguments="{institution:id_url}"
+                                                       class="trail"
+                                                       title="Start">
+                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                            <span class="navText">Start</span>
+                                        </f:link.action>
+                                    </li>
+                                    <f:comment>
+                                        <li>
+                                            <f:link.action pageUid="{settings.personen}"
+                                                           arguments="{institution:id_url}" title="Personen">
+                                                <i class="fa fa-users" aria-hidden="true"></i> <span class="navText">Personen</span>
+                                            </f:link.action>
+                                        </li>
+                                    </f:comment>
+                                    <li class="trail">
+                                        <f:link.action pageUid="{settings.termine}" arguments="{institution:id_url}"
+                                                       title="termine"
+                                                       class="trail">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> <span class="navText">Termine</span>
+                                        </f:link.action>
+                                    </li>
+                                    <li>
+                                        <a href="#"><b>BETA-Version</b></a>
+                                    </li>
+                                </ul>
+                                <ul class="tab" style="border:none;">
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none;     text-transform: none;">
+                                        <div>Bitte melden Sie Fehler direkt an Tony Steinmann ts@frontal.ch</div>
+                                        <div>Die Bearbeitung für Ansprechpartner ist noch nicht verfügbar.</div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            </nav>
+                        </div>
+                        <div class="buttonContainer">
+
+                            <f:link.action
+                                    controller="Event"
+                                    action="new"
+                                    extensionName="Terminal"
+                                    pluginName="Terminal"
+                                    pageUid="{settings.Neuetermin}"
+                                    arguments="{institution:id_url}"
+                                    class="button">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Neuen
+                                Termin erstellen
+                            </f:link.action>
+
+                        </div>
+                        <div class="data--liste">
+
+                            <section>
+                                <h3>Aktuelle Termine</h3>
+                                <ul class="KoplaEntriesList-container KoplaEventsList-container">
+                                    <f:for each="{events->v:iterator.sort(sortBy: 'start')}" as="event">
+                                        <li class="KoplaEntriesList-item  KoplaEventsList-item"><span
+                                                class="KoplaEntriesList-item-title">{event.title}</span>
+
+                                            <span class="KoplaEntriesList-item-date">
+																<f:format.date
+                                                                        format="%d">{event.start}</f:format.date>.<f:format.date
+                                                    format="%m">{event.start}</f:format.date>
+												<f:format.date format="%Y">{event.end}</f:format.date>
+														<f:if condition="{event.end}">
+																										<f:then>
+					                    –	<f:format.date format="%d">{event.end}</f:format.date>.<f:format.date
+                                                                                                                format="%m">{event.end}</f:format.date>
+																<f:format.date
+                                                                        format="%Y">{event.end}</f:format.date>
+																								</f:then>
+
+		                                  , <f:format.date format="H:i">{event.start}</f:format.date>–
+																				 <f:format.date
+                                                                                         format="H:i">{event.end}</f:format.date>
+
+																	</f:if>
+	                            </span>
+
+                                            <span class="KoplaEntriesList-item-location">{event.location}</span><span
+                                                    class="KoplaEntriesList-item-icons">
+                                             <f:link.action
+                                                     controller="Event"
+                                                     action="edit"
+                                                     pageUid="{settings.terminBearbeiten}"
+                                                     arguments="{institution:id_url,event:event.uid}"
+                                                     class="editNachricht tip" title="Diesen Termin bearbeiten">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </f:link.action>
+										</span></li>
+                                    </f:for>
+                                </ul>
+                            </section>
+                            <section>
+                                <h3>Vergangene Termine</h3>
+                                <ul class="KoplaEntriesList-container  KoplaEventsList-container  bygone">
+                                    <f:for each="{eventPassed->v:iterator.sort(sortBy: 'start')}" as="eventP">
+                                        <f:if condition="{event.start}">
+
+                                        </f:if>
+                                        <li class="KoplaEntriesList-item  KoplaEventsList-item"><span
+                                                class="KoplaEntriesList-item-title">{eventP.title}</span>
+
+                                            <span class="KoplaEntriesList-item-date">
+																<f:format.date
+                                                                        format="%d">{eventP.start}</f:format.date>.<f:format.date
+                                                    format="%m">{eventP.start}</f:format.date>
+												<f:format.date format="%Y">{eventP.start}</f:format.date>
+														<f:if condition="{eventP.end}">
+																										<f:then>
+					                    –	<f:format.date format="%d">{eventP.end}</f:format.date>.<f:format.date
+                                                                                                                format="%m">{eventP.end}</f:format.date>
+																<f:format.date
+                                                                        format="%Y">{eventP.end}</f:format.date>
+																								</f:then>
+		                                  , <f:format.date format="H:i">{eventP.start}</f:format.date>–
+																				 <f:format.date format="H:i">{eventP.end}</f:format.date>
+
+																	</f:if>
+	                            </span>
+                                            <span class="KoplaEntriesList-item-location">{eventP.location}</span><span
+                                                    class="KoplaEntriesList-item-icons">
+                                             <f:link.action
+                                                     controller="Event"
+                                                     action="edit"
+                                                     pageUid="{settings.terminBearbeiten}"
+                                                     arguments="{institution:id_url,event:eventP.uid}"
+                                                     class="editNachricht tip" title="Diesen Termin bearbeiten">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </f:link.action>
+										</span></li>
+                                    </f:for>
+                                </ul>
+                            </section>
+                        </div>
+                    </main>
+
+
+                </div>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.neuespasswort}">
+        <div class="Institution-s2d mod_article first last block" id="neues-passwort">
+
+
+            <div class="new--pw--wrapper">
+
+                <h3>Neues Passwort</h3>
+
+                <fieldset>
+
+                    <div class="widget-text">
+                        <label>Neues Passwort</label>
+                        <input type="password" id="pw-01">
+                    </div>
+
+                    <div class="widget-text">
+                        <label>Passwort wiederholen</label>
+                        <input type="password" id="pw-02">
+                    </div>
+
+                </fieldset>
+
+                <div class="submit_container">
+                    <a class="button" href="javascript:{}" id="savePw"><i class="fa fa-save"></i> Speichern</a>
+                </div>
+
+            </div>
+
+            <div class="toDelete--wrapper">
+                <div class="inside">
+                    <p>
+                        Dummy Text
+                    </p>
+                    <button id="bt_confirm" style="margin-right: 0;"><i class="fa fa-check-circle"
+                                                                        aria-hidden="true"></i>OK
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </f:if>
+    <div id="KoplaPageLoading" style="display: none;">
+        <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+    </div>
+</f:section>

@@ -1,0 +1,21 @@
+<div class="tx-jfmulticontent-pi1 customer-slider">
+    <ul class="jfmulticontent_c156">
+        <f:for as="op" each="{opinion}">
+            <li class="panel">
+                <div  class="csc-default">
+
+                    <div class="csc-default">
+                        <p class="bodytext">{op.data.opinion}</p>
+                    </div>
+                    <div  class="csc-default">
+                        <p class="bodytext">{op.data.name}
+                            <f:if condition="{op.data.company}">, {op.data.company}</f:if>
+                        </p>
+                        <!--  Text: [end] -->
+                    </div>
+                </div>
+            </li>
+        </f:for>
+
+    </ul>
+</div>

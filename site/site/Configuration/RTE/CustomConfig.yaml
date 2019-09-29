@@ -1,0 +1,35 @@
+
+imports:
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml"}
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+
+# Add configuration for the editor
+# For complete documentation see http://docs.ckeditor.com/#!/api/CKEDITOR.config
+editor:
+  config:
+    format_tags: "p"
+    contentsCss: "EXT:site/Resources/Public/Dist/dist.min.css"
+    stylesSet:
+      - { name: "Text 50:50 auf", element: "p", attributes: { class: "text-50-50"} }
+      - { name: "intro-content", element: "p", attributes: { class: "intro-content__desc"} }
+      - { name: "why-inter-content", element: "p", attributes: { class: "why-inter__desc"} }
+      - { name: "intro-homePage-content", element: "p", attributes: { class: "intro__desc"} }
+      - { name: "bigSliderOrTours-content", element: "p", attributes: { class: "tours__desc"} }
+      - { name: "three-pillars-content", element: "p", attributes: { class: "three-pillars__desc"} }
+      - { name: "quotes-content", element: "p", attributes: { class: "quotes__quote"} }
+    removePlugins:
+      - image
+    removeButtons:
+      - Underline
+      - strike
+      - Anchor
+      - Indent
+      - Outdent
+      - Subscript
+      - Superscript
+      - Blockquote
+      - HorizontalRule
+
+
+

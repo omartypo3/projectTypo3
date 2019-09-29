@@ -1,0 +1,17 @@
+<section class="intro-content" id="intro-content-{data.uid}-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-1">
+                <h2>{data.header}</h2>
+                <h3>{data.subheader}</h3>
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+            <div class="col-md-5 intro-content-shirt">
+                <f:if condition="{files.0}">
+                    <img class="intro-content-shirt__img" src="{f:uri.image(image: '{files.0}')}" alt="football-shirt">
+                </f:if>
+                <p class="intro-content-shirt__caption caption">{data.link_title}</p>
+            </div>
+        </div>
+    </div>
+</section>

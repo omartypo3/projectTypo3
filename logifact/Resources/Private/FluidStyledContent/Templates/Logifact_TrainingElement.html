@@ -1,0 +1,26 @@
+<div class="element_lexwareschulungen">
+    <div class="col0">
+        <div class="csc-header csc-header-n1">
+            <h1 class="csc-firstHeader">{data.header}</h1>
+        </div>
+    </div>
+    <div class="col1">
+        <f:format.html>{data.bodytext}</f:format.html>
+    </div>
+    <div class="col2">
+        <div class="csc-textpic csc-textpic-center csc-textpic-above">
+            <div class="csc-textpic-imagewrap">
+                <div class="csc-textpic-center-outer">
+                    <div class="csc-textpic-center-inner">
+                        <div class="csc-textpic-image csc-textpic-last">
+                            <f:variable name="img"
+                                        value="{f:uri.image(image: '{files.0}')}"/>
+                            <img
+                                src="{img}" alt=""
+                                width="459" height="352"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

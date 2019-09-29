@@ -1,0 +1,74 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Function</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Section</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="2">
+                                        <numIndex index="0">All</numIndex>
+                                        <numIndex index="1">Product->list;Product->show;</numIndex>
+
+                                    </numIndex>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Slider</numIndex>
+                                        <numIndex index="1">Product->slider;Product->show;</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5">
+                                        <numIndex index="0">Product Category</numIndex>
+                                        <numIndex index="1">Product->list;</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6">
+                                        <numIndex index="0">Show Product</numIndex>
+                                        <numIndex index="1">Product->show;</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                    <settings.productslider>
+                        <TCEforms>
+                            <label>Slider</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Product->slider;Product->show;
+                            </displayCond>
+                            <config>
+                                <type>select</type>
+                                <foreign_table>tx_silcoplastproduct_domain_model_product</foreign_table>
+                                <foreign_table_where> AND (tx_silcoplastproduct_domain_model_product.sys_language_uid=###REC_FIELD_sys_language_uid###) AND tx_silcoplastproduct_domain_model_product.hidden = 0 AND tx_silcoplastproduct_domain_model_product.deleted = 0 </foreign_table_where>
+                                <renderType>selectMultipleSideBySide</renderType>
+                                <size>5</size>
+                                <minitems>1</minitems>
+                                <maxitems>999</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.productslider>
+                    <settings.category>
+                        <TCEforms>
+                            <label>Category</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Product->list;
+                            </displayCond>
+                            <config>
+                                <type>select</type>
+                                <foreign_table>sys_category</foreign_table>
+                                <foreign_table_where> AND (sys_language_uid=CAST('###REC_FIELD_sys_language_uid###' AS UNSIGNED) OR sys_language_uid = '-1') AND sys_category.hidden = 0 AND sys_category.deleted = 0 </foreign_table_where>
+                                <renderType>selectMultipleSideBySide</renderType>
+                                <size>5</size>
+                                <minitems>1</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </settings.category>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

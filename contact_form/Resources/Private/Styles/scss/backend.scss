@@ -1,0 +1,103 @@
+@import "init";
+@import "components/datepicker";
+
+
+body {
+  background-color: $color-four;
+  font-size: $font-size-medium;
+  line-height: $line-height-four;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#searchParticipants {
+  background-color: $base-color;
+  border: 2px solid $color-two;
+  border-right: none;
+  color: $color-two;
+  font-weight: 700;
+  &::placeholder{
+    font-weight: 500;
+  }
+}
+
+  .partiticpant-submit.partiticpant-submit{
+    background-color: $base-color;
+    border: 2px solid $color-two;
+    border-left: none;
+    color: $color-two;
+    font-weight: 700;
+    border-radius: 0;
+    cursor: pointer;
+  }
+
+
+.bg-custom {
+  background-color: $color-eight !important;
+}
+
+#logoutform {
+  font-weight: 600;
+}
+
+.welcome {
+  margin-right: 10px;
+}
+
+.navbar{
+  margin-bottom: 50px;
+  color:$base-color;
+}
+
+
+.navbar-nav .nav-item {
+
+  .nav-link {
+    color: $color-two;
+    font-weight: 600;
+  }
+
+  &.current {
+    .nav-link {
+      color: $base-color;
+    }
+
+  }
+}
+
+.btn{
+  border-radius: 4px;
+}
+
+
+.heading {
+  justify-content: space-between;
+  #export {
+    cursor: pointer;
+    color: #4298b5;
+    background-color: #c1dfe8;
+    border: 2px solid #4298b5;
+    border-radius: 0;
+    -webkit-transition: all .3s ease;
+    height: 45px;
+    width: 100px;
+    transition: all .3s ease;
+    &:hover:not([disabled])  {
+
+      color: #c1dfe8;
+      background-color: #4298b5;
+    }
+
+  }
+}
+
+.content{
+  background: #FFF;
+  border-radius: 4px;
+  padding: 30px;
+}
+
+.typo3-messages{
+  list-style: none;
+  padding: 0;
+}

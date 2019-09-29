@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="de" datatype="plaintext" original="messages" date="2018-10-10T13:58:25Z"
+          product-name="slide">
+        <header/>
+        <body>
+
+            <trans-unit id="tx_logifact_slide">
+                <source>Element schieben</source>
+            </trans-unit>
+            <trans-unit id="tx_logifact_slide.image">
+                <source>Bild</source>
+            </trans-unit>
+            <trans-unit id="tx_logifact_slide.title">
+                <source>Texttitel</source>
+            </trans-unit>
+            <trans-unit id="tx_logifact_slide.content">
+                <source>Textinhalt</source>
+            </trans-unit>
+            <trans-unit id="tx_logifact_slide.link">
+                <source>Slider link</source>
+            </trans-unit>
+            <trans-unit id="tx_logifact_slide.position">
+                <source>Teaser Position</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

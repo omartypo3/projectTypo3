@@ -1,0 +1,78 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:layout name="Default" />
+    <f:section name="content">
+        <div class="ce-text-with-right-slider">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-lg-5 page-right-text  bg-primary white-text">
+                        <p class="text-medium-small">{product.categorie.title}</p>
+                        <h2>{product.name}</h2>
+                        <f:format.raw>{product.description}</f:format.raw>
+
+                        <div class="productnav">
+                            <div class="btn_prev_post">
+                                <f:if condition="{all} == '1'">
+                                    <f:then>
+                                        <a href="{f:uri.action(action: 'show', arguments: {product: prevproduct},  additionalParams : {all :'1'} , pageUid:'{settings.detailpid}')-> f:format.raw()}"></a>
+                                    </f:then>
+                                    <f:else>
+                                     
+                                            <a href="{f:uri.action(action: 'show', arguments: {product: prevproduct}, pageUid:'{settings.detailpid}')-> f:format.raw()}"></a>
+                                        
+                                    </f:else>
+                                </f:if>
+                            </div>
+
+                            <f:if condition="{categoryid}">
+                                <f:then>
+                                        <a href="{f:uri.page(pageUid: '2' , additionalParams: {catid: categoryid} )}">
+                                                <p>Übersicht</p>
+                                            </a>
+                                </f:then>
+                                <f:else>
+                                        <a href="{f:uri.page(pageUid: '2' )}">
+                                                <p>Übersicht</p>
+                                            </a>
+                                </f:else>
+                            </f:if>
+
+                            <div class="btn_next_post">
+                                <f:if condition="{all} == '1'">
+                                    <f:then>
+                                        <a href="{f:uri.action(action: 'show', arguments: {product: nextproduct} , additionalParams : {all :'1'} , pageUid:'{settings.detailpid}')-> f:format.raw()}"></a>
+                                    </f:then>
+                                    <f:else>
+                                            <a href="{f:uri.action(action: 'show', arguments: {product: nextproduct}  , pageUid:'{settings.detailpid}')-> f:format.raw()}"></a>
+                                       
+                                    </f:else>
+                                </f:if>
+                            </div>
+                        </div>
+                       
+                        <p class="text-medium-small  bottom-text">
+                            <a href="{f:uri.page(pageUid: '2')}">
+                                <f:translate key="production" /></a>
+                            {product.categorie.title} /
+                            <!-- <a href="{f:uri.page(pageUid: '35')}">{product.categorie.title}</a> -->
+                            {product.name}
+                        </p>
+                    </div>
+                    <div class="col-lg-7 no-padding">
+                        <div class="slick-sliderpage ">
+                            <f:for each="{product.images}" as="image">
+                                <v:variable.set name="img"
+                                    value="{f:uri.image(src: '{image.uid}', treatIdAsReference: '1')}"></v:variable.set>
+                                <div class="slick-item">
+                                    <div class="image-bg-item" style="background-image: url('{img}')">
+                                    </div>
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:section>
+
+</html>

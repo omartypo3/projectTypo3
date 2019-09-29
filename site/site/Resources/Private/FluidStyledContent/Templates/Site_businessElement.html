@@ -1,0 +1,36 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<section class="business" id="tours-{data.uid}-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-1">
+                <div class="image-content">
+                    <f:if condition="{files.0}">
+                        <img class="business-img" src="{f:uri.image(image: '{files.0}')}" alt="">
+                    </f:if>
+                    <div class="overlay-image"></div>
+                </div>
+                <p class="business-img__caption">{data.subheader}</p>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="">
+                        <h2 class="business__title">{data.header}</h2>
+                    </div>
+                </div>
+                <f:format.html>{data.bodytext}</f:format.html>
+                <f:if condition="{businesslist}">
+                    <ul class="business-list">
+                        <f:for as="businesslist" each="{businesslists}">
+                            <li class="business-list__item">{businesslist.data.title}</li>
+                        </f:for>
+                    </ul>
+                </f:if>
+                <p class="business__text-link">
+                    <a href="{f:uri.page(pageUid: '{links.0.data.link}', absolute: '1')}" class="link">{links.0.data.title}
+                        <img src="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'textlink')}"
+                             alt=""></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

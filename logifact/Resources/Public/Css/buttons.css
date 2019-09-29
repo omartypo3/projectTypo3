@@ -1,0 +1,95 @@
+.buttontextOrange, .buttontextSchwarz {
+	text-align:center;
+	padding:0;
+	margin:0;
+	padding-top:3%;
+	background-repeat:no-repeat;
+	color:#FFF;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+/* HANDY,TABLET */
+@media only screen and (max-width: 999px) {
+	.tx-dce-pi1 {
+		width:160px !important;
+		height:23px !important;
+		padding:0;
+		margin:0;
+		margin-top:2.5%;
+		margin-bottom:2.5%;
+	}
+	
+	.buttontextOrange {
+		width:160px !important;
+		height:23px !important;		
+		background-image:url(../images/Buttons/button_orange.png);
+		background-size:160px 23px !important;
+		font-size:70%;		
+	}
+	.buttontextSchwarz {
+		width:160px !important;
+		height:23px !important;	
+		background-image:url(../images/Buttons/Button_Schwarz.png);
+		background-size:160px 23px !important;
+		font-size:70%;		
+	}
+}
+
+/* DESKTOP KLEIN */
+@media only screen and (min-width: 1000px) {
+	.tx-dce-pi1 {
+		width:197px !important;
+		height:31px !important;
+		padding:0;
+		margin:0;
+		margin-top:2.5%;
+		margin-bottom:2.5%;
+	}
+
+	.buttontextOrange {
+		width:197px !important;
+		height:31px !important;
+		background-image:url(../images/Buttons/button_orange.png);
+		background-size:197px 31px !important;
+		font-size:100%;
+		padding-top:4%;
+	}
+	.buttontextSchwarz {
+		width:197px !important ;
+		height:23px !important ;		
+		background-image:url(../images/Buttons/Button_Schwarz.png);
+		background-size:197px 31px !important;
+		font-size:100%;
+		padding-top:4%;		
+	}
+}
+
+/* DESKTOP GROSS */
+@media only screen and (min-width: 1300px) {
+	.tx-dce-pi1 {
+		width:263px !important;
+		height:36px !important;
+		padding:0;
+		margin:0;
+		margin-top:2.5%;
+		margin-bottom:2.5%;
+	}
+	
+	.buttontextOrange {
+		width:263px !important;
+		height:36px !important;
+		background-image:url(../images/Buttons/button_orange.png);
+		background-size:263px 36px !important;
+		font-size:115%;
+		padding-top:3%;	
+	}
+	.buttontextSchwarz {
+		width:263px !important;
+		height:23px !important;		
+		background-image:url(../images/Buttons/Button_Schwarz.png);
+		background-size:263px 36px !important;
+		font-size:115%;		
+		padding-top:3%;	
+	}
+}		

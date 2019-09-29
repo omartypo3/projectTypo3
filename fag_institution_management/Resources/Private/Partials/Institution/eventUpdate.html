@@ -1,0 +1,56 @@
+<div class="mod_article first last block" id="institutionen-verwalten-termine-termin-bearbeiten">
+		<div class="ce_form last tableless block">
+
+				<f:form action="eventUpdate" name="event" object="{event}" enctype="multipart/form-data">
+				<div class="formbody">
+						<div class="widget widget-text mandatory">
+							<label for="ctrl_1268" class="mandatory">
+								<span class="invisible">Pflichtfeld </span>Titel<span class="mandatory">*</span>
+							</label>
+							<f:form.textfield property="title" class="text mandatory" value="{event.title}" />
+						</div>
+						<div class="widget widget-text mandatory">
+							<label for="ctrl_1287" class="mandatory">
+								<span class="invisible">Pflichtfeld </span>Ort<span class="mandatory">*</span>
+							</label>
+							<f:form.textfield property="ort" class="text mandatory" value="{event.location}" />
+						</div>
+
+						<strong>Datum</strong>
+						<div id="kp_neueDaten_links_container"></div>
+						<a href="javascript:{}" id="addNewDaten" class="AddNewEntry"><i class="fa fa-plus-circle"
+								aria-hidden="true"></i>Datum hinzufügen</a>
+						<div id="kp_termine_bild_container">
+						</div>
+
+						<div>Bild (Optional)</div>
+						<div id="filename"></div>
+						<div id="progress"></div>
+						<div id="progressBar"></div>
+						<input id="kp_bild_termine_upload" name="file" type="file">
+						<div class="removeLogoWrapper"><a class="removeLogoLink" href="javascript:{}"><i class="fa fa-trash"></i>
+								Bild entfernen</a></div>
+						<div class="widget widget-textarea">
+							<label for="ctrl_1279">
+								Text </label>
+								<f:form.textarea property="termineText" class="textarea" value="{event.body_text}" rows="15" cols="40"/>
+						</div>
+						<strong>Downloads</strong>
+						<ul class="kp_neuerTermin_downloads_container EntryContainer"></ul>
+						<a href="javascript:{}" id="addNewDownloadsFile" class="AddNewEntry"><i class="fa fa-plus-circle"
+								aria-hidden="true"></i>Download hinzufügen</a>
+						<strong>Links</strong>
+						<ul class="kp_neuerTermin_links_container EntryContainer"></ul>
+						<a href="javascript:{}" id="addNewLink" class="AddNewEntry"><i class="fa fa-plus-circle"
+								aria-hidden="true"></i>Link hinzufügen</a>
+						<div class="deleteLink submit_container"> <a href="javascript:{}" class="deleteTermin button"
+								style="margin-right: 1em;"><i class="fa fa-trash"></i>Termin löschen</a> <button type="submit"
+								id="ctrl_1285" value="Termin speichern"> <i class="fa fa-calendar"></i> Termin speichern </button>
+						</div>
+						</div>
+			</f:form>
+
+		</div>
+
+
+	</div>

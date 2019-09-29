@@ -1,0 +1,39 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<f:if condition="{files.0}">
+    <f:then>
+        <section class="why-inter" id="why-inter-{data.uid}-section" style="background: url({f:uri.image(image: '{files.0}')}) no-repeat top center; background-size: cover;">
+            <div class="container-fluid">
+                <div class="row  justify-content-md-center">
+                    <div class="col-md-7">
+                        <h2 class="why-inter__title--desktop">{data.header}</h2>
+                        <h2 class="why-inter__title--mobile">{data.subheader -> f:format.crop(maxCharacters: "{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'maxCharacters')}")}</h2>
+                        <f:format.html>{data.bodytext}</f:format.html>
+                    </div>
+                    <div class="col-md-3 col-lg-2 offset-lg-1 why-inter__buttons">
+                        <f:for as="link" each="{links}">
+                            <a href="{f:uri.page(pageUid: '{link.data.link}', absolute: '1')}" class="custom-btn custom-btn--medium">{link.data.title}</a>
+                        </f:for>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </f:then>
+    <f:else>
+        <section class="why-inter" id="why-inter-{data.uid}-section">
+            <div class="container-fluid">
+                <div class="row  justify-content-md-center">
+                    <div class="col-md-7">
+                        <h2 class="why-inter__title--desktop">{data.header}</h2>
+                        <h2 class="why-inter__title--mobile">{data.subheader -> f:format.crop(maxCharacters: "{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'maxCharacters')}")}</h2>
+                        <f:format.html>{data.bodytext}</f:format.html>
+                    </div>
+                    <div class="col-md-3 col-lg-2 offset-lg-1 why-inter__buttons">
+                        <f:for as="link" each="{links}">
+                            <a href="{f:uri.page(pageUid: '{link.data.link}', absolute: '1')}" class="custom-btn custom-btn--medium">{link.data.title}</a>
+                        </f:for>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </f:else>
+</f:if>

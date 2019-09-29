@@ -1,0 +1,180 @@
+{namespace h=FRONTAL\FagInstitutionManagement\ViewHelpers}
+<div class="mod_article first last block" id="institutionen-verwalten-termine-termin-bearbeiten">
+	<div class="ce_form last tableless block">
+		<div class="formbody">
+			<div class="widget widget-text mandatory">
+				<label for="ctrl_1268" class="mandatory">
+					<span class="invisible">Pflichtfeld </span>Titel<span class="mandatory">*</span>
+				</label>
+				<f:form.textfield property="title" class="text mandatory" value="{event.title}"/>
+			</div>
+			<div class="widget widget-text mandatory">
+				<label for="ctrl_1287" class="mandatory">
+					<span class="invisible">Pflichtfeld </span>Ort<span class="mandatory">*</span>
+				</label>
+				<f:form.textfield property="location" class="text mandatory" value="{event.location}"/>
+			</div>
+			<strong>Datum</strong>
+			<div id="kp_termine_bild_container">
+				<f:comment>
+					<f:for each="{dates}" as="date" iteration="fooIterator">
+					</f:for>
+				</f:comment>
+				<div class="datenElemnt  EntryElement" id="datenElemnt_{fooIterator.index}">
+					<div class="EntryInputWrapper datenInputWrapper">
+						<label>Start-Datum*</label>
+						<input autocomplete="off"
+							   name="tx_faginstitutionmanagement_terminal[dates][0][startdate]"
+							   class="termineStartDatum mandatory datepicker" required="" type="text"
+							   value="{event.start-> f:format.date(format:'d/m/Y')}">
+					</div>
+					<div class="EntryInputWrapper datenInputWrapper">
+						<label>End-Datum (für mehrtägige Events;optional)</label>
+						<input autocomplete="off"
+							   name="tx_faginstitutionmanagement_terminal[dates][0][enddate]"
+							   class="termineEndDatum  datepicker " type="text"
+							   value="{event.end-> f:format.date(format:'d/m/Y')}">
+					</div>
+					<div class="EntryInputWrapper datenInputWrapper">
+						<label>Start-Zeit (optional)</label>
+						<input autocomplete="off"
+							   name="tx_faginstitutionmanagement_terminal[dates][0][starttime]"
+							   class="termineStartZeit  timepicker " type="text"
+							   autocomplete="off" value="{event.start-> f:format.date(format:'H:i')}">
+					</div>
+					<div class="EntryInputWrapper datenInputWrapper">
+						<label>End-Zeit (optional)</label>
+						<input autocomplete="off"
+							   name="tx_faginstitutionmanagement_terminal[dates][0][endtime]"
+							   class="termineEndZeit  timepicker " type="text"
+							   autocomplete="off" value="{event.end-> f:format.date(format:'H:i')}">
+					</div>
+					<f:comment>
+						<f:if condition="{f:count(subject:'{dates}')}>1">
+							<f:then>
+								<div class="removeWrapper" style="display: block;"><a class="removeLink"
+																					  href="javascript:{}"
+																					  onclick="removeDatum('{fooIterator.index}')"><i
+										class="fa fa-trash"></i> Datum entfernen</a></div>
+							</f:then>
+							<f:else>
+								<div class="removeWrapper" style="display: none;"><a class="removeLink"
+																					 href="javascript:{}"
+																					 onclick="removeDatum('{fooIterator.index}')"><i
+										class="fa fa-trash"></i> Datum entfernen</a></div>
+							</f:else>
+						</f:if>
+					</f:comment>
+				</div>
+				<f:form.hidden id="type" value="event"/>
+				<f:comment>
+					<f:form.hidden id="index" value="{f:count(subject:'{dates}')}"/>
+
+				</f:comment>
+
+			</div>
+			<f:comment>
+				<a href="javascript:{}" id="addNewDaten" class="AddNewEntry"><i class="fa fa-plus-circle"
+																				aria-hidden="true"></i>Datum hinzufügen</a>
+			</f:comment>
+			<f:comment>
+
+			<div>Bild (Optional)</div>
+			<div id='outputImage'>
+				<f:for each="{event.images}" as="image">
+					<f:image image="{image}" width="200" height="200"/>
+				</f:for>
+				<img src="" width="200" height="200"/>
+			</div>
+			<div style="height: 10px;"></div>
+			<div id="progress" style="display: none">
+				<p><strong>0%</strong></p>
+				<progress value="5" min="0" max="100">0%</progress>
+			</div>
+			<h:form.upload property="images.0" id="uploadImage">
+			</h:form.upload>
+			<div class="removeLogoWrapper"><a class="removeLogoLink" href="javascript:{}"><i class="fa fa-trash"></i>
+				Bild entfernen</a></div>
+			</f:comment>
+			<div class="widget widget-textarea">
+				<label for="ctrl_1279">
+					Text </label>
+				<f:comment><f:format.html parseFuncTSPath="lib.parseFunc">{event.bodyText}</f:format.html></f:comment>
+				<f:form.textarea property="bodyText" class="textarea" value="{event.bodyText -> f:format.stripTags()}" rows="15"
+								 cols="40"/>
+
+			</div>
+			<strong>Downloads</strong>
+			<ul class="kp_neuerTermin_downloads_container EntryContainer ui-sortable">
+				<f:for each="{event.document}" as="doc" iteration="fooIterator">
+					<li class="docsElemnt_{fooIterator.index}">
+						<div class="uploadElemnt  EntryElement" id="uploadElment_{fooIterator.index}">
+							<div class="downlaodInputWrapper  EntryInputWrapper">
+								<span class="sortIcon"><i class="fa fa-sort"></i></span>
+								<label>Bezeichnung</label>
+								<input class="download_text" required="" value="{doc.originalResource.title}"
+									   name="tx_faginstitutionmanagement_terminal[docstitle][]"
+									   type="text">
+								<h:form.upload property="document.{fooIterator.index}" class="docfile"
+											   style="display:none;"></h:form.upload>
+							</div>
+							<div class="downlaodInputWrapper   EntryInputWrapper  toReplace"><label>Datei</label>
+								<div class="inputWrapper">{doc.originalResource.name}</div>
+								<div class="status"></div>
+								<input class="uploadFileHidden" type="hidden"
+									   name="nachrichtenDownloadId[{fooIterator.index}]" value="{doc.uid}">
+								<input class="uploadFileHidden" id="deleted_{doc.uid}" type="hidden"
+									   name="tx_faginstitutionmanagement_terminal[deleted][{doc.uid}]" value="0">
+							</div>
+							<div class="removeWrapper">
+								<a class="removeLink" href="javascript:{}"
+								   onclick="removeDocs('{fooIterator.index}')"><i
+										class="fa fa-trash"></i> Download
+									entfernen</a>
+							</div>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+			<a href="javascript:{}" id="addNewDownloadsFile" class="AddNewEntry"><i class="fa fa-plus-circle"
+																					aria-hidden="true"></i>Download
+				hinzufügen</a>
+			<input id="indexdownload" value="{event.document-> f:count()}" type="hidden"/>
+			<strong>Links</strong>
+			<ul class="kp_neuerTermin_links_container EntryContainer">
+				<f:for each="{event.links}" as="link" iteration="fooIterator">
+					<li class="EntryElement-item">
+						<div class="linkElemnt  EntryElement" id="linkElment_{fooIterator.index}">
+							<div class="linkInputWrapper  EntryInputWrapper"><span class="sortIcon"><i
+									class="fa fa-sort"></i></span><label>Link Text</label>
+								<input class="link_text" value="{link.text}" required=""
+									   name="tx_faginstitutionmanagement_terminal[linkText][{fooIterator.index}]"
+									   type="text">
+							</div>
+							<div class="linkInputWrapper  EntryInputWrapper"><label>Link URL</label><input
+									class="link_url mandatory" value="{link.url}" required=""
+									name="tx_faginstitutionmanagement_terminal[linkUrl][{fooIterator.index}]"
+									type="text">
+							</div>
+							<div class="removeWrapper"><a class="removeLink mandatory"
+														  onclick="removeEventLink('{fooIterator.index}')"
+														  href="javascript:{}"><i
+									class="fa fa-trash"></i> Link entfernen</a></div>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+			<a href="javascript:{}" id="addNewLink" class="AddNewEntry"><i class="fa fa-plus-circle"
+																		   aria-hidden="true"></i>Link
+				hinzufügen</a>
+			<f:form.hidden id="indexlink" value="{f:count(subject:'{event.links}')}"/>
+
+
+		</div>
+	</div>
+
+
+</div>
+
+
+

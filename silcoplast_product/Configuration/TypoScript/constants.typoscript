@@ -1,0 +1,15 @@
+
+plugin.tx_silcoplastproduct_silcoplastproduct {
+    view {
+        # cat=plugin.tx_silcoplastproduct_silcoplastproduct/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:silcoplast_product/Resources/Private/Templates/
+        # cat=plugin.tx_silcoplastproduct_silcoplastproduct/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:silcoplast_product/Resources/Private/Partials/
+        # cat=plugin.tx_silcoplastproduct_silcoplastproduct/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:silcoplast_product/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_silcoplastproduct_silcoplastproduct//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

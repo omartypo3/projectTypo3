@@ -1,0 +1,859 @@
+<f:layout name="Default"/>
+<f:section name="main">
+    <f:render partial="Institution/breadCrumb"/>
+<div class="Institution-s2d">
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.homeNextStep}">
+        <div id="wrapper">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+                    <div row="">
+                        <main>
+
+                            <div class="mod_article first last block" id="kopla">
+
+                                <h3>Herzlich willkommen im Administrationsinterface von Ideebar.</h3>
+                                <p>Hier können Sie Ihre persönliche Daten kontrollieren und bearbeiten und Ihre
+                                    Institutionen
+                                    verwalten.<br>Sie sind angemeldet als <strong>{user.first_name }</strong> mit der
+                                    E-Mail Adresse
+                                    <strong>{user.email}</strong>.</p>
+
+                                <!-- indexer::stop -->
+
+                                <nav class="mod_customnav block">
+
+                                    <v:page.menu pageUid="{settings.homeNextStep}">
+                                        <ul class="kp-homeNav">
+                                            <f:for each="{menu}" as="item">
+                                                <li class="first">
+                                                    <f:link.page pageUid="{item.uid}" title="{item.linktext}">
+                                                        {item.linktext}
+                                                    </f:link.page>
+                                                </li>
+                                            </f:for>
+                                        </ul>
+                                    </v:page.menu>
+
+                                </nav>
+
+
+                                <!-- indexer::continue -->
+
+
+                            </div>
+                        </main>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.institutionenverwalten}">
+        <div id="wrapper">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+                    <div row="">
+                        <main>
+
+                            <div class="mod_article last block" id="institutionen-benutzer">
+
+                                <h3 class="ce_headline first">
+                                    Meine Institutionen verwalten</h3>
+
+                                <div class="data--liste">
+                                    <section class="kp-inst-list verwalter">
+                                        <ul id="kp-inst-list">
+                                            <f:if condition="{institution}">
+                                                <f:then>
+                                                    <f:for each="{institution}" as="items">
+                                                        <li>
+															<span class="kp-inst-list-name">
+																{items.title}
+															</span>
+                                                            <f:for each="{items.categories}" as="categor">
+																<span class="kp-inst-list-kategorie">
+																	{categor.title}
+																</span>
+                                                            </f:for>
+                                                            <span class="kp-inst-list-icons">
+
+																<f:link.action pageUid="{settings.start}" action="edit"
+                                                                               arguments="{institution:items.uid}"><i
+                                                                        class="fa fa-pencil"
+                                                                        aria-hidden="true"></i></f:link.action>
+															</span>
+
+                                                        </li>
+
+                                                    </f:for>
+
+                                                </f:then>
+                                                <f:else>
+                                                    <li class="no-entries is-hidden">Keine Einträge gefunden</li>
+                                                </f:else>
+                                            </f:if>
+                                        </ul>
+                                    </section>
+                                </div>
+
+
+                                <div class="toDelete--wrapper">
+                                    <div class="inside">
+                                        <p>Soll die Institution mit allen dazugehörigen Inhalten gelöscht werden?</p>
+                                        <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                                        <button id="bt_confirm"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!
+                                        </button>
+                                        <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </main>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.meinedatenverwalten}">
+        <div id="wrapper">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+
+                    <main>
+                        <!-- indexer::stop -->
+                        <div class="mod_article first last block" id="kopla-meine-daten-verwalten">
+
+
+                            <f:if condition="{institution}">
+                                <f:then>
+                                    <!-- Member Daten //-->
+                                    <h3 class="ce_headline kp-head-user first">
+                                        Meine Daten verwalten</h3>
+                                    <div class="core--meineDaten MeineDaten">
+                                        <section class="MeineDaten-section">
+                                            <div class="MeineDaten-intro">
+                                                <h4>Stammdaten</h4>
+                                                <div class="explanation">
+                                                    Diese Daten werden standardmässig in allen Institutionen angezeigt
+                                                    bei denen Sie als
+                                                    Ansprechperson eingetragen sind. Sie können aber bei jedem Ihrer
+                                                    Einträge Ihre Daten
+                                                    individuell
+                                                    anpassen oder ausblenden.
+                                                </div>
+                                                <div class="MeineDaten-intro-data"><span><strong>Vorname:</strong>
+														{user.first_name } </span><span><strong>Name:</strong>{user.last_name }
+													</span><span><strong>E-Mail:</strong>
+														{user.email }</span></div>
+                                                <div class="MeineDaten-intro-edit">
+
+                                                    <f:link.action   pageUid="{settings.stammdatenbearbeiten}" action="editUser" arguments="{user:user.uid}">
+                                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                        Stammdaten bearbeiten
+                                                    </f:link.action>
+
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="MeineDaten-section">
+                                            <div>
+                                                <h4>Meine Institutionen</h4>
+                                                <div class="explanation">
+                                                    Für jede Institution der Sie angehören können Sie frei bestimmen,
+                                                    welche Ihrer Kontaktdaten
+                                                    angezeigt werden. Lassen Sie das jeweilige Feld leer, werden keine
+                                                    Daten angezeigt. Mit der
+                                                    Checkbox können Sie die Einträge aus Ihren Stammdaten übernehmen
+                                                    oder Sie tragen für diese
+                                                    Institution individuelle Angaben ein.
+                                                </div>
+                                            </div>
+
+                                            <div id="kp_be_daten_insitution">
+                                                <f:for each="{institution}" as="items">
+
+                                                    <section class="ce_accordionStart ce_accordion block"
+                                                             id="kp_ac_institutionData_1">
+                                                        <div
+                                                                class="toggler                               ui-accordion-header                               ui-state-default                               ui-accordion-icons                               ui-corner-all"
+                                                                role="tab" id="ui-id-1" aria-controls="ui-id-2"
+                                                                aria-selected="false"
+                                                                aria-expanded="false" tabindex="0"><span
+                                                                class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                                                            <span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>
+                                                            {items.title}
+                                                        </div>
+
+                                                        <div
+                                                                class="accordion                              ui-accordion-content                              ui-helper-reset                              ui-widget-content                              ui-corner-bottom                              ui-accordion-content"
+                                                                id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel"
+                                                                aria-hidden="true">
+                                                            <div>
+
+                                                                <div class="ce_text block">
+                                                                    <div class="formWrapper_1"
+                                                                         style="position: relative;">
+                                                                        <div class="verwalter explanation">
+                                                                            Die Institution wird durch <strong>{user.first_name}
+                                                                            {user.last_name}</strong>
+                                                                            verwaltet.
+                                                                        </div>
+
+                                                                        <div class="ce_form tableless block">
+                                                                            <f:form action="updatePersonen_institution"
+                                                                                    name="updatePer_in"
+                                                                                    object="{updatePer_ins}">
+
+                                                                                <div class="formbody">
+                                                                                    <input name="FORM_SUBMIT"
+                                                                                           value="{user.uid}"
+                                                                                           type="hidden">
+                                                                                    <div class="widget widget-text">
+
+                                                                                        <label for="ctrl_1149"> Position
+                                                                                            in der Institution </label>
+                                                                                        <input name="position"
+                                                                                               id="ctrl_1149"
+                                                                                               class="text"
+                                                                                               value="{user.roles}"
+                                                                                               type="text">
+                                                                                    </div>
+                                                                                    <div class="widget widget-checkbox">
+                                                                                        <fieldset id="ctrl_1224"
+                                                                                                  class="checkbox_container">
+                                                                                            <input
+                                                                                                    name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][roles]"
+                                                                                                    value=""
+                                                                                                    checked="checked">
+                                                                                            <span><input
+                                                                                                    name="published"
+                                                                                                    id="opt_1224_0"
+                                                                                                    class="checkbox"
+                                                                                                    value="published"
+                                                                                                    checked="checked"
+                                                                                                    type="checkbox"> <label
+                                                                                                    id="lbl_1224_0"
+                                                                                                    for="opt_1224_0">Daten auf der Webseite
+																									anzeigen?</label></span>
+                                                                                        </fieldset>
+                                                                                    </div>
+                                                                                    <fieldset>
+                                                                                        <legend>E-Mail Adresse</legend>
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1155">
+                                                                                                E-Mail Adresse </label>
+                                                                                            <input name="email"
+                                                                                                   id="ctrl_1155"
+                                                                                                   class="text"
+                                                                                                   value="{user.email}"
+                                                                                                   type="email"
+                                                                                                   disabled="disabled">
+                                                                                        </div>
+                                                                                        <div class="widget widget-checkbox">
+                                                                                            <fieldset id="ctrl_1156"
+                                                                                                      class="checkbox_container">
+                                                                                                <input
+                                                                                                        name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][email]"
+                                                                                                        value="">
+                                                                                                <span><input
+                                                                                                        name="email_default"
+                                                                                                        id="opt_1156_0"
+                                                                                                        class="checkbox"
+                                                                                                        value="email_default"
+                                                                                                        checked="checked"
+                                                                                                        type="checkbox"> <label
+                                                                                                        id="lbl_1156_0"
+                                                                                                        for="opt_1156_0">E-Mail Adresse aus Stammdaten
+																										übernehmen?</label></span>
+                                                                                            </fieldset>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                    <fieldset>
+                                                                                        <legend>Telefonnummer</legend>
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1151">
+                                                                                                Telefonnummer </label>
+                                                                                            <input name="tel"
+                                                                                                   id="ctrl_1151"
+                                                                                                   class="text"
+                                                                                                   value="{user.telephone}"
+                                                                                                   type="text"
+                                                                                                   disabled="disabled">
+                                                                                        </div>
+                                                                                        <div class="widget widget-checkbox">
+                                                                                            <fieldset id="ctrl_1152"
+                                                                                                      class="checkbox_container">
+                                                                                                <input
+                                                                                                        name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][telephone]"
+                                                                                                        value=""> <span><input
+                                                                                                    name="tel_default"
+                                                                                                    id="opt_1152_0"
+                                                                                                    class="checkbox"
+                                                                                                    value="tel_default"
+                                                                                                    checked="checked"
+                                                                                                    type="checkbox"> <label
+                                                                                                    id="lbl_1152_0"
+                                                                                                    for="opt_1152_0">Telefonnummer aus Stammdaten
+																										übernehmen?</label></span>
+                                                                                            </fieldset>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                    <fieldset>
+                                                                                        <legend>Mobile</legend>
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1159">
+                                                                                                Mobile </label>
+                                                                                            <input name="mobile"
+                                                                                                   id="ctrl_1159"
+                                                                                                   class="text"
+                                                                                                   value="{user.mobilephone}"
+                                                                                                   type="text"
+                                                                                                   disabled="disabled">
+                                                                                        </div>
+                                                                                        <div class="widget widget-checkbox">
+                                                                                            <fieldset id="ctrl_1160"
+                                                                                                      class="checkbox_container">
+                                                                                                <legend>
+                                                                                                    Mobile
+                                                                                                </legend>
+                                                                                                <input
+                                                                                                        name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][mobilephone]"
+                                                                                                        value="">
+                                                                                                <span><input
+                                                                                                        name="mobile_default"
+                                                                                                        id="opt_1160_0"
+                                                                                                        class="checkbox"
+                                                                                                        value="mobile_default"
+                                                                                                        checked="checked"
+                                                                                                        type="checkbox"> <label
+                                                                                                        id="lbl_1160_0"
+                                                                                                        for="opt_1160_0">Mobile aus Stammdaten
+																										übernehmen?</label></span>
+                                                                                            </fieldset>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                    <fieldset>
+                                                                                        <legend>Strasse und Hausnummer
+                                                                                        </legend>
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1163">
+                                                                                                Strasse und
+                                                                                                Hausnummer </label>
+                                                                                            <input name="strasse"
+                                                                                                   id="ctrl_1163"
+                                                                                                   class="text"
+                                                                                                   value="{user.address}"
+                                                                                                   type="text"
+                                                                                                   disabled="disabled">
+                                                                                        </div>
+                                                                                        <div class="widget widget-checkbox">
+                                                                                            <fieldset id="ctrl_1164"
+                                                                                                      class="checkbox_container">
+                                                                                                <legend>
+                                                                                                    Strasse und
+                                                                                                    Hausnummer
+                                                                                                </legend>
+                                                                                                <input
+                                                                                                        name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][address]"
+                                                                                                        value="">
+                                                                                                <span><input
+                                                                                                        name="strasse_default"
+                                                                                                        id="opt_1164_0"
+                                                                                                        class="checkbox"
+                                                                                                        value="strasse_default"
+                                                                                                        checked="checked"
+                                                                                                        type="checkbox"> <label
+                                                                                                        id="lbl_1164_0"
+                                                                                                        for="opt_1164_0">Strasse und Hausnummer aus
+																										Stammdaten
+																										übernehmen?</label></span>
+                                                                                            </fieldset>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                    <fieldset>
+                                                                                        <legend>Postleitzahl</legend>
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1167">
+                                                                                                PLZ </label>
+                                                                                            <input name="plz"
+                                                                                                   id="ctrl_1167"
+                                                                                                   class="text"
+                                                                                                   value="{user.zip}"
+                                                                                                   type="text"
+                                                                                                   disabled="disabled">
+                                                                                        </div>
+                                                                                        <div class="widget widget-checkbox">
+                                                                                            <fieldset id="ctrl_1168"
+                                                                                                      class="checkbox_container">
+                                                                                                <legend>
+                                                                                                    PLZ
+                                                                                                </legend>
+                                                                                                <input
+                                                                                                        name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][zip]"
+                                                                                                        value="">
+                                                                                                <span><input
+                                                                                                        name="plz_default"
+                                                                                                        id="opt_1168_0"
+                                                                                                        class="checkbox"
+                                                                                                        value="plz_default"
+                                                                                                        checked="checked"
+                                                                                                        type="checkbox"> <label
+                                                                                                        id="lbl_1168_0"
+                                                                                                        for="opt_1168_0">PLZ aus Stammdaten
+																										übernehmen?</label></span>
+                                                                                            </fieldset>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                    <fieldset>
+                                                                                        <legend>Ort</legend>
+                                                                                        <div class="widget widget-text">
+                                                                                            <label for="ctrl_1170">
+                                                                                                Ort </label>
+                                                                                            <input name="ort"
+                                                                                                   id="ctrl_1170"
+                                                                                                   class="text"
+                                                                                                   value="{user.city}"
+                                                                                                   type="text"
+                                                                                                   disabled="disabled">
+                                                                                        </div>
+                                                                                        <div class="widget widget-checkbox">
+                                                                                            <fieldset id="ctrl_1171"
+                                                                                                      class="checkbox_container">
+                                                                                                <legend>
+                                                                                                    Ort
+                                                                                                </legend>
+                                                                                                <input
+                                                                                                        name="tx_faginstitutionmanagement_nextsteplogin[updatePer_in][city]"
+                                                                                                        value="">
+                                                                                                <span><input
+                                                                                                        name="ort_default"
+                                                                                                        id="opt_1171_0"
+                                                                                                        class="checkbox"
+                                                                                                        value="ort_default"
+                                                                                                        checked="checked"
+                                                                                                        type="checkbox"> <label
+                                                                                                        id="lbl_1171_0"
+                                                                                                        for="opt_1171_0">Ort aus Stammdaten
+																										übernehmen?</label></span>
+                                                                                            </fieldset>
+                                                                                        </div>
+                                                                                    </fieldset>
+                                                                                    <div class="submit_container">
+                                                                                        <button type="submit"
+                                                                                                id="ctrl_1172"
+                                                                                                value="Speichern">
+                                                                                            <i class="fa fa-floppy-o"></i>
+                                                                                            Speichern
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </f:form>
+                                                                        </div>
+                                                                        <div class="formLoadScreen_1 formLoaderGlobal invisible"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </f:for>
+                                            </div>
+
+
+                                        </section>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <div class="data--liste">
+
+                                        <section>
+                                            <h3>Meine Anmeldungen</h3>
+                                            <ul class="Anmeldung-list">
+                                                <p>Zur Zeit sind keine Anmeldungen verfügbar.</p>
+                                            </ul>
+                                        </section>
+                                    </div>
+                                </f:else>
+                            </f:if>
+
+                            <!-- INSTITUTIONEN //-->
+
+                        </div>
+
+
+                </div> <!-- indexer::continue -->
+
+
+                </main>
+
+
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.anmeldungen}">
+        <div id="wrapper">
+            <div id="barba-wrapper">
+                <div class="barba-container">
+                    <div row="">
+                        <main>
+                            <!-- indexer::stop -->
+                            <div class="mod_article first last block" id="kopla-anmeldungen">
+
+                                <div class="data--liste">
+
+                                    <section>
+                                        <h3>Meine Anmeldungen</h3>
+                                        <ul class="Anmeldung-list">
+                                            <p>Zur Zeit sind keine Anmeldungen verfügbar.</p>
+                                        </ul>
+                                    </section>
+                                </div>
+
+
+                                <div id="aeDialog" class="toDelete--wrapper">
+                                    <div class="inside">
+                                        <p class="changeMessage"></p>
+                                        <button id="bt_confirm_anm_err"><i class="fa fa-check-circle"
+                                                                           aria-hidden="true"></i>Ok
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- indexer::continue -->
+
+
+                        </main>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.personen}">
+
+        <div id="barba-wrapper">
+            <div class="barba-container">
+                <div row>
+                    <main>
+                        <!-- indexer::stop -->
+
+                        <!-- indexer::continue -->
+
+                        <h3 class="kp-head-inst ">{detailsInstitution.title}</h3>
+                        <f:link.external class="kp-externallink " uri="{detailsInstitution.www}" target="_blank">Zum
+                            Eintrag auf der
+                            Website <i class="fa fa-external-link-square" aria-hidden="true"></i></f:link.external>
+
+                        <div class="kp-nav-inst ">
+                            <!-- indexer::stop -->
+                            <nav class="mod_customnav kopla-navTabBar kopla-navTabBar">
+
+                                <a href="#" class="invisible">Navigation überspringen</a>
+                                <ul class="level_1 clearfix tab">
+                                    <li class="first ">
+                                        <f:link.action pageUid="{settings.start}" action="edit" arguments="{institution:id_url}"
+                                                       class="trail"
+                                                       title="Start">
+                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                            <span class="navText">Start</span>
+                                        </f:link.action>
+                                    </li>
+                                    <f:comment>
+                                    <li class="trail">
+                                        <f:link.action pageUid="{settings.personen}"
+                                                       arguments="{institution:id_url}" title="Personen"
+                                                       class="trail">
+
+
+                                            <i class="fa fa-users" aria-hidden="true"></i> <span class="navText">Personen</span>
+                                        </f:link.action>
+                                    </li>
+                                    </f:comment>
+                                    <li>
+                                        <f:link.action pageUid="{settings.termine}" arguments="{institution:id_url}"
+                                                       title="Termine">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> <span class="navText">Termine</span>
+                                        </f:link.action>
+                                    </li>
+                                    <li>
+                                        <a href="#"><b>BETA-Version</b></a>
+                                    </li>
+                                </ul>
+                                <ul class="tab" style="border:none;">
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none;     text-transform: none;">
+                                        <div>Bitte melden Sie Fehler direkt an Tony Steinmann ts@frontal.ch</div>
+                                        <div>Die Bearbeitung für Ansprechpartner ist noch nicht verfügbar.</div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            </nav>
+                            <!-- indexer::continue -->
+                        </div>
+                        <div class="mod_article first last block" id="kopla-meine-institutionen-verwalten-start">
+                            <div class="buttonContainer">
+                                <f:link.action pageUid="{settings.Suchmaske}" action="addUser"
+                                               arguments="{institution:id_url}"
+                                               class="button">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Neue Person
+                                    hinzufügen
+                                </f:link.action>
+                            </div>
+
+                            <div class="explanation">
+                                Zum Ändern der Reihenfolge auf der Webseite können Sie die Personen durch Klick auf das
+                                <i
+                                        class="fa fa-sort"></i> Symbol per Drag-and-Drop verschieben.
+
+                            </div>
+                            <div class="personen-list-wrappar">
+                                <ol class="personenListe">
+                                    <f:for each="{userDetails}" as="itemDetails">
+                                        <li class="personWrapper"><span class="sortIcon"><i
+                                                class="fa fa-sort"></i></span><span
+                                                class="personLabel">{itemDetails.firstName} {itemDetails.lastName}</span><span
+                                                class="KoplaEntriesList-item-icons"><span class="editIcon">
+													<f:link.action pageUid="{settings.Personbearbeiten}"
+                                                                   action="personen"
+                                                                   arguments="{idPerson:itemDetails.uid}"><i
+                                                            class="fa fa-pencil"></i></f:link.action>
+												</span><span class="deletIcon">
+																								<span class="deletIcon">
+																									<f:link.action action="deleteUser" arguments="{institution:id_url,idPerson:itemDetails.uid}"><i class="fa fa-trash"></i></f:link.action></span></span>
+
+
+										<f:comment>	<span class="deletIcon">
+																								<span class="deletIcon"><a
+                                                                                                        href="javascript:{}"><i class="fa fa-trash"></i></a></span></span><input
+                                                class="personLinkId" type="hidden" value="{itemDetails.uid}"></f:comment>
+                                    </f:for>
+                                </ol>
+                            </div>
+                            <div class="toDelete--wrapper">
+                                <div class="inside">
+                                    <p>Soll die Person aus dieser Institution entfernt werden?</p>
+                                    <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+                                    <button id="bt_confirm"><i class="fa fa-trash" aria-hidden="true"></i> Entfernen!</button>
+                                    <button id="bt_cancel"> <i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+                                </div>
+                            </div>
+                    </main>
+
+
+                </div>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.termine}">
+
+        <div id="barba-wrapper">
+            <div class="barba-container">
+                <div row>
+                    <main>
+                        <h3 class="kp-head-inst ">{detailsInstitution.title}</h3>
+                        <f:link.external class="kp-externallink " uri="{detailsInstitution.www}" target="_blank">Zum
+                            Eintrag auf der
+                            Website <i class="fa fa-external-link-square" aria-hidden="true"></i></f:link.external>
+
+                        <div class="kp-nav-inst ">
+                            <nav class="mod_customnav kopla-navTabBar kopla-navTabBar">
+
+                                <a href="#" class="invisible">Navigation überspringen</a>
+                                <ul class="level_1 clearfix tab">
+                                    <li class="first ">
+                                        <f:link.action pageUid="{settings.start}" arguments="{institution:id_url}"
+                                                       class="first"
+                                                       title="Start">
+
+                                            <i class="fa fa-home" aria-hidden="true"></i> <span
+                                                class="navText">Start</span></f:link.action>
+                                    </li>
+                                    <f:comment>
+                                    <li>
+                                        <f:link.action pageUid="{settings.personen}"
+                                                       arguments="{institution:id_url}" title="Personen">
+                                            <i class="fa fa-users" aria-hidden="true"></i> <span class="navText">Personen</span>
+                                        </f:link.action>
+                                    </li>
+                                    </f:comment>
+                                    <li class="trail">
+                                        <f:link.action pageUid="{settings.termine}" arguments="{institution:id_url}"
+                                                       title="termine"
+                                                       class="trail">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> <span class="navText">Termine</span>
+                                        </f:link.action>
+                                    </li>
+                                    <li>
+                                        <a href="#"><b>BETA-Version</b></a>
+                                    </li>
+                                </ul>
+                                <ul class="tab" style="border:none;">
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none;">&nbsp;</li>
+                                    <li style="border:none; text-transform: none;">
+                                        <div>Bitte melden Sie Fehler direkt an Tony Steinmann ts@frontal.ch</div>
+                                        <div>Die Bearbeitung für Ansprechpartner ist noch nicht verfügbar.</div>
+                                    </li>
+                                </ul>
+                            </nav>
+                            </nav>
+                        </div>
+                        <div class="buttonContainer">
+
+                            <f:link.action
+                                    controller="Event"
+                                    action="new"
+                                    extensionName="Terminal"
+                                    pluginName="Terminal"
+                                    pageUid="{settings.Neuetermin}"
+                                    arguments="{institution:id_url}"
+                                    class="button">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i> Neuen
+                                Termin erstellen
+                            </f:link.action>
+
+                        </div>
+                        <div class="data--liste">
+
+                            <section>
+                                <h3>Aktuelle Termine</h3>
+                                <ul class="KoplaEntriesList-container KoplaEventsList-container">
+                                    <f:for each="{events}" as="event">
+                                        <li class="KoplaEntriesList-item  KoplaEventsList-item"><span
+                                                class="KoplaEntriesList-item-title">{event.title}</span>
+
+                                            <span class="KoplaEntriesList-item-date">
+																<f:format.date format="%d">{event.dates.0.startdate}</f:format.date>.<f:format.date format="%m">{event.dates.0.startdate}</f:format.date>
+												<f:format.date format="%Y">{event.dates.0.startdate}</f:format.date>
+														<f:if condition="{event.dates.0.enddate}">
+																										<f:then>
+					                    –	<f:format.date format="%d">{event.dates.0.enddate}</f:format.date>.<f:format.date format="%m">{event.dates.0.enddate}</f:format.date>
+																<f:format.date format="%Y">{event.dates.0.enddate}</f:format.date>
+																								</f:then>
+
+		                                  , <f:format.date format="H:i">{event.dates.0.startdate}</f:format.date>–
+																				 <f:format.date format="H:i">{event.dates.0.enddate}</f:format.date>
+
+																	</f:if>
+	                            </span>
+
+                                            <span class="KoplaEntriesList-item-location">{event.location}</span><span
+                                                    class="KoplaEntriesList-item-icons">
+                                             <f:link.action
+                                                     controller="Event"
+                                                     action="edit"
+                                                     pageUid="{settings.terminBearbeiten}"
+                                                     arguments="{institution:id_url,event:event.uid}"
+                                                     class="editNachricht tip" title="Diesen Termin bearbeiten">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </f:link.action>
+										</span></li>
+                                    </f:for>
+                                </ul>
+                            </section>
+                            <section>
+                                <h3>Vergangene Termine</h3>
+                                <ul class="KoplaEntriesList-container  KoplaEventsList-container  bygone">
+                                    <f:for each="{eventPassed}" as="eventP">
+                                        <f:if condition="{event.start}">
+
+                                        </f:if>
+                                        <li class="KoplaEntriesList-item  KoplaEventsList-item"><span
+                                                class="KoplaEntriesList-item-title">{eventP.title}</span>
+
+                                            <span class="KoplaEntriesList-item-date">
+																<f:format.date format="%d">{eventP.dates.0.startdate}</f:format.date>.<f:format.date format="%m">{eventP.dates.0.startdate}</f:format.date>
+												<f:format.date format="%Y">{eventP.dates.0.startdate}</f:format.date>
+														<f:if condition="{eventP.dates.0.enddate}">
+																										<f:then>
+					                    –	<f:format.date format="%d">{eventP.dates.0.enddate}</f:format.date>.<f:format.date format="%m">{eventP.dates.0.enddate}</f:format.date>
+																<f:format.date format="%Y">{eventP.dates.0.enddate}</f:format.date>
+																								</f:then>
+		                                  , <f:format.date format="H:i">{eventP.dates.0.startdate}</f:format.date>–
+																				 <f:format.date format="H:i">{eventP.dates.0.enddate}</f:format.date>
+
+																	</f:if>
+	                            </span>
+                                            <span class="KoplaEntriesList-item-location">{eventP.location}</span><span
+                                                    class="KoplaEntriesList-item-icons">
+                                             <f:link.action
+                                                     controller="Event"
+                                                     action="edit"
+                                                     pageUid="{settings.terminBearbeiten}"
+                                                     arguments="{institution:id_url,event:eventP.uid}"
+                                                     class="editNachricht tip" title="Diesen Termin bearbeiten">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </f:link.action>
+										</span></li>
+                                    </f:for>
+                                </ul>
+                            </section>
+                        </div>
+                    </main>
+
+
+                </div>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.neuespasswort}">
+        <div class="mod_article first last block" id="neues-passwort">
+
+
+            <div class="new--pw--wrapper">
+
+                <h3>Neues Passwort</h3>
+
+                <fieldset>
+
+                    <div class="widget-text">
+                        <label>Neues Passwort</label>
+                        <input type="password" id="pw-01">
+                    </div>
+
+                    <div class="widget-text">
+                        <label>Passwort wiederholen</label>
+                        <input type="password" id="pw-02">
+                    </div>
+
+                </fieldset>
+
+                <div class="submit_container">
+                    <a class="button" href="javascript:{}" id="savePw"><i class="fa fa-save"></i> Speichern</a>
+                </div>
+
+            </div>
+
+            <div class="toDelete--wrapper">
+                <div class="inside">
+                    <p>
+                        Dummy Text
+                    </p>
+                    <button id="bt_confirm" style="margin-right: 0;"><i class="fa fa-check-circle"
+                                                                        aria-hidden="true"></i>OK
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </f:if>
+    </div>
+</f:section>

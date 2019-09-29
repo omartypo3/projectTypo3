@@ -1,0 +1,596 @@
+#aside_menu_slider {
+	display: none;
+	position: fixed;
+  	top: 10px;
+  	right: 0;
+  	width: 74px;
+  	height: 15px;
+	margin-right:12px;
+  	z-index: 9997;
+  	background-image: url(../images/Buttons/burger.png);
+	background-size:74px 15px;
+}
+#aside_menu_slider .aside {
+	display: none;
+}
+
+.small {
+	text-align: center;
+	display: block;
+	overflow: auto;
+	padding-left: 70px;
+}
+.small a {
+	width: 38px;
+	height: 38px;
+	overflow: hidden;
+	background-color: #000;
+	color: #fff;
+	font-size: 12px;
+	float: left;
+	margin: 10px;
+	text-align: center;
+}
+
+.small a span {
+	display: none;
+}
+.small a.phone {
+	background-image: url(../images/Buttons/phone.png);
+	padding: 0;
+}
+.small a.route {
+	background-image: url(../images/Buttons/route.png);
+	padding: 0;
+}
+.small a.email {
+	background-image: url(../images/Buttons/email.png);
+	padding: 0;
+}
+
+@media only screen and (max-width: 767px){
+	#aside_menu_slider {
+		display: block;
+	}
+}
+
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* Globals
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* Template
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+body {
+    overflow-x: hidden
+}
+#wrapper {
+    position: relative;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+#aside_menu_slider section {
+    margin-bottom: 30px
+}
+#aside_menu_slider section h1 {
+    font-family: "Oswald", sans-serif;
+    margin-bottom: 10px;
+}
+#aside_menu_slider section p {
+    margin-bottom: 30px
+}
+#aside_menu_slider section p:last-child {
+    margin-bottom: 0
+}
+#aside_menu_slider section:last-child {
+    margin-bottom: 0
+}
+#aside_menu_slider section.toggle {
+    text-align: center
+}
+#aside_menu_slider .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    #padding-top: 50px;
+    z-index: 5500;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* Menus
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+/* general style for all menus */
+nav.menu {
+    position: fixed;
+    z-index: 9999;
+    background-color: #E0D7D2;
+    padding-top: 0px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    border: 1px solid #655651;
+}
+nav.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav.menu a {
+    font-weight: 300;
+    color: #655651;
+}
+button.close-menu {
+    background-color: #E0D7D2;
+    color: #fff;
+    position: absolute;
+    top: -10px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+}
+button.close-menu:focus {
+    outline: none
+}
+/* slide menu left and right, push menu left and right */
+nav.slide-menu-left,
+nav.slide-menu-right,
+nav.push-menu-left,
+nav.push-menu-right {
+    top: 0;
+    width: 300px;
+    height: 100%;
+}
+nav.slide-menu-left li,
+nav.slide-menu-right li,
+nav.push-menu-left li,
+nav.push-menu-right li {
+    display: block;
+    text-align: center;
+    border-bottom: solid 1px ##655651;
+    border-top: solid 1px #E0D7D4;
+}
+nav.slide-menu-left li:first-child,
+nav.slide-menu-right li:first-child,
+nav.push-menu-left li:first-child,
+nav.push-menu-right li:first-child {
+    border-top: none
+}
+nav.slide-menu-left li:last-child,
+nav.slide-menu-right li:last-child,
+nav.push-menu-left li:last-child,
+nav.push-menu-right li:last-child {
+    border-bottom: none
+}
+nav.slide-menu-left a,
+nav.slide-menu-right a,
+nav.push-menu-left a,
+nav.push-menu-right a {
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+}
+nav.slide-menu-left button.close-menu,
+nav.slide-menu-right button.close-menu,
+nav.push-menu-left button.close-menu,
+nav.push-menu-right button.close-menu {
+    margin: 10px 0;
+    padding: 0px 0px;
+    background-color: #655651;
+    color: #fff;
+}
+nav.slide-menu-left,
+nav.push-menu-left {
+    left: -300px
+}
+nav.slide-menu-right,
+nav.push-menu-right {
+    right: -300px
+}
+body.sml-open nav.slide-menu-left,
+body.pml-open nav.push-menu-left {
+    left: 0
+}
+body.smr-open nav.slide-menu-right,
+body.pmr-open nav.push-menu-right {
+    right: 0
+}
+body.pml-open #wrapper {
+    left: 300px
+}
+body.pmr-open #wrapper {
+    left: -300px
+}
+/* slide menu top and bottom */
+nav.slide-menu-top,
+nav.slide-menu-bottom,
+nav.push-menu-top,
+nav.push-menu-bottom {
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+nav.slide-menu-top ul,
+nav.slide-menu-bottom ul,
+nav.push-menu-top ul,
+nav.push-menu-bottom ul {
+    text-align: center;
+    padding: 25px 0 0 0;
+}
+nav.slide-menu-top li,
+nav.slide-menu-bottom li,
+nav.push-menu-top li,
+nav.push-menu-bottom li {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+}
+nav.slide-menu-top a,
+nav.slide-menu-bottom a,
+nav.push-menu-top a,
+nav.push-menu-bottom a {
+    display: block;
+    line-height: 50px;
+    padding: 0 10px;
+    font-size: 18px;
+}
+nav.slide-menu-top button.close-menu,
+nav.slide-menu-bottom button.close-menu,
+nav.push-menu-top button.close-menu,
+nav.push-menu-bottom button.close-menu {
+    display: block;
+    line-height: 50px;
+    margin: 0;
+    padding: 0 10px;
+}
+nav.slide-menu-top,
+nav.push-menu-top {
+    top: -100px
+}
+nav.slide-menu-bottom,
+nav.push-menu-bottom {
+    bottom: -100px
+}
+body.smt-open nav.slide-menu-top,
+body.pmt-open nav.push-menu-top {
+    top: 0
+}
+body.smb-open nav.slide-menu-bottom,
+body.pmb-open nav.push-menu-bottom {
+    bottom: 0
+}
+body.pmt-open #wrapper {
+    top: 100px
+}
+body.pmb-open #wrapper {
+    top: -100px
+}
+/* ------------------------------------------------------------ *\
+|* ------------------------------------------------------------ *|
+|* Media Queries
+|* ------------------------------------------------------------ *|
+\* ------------------------------------------------------------ */
+@media all and (max-width: 860px) { 
+	.buttons br {
+	  	display: none
+	}
+	.buttons button {
+	  	padding: 10px 20px
+	}
+}
+@media all and (max-width: 660px) { 
+	/* slide menu top and bottom */
+	nav.slide-menu-top ul,
+	nav.slide-menu-bottom ul,
+	nav.push-menu-top ul,
+	nav.push-menu-bottom ul {
+	  	padding: 35px 0 0 0
+	}
+	nav.slide-menu-top a,
+	nav.slide-menu-bottom a,
+	nav.push-menu-top a,
+	nav.push-menu-bottom a {
+	  	line-height: 30px;
+	  	padding: 0 2px;
+	  	font-size: 12px;
+	}
+	nav.slide-menu-top button.close-menu,
+	nav.slide-menu-bottom button.close-menu,
+	nav.push-menu-top button.close-menu,
+	nav.push-menu-bottom button.close-menu {
+	  	line-height: 30px;
+	  	padding: 0 2px;
+	}
+}
+@media all and (max-width: 330px) { 
+	nav.slide-menu-left,
+	nav.slide-menu-right,
+	nav.push-menu-left,
+	nav.push-menu-right {
+	  	top: 0;
+	  	width: 100%;
+	}
+	nav.slide-menu-left,
+	nav.push-menu-left {
+	  	left: -100%
+	}
+	nav.slide-menu-right,
+	nav.push-menu-right {
+	  	right: -100%
+	}
+	body.sml-open nav.slide-menu-left,
+	body.pml-open nav.push-menu-left {
+	  	left: 0
+	}
+	body.smr-open nav.slide-menu-right,
+	body.pmr-open nav.push-menu-right {
+	  	right: 0
+	}
+	body.pml-open #wrapper {
+	  	left: 100%
+	}
+	body.pmr-open #wrapper {
+	  	left: -100%
+	}
+}
+#carousel_inner3 {
+    width:1075px;
+    height:310px;
+}
+.camaliga_start li{
+    width:195px;
+    height:290px;
+    padding:0px;
+    margin:10px;
+}
+.jfmulticontent_c156 { height: 300px;}
+
+/* default styles for extension "tx_felogin_pi1" */
+.tx-felogin-pi1 label {
+    display: block;
+}
+/* specific page styles for extension "tx_cssstyledcontent" */
+.csc-textpic-intext-right-nowrap .csc-textpic-text { margin-right: 10px; }
+.csc-textpic-intext-left-nowrap .csc-textpic-text { margin-left: 10px; }
+.csc-textpic-intext-left-nowrap-40 .csc-textpic-text { margin-left: 40px; }
+/* default styles for extension "tx_form" */
+div.csc-mailform ol,
+div.csc-mailform ol li {
+    margin: 0;
+    padding: 0;
+}
+
+div.csc-mailform ol li {
+    overflow: hidden;
+}
+
+div.csc-mailform fieldset {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+div.csc-mailform legend {
+    margin-left: 1em;
+    color: #000000;
+    font-weight: bold;
+}
+
+div.csc-mailform fieldset ol {
+    padding: 1em 1em 0 1em;
+}
+
+div.csc-mailform fieldset li {
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    list-style: none;
+}
+
+div.csc-mailform fieldset.submit {
+    border-style: none;
+}
+
+/**
+ * Normal label
+ * Left aligned, in front of input
+ */
+div.csc-mailform li label {
+    float: left;
+    width: 13em;
+    margin-right: 1em;
+    vertical-align: baseline;
+}
+
+div.csc-mailform li input + label,
+div.csc-mailform li textarea + label,
+div.csc-mailform li select + label {
+    float: none;
+    width: auto;
+    margin-right: 0;
+    margin-left: 1em;
+}
+
+div.csc-mailform li textarea + label {
+    vertical-align: top;
+}
+
+label em,
+legend em {
+    display: block;
+    color: #060;
+    font-size: 85%;
+    font-style: normal;
+    text-transform: uppercase;
+}
+
+legend em {
+    position: absolute;
+}
+
+label strong,
+legend strong {
+    display: block;
+    color: #C00;
+    font-size: 85%;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+legend strong {
+    position: absolute;
+    top: 1.4em;
+}
+
+/**
+ * Labels alignment right
+ */
+.labels-alignment-right label,
+.labels-alignment-right .fieldset-subgroup legend,
+.labels-alignment-right.fieldset-subgroup legend {
+    text-align: right;
+}
+
+/**
+ * Horizontal fieldset
+ */
+fieldset.fieldset-horizontal {
+    border-width: 0;
+}
+
+fieldset.fieldset-horizontal ol {
+    padding: 0;
+}
+
+fieldset.fieldset-horizontal li {
+    float: left;
+    padding: 0;
+    margin-right: 1em;
+}
+
+fieldset.fieldset-horizontal.label-below label {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.2em;
+    font-size: 90%;
+    color: #999999;
+    text-align: left;
+}
+
+fieldset.fieldset-horizontal label em {
+    display: inline;
+}
+
+/**
+ * Subgroup fieldset
+ */
+fieldset.fieldset-subgroup {
+    margin-bottom: -2em;
+    border-style: none;
+}
+
+fieldset.fieldset-subgroup legend {
+    margin-left: 0;
+    padding: 0;
+    font-weight: normal;
+    width: 13em;
+}
+
+fieldset.fieldset-subgroup ol {
+    position: relative;
+    top: -1.4em;
+    margin: 0 0 0 14em;
+    padding: 0;
+}
+
+fieldset.fieldset-subgroup li {
+    padding: 0;
+}
+
+fieldset.fieldset-subgroup input + label {
+    float: none;
+    width: auto;
+    display: inline;
+    margin: 0 0 0 1em;
+}
+
+/**
+ * Labels as block
+ * Labels displayed above or below the input fields
+ */
+.labels-block label {
+    display: block;
+    float: none;
+    margin: 0 0 0.5em;
+    width: auto;
+}
+
+.labels-block input + label,
+.labels-block textarea + label {
+    margin: 0.5em 0 0;
+}
+
+.labels-block fieldset.fieldset-subgroup,
+fieldset.labels-block.fieldset-subgroup {
+    margin-bottom: 0;
+}
+
+.labels-block .fieldset-subgroup legend,
+.labels-block.fieldset-subgroup legend {
+    width: auto;
+}
+
+.labels-block .fieldset-subgroup legend em,
+.labels-block.fieldset-subgroup legend em {
+    position: relative;
+}
+
+.labels-block .fieldset-subgroup legend strong,
+.labels-block.fieldset-subgroup legend strong {
+    position: relative;
+    top: 0;
+}
+
+.labels-block .fieldset-subgroup ol,
+.labels-block.fieldset-subgroup ol {
+    top: 0;
+    margin: 0;
+    padding: 0.5em 0 0;
+}
+#slider_contact #header_contact_slider .ce-textpic  {
+    width: 100%;
+    float: left;
+}
+#slider_contact #header_contact_slider .ce-textpic  .ce-gallery{
+    width: 30%;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+#slider_contact #header_contact_slider .ce-textpic  .ce-bodytext{
+    width: 65%;
+    padding: 0;
+    margin: 0;
+    margin-top: 4%;
+    float: right;
+}
+#slider_contact #header_contact_slider .frame  .ce-textpic .ce-bodytext{
+    margin-top: 0;
+}

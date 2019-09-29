@@ -1,0 +1,62 @@
+.text-50-50{columns: 2;color: #212529;}
+.why-inter .text-50-50,.academy .text-50-50{color: #fff;}
+.intro__container .text-50-50{
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  font-family: "Open Sans Bold";
+}
+.tours .text-50-50{
+  color: #000;
+  margin: auto;
+  width: 90%;
+  text-align: left;
+  margin-bottom: 7rem;
+}
+.section-image-caption .business-img{
+  object-fit: cover;
+  min-height: 220px;
+}
+.business p , .business .text-50-50{
+  color: #000;
+}
+.youth-content-right__desc p , .sgeagles p ,.sgeagles2 p{
+  color: #fff
+}
+.quotes .text-50-50{
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+  font-family: "Open Sans Italic";
+  color: #d1d1d1;
+  margin: 3.3rem;
+}
+.three-pillars .text-50-50{
+  color: #000;
+  margin: 4.5rem 0;
+
+}
+@media (max-width: 767px) and (orientation: portrait){
+  .inter__countries {
+    justify-content: center;
+  }
+  .intro__desc {
+    font-size: 2rem;
+    line-height: unset;
+    font-family: "Open Sans Bold";
+    color: #e1000a;
+    margin-bottom: 3rem;
+  }
+  .inter .text-50-50{
+    margin-right: 2.5rem;
+    margin-left: 2.5rem;
+  }
+  .tours .text-50-50 {
+    width: 79%;
+  }
+  .quotes .text-50-50 {
+    margin: 1rem 2.5rem;
+  }
+  .three-pillars .text-50-50 {
+    margin: 1.5rem 2rem 6rem 2rem;
+  }
+}

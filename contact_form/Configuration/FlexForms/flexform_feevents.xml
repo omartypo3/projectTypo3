@@ -1,0 +1,37 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Event manger</numIndex>
+										<numIndex index="1">Event->list;Event->show;Event->new;Event->create;Event->edit;Event->delete;Event->export;</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">User Manager</numIndex>
+										<numIndex index="1">User->list;User->show;User->edit;User->update;User->new;User->create;User->delete;</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">User profile</numIndex>
+										<numIndex index="1">User->edit;User->update</numIndex>
+									</numIndex>
+
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

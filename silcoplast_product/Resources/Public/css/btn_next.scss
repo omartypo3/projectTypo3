@@ -1,0 +1,16 @@
+.btn_next_post{
+
+    ::after{
+    content: '';
+    background: url('fileadmin//template/Img/Icons/pfeil_white_r.svg');
+    }
+}
+
+
+.btn_prev_post{
+    
+    ::after{
+        content: '';
+        background: url('fileadmin//template/Img/Icons/pfeil_white_l.svg');
+    }
+}

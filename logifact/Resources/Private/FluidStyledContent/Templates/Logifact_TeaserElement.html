@@ -1,0 +1,37 @@
+<div class="csc-default">
+    <div class="ce-textpic ce-center ce-above">
+        <div class="ce-gallery" data-ce-columns="1" data-ce-images="1">
+            <div class="ce-outer">
+                <div class="ce-inner">
+                    <div class="ce-row">
+                        <div class="ce-column">
+                            <figure class="image">
+                                <f:variable name="img"
+                                            value="{f:uri.image(image: '{files.0}')}"/>
+                                <img
+                                        src="{img}" alt="" width="263"
+                                        height="180">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="csc-default">
+    <div class="csc-header csc-header-n2"><h1>{data.header}</h1></div>
+</div>
+<div class="csc-default">
+    <f:format.html>{data.bodytext}</f:format.html>
+</div>
+<div class="csc-default">
+    <div class="tx-dce-pi1">
+
+        <a href="{f:uri.page(pageUid: '{data.link}', absolute: '1')}">
+            <div class="buttontextOrange">
+                {data.link_title}
+            </div>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+body {
+    @include font($text__font-size, $text__ligne-height, $font-regular, $color-primary);
+}
+
+h1 {
+    @include font($h1__font-size, $h1__ligne-height, $font-extrabold, $color-50-primary, uppercase);
+
+    @media #{$mq-small-phone} {
+        word-break: break-all;
+   }
+    @media #{$mq-phone} {
+        @include font($h1__mfont-size, $h1__mligne-height, $font-extrabold, $color-50-primary, uppercase);
+        word-break: normal;
+    }
+
+}
+
+h2 {
+    @include font($h2__font-size, $h2__ligne-height, $font-bold, $color-secondary, uppercase);
+    @media #{$mq-phone} {
+        @include font($h2__mfont-size, $h2__mligne-height, $font-bold, $color-secondary, uppercase);
+        word-break: break-word;
+    }
+}
+
+h3 {
+    @include font($h3__font-size, $h3__ligne-height, $font-extrabold, $color-secondary, uppercase);
+    @media #{$mq-phone} {
+        @include font($h3__mfont-size, $h3__mligne-height, $font-extrabold, $color-secondary, uppercase);
+    }
+    //(zu finden in Länderkärtchen bei P&P, Autor Quote, Countup Texte #000, Contentseite Icon Beschriftung #000, Contentseite Spielernamen Slider)
+}
+.caption {
+    @include font($caption__font-size, $caption__ligne-height, $font-extrabold, $color-secondary, uppercase);
+}

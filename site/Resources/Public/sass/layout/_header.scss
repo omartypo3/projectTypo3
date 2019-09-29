@@ -1,0 +1,180 @@
+.header {
+	position: fixed;
+	padding: 2.7rem 2rem;
+	z-index: 100;
+	width: 100vw;
+	margin-left: 0;
+
+	&-nav {
+		position: relative;
+
+		&__logo {
+			width: 26rem;
+			display: block;
+			opacity: 1;
+			transition: opacity 0.4s ease-out;
+
+			@media #{$mq-phone} {
+				width: 19rem;
+			}
+		}
+
+		&__signet {
+			width: 5.35rem;
+			position: absolute;
+			left: 0rem;
+			top: 0.3rem;
+			display: block;
+			opacity: 1;
+
+			@media #{$mq-phone} {
+				width: 4rem;
+			}
+		}
+	}
+
+	&-title {
+		margin-top: 1rem;
+	}
+
+	&-lang {
+		margin: 0 1.5rem;
+
+		@media #{$mq-phone} {
+			display: none;
+		}
+
+		&__column {
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: flex-end;
+			justify-content: flex-end;
+			margin-right: 9.5rem;
+			margin-top: 1rem;
+		}
+
+		&__title {
+			text-transform: uppercase;
+		}
+
+		& li {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+
+			@media #{$mq-phone} {
+				margin-bottom: 3rem;
+				//&:not(:last-child) {
+				//  margin-bottom: 3rem;
+				//}
+			}
+		}
+
+		&__item {
+			margin: 0 0.75rem;
+			opacity: 0;
+		}
+
+		&__icon {
+			width: 2.6rem;
+			transform: scale(1, 1);
+		}
+	}
+
+	&__chosen-lang {
+		position: relative;
+		right: 0rem;
+		opacity: 1;
+		transition: right 2s, opacity 5s;
+		align-self: center;
+		order: 1 !important;
+
+		@media #{$mq-phone} {
+			margin-left: 5rem;
+		}
+
+		& img {
+			transform: scale(1);
+			transition: transform 0.5s;
+
+			@media #{$mq-phone} {
+				margin: 0 0.75rem;
+			}
+
+		}
+	}
+
+	&__menu--close {
+		display: none;
+		cursor: pointer;
+		width: 0.2rem;
+		position: absolute;
+		top: 50%;
+		left: 6%;
+		transform: translate(-50%, -50%);
+
+		@media #{$mq-phone} {
+			width: 0.75rem;
+			height: 0.5rem;
+		}
+
+
+	}
+
+	&__menu--open {
+		cursor: pointer;
+		width: 2.2rem;
+		position: absolute;
+		top: 52%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__menu-icon {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform: translate(0vw, 0vh) scale(1, 1) rotate(0.1deg);
+		cursor: pointer;
+	}
+}
+
+//animations & transitions
+
+.lang-active img {
+	animation-name: bar-lang__anim;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+.show-items {
+	animation-name: show-items;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+.hide-items {
+	animation-name: hide-items;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+.clicked img {
+	transform: scale(1.2);
+}
+.scrolledLang {
+	position: relative;
+	right: -8.5rem;
+	opacity: 0;
+}
+li#chosen-lang {
+	@media #{$mq-phone} {
+		margin-bottom: 10rem;
+	}
+}

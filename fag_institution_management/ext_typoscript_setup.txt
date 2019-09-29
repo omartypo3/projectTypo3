@@ -1,0 +1,30 @@
+
+config.tx_extbase {
+  persistence {
+    classes {
+      FRONTAL\FagInstitutionManagement\Domain\Model\User {
+        mapping {
+          tableName = fe_users
+          #recordType = Tx_FagInstitutionManagement_User
+        }
+      }
+      FRONTAL\FagInstitutionManagement\Domain\Model\FileReference {
+        mapping {
+          tableName = sys_file_reference
+          columns {
+            uid_local.mapOnProperty = originalFileIdentifier
+          }
+        }
+      }
+      FRONTAL\FagInstitutionManagement\Domain\Model\Event {
+        mapping {
+          tableName = tx_fagcalendar_domain_model_event
+          #recordType = Tx_FagInstitutionManagement_Event
+        }
+      }
+    }
+  }
+  objects {
+    TYPO3\CMS\Extbase\Domain\Model\FileReference.className = FRONTAL\FagInstitutionManagement\Domain\Model\FileReference
+  }
+}

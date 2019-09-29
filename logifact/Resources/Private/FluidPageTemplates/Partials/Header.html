@@ -1,0 +1,38 @@
+{namespace gl = Logifacttheme\Logifact\ViewHelpers}
+<header>
+    <div class="header_inhalt">
+        <figure id="navi_logo">
+            <a href="{gl:siteUrl()}"> <img
+                    src="{gl:GetSettings(extensionKey:'tx_logifact_frontend',settingKey:'logoImagePath')}" width="170"
+                    height="45">
+            </a>
+        </figure>
+        <nav>
+            <f:for each="{navMain}" as="link">
+                <a href="{link.link}" class="{f:if(condition: '{link.active} == 1', then: 'hauptnavi_aktuell')}">{link.title}</a>
+            </f:for>
+        </nav>
+        <figure id="navi_shop">
+            <a class="external-link-new-window" target="_blank"
+               href="{gl:GetSettings(extensionKey:'tx_logifact_frontend',settingKey:'shopImagelink')}">
+                <img src="{gl:GetSettings(extensionKey:'tx_logifact_frontend',settingKey:'shopImagePath')}">
+                <p> {gl:GetSettings(extensionKey:'tx_logifact_frontend',settingKey:'shopImageText')}</p>
+            </a>
+        </figure>
+    </div>
+</header>
+<nav id="subnavigation">
+    <div class="{data.class_subnavigation}">
+
+        <p class="bodytext">
+            <f:if condition="{data.show_subnavigation}">
+                <f:then>
+                    <f:for each="{subNav}" as="subitem">
+                        <a href="#c{subitem.data.uid}">{subitem.data.header}</a>
+                    </f:for>
+                </f:then>
+            </f:if>
+
+        </p>
+    </div>
+</nav>

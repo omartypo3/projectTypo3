@@ -1,0 +1,52 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-fag-besichtigung" >
+	<tr>
+		<td>
+			<f:translate key="tx_fagbesichtigung_domain_model_event.titel" />
+		</td>
+		<td>
+		{event.titel}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_fagbesichtigung_domain_model_event.untertitel" />
+		</td>
+		<td>
+		{event.untertitel}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_fagbesichtigung_domain_model_event.bild" />
+		</td>
+		<td>
+				<f:image src="{event.bild.originalResource.publicUrl}" width="200"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_fagbesichtigung_domain_model_event.text" />
+		</td>
+		<td>
+		{event.text}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_fagbesichtigung_domain_model_event.zusatztext" />
+		</td>
+		<td>
+		{event.zusatztext}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_fagbesichtigung_domain_model_event.preishinweis" />
+		</td>
+		<td>
+		{event.preishinweis}
+		</td>
+	</tr>
+</table>
+</html>

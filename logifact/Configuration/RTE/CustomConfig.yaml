@@ -1,0 +1,29 @@
+
+imports:
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml"}
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+
+# Add configuration for the editor
+# For complete documentation see http://docs.ckeditor.com/#!/api/CKEDITOR.config
+editor:
+  config:
+    contentsCss: "EXT:logifact/Resources/Public/Dist/dist.min.css"
+    stylesSet:
+
+      - { name: "Headline 2 lowercase", element: "h3", attributes: { class: "lowercase"} }
+
+      - { name: "Headline 3 primary", element: "h4", attributes: { class: "primary"} }
+      - { name: "Headline 3 white with background", element: "h4", attributes: { class: "white" } , styles: { background-color: "#FE5000"}}
+      - { name: "Headline 5 primary", element: "h6", attributes: { class: "primary"} }
+      - { name: "Paragraph dark", element: "p", attributes: { class: "dark"} }
+      - { name: "Paragraph big", element: "p", attributes: { class: "content-2"} }
+      - { name: "Paragraph small", element: "p", attributes: { class: "content-5"} }
+      - { name: "Link white", element: "a", attributes: { class: "white"} }
+      - { name: "Link lowercase", element: "a", attributes: { class: "lowercase"} }
+      - { name: "List no style", element: "ul", attributes: { class: "no-style"} }
+      - { name: "Italic", element: "i" }
+      - { name: "Abbreviation ", element: "abbr" }
+      - { name: "Strong ", element: "strong" }
+

@@ -1,0 +1,505 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <div id="stepper1" class="bs-stepper">
+                    <div class="bs-stepper-content">
+                        <div id="test-l-1" class="content">
+                            <div class="container container-padded gc4948 ce-spacebefore-0 ce-spaceafter-0">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 ">
+                                        <div id="c4947" class="ce-spacebefore-0 ce-spaceafter-0 ">
+                                            <div class="header-container">
+                                                <h1>{settings.stepTitle1}</h1>
+                                                <h2 class="ce-subheader">{settings.stepTitle1_subheader}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ce-spacebefore-0 ce-spaceafter-0">
+                                <div class="anfrage container container-padded gc2156 ce-spacebefore-0 ce-spaceafter-0">
+                                    <div class="row">
+                                        <f:for each="{gruppentyp}" as="groupe" iteration="i">
+                                            <div class="col-sm-6 col-md-4 ">
+                                                <label>
+                                                    <input type="radio" name="rbtn" data-Kosten="{groupe.kosten}"
+                                                           data-title="{groupe.titel}" class="card-input-element"
+                                                           data-id="{groupe.uid}"/>
+                                                    <div class="card-input">
+
+                                                        <div class="fag-teaserbox fag-teaserbox-color- ">
+                                                            <div class="image">
+                                                                <img
+                                                                        src="{f:uri.image(src: '{groupe.bild.uid}', treatIdAsReference: '1')}"
+                                                                        alt="Blog">
+                                                            </div>
+                                                            <div class="header-container custom-header ">
+                                                                <p class="ce-header">{groupe.titel}</p>
+                                                                <p class="ce-subheader">{groupe.untertitel}</p>
+                                                                <f:format.raw></f:format.raw>
+                                                            </div>
+                                                            <div class="triangle"></div>
+                                                            <div class="slideup" id="{i.cycle}-1">
+                                                                <div class="header-container custom-header ">
+                                                                    <p class="ce-subheader">{groupe.untertitel}</p>
+                                                                    <p class="ce-header">{groupe.titel}</p>
+                                                                    <f:format.raw>{groupe.text}</f:format.raw>
+                                                                    <f:if condition="{groupe.kosten}">
+                                                                        <p class="teaserboxcost">Kosten:
+                                                                            {groupe.kosten} CHF</p>
+                                                                    </f:if>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </label>
+                                            </div>
+                                        </f:for>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / pagination -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 steps-bloc ">
+                                        <p>
+                                            <f:link.page class="btn btn-primary" pageUid="{settings.HomePage}">zurück
+                                            </f:link.page>
+                                        </p>
+
+                                        <div class="steps">
+                                            <div class="step" data-target="#test-l-1">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item active-item">1</li>
+                                                </button>
+                                            </div>
+                                            <div class="step" data-target="#test-l-2">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item">2</li>
+                                                </button>
+                                            </div>
+                                            <div class="step" data-target="#test-l-3">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item">3</li>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <p>
+                                            <button class="btn btn-primary cards__btn--next">weiter</button>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="test-l-2" class="content">
+                            <div id="step-1-2-free" style="display: none;"
+                                 class="calendar container container-padded gc4948 ce-spacebefore-0 ce-spaceafter-0">
+                                <f:if condition="{datumfree}">
+                                    <v:variable.set name="elementsArray" value="{0:''}"/>
+                                    <v:variable.set name="tmpArray" value="{specialdate:''}"/>
+                                    <f:for each="{datumfree}" as="element" iteration="iteration">
+                                        <v:variable.set name="tmpArray.year"
+                                                        value="{element.date -> f:format.date(format: 'Y')}"/>
+                                        <v:variable.set name="tmpArray.content" value="{element}"/>
+                                        <v:variable.set name="elementsArray.{iteration.index}" value="{tmpArray}"/>
+                                    </f:for>
+                                    <div class="row">
+                                        <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                                            <div class="ce-spacebefore-0 ce-spaceafter-0 ">
+                                                <div class="header-container">
+                                                    <h1>{settings.stepTitle2}</h1>
+                                                    <h2 class="ce-subheader">{settings.stepTitle2_subheader}</h2>
+                                                    <p class="lead ce-spacebefore-1 ce-spaceafter-1">
+                                                        {event.titel}
+                                                    </p>
+                                                    <div class="years-filtre tabs">
+                                                        <f:groupedFor each="{elementsArray}" as="dates" groupBy="year"
+                                                                      groupKey="date">
+                                                            <button class="years-filtre__year tablinks"
+                                                                    onclick="thisYear(event, '{date}')">{date}
+                                                            </button>
+                                                        </f:groupedFor>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tabs-content">
+                                        <f:groupedFor each="{elementsArray}" as="dates" groupBy="year"
+                                                      groupKey="date">
+                                            <div class="row tabcontent" id="{date}">
+
+                                                <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                                                    <div class="ce-spacebefore-0 ce-spaceafter-0 container">
+                                                        <div class="ce-spacebefore-0 ce-spaceafter-0 row tabs-for-sort{date}">
+                                                            <f:for each="{dates}" as="date" key="label" iteration="i">
+                                                                <div class="col-sm-4 col-md-3 col-xs-6 {f:if(condition: '{date.content.status}==Ausgebucht', then: 'date-off')}">
+
+                                                                    <label>
+                                                                        <input type="radio" name="dbtn"
+                                                                               class="card-input-element dbtn"
+                                                                               class="card-input-element"
+                                                                               data-gruppentyp="1"
+                                                                               data-dateid="{date.content.uid}"
+                                                                               data-status="{date.content.status}"
+                                                                               data-date="{date.content.date -> f:format.date(format:'Y-m-d')}"
+                                                                               data-start="{date.content.startTime -> f:format.date(format:'H:i')}"
+                                                                               {f:if(condition:'{date.content.status}==Ausgebucht',
+                                                                        then:'disabled')}>
+
+                                                                        <h6 class="dbtn-card-title"></h6>
+                                                                        <div class="date-bloc {f:if(condition: '{date.content.status}==Ausgebucht', then: 'date-bloc--off')}">
+                                                                            <div>
+                                                                                <p class="date-bloc__state">
+                                                                                    {date.content.status}</p>
+                                                                                <p class="date-bloc__time">
+                                                                                    {date.content.startTime ->
+                                                                                    f:format.date(format:'H:i')} -
+                                                                                    {date.content.endTime ->
+                                                                                    f:format.date(format:'H:i')}</p>
+                                                                            </div>
+                                                                            <f:if condition="{date.content.status}=='Ausgebucht'">
+                                                                                <f:then>
+                                                                                    <p class="date-bloc__counter">
+                                                                                        0 freie Plätze
+                                                                                    </p>
+                                                                                </f:then>
+                                                                                <f:else>
+
+                                                                                    <p class="date-bloc__counter">
+                                                                                        <f:for each="{max}" as="m">
+                                                                                            <f:if condition="{m.uid} ==  {date.content.uid}">
+                                                                                                {m.max}
+                                                                                            </f:if>
+                                                                                        </f:for>
+                                                                                        freie
+                                                                                        Plätze
+                                                                                    </p>
+                                                                                </f:else>
+                                                                            </f:if>
+
+                                                                        </div>
+                                                                    </label>
+                                                                </div>
+
+                                                            </f:for>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </f:groupedFor>
+                                    </div>
+                                </f:if>
+                            </div>
+                            <div id="step-1-2-private" style="display: none;"
+                                 class="calendar container container-padded gc4948 ce-spacebefore-0 ce-spaceafter-0">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0 ">
+                                            <div class="header-container">
+                                                <h1>{settings.stepTitle2}</h1>
+                                                <h2 class="ce-subheader">{settings.stepTitle2_subheader}</h2>
+                                                <p class="lead ce-spacebefore-1 ce-spaceafter-1">
+                                                    {event.titel}
+                                                </p>
+                                                <p class="lead custom-lead"></p>
+                                                <!-- Swiper -->
+                                                <div class="swiper-slider">
+                                                    <div><img
+                                                            src="/typo3conf/ext/fag_besichtigung/Resources/Public/img/svg/pfeil-rechts.svg"
+                                                            class="swiper-button-next">
+                                                    </div>
+                                                    <!-- Slider main container -->
+                                                    <div class="swiper-container">
+                                                        <!-- Additional required wrapper -->
+                                                        <div class="swiper-wrapper myBtnContainer">
+                                                            <!-- Slides -->
+
+                                                        </div>
+                                                    </div>
+                                                    <div><img
+                                                            src="/typo3conf/ext/fag_besichtigung/Resources/Public/img/svg/pfeil-links.svg"
+                                                            class="swiper-button-prev">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container offer">
+                                                <div class="t3ddy t3ddy-accordion ">
+                                                    <div class="panel-group" role="tablist"
+                                                         aria-multiselectable="true">
+
+
+                                                        <f:if condition="{datumNotfree}">
+                                                            <f:then>
+
+                                                                <f:groupedFor each="{datumNotfree}" as="dates"
+                                                                              groupBy="date"
+                                                                              groupKey="date">
+                                                                    <div class="accordeon panel {date -> f:format.date(format:'mY')} filterDiv panel-default">
+                                                                        <div class="panel-heading" role="tab"
+                                                                             id="panel-heading-{date -> f:format.date(format:'mY')}">
+                                                                            <h3 class="panel-title"
+                                                                                data-date="{date -> f:format.date(format:'Y-m-d')}">
+                                                                                <a class="collapsed dbtn-panel-title"
+                                                                                   data-toggle="collapse"
+                                                                                   href="#{date -> f:format.date(format:'mdY')}"
+                                                                                   aria-expanded="false"
+                                                                                   aria-controls="{date -> f:format.date(format:'Y-m-d')}">
+                                                                                    <span>{date -> f:format.date()}</span>
+                                                                                    <span class="state-symbol pull-right"></span>
+                                                                                </a>
+                                                                            </h3>
+                                                                        </div>
+                                                                        <div class="panel-collapse collapse"
+                                                                             id="{date -> f:format.date(format:'mdY')}"
+                                                                             aria-labelledby="panel-heading-{date -> f:format.date(format:'mdY')}"
+                                                                             role="tabpanel">
+                                                                            <div class="">
+                                                                                <div id="{date -> f:format.date(format:'Y-m-d')}"
+                                                                                     class="ce-spacebefore-1 ce-spaceafter-0 target">
+                                                                                    <div class="header-container">
+                                                                                        <div class="ce-spacebefore-0 ce-spaceafter-0 row">
+                                                                                            <f:for each="{dates}"
+                                                                                                   as="date"
+                                                                                                   key="label">
+                                                                                                <div class="col-sm-4 col-md-3 col-xs-6">
+                                                                                                    <label>
+                                                                                                        <f:if condition="{date.status}==Ausgebucht">
+                                                                                                            <f:then>
+                                                                                                                <input type="radio"
+                                                                                                                       name="dbtn"
+                                                                                                                       class="card-input-element dbtn"
+                                                                                                                       data-dateid="{date.uid}"
+                                                                                                                       data-gruppentyp="2"
+                                                                                                                       data-status="{date.status}"
+                                                                                                                       data-Kosten="{event.preishinweis}"
+                                                                                                                       data-date="{date.date -> f:format.date(format:'mdY')}"
+                                                                                                                       disabled="disabled"
+                                                                                                                />
+                                                                                                            </f:then>
+                                                                                                            <f:else>
+                                                                                                                <input type="radio"
+                                                                                                                       name="dbtn"
+                                                                                                                       class="card-input-element dbtn"
+                                                                                                                       data-dateid="{date.uid}"
+                                                                                                                       data-gruppentyp="2"
+                                                                                                                       data-status="{date.status}"
+                                                                                                                       data-Kosten="{event.preishinweis}"
+                                                                                                                       data-date="{date.date -> f:format.date(format:'mdY')}"
+                                                                                                                />
+                                                                                                            </f:else>
+                                                                                                        </f:if>
+
+                                                                                                        <div class="date-bloc {f:if(condition: '{date.status}==Ausgebucht', then: 'date-bloc--off')}">
+                                                                                                            <div>
+                                                                                                                <p class="date-bloc__state">
+                                                                                                                    {date.status}</p>
+                                                                                                                <p class="date-bloc__time">
+                                                                                                                    {date.startTime
+                                                                                                                    ->
+                                                                                                                    f:format.date(format:'H:i')}
+                                                                                                                    -
+                                                                                                                    {date.endTime
+                                                                                                                    ->
+                                                                                                                    f:format.date(format:'H:i')}</p>
+                                                                                                            </div>
+                                                                                                            <f:if condition="{event.preishinweis}">
+                                                                                                                <p
+                                                                                                                        class="date-bloc__counter cost-counter">
+                                                                                                                </p>
+                                                                                                            </f:if>
+                                                                                                        </div>
+                                                                                                    </label>
+                                                                                                </div>
+
+
+                                                                                            </f:for>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </f:groupedFor>
+                                                            </f:then>
+                                                        </f:if>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- / pagination -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 steps-bloc">
+                                        <p>
+                                            <button class="btn btn-primary  reload-btn" onclick="reload()">zurück
+                                            </button>
+                                        </p>
+
+                                        <div class="steps">
+                                            <div class="step" data-target="#test-l-1">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item active-item">1</li>
+                                                </button>
+                                            </div>
+                                            <div class="step" data-target="#test-l-2">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item active-item">2</li>
+                                                </button>
+                                            </div>
+                                            <div class="step" data-target="#test-l-3">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item">3</li>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <p>
+                                            <button class="btn btn-primary second-step-btn">weiter</button>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="test-l-3" class="content">
+
+                            <div id="step-1-3-free" class="custom-form" style="display: none;"
+                                 class="calendar container container-padded gc4948 ce-spacebefore-0 ce-spaceafter-0">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0 ">
+                                            <div class="header-container">
+                                                <h1>{settings.stepTitle3_free}</h1>
+                                                <h2 class="ce-subheader">{settings.stepTitle3_subheader}</h2>
+                                                <p class="lead ce-spacebefore-1 ce-spaceafter-1">
+                                                    {event.titel}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0">
+                                            <f:form controller="Anfrage" action="create" enctype="multipart/form-data"
+                                                    class="form-horizontal" name="newAnfrage" object="{newAnfrage}">
+                                                <f:render partial="Anfrage/FormFieldsFree"
+                                                          arguments="{json:json,eventid:eventid}"/>
+                                                <f:form.submit value="Create new" class="hidden-btn" id="form-1"/>
+                                            </f:form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="step-1-3-1-private" class="custom-form" style="display: none;"
+                                 class="calendar container container-padded gc4948 ce-spacebefore-0 ce-spaceafter-0">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0 ">
+                                            <div class="header-container">
+                                                <h1>{settings.stepTitle3_private}</h1>
+                                                <h2 class="ce-subheader">{settings.stepTitle3_subheader}</h2>
+                                                <p class="lead ce-spacebefore-1 ce-spaceafter-1">
+                                                    {event.titel}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0">
+
+                                            <f:form controller="Anfrage" action="create" enctype="multipart/form-data"
+                                                    class="form-horizontal" name="newAnfrage" object="{newAnfrage}">
+                                                <f:render partial="Anfrage/FormFieldsGruppen"
+                                                          arguments="{json:json,eventid:eventid,event:event}"/>
+                                                <f:form.submit value="Create new" class="hidden-btn" id="form-2"/>
+                                            </f:form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="step-1-3-2-private" class="custom-form" style="display: none;"
+                                 class="calendar container container-padded gc4948 ce-spacebefore-0 ce-spaceafter-0">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0 ">
+                                            <div class="header-container">
+                                                <h1>{settings.stepTitle3_private}</h1>
+                                                <h2 class="ce-subheader">{settings.stepTitle3_subheader}</h2>
+                                                <p class="lead ce-spacebefore-1 ce-spaceafter-1">
+                                                    {event.titel}</p>
+                                            </div>
+                                        </div>
+                                        <div class="ce-spacebefore-0 ce-spaceafter-0">
+                                            <f:form controller="Anfrage" action="create" enctype="multipart/form-data"
+                                                    class="form-horizontal" name="newAnfrage" object="{newAnfrage}">
+                                                <f:render partial="Anfrage/FormFieldsSchulklassen"
+                                                          arguments="{json:json,eventid:eventid}"/>
+                                                <f:form.submit value="Create new" class="hidden-btn" id="form-3"/>
+                                            </f:form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- / pagination -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2 steps-bloc ">
+                                        <p>
+                                            <button class="btn btn-primary" onclick="stepper1.previous()">zurück
+                                            </button>
+                                        </p>
+
+                                        <div class="steps">
+                                            <div class="step" data-target="#test-l-1">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item active-item">1</li>
+                                                </button>
+                                            </div>
+                                            <div class="step" data-target="#test-l-2">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item active-item">2</li>
+                                                </button>
+                                            </div>
+                                            <div class="step" data-target="#test-l-3">
+                                                <button type="button" class="btn step-trigger">
+                                                    <li class="steps-bloc__list-item active-item">3</li>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <p>
+                                            <button type="submit"
+                                                    class="btn btn-primary custom-btn-primary latest-step"
+                                                    data-kosten="{event.preishinweis}">
+                                                Besichtigung buchen
+                                            </button>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

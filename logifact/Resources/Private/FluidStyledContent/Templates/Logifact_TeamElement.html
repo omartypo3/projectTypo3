@@ -1,0 +1,40 @@
+<div class="element_4spaltig_team">
+    <f:for as="member" each="{team_members}" key="i">
+        <div class="col{i}">
+            <div class="csc-textpic csc-textpic-center csc-textpic-above">
+                <div class="csc-textpic-imagewrap">
+                    <div class="csc-textpic-center-outer">
+                        <div class="csc-textpic-center-inner">
+                            <div class="csc-textpic-image csc-textpic-last">
+                                <f:variable name="img" value="{f:uri.image(image: '{member.files.0}')}"/>
+                                <img src="{img}" alt="" width="176" height="244">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="csc-textpic-text">
+
+                    <table class="contenttable">
+                        <tbody>
+                        <tr>
+                            <td colspan="2" rowspan="1"><b>{member.data.name}<br></b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" rowspan="1">{member.data.job_title}</td>
+                        </tr>
+                        <tr>
+                            <td>Telefon</td>
+                            <td>{member.data.phone}</td>
+                        </tr>
+                        <tr>
+                            <td>E-Mail</td>
+                            <td><a href="mailto:{member.data.email}" class="mail">{member.data.email}</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </f:for>
+</div>
+

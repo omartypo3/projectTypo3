@@ -1,0 +1,28 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<header class="container-fluid">
+    <div class="row">
+        <div class="header d-flex col-md-12">
+            <a class="navbar-brand header-nav mr-auto" href="{gl:siteUrl()}">
+                <img class="header-nav__logo" id="header__logo" src="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'logoImagePath')}" alt="eintracht logo" />
+                <img class="header-nav__signet" src="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'logoImageSignet')}" alt="eintracht logo" />
+            </a>
+            <f:cObject typoscriptObjectPath="lib.language" />
+            <nav class="header__menu-icon align-self-center">
+                <img class="header__menu--open" src="typo3conf/ext/site/Resources/Public/img/svg/nav_open.svg" alt="nav open" />
+                <img class="header__menu--close close-menu" src="typo3conf/ext/site/Resources/Public/img/svg/nav_close.svg"/>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="navigation container-fluid ">
+    <div class="navigation__bg"></div>
+    <div class="row w-100 h-100 d-flex align-items-center">
+        <div class="navigation__items col-md-10 col-lg-7 ml-auto align-items-center">
+            <ul>
+                <f:for each="{navMain}" as="link">
+                    <li class="nav-link navigation__item {f:if(condition: '{link.data.show_subnavigation}==1', then: 'navigation__item--margin', else: '')}"><a href="{link.link}">{link.title}</a></li>
+                </f:for>
+            </ul>
+        </div>
+    </div>
+</div>

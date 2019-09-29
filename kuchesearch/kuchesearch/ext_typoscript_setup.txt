@@ -1,0 +1,15 @@
+config.tx_extbase{
+    persistence{
+    }
+    objects {
+        TYPO3\CMS\IndexedSearch\Controller\SearchController.className = Kuchesearch\Kuchesearch\Controller\SearchController
+        TYPO3\CMS\IndexedSearch\Domain\Repository\IndexSearchRepository.className = Kuchesearch\Kuchesearch\Domain\Repository\IndexSearchRepository
+    }
+}
+plugin.tx_indexedsearch  {
+    view {
+        templateRootPaths.1 = EXT:kuchesearch/Resources/Private/Templates/
+        partialRootPaths.1 = EXT:kuchesearch/Resources/Private/Partials/
+        layoutRootPaths.1 = EXT:kuchesearch/Resources/Private/Layouts/
+    }
+}

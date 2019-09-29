@@ -1,0 +1,83 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<f:if condition="{data.big_slider} == 0">
+    <f:then>
+        <section class="tours" id="tours-{data.uid}-section">
+            <div class="container-fluid">
+                <div class="row">
+                         <div class="col-md-1 offset-md-2 px-0">
+                        <div class="tours__btn tours__btn--prev nav--prev-custom-tours "></div>
+                        </div>    
+                        <div class="col-md-6  px-0">    
+                        <div class="swiper-container tours__slider">
+                            <div class="swiper-wrapper">
+                                <f:for as="toursorbigsliders" each="{toursorbigsliders}" iteration="j">
+                                    <div class="swiper-slide text-center">
+                                        <div>
+                                            <div class="image-content"
+                                                 style="background-image: url({f:uri.image(image: '{toursorbigsliders.files.0}')})">
+                                                <div class="overlay-image"></div>
+                                            </div>
+                                            <h3 class="tours__title">{toursorbigsliders.data.title}</h3>
+                                            <div>
+                                                <f:format.raw>{toursorbigsliders.data.content}</f:format.raw>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </f:for>
+                            </div>
+                            <div class="swiper__pagination--hybrid">
+                                <div class="slider__btn tours__btn--btm--prev nav--prev nav--prev-tours"></div>
+                                <div class=" slider__pagination tours__pagination p-relative"></div>
+                                <div class="slider__btn tours__btn--btm--next nav--next nav--next-tours"></div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-1 px-0">
+                        <div class="tours__btn tours__btn--next nav--next-custom-tours"></div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </f:then>
+    <f:else>
+
+
+        <section class="big-slider" id="big-slider-{data.uid}-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1 offset-md-1 px-0">
+                        <div class=" big-slider__btn big-slider__btn--prev big-slider--prev"></div>
+                    </div>
+                    <div class="col-md-8 px-0">
+                        <div class="swiper-container big-slider__slider">
+                            <div class="swiper-wrapper">
+                                <f:for as="bigslider" each="{toursorbigsliders}" iteration="j0">
+                                    <div class="swiper-slide text-center">
+                                        <div class="image-content"
+                                             style="background-image: url({f:uri.image(image: '{bigslider.files.0}')})">
+                                            <div class="overlay-image"></div>
+                                        </div>
+                                    </div>
+                                </f:for>
+                            </div>
+                        </div>
+                        <div class="swiper__pagination--hybrid">
+                            <div class="slider__btn big-slider__btn--btm big-slider__btn--btm--prev big-slider--prev"></div>
+                            <div class="slider__pagination big-slider__pagination p-relative"></div>
+                            <div class="slider__btn big-slider__btn--btm big-slider__btn--btm--next big-slider--next"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1 px-0">
+                        <div class="big-slider__btn big-slider__btn--next big-slider--next"></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </f:else>
+</f:if>
+
+
+

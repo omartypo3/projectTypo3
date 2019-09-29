@@ -1,0 +1,25 @@
+<section class="inter" id="inter-{data.uid}-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="inter__countries">
+                    <f:for as="country" each="{countrys}">
+                        <div class="inter-country">
+                            <f:if condition="{country.files.0}">
+                                <img class="inter-country__img" src="{f:uri.image(image: '{country.files.0}')}" alt="">
+                            </f:if>
+                            <p class="inter-country__caption">{country.data.title}</p>
+                        </div>
+                    </f:for>
+                </div>
+                <h2>{data.header}</h2>
+                <h3>{data.subheader}</h3>
+                <div class="row inter__desc">
+
+                    <f:format.html>{data.bodytext}</f:format.html>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

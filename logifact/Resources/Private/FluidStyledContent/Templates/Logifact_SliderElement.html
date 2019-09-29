@@ -1,0 +1,49 @@
+<div class="flexslider">
+    <ul class="slides">
+
+        <f:for each="{slides}" as="slide" iteration="i">
+            <f:variable name="img"
+                        value="{f:uri.image(image: '{slide.files.0}')}"/>
+            <li style="width: 100%; float: left; margin-right: -100%; display: none;">
+
+                <img src="{img}" alt="" width="1140"
+                     height="451">
+
+
+                <div class="flex-caption">
+
+                    <h3>{slide.data.title}</h3>
+
+
+                    <div>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>{slide.data.content}
+                                </td>
+
+                                <td>
+                                    <p><a href="{f:uri.page(pageUid: '{slide.data.link}', absolute: '1')}"
+                                          class="internal-link">
+                                        <f:variable name="img"
+                                                    value="{f:uri.image(image: '{slide.button.0}')}"/>
+                                        <img
+                                        src="{img}"
+                                        data-htmlarea-file-uid="275" data-htmlarea-file-table="sys_file"
+                                        style="" alt=""
+                                        width="267" height="36"></a></p>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+            </li>
+        </f:for>
+    </ul>
+</div>
+
+

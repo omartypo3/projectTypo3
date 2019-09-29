@@ -1,0 +1,87 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Detail"/>
+
+<f:section name="content">
+    <div class="inhalt_news articletype-0 topnews">
+
+        <div class="beitrag">
+            <figure class="beitrag_bild">
+
+                <div class="news-img-wrap">
+
+                    <n:link newsItem="{newsItem}" settings="{settings}" class="more" title="{newsItem.title}">
+
+                        <f:if condition="{newsItem.falMedia.0}">
+                            <f:then><img src="{f:uri.image(image:newsItem.falMedia.0)}"  width="587" height="215" alt=""></f:then>
+                            <f:else>
+                                <f:if condition="{settings.displayDummyIfNoMedia}">
+									<span class="no-media-element">
+										<n:link newsItem="{newsItem}" settings="{settings}">
+											<f:image src="{settings.list.media.dummyImage}" title="" alt="" maxWidth="587" maxHeight="215" />
+										</n:link>
+									</span>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                    </n:link>
+                </div>
+
+            </figure>
+            <div class="beitrag_datum_headline_text_mehr">
+                <!-- date -->
+                <div class="beitrag_datum">
+                    <f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+
+                </div>
+
+                <!-- header -->
+                <div class="beitrag_headline">
+                   <h3>
+                       {newsItem.title}
+                   </h3>
+                </div>
+
+                <!-- teaser text -->
+                <div class="beitrag_text">
+                    <div itemprop="description">
+                        {newsItem.bodytext -> f:format.html()}
+                    </div>
+
+                    <f:if condition="{settings.backPid}">
+                        <!-- Link Back -->
+                        <div class="news-backlink-wrap">
+                            <f:link.page pageUid="{settings.backPid}">
+                                <f:translate key="back-link" />
+                            </f:link.page>
+                        </div>
+                    </f:if>
+
+                    <div class="beitrag_mehr">
+                        <a href="javascript:history.back();">
+                            Zurück
+                        </a>
+                    </div>
+
+                </div>
+                <f:if condition="{settings.detail.showSocialShareButtons}">
+                    <div class="facebook">
+                        <div class="like">
+                            <n:social.facebook.like></n:social.facebook.like>
+                        </div>
+                        <div class="share">
+                            <n:social.facebook.share>Share</n:social.facebook.share>
+                        </div>
+                        <div class="twitter">
+                            <n:social.twitter>Twitter</n:social.twitter>
+                        </div>
+                    </div>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

@@ -1,0 +1,159 @@
+#slider_contact, #slider_contact #sidebar, #slider_contact #sidebar1, #slider_contact #header_contact_slider
+#slider_contact p, #slider_contact h2, #slider_contact input[type=text], #slider_contact button {
+	display:none;
+}
+
+	#slider_contact{
+		display:none;
+	}
+	
+	#slider_contact #sidebar{
+		position:absolute;
+		top:0px;
+		z-index:9998;
+		left:118px;
+		border:1px solid #dcd7d3;
+	}
+
+	#slider_contact #sidebar1{
+		position:absolute;
+		z-index:9998;
+		top:0px;
+		left:118px;
+		border:1px solid #dcd7d3;		
+	}
+
+	#slider_contact #header_contact_slider{ 
+		width:260px;
+		height:auto;
+		position:absolute; 
+		z-index:9999;
+		right:0px; 
+		margin-left:40px;
+		padding:10px 40px;
+		border-radius:3px;
+		border:1px solid #dcd7d3;
+		background-color:#FFFFFF;
+	}
+
+	#slider_contact #header_contact_slider h1 { 
+		padding:0;
+		margin:0;
+		text-transform:uppercase;
+		margin-bottom:2%;
+		font-family: 'Open Sans', sans-serif;
+	}
+	
+	#slider_contact #header_contact_slider .contenttable {
+		margin-bottom:10%;
+	}
+	
+	#slider_contact #header_contact_slider .csc-mailform {
+		float:left;
+		margin-bottom:10%;
+	}
+	
+	#slider_contact #header_contact_slider .csc-mailform ol .csc-form-element-textline {
+		float: left !important;
+		overflow: hidden;
+		width: 100% !important;
+	}
+	
+	#slider_contact #header_contact_slider .csc-mailform input {
+		border: 0 solid #dcd7d3 !important;
+		height: 36px;
+		margin-bottom: 2%;
+		width: 100% !important;
+	}
+	
+	#slider_contact #header_contact_slider .csc-mailform .csc-form-element-submit input {
+		background-image: url("../images/Buttons/rueckruf_anfordern.png");
+		height:36px;
+	}
+	
+	#slider_contact #header_contact_slider .csc-mailform ol .csc-form-element-submit {
+		float: right !important;
+		overflow: hidden;
+		width: 100% !important;
+		border: 0;
+		background-image: url(../images/Buttons/rueckruf_anfordern.png);
+		height: 40px!important;
+		background-size: 262px 36px;
+		font-size: 0;
+	}
+	
+	#slider_contact, #slider_contact #sidebar, #slider_contact #sidebar1, #slider_contact #header_contact_slider
+	#slider_contact p, #slider_contact h2, #slider_contact input[type=text], #slider_contact button {
+		display:block;
+	}
+	
+	#slider_contact #header_contact_slider .csc-textpic {
+		width:100%;
+		float:left;
+	}
+	
+	#slider_contact #header_contact_slider .csc-textpic-imagewrap {
+		width:30%;
+		padding:0;
+		margin:0;
+		float:left;
+	}
+	
+	#slider_contact #header_contact_slider .csc-textpic-text{
+		width:65%;
+		padding:0;
+		margin:0;
+		margin-top:4%;
+		float:right;
+	}
+	
+/* Tablets */
+@media only screen and (min-width: 811px) {
+	#slider_contact{
+		top:100px;
+		width:500px;	
+		display:block;
+	}
+}
+
+/* Mittlere Monitore */
+@media only screen and (min-width: 1000px) {
+	#slider_contact{
+		top:108px;
+		width:500px;
+		display:block;
+	}
+	
+	#slider_contact #header_contact_slider .csc-textpic-text{
+		width:65%;
+		padding:0;
+		margin:0;
+		margin-top:-5%;
+		float:right;
+	}
+	.main_content h1, #header_contact_slider h1, .footer_inhalt_oben h1 {
+		font-size: 165%;
+		font-family: "Noto Serif", serif;
+		font-weight: bold;
+	}
+}
+
+/* Große Monitore */
+@media only screen and (min-width: 1300px) {
+	#slider_contact{
+		top:124px;
+		width:500px;
+		display:block;
+	}
+	
+	#slider_contact #header_contact_slider .csc-textpic-text{
+		width:65%;
+		padding:0;
+		margin:0;
+		margin-top:4%;
+		float:right;
+	}
+	.main_content h1, #header_contact_slider h1, .footer_inhalt_oben h1 {
+		font-size: 175%;
+	}
+}

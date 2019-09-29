@@ -1,0 +1,87 @@
+{namespace h=FRONTAL\FagInstitutionManagement\ViewHelpers}
+<div class="formLoadScreen"></div>
+
+<fieldset>
+    <div class="widget widget-text mandatory">
+        <label for="ctrl_1119" class="mandatory">
+            <span class="invisible">Pflichtfeld </span>Vorname<span
+                class="mandatory">*</span>
+				</label>
+        <f:form.textfield property="firstName" class="text mandatory" value="{user.firstname}" required="1"/>
+    </div>
+    <div class="widget widget-text mandatory">
+        <label for="ctrl_1120" class="mandatory">
+            <span class="invisible">Pflichtfeld </span>Name<span class="mandatory">*</span>
+        </label>
+        <f:form.textfield property="lastName" class="text mandatory" value="{user.lastname}" required="1"/>
+
+    </div>
+</fieldset>
+
+<div id="kp_stammdaten_bild_container"></div>
+<label for="kp_stammdaten_bild_upload">Bild (Optional)</label>
+<div style="height: 10px;"></div>
+<div id="progress" style="display: none">
+    <p><strong>0%</strong></p>
+    <progress value="5" min="0" max="100">0%</progress>
+</div>
+<h:form.upload property="image.0" id="uploadImage" class="input-file if1" >
+      <!-- <div id='outputImage'></div> -->
+    <f:if condition="{resource}">
+          
+        <f:image image="{resource}" alt="" class="image_preview" width="200" height="200"/>
+  
+    </f:if>
+    </h:form.upload>
+
+<div class="removeLogoWrapper" style="display: none"><a class="removeLogoLink" href="javascript:{}"><i class="fa fa-trash"></i> Bild entfernen</a></div>
+
+
+<fieldset>
+    <div class="widget widget-text mandatory widget-email">
+        <label for="ctrl_1123" class="mandatory">
+            <span class="invisible">Pflichtfeld </span>E-Mail Adresse<span
+                class="mandatory">*</span>
+        </label>
+        <f:form.textfield property="email" class="text mandatory" value="{user.email}" required="1"/>
+
+    </div>
+    <div class="emailError" style="display: none;"></div>
+</fieldset>
+
+<fieldset>
+    <div class="widget widget-text">
+        <label for="ctrl_1124">
+            Telefon </label>
+        <f:form.textfield property="telephone" class="text mandatory" value="{user.telephone}"/>
+    </div>
+    <div class="widget widget-text">
+        <label for="ctrl_1126">
+            Mobile </label>
+        <f:form.textfield property="mobilephone" class="text mandatory" value="{user.mobilephone}"/>
+    </div>
+</fieldset>
+
+<div class="widget widget-text">
+    <label for="ctrl_1127">
+        Strasse &amp; Hausnummer </label>
+    <f:form.textfield property="address" class="text " value="{user.address}"/>
+</div>
+<fieldset>
+    <div class="widget widget-text">
+        <label for="ctrl_1130">
+            Postleitzahl </label>
+        <f:form.textfield property="zip" class="text " value="{user.zip}"/>
+    </div>
+    <div class="widget widget-text">
+        <label for="ctrl_1131">
+            Ort </label>
+        <f:form.textfield property="city" class="text " value="{user.city}"/>
+    </div>
+</fieldset>
+<f:comment>
+    <f:link.page pageUid="{settings.neuespasswort}"><i class="fa fa-pencil"
+                                                       aria-hidden="true"></i>Passwort
+        ändern
+    </f:link.page>
+</f:comment>

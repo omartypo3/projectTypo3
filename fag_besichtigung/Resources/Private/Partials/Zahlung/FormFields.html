@@ -1,0 +1,50 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="amount">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.amount" />
+</label><br />
+	<f:form.textfield property="amount" /><br />
+<label for="brand">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.brand" />
+</label><br />
+	<f:form.textfield property="brand" /><br />
+<label for="cardNumber">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.card_number" />
+</label><br />
+	<f:form.textfield property="cardNumber" /><br />
+<label for="customerName">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.customer_name" />
+</label><br />
+	<f:form.textfield property="customerName" /><br />
+<label for="currency">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.currency" />
+</label><br />
+	<f:form.textfield property="currency" /><br />
+<label for="expiryDate">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.expiry_date" />
+</label><br />
+	<f:form.textfield property="expiryDate" value="{zahlung.expiryDate->f:format.date()}" /><br />
+<label for="errorCode">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.error_code" />
+</label><br />
+	<f:form.textfield property="errorCode" /><br />
+<label for="orderId">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.order_id" />
+</label><br />
+	<f:form.textfield property="orderId" /><br />
+<label for="payId">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.pay_id" />
+</label><br />
+	<f:form.textfield property="payId" /><br />
+<label for="shasign">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.shasign" />
+</label><br />
+	<f:form.textfield property="shasign" /><br />
+<label for="status">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.status" />
+</label><br />
+	<f:form.textfield property="status" /><br />
+<label for="transactionDate">
+	<f:translate key="tx_fagbesichtigung_domain_model_zahlung.transaction_date" />
+</label><br />
+	<f:form.textfield property="transactionDate" value="{zahlung.transactionDate->f:format.date()}" /><br />
+</html>

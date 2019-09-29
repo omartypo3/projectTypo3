@@ -1,0 +1,49 @@
+{namespace kf = LeadGeneration\ContactForm\ViewHelpers}
+<div xmlns:v="http://fedext.net/ns/vhs/ViewHelpers" xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns="http://www.w3.org/1999/xhtml"
+     lang="en">
+
+    <f:section name="Header">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <v:page.menu
+                                pageUid="{kf:GetSettings(extensionKey:'tx_contactform_fecontactform', settingKey:'backendSectionPageUid')}">
+                            <f:if condition="{menu}">
+                                <f:for each="{menu}" as="curPage">
+                                    <li class="{f:if(condition: '{curPage.active}', then: 'current', else: '')} nav-item">
+
+                                        <a href="{curPage.link}" class="nav-link">{curPage.title}</a>
+                                    </li>
+                                </f:for>
+                            </f:if>
+                        </v:page.menu>
+                    </ul>
+                    <v:variable.set name="pageid"
+                                    value="{kf:GetSettings(extensionKey:'tx_contactform_fecontactform', settingKey:'ParticipantListPageUid')}"/>
+                    <form id="psearch" class="form-inline my-2 my-lg-0">
+                        <input id="urlParticipants" type="hidden"
+                               value="{f:uri.action(action: 'list', pageType: 555 , pageUid: pageid )}">
+
+                        <div class="input-group mr-sm-2 ">
+                        <input id="searchParticipants" class="form-control" placeholder="Search Participants"
+                               type="text">
+
+                                <button class="partiticpant-submit" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+
+                        </div>
+                    </form>
+                    <f:cObject typoscriptObjectPath="lib.logOut"/>
+                </div>
+            </div>
+        </nav>
+    </f:section>
+</div>

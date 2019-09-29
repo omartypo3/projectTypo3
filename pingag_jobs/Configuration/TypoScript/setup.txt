@@ -1,0 +1,65 @@
+config.tx_extbase {
+    
+    persistence {
+        storagePid = 89
+        classes {
+            Pingag\PingagJobs\Domain\Model\Vacancy {
+                mapping {
+                    tableName = tx_pingag_jobs_domain_model_vacancy
+                }
+            }
+
+            Pingag\PingagJobs\Domain\Model\Property {
+                mapping {
+                    tableName = tx_pingag_jobs_domain_model_property
+                    subclasses{
+                        type = Pingag\PingagJobs\Domain\Model\PropertyType
+                        section = Pingag\PingagJobs\Domain\Model\PropertySection
+                        location = Pingag\PingagJobs\Domain\Model\PropertyCity
+                    }
+                }
+            }
+            
+            Pingag\PingagJobs\Domain\Model\PropertyType {
+                mapping {
+                    tableName = tx_pingag_jobs_domain_model_property
+                    recordType = type
+                }
+            }
+            
+            Pingag\PingagJobs\Domain\Model\PropertySection {
+                mapping {
+                    tableName = tx_pingag_jobs_domain_model_property
+                    recordType = section
+                }
+            }
+            
+            Pingag\PingagJobs\Domain\Model\PropertyCity {
+                mapping {
+                    tableName = tx_pingag_jobs_domain_model_property
+                    recordType = city
+                }
+            }
+        }
+    }
+}
+
+plugin.tx_pingagjobs {
+    mvc.callDefaultActionIfActionCantBeResolved = 1
+    features.requireCHashArgumentForActionArguments = 0
+    settings {
+        peoplexsApi{
+            companyCode = san4
+            username = api_med
+            password = api_med1
+            userType = user
+        }
+        detailPages{
+            default = 151
+            151 = 5,10
+            152 = 2,8
+            153 = 1,9
+            154 = 3,4,6,7
+        }
+    }
+}

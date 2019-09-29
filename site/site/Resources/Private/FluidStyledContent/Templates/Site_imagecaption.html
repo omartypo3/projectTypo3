@@ -1,0 +1,8 @@
+<div  id="image-caption-{data.uid}-section" class="p-3 m-3 section-image-caption">
+    <div class="image-content content-1">
+        <f:if condition="{files.0}">
+            <img class="business-img" src="{f:uri.image(image: '{files.0}')}" alt="">
+        </f:if>
+    </div>
+    <p class="intro-content-shirt__caption caption text-center">{data.link_title}</p>
+</div>

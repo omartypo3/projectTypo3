@@ -1,0 +1,403 @@
+.tx-camaliga {
+	margin-top:2%;
+}
+
+.tx-jfmulticontent-pi1 .tx-camaliga li h4{
+	font-size:75%;
+	font-weight:bold;
+}
+
+.tx-jfmulticontent-pi1 .tx-camaliga li p{
+	font-size:75%;
+}
+
+#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+float:left; /* important for inline positioning */
+/* width:645px; * important (this width = width of list item(including margin) * items shown */
+overflow: hidden;  /* important (hide the items outside the div) */
+/* non-important styling bellow */
+background: #fff;
+padding:0;
+margin:0;
+}
+
+.camaliga_start {
+position:relative;
+left:0;
+list-style-type: none; /* removing the default styling for unordered list items */
+margin: 0px;
+padding: 0px;
+width:2000px; /* important */
+/* non-important styling bellow */
+float:left;
+height:auto !important;
+margin-left:38px;
+}
+
+.camaliga_start{
+	text-align:center;
+}
+
+.camaliga_start li{
+float: left; /* important for inline positioning of the list items */
+/* width:195px;  * fixed width, important */
+/* just styling bellow*/
+list-style-type: none !important;
+list-style-image:none !important;
+/* padding:0px;
+margin:10px;
+height:290px; */
+/*background: #eee;*/
+color:#000;
+height:auto !important;
+}
+
+.camaliga_start li img{
+margin-bottom:2px; /* IE is making a 4px gap bellow an image inside of an anchor (<a href...>) so this is to fix that */
+/* styling */
+cursor:pointer;
+cursor: hand;
+border:0px;
+width:165px;
+height:165px;
+}
+.camaliga_left_scroll {
+float:left;
+height:30px;
+width:35px;
+margin-top:120px;
+position:absolute;
+margin-left:-9px;
+z-index:50;
+}
+
+.camaliga_right_scroll {
+float:right;
+height:30px;
+width:35px;
+margin-top:120px;
+position:absolute;
+margin-left:1114px;
+z-index:50;
+}
+
+.camaliga_left_scroll a {
+display:block;
+border:0;
+text-decoration:none;
+cursor: pointer;
+height:30px;
+width:30px;
+background: transparent url(../images/hori_large.png) no-repeat 0 0;
+}
+
+.camaliga_right_scroll a{
+display:block;
+border:0;
+text-decoration:none;
+cursor: pointer;
+height:30px;
+width:30px;
+background: transparent url(../images/hori_large.png) no-repeat 0 0;
+}
+
+.camaliga_right_scroll a{
+	background-position: 0 -30px;
+	margin-left:5px;
+}
+.camaliga_left_scroll a:hover {
+	background-position: -30px 0;
+}
+.camaliga_right_scroll a:hover {
+	background-position: -30px -30px;
+}
+.camaliga_left_scroll a:active {
+	background-position: -60px 0;
+}
+.camaliga_right_scroll a:active {
+	background-position: -60px -30px;
+}
+.camaliga_first a {
+/* here you could display an inactive arrow */
+}
+.camaliga_last a {
+/* here you could display an inactive arrow */
+}
+
+#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+    height: 310px;
+    width: 1140px;
+	height:auto;
+	margin:0px;
+}
+
+h4 {
+	margin-top:2px;
+}
+
+p {
+	margin-top:-10px;
+}
+
+/* HANDY 490px ANFANG */
+@media only screen and (max-width: 767px){
+	#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+		height: 280px;
+		width: 335px;
+		height:auto;
+		margin:0px;
+	}
+	
+	.camaliga_start {
+		position:relative;
+		left:0;
+		list-style-type: none; /* removing the default styling for unordered list items */
+		margin: 0px;
+		padding: 0px;
+		width:2000px; /* important */
+		/* non-important styling bellow */
+		float:left;
+		height:auto !important;
+		margin-left:10px;
+	}
+	
+	.camaliga_start li{
+		margin-right:0px;
+		padding-left:15px;
+		padding-right:15px;
+		width:137px;
+	}	
+	
+	.camaliga_start li img {
+		cursor:pointer;
+		cursor: hand;
+		border:0px;
+		width:60px;
+		height:60px;
+	}
+	
+	.camaliga_left_scroll {
+		float:left;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:-8px;
+		z-index:50;
+	}
+
+	.camaliga_right_scroll {
+		float:right;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:307px;
+		z-index:50;
+	}
+}
+
+/* HANDY 490px ANFANG */
+@media only screen and (max-width: 767px) and (orientation:landscape){
+	#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+		height: 280px;
+		width: 530px;
+		height:auto;
+		margin:0px;
+	}
+	
+	.camaliga_start {
+		position:relative;
+		left:0;
+		list-style-type: none; /* removing the default styling for unordered list items */
+		margin: 0px;
+		padding: 0px;
+		width:2000px; /* important */
+		/* non-important styling bellow */
+		float:left;
+		height:auto !important;
+		margin-left:10px;
+	}
+	
+	.camaliga_start li{
+		margin-right:0px;
+		padding-left:15px;
+		padding-right:15px;
+		width:137px;
+	}
+		
+	.camaliga_start li img {
+		cursor:pointer;
+		cursor: hand;
+		border:0px;
+		width:60px;
+		height:60px;
+	}
+	
+	.camaliga_left_scroll {
+		float:left;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:-8px;
+		z-index:50;
+	}
+
+	.camaliga_right_scroll {
+		float:right;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:502px;
+		z-index:50;
+	}
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {
+	#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+		height: 310px;
+		width: 717px;
+		height:auto;
+		margin:0px;
+	}
+	
+	.camaliga_start {
+		position:relative;
+		left:0;
+		list-style-type: none; /* removing the default styling for unordered list items */
+		margin: 0px;
+		padding: 0px;
+		width:2000px; /* important */
+		/* non-important styling bellow */
+		float:left;
+		height:auto !important;
+		margin-left:10px;
+	}
+	
+	.camaliga_start li img {
+		cursor:pointer;
+		cursor: hand;
+		border:0px;
+		width:85px;
+		height:85px;
+	}
+	
+	.camaliga_left_scroll {
+		float:left;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:-8px;
+		z-index:50;
+	}
+
+	.camaliga_right_scroll {
+		float:right;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:690px;
+		z-index:50;
+	}
+}
+
+/* NORMALE MONITORE */
+@media only screen and (min-width: 1000px) {
+	#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+		height: 310px;
+		width: 877px;
+		height:auto;
+		margin:0px;
+	}
+	
+	.camaliga_start {
+		position:relative;
+		left:0;
+		list-style-type: none; /* removing the default styling for unordered list items */
+		margin: 0px;
+		padding: 0px;
+		width:2000px; /* important */
+		/* non-important styling bellow */
+		float:left;
+		height:auto !important;
+		margin-left:10px;
+	}
+	
+	.camaliga_start li img {
+		cursor:pointer;
+		cursor: hand;
+		border:0px;
+		width:135px;
+		height:135px;		
+	}
+	
+	.camaliga_left_scroll {
+		float:left;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:-9px;
+		z-index:50;
+	}
+
+	.camaliga_right_scroll {
+		float:right;
+		height:30px;
+		width:35px;
+		margin-top:70px;
+		position:absolute;
+		margin-left:850px;
+		z-index:50;
+	}
+}
+
+/* NORMALE MONITORE */
+@media only screen and (min-width: 1300px) {
+	#carousel_inner3, #carousel_inner258, #carousel_inner281, #carousel_inner313, #carousel_inner314, #carousel_inner316, #carousel_inner317 {
+		height: 310px;
+		width: 1140px;
+		height:auto;
+		margin:0px;
+	}
+	
+	.camaliga_start li img {
+		cursor:pointer;
+		cursor: hand;
+		border:0px;
+		width:165px;
+		height:165px;
+	}
+	
+	.camaliga_start li{
+		margin-right:18px;
+	}
+	
+	.camaliga_left_scroll {
+		float:left;
+		height:30px;
+		width:35px;
+		margin-top:120px;
+		position:absolute;
+		margin-left:-9px;
+		z-index:50;
+	}
+
+	.camaliga_right_scroll {
+		float:right;
+		height:30px;
+		width:35px;
+		margin-top:120px;
+		position:absolute;
+		margin-left:1114px;
+		z-index:0;
+	}
+}
+.frame-type-textpic p {
+	margin-top: 0;
+}

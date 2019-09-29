@@ -1,0 +1,21 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<section class="sgeagles" id="sgeagles-{data.uid}-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-1">
+                <video id="sgeaglesVideo" class="sgeagles__video"
+                       poster="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'placeholderVideo')}" playsinline>
+                    <source src="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'Videosgeagles')}"
+                            type="video/mp4">
+                    //The return of the #SGEagles Eintracht Frankfurt in the USA
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="col-md-4 sgeagles__content">
+                <img class="sgeagles__tv-logo" src="{f:uri.image(image: '{files.0}')}" alt="eintracht tv">
+                <h2 class="sgeagles__title">{data.header}</h2>
+                <f:format.html>{data.bodytext}</f:format.html>
+            </div>
+        </div>
+    </div>
+</section>

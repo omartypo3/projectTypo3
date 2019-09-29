@@ -1,0 +1,31 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+    <div class="success">
+        <f:link.action action="new"><f:image src="typo3conf/ext/contact_form/Resources/Public/Icons/back.svg" class="back-image"></f:image></f:link.action>
+        <ul class="typo3-messages alert alert-success">
+            <li>Transmission succesful!</li>
+            <li>Übertragung erfolgreich!</li>
+            <li> Transférer les données avec succès!</li>
+            <li> Trasferimento riuscito!</li>
+        </ul>
+
+
+
+    </div>
+
+</f:section>
+</html>

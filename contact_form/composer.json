@@ -1,0 +1,28 @@
+{
+    "name": "leadgeneration/contact-form",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [],
+	"require": {
+    "dmitryd/typo3-realurl": "^2.4",
+    "fluidtypo3/flux": "8.2.1",
+    "fluidtypo3/fluidpages": "4.1.0",
+    "fluidtypo3/fluidcontent": "5.2.0",
+    "fluidtypo3/vhs": "5.0.1",
+    "sjbr/static-info-tables": "6.7.0"
+	},
+    "autoload": {
+        "psr-4": {
+            "LeadGeneration\\ContactForm\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "LeadGeneration\\ContactForm\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "contact_form": "self.version",
+        "typo3-ter/contact-form": "self.version"
+    }
+}

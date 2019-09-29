@@ -1,0 +1,218 @@
+{namespace pj=Pingag\PingagJobs\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <div class="js-filter row" data-items=".job-row">
+
+        <div class="col-md-4 col-xs-12">
+            <select id="typeFilter" class="selectpicker default form-control" data-filter="type">
+                <option value="0"><f:translate key="list.filter.type"/></option>
+                <f:for each="{types}" as="type" key="typeId">
+                    <option value="{type.uid}">{type}</option>
+                </f:for>
+            </select>
+        </div>
+        <div class="col-md-4 col-xs-12">
+            <select id="sectionFilter" class="selectpicker default form-control" data-filter="section">
+                <option value="0"><f:translate key="list.filter.section"/></option>
+                <f:for each="{sections}" as="section" key="sectionId">
+                    <option value="{section.uid}">{section}</option>
+                </f:for>
+            </select>
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+            <select id="locationFilter" class="selectpicker default form-control" data-filter="location">
+                <option value="0"><f:translate key="list.filter.location"/></option>
+                <f:for each="{cities}" as="location" key="key">
+                    <option value="{location.uid}">{location}</option>
+                </f:for>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover jobs">
+            <tr>
+                <th>
+                    <f:translate key="list.headings.title"/>
+                </th>
+                <th>
+                    <f:translate key="list.headings.type"/>
+                </th>
+                <th>
+                    <f:translate key="list.headings.section"/>
+                </th>
+                <th>
+                    <f:translate key="list.headings.location"/>
+                </th>
+            </tr>
+            <f:for each="{vacancies->v:iterator.sort(order: 'DESC', sortBy: 'validFrom')}" as="vacancy" iteration="i">
+                <f:if condition="{i.cycle} > 0">
+                    <tr class="job-row"
+                        data-filter-type="{vacancy.type.uid}"
+                        data-filter-section="{vacancy.section.uid}"
+                        data-filter-location="{vacancy.city.uid}">
+                        <td>
+                            <div class="hidden">
+                                {vacancy.detailPid}
+                            </div>
+                            <!--{vacancy.importId}-->
+                            <!--{vacancy.validFrom}-->
+                            <f:link.action action="show" pageUid="{vacancy.detailPid}" arguments="{vacancy: vacancy.uid}">
+                                <f:format.html>{vacancy.title}</f:format.html>
+                            </f:link.action>
+                            <f:if condition="{vacancy.type.uid} == 2 || {vacancy.type.parentUid} == 2">
+                                <f:link.action action="show" pageUid="{settings.detailPidNormal}" arguments="{vacancy: vacancy.uid}">
+                                    <f:format.html>{vacancy.title}</f:format.html>
+                                </f:link.action>
+                            </f:if>
+                            <f:if condition="{vacancy.type.uid} == 3 || {vacancy.type.parentUid} == 3">
+                                <f:link.action action="show" pageUid="{settings.detailPidApprenticeship}" arguments="{vacancy: vacancy.uid}">
+                                    <f:format.html>{vacancy.title}</f:format.html>
+                                </f:link.action>
+                            </f:if>
+                            <f:if condition="{vacancy.type.uid} == 1 || {vacancy.type.parentUid} == 1">
+                                <f:link.action action="show" pageUid="{settings.detailPidManagement}" arguments="{vacancy: vacancy.uid}">
+                                    <f:format.html>{vacancy.title}</f:format.html>
+                                </f:link.action>
+                            </f:if>
+                        </td>
+                        <td>
+                            {vacancy.type}
+                        </td>
+                        <td>
+                            {vacancy.section}
+                        </td>
+                        <td>
+                            {vacancy.city}
+                        </td>
+                    </tr>
+                </f:if>
+            </f:for>
+
+            <td class="no-items" colspan="3" style="display: none;">
+                <f:translate key="list.noitems" />
+            </td>
+        </table>
+    </div>
+
+    <div class="modal fade" id="jobAboModal" tabindex="-1" role="dialog" aria-labelledby="jobAboModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="https://cms.publisherconnect.ch/fileadmin/user/firmenwithelabel/solrclients/santemed"
+                      method="post" class="form-horizontal">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="jobAboModalLabel">
+                            <f:translate key="job.list.modal.title"/>
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="jobAboName" class="col-sm-4 control-label">
+                                <f:translate key="job.list.modal.form.name"/>
+                            </label>
+                            <div class="col-sm-8">
+                                <input name="name" id="jobAboName" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobAboEmail" class="col-sm-4 control-label">
+                                <f:translate key="job.list.modal.form.email"/>
+                            </label>
+                            <div class="col-sm-8">
+                                <input name="email" id="jobAboEmail" type="text" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobAboInterval" class="col-sm-4 control-label">
+                                <f:translate key="job.list.modal.form.interval"/>
+                            </label>
+                            <div class="col-sm-8">
+                                <select name="intervalId" id="jobAboInterval" class="selectpicker">
+                                    <option selected="selected" value="1">
+                                        <f:translate key="job.list.modal.form.options.interval.1"/>
+                                    </option>
+                                    <option value="2">
+                                        <f:translate key="job.list.modal.form.options.interval.2"/>
+                                    </option>
+                                    <option value="3">
+                                        <f:translate key="job.list.modal.form.options.interval.3"/>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobAboDuration" class="col-sm-4 control-label">
+                                <f:translate key="job.list.modal.form.duration"/>
+                            </label>
+                            <div class="col-sm-8">
+                                <select name="durationId" id="jobAboDuration" class="selectpicker">
+                                    <option selected="selected" value="1">
+                                        <f:translate key="job.list.modal.form.options.duration.1"/>
+                                    </option>
+                                    <option value="2">
+                                        <f:translate key="job.list.modal.form.options.duration.2"/>
+                                    </option>
+                                    <option value="3">
+                                        <f:translate key="job.list.modal.form.options.duration.3"/>
+                                    </option>
+                                    <option value="4">
+                                        <f:translate key="job.list.modal.form.options.duration.4"/>
+                                    </option>
+                                    <option value="5">
+                                        <f:translate key="job.list.modal.form.options.duration.5"/>
+                                    </option>
+                                    <option value="6">
+                                        <f:translate key="job.list.modal.form.options.duration.6"/>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jobAboLanguage" class="col-sm-4 control-label">
+                                <f:translate key="job.list.modal.form.language"/>
+                            </label>
+                            <div class="col-sm-8">
+                                <select name="language" id="jobAboLanguage" class="selectpicker">
+                                    <option selected="selected" value="de">
+                                        <f:translate key="job.list.modal.form.options.language.de"/>
+                                    </option>
+                                    <option value="fr">
+                                        <f:translate key="job.list.modal.form.options.language.fr"/>
+                                    </option>
+                                    <option value="it">
+                                        <f:translate key="job.list.modal.form.options.language.it"/>
+                                    </option>
+                                    <option value="en">
+                                        <f:translate key="job.list.modal.form.options.language.en"/>
+                                    </option>
+                                    <option value="rm">
+                                        <f:translate key="job.list.modal.form.options.language.rm"/>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="button" data-dismiss="modal">
+                            <f:translate key="job.list.modal.close"/>
+                        </button>
+                        <button id="submitJobAbo" type="submit" class="button">
+                            <f:translate key="job.list.modal.submit"/>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</f:section>

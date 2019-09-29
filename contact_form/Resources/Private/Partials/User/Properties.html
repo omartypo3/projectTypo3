@@ -1,0 +1,30 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-contact-form table mt-5 table-striped table-bordered">
+
+
+
+
+
+<tr>
+    <td><f:translate key="user.firstname" /></td>  <td><f:link.action action="show" arguments="{user : user}">{user.firstName}</f:link.action></td>
+</tr>
+<tr>
+    <td><f:translate key="user.lastname" /></td>  <td><f:link.action action="show" arguments="{user : user}">{user.lastName}</f:link.action></td>
+
+</tr>
+<tr>
+    <td><f:translate key="user.email" /></td>    <td><f:link.action action="show" arguments="{user : user}">{user.email}</f:link.action></td>
+
+</tr>
+<tr>
+    <td><f:translate key="user.usergroup" /></td>       <td><f:link.action action="show" arguments="{user : user}">{user.usergroup.0.title}</f:link.action></td>
+
+</tr>
+    <tr>
+    <td><f:translate key="user.usergroup" /></td>       <td><f:link.action action="show" arguments="{user : user}">{user.usergroup.0.title}</f:link.action></td>
+
+</tr>
+
+
+</table>
+</html>

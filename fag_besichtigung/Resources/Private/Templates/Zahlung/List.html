@@ -1,0 +1,60 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+
+	This Template is responsible for creating a table of domain objects.
+
+	If you modify this template, do not forget to change the overwrite settings
+	in /Configuration/ExtensionBuilder/settings.yaml:
+	  Resources:
+		Private:
+		  Templates:
+			List.html: keep
+
+	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+	<f:section name="content">
+		<h1>Listing for Zahlung</h1>
+
+		<f:flashMessages />
+
+		<table  class="tx_fagbesichtigung" >
+			<tr>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.amount" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.brand" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.card_number" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.customer_name" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.currency" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.expiry_date" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.error_code" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.order_id" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.pay_id" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.shasign" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.status" /></th>
+				<th><f:translate key="tx_fagbesichtigung_domain_model_zahlung.transaction_date" /></th>
+				<th> </th>
+				<th> </th>
+			</tr>
+
+			<f:for each="{zahlungs}" as="zahlung">
+				<tr>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.amount}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.brand}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.cardNumber}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.customerName}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.currency}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.expiryDate -> f:format.date()}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.errorCode}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.orderId}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.payId}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.shasign}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.status}</f:link.action></td>
+					<td><f:link.action action="show" arguments="{zahlung : zahlung}"> {zahlung.transactionDate -> f:format.date()}</f:link.action></td>
+					<td><f:link.action action="edit" arguments="{zahlung : zahlung}">Edit</f:link.action></td>
+					<td><f:link.action action="delete" arguments="{zahlung : zahlung}">Delete</f:link.action></td>
+				</tr>
+			</f:for>
+		</table>
+
+		<f:link.action action="new">New Zahlung</f:link.action>
+	</f:section>
+</html>

@@ -1,0 +1,17 @@
+<div class="tx-jfmulticontent-pi1">
+    <div class="tx-jfmulticontent-tabs">
+        <ul>
+            <f:for as="tab" each="{tabs}" key="i">
+                <li><a href="#tab-{i}">{tab.data.title}</a></li>
+            </f:for>
+        </ul>
+        <f:for as="tab" each="{tabs}" key="i">
+            <div id="tab-{i}">
+                <f:format.html>{tab.data.content}</f:format.html>
+            </div>
+        </f:for>
+
+
+    </div>
+
+</div>

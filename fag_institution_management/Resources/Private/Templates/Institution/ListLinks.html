@@ -1,0 +1,107 @@
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div class="links-list-view">
+		<f:flashMessages />
+
+		<f:if condition="{settings.disableFilterBox} != 1">
+			<f:render partial="Links/Filter" arguments="{_all}" />
+		</f:if>
+
+		<f:for each="{institutions}" as="institution">
+			<f:if condition="{institution.links}">
+				<div class="links-block">
+					<div class="links-item-header">
+						<div class="row">
+							<div class="col-sm-9">
+								<h2>{institution.title}</h2>
+							</div>
+							<div class="col-sm-3"></div>
+						</div>
+					</div>
+			
+					<f:for each="{institution.links -> vhs:iterator.sort(sortBy: 'title')}" as="link">
+						<div class="links-item-list">
+							<div class="row link-row">
+									<div class="linklist">
+										<f:if condition="{link.link}">
+											<div class="col-sm-12">
+													<f:if condition="{link.linkTarget}">
+															<f:then>
+																	<f:link.external class="link-external" uri="{link.link}" target="_blank">
+																			<span class="link-title">{link.title}</span>
+																			<span class="pull-right">
+																				<f:render partial="Icons/LinkExternal" />
+																			</span>
+																	</f:link.external>
+															</f:then>
+															<f:else>
+																	<f:link.page target="" class="link-internal" pageUid="{link.link}">
+																			<span class="link-title">{link.title}</span>
+																			<span class="pull-right">
+																				<f:render partial="Icons/LinkDefault" />
+																			</span>
+																	</f:link.page>
+															</f:else>
+													</f:if>
+												</div>
+										</f:if>
+										<f:if condition="{link.linkDownload}">
+											<div class="col-sm-12">
+												<f:link.page class="link-file" pageUid="{link.linkDownload}" target="_blank">
+														<span class="link-title">{link.title}</span>
+														<span class="pull-right">
+															<f:render partial="Icons/File" arguments="{type: link.linkDownloadIcon}" />
+														</span>
+												</f:link.page>
+											</div>
+										</f:if>
+										<f:if condition="{link.linkForm}">
+											<div class="col-sm-12">
+												<f:if condition="{link.price}">
+														<f:then>
+																<f:link.page
+																		class="link-form"
+																		additionalParams="{
+																				link: link.uid
+																		}"
+																		additionalAttributes="{
+																				data-toggle: 'tooltip',
+																				data-placement: 'right'
+																		}"
+																		title="{link.price} CHF"
+																		pageUid="{link.linkForm}">
+																		<span class="link-title">{link.title}</span>
+																		<span class="pull-right">
+																			<f:render partial="Icons/Basket" />
+																		</span>
+																</f:link.page>
+														</f:then>
+														<f:else>
+																<f:link.page
+																		class="link-form"
+																		additionalParams="{
+																				link: link.uid
+																		}"
+																		pageUid="{link.linkForm}">
+																		<span class="link-title">{link.title}</span>
+																		<span class="pull-right">
+																			<f:render partial="Icons/Basket" />
+																		</span>
+																</f:link.page>
+														</f:else>
+												</f:if>
+											</div>
+										</f:if>
+									</div>
+
+							</div>
+						</div>
+					</f:for>
+				</div>
+			</f:if>
+		</f:for>
+	</div>
+</f:section>

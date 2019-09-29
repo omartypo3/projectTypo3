@@ -1,0 +1,368 @@
+@keyframes left-to-right {
+	from {
+		max-width: 0%;
+		text-align: center;
+	}
+
+	to {
+		max-width: 100%;
+		text-align: center;
+	}
+}
+
+@keyframes bar-lang__anim {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes quote-img {
+	0% {
+		opacity: 0.5;
+		transform: scale(1);
+	}
+
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+
+	100% {
+		opacity: 0.5;
+		transform: scale(1);
+	}
+}
+
+@keyframes open-nav {
+	0% {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform: translate(0vw, 0vh) scale(1, 1) rotate(0.1deg);
+	}
+
+	50% {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform: scale(26, 26) rotate(0.1deg);
+	}
+
+	100% {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform: translate(17vw, 41vh) scale(8, 10) rotate(0.1deg);
+	}
+}
+
+@keyframes close-nav {
+	0% {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform: translate(17vw, 41vh) scale(8, 10);
+	}
+
+	50% {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform:  scale(26, 26);
+	}
+
+	100% {
+		border-radius: 50%;
+		background-color: $color-secondary;
+		padding: 3rem;
+		transform: translate(0vw, 0vh) scale(1, 1);
+	}
+}
+
+@media #{$mq-ipad-land} {
+	@keyframes open-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(1, 1);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 41vh) scale(26, 26);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(17vw, 47vh) scale(8, 14);
+		}
+	}
+
+	@keyframes close-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(17vw, 47vh) scale(8, 14);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 41vh) scale(26, 26);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(1, 1);
+		}
+	}
+}
+
+@media #{$mq-ipad} {
+	@keyframes open-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(1, 1);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 41vh) scale(26, 26);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(17vw, 47vh) scale(8, 14);
+		}
+	}
+
+	@keyframes close-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(17vw, 47vh) scale(8, 14);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 41vh) scale(26, 26);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(1, 1);
+		}
+	}
+}
+
+@media #{$mq-phone-land} {
+	@keyframes open-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, -50vh) scale(1, 1);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(30, 30);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(17vw, -3vh) scale(9.5, 10);
+		}
+	}
+
+	@keyframes close-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(16vw, 53vh) scale(9.5, 10);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(8vw, 25vh) scale(30, 30);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(1, 1);
+		}
+	}
+}
+
+@media #{$mq-phone} {
+	@keyframes open-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, -50vh) scale(1, 1);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(30, 30);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(51vw, 34vh) scale(7.5, 13);
+		}
+	}
+
+	@keyframes close-nav {
+		0% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(51vw, 34vh) scale(7.5, 13);
+		}
+
+		50% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(51vw, -6vh) scale(29.5, 27);
+		}
+
+		100% {
+			border-radius: 50%;
+			background-color: $color-secondary;
+			padding: 3rem;
+			transform: translate(0vw, 0vh) scale(1, 1);
+		}
+	}
+}
+
+@keyframes show-items {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes scale-in {
+	0% {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes scale-out {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(0.8);
+		opacity: 0;
+	}
+}
+
+@keyframes hide-items {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes show-scale-bg {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+
+	100% {
+		opacity: 0.8;
+		transform: scale(1.2);
+	}
+}
+
+@keyframes scale-content-bg {
+	0% {
+		background-size: 100%;
+	}
+
+	100% {
+		background-size: 105%;
+	}
+}
+
+@keyframes scale-content-bg {
+	0% {
+		background-size: 100%;
+	}
+
+	100% {
+		background-size: 105%;
+	}
+}
+
+@keyframes scale-show-bg {
+	0% {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

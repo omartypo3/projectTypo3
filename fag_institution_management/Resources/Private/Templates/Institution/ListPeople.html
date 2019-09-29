@@ -1,0 +1,93 @@
+{namespace fag=FRONTAL\FagExtbase\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<f:if condition="{settings.disableFilterBox} != 1">
+		<f:render partial="People/Filter" arguments="{_all}" />
+	</f:if>
+
+	<f:if condition="{searchInstitution}">
+		<h3>{searchInstitution}</h3>
+	</f:if>
+
+	<f:if condition="{peoples}">
+		<f:then>
+			<f:for each="{peoples}" as="people" iteration="iteratorPeople">
+				<f:comment><!-- debug -->
+					<f:if condition="{people.roles -> f:count()} > 0">
+						<f:for each="{people.roles}" as="peopleRole">
+							<f:for each="{peopleRole.user}" as="peopleUser">
+								{peopleUser.firstName} {peopleUser.lastName}<br>
+								<b>Titel: {peopleRole.institution.title}</b><br>
+								<b>PID: {peopleRole.institution.pid}</b><br>
+
+								<f:switch expression="{peopleRole.institution.pid}">
+									<f:case value="415"><span style="color:red;">Nicht anzeigen</span><br></f:case>
+									<f:case value="417"><span style="color:red;">Nicht anzeigen</span><br></f:case>
+									<f:defaultCase><span style="color:green;">Anzeigen</span><br></f:defaultCase>
+								</f:switch>
+							</f:for>
+						</f:for>
+					</f:if>
+				</f:comment>
+				
+				<div class="people-list-item">
+					<div class="row">
+						<div class="{f:if(condition:'{people.roles}',then:'col-sm-6',else:'col-sm-12')}">
+							<h3>
+								<span class="people-list-header-title">
+									{people.lastName} {people.firstName}
+								</span>
+							</h3>
+						</div>
+						<f:if condition="{people.roles}">
+							<div class="col-sm-6">
+								<div class="role-wrapper">
+									<f:for each="{people.roles}" as="role" iteration="iterator">
+										<span class="role">
+											<f:if condition="{role.institution.detailSite}">
+												<f:then>
+													<f:link.typolink class="more" parameter="{role.institution.detailSite}">
+														{role.institution.title}
+													</f:link.typolink>
+												</f:then>
+												<f:else>
+													<f:link.action pageUid="432" action="show" arguments="{institution : role.institution}" class="more">
+														{role.institution.title}
+													</f:link.action>
+												</f:else>
+											</f:if>
+										</span>
+										<f:if condition="{iterator.isLast}">
+											<f:comment><!-- show ismanagement -->
+											<f:if condition="{people.ismanagement}">
+												<span class="role">
+													<f:link.page pageUid="{settings.listPeople.managementUid}">
+														Geschäftsleitung
+													</f:link.page>
+												</span>
+											</f:if>
+											</f:comment>
+
+											<span class="clearfix"></span>
+										</f:if>
+									</f:for>
+								</div>
+							</div>
+						</f:if>
+					</div>
+				</div>
+			</f:for>
+		</f:then>
+		<f:else>
+			<div class="alert alert-info">
+				<f:translate key="personsNoResults" />
+			</div>
+		</f:else>
+	</f:if>
+
+</f:section>

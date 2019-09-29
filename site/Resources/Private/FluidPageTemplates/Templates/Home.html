@@ -1,0 +1,75 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+
+<f:render partial="Header" arguments="{_all}"/>
+<div class="scroll-to-sections">
+    <div class="scroll-to-sections__pagination">
+        <button id="previous" class="button--up"></button>
+        <f:if condition="{Intro}">
+            <f:then>
+                <span id="intro" class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+            </f:then>
+        </f:if>
+        <f:if condition="{Whyinter}">
+            <f:then>
+                <span id="why-inter" class="swiper-pagination-bullet"></span>
+            </f:then>
+        </f:if>
+        <f:if condition="{Threepillars}">
+            <f:then>
+                <span id="three-pillars" class="swiper-pagination-bullet"></span>
+            </f:then>
+        </f:if>
+        <f:if condition="{Quotes}">
+            <f:then>
+                <span id="quotes" class="swiper-pagination-bullet"></span>
+            </f:then>
+        </f:if>
+        <f:if condition="{Sgeagles}">
+            <f:then>
+                <span id="sgeagles" class="swiper-pagination-bullet"></span>
+            </f:then>
+        </f:if>
+        <f:if condition="{PartnerSgeagles}">
+            <f:then>
+                <span id="sgeagles2" class="swiper-pagination-bullet"></span>
+            </f:then>
+        </f:if>
+        <f:if condition="{Newsroom}">
+            <f:then>
+                <span id="newsroom" class="swiper-pagination-bullet"></span>
+            </f:then>
+        </f:if>
+        <button id="next" class="button--down"></button>
+    </div>
+</div>
+<f:if condition="{Intro}">
+    <f:format.raw>{Intro}</f:format.raw>
+</f:if>
+
+<f:if condition="{Whyinter}">
+    <f:format.raw>{Whyinter}</f:format.raw>
+</f:if>
+<f:if condition="{Threepillars}">
+    <f:format.raw>{Threepillars}</f:format.raw>
+</f:if>
+<f:if condition="{Quotes}">
+    <f:format.raw>{Quotes}</f:format.raw>
+</f:if>
+<div class="sgeagles-bg" style="background: url({gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'sgeagles-bg')}) no-repeat bottom center;     background-size: cover;">
+    <f:if condition="{Sgeagles}">
+        <f:then>
+            <f:format.raw>{Sgeagles}</f:format.raw>
+        </f:then>
+    </f:if>
+    <f:if condition="{PartnerSgeagles}">
+        <f:then>
+            <f:format.raw>{PartnerSgeagles}</f:format.raw>
+        </f:then>
+    </f:if>
+</div>
+<f:if condition="{Newsroom}">
+    <f:then>
+        <f:format.raw>{Newsroom}</f:format.raw>
+    </f:then>
+</f:if>
+<f:render partial="Footer" arguments="{_all}"/>

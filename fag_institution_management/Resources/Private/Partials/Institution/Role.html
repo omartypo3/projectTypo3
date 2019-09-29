@@ -1,0 +1,172 @@
+<div class="role-{iterator.cycle}">
+	<div class="row">
+		<f:comment><!-- if a role has a title => show it on the whole width --></f:comment>
+		<f:if condition="{role.title}">
+			<div class="col-sm-12">
+				<div class="institution-role-title">
+						<p><strong>{role.title}</strong></p>
+				</div>
+			</div>
+		</f:if>
+		
+		<div class="col-sm-6">
+			<div class="institution-role-particulars">
+				<p>{role.user.0.firstName} {role.user.0.lastName}</p>
+
+				<f:comment><!-- check if role has a company --></f:comment>
+				<f:if condition="{role.company}">
+						<f:then>
+								<p>{role.company}</p>
+						</f:then>
+						<f:else>
+							<f:if condition="{role.user.0.company}">
+								<f:if condition="{role.hideCompany}">
+									<f:else>
+										<p>{role.user.0.company}</p>
+									</f:else>
+								</f:if>
+							</f:if>
+						</f:else>
+				</f:if>
+
+				<f:comment><!-- check if role has an address--></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.address}">
+						<f:then>
+								<p>{role.address}</p>
+						</f:then>
+						<f:else>
+							<f:if condition="{role.user.0.address}">
+								<f:if condition="{role.hideAddress}">
+									<f:else>
+										<p>{role.user.0.address}</p>
+									</f:else>
+								</f:if>
+							</f:if>
+						</f:else>
+				</f:if>
+
+				<f:comment><!-- check if role has a zip and city--></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.zip}">
+					<f:then>
+						<p class="zip">{role.zip}</p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.zip}">
+							<f:if condition="{role.hideZip}">
+								<f:else>
+									<p class="zip">{role.user.0.zip}</p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+
+				<f:if condition="{role.city}">
+					<f:then>
+						<p class="city">{role.city}</p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.city}">
+							<f:if condition="{role.hideCity}">
+								<f:else>
+									<p class="city">{role.user.0.city}</p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="institution-role-particulars">
+				<f:comment><!-- check if role has a phone number--></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.phone}">
+					<f:then>
+						<p><span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{role.phone}</p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.telephone}">
+							<f:if condition="{role.hidePhone}">
+								<f:else>
+									<p><span class="phone-icon"><fag:svgToHtml path="{f:uri.image(src:4567, treatIdAsReference:0, absolute:0)}" /></span>{role.user.0.telephone}</p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+
+				<f:comment><!-- chekc if role has a mobile number --></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.mobile}">
+					<f:then>
+						<p><span class="mobile-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{role.mobile}</p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.mobilephone}">
+							<f:if condition="{role.hideMobile}">
+								<f:else>
+									<p><span class="mobile-icon"><fag:svgToHtml path="{f:uri.image(src:4579, treatIdAsReference:0, absolute:0)}" /></span>{role.user.0.mobilephone}</p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+
+				<f:comment><!-- check if role has a fax number --></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.fax}">
+					<f:then>
+						<p><span class="fax-icon"><fag:svgToHtml path="{f:uri.image(src:4580, treatIdAsReference:0, absolute:0)}" /></span>{role.fax}</p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.fax}">
+							<f:if condition="{role.hideFax}">
+								<f:else>
+									<p><span class="fax-icon"><fag:svgToHtml path="{f:uri.image(src:4580, treatIdAsReference:0, absolute:0)}" /></span>{role.user.0.fax}</p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+
+				<f:comment><!-- check if role has an email --></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.email}">
+					<f:then>
+						<p class="email"><span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span><f:link.email email="{role.email}" title="E-Mail">{role.email}</f:link.email></p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.email}">
+							<f:if condition="{role.hideEmail}">
+								<f:else>
+									<p class="email"><span class="mail-icon"><fag:svgToHtml path="{f:uri.image(src:4568, treatIdAsReference:0, absolute:0)}" /></span><f:link.email email="{role.user.0.email}" title="E-Mail">{role.user.0.email}</f:link.email></p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+
+				<f:comment><!-- check if role has a www --></f:comment>
+				<f:comment><!-- otherwise use user data --></f:comment>
+				<f:if condition="{role.www}">
+					<f:then>
+							<p class="www pull-right"><span class="www-icon"><f:link.typolink parameter="{role.www}" target="_blank"><fag:svgToHtml path="{f:uri.image(src:4569, treatIdAsReference:0, absolute:0)}" /></f:link.typolink></span></span></p>
+					</f:then>
+					<f:else>
+						<f:if condition="{role.user.0.www}">
+							<f:if condition="{role.hideWww}">
+								<f:else>
+									<p class="www pull-right"><span class="www-icon"><f:link.typolink parameter="{role.user.0.www}" target="_blank"><fag:svgToHtml path="{f:uri.image(src:4569, treatIdAsReference:0, absolute:0)}" /></f:link.typolink></span></span></p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</f:else>
+				</f:if>
+			</div>
+		</div>
+	</div>
+</div>

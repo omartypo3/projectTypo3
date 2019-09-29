@@ -1,0 +1,94 @@
+.navigation {
+ background-color: $color-tertiary;
+ height: 100vh;
+ z-index: 99;
+ position: fixed;
+ display: none;
+
+
+ &__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../img/background/bg_nav.jpg') no-repeat;
+  background-size: cover;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+ }
+
+ &__items {
+  opacity: 0;
+  margin-right: 6%;
+  margin-top: 4%;
+
+  @media #{$mq-phone} {
+   margin-right: 13%;
+  }
+ }
+
+ &__item {
+  @include font($navigation__font-size, $navigation__ligne-height, $font-bold, $color-primary);
+  margin: 4rem 0;
+
+  @media #{$mq-phone} {
+   @include font($navigation__mfont-size, $navigation__mligne-height, $font-bold, $color-primary);
+   // margin: 2rem 0;  
+  }
+
+  text-transform: uppercase;
+  text-align: right;
+
+  &--margin {
+   margin-right: 3rem;
+  }
+
+  & :hover {
+   color: $color-secondary;
+   font-size: $navigation__font-size + 0.5rem;
+   transition: font-size 0s;
+
+   @media #{$mq-phone} {
+    font-size: $navigation__mfont-size + 0.5rem;
+   }
+  }
+ }
+}
+
+
+//animations & transitions
+
+.open-nav {
+ animation-name: open-nav;
+ animation-duration: 0.6s;
+ animation-iteration-count: 1;
+ animation-timing-function: linear;
+ animation-fill-mode: both;
+ animation-direction: alternate;
+}
+
+.close-nav {
+ animation-name: close-nav;
+ animation-duration: 0.6s;
+ animation-iteration-count: 1;
+ animation-timing-function: linear;
+ animation-fill-mode: both;
+ animation-direction: alternate;
+}
+
+.show-nav-items {
+ animation-name: show-nav-items;
+ animation-duration: 0.3s;
+ animation-iteration-count: 1;
+ animation-timing-function: ease-in-out;
+ animation-fill-mode: both;
+}
+
+.show-scale-bg {
+ animation-name: show-scale-bg;
+ animation-duration: 1s;
+ animation-iteration-count: 1;
+ animation-timing-function: linear;
+ animation-fill-mode: forwards;
+}

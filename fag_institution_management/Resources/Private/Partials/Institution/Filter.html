@@ -1,0 +1,63 @@
+{namespace fag=FRONTAL\FagExtbase\ViewHelpers}
+
+
+<div class="filter well">
+	
+	<f:form action="list" id="tx-fag-institution-management-filter-form" class="form-horizontal" name="institutionFilter" object="{institutionFilter}" method="post">
+		
+		<f:comment> ** SEARCH STRING ** </f:comment>
+		<div class="form-group col-md-5">
+			<label for="tx-fag-institution-management-filter-form-searchString" class="control-label"><f:translate key="filter_searchstring" /></label>
+			<f:form.textfield id="tx-fag-institution-management-filter-form-searchString" class="form-control" property="searchString" />
+		</div>
+
+		<f:comment> ** Categories 1 ** </f:comment>
+		<f:if condition="{settings.categories1.active}">
+			<div class="form-group col-md-5">
+				<label for="tx-fag-institution-management-filter-form-searchCategories1" class="control-label"><f:translate key='filter_searchcategory1_label' /></label>
+				<f:if condition="{settings.categories1.multiple} == 1"><f:then>
+						<fag:form.multiSelect id="tx-fag-institution-management-filter-form-searchCategories1" property="searchCategories1" options="{categories1}" optionValueField="uid" optionLabelField="title" />
+					</f:then><f:else>
+						<f:form.select id="tx-fag-institution-management-filter-form-searchCategory1" property="searchCategory1" options="{categories1}" optionValueField="uid" optionLabelField="title" prependOptionLabel="{f:translate(key:'filter_searchcategory1_choose')}" prependOptionValue="" class="form-control" />
+					</f:else>
+				</f:if>
+			</div>
+		</f:if>
+
+		<f:comment> ** Categories 2 ** </f:comment>
+		<f:if condition="{settings.categories2.active}">
+			<div class="form-group">
+				<label for="tx-fag-institution-management-filter-form-searchCategories2" class="control-label"><f:translate key='filter_searchcategory2_label' /></label>
+				<f:if condition="{settings.categories2.multiple} == 1"><f:then>
+						<fag:form.multiSelect id="tx-fag-institution-management-filter-form-searchCategories2" property="searchCategories2" options="{categories2}" optionValueField="uid" optionLabelField="title" />
+					</f:then><f:else>
+						<f:form.select id="tx-fag-institution-management-filter-form-searchCategory2" property="searchCategory2" options="{categories2}" optionValueField="uid" optionLabelField="title" prependOptionLabel="{f:translate(key:'filter_searchcategory2_choose')}" prependOptionValue="" class="form-control" />
+					</f:else>
+				</f:if>
+			</div>
+		</f:if>
+
+		<f:comment> ** Categories 3 ** </f:comment>
+		<f:if condition="{settings.categories3.active}">
+			<div class="form-group">
+				<label for="tx-fag-institution-management-filter-form-searchCategories3" class="control-label"><f:translate key='filter_searchcategory3_label' /></label>
+				<f:if condition="{settings.categories3.multiple} == 1"><f:then>
+						<fag:form.multiSelect id="tx-fag-institution-management-filter-form-searchCategories3" property="searchCategories3" options="{categories3}" optionValueField="uid" optionLabelField="title" />
+					</f:then><f:else>
+						<f:form.select id="tx-fag-institution-management-filter-form-searchCategory3" property="searchCategory3" options="{categories3}" optionValueField="uid" optionLabelField="title" prependOptionLabel="{f:translate(key:'filter_searchcategory3_choose')}" prependOptionValue="" class="form-control" />
+					</f:else>
+				</f:if>
+			</div>
+		</f:if>
+
+		<f:comment> ** Submit ** </f:comment>
+		<div class="form-group col-md-2">
+			<f:form.submit id="tx-fag-institution-management-filter-form-submit" class="btn btn-primary" name="mySubmit" value="<f:translate key='filter_submit' />" />
+			<f:comment>
+				<f:link.action id="tx-fag-institution-management-filter-form-reset" class="btn btn-default" arguments="{institutionFilterReset: 1}" action="list"><f:translate key='filter_reset' /></f:link.action>
+			</f:comment>
+			</div>
+		<div class="clearfix"></div>
+
+	</f:form>
+</div>

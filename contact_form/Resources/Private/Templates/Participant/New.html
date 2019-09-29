@@ -1,0 +1,37 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+    <f:form.validationResults>
+        <f:if condition="{validationResults.flattenedErrors}">
+            <ul class="typo3-messages alert alert-danger">
+                <li> An error occurred!</li>
+                <li> Ein Fehler ist aufgetreten!</li>
+                <li> Une erreur est survenue!</li>
+                <li> Si è verificato un errore!</li>
+            </ul>
+        </f:if>
+    </f:form.validationResults>
+
+    <f:form action="create" name="newParticipant" object="{newParticipant}">
+        <p class="text-right">* {f:translate(key: 'tx_contactform_domain_model_participant.mandatory')} </p>
+        <hr>
+        <f:render partial="Participant/FormFields" arguments="{_all}"/>
+        <f:form.button class="btn btn-success-px" type="reset" id="resetBtn">{f:translate(key: 'reset')}</f:form.button>
+        <f:form.button class="btn btn-success-px" type="submit">{f:translate(key: 'submit')}</f:form.button>
+
+    </f:form>
+</f:section>
+</html>

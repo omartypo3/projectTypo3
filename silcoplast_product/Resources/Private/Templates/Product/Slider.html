@@ -1,0 +1,172 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:layout name="Default" />
+    <f:section name="content">
+        <div class="produktion-content">
+            <div class="toggle-page-menu">
+                <div class="container">
+                    <div class="row justify-content-end">
+                        <div class="col-lg-8 col-sm-12 p-0">
+                            <ul class="toggle-list">
+                                <li data-target="brachen" class="brachen">Branchen</li>
+                                <li data-target="Technologie">Technologie</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="toggle-menu-content container-fluid">
+                    <div class="row  justify-content-center">
+                        <div id="brachen" class="toggle-menu-item col-lg-10">
+                            <ul>
+                                <f:for each="{catbranch.children}" as="category">
+                                    <li>
+                                        <a href="#" data-catid="{category.uid}"
+                                            class="{f:if(condition: '{category.uid}=={categorie.uid}', then: 'active')} uppercase catfilter">
+                                            <div class="toggle-item-image">
+
+                                                <f:if condition="{category.icong.uid}">
+                                                    <v:variable.set name="icong"
+                                                        value="{f:uri.image(src: '{category.icong.uid}', treatIdAsReference: '1')}">
+                                                    </v:variable.set>
+                                                    <img class="imgg" src="{icong}" />
+                                                </f:if>
+                                                <f:if condition="{category.icon.uid}">
+                                                    <v:variable.set name="icon"
+                                                        value="{f:uri.image(src: '{category.icon.uid}', treatIdAsReference: '1')}">
+                                                    </v:variable.set>
+                                                    <img class="imgw" src="{icon}" />
+                                                </f:if>
+                                            </div>
+                                            {category.title}
+                                        </a>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </div>
+                        <div id="Technologie" class="toggle-menu-item col-lg-10">
+                            <ul>
+                                <f:for each="{cattech.children}" as="category">
+                                    <li>
+                                        <a href="#" data-catid="{category.uid}"
+                                            class="{f:if(condition: '{category.uid}=={categorie.uid}', then: 'active')} uppercase catfilter">
+                                            <div class="toggle-item-image">
+
+                                                <f:if condition="{category.icong.uid}">
+                                                    <v:variable.set name="icong"
+                                                        value="{f:uri.image(src: '{category.icong.uid}', treatIdAsReference: '1')}">
+                                                    </v:variable.set>
+                                                    <img class="imgg" src="{icong}" />
+                                                </f:if>
+                                                <f:if condition="{category.icon.uid}">
+                                                    <v:variable.set name="icon"
+                                                        value="{f:uri.image(src: '{category.icon.uid}', treatIdAsReference: '1')}">
+                                                    </v:variable.set>
+                                                    <img class="imgw" src="{icon}" />
+                                                </f:if>
+                                            </div>
+                                            {category.title}
+                                        </a>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <f:if condition="{sysLanguageUid}!=0">
+                    <f:then>
+                        <v:variable.set name="id" value="{v:page.info(field: '_PAGES_OVERLAY_UID')}"></v:variable.set>
+                        <div id="url1" data-url="{f:uri.action(action: 'list' , pageUid :'{id}', pageType: 666)}"></div>
+                    </f:then>
+                    <f:else>
+                        <div id="url1" data-url="{f:uri.action(action: 'list', pageType: 666)}"></div>
+                    </f:else>
+                </f:if>
+            </div>
+            <div class="ce-slider-products">
+                <div class="container-fluid">
+                    <div class="row" style="position: relative;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="ce-slider-product-content no-padding">
+                                    <f:for each="{products}" as="product">
+                                        <div class="item-product-slide">
+                                            <div class="item-product">
+                                                <div class="item-product-info">
+                                                    <span class="text-small">{product.categorie.title}</span>
+                                                    <h3 class="uppercase">{product.name}</h3>
+                                                </div>
+                                                <div class="figure" style="position:relative">
+                                                    <f:if condition="{sysLanguageUid}!=0">
+                                                        <f:then>
+                                                            <v:variable.set name="id"
+                                                                value="{v:page.info(pageUid:'{settings.detailpid}',field: '_PAGES_OVERLAY_UID')}">
+                                                            </v:variable.set>
+                                                            <a href="{f:uri.action(action: 'show', arguments: {product: product},  additionalParams : {all :'1'}, pageUid:'{id}')-> f:format.raw()}"
+                                                                target="_parent">
+                                                                <span
+                                                                    style="position: absolute;top:0;left:0;right:0;bottom:0;"></span>
+                                                            </a>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <a href="{f:uri.action(action: 'show', arguments: {product: product},  additionalParams : {all :'1'}, pageUid:'{settings.detailpid}')-> f:format.raw()}"
+                                                                target="_parent">
+                                                                <span
+                                                                    style="position: absolute;top:0;left:0;right:0;bottom:0;"></span>
+                                                            </a>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <f:if condition="{sysLanguageUid}!=0">
+                                                        <f:then>
+                                                            <v:variable.set name="id"
+                                                                value="{v:page.info(pageUid:'{settings.detailpid}',field: '_PAGES_OVERLAY_UID')}">
+                                                            </v:variable.set>
+                                                            <a href="{f:uri.action(action: 'show', arguments: {product: product},  additionalParams : {all :'1'}, pageUid:'{id}')-> f:format.raw()}"
+                                                                target="_parent">
+                                                                <img src="{f:uri.image(src: '{product.images.0.uid}', treatIdAsReference: '1')}"
+                                                                    class="name">
+                                                            </a>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <a href="{f:uri.action(action: 'show', arguments: {product: product},  additionalParams : {all :'1'}, pageUid:'{settings.detailpid}')-> f:format.raw()}"
+                                                                target="_parent">
+                                                                <img src="{f:uri.image(src: '{product.images.0.uid}', treatIdAsReference: '1')}"
+                                                                    class="name">
+                                                            </a>
+                                                        </f:else>
+                                                    </f:if>
+                                                </div>
+                                                <f:if condition="{sysLanguageUid}!=0">
+                                                    <f:then>
+                                                        <v:variable.set name="id"
+                                                            value="{v:page.info(pageUid:'{settings.detailpid}',field: '_PAGES_OVERLAY_UID')}">
+                                                        </v:variable.set>
+                                                        <a href="{f:uri.action(action: 'show', arguments: {product: product}, additionalParams : {all :'1'},  noCacheHash: 1, pageUid:'{id}')-> f:format.raw()}"
+                                                            target="_parent" class="btn ">
+                                                            Mehr
+                                                        </a>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <a href="{f:uri.action(action: 'show', arguments: {product: product }, additionalParams : {all :'1'},  noCacheHash: 1, pageUid:'{settings.detailpid}')-> f:format.raw()}"
+                                                            target="_parent" class="btn ">
+                                                            Mehr
+                                                        </a>
+                                                    </f:else>
+                                                </f:if>
+                                            </div>
+                                        </div>
+                                    </f:for>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="prev-item slick-arrow" style="">
+                            <img class="sliderimg img-right"
+                                src="fileadmin/template/Img/Icons/right-thin-chevron.svg" /> </span>
+                        <span class="next-item slick-arrow" style="">
+                            <img class="sliderimg" src="fileadmin/template/Img/Icons/right-thin-chevron.svg" /></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:section>
+
+</html>

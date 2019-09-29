@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-03-27T15:30:12Z" product-name="fag_institution_management">
+		<header/>
+		<body>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution">
+				<source>Institution</source>
+				<target>Institution</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.logo">
+				<source>Logo</source>
+				<target>Logo</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.functions">
+				<source>Functions</source>
+				<target>Funktonen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.events">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_user">
+				<source>User</source>
+				<target>Nutzer</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_user.privilege">
+				<source>Privilege</source>
+				<target>Rechte</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function">
+				<source>Function</source>
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function.user">
+				<source>User</source>
+				<target>Nutzer</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function.institution">
+				<source>Institution</source>
+				<target>Institution</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_event">
+				<source>Event</source>
+				<target>Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_event.more">
+				<source>More</source>
+				<target>Mehr</target>
+			</trans-unit>
+
+			<trans-unit id="filter_searchstring">
+				<source>Searchtext</source>
+				<target>Suchtext</target>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory1_label">
+				<source>Categories</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory1_choose">
+				<source>All categories</source>
+				<target>Alle Kategorien</target>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory2_label">
+				<source>Categories</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory2_choose">
+				<source>All categories</source>
+				<target>Alle Ketegorien</target>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory3_label">
+				<source>Categories</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory3_choose">
+				<source>All categories</source>
+				<target>Alle Kategorien</target>
+			</trans-unit>
+			<trans-unit id="filter_searchinstitution_label">
+				<source>Institutions</source>
+				<target>Institutionen</target>
+			</trans-unit>
+			<trans-unit id="filter_searchinstitution_choose">
+				<source>All institutions</source>
+				<target>Alle Institutionen</target>
+			</trans-unit>
+			<trans-unit id="filter_submit">
+				<source>Search</source>
+				<target>Suchen</target>
+			</trans-unit>
+			<trans-unit id="filter_reset">
+				<source>Reset</source>
+				<target>Zurücksetzen</target>
+			</trans-unit>
+
+			<trans-unit id="institutionNoResults">
+				<source>No institutions found</source>
+				<target>Keine Institutionen gefunden</target>
+			</trans-unit>
+			<trans-unit id="personsNoResults">
+				<source>No persons found</source>
+				<target>Keine Personen gefunden</target>
+			</trans-unit>
+            <trans-unit id="general_oclock">
+				<source>o'clock</source>
+				<target>Uhr</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

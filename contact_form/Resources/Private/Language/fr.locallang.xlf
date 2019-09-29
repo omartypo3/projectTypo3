@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="fr" datatype="plaintext" original="messages" date="2018-10-17T09:59:31Z" product-name="contact_form">
+		<header/>
+		<body>
+			<trans-unit id="tx_contactform_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.start_date">
+				<source>Start Date</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.end_date">
+				<source>End Date</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_event.place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant">
+				<source>Participant</source>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.gender">
+				<source>Gender</source>
+				<target>Sexe</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.title">
+				<source>Title</source>
+				<target>Titre</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.first_name">
+				<source>First Name</source>
+				<target>Prénom</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.last_name">
+				<source>Last Name</source>
+				<target>Nom</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.email">
+				<source>Email</source>
+				<target>Email</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.company">
+				<source>Company</source>
+				<target>Entreprise</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.city">
+				<source>City</source>
+                <target>Ville</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.country">
+				<source>Country</source>
+				<target>Pays</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.interventional_pulmonologist">
+				<source>Interventional Pulmonologist</source>
+			    <target>Pneumologue interventionnel</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.pneumologist">
+				<source>Pneumologist</source>
+				<target>Pneumologue</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.thoracic_surgeon">
+				<source>Thoracic Surgeon</source>
+				<target>Chirurgien thoracique</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.general_practitioner">
+				<source>General Practitioner (GP)</source>
+				<target>Médecin généraliste</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.distributor">
+				<source>Distributor</source>
+				<target>Distributeur</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.specialist_other">
+				<source>Other:</source>
+				<target>Autre:</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.information_product_portfolio">
+				<source>Sent product portfolio</source>
+				<target>Portefeuille de produits envoyés</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.informaztion_clinical_evidence">
+				<source>Sent clinical evidence</source>
+				<target>Preuves cliniques envoyées</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.information_other">
+				<source>Sent other materials / topics of the discussion:</source>
+				<target>Envoyé d'autres matériaux / sujets de la discussion:</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.contact">
+				<source>Make contact by sales representative</source>
+				<target>Prendre contact par représentant des ventes</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.contact_reason">
+				<source>Reason for contact:</source>
+				<target>Motif du contact:</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.captured_by">
+				<source>Contact at Pulmonx:</source>
+				<target>Contact chez Pulmonx:</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.event">
+				<source>Event</source>
+				<target>Événement</target>
+			</trans-unit>
+			<trans-unit id="tx_contactform_domain_model_participant.mandatory">
+				<source>Mandatory field</source>
+				<target>Champ obligatoire</target>
+			</trans-unit>
+
+			<trans-unit id="user.firstname">
+				<source>First Name</source>
+
+			</trans-unit>
+			<trans-unit id="user.lastname">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="user.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="user.password">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="user.rpeatpassword">
+				<source>Confirm Password</source>
+			</trans-unit>
+			<trans-unit id="user.oldpassword">
+				<source>Old Password</source>
+			</trans-unit>
+			<trans-unit id="user.usergroup">
+				<source>User Group</source>
+			</trans-unit>
+
+			<trans-unit id="submit">
+				<source>Submit</source>
+				<target>Soumettre</target>
+			</trans-unit>
+			<trans-unit id="reset">
+				<source>Reset</source>
+				<target>Réinitialiser</target>
+			</trans-unit>
+			<trans-unit id="quickselect">
+                 <source>Quick Select</source>
+                 <target>Sélection rapide</target>
+            </trans-unit>
+            <trans-unit id="othercountries">
+                  <source>Other Countries</source>
+                  <target>Autres pays</target>
+            </trans-unit>
+
+            <trans-unit id="flux.Admin">
+                 <source>Admin page</source>
+            </trans-unit>
+            <trans-unit id="flux.Admin.description">
+				<source>Admin page layout</source>
+			</trans-unit>
+            <trans-unit id="flux.Backend">
+                 <source>Backend page</source>
+            </trans-unit>
+            <trans-unit id="flux.Backend.description">
+				<source>Backend page layout</source>
+			</trans-unit>
+            <trans-unit id="flux.Contact">
+                 <source>Contact page</source>
+            </trans-unit>
+            <trans-unit id="flux.Contact.description">
+				<source>Contact page layout</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

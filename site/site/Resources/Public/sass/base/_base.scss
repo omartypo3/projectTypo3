@@ -1,0 +1,168 @@
+html {
+	font-size: 62.5%;
+
+	@media #{$mq-ldesktop} {
+		font-size: 67%;
+	}
+
+	@media #{$mq-xldesktop} {
+		font-size: 75%;
+	}
+
+	@media #{$mq-xxldesktop} {
+		font-size: 84%;
+	}
+
+	@media #{$mq-xxxldesktop} {
+		font-size: 94%;
+	}
+
+	@media #{$mq-ipad-land} {
+		font-size: 52.5%;
+	}
+
+	@media #{$mq-phone-land} {
+		font-size: 37.5%;
+	}
+
+	@media #{$mq-ipad} {
+		font-size: 49.5%;
+	}
+
+	@media #{$mq-small-phone} {
+		font-size: 56.5%;
+	}
+}
+
+p {
+	color: $color-primary;
+}
+
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+	color: inherit;
+}
+
+a {
+	color: inherit;
+}
+
+ol,
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.hidden {
+	display: none;
+	transition: display 1s;
+}
+
+.custom-margin {
+	margin: -34rem 0 0 0rem;
+}
+
+.swiper-wrapper {
+	align-items: baseline;
+}
+
+@media #{$mq-phone} {
+
+	.col-1,
+	.col-2,
+	.col-3,
+	.col-4,
+	.col-5,
+	.col-6,
+	.col-7,
+	.col-8,
+	.col-9,
+	.col-10,
+	.col-11,
+	.col-12,
+	.col,
+	.col-auto,
+	.col-sm-1,
+	.col-sm-2,
+	.col-sm-3,
+	.col-sm-4,
+	.col-sm-5,
+	.col-sm-6,
+	.col-sm-7,
+	.col-sm-8,
+	.col-sm-9,
+	.col-sm-10,
+	.col-sm-11,
+	.col-sm-12,
+	.col-sm,
+	.col-sm-auto,
+	.col-md-1,
+	.col-md-2,
+	.col-md-3,
+	.col-md-4,
+	.col-md-5,
+	.col-md-6,
+	.col-md-7,
+	.col-md-8,
+	.col-md-9,
+	.col-md-10,
+	.col-md-11,
+	.col-md-12,
+	.col-md,
+	.col-md-auto,
+	.col-lg-1,
+	.col-lg-2,
+	.col-lg-3,
+	.col-lg-4,
+	.col-lg-5,
+	.col-lg-6,
+	.col-lg-7,
+	.col-lg-8,
+	.col-lg-9,
+	.col-lg-10,
+	.col-lg-11,
+	.col-lg-12,
+	.col-lg,
+	.col-lg-auto,
+	.col-xl-1,
+	.col-xl-2,
+	.col-xl-3,
+	.col-xl-4,
+	.col-xl-5,
+	.col-xl-6,
+	.col-xl-7,
+	.col-xl-8,
+	.col-xl-9,
+	.col-xl-10,
+	.col-xl-11,
+	.col-xl-12,
+	.col-xl,
+	.col-xl-auto,
+	.inter h2,
+	.inter h3 {
+		margin-right: 2.5rem;
+		margin-left: 2.5rem;
+	}
+	.sgeagles2,
+	.quotes,
+	.tours,
+	.big-slider {
+		& .col-md-12,
+		.col-md-6,
+		.col-md-8 {
+			margin-right: auto;
+			margin-left: auto;
+		}
+	}
+	.business .col-md-4 {
+		padding: 0;
+		margin: 0;
+	}
+}

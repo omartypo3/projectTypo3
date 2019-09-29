@@ -1,0 +1,24 @@
+<div class="element_headline_textbild_textbild">
+    <div class="col0">
+        <div class="csc-header csc-header-n1">
+            <h1 class="csc-firstHeader">{data.header}</h1>
+        </div>
+    </div>
+    <div class="col1">
+        <div class="csc-textpic-text">
+            <f:format.html>{data.bodytext}</f:format.html>
+        </div>
+        <div class="tx-dce-pi1">
+            <a href="{f:uri.page(pageUid: '{data.header_link}', absolute: '1')}">
+                <div class="buttontextOrange">
+                    {data.subheader}
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col2">
+        <div class="csc-textpic-text">
+           <f:format.html>{data.body_text}</f:format.html>
+        </div>
+    </div>
+</div>

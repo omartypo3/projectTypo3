@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2018-08-07T12:15:55Z" product-name="pingag_jobs">
+		<header/>
+		<body>
+			<trans-unit id="list.filter.type">
+				<source>All vacancies</source>
+				<target>Tous les postes vacants</target>
+			</trans-unit>
+			<trans-unit id="list.filter.section">
+				<source>All working areas</source>
+				<target>Tous les domaines d'activité</target>
+			</trans-unit>
+			<trans-unit id="list.filter.location">
+				<source>All locations</source>
+				<target>Tous les lieux de travail</target>
+			</trans-unit>
+			<trans-unit id="list.noitems">
+				<source>No vacancies for your filter criteria were found.</source>
+				<target>Aucune offre d'emploi n'a été trouvée pour vos critères de filtrage.</target>
+			</trans-unit>
+			<trans-unit id="detail.apply">
+				<source>Apply</source>
+				<target>Poser candidature</target>
+			</trans-unit>
+			<trans-unit id="detail.share">
+				<source>Recommend</source>
+				<target>Recommander</target>
+			</trans-unit>
+			<trans-unit id="detail.print">
+				<source>Print</source>
+				<target>Imprimer</target>
+			</trans-unit>
+			<trans-unit id="detail.headings.tasks">
+				<source>Your tasks</source>
+				<target>Vos tâches</target>
+			</trans-unit>
+			<trans-unit id="detail.headings.tasksdu">
+				<source>Your tasks</source>
+				<target>Vos tâches</target>
+			</trans-unit>
+			<trans-unit id="detail.headings.profile">
+				<source>Your profile</source>
+				<target>Votre profil</target>
+			</trans-unit>
+			<trans-unit id="detail.headings.profiledu">
+				<source>Your profile</source>
+				<target>Votre profil</target>
+			</trans-unit>
+			<trans-unit id="detail.headings.offer">
+				<source>We provide</source>
+				<target>Nous proposons</target>
+			</trans-unit>
+			<trans-unit id="detail.headings.location">
+				<source>Medbase location</source>
+				<target>Emplacement de Medbase</target>
+			</trans-unit>
+			<trans-unit id="list.headings.title">
+				<source>Job title</source>
+				<target>Titre du poste</target>
+			</trans-unit>
+			<trans-unit id="list.headings.quota">
+				<source>Workload</source>
+				<target>Charge de travail</target>
+			</trans-unit>
+			<trans-unit id="list.headings.section">
+				<source>Working area</source>
+				<target>Domaine d'activité</target>
+			</trans-unit>
+			<trans-unit id="list.headings.location">
+				<source>Location</source>
+				<target>Lieu de travail</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

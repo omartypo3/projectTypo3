@@ -1,0 +1,40 @@
+<v:page.breadCrumb as="rootlinePages"    pageUid="{page.uid}" entryLevel="{settings.breadcrumbEntryLevel}" showHiddenInMenu="1">
+
+<f:if condition="{rootlinePages}">
+						<nav aria-label="breadcrumb">
+								<ol class="breadcrumb">
+										<f:for each="{rootlinePages}" as="rootlinePage" iteration="iteration">
+												<f:if condition="{rootlinePage.uid} != {settings.login} && {rootlinePage.uid} != 1" >
+													<f:then>
+ 
+												<f:if condition="{rootlinePage.current}">
+														<f:then>
+																<li class="breadcrumb-item active" aria-current="page">
+																		<f:if condition="{rootlinePage.nav_title}">
+																		
+																				<f:then>	
+																				{rootlinePage.nav_title}</f:then>
+																				<f:else>
+																						{rootlinePage.title}</f:else>
+																		</f:if>
+																</li>
+														</f:then>
+														<f:else>
+																<li class="breadcrumb-item">
+																		<f:link.page pageUid='{rootlinePage.link}' additionalAttributes="{institution:292}"  additionalParams="{institution:292}">
+																		<f:if condition="{rootlinePage.nav_title}">
+																				<f:then>{rootlinePage.nav_title}</f:then>
+																				<f:else>{rootlinePage.title}</f:else>
+																		</f:if>
+																	</f:link.page>								
+																		</li>
+														</f:else>
+												</f:if>	
+											</f:then>	
+											</f:if>
+										
+										</f:for>
+								</ol>
+						</nav>
+				</f:if>
+		</v:page.breadCrumb>

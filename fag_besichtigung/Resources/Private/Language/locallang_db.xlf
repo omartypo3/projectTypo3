@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-07-17T14:30:22Z" product-name="fag_besichtigung">
+		<header/>
+		<body>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.untertitel">
+				<source>Untertitel</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.bild">
+				<source>Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.zusatztext">
+				<source>Zusatztext</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.preishinweis">
+				<source>Preishinweis</source>
+			</trans-unit>
+	        <trans-unit id="tx_fagbesichtigung_domain_model_event.text_email">
+				<source>Text Email</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.treffpunkt">
+				<source>Treffpunkt</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_event.gruppen_fuhrer">
+				<source>Administratoren</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.start_time">
+				<source>Start Time</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.end_time">
+				<source>End Time</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.teilnehmer_max">
+				<source>Teilnehmer Max</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.anfrage">
+				<source>Anfrage</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.gruppen_fuhrer">
+				<source>Führerin</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_datum.gruppentyp">
+				<source>Gruppentyp</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage">
+				<source>Anfrage</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.anrede">
+				<source>Anrede</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.vorname">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.funktion">
+				<source>Funktion</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.strasse">
+				<source>Strasse/Nummer</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.ort_p_l_z">
+				<source>Ort P L Z</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.telefon">
+				<source>Telefon</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.bemerkung">
+				<source>Bemerkung</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.gruppenname">
+				<source>Name der Gruppe (Bezeichnung)</source>
+			</trans-unit>
+				<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.bezeichnung">
+				<source>Bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.durchschnittsalter">
+				<source>Durchschnittsalter der Schulklasse</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_anfrage.teilnehmeraktuell">
+				<source>Teilnehmeraktuell</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppentyp">
+				<source>Gruppentyp</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppentyp.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppentyp.untertitel">
+				<source>Untertitel</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppentyp.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppentyp.bild">
+				<source>Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppentyp.kosten">
+				<source>Kosten</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung">
+				<source>Zahlung</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.amount">
+				<source>Amount</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.brand">
+				<source>Brand</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.card_number">
+				<source>Card Number</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.customer_name">
+				<source>Customer Name</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.currency">
+				<source>Currency</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.expiry_date">
+				<source>Expiry Date</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.error_code">
+				<source>Error Code</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.order_id">
+				<source>Order Id</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.pay_id">
+				<source>Pay Id</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.shasign">
+				<source>Shasign</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.transaction_date">
+				<source>Transaction Date</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_zahlung.anfrageid">
+				<source>Anfrageid</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppenfuhrer">
+				<source>Gruppen Fuhrer</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppenfuhrer.vorname">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppenfuhrer.nachname">
+				<source>Nachname</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppenfuhrer.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_fagbesichtigung_domain_model_gruppenfuhrer.telefon">
+				<source>Telefon</source>
+			</trans-unit>
+			<trans-unit id="tx_fag_besichtigung_besichtigung.name">
+				<source>besichtigung_fe</source>
+			</trans-unit>
+			<trans-unit id="tx_fag_besichtigung_besichtigung.description">
+				<source></source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

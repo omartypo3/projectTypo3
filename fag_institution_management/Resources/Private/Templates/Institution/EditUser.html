@@ -1,0 +1,25 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+	<f:render partial="Institution/breadCrumb"/>
+    <div class="Institution-s2d">
+    <f:form action="userUpdate" name="user" object="{user}" enctype="multipart/form-data">
+        <div class="formbody">
+            <f:render partial="Institution/Fielduser" arguments="{user:user}"/>
+
+            <div class="submit_container">
+                <f:form.submit value="Speichern"/>
+            </div>
+        </div>
+    </f:form>
+    <div class="toDelete--wrapper image" style="display: none;">
+        <div class="inside">
+            <p>Soll das Bild entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+            <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+            <button id="bt_confirme"><i class="fa fa-trash" aria-hidden="true"></i>  Löschen! </button>
+            <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen </button>
+        </div>
+    </div>
+    </div>
+</f:section>

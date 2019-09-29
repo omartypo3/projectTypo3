@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-03-27T15:30:12Z" product-name="fag_institution_management">
+		<header/>
+		<body>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution">
+				<source>Institution</source>
+				<target>Institution</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.sheet_contact">
+				<source>Contact information</source>
+				<target>Kontaktinformationen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.sheet_admin">
+				<source>Administrator rights</source>
+				<target>Administratorrechte</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.sheet_media">
+				<source>Media</source>
+				<target>Medien</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.sheet_sites">
+				<source>Sites</source>
+				<target>Seiten</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.sheet_events">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.sheet_onlineswitch">
+				<source>Online desk</source>
+				<target>Online-Schalter</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.first_name">
+				<source>Firstname</source>
+				<target>Vorname</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.institution_contact_label">
+				<source>Contact label</source>
+				<target>Kontaktbeschriftung</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.last_name">
+				<source>Lastname</source>
+				<target>Nachname</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.address">
+				<source>Address</source>
+				<target>Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.zip">
+				<source>Zip</source>
+				<target>PLZ</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.city">
+				<source>City</source>
+				<target>Stadt</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.company">
+				<source>Company</source>
+				<target>Unternehmen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.phone">
+				<source>Phone</source>
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.mobile">
+				<source>Mobile</source>
+				<target>Mobil</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.fax">
+				<source>Fax</source>
+				<target>Fax</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.email">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.www">
+				<source>WWW</source>
+				<target>WWW</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.mainAddress">
+				<source>Main-Address</source>
+				<target>Hauptadresse</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.logo">
+				<source>Logo</source>
+				<target>Logo</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.images">
+				<source>Images</source>
+				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.roles">
+				<source>Roles</source>
+				<target>Ansprechpartner</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.events">
+				<source>Events</source>
+				<target>Veranstaltungen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.links">
+				<source>Links</source>
+				<target>Onlinedienste</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.admin">
+				<source>Administrator</source>
+				<target>Administrator</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_user">
+				<source>User</source>
+				<target>Benutzer</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_user.privilege">
+				<source>Privilege</source>
+				<target>Verwaltbare Institutionen</target>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_extbase_type.Tx_FagInstitutionManagement_User">
+				<source>FRONTAL / Institutionen User</source>
+				<target>FRONTAL / Institutionen User</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role">
+				<source>Role</source>
+				<target>Funktion</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.title">
+				<source>Title</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.user">
+				<source>User</source>
+				<target>Benutzer</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.citycouncil">
+				<source>City council</source>
+				<target>Stadtrat</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.show_in_register">
+				<source>Show in Register</source>
+				<target>In Personalregister</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.ismanagement">
+				<source>Management</source>
+				<target>Geschäftsleitung</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.ismanagement_deputy">
+				<source>Management Deputy</source>
+				<target>Stellvertreter Geschäftsleitung</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.management_position">
+				<source>Management Position</source>
+				<target>Geschäftsleitung (Reihenfolge)</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.management_deputy_position">
+				<source>Management Deputy Position</source>
+				<target>Stellvertreter Geschäftsleitung (Reihenfolge)</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.no_frontend_login">
+				<source>No Frontend-Login</source>
+				<target>Kein Frontend-Login</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.institution">
+				<source>Institution</source>
+				<target>Institution</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.address">
+				<source>Address</source>
+				<target>Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_address">
+				<source>hide Address</source>
+				<target>Adress-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.zip">
+				<source>Zip</source>
+				<target>PLZ</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_zip">
+				<source>hide ZIP</source>
+				<target>PLZ-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.city">
+				<source>City</source>
+				<target>Stadt</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_city">
+				<source>hide City</source>
+				<target>Stadt-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.company">
+				<source>Company</source>
+				<target>Unternehmen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_company">
+				<source>hide Company</source>
+				<target>Unternehmen-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.phone">
+				<source>Phone</source>
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_phone">
+				<source>hide Phone</source>
+				<target>Telefon-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.mobile">
+				<source>Mobile</source>
+				<target>Mobil</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_mobile">
+				<source>hide Mobile</source>
+				<target>Mobile-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.fax">
+				<source>Fax</source>
+				<target>Fax</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_fax">
+				<source>hide Fax</source>
+				<target>Fax-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.email">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_email">
+				<source>hide E-Mail</source>
+				<target>E-Mail-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.www">
+				<source>WWW</source>
+				<target>WWW</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_role.hide_www">
+				<source>hide WWW</source>
+				<target>WWW-Stammdaten nicht anzeigen</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_event">
+				<source>Event</source>
+				<target>Veranstaltung</target>
+			</trans-unit>
+			<trans-unit id="tx_fagcalendar_domain_model_event.tx_extbase_type.Tx_FagInstitutionManagement_Event">
+				<source>FRONTAL / Institutionen Event</source>
+				<source>FRONTAL / Institutionen Event</source>
+			</trans-unit>
+
+			<trans-unit id="flexform_sheettitle_general">
+				<source>General</source>
+				<target>Allgemein</target>
+			</trans-unit>
+			<trans-unit id="flexform_subtitle">
+				<source>Subtitle</source>
+				<target>Untertitel</target>
+			</trans-unit>
+			<trans-unit id="flexform_recordtype">
+				<source>Record Type</source>
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="flexform_label_type1">
+				<source>Please choose</source>
+				<target>Bitte wählen</target>
+			</trans-unit>
+			<trans-unit id="flexform_label_type2">
+				<source>Firm</source>
+				<target>Firma</target>
+			</trans-unit>
+			<trans-unit id="flexform_label_type3">
+				<source>Society</source>
+				<target>Verein</target>
+			</trans-unit>
+			<trans-unit id="flexform_singleinstitution">
+				<source>Single institution</source>
+				<target>Einzelne Institution</target>
+			</trans-unit>
+
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link">
+				<source>Link</source>
+				<target>Onlinedienst</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.title">
+				<source>Titel</source>
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.link">
+				<source>Link</source>
+				<target>Link</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.link_type">
+				<source>Link Icon</source>
+				<target>Link Icon</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.link_target">
+				<source>Link Typ</source>
+				<target>Link Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.link_download">
+				<source>Datei Link</source>
+				<target>Datei Link</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.link_download_icon">
+				<source>Datei Typ</source>
+				<target>Datei Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.link_form">
+				<source>Formular Link</source>
+				<target>Formular Link</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.price">
+				<source>Preis</source>
+				<target>Preis</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.type">
+				<source>Icon Typ</source>
+				<target>Icon Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.categories">
+				<source>Kategorien</source>
+				<target>Kategorien</target>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_link.form_options">
+				<source>Formular Optionen</source>
+				<target>Formular Optionen</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,210 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <div class="Institution-s2d">
+        <f:render partial="Institution/breadCrumb"/>
+        <div class="mod_article first last block" id="institutionen-verwalten-person-bearbeiten">
+
+            <div class="ce_form last tableless block">
+                <f:form action="updatePersonen" object="{role}" name="role" enctype="multipart/form-data">
+                    <div class="formbody">
+                        <fieldset class="StammDatenEdit">
+
+                            <!-- Admin -->
+
+                            <div class="widget widget-text">
+                                <label for="ctrl_1293">
+                                    Position in der Institution </label>
+                                <f:form.textfield name="title" value="{role.title}"/>
+                            </div>
+                            <div class="widget widget-checkbox">
+                                <fieldset id="ctrl_1320" class="checkbox_container">
+
+								<span><input id="opt_1320_0" class="checkbox" value="{role.isadmin}"
+                                             name="tx_faginstitutionmanagement_nextsteplogin[isadmin]" type="checkbox"
+                                             {f:if(condition: '{role.isadmin}', then: 'checked="checked"')}>
+									<label id="lbl_1320_0"
+                                           for="opt_1320_0">Person darf die Institution verwalten</label></span>
+                                </fieldset>
+                            </div>
+
+                            <div class="widget widget-checkbox">
+                                <fieldset id="ctrl_1294" class="checkbox_container">
+                                    <input name="published" value="" type="hidden">
+                                    <span><input name="published" id="opt_1294_0" class="checkbox" value="published"
+                                                 checked="checked"
+                                                 type="checkbox"> <label id="lbl_1294_0" for="opt_1294_0">Daten auf der Webseite
+										anzeigen?</label></span>
+                                </fieldset>
+                            </div>
+
+
+                            <fieldset>
+                                <legend>E-Mail Adresse</legend>
+                                <label>E-Mail Adresse</label>
+                                <div class="inputs">
+                                    <f:if condition="{role.email}">
+                                        <f:then>
+                                            <input type="text" value="{person.email}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-mail]" disabled
+                                                   style="display: none;">
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[email]"
+                                                   value="{role.email}" style="display: block;">
+                                        </f:then>
+                                        <f:else>
+                                            <input type="text" value="{person.email}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-mail]" disabled>
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[email]"
+                                                   value="{role.email}" style="display: none;">
+                                        </f:else>
+                                    </f:if>
+                                </div>
+                                <input type="checkbox" {f:if(condition: '{role.email}', then: '' , else:'checked')} value="1" class="input-switch"
+                                       name="tx_faginstitutionmanagement_nextsteplogin[hideEmail]"
+                                       id="{person.uid}-mail"> <label
+                                    for="{person.uid}-mail">E-Mail Adresse aus Stammdaten übernehmen?</label>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Telefonnummer</legend>
+                                <label>Telefonnummer</label>
+                                <div class="inputs">
+                                    <f:if condition="{role.phone}">
+                                        <f:then>
+                                            <input type="text" value="{person.telephone}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-phone]" disabled  style="display: none;">
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[phone]"
+                                                   value="{role.phone}" style="display: block;">
+                                        </f:then>
+                                        <f:else>
+                                            <input type="text" value="{person.telephone}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-phone]" disabled>
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[phone]"
+                                                   value="{role.phone}" style="display: none;">
+                                        </f:else>
+                                    </f:if>
+
+                                </div>
+                                <input type="checkbox" {f:if(condition: '{role.phone}', then: '' , else:'checked')} value="1" class="input-switch"
+                                       name="tx_faginstitutionmanagement_nextsteplogin[hidePhone]"
+                                       id="{person.uid}-phone"> <label
+                                    for="{person.uid}-phone">Telefonnummer aus Stammdaten übernehmen?</label>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Mobile</legend>
+                                <label>Mobile</label>
+                                <div class="inputs">
+                                    <f:if condition="{role.mobile}">
+                                        <f:then>
+                                            <input type="text" value="{person.mobile}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-mobile]" disabled style="display: none;">
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[mobile]"
+                                                   value="{role.mobile}" style="display: block;">
+                                        </f:then>
+                                        <f:else>
+                                            <input type="text" value="{person.mobile}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-mobile]" disabled>
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[mobile]"
+                                                   value="{role.mobile}" style="display: none;">
+                                        </f:else>
+                                    </f:if>
+
+                                </div>
+                                <input type="checkbox" {f:if(condition: '{role.mobile}', then: '' , else:'checked')} value="1" class="input-switch"
+                                       name="tx_faginstitutionmanagement_nextsteplogin[hideMobile]"
+                                       id="{person.uid}-mobile"> <label
+                                    for="{person.uid}-mobile">Mobile aus Stammdaten übernehmen?</label>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Strasse und Hausnummer</legend>
+                                <label>Strasse und Hausnummer</label>
+                                <div class="inputs">
+                                    <f:if condition="{role.address}">
+                                        <f:then>
+                                            <input type="text" value="{person.address}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-address]" disabled style="display: none;">
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[address]"
+                                                   value="{role.address}" style="display: block;">
+                                        </f:then>
+                                        <f:else>
+                                            <input type="text" value="{person.address}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-address]" disabled>
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[address]"
+                                                   value="{role.address}" style="display: none;">
+                                        </f:else>
+                                    </f:if>
+
+                                </div>
+                                <input type="checkbox" {f:if(condition: '{role.address}', then: '' , else:'checked')} value="1" class="input-switch"
+                                       name="tx_faginstitutionmanagement_nextsteplogin[hideAddress]"
+                                       id="{person.uid}-address"> <label
+                                    for="{person.uid}-address">Strasse und Hausnummer aus Stammdaten übernehmen?</label>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Postleitzahl</legend>
+                                <label>PLZ</label>
+                                <div class="inputs">
+                                    <f:if condition="{role.zip}">
+                                        <f:then>
+                                            <input type="text" value="{person.zip}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-zip]" disabled style="display: none;">
+                                            <input type="text" value="{role.zip}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[zip]" style="display: block;">
+                                        </f:then>
+                                        <f:else>
+                                            <input type="text" value="{person.zip}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-zip]" disabled>
+                                            <input type="text" value="{role.zip}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[zip]" style="display: none;">
+                                        </f:else>
+                                    </f:if>
+
+                                </div>
+                                <input type="checkbox" {f:if(condition: '{role.zip}', then: '' , else:'checked')} value="1" class="input-switch"
+                                       name="tx_faginstitutionmanagement_nextsteplogin[hideZip]" id="{person.uid}-zip">
+                                <label
+                                        for="{person.uid}-zip">PLZ aus Stammdaten übernehmen?</label>
+                            </fieldset>
+                            <fieldset>
+                                <legend>Ort</legend>
+                                <label>Ort</label>
+                                <div class="inputs">
+                                    <f:if condition="{role.city}">
+                                        <f:then>
+                                            <input type="text" value="{person.city}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-city]" disabled style="display: none;">
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[city]"
+                                                   value="{role.city}" style="display: block;">
+                                        </f:then>
+                                        <f:else>
+                                            <input type="text" value="{person.city}"
+                                                   name="tx_faginstitutionmanagement_nextsteplogin[user-city]" disabled>
+                                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[city]"
+                                                   value="{role.city}" style="display: none;">
+                                        </f:else>
+                                    </f:if>
+
+                                </div>
+                                <input type="checkbox" {f:if(condition: '{role.city}', then: '' , else:'checked')} value="1" class="input-switch"
+                                       name="tx_faginstitutionmanagement_nextsteplogin[HideCity]"
+                                       id="{person.uid}-city"> <label
+                                    for="{person.uid}-city">Ort aus Stammdaten übernehmen?</label>
+                            </fieldset>
+
+                            <f:form.hidden property="user.0" value="{person.uid}"/>
+                            <f:form.hidden name="roleid" value="{role.uid}"/>
+                            <!-- Admin => END -->
+
+                            <div class="submit_container">
+                                <input type="submit" id="ctrl_1319" class="submit fa-floppy-o" value="Speichern">
+                                <!-- <button type="submit" id="ctrl_1319" value="Speichern">
+                            <i class="fa fa-floppy-o"></i> Speichern        </button> -->
+                            </div>
+                        </fieldset>
+                    </div>
+                </f:form>
+            </div>
+        </div>
+
+    </div>
+</f:section>

@@ -1,0 +1,16 @@
+{namespace gl = Logifacttheme\Logifact\ViewHelpers}
+
+<f:render partial="Header" arguments="{_all}"/>
+
+<div id="leftCol"></div>
+<div id="rightCol"></div>
+<div id="centerCol">
+    <div class="main_content">
+        <f:format.raw>{profileHeaderContent}</f:format.raw>
+        <f:format.raw>{profileMainContent}</f:format.raw>
+        <f:render partial="Map" arguments="{_all}"/>
+    </div>
+</div>
+<f:render partial="Footer" arguments="{_all}"/>
+
+

@@ -1,0 +1,45 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+
+    <f:layout name="Contact"/>
+
+    <f:section name="Configuration">
+        <flux:form id="Contact">
+            <flux:grid>
+                <flux:grid.row>
+                    <flux:grid.column colPos="0" name="header" label="Header"/>
+                </flux:grid.row>
+                <flux:grid.row>
+                    <flux:grid.column colPos="1" name="Content" label="Content"/>
+                </flux:grid.row>
+            </flux:grid>
+        </flux:form>
+    </f:section>
+
+    <f:section name="Content">
+        <div class="container">
+            <div class="banner">
+                <f:if condition="{v:content.render(column: 0)}">
+                    <f:then>
+                        <v:content.render column="0"/>
+                    </f:then>
+                    <f:else>
+                        <div class="banner">
+                            <img src="https://pulmonx.mvcdn.de/elektronische_datenerfassung/public/gfx/Pulmonx_Landingpage_Logo_294px.png" alt="" class="px-logo">
+                            <img src="https://pulmonx.mvcdn.de/elektronische_datenerfassung/public/gfx/header-images_FINAL-9-en.jpg"
+                                 alt="" class="img-responsive">
+                        </div>
+                    </f:else>
+                </f:if>
+
+            </div>
+            <div class="form-container">
+                <v:content.render column="1"/>
+            </div>
+        </div>
+        <v:asset.style path="typo3conf/ext/contact_form/Resources/Public/Styles/style.css"></v:asset.style>
+        <v:asset.script path="typo3conf/ext/contact_form/Resources/Public/JS/scripts.js"></v:asset.script>
+    </f:section>
+</div>

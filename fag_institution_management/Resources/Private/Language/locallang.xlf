@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-03-27T15:30:12Z" product-name="fag_institution_management">
+		<header/>
+		<body>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution">
+				<source>Institution</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.functions">
+				<source>Functions</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_institution.events">
+				<source>Events</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_user.privilege">
+				<source>Privilege</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function">
+				<source>Function</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_function.institution">
+				<source>Institution</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_faginstitutionmanagement_domain_model_event.more">
+				<source>More</source>
+			</trans-unit>
+
+			<trans-unit id="filter_searchstring">
+				<source>Searchtext</source>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory1_label">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory1_choose">
+				<source>All categories</source>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory2_label">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory2_choose">
+				<source>All categories</source>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory3_label">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="filter_searchcategory3_choose">
+				<source>All categories</source>
+			</trans-unit>
+			<trans-unit id="filter_searchinstitution_label">
+				<source>Institutions</source>
+			</trans-unit>
+			<trans-unit id="filter_searchinstitution_choose">
+				<source>All institutions</source>
+			</trans-unit>
+			<trans-unit id="filter_submit">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="filter_reset">
+				<source>Reset</source>
+			</trans-unit>
+
+			<trans-unit id="institutionNoResults">
+				<source>No institutions found</source>
+			</trans-unit>
+			<trans-unit id="personsNoResults">
+				<source>No persons found</source>
+			</trans-unit>
+            <trans-unit id="general_oclock">
+				<source>o'clock</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

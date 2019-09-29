@@ -1,0 +1,32 @@
+@mixin font($size: false, $lh: false,$family: false,$colour: false, $transform:false) {
+    @if $size { font-size: $size; }  
+    @if $lh { line-height: $lh; }
+    @if $family { font-family: $family; }
+    @if $colour { color: $colour;}
+    @if $transform { text-transform: $transform}
+}
+
+
+// @mixin background($imgpath,$repeat: no-repeat,$position:0 0,$size:cover,$attachment) {
+//     background: {
+//         image: url($imgpath);
+//         repeat: $repeat;
+//         position: $position;
+//         size: $size; 
+//         attachment: $attachment;
+//     }
+// }
+
+
+
+//extend/inheritance
+%padding-shared {
+    @media #{$mq-phone}{
+        padding : 0 1.5rem;
+    }
+}
+%display-none-mobile {
+@media #{$mq-phone}{
+    display:none;
+  }
+}

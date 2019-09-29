@@ -1,0 +1,47 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Form</numIndex>
+										<numIndex index="1">Participant->new;Participant->create;</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">List</numIndex>
+										<numIndex index="1">Participant->list;Participant->show;</numIndex>
+									</numIndex>
+
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.countries>
+						<TCEforms>
+							<label>Most common countries</label>
+							<displayCond>FIELD:switchableControllerActions:=:Participant->new;Participant->create;</displayCond>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>static_countries</allowed>
+								<size>5</size>
+								<minitems>0</minitems>
+								<maxitems>999</maxitems>
+							</config>
+						</TCEforms>
+					</settings.countries>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

@@ -1,0 +1,199 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<table class="tx-contact-form table mt-5 table-striped table-bordered ">
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.gender"/>
+        </td>
+        <td>
+            {participant.gender}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.title"/>
+        </td>
+        <td>
+            {participant.title}
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.first_name"/>
+        </td>
+        <td>
+            {participant.firstName}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.last_name"/>
+        </td>
+        <td>
+            {participant.lastName}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.email"/>
+        </td>
+        <td>
+            {participant.email}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.company"/>
+        </td>
+        <td>
+            {participant.company}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.city"/>
+        </td>
+        <td>
+            {participant.city}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.country"/>
+        </td>
+        <td>
+            {participant.country}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.interventional_pulmonologist"/>
+        </td>
+        <td>
+            <f:if condition="{participant.interventionalPulmonologist}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.pneumologist"/>
+        </td>
+        <td>
+            <f:if condition="{participant.pneumologist}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.thoracic_surgeon"/>
+        </td>
+        <td>
+            <f:if condition="{participant.thoracicSurgeon}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.general_practitioner"/>
+        </td>
+        <td>
+            <f:if condition="{participant.generalPractitioner}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.distributor"/>
+        </td>
+        <td>
+            <f:if condition="{participant.distributor}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.specialist_other"/>
+        </td>
+        <td>
+            {participant.specialistOther}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.information_product_portfolio"/>
+        </td>
+        <td>
+
+            <f:if condition="{participant.informationProductPortfolio}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.informaztion_clinical_evidence"/>
+        </td>
+        <td>
+            <f:if condition="{participant.informaztionClinicalEvidence}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.information_other"/>
+        </td>
+        <td>
+            {participant.informationOther}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.contact"/>
+        </td>
+        <td>
+            <f:if condition="{participant.contact}">
+                <f:then> True</f:then>
+                <f:else> False</f:else>
+            </f:if>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.contact_reason"/>
+        </td>
+        <td>
+            {participant.contactReason}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.captured_by"/>
+        </td>
+        <td>
+            {participant.capturedBy}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <f:translate key="tx_contactform_domain_model_participant.event"/>
+        </td>
+        <td>
+            {participant.event.name}
+        </td>
+    </tr>
+</table>
+</html>

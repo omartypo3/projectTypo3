@@ -1,0 +1,35 @@
+<div class="element_lexware_4erteaser_zentriert">
+    <f:for as="service" each="{services}" key="i">
+        <f:switch expression="{i}">
+            <f:case value="0">{f:variable(name: 'class', value: 'col0')}</f:case>
+            <f:case value="1">{f:variable(name: 'class', value: 'col4')}</f:case>
+            <f:case value="2">{f:variable(name: 'class', value: 'col8')}</f:case>
+            <f:case value="3">{f:variable(name: 'class', value: 'col12')}</f:case>
+            <f:defaultCase>{f:variable(name: 'class', value: 'col0')}</f:defaultCase>
+        </f:switch>
+        <div class="{class}">
+            <div class="csc-textpic csc-textpic-center csc-textpic-above">
+                <div class="csc-textpic-imagewrap">
+                    <div class="csc-textpic-center-outer">
+                        <div class="csc-textpic-center-inner">
+                            <div class="csc-textpic-image csc-textpic-last">
+                                <f:variable name="img"
+                                            value="{f:uri.image(image: '{service.files.0}')}"/>
+                                <img
+                                    src="{img}" alt=""
+                                    width="263"
+                                    height="147">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="csc-header csc-header-n2">
+                <h1>{service.data.title}</h1>
+            </div>
+
+           <f:format.html>{service.data.content}</f:format.html>
+        </div>
+    </f:for>
+</div>

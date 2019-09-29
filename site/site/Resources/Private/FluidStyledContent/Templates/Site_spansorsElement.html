@@ -1,0 +1,28 @@
+<section class="partners" id="spansor-{data.uid}-section">
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <h2 class="partners__title">{data.header}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 display-flex justify-content-center mx-auto">
+                <div class="swiper-container partners__slider">
+                    <div class="swiper-wrapper" data-slider="{f:count(subject: spansors)}">
+                        <f:for as="spansor" each="{spansors}" iteration="j">
+                            <div class="swiper-slide ">
+                                <img class="partners__slide-img" src="{f:uri.image(image: '{spansor.files.0}')}" alt="partners slide {j.cycle}">
+                            </div>
+                        </f:for>
+                    </div>
+                </div>
+                <div class="swiper__pagination--hybrid">
+                    <div class="slider__btn partners__btn partners__btn--prev"></div>
+                    <div class="slider__pagination partners__pagination p-relative"></div>
+                    <div class="slider__btn partners__btn partners__btn--next"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

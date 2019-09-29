@@ -1,0 +1,15 @@
+<f:for as="button" each="{buttons}">
+    <div class="csc-default">
+        <div class="tx-dce-pi1">
+            <a href="{f:uri.page(pageUid: '{button.data.link}', absolute: '1')}">
+                <div class="buttontextSchwarz">
+                    {button.data.title}
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="csc-default">
+        <f:format.html>{button.data.content}</f:format.html>
+    </div>
+</f:for>

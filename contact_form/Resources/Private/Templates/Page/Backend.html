@@ -1,0 +1,27 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+	xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+
+	<f:layout name="Backend" />
+
+	<f:section name="Configuration">
+		<flux:form id="Backend">
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column colPos="0"  colspan="2" name="content" label="Content"/>
+				</flux:grid.row>
+
+			</flux:grid>
+		</flux:form>
+	</f:section>
+
+	<f:section name="Content">
+		<div class="content container">
+			<v:content.render column="0"/>
+		</div>
+		<v:asset.style path="typo3conf/ext/contact_form/Resources/Public/Styles/backend.css"></v:asset.style>
+		<v:asset.style path="typo3conf/ext/contact_form/Resources/Public/Styles/bootstrap4-glyphicons/css/bootstrap-glyphicons.min.css"></v:asset.style>
+		<v:asset.script path="typo3conf/ext/contact_form/Resources/Public/JS/datepicker.js"></v:asset.script>
+	</f:section>
+</div>

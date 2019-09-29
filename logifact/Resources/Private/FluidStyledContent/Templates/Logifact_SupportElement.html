@@ -1,0 +1,44 @@
+<div class="element_lexware_support">
+    <div class="col0">
+
+        <div class="csc-header csc-header-n1">
+            <h1 class="csc-firstHeader">{data.header}</h1>
+        </div>
+    </div>
+    <div class="col1">
+        <f:format.raw>{data.bodytext}</f:format.raw>
+        <div class="tx-dce-pi1">
+            <a href="{f:uri.page(pageUid: '{data.header_link}', absolute: '1')}">
+                <div class="buttontextOrange">
+                    {data.subheader}
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="col2">
+        <f:format.raw>{data.body_text}</f:format.raw>
+        <div class="tx-dce-pi1">
+            <a href="{f:uri.page(pageUid: '{data.link}', absolute: '1')}">
+                <div class="buttontextOrange">
+                    {data.link_title}
+                </div>
+            </a>
+        </div>
+        <f:for each="{files}" as="image">
+            <div class="csc-textpic csc-textpic-center csc-textpic-above">
+                <div class="csc-textpic-imagewrap">
+                    <div class="csc-textpic-center-outer">
+                        <div class="csc-textpic-center-inner">
+                            <div class="csc-textpic-image csc-textpic-last">
+                                <f:variable name="img" value="{f:uri.image(image: '{image}')}"/>
+                                <img
+                                    src="{img}"
+                                    alt="" width="267" height="81">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:for>
+    </div>
+</div>

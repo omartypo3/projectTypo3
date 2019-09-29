@@ -1,0 +1,33 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<section class="quotes" id="quotes-{data.uid}-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 swiper-container quotes__slides">
+                <div class="swiper-wrapper">
+                    <f:for as="quote" each="{quotes}">
+                        <div class="swiper-slide">
+                            <img class="quotes__slide-bg" src="{f:uri.image(image: '{quote.files.0}')}" alt="">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 mx-auto text-center quotes__slide-content">
+                                        <img class="quotes__quote-img"
+                                             src="{gl:GetSettings(extensionKey:'tx_site_frontend',settingKey:'quote')}"
+                                             alt="quote-img">
+                                        <f:format.html>{quote.data.content}</f:format.html>
+                                        <h3 class="quotes__quote-author">- {quote.data.title} -</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:for>
+                </div>
+
+                <div class="swiper__pagination--hybrid">
+                    <div class="slider__btn quotes__btn--prev nav--prev"></div>
+                    <div class="slider__pagination quotes__pagination p-relative"></div>
+                    <div class="slider__btn quotes__btn--next nav--next"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

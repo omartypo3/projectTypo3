@@ -1,0 +1,91 @@
+// === COLORS ===
+$color-primary: #fff;
+$color-50-primary: rgba($color-primary, 0.5);
+$color-secondary: #e1000a;
+$color-secondary-dark: #880000;
+$color-tertiary: #000; // MOBILE COLOR
+
+$color-scroll-primary : $color-tertiary;
+$color-scroll-secondary : rgba($color-tertiary, 0.5);
+
+// == FONTS ==
+$font-regular: "Open Sans regular";
+$font-bold: "Open Sans Bold";
+$font-extrabold: "Open Sans Extrabold";
+$font-italic: "Open Sans Italic";
+
+// Breakpoints
+$bp-small-phone: 360px;
+$bp-phone: 767px;
+$bq-land-phone-start : 600px;
+$bq-land-phone-fin : 800px;
+$bp-tab-start: 768px;
+$bp-tab-fin: 1024px;
+$bp-desktop: 1025px;
+$bp-ldesktop: 1366px;
+$bp-xldesktop: 1440px;
+$bp-xxldesktop: 1550px;
+$bp-xxxldesktop: 1920px;
+
+// Media Queries
+$mq-small-phone: "(max-width: #{$bp-small-phone})";
+$mq-phone: "(max-width: #{$bp-phone}) and (orientation: portrait)";
+$mq-phone-land: "(min-width: #{$bq-land-phone-start}) and (max-width: #{$bq-land-phone-fin}) and (max-height : #{$bq-land-phone-start}) and (orientation: landscape)";
+$mq-custom-ipad: "(width: #{$bp-tab-fin})"; //ipad 
+$mq-ipad: "(min-width: #{$bp-tab-start}) and (max-width: #{$bp-tab-fin}) and (orientation: portrait) "; //ipad 
+$mq-ipad-land: "(min-width: #{$bp-tab-start}) and (max-width: #{$bp-tab-fin}) and (orientation: landscape) "; //ipad landscape
+$mq-desktop: "(min-width: #{$bp-desktop})";
+$mq-ldesktop: "(min-width: #{$bp-ldesktop})";
+$mq-xldesktop: "(min-width: #{$bp-xldesktop})";
+$mq-xxldesktop: "(min-width: #{$bp-xxldesktop})";
+$mq-xxxldesktop: "(min-width: #{$bp-xxxldesktop})";
+
+// == FONT SIZES DESKTOP ==
+$h1__font-size: 8rem;
+$h2__font-size: 5rem; //5.2
+$h3__font-size: 1.6rem;
+$text__font-size: 1.5rem;
+$navigation__font-size: 4rem;
+$intro__font-size: 2.4rem; //  Intro under h1 , circle counter
+$quote__font-size: 2.2rem;
+// $quote-autor__font-size: 1.8rem;
+$big-link__font-size: 1.6rem; //big-btn text-link
+$small-link__font-size : 0.8rem; //small-btn, footer-link 1.2rem in the text 
+$small-btn__font-size : 1.2rem;
+$caption__font-size: 1rem;
+
+//== LIGNE HEIGHTS DESKTOP ==
+$h1__ligne-height: 8rem;
+$h2__ligne-height: 5.8rem;
+$h3__ligne-height: 1.8rem;
+$text__ligne-height: 2.6rem;
+$navigation__ligne-height: 7rem; // 5rem in the text
+$intro__ligne-height: 2.8rem; //  Intro under h1 , circle counter
+$quote__ligne-height: 2.8rem;
+// $quote-autor__ligne-height: 2.4rem;
+$big-link__ligne-height: 2.7rem; //big-btn text-link
+$small-link__ligne-height : 1.6rem; //small-btn, footer-link 1.6 in text 
+$small-btn__ligne-height : 2.6rem; //small-btn, footer-link 1.6 in text 
+$caption__ligne-height: 1.4rem;
+
+
+// == FONT SIZES MOBILE ==
+
+$h1__mfont-size: 6rem;
+$h2__mfont-size: 3rem;
+$h3__mfont-size: 1.5rem;
+$text__mfont-size: 1.4rem;
+$quote__mfont-size: 2.2rem;
+$quote-autor__mfont-size: 1.6rem;
+$navigation__mfont-size: 1.8rem;
+$intro__mfont-size: 2rem; //  Intro under h1 , circle counter //
+
+//== LIGNE HEIGHTS PHONE ==
+$h1__mligne-height: 6rem;
+$h2__mligne-height: 5rem;
+$h3__mligne-height: 1.8rem;
+$text__mligne-height: 2.4rem;
+$quote__mligne-height: 2.8rem;
+$quote-autor__mligne-height: 2rem;
+$navigation__mligne-height: 2.2rem;
+// $intro__mligne-height: 2.4rem; //  Intro under h1 , circle counter //

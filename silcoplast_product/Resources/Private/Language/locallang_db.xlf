@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-04-19T09:24:45Z" product-name="silcoplast_product">
+		<header/>
+		<body>
+			<trans-unit id="tx_silcoplastproduct_domain_model_product">
+				<source>Product</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_product.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_product.description">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_product.images">
+				<source>Bilder</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_product.categorie">
+				<source>Kategorie</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_categoryproduct">
+				<source>Categoryproduct</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_categoryproduct.icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_categoryproduct.type">
+				<source>Choose type category</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplastproduct_domain_model_categoryproduct.icong">
+				<source>Icong</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplast_product_silcoplastproduct.name">
+				<source>Silcoplast_Product</source>
+			</trans-unit>
+			<trans-unit id="tx_silcoplast_product_silcoplastproduct.description">
+				<source>Silcoplastproduct</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

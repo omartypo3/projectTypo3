@@ -1,0 +1,59 @@
+{namespace kf = LeadGeneration\ContactForm\ViewHelpers}
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="firstName ">
+    <f:translate key="user.firstname"/>
+</label><br/>
+<f:form.textfield property="firstName" class="form-control"/>
+<br/>
+<label for="lastName">
+    <f:translate key="user.lastname"/>
+</label><br/>
+<f:form.textfield property="lastName" class="form-control"/>
+<br/>
+<label for="email ">
+    <f:translate key="user.email"/>
+</label><br/>
+<f:form.textfield property="email" class="form-control" required="1"/>
+<br/>
+<f:if condition="{user}">
+    <f:then>
+        <label for="password">
+            <f:translate key="user.oldpassword"/>
+        </label><br/>
+        <f:form.hidden name="password[3]" value="{user.uid}" />
+        <f:form.password name="password[0]" class="form-control"/>
+        <br>
+    </f:then>
+</f:if>
+<label for="password">
+    <f:translate key="user.password"/>
+</label><br/>
+<f:form.password name="password[1]" class="form-control"/>
+<br/>
+
+
+<label>
+    <f:translate key="user.rpeatpassword"/>
+</label><br/>
+<f:form.password name="password[2]" class="form-control"/>
+<br>
+
+<v:variable.set name="myObject" value="{kf:GetUser()}"/>
+<f:if condition="{myObject.groupData.title.1 -> f:format.case(mode: 'upper')}== ADMIN ">
+    <f:then>
+        <label for="usergroup ">
+            <f:translate key="user.usergroup"/>
+        </label><br/>
+        <f:if condition="{user}">
+            <f:then>
+                <f:form.select property="usergroup.0" options="{groups}" optionLabelField="title" class="form-control"/>
+            </f:then>
+            <f:else>
+                <f:form.select property="usergroup.0" options="{groups}" optionLabelField="title" class="form-control"/>
+            </f:else>
+        </f:if>
+
+    </f:then>
+</f:if>
+<br>
+</html>

@@ -1,0 +1,20 @@
+{namespace fag=FRONTAL\FagExtbase\ViewHelpers}
+
+
+<div class="filter well">
+	
+	<f:form action="list" id="tx-fag-institution-management-filter-form" class="form-horizontal" name="linksFilter" object="{linksFilter}" method="post">
+		
+		<f:comment> ** SEARCH STRING ** </f:comment>
+		<div class="form-group col-sm-9">
+			<f:form.textfield id="tx-fag-institution-management-filter-form-searchString" class="form-control" property="searchString" />
+		</div>
+
+		<f:comment> ** Submit ** </f:comment>
+		<div class="form-group col-sm-3">
+			<f:form.submit id="tx-fag-institution-management-filter-form-submit" class="btn" name="mySubmit" value="<f:translate key='filter_submit' />" />
+			</div>
+		<div class="clearfix"></div>
+
+	</f:form>
+</div>

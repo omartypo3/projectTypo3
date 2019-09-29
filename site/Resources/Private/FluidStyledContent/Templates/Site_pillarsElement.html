@@ -1,0 +1,54 @@
+<section class="three-pillars" id="three-pillars-{data.uid}-section" >
+    <div class="container-fluid three-pillars__container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-8 mx-auto">
+                <h2 class="three-pillars__title">{data.header}</h2>
+                <h3 class="three-pillars__sub-title">{data.subheader}</h3>
+                <f:format.html>{data.bodytext}</f:format.html>
+                <!-- in destop view -->
+                <div class="three-pillars__pillars text-left">
+                    <img src="{f:uri.image(image: '{files.0}')}" alt="pillars">
+                    <div class="d-flex justify-content-around">
+                        <f:for as="link" each="{links}">
+                            <a href="{f:uri.page(pageUid: '{link.data.link}', absolute: '1')}" class="custom-btn custom-btn--small">{link.data.title}</a>
+                        </f:for>
+                    </div>
+
+                </div>
+
+                <!-- mobile view -->
+                <div class="three-pillars__slider swiper-container">
+                    <div class="swiper-wrapper pb-4 mb-5">
+
+                        <f:for as="slide" each="{slides}">
+                            <div class="swiper-slide three-pillars__slide">
+                                <img src="{f:uri.image(image: '{slide.files.0}')}" rel="{slide.data.subtitle}">
+                                <a href="{f:uri.page(pageUid: '{slide.data.link}', absolute: '1')}" class="custom-btn custom-btn--medium">{slide.data.title}</a>
+                            </div>
+                        </f:for>
+                    </div>
+                    <div class="swiper__pagination--hybrid">
+                        <div class="slider__btn three-pillars__btn--prev nav--prev"></div>
+                        <div class="slider__pagination three-pillars__pagination p-relative"></div>
+                        <div class=" slider__btn three-pillars__btn--next nav--next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-10 mx-auto">
+                <div class="row radial-indicator text-center">
+                    <f:for each="{radicals}" as="radial" key="radialKey" iteration="radialI">
+                        <div class="col-md-2 col-4 m-auto p-0 ">
+                            <span id="radial{radialI.index}" class="radial-indicator__item"></span>
+                            <p class="radial-indicator__title">{radial.data.title}</p>
+                            <p id="radial{radialI.index}InitValue" class="radial-indicator__value">{radial.data.minvalue}</p>
+                            <p id="radial{radialI.index}MaxValue" class="radial-indicator__value">{radial.data.maxvalue}</p>
+                        </div>
+                    </f:for>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

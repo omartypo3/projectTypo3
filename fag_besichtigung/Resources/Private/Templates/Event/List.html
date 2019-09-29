@@ -1,0 +1,95 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="ce-spacebefore-0 ce-spaceafter-0">
+        <div class="container container-padded gc4957">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="ce-spacebefore-0 ce-spaceafter-0 ">
+                        <div class="ce-textpic ce-center ce-above row">
+                            <div class="ce-bodytext col-sm-12">
+                                <!-- begin mobile-tm -->
+                                <div class="container offer">
+                                    <h3 class="offer-title">{settings.offer-title}</h3>
+                                    <div class="row">
+                                        <f:for each="{events}" as="event">
+                                            <div class="col-sm-6">
+                                                <img class="offer-img"
+                                                     src="{f:uri.image(src: '{event.bild.uid}', treatIdAsReference: '1')}">
+                                                <div class="header-container custom-header">
+                                                    <p class="ce-header">{event.titel}</p>
+                                                    <p class="ce-subheader">{event.untertitel}</p>
+                                                </div>
+                                                <div class="fag-teaserbox">
+                                                    <div class="triangle"></div>
+                                                </div>
+                                                <div class="">
+                                                    <f:format.raw>{event.text}</f:format.raw>
+                                                </div>
+                                                <f:if condition="{event.zusatztext}">
+                                                    <f:then>
+                                                        <div class="t3ddy t3ddy-accordion ">
+                                                            <div class="panel-group" role="tablist"
+                                                                 aria-multiselectable="true">
+                                                                <div class="accordeon panel panel-default">
+                                                                    <div class="panel-heading" role="tab"
+                                                                         id="panel-heading-4952">
+                                                                        <h3 class="panel-title">
+                                                                            <a class="collapsed " data-toggle="collapse"
+                                                                               href="#c{event.uid}"
+                                                                               aria-expanded="false"
+                                                                               aria-controls="c{event.uid}">{settings.panel}
+                                                                                <span class="state-symbol pull-right"></span>
+                                                                            </a>
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="panel-collapse collapse "
+                                                                         id="c{event.uid}"
+                                                                         aria-labelledby="panel-heading-{event.uid}"
+                                                                         role="tabpanel">
+                                                                        <div class="">
+                                                                            <div
+                                                                                    class="ce-spacebefore-1 ce-spaceafter-0 ">
+                                                                                <div class="header-container">
+                                                                                    <f:format.raw>{event.zusatztext}
+                                                                                    </f:format.raw>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </f:then>
+                                                </f:if>
+                                                <p>
+                                                    <f:link.action action="anfrage" pageUid="{settings.anfragePage}"
+                                                                   arguments="{event:event.uid}" class="action-link" noCacheHash="1">
+                                                        Anfrage
+                                                    </f:link.action>
+                                                </p>
+                                            </div>
+                                        </f:for>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+</html>

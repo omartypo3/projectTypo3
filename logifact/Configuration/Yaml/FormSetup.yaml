@@ -1,0 +1,12 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                partialRootPaths:
+                  1505042806: 'EXT:logifact/Resources/Ext/Form/Frontend/Partials/'
+                templateRootPaths:
+                  1505042806: 'EXT:logifact/Resources/Ext/Form/Frontend/Templates/'

@@ -1,0 +1,32 @@
+{namespace kf = LeadGeneration\ContactForm\ViewHelpers}
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <v:variable.set name="myObject" value="{kf:GetUser()}"/>
+    <f:if condition="{myObject.groupData.title.1 -> f:format.case(mode: 'upper')}== ADMIN ">
+        <f:then>
+            <f:link.action action="list" class="btn btn-primary float-right">Back to list</f:link.action>
+        </f:then>
+    </f:if>
+    <h1>New Event</h1>
+
+    <f:render partial="FormErrors"/>
+
+    <f:form action="create" pluginName="feevents" controller="Event" name="newEvent" object="{newEvent}">
+        <f:render partial="Event/FormFields"/>
+        <f:form.submit value="Create new" class="btn btn-primary"/>
+    </f:form>
+</f:section>
+</html>

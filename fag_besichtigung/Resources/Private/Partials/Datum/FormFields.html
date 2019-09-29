@@ -1,0 +1,22 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="date">
+	<f:translate key="tx_fagbesichtigung_domain_model_datum.date" />
+</label><br />
+	<f:form.textfield property="date" value="{datum.date->f:format.date()}" /><br />
+<label for="startTime">
+	<f:translate key="tx_fagbesichtigung_domain_model_datum.start_time" />
+</label><br />
+	<f:form.textfield property="startTime" value="{datum.startTime->f:format.date()}" /><br />
+<label for="endTime">
+	<f:translate key="tx_fagbesichtigung_domain_model_datum.end_time" />
+</label><br />
+	<f:form.textfield property="endTime" value="{datum.endTime->f:format.date()}" /><br />
+<label for="status">
+	<f:translate key="tx_fagbesichtigung_domain_model_datum.status" />
+</label><br />
+	<f:form.textfield property="status" /><br />
+<label for="teilnehmerMax">
+	<f:translate key="tx_fagbesichtigung_domain_model_datum.teilnehmer_max" />
+</label><br />
+	<f:form.textfield property="teilnehmerMax" /><br />
+</html>

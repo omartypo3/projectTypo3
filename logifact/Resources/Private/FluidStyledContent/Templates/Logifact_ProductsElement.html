@@ -1,0 +1,43 @@
+<div class="element_lexwareprodukte">
+    <div class="col0">
+        <div class="csc-header csc-header-n1"><h1 class="csc-firstHeader">{data.header}</h1></div>
+    </div>
+    <f:for as="product" each="{products}" iteration="i">
+        <div class="{f:if(condition: '{i.isLast}',then: 'col2',else: 'col1')}">
+            <div class="element_lexwareprodukte_inhalt">
+                <div class="col0">
+
+                    <div class="csc-textpic csc-textpic-center csc-textpic-above">
+                        <div class="csc-textpic-imagewrap">
+                            <div class="csc-textpic-center-outer">
+                                <div class="csc-textpic-center-inner">
+                                    <div class="csc-textpic-image csc-textpic-last">
+                                        <f:variable name="img"
+                                                    value="{f:uri.image(image: '{product.files.0}')}"/>
+                                        <img
+                                                src="{img}"
+                                                alt="" width="882" height="1200"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col1">
+                    <div class="csc-default">
+                        <f:format.html>{product.data.content}</f:format.html>
+                    </div>
+
+
+                    <div class="tx-dce-pi1">
+                        <a href="{f:uri.page(pageUid: '{product.data.link}', absolute: '1')}">
+                            <div class="buttontextOrange">
+                                {product.data.link_title}
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:for>
+</div>

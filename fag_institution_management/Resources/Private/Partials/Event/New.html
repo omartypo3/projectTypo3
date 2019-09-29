@@ -1,0 +1,87 @@
+{namespace h=FRONTAL\FagInstitutionManagement\ViewHelpers}
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<label for="title">
+    Titel*
+</label>
+<f:form.textfield property="title" required="true"/>
+<br/>
+<br/>
+<label for="location">
+    Ort*
+</label>
+<f:form.textfield property="location" required="true"/>
+<br/>
+<br/>
+<label for="location">
+    Datum*
+</label>
+<div id="kp_termine_bild_container">
+    <div class="datenElemnt  EntryElement" id="datenElemnt_0">
+        <div class="EntryInputWrapper datenInputWrapper"><label>Start-Datum*</label><input
+                name="tx_faginstitutionmanagement_terminal[dates][0][startdate]" autocomplete="off"
+                class="termineStartDatum mandatory datepicker" required="" type="text"
+                id="dp1565166694456"></div>
+        <div class="EntryInputWrapper datenInputWrapper"><label>End-Datum (für mehrtägige Events;
+            optional)</label><input name="tx_faginstitutionmanagement_terminal[dates][0][enddate]"
+                                    class="termineEndDatum  datepicker " autocomplete="off" type="text" id="dp1565166694457">
+        </div>
+        <div class="EntryInputWrapper datenInputWrapper"><label>Start-Zeit (optional)</label><input
+                name="tx_faginstitutionmanagement_terminal[dates][0][starttime]"
+                class="termineStartZeit  timepicker " autocomplete="off" type="text" autocomplete="off"></div>
+        <div class="EntryInputWrapper datenInputWrapper"><label>End-Zeit (optional)</label><input
+                name="tx_faginstitutionmanagement_terminal[dates][0][endtime]"
+                class="termineEndZeit  timepicker " autocomplete="off" type="text" autocomplete="off"></div>
+    </div>
+    <f:form.hidden id="index" value="1"/>
+    <br/>
+</div>
+<f:comment>
+    <a href="javascript:{}" id="addNewDaten" class="AddNewEntry"><i class="fa fa-plus-circle"
+                                                                    aria-hidden="true"></i>Datum hinzufügen</a>
+</f:comment>
+
+<br/>
+<label for="bodyText">
+    Text
+</label>
+<f:form.textarea property="bodyText" cols="40" rows="15"/>
+<br/><br/>
+<f:comment>
+<label for="image">
+    Image
+</label>
+<div id='outputImage'></div>
+<div style="height: 10px;"></div>
+<div id="progress" style="display: none">
+    <p><strong>0%</strong></p>
+    <progress value="5" min="0" max="100">0%</progress>
+</div>
+<f:form.upload property="images.0" id="uploadImage" >
+
+</f:form.upload>
+<br/>
+<div class="removeLogoWrapper" style="display: none;"><a class="removeLogoLink" href="javascript:{}"><i class="fa fa-trash"></i> Bild entfernen</a></div>
+</f:comment>
+    <label for="document">
+    Downloads
+</label>
+<ul class="kp_neuerTermin_downloads_container EntryContainer">
+
+</ul>
+<a href="javascript:{}" id="addNewDownloadsFile" class="AddNewEntry"><i class="fa fa-plus-circle"
+                                                                        aria-hidden="true"></i>Download
+    hinzufügen</a>
+<input id="indexdownload" value="0" type="hidden"/>
+<br/>
+<label for="document">
+    Links
+</label>
+<ul class="kp_neuerTermin_links_container EntryContainer"></ul>
+<a href="javascript:{}" id="addNewLink" class="AddNewEntry"><i class="fa fa-plus-circle"
+                                                               aria-hidden="true"></i>Link
+    hinzufügen</a>
+<input type="hidden" value="0" id="indexlink" >
+</html>
+
+
+

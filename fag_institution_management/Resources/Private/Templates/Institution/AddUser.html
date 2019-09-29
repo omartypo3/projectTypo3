@@ -1,0 +1,160 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <f:render partial="Institution/breadCrumb"/>
+    <div class="Institution-s2d">
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.Suchmaske}">
+
+        <div class="mod_article first last block" id="meine-institutionen-verwalten-personen-neue-person-hinzufuegen">
+
+            <div class="explanation">
+                Möglicherweise ist die gewünschte Person bereits in einer anderen Funktion erfasst. Bitte benutzen Sie
+                als
+                erstes die Suchfunktion.
+            </div>
+            <div class="ce_form last tableless block">
+                <f:form action="addUser" name="searchPersonen" object="{searchPersonen}">
+                    <div class="formbody">
+                        <div class="widget widget-text">
+                            <label for="ctrl_1338">
+                                Vorname </label>
+                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[searchPersonen][vorname]"
+                                   class="text"
+                                   value="">
+                        </div>
+                        <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[searchPersonen][institution]"
+                               value="{id_url}" hidden>
+                        <div class="widget widget-text">
+                            <label for="ctrl_1371">
+                                Name </label>
+                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[searchPersonen][name]"
+                                   class="text"
+                                   value="">
+                        </div>
+                        <div class="widget widget-text">
+                            <label for="ctrl_1392">
+                                E-Mail </label>
+                            <input type="text" name="tx_faginstitutionmanagement_nextsteplogin[searchPersonen][email]"
+                                   class="text"
+                                   value="">
+                        </div>
+                        <div class="submit_container">
+                            <f:form.submit value="Suchen">
+                                <i class="fa fa-search"></i> Suchen
+                            </f:form.submit>
+                        </div>
+                    </div>
+                </f:form>
+            </div>
+        </div>
+    </f:if>
+
+
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.suchresultate}">
+        <div class="mod_article first last block"
+             id="meine-institutionen-verwalten-personen-neue-person-hinzufuegen-suchresultate">
+            <div class="explanation">
+                Haben Sie die gewünschte Person gefunden? Dann können Sie diese jetzt mit der Institution verknüpfen.
+                Falls die
+                gewünschte Person nicht gefunden wurde, können Sie eine neuen Datensatz erstellen.
+            </div>
+            <h4>Suchresultate</h4>
+            <f:if condition="{results}">
+                <f:then>
+                    <ul class="PersonList-container  personenListe">
+                        <f:for each="{allUsers}" as="itemResults">
+                            <li class="resultWrapper PersonList-person  personWrapper"><span class="vorname">{itemResults.first_name}</span>
+                                <span class="name">{itemResults.last_name}</span> <span class="email"> / {itemResults.email}</span>
+                                <f:if condition="{itemResults.linked}">
+                                    <f:then>
+                                     <span class="is-linked"><i class="fa fa-check-circle"></i> ist bereits mit dieser Institution verknüpft</span>
+                                    </f:then>
+                                    <f:else>
+                                        <a class="linkit"  href="javascript:{}"><i class="fa fa-plus-circle"></i> Mit Institution verknüpfen</a>
+                                        <input
+                                                class="personLinkId" type="hidden"
+                                                value="{f:uri.action(action: 'linkUser',absolute:1, arguments: {user:itemResults.uid})}">
+
+                                    </f:else>
+                                </f:if>
+
+                            </li>
+                        </f:for>
+
+
+                    </ul>
+                    <div class="toDelete--wrapper">
+                        <div class="inside">
+                            <p>Soll <strong id="personConfrim"></strong> wirklich Ihrer Institution (<strong>{institutionName}</strong>) hinzugefügt werden?</p>
+                            <p><strong>Hinweis</strong>: Es werden die Stammdaten der Person übernommen.</p>
+                            <button id="bt_linkuser"><i class="fa fa-check-circle" aria-hidden="true"></i> Bestätigen</button>
+                            <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+                        </div>
+                    </div>
+
+                </f:then>
+                <f:else>
+                    <div class="PersonList-error">Keine Einträge gefunden.</div>
+                </f:else>
+            </f:if>
+            <div class="button">
+                <f:link.action class="button" pageUid="{settings.NeuePerson}" action="addUser"
+                               arguments="{institution:institution}"><i class="fa fa-user-plus"></i> Neue Person
+                    erstellen
+                </f:link.action>
+            </div>
+        </div>
+    </f:if>
+    <f:if condition="{v:page.info(field: 'uid')} == {settings.NeuePerson}">
+        <div class="ce_form last tableless block">
+            <f:form action="addUser" name="newuser" object="{newuser}">
+                <div class="formbody">
+                    <input name="tx_faginstitutionmanagement_nextsteplogin[newuser][institution]" value="{id_url}"
+                           hidden="true" type="text">
+                    <fieldset>
+                        <div class="widget widget-text mandatory">
+                            <label for="ctrl_1374" class="mandatory">
+                                <span class="invisible">Pflichtfeld </span>Vorname<span class="mandatory">*</span>
+                            </label>
+                            <input name="tx_faginstitutionmanagement_nextsteplogin[newuser][first_name]" id="ctrl_1374"
+                                   class="text mandatory" value="{user.firstName}" required="" type="text">
+                        </div>
+                        <div class="widget widget-text mandatory">
+                            <label for="ctrl_1375" class="mandatory">
+                                <span class="invisible">Pflichtfeld </span>Name<span class="mandatory">*</span>
+                            </label>
+                            <input name="tx_faginstitutionmanagement_nextsteplogin[newuser][last_name]" id="ctrl_1375"
+                                   class="text mandatory" value="{user.lastName}" required="" type="text">
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="widget widget-text mandatory">
+                            <label for="ctrl_1380" class="mandatory">
+                                <span class="invisible">Pflichtfeld </span>E-Mail Adresse<span
+                                    class="mandatory">*</span>
+                            </label>
+                            <input name="tx_faginstitutionmanagement_nextsteplogin[newuser][email]" id="ctrl_1380"
+                                   class="text mandatory" value="{user.email}" required="" type="email">
+                        </div>
+                        <div class="submit_container">
+                            <f:form.submit id="ctrl_1390" value="Person hinzufügen">
+                                <i class="fa fa-floppy-o"></i> Person hinzufügen
+                            </f:form.submit>
+                        </div>
+                    </fieldset>
+                </div>
+            </f:form>
+        </div>
+        <f:if condition="{showbutton}">
+            <f:then>
+                <div class="PersonList-error  error_username" style="display: block;">
+                    Diese E-Mail Adresse ist bereits einer Person zugewisen. <a class="emailSearch" href="{f:uri.action(action: 'linkUser',absolute:1, arguments: {user:user.uid})}"><i class="fa fa-link"></i> Mit der Institution {institutionName} verknüpfen</a>
+                </div>
+            </f:then>
+        </f:if>
+
+    </f:if>
+    </div>
+
+</f:section>

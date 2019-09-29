@@ -1,0 +1,117 @@
+{namespace h=FRONTAL\FagInstitutionManagement\ViewHelpers}
+
+
+<div style="height: 10px;"></div>
+<div id="progress" style="display: none">
+    <p><strong>0%</strong></p>
+    <progress value="5" min="0" max="100">0%</progress>
+</div>
+<h:form.upload property="logo" class="input-file if1" id="uploadImage">
+    <f:if condition="{resource}">
+            <div id='outputImage'>
+        <f:image image="{resource}" alt="" class="image_preview"/>
+    </div>
+    </f:if>
+</h:form.upload>
+<div class="removeLogoWrapper"><a class="removeLogoLink" href="javascript:{}"><i class="fa fa-trash"></i> Logo entfernen</a>
+</div>
+
+<div class="widget widget-text mandatory">
+    <label for="ctrl_1105" class="mandatory">
+        <span class="invisible">Pflichtfeld </span>Name der Institution<span class="mandatory">*</span>
+    </label>
+    <f:form.textfield property="title" class="text mandatory" value="{institution.title}" required="1" />
+</div>
+<div class="widget widget-select select kp_be_institution_kategorie">
+    <label for="ctrl_1231" class="select kp_be_institution_kategorie">
+        Kategorie </label>
+    <select name="tx_faginstitutionmanagement_nextsteplogin[institution][categories]" id="ctrl_1231"
+            class="select kp_be_institution_kategorie" disabled>
+        <f:for each="{institution.categories}" as="categor">
+            <option value="{categor.uid}">{categor.title}</option>
+        </f:for>
+    </select>
+</div>
+
+<div class="widget widget-text">
+    <label for="ctrl_1106">
+        Strasse &amp; Hausnummer </label>
+    <f:form.textfield property="address" class="text" value="{institution.address}"/>
+</div>
+<fieldset>
+    <div class="widget widget-text">
+        <label for="ctrl_1108">
+            Postleitzahl </label>
+        <f:form.textfield property="zip" class="text" value="{institution.zip}"/>
+    </div>
+    <div class="widget widget-text">
+        <label for="ctrl_1109">
+            Ort </label>
+        <f:form.textfield property="city" class="text" value="{institution.city}"/>
+    </div>
+</fieldset>
+<fieldset>
+    <div class="widget widget-text">
+        <label for="ctrl_1113">
+            E-Mail </label>
+        <f:form.textfield property="email" class="text" value="{institution.email}"/>
+    </div>
+    <div class="widget widget-text">
+        <label for="ctrl_1114">
+            Website </label>
+        <f:form.textfield property="www" class="text" value="{institution.www}"/>
+    </div>
+</fieldset>
+<fieldset>
+    <div class="widget widget-text">
+        <label for="ctrl_1405">
+            Telefonnummer </label>
+        <f:form.textfield property="phone" class="text" value="{institution.phone}"/>
+    </div>
+    <div class="widget widget-text">
+        <label for="ctrl_1406">
+            Mobile </label>
+        <f:form.textfield property="mobile" class="text" value="{institution.mobile}"/>
+    </div>
+</fieldset>
+<div class="widget widget-textarea">
+    <label for="ctrl_1118">
+        Beschreibung</label>
+    <f:form.textarea property="description" class="textarea"
+                     value="{f:format.stripTags(value: '{institution.description}')}" rows="15" cols="40"/>
+
+</div>
+<f:comment>
+<strong>Downloads</strong>
+
+<ul class="kp_neuerTermin_downloads_container EntryContainer">
+    <f:for each="{institution.document}" as="doc" iteration="fooIterator">
+        <li class="docsElemnt_{fooIterator.index}">
+            <div class="EntryElement  uploadElemnt" id="uploadElment_{fooIterator.index}">
+                <div class="EntryInputWrapper  downlaodInputWrapper"><span class="sortIcon"><i
+                        class="fa fa-sort"></i></span><label>Bezeichnung</label>
+                    <input class="download_text" required="" value="{doc.originalResource.description}"
+                           name="tx_faginstitutionmanagement_nextsteplogin[docstitle][]" type="text">
+                </div>
+                <div class="EntryInputWrapper  downlaodInputWrapper toReplace"><label>Datei</label>
+                    <div class="inputWrapper">{doc.originalResource.name}</div>
+                    <h:form.upload property="document.{fooIterator.index}" class="docfile"
+                                   style="display:none;"></h:form.upload>
+
+                    <div class="status"></div>
+                    <input class="uploadFileHidden" id="deleted_{doc.uid}" type="hidden"
+                           name="tx_faginstitutionmanagement_nextsteplogin[deleted][{doc.uid}]" value="0"></div>
+
+                <div class="removeWrapper"><a class="removedownload-start" href="javascript:{}"><i
+                        class="fa fa-trash"></i>
+                    Download entfernen</a></div>
+            </div>
+        </li>
+    </f:for>
+</ul>
+
+<f:form.hidden id="type" value="institution"/>
+<input id="indexdownload" value="{institution.document -> f:count()}" type="hidden"/>
+<a href="javascript:{}" id="addNewDownloadsFile" class="AddNewEntry"><i class="fa fa-plus-circle"
+                                                                        aria-hidden="true"></i>Download hinzufügen</a>
+</f:comment>

@@ -1,0 +1,72 @@
+<div class="tx-jfmulticontent-pi1">
+    <div class="tx-jfmulticontent-tabs">
+        <ul>
+            <f:for as="tab1" each="{tab}" key="i">
+                <li><a href="#tab-{i}">{tab1.data.title}</a></li>
+            </f:for>
+        </ul>
+
+        <f:for as="tab2" each="{tab}" key="i">
+            <div id="tab-{i}">
+                <f:if condition="{tab2.slides}">
+                    <f:then>
+
+                        <div class="tx-camaliga">
+
+                            <div id="carousel_container3">
+                                <div class="camaliga_left_scroll">
+                                    <a href="#">&nbsp;</a>
+                                </div>
+                                <div id="carousel_inner3">
+                                    <ul id="slider{data.uid}tab{i}" class="camaliga_start" style="left: -215px;">
+                                        <f:for as="slide" each="{tab2.slides}" key="i">
+                                            <li class="carousel_li">
+
+                                                <a href="{f:uri.page(pageUid: '{slide.data.link}', absolute: '1')}"
+                                                   class="external-link-new-window">
+                                                    <f:variable name="img"
+                                                                value="{f:uri.image(image: '{slide.files.0}')}"/>
+                                                    <img title="Partner {i}" alt="Partner {i}"
+                                                         src="{img}" width="195"
+                                                         height="195">
+                                                </a>
+
+                                                <h4>{slide.data.title}</h4>
+                                                <f:format.html>{slide.data.subtitle}</f:format.html>
+                                            </li>
+                                        </f:for>
+                                    </ul>
+                                </div>
+                                <div class="camaliga_right_scroll">
+                                    <a href="#">&nbsp;</a>
+                                </div>
+                                <input type="hidden" id="hidden_auto_slide_seconds3" value="0">
+                            </div>
+                            <div style="clear:both;"><!-- --></div>
+                        </div>
+
+                    </f:then>
+                    <f:else>
+                        <div class="tx-camaliga">
+
+                            <div id="carousel_container3">
+                                <div class="camaliga_left_scroll">
+                                    <a href="#">&nbsp;</a>
+                                </div>
+                                <div id="carousel_inner3">
+                                    <ul id="slider{data.uid}15" class="camaliga_start" style="left: -215px;">
+                                    </ul>
+                                </div>
+                                <div class="camaliga_right_scroll">
+                                    <a href="#">&nbsp;</a>
+                                </div>
+                                <input type="hidden" id="hidden_auto_slide_seconds3" value="0">
+                            </div>
+                            <div style="clear:both;"><!-- --></div>
+                        </div>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:for>
+    </div>
+</div>

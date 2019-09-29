@@ -1,0 +1,16 @@
+{namespace gl = Logifacttheme\Logifact\ViewHelpers}
+    <div class="csc-default">
+        <div class="csc-header csc-header-n1"><h1 class="csc-firstHeader">{data.header}</h1></div>
+
+        {data.bodytext  -> f:format.html()}
+
+        <f:for each="{files}" as="file">
+            <p class="bodytext"><a href="{file.publicUrl}" target="_blank" class="download">{file.title}</a>&nbsp;(
+                <f:format.case>{file.extension}</f:format.case>
+                ,
+                {gl:fileSize(path: '{file.publicUrl}')})
+            </p>
+
+        </f:for>
+        {data.body_text  -> f:format.html()}
+    </div>

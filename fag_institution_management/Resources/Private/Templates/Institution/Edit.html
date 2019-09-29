@@ -1,0 +1,38 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+<f:render partial="Institution/breadCrumb"/>
+    <div class="Institution-s2d">
+    <f:render partial="Institution/Header" arguments="{institution:institution}"/>
+
+    <f:form action="update" name="institution" object="{institution}" enctype="multipart/form-data">
+        <div class="formbody">
+            <f:render partial="Institution/Fieldinstutuion" arguments="{institution:institution}"/>
+            <div class="submit_container">
+                <f:comment>
+                    <button type="submit" id="ctrl_1117" value="Speichern">
+                        <i class="fa fa-floppy-o"></i> Speichern
+                    </button>
+                </f:comment>
+                <f:form.submit value="Speichern"/>
+            </div>
+        </div>
+    </f:form>
+    <div id="confirmMessage" class="toDelete--wrapper" >
+        <div class="inside">
+            <p class="changeMessage">Soll der Download entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+            <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+            <button id="bt_confirmdownload"><i class="fa fa-trash" aria-hidden="true"></i> Löschen!</button>
+            <button id="bt_canceld"> <i class="fa fa-ban" aria-hidden="true"></i> Abbrechen</button>
+        </div>
+    </div>
+    <div class="toDelete--wrapper image" style="display: none;">
+        <div class="inside">
+            <p>Soll das Bild entfernt werden? Hochgeladene Dateien werden entfernt.</p>
+            <p><strong>Vorsicht</strong>: Dieser Vorgang kann nicht widerrufen werden.</p>
+            <button id="bt_confirme"><i class="fa fa-trash" aria-hidden="true"></i>  Löschen! </button>
+            <button id="bt_cancel"><i class="fa fa-ban" aria-hidden="true"></i> Abbrechen </button>
+        </div>
+    </div>
+    </div>
+</f:section>

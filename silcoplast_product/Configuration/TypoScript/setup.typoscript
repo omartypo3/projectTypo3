@@ -1,0 +1,94 @@
+
+plugin.tx_silcoplastproduct_silcoplastproduct {
+    view {
+        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_silcoplastproduct_silcoplastproduct.view.templateRootPath}
+        partialRootPaths.0 = EXT:silcoplast_product/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_silcoplastproduct_silcoplastproduct.view.partialRootPath}
+        layoutRootPaths.0 = EXT:silcoplast_product/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_silcoplastproduct_silcoplastproduct.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$plugin.tx_silcoplastproduct_silcoplastproduct.persistence.storagePid}
+        #recursive = 1
+    }
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plugin are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+    settings{
+        detailpid = 25
+        branchenDE = 17
+        branchenEN = 46
+        techDE = 14
+        techEN = 47
+    }
+}
+page = PAGE
+page{
+    includeJSFooter {
+        jq =  typo3conf/ext/silcoplast_product/Resources/Public/js/jquery.min.js
+        um =  typo3conf/ext/silcoplast_product/Resources/Public/js/product.js
+
+    }
+}
+# these classes are only used in auto-generated templates
+plugin.tx_silcoplastproduct._CSS_DEFAULT_STYLE (
+    textarea.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    input.f3-form-error {
+        background-color:#FF9F9F;
+        border: 1px #FF0000 solid;
+    }
+
+    .tx-silcoplast-product table {
+        border-collapse:separate;
+        border-spacing:10px;
+    }
+
+    .tx-silcoplast-product table th {
+        font-weight:bold;
+    }
+
+    .tx-silcoplast-product table td {
+        vertical-align:top;
+    }
+
+    .typo3-messages .message-error {
+        color:red;
+    }
+
+    .typo3-messages .message-ok {
+        color:green;
+    }
+)
+plugin.tx_silcoplastproduct_silcoplastproduct.persistence.classes {
+    Silcoplastproduct\SilcoplastProduct\Domain\Model\Category {
+        mapping {
+            recordType = 0
+            tableName = sys_category
+        }
+    }
+}
+
+ajaxproductlist_page = PAGE
+ajaxproductlist_page {
+    typeNum = 666
+    10 < tt_content.list.20.silcoplastproduct_silcoplastproduct
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 1
+        admPanel = 0
+        additionalHeaders = Content-type: text/plain
+        no_cache = 1
+    }
+}

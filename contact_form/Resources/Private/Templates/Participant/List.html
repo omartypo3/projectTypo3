@@ -1,0 +1,220 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <h1>Listing for Participant</h1>
+
+
+    <div id="participants">
+        <f:if condition="{participants}">
+            <f:then>
+                <div class="table-responsive">
+                    <table class="tx_contactform table mt-5 table-striped table-bordered ">
+                        <tr>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.gender"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.title"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.first_name"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.last_name"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.email"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.company"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.city"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.country"/>
+                            </th>
+                            <th>
+                                <f:translate
+                                        key="tx_contactform_domain_model_participant.interventional_pulmonologist"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.pneumologist"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.thoracic_surgeon"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.general_practitioner"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.distributor"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.specialist_other"/>
+                            </th>
+                            <th>
+                                <f:translate
+                                        key="tx_contactform_domain_model_participant.information_product_portfolio"/>
+                            </th>
+                            <th>
+                                <f:translate
+                                        key="tx_contactform_domain_model_participant.informaztion_clinical_evidence"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.information_other"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.contact"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.contact_reason"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.captured_by"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contactform_domain_model_participant.event"/>
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
+                        <f:for each="{participants}" as="participant">
+                            <tr>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.gender}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.title}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.firstName}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.lastName}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.email}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.company}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.city}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.country}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.interventionalPulmonologist}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.pneumologist}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.thoracicSurgeon}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.generalPractitioner}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.distributor}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.specialistOther}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.informationProductPortfolio}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.informaztionClinicalEvidence}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.informationOther}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.contact}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.contactReason}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.capturedBy}
+                                    </f:link.action>
+                                </td>
+                                <td>
+                                    <f:link.action action="show" arguments="{participant : participant}">
+                                        {participant.event.name}
+                                    </f:link.action>
+                                </td>
+
+                            </tr>
+                        </f:for>
+                    </table>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="text-center">
+                    <f:image src="typo3conf/ext/contact_form/Resources/Public/Icons/no_result_.png"
+                             class="img-fluid"></f:image>
+                    <h2>Sorry! No results Found</h2>
+                </div>
+            </f:else>
+        </f:if>
+
+    </div>
+
+</f:section>
+</html>

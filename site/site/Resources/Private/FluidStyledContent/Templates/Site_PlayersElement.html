@@ -1,0 +1,57 @@
+{namespace gl = sitetheme\site\ViewHelpers}
+<f:if condition="{files.0}">
+    <f:then>
+        <section class="players-slider" id="players-{data.uid}-section" style="background: url({f:uri.image(image: '{files.0}')}) no-repeat bottom center;     background-size: cover;">
+            <div class="container-fluid players-slider__container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-10 display-flex justify-content-center mx-auto">
+                        <div class="swiper-container players-slider__slider">
+                            <div class="swiper-wrapper d-flex align-items-end">
+                                <f:for as="player" each="{players}" iteration="j">
+                                    <div class="swiper-slide ">
+                                        <div class="players-slider__slide">
+                                            <img src="{f:uri.image(image: '{player.files.0}')}" alt="{player.data.title}">
+                                            <h3 class="players-slider__name">{player.data.title}</h3>
+                                        </div>
+                                    </div>
+                                </f:for>
+                            </div>
+                        </div>
+                        <div class="swiper__pagination--hybrid">
+                            <div class="slider__btn players-slider__btn players-slider__btn--prev"></div>
+                            <div class="slider__pagination players-slider__pagination p-relative"></div>
+                            <div class="slider__btn players-slider__btn players-slider__btn--next"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </f:then>
+    <f:else>
+        <section class="players-slider" id="players-{data.uid}-section">
+            <div class="container-fluid players-slider__container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-10 display-flex justify-content-center mx-auto">
+                        <div class="swiper-container players-slider__slider">
+                            <div class="swiper-wrapper d-flex align-items-end">
+                                <f:for as="player" each="{players}" iteration="j">
+                                    <div class="swiper-slide ">
+                                        <div class="players-slider__slide">
+                                            <img src="{f:uri.image(image: '{player.files.0}')}" alt="{player.data.title}">
+                                            <h3 class="players-slider__name">{player.data.title}</h3>
+                                        </div>
+                                    </div>
+                                </f:for>
+                            </div>
+                        </div>
+                        <div class="swiper__pagination--hybrid">
+                            <div class="slider__btn players-slider__btn players-slider__btn--prev"></div>
+                            <div class="slider__pagination players-slider__pagination p-relative"></div>
+                            <div class="slider__btn players-slider__btn players-slider__btn--next"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </f:else>
+</f:if>
