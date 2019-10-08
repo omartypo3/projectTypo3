@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2017-07-20T09:16:11Z" product-name="pingag_real_estate">
+		<header/>
+		<body>
+			<trans-unit id="filter.objectCategoryLabel">
+				<source>alle Objektkategorien</source>
+			</trans-unit>
+			<trans-unit id="filter.searchString.placeholder">
+				<source>Ort, PLZ</source>
+			</trans-unit>
+			<trans-unit id="filter.price.label">
+				<source>Preis in CHF</source>
+			</trans-unit>
+			<trans-unit id="filter.rooms.label">
+				<source>Anzahl Zimmer</source>
+			</trans-unit>
+			<trans-unit id="filter.surfaceUsable.label">
+				<source>Nutzfläche in m</source>
+			</trans-unit>
+			<trans-unit id="filter.objectType">
+				<source>Objektart</source>
+			</trans-unit>
+			<trans-unit id="filter.floor">
+				<source>Stockwerk</source>
+			</trans-unit>
+			<trans-unit id="filter.showExtended">
+				<source>Erweiterte Suche</source>
+			</trans-unit>
+			
+			<trans-unit id="filter.propBalcony">
+				<source>Balkon/Terasse/Sitzplatz</source>
+			</trans-unit>
+			<trans-unit id="filter.animalAllowed">
+				<source>Haustiere erlaubt</source>
+			</trans-unit>
+			<trans-unit id="filter.propElevator">
+				<source>Lift</source>
+			</trans-unit>
+			<trans-unit id="filter.minergieGeneral">
+				<source>Minergie</source>
+			</trans-unit>
+			<trans-unit id="filter.newBuilding">
+				<source>Neubau/Ersteinzug</source>
+			</trans-unit>
+			<trans-unit id="filter.propGarage">
+				<source>Garage</source>
+			</trans-unit>
+			<trans-unit id="filter.propParking">
+				<source>Parkplatz</source>
+			</trans-unit>
+			<trans-unit id="filter.wheelchairAccessible">
+				<source>Rollstuhlgängig</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="list.new">
+				<source>neu</source>
+			</trans-unit>
+			<trans-unit id="list.noResult">
+				<source>Keine Immobilien gefunden.</source>
+			</trans-unit>
+			<trans-unit id="list.more">
+				<source>Mehr</source>
+			</trans-unit>
+			<trans-unit id="list.priceUnit.MONTHLY">
+				<source>/Monat</source>
+			</trans-unit>
+			<trans-unit id="list.priceUnit.SELL">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="list.priceUnit.M2YEARLY">
+				<source>(m2, Jahr)</source>
+			</trans-unit>
+			
+			<trans-unit id="show.tabs.description">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="show.tabs.info">
+				<source>Datenblatt</source>
+			</trans-unit>
+			<trans-unit id="show.tabs.docs">
+				<source>Dokumente</source>
+			</trans-unit>
+			
+			<trans-unit id="show.header.offer">
+				<source>Angebot</source>
+			</trans-unit>
+			<trans-unit id="show.header.information">
+				<source>Informationen</source>
+			</trans-unit>
+				<trans-unit id="show.header.properties">
+				<source>Eigenschaften</source>
+			</trans-unit>
+				<trans-unit id="show.header.downloads">
+				<source>Download</source>
+			</trans-unit>
+			
+			<trans-unit id="show.numberOfRooms">
+				<source>Anzahl Zimmmer</source>
+			</trans-unit>
+			<trans-unit id="show.address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="show.priceForRent">
+				<source>Monatsmiete</source>
+			</trans-unit>
+			<trans-unit id="show.priceForSale">
+				<source>Kaufpreis</source>
+			</trans-unit>
+			<trans-unit id="show.priceOnRequest">
+				<source>auf Anfrage</source>
+			</trans-unit>
+			<trans-unit id="show.rentNet">
+				<source>Nettomiete</source>
+			</trans-unit>
+			<trans-unit id="show.rentExtra">
+				<source>Nebenkosten</source>
+			</trans-unit>
+			<trans-unit id="show.rentGross">
+				<source>Bruttomiete</source>
+			</trans-unit>
+			<trans-unit id="show.availableFrom">
+				<source>Verfügbar ab</source>
+			</trans-unit>
+			<trans-unit id="show.refCode">
+				<source>Referenz</source>
+			</trans-unit>
+			<trans-unit id="show.region">
+				<source>Gemeinde</source>
+			</trans-unit>
+			<trans-unit id="show.floor">
+				<source>Stockwerk</source>
+			</trans-unit>
+			<trans-unit id="show.surfaceLiving">
+				<source>Wohnfläche</source>
+			</trans-unit>
+			<trans-unit id="show.surfaceProperty">
+				<source>Grundstückfläche</source>
+			</trans-unit>
+			<trans-unit id="show.surfaceUsable">
+				<source>Nutzfläche</source>
+			</trans-unit>
+			<trans-unit id="show.yearBuilt">
+				<source>Baujahr</source>
+			</trans-unit>
+			<trans-unit id="show.print">
+				<source>Liste drucken</source>
+			</trans-unit>
+			<trans-unit id="show.share">
+				<source>Teilen</source>
+			</trans-unit>
+			
+			<trans-unit id="show.sidebar.contactForm">
+				<source>Kontaktformular</source>
+			</trans-unit>
+			<trans-unit id="show.sidebar.contactText">
+				<source>Sie haben Interesse? Nehmen Sie mit uns Kontakt auf.</source>
+			</trans-unit>
+			<trans-unit id="show.sidebar.agency">
+				<source>Anbieter</source>
+			</trans-unit>
+			<trans-unit id="show.visitContact">
+				<source>Besichtigungskontakt</source>
+			</trans-unit>
+			<trans-unit id="show.visitMail">
+				<source>Mail</source>
+			</trans-unit>
+
+
+			<trans-unit id="contactForm.firstName">
+				<source>Vorname *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.lastName">
+				<source>Name *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.street">
+				<source>Strasse und Hausnummer *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.zip">
+				<source>PLZ *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.city">
+				<source>Ort *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.country">
+				<source>Land *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.email">
+				<source>E-Mail *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.phone">
+				<source>Telefon-/Handynummer *</source>
+			</trans-unit>
+			<trans-unit id="contactForm.comment">
+				<source>Bemerkung</source>
+			</trans-unit>
+			<trans-unit id="contactForm.submit">
+				<source>senden</source>
+			</trans-unit>
+			<trans-unit id="contactForm.successMessage">
+				<source>Besten Dank für Ihre Anfrage. Wir setzen uns in Kürze mit Ihnen in Verbindung.</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="realEstateOptions.offerType.RENT">
+				<source>Mieten</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.offerType.SALE">
+				<source>Kaufen</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectCategory.AGRI">
+				<source>Landwirtschaft</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.APPT">
+				<source>Wohnung</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.GASTRO">
+				<source>Gastronomie</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.HOUSE">
+				<source>Haus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.INDUS">
+				<source>Gewerbe/Industrie/Büro</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.PARK">
+				<source>Parkplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.PROP">
+				<source>Grundstück</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.SECONDARY">
+				<source>Wohnnebenräume</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectCategory.GARDEN">
+				<source>Garten</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="realEstateOptions.objectType.AGRI.1">
+				<source>Landwirtschaftsbetrieb</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.AGRI.2">
+				<source>Alpwirtschaft</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.AGRI.3">
+				<source>Farm</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.APPT.1">
+				<source>Wohnung</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.2">
+				<source>Maisonette / Duplex</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.3">
+				<source>Attikawohnung</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.4">
+				<source>Dachwohnung</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.5">
+				<source>Studio</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.6">
+				<source>Einzelzimmer</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.7">
+				<source>Möbl. Wohnobj.</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.8">
+				<source>Terrassenwohnung</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.9">
+				<source>Einliegerwohnung</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.10">
+				<source>Loft</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.APPT.11">
+				<source>Mansarde</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.GARDEN.0">
+				<source>Schrebergarten</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.GASTRO.1">
+				<source>Hotel</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.2">
+				<source>Restaurant</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.3">
+				<source>Café</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.4">
+				<source>Bar</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.5">
+				<source>Club / Disco</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.6">
+				<source>Casino</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.7">
+				<source>Kino / Theater</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.8">
+				<source>Squash / Badminton</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.9">
+				<source>Tennishalle</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.10">
+				<source>Tennisplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.11">
+				<source>Sportanlage</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.12">
+				<source>Camping- / Zeltplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.13">
+				<source>Freibad</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.14">
+				<source>Hallenbad</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.15">
+				<source>Golfplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.16">
+				<source>Motel</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.GASTRO.17">
+				<source>Pub</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.HOUSE.1">
+				<source>Einfamilienhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.2">
+				<source>Reihenfamilienhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.3">
+				<source>Doppeleinfamilienhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.4">
+				<source>Terrassenhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.5">
+				<source>Villa</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.6">
+				<source>Bauernhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.7">
+				<source>Mehrfamilienhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.9">
+				<source>Höhlen- / Erdhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.10">
+				<source>Schloss</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.11">
+				<source>Stöckli</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.12">
+				<source>Chalet</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.HOUSE.13">
+				<source>Rustico</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.INDUS.1">
+				<source>Büro</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.2">
+				<source>Ladenfläche</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.3">
+				<source>Werbefläche</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.4">
+				<source>Gewerbe</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.5">
+				<source>Lager</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.6">
+				<source>Praxis</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.7">
+				<source>Kiosk</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.8">
+				<source>Gärtnerei</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.9">
+				<source>Tankstelle</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.10">
+				<source>Autogarage</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.11">
+				<source>Käserei</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.12">
+				<source>Metzgerei</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.13">
+				<source>Bäckerei</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.14">
+				<source>Coiffeursalon</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.15">
+				<source>Shoppingcenter</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.16">
+				<source>Fabrik</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.17">
+				<source>Industrieobjekt</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.18">
+				<source>Arcade</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.19">
+				<source>Atelier</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.20">
+				<source>Wohn- / Geschäftshaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.21">
+				<source>Bücherei</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.22">
+				<source>Krankenhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.23">
+				<source>Labor</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.24">
+				<source>Minigolfplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.25">
+				<source>Pflegeheim</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.26">
+				<source>Reithalle</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.27">
+				<source>Sanatorium</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.28">
+				<source>Werkstatt</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.29">
+				<source>Partyraum</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.30">
+				<source>Sauna</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.31">
+				<source>Solarium</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.32">
+				<source>Schreinerei</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.33">
+				<source>Altersheim</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.34">
+				<source>Geschäftshaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.35">
+				<source>Heim</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.36">
+				<source>Schaufenster</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.37">
+				<source>Parkhaus</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.INDUS.38">
+				<source>Parkfläche</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.PARK.1">
+				<source>offener Parkplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.2">
+				<source>Unterstand</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.3">
+				<source>Einzelgarage</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.4">
+				<source>Doppelgarage</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.5">
+				<source>Tiefgarage</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.7">
+				<source>Boot Hallenplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.8">
+				<source>Boot Stegplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.9">
+				<source>Moto Hallenplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.10">
+				<source>Moto Aussenplatz</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.11">
+				<source>Stallboxe</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PARK.12">
+				<source>Boot Bojenplatz</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.PROP.1">
+				<source>Bauland</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PROP.2">
+				<source>Agrarland</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PROP.3">
+				<source>Gewerbeland</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.PROP.4">
+				<source>Industriebauland</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.objectType.SECONDARY.0">
+				<source>Hobbyraum</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.SECONDARY.1">
+				<source>Kellerabteil</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.objectType.SECONDARY.2">
+				<source>Estrichabteil</source>
+			</trans-unit>
+			
+			<trans-unit id="realEstateOptions.floor.-1">
+				<source>UG</source>
+			</trans-unit>			
+			<trans-unit id="realEstateOptions.floor.0">
+				<source>EG</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.floor.1">
+				<source>1. Stock</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.floor.2">
+				<source>2. Stock</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.floor.3">
+				<source>3. Stock</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.floor.4">
+				<source>4. Stock</source>
+			</trans-unit>
+			<trans-unit id="realEstateOptions.floor.5">
+				<source>5. Stock</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

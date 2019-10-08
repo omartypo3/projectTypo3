@@ -1,0 +1,104 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjFF2rkh35IA3ERLifoCgGnYcwI37MJPM&callback=initRealEstateMap" async defer></script>
+    
+    <article class="real-estate-show">
+
+        <a class="back-link" onclick="history.back()">zurück</a>
+        
+        <h1>{realEstate.objectTitle}</h1>
+        <div class="image-slider">
+            <f:for each="{realEstate.pictures}" as="picture">
+                <!--<a href="{f:uri.image(src:'fileadmin/real-estate/{mediaElement.content}', width:'{settings.detail.media.image.lightbox.width}', height:'{settings.detail.media.image.lightbox.height}')}" title="{mediaElement.caption}" class="{settings.detail.media.image.lightbox.class}" rel="{settings.detail.media.image.lightbox.rel}">-->
+                    <div><f:image image="{picture.originalResource}" alt="" /></div>
+                <!--</a>-->
+            </f:for>
+        </div>
+
+        <div class="estate-nav">
+            <f:if condition="{realEstate.sparefield2}">
+                <div class="virtualtour">
+                    <v:condition.string.contains haystack="{realEstate.sparefield2}" needle="ogulo.de">
+                       <f:then>
+                            <a href="{realEstate.sparefield2}" target="_blank"><img src="fileadmin/templates/img/360_icon_mit-text.svg" alt="zum virtuellen Rundgang" /></a>
+                       </f:then>
+                       <f:else>
+                       </f:else>
+                    </v:condition.string.contains>
+                </div>
+            </f:if>
+            <ul class="tab-nav">
+                <li><a href="#tab-description" class="active">
+                    <f:translate key="show.tabs.description"/>
+                </a></li>
+                <li><a href="#tab-info">
+                    <f:translate key="show.tabs.info"/>
+                </a></li>
+    
+                <f:if condition="{realEstate.documents}">
+                    <li><a href="#tab-docs">
+                        <f:translate key="show.tabs.docs"/>
+                    </a></li>
+                </f:if>
+            </ul>
+        </div>
+
+        <div class="tabs">
+            <f:render partial="Tab/Description" arguments="{_all}"/>
+            <f:render partial="Tab/Info" arguments="{_all}"/>
+            <f:render partial="Tab/Docs" arguments="{_all}"/>
+        </div>
+        
+        <div class="bottom-row clearfix">
+            <a class="print-button button" onclick="window.print();return false;">
+                <f:translate key="show.print" />
+            </a>
+            <div class="fb-share-button button" data-href="{f:uri.page(absolute: 1, addQueryString: 1)}" data-layout="button" data-size="small" data-mobile-iframe="true">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                    Teilen
+                </a>
+            </div>
+        </div>
+    </article>
+    <aside class="sidebar">
+        <h2 class="cfnp"><f:translate key="show.sidebar.contactForm" /></h2>
+        <div class="text-block cfnp">
+            <f:translate key="show.sidebar.contactText" />
+        </div>
+        <f:render partial="ContactForm" arguments="{_all}" />
+        
+        <h2><f:translate key="show.sidebar.agency" /></h2>
+        <div class="icon-block agency">
+            <div>{realEstate.agencyName}</div>
+            <div>{realEstate.agencyName2}</div>
+            <div>{realEstate.agencyStreet}</div>
+            <div>{realEstate.agencyZip} {realEstate.agencyCity}</div>
+            <div>T {realEstate.agencyPhone}</div>
+            <div>
+                <a href="mailto:{realEstate.agencyEmail}">
+                    {realEstate.agencyEmail}
+                </a>
+            </div>
+        </div>
+        <div class="icon-block contact-person">
+            <div><strong><f:translate key="show.visitContact"/></strong></div>
+            <div>{realEstate.visitName}</div>
+            <div>{realEstate.visitPhone}</div>
+            <div>
+                <a href="mailto:{realEstate.visitEmail}">{realEstate.visitEmail}</a>
+            </div>
+        </div>
+    </aside>
+
+</f:section>

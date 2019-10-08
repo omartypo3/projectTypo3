@@ -1,0 +1,32 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Inhaltstyp</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Standardaktion des Plugins</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Bestellung</numIndex>
+                                        <numIndex index="1">Subscription->order;Subscription->create</numIndex>
+                                    </numIndex>
+									<numIndex index="1">
+                                        <numIndex index="0">Speedvergleich Internet-Pakete</numIndex>
+                                        <numIndex index="1">Subscription->listPackages</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

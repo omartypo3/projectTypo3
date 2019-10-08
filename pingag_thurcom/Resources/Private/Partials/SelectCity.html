@@ -1,0 +1,8 @@
+<div class="select-city">
+    <h5>Es wurden mehrere Ortschaften gefunden, bitte wählen Sie eine aus:</h5>
+    <f:for each="{cityArray}" as="city">
+        <f:if condition="{city.netzbetreiber} && {city.netzbetreiber} != 1">
+            <a class="link append-current-url" href="{search_field_name}={city.title}">{city.title}</a>
+        </f:if>
+    </f:for>
+</div>

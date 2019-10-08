@@ -1,0 +1,19 @@
+{namespace h=Pingag\PingagThurcom\ViewHelpers}
+
+
+<div class="form-group">
+    <div class="input-group">
+
+        <div class="input-group-btn">
+          <span class="fileUpload btn btn-info">
+              <span class="upl" id="upload">Upload</span>
+              <f:form.upload property="{fieldName}" multiple="multiple"   class="upload up" id="my-file1">
+                <f:if condition="{resource}">
+                    <f:image image="{resource}" alt="" class="image_preview"/>
+                </f:if>
+                </f:form.upload>
+            </span><!-- btn-orange -->
+        </div><!-- btn -->
+        <input type="text" class="form-control" readonly>
+    </div><!-- group -->
+</div><!-- form-group -->

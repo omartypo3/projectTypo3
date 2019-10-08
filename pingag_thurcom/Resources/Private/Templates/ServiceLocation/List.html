@@ -1,0 +1,131 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <div class="location-list">
+
+        <f:for each="{locations}" as="location" key="category" iteration="i">
+            <core:contentEditable table="tx_pingagthurcom_domain_model_service_location" uid="{location.uid}">
+                <div class="location-search-result location-accordion">
+                    <div class="row">
+                        <div class="header clearfix">
+                            <div class="col-sm-6">
+                                <div class="location-info clearfix">
+                                    <div class="logo">
+                                        <f:if condition="{location.logo}">
+                                            <f:image src="{location.logo.0.originalResource.publicUrl}"></f:image>
+                                        </f:if>
+                                    </div>
+                                    <div class="text">
+                                        <h5>{location.title}</h5>
+                                        <p>
+                                            {location.address}, {location.zip} {location.city} <br/>
+                                            {location.telephone} <br/>
+                                            <f:if condition="{location.email}">
+                                                <a href="mailto:{location.email}">{location.email}</a><br/>
+                                            </f:if>
+                                            <a href="http://{location.website}" target="_blank">{location.website}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <f:alias map="{person: location.contactPerson.0}">
+                                <div class="col-sm-6">
+                                    <div class="contact-person clearfix">
+                                        <f:if condition="{person.image}">
+                                            <f:image src="{person.image.0.originalResource.publicUrl}" height="80"/>
+                                        </f:if>
+                                        <div class="text">
+                                            <h5>{person.firstname} {person.lastname}</h5>
+                                            <f:if condition="{person.position}">
+                                                {person.position} <br/>
+                                            </f:if>
+                                            <f:if condition="{person.email}">
+                                                <a href="mailto:{person.email}">{person.email}</a><br/>
+                                            </f:if>
+                                            {person.telephone}
+                                        </div>
+                                    </div>
+                                </div>
+                            </f:alias>
+                        </div>
+                    </div>
+                    <div class="row content">
+                        <div class="col-sm-6">
+                            <div class="description">
+                                <f:format.html>{location.description}</f:format.html>
+                            </div>
+                        </div>
+                        <div class="map col-sm-6">
+                            <div id="service-location-map-{i.cycle}" class="google-map"
+                                 data-lat="{location.lat}" data-lng="{location.lng}"
+                                 data-adr="{location.address}, {location.zip} {location.city}"></div>
+                        </div>
+
+                        <script>
+                            var lat = [];
+                            var lng = [];
+                            var maps = [];
+                            function initMap() {
+                                $('.google-map').each(function (i, item) {
+
+                                    var geocoder = new google.maps.Geocoder();
+                                    var address = $(item).data('adr');
+
+                                    $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+address+'&key=AIzaSyBYLhoitandRyLV9hSyvYgbUtp0oV-oGRU', function( data ) {
+                                        if (data.status == google.maps.GeocoderStatus.OK) {
+                                            result = {
+                                                lat: data.results[0].geometry.location.lat,
+                                                lng: data.results[0].geometry.location.lng
+                                            };
+
+                                            localStorage.setItem('lat' + i, result.lat);
+                                            localStorage.setItem('lng' + i, result.lng);
+                                            lat = result.lat;
+                                            lng = result.lng;
+                                        }
+                                        var options = {
+                                            center: new google.maps.LatLng(lat, lng),
+                                            zoom: 12,
+                                            disableDefaultUI: true,
+                                        };
+                                        var id = $(item).attr('id');
+
+                                        var map = new google.maps.Map(document.getElementById(id), options);
+
+
+                                        var image = {
+                                            url: 'fileadmin/templates/images/Icon_Location.png',
+                                            scaledSize: new google.maps.Size(20, 29), // scaled size
+                                            origin: new google.maps.Point(0, 0), // origin
+                                            anchor: new google.maps.Point(0, 0) // anchor
+                                        }
+
+                                        var var_marker = new google.maps.Marker({
+                                            position: new google.maps.LatLng(lat, lng),
+                                            map: map,
+                                            icon: image,
+                                            title: "",
+                                            maxWidth: 100
+                                        });
+
+
+                                        maps.push(maps);
+                                    });
+
+                                });
+                            }
+                        </script>
+                    </div>
+                    <div class="show-more"><span class="less">Weniger anzeigen</span><span
+                            class="more">Mehr anzeigen</span> <span class="arrow"></span></div>
+
+                </div>
+            </core:contentEditable>
+        </f:for>
+        <script src="https://maps.google.com/maps/api/js?key=AIzaSyDt_ohx26DuJoNZX02XwpjpK554BKUfaiQ&callback=initMap"
+                async defer></script>
+
+    </div>
+
+</f:section>

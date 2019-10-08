@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2017-07-20T09:16:11Z" product-name="pingag_real_estate">
+		<header/>
+		<body>
+			
+			<!-- General -->
+			<trans-unit id="entity_title">
+				<source>Immobilien</source>
+			</trans-unit>
+			<trans-unit id="object_title">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="object_description">
+				<source>Beschreibung</source>
+			</trans-unit>
+			
+			<trans-unit id="selling_price">
+				<source>Verkaufspreis</source>
+			</trans-unit>
+			<trans-unit id="rent_net">
+				<source>Miete Netto</source>
+			</trans-unit>
+			<trans-unit id="rent_extra">
+				<source>Miete Extra</source>
+			</trans-unit>
+			<trans-unit id="price_unit">
+				<source>Preis pro</source>
+			</trans-unit>
+			<trans-unit id="currency">
+				<source>Währung</source>
+			</trans-unit>
+			
+			<trans-unit id="object_street">
+				<source>Strasse</source>
+			</trans-unit>
+			<trans-unit id="object_zip">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="object_city">
+				<source>Stadt</source>
+			</trans-unit>
+			<trans-unit id="object_state">
+				<source>Kanton</source>
+			</trans-unit>
+			<trans-unit id="object_country">
+				<source>Land</source>
+			</trans-unit>
+            <trans-unit id="object_x">
+				<source>Koordinaten X</source>
+			</trans-unit>
+            <trans-unit id="object_y">
+				<source>Koordinaten Y</source>
+			</trans-unit>
+			<trans-unit id="pictures">
+				<source>Bilder</source>
+			</trans-unit>
+			<trans-unit id="documents">
+				<source>Dokumente</source>
+			</trans-unit>
+
+
+			<!-- Properties -->
+			<trans-unit id="object_category">
+				<source>Was?</source>
+			</trans-unit>
+			<trans-unit id="object_type">
+				<source>Objektart</source>
+			</trans-unit>
+			<trans-unit id="offer_type">
+				<source>Mieten / Kaufen</source>
+			</trans-unit>
+			
+			<trans-unit id="floor">
+				<source>Stockwerk</source>
+			</trans-unit>
+			<trans-unit id="number_of_rooms">
+				<source>Anzahl Zimmer</source>
+			</trans-unit>
+			<trans-unit id="surface_living">
+				<source>Wohnfläche</source>
+			</trans-unit>
+			<trans-unit id="surface_usable">
+				<source>Verfügbare Fläche</source>
+			</trans-unit>
+			<trans-unit id="year_built">
+				<source>Baujahr</source>
+			</trans-unit>
+			
+			<trans-unit id="prop_elevator">
+				<source>Lift</source>
+			</trans-unit>
+			<trans-unit id="prop_child_friendly">
+				<source>Kinderfreundlich</source>
+			</trans-unit>
+			<trans-unit id="prop_balcony">
+				<source>Balkon</source>
+			</trans-unit>
+			<trans-unit id="prop_parking">
+				<source>Parkplatz</source>
+			</trans-unit>
+			<trans-unit id="prop_garage">
+				<source>Garage</source>
+			</trans-unit>
+			<trans-unit id="new_building">
+				<source>Neubau/Erstbezug</source>
+			</trans-unit>
+			<trans-unit id="minergie_general">
+				<source>Minergie</source>
+			</trans-unit>
+			<trans-unit id="wheelchair_accessible">
+				<source>Rollstuhlgängig</source>
+			</trans-unit>
+			<trans-unit id="animal_allowed">
+				<source>Haustiere erlaubt</source>
+			</trans-unit>
+			<trans-unit id="ramp">
+				<source>Rampe</source>
+			</trans-unit>
+			<trans-unit id="railway_terminal">
+				<source>Zugstation</source>
+			</trans-unit>
+			
+			<trans-unit id="distance_public_transport">
+				<source>Distanz öffentlicher Verkehr</source>
+			</trans-unit>
+			<trans-unit id="distance_shop">
+				<source>Distanz Einkaufen</source>
+			</trans-unit>
+			<trans-unit id="distance_kindergarten">
+				<source>Distanz Kindergarten</source>
+			</trans-unit>
+			<trans-unit id="distance_school1">
+				<source>Distanz Primarschule</source>
+			</trans-unit>
+			<trans-unit id="distance_school2">
+				<source>Distanz Oberstufe</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="agency_id">
+				<source>Anbieter ID</source>
+			</trans-unit>
+			<trans-unit id="agency_name">
+				<source>Anbieter</source>
+			</trans-unit>
+			<trans-unit id="agency_reference">
+				<source>Anbieter Kontaktperson</source>
+			</trans-unit>
+			<trans-unit id="agency_phone">
+				<source>Anbieter Telefon</source>
+			</trans-unit>
+			<trans-unit id="agency_email">
+				<source>Anbieter E-Mail</source>
+			</trans-unit>
+			
+			<trans-unit id="visit_name">
+				<source>Anbieter E-Mail</source>
+			</trans-unit>
+			<trans-unit id="visit_phone">
+				<source>Anbieter E-Mail</source>
+			</trans-unit>
+			<trans-unit id="visit_email">
+				<source>Anbieter E-Mail</source>
+			</trans-unit>
+			
+			<trans-unit id="version">
+				<source>IDX Version</source>
+			</trans-unit>
+			<trans-unit id="sender_id">
+				<source>Sender ID</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="tabs.files">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="tabs.properties">
+				<source>Eigenschaften</source>
+			</trans-unit>
+			<trans-unit id="tabs.contact">
+				<source>Kontaktdaten</source>
+			</trans-unit>
+			<trans-unit id="tabs.import">
+				<source>Import</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

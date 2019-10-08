@@ -1,0 +1,120 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    201,
+                    -44.888888594545
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": true,
+                    "_default3_edit_update": true,
+                    "_default4_delete": true,
+                    "customActions": []
+                },
+                "name": "Typo3Aermec",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "781041343804"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "132177770430"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "color",
+                            "propertyType": "String",
+                            "uid": "1434642990224"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "price",
+                            "propertyType": "Integer",
+                            "uid": "436810020414"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "EN: With CRUD Example (Create, Read, Update and Delete).\n\nDE: Mit CRUD Beispiele (Erzeugen, bearbeiten und l\u00f6schen).\n\nLink to External Reposiory: \nhttp:\/\/www.vedyweb.com\/aermec-extension.zip\n\nLink to Dokumentation for Installation: \nhttp:\/\/www.vedyweb.com\/aermec-extension.pdf",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 6.2.0-7.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": "0.0.1"
+        },
+        "extensionKey": "aermec_extension",
+        "name": "Aermec Extension with Extbase and Fluid",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "vedyweb",
+                "email": "info@vedyweb.com",
+                "name": "Vedat Yildirim",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "",
+                    "noncacheableActions": "",
+                    "switchableActions": ""
+                },
+                "key": "aermecextension",
+                "name": "Aermec Extension"
+            }
+        ],
+        "vendorName": "AermecExtension"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2016-03-01 11:41",
+        "extension_builder_version": "7.6.0",
+        "be_user": " (1)"
+    }
+}

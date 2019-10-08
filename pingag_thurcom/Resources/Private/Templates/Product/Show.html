@@ -1,0 +1,35 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <div class="product-detail">
+
+        <div class="product-preview">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>{product.title}</h2>
+                </div>
+                <div class="col-sm-3">
+                    <div class="image">
+                        <f:link.action action="show" pageUid="55" arguments="{object : product}">
+                            <f:image src="{product.image.0.originalResource.publicUrl}"/>
+                        </f:link.action>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="text">
+                        <f:format.html>{product.description}</f:format.html>
+                        <div class="price">
+                            <f:translate key="product.list.priceLabel" arguments="{0: '{product.price}'}"/>
+                            <span class="small"><f:translate key="product.list.priceLabelAfter"/></span>
+                        </div>
+                        <button class="button-blue">
+                            <f:translate key="subscription.submit"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</f:section>

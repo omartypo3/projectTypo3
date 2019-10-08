@@ -1,0 +1,17 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <div class="scroll-box icon-list clearfix">
+        <f:for each="{channels}" as="channel">
+            <div class="icon c{channel.uid}">
+                <div class="">
+                	<f:if condition="{channel.icon}">
+                    <f:image src="{channel.icon}" alt="{channel.name}" />
+					</f:if>
+                </div>
+            </div>
+        </f:for>
+    </div>
+
+</f:section>

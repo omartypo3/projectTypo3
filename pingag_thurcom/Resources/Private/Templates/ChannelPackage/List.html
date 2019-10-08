@@ -1,0 +1,58 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">      
+        
+        <div class="panel-group" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default" data-section="{package.section}">
+                <div class="panel-heading" role="tab" id="heading-{package.uid}">
+                    <h4 class="panel-title">
+                        <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapse-{package.uid}" aria-expanded="true" aria-controls="collapse-{package.uid}">
+                            <span class="title">{package.name}</span>
+                            <span class="counter"><f:count>{v:iterator.explode(content: '{package.channels}', glue: ',')}</f:count> <f:translate key="channel.list.counter"/></span>
+                            <span class="price">CHF {package.price}.&ndash;/Mt.</span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-{package.uid}" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="heading-{package.uid}">
+                    <div class="panel-body">
+                        <div class="row">
+                        <f:for each="{senderliste}" as="channel">
+                                <div class="col-sm-6">
+                                    <div class="channel clearfix">
+                                        <div class="image pull-left">
+                                        	<f:if condition="{channel.icon}">
+                                            	<img src="{channel.icon}" alt="{channel.name}" />
+                                            </f:if>
+                                        </div>
+                                        <div class="text pull-left">
+                                            {channel.name} <br/>
+                                            <f:format.raw>{channel.lang}</f:format.raw>
+                                            <br/>
+                                            <f:if condition="{channel.dolby}">
+                                            	 <f:image class="first" src="fileadmin/templates/images/icon-dolby-digital.png" maxWidth="20"/>
+                                            </f:if>
+                                            <f:if condition="{channel.hd}">
+                                            	 <f:image src="fileadmin/templates/images/icon-hd.svg" maxHeight="13"/>
+                                            </f:if>
+                                            <f:if condition="{channel.hbb}">
+                                            	 <f:image src="fileadmin/templates/images/icon-hbbtv.svg" maxHeight="16"/>
+                                            </f:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </f:for>
+                        </div>
+                        <f:link.page pageUid="61" class="button-blue">
+                                    		<f:translate key="subscription.submit" />
+                                        </f:link.page>
+                    </div>
+                </div>
+            </div>
+    </div>
+        
+        
+        
+</f:section>

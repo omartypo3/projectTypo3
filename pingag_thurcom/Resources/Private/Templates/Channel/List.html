@@ -1,0 +1,61 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <f:for each="{categories}" as="channels" key="category" iteration="i">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading-{i.cycle}">
+                    <h4 class="panel-title">
+                        <a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion"
+                           href="#collapse-{i.cycle}" aria-expanded="true" aria-controls="collapse-{i.cycle}">
+                            <span class="title">
+                            	<v:format.eliminate content="{category}" digits="1">
+								</v:format.eliminate>
+                            </span>
+                            <span class="counter"><f:count>{channels}</f:count> <f:translate key="channel.list.counter"/></span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse-{i.cycle}" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="heading-{i.cycle}">
+                    <div class="panel-body">
+                        <div class="row">
+                            <f:for each="{channels}" as="channel">
+                                <div class="col-sm-6">
+                                    <div class="channel clearfix">
+                                        <div class="image pull-left">
+                                        	<f:if condition="{channel.icon}">
+                                            	<img src="{channel.icon}" alt="{channel.name}" />
+                                            </f:if>
+                                        </div>
+                                        <div class="text pull-left">
+                                            {channel.name} <br/>
+                                            <f:if condition="{channel.frequency}">
+                                                {channel.frequency} MHz<br/>
+                                            </f:if>
+                                            <f:format.raw>{channel.lang}</f:format.raw>
+                                            <br/>
+                                            <f:if condition="{channel.dolby}">
+                                            	 <f:image class="first" src="fileadmin/templates/images/icon-dolby-digital.png" maxWidth="20"/>
+                                            </f:if>
+                                            <f:if condition="{channel.hd}">
+                                            	 <f:image src="fileadmin/templates/images/icon-hd.svg" maxHeight="13"/>
+                                            </f:if>
+                                            <f:if condition="{channel.hbb}">
+                                            	 <f:image src="fileadmin/templates/images/icon-hbbtv.svg" maxHeight="16"/>
+                                            </f:if>
+                                        </div>
+                                    </div>
+                                </div>
+                            </f:for>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:for>
+    </div>
+
+</f:section>

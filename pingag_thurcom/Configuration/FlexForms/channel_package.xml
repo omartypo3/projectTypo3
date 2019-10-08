@@ -1,0 +1,45 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Inhaltstyp</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Standardaktion des Plugins</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Liste mit Sendern</numIndex>
+                                        <numIndex index="1">ChannelPackage->list</numIndex>
+                                    </numIndex>
+									<numIndex index="1">
+                                        <numIndex index="0">Liste für Bestellung</numIndex>
+                                        <numIndex index="1">ChannelPackage->listOrder</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+					<zusatzpaket>
+                        <TCEforms>
+                            <label>Zusatzpaket</label>
+                            <config>
+                                <type>select</type>
+                                <foreign_table>tx_pingagthurcom_domain_model_channel_package</foreign_table>
+                                <foreign_table_where>AND (tx_pingagthurcom_domain_model_channel_package.deleted = 0) ORDER BY tx_pingagthurcom_domain_model_channel_package.name</foreign_table_where>
+                                <size>8</size>
+                                <minitems>0</minitems>
+                                <maxitems>1</maxitems>
+                            </config>
+                        </TCEforms>
+                    </zusatzpaket>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

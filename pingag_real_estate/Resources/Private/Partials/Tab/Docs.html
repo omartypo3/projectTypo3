@@ -1,0 +1,14 @@
+<div id="tab-docs" class="tab">
+
+    <div class="row">
+        <div class="label">
+            <f:translate key="show.header.downloads"/>
+        </div>
+
+        <f:for each="{realEstate.documents}" as="document">
+            <a href="{document.originalResource.publicUrl}" class="file-link" target="_blank">
+                {document.originalResource.title}
+            </a>
+        </f:for>
+    </div>
+</div>

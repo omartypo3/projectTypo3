@@ -1,0 +1,126 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<v:asset.style path="EXT:pingag_real_estate/Resources/Public/Css/jquery-ui.min.css"
+               name="jquery-ui-slider-css"
+               content="footer"
+               standalone="1"/>
+
+<v:asset.script path="EXT:pingag_real_estate/Resources/Public/JavaScripts/jquery-ui.slider.min.js"
+                name="jquery-ui-slider"
+                content="footer"
+                standalone="1"/>
+
+<div class="real-estate-filter">
+
+    <f:form name="filter" object="{filter}" action="list" method="POST" pluginName="list">
+
+        <div class="row">
+
+            <div class="field-group offer-type-select clearfix">
+                <f:for each="{filter.options.offerType}" as="offerType">
+                    <f:if condition="{offerType.value} == {filter.offerType}">
+                        <f:then>
+                            <div class="option active" data-value="{offerType.value}">{offerType.label}</div>
+                        </f:then>
+                        <f:else>
+                            <div class="option" data-value="{offerType.value}">{offerType.label}</div>
+                        </f:else>
+
+                    </f:if>
+                </f:for>
+                <f:form.textfield property="offerType" class="hidden"/>
+            </div>
+            
+            <div class="searchTermWrap">
+                <div class="search_inner">
+                    <f:form.textfield property="searchString"  id="ms1"  name="ms1"
+                                      placeholder="{f:translate(key: 'filter.searchString.placeholder')}"
+                                      class="searchTerm"/>
+                    <input type="hidden" id="recup_search" value='{value}'>
+                   
+                    <div id="custom-ctn"></div>
+                </div>
+
+
+                <div style="clear:both;"></div>
+
+
+
+            </div>
+
+            <div class="km-search">
+                <f:form.textfield property="searchkm"  id="ms2"  name="ms1"
+                                  placeholder="Umkreis (in Km)"
+                                  class=""/>
+
+            </div>
+
+            <f:form.select property="objectCategory"
+                           options="{filter.options.objectCategory}"
+                           optionValueField="value"
+                           optionLabelField="label"
+                           prependOptionLabel="{f:translate(key: 'filter.objectCategoryLabel')}"
+                           prependOptionValue="all"/>
+
+        </div>
+
+        <div class="row">
+            <div class="field-group big">
+                <f:render partial="Form/RangeSlider" arguments="{min: 0, max: '{filter.options.priceMax}', step: '{filter.options.priceStep}', property: 'price'}"/>
+            </div>
+            <div class="field-group big">
+                <f:render partial="Form/RangeSlider" arguments="{min: 0, max: 10, step: 0.5, property: 'rooms'}"/>
+            </div>
+        </div>
+
+
+        <div class="extended-block {f:if(condition: '{filter.showExtended}', then: 'in')}">
+            <div class="toggle">
+                <f:translate key="filter.showExtended"/>
+                <f:form.hidden property="showExtended" id="showExtendedState" />
+            </div>
+
+            <div class="content">
+
+                <div class="row">
+
+                    <div class="field-group">
+                        <f:form.select property="objectType"
+                                       options="{filter.options.objectType}"
+                                       optionValueField="value"
+                                       optionLabelField="label"
+                                       prependOptionLabel="{f:translate(key: 'filter.objectType')}"
+                                       disabled="{filter.disableObjectType}"
+                                       prependOptionValue="all"/>
+                    </div>
+
+                    <div class="field-group">
+                        <f:form.select property="floor"
+                                       options="{filter.options.floor}"
+                                       optionValueField="value"
+                                       optionLabelField="label"
+                                       prependOptionLabel="{f:translate(key: 'filter.floor')}"
+                                       prependOptionValue="all"/>
+                    </div>
+
+                    <div class="field-group">
+                        <f:render partial="Form/RangeSlider" arguments="{min: 0, max: 5000, step: 25, property: 'surfaceUsable'}"/>
+                    </div>
+                    
+                </div>
+                
+                <div class="row">
+                    <f:for each="{filter.options.properties}" as="checked" key="property">
+                        <f:render partial="Form/PropertyCheckbox" arguments="{property: '{property}', checked: '{checked}' }" />
+                    </f:for>
+                </div>
+                
+            </div>
+
+        </div>
+		 <f:form.submit class="submit" value="Suchen"/>
+
+    </f:form>
+
+
+</div> 

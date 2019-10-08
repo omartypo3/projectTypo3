@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-07-20T09:16:11Z" product-name="pingag_standard_helper">
+		<header/>
+		<body>
+			<trans-unit id="entity_title">
+				<source>Netzbetreiber</source>
+			</trans-unit>
+            <trans-unit id="plugin_title">
+                <source>Netzbetreiber</source>
+            </trans-unit>
+            <trans-unit id="plugin_description">
+                <source>Netzbetreiber Liste und Suche</source>
+            </trans-unit>
+
+			<trans-unit id="title">
+				<source>Name</source>
+			</trans-unit>
+
+			<trans-unit id="address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="zip">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="city">
+				<source>Stadt</source>
+			</trans-unit>
+			<trans-unit id="extra_city">
+				<source>Stadt für Suchtitel</source>
+			</trans-unit>
+
+			<trans-unit id="telephone">
+				<source>Telefon Nr.</source>
+			</trans-unit>
+			<trans-unit id="email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="description">
+				<source>Beschreibung</source>
+			</trans-unit>
+
+			<trans-unit id="extra_text">
+				<source>Zusatztext für Angebot</source>
+			</trans-unit>
+			<trans-unit id="extra_url">
+				<source>Url für Zusatzinformationen</source>
+			</trans-unit>
+
+			<trans-unit id="lat">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="lng">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="contact_person">
+				<source>Kontaktperson</source>
+			</trans-unit>
+			<trans-unit id="logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="service_options">
+				<source>Service Angebote</source>
+			</trans-unit>
+
+
+			<trans-unit id="tabs.options">
+				<source>Services</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,26 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <div class="location-search-list advanced abo-overview">
+
+        <form action="{current_url}?set=1" method="post" class="form-blue">
+            <input type="search" class="search-term" name="{search_field_name}" title="Search Term" value="{searchTerm}" placeholder="<f:translate key='locations.search.placeholder' />" />
+            <input type="submit" class="button-blue inline" value="<f:translate key='check' />"/>
+        </form>
+
+        <f:if condition="{location} && {searchTerm}">
+            <f:then>
+                <f:render partial="AvailableServiceOptions" arguments="{location: city}" />
+            </f:then>
+            <f:else>
+                <f:if condition="{searchTerm}">
+                    <div class="no-results">
+                        <h3>Am gewählten Standort ist<br />Thurcom leider noch nicht verfügbar.</h3>
+                    </div>
+                </f:if>
+            </f:else>
+        </f:if>
+    </div>
+
+</f:section>

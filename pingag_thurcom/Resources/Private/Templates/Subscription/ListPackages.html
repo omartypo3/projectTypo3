@@ -1,0 +1,50 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <div class="speed">
+    
+    	
+            <div class="speedvergleich">
+    	<f:for each="{packages}" as="package">
+        	<div class="bar-chart">
+            	<div class="bar-text"><b>{package.title} &ndash; {package.downloadSpeed}</b><br /><f:format.raw>{package.speedtext}</f:format.raw></div>
+                <div class="bar"><span class="amount-bar" data-value="{package.speedvalue}"></span></div>
+            </div>
+        </f:for>
+    </div>
+    	<div class="internet-packages">
+    	<f:for each="{packages}" as="package">
+
+                        	<div class="package package-option" data-checkbox="#package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                    	
+                            <div class="inner">
+                                <div class="image">
+                                	<f:if condition="{package.default}">
+                                    <f:then>
+                                    	<div class="bestseller"><span>Best-</span>seller</div>
+                                    </f:then>
+                                    </f:if>
+                                    <f:image width="400" src="{package.image.0.originalResource.publicUrl}"/>
+                                </div>
+                                <div class="title">{package.title}</div>
+                                <div class="big-text">{package.downloadSpeed}</div>
+                                <div class="big-text-label">
+                                    <f:translate key="internetPackages.downloadSpeed.label"/>
+                                </div>
+
+                                <div class="big-text">{package.uploadSpeed}</div>
+                                <div class="big-text-label">
+                                    <f:translate key="internetPackages.uploadSpeed.label"/>
+                                </div>
+                                <span class="preis2">CHF {package.price}.&ndash;/Mt.</span>
+                                <div class="overlay"></div>
+                            </div>
+                        </div>
+
+                    </f:for>
+    	</div>
+        
+        <a href="angebote/abo-uebersicht/" class="button-blue" target="_self">Jetzt Abo bestellen</a>
+    </div>
+</f:section>

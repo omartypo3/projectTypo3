@@ -1,0 +1,62 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+    
+    <div class="real-estate-list-wrap">
+        
+        <div class="loading-overlay "></div>
+        
+        <f:render partial="RealEstateFilter" arguments="{_all}" />
+        
+        <div class="real-estate-list clearfix">
+            
+            <f:if condition="{realEstateList}">
+                <f:then>
+
+                    <f:for each="{realEstateList}" as="realEstate" iteration="i">
+                        
+                        <f:link.action pageUid="{settings.detailPid}" action="show" arguments="{realEstate: '{realEstate}'}" class="object">
+                            <div class="image">
+
+                                <img class="lazyload"
+                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANYAAACWCAIAAAAt2eEVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAASNSURBVHhe7dq/MiRRGIbxI5ApiUAiFkjkIoFUIJVS5Tbcg5K4BcmEchFXQFGlSiFTyBSFnTPfO7s9rdv2+LNv1Z7nF+35+nS3PfNswEpvgBUJwowEYUaCMCNBmJEgzEgQZiQIMxKEGQnCjARhRoIwI0GYkSDMSBBmJAgzEoQZCcKMBGFGgjAjQZiRIMxIEGYkCDMShBkJwowEYUaCMCNBmJEgzEgQZiQIMxKEGQnCjARhRoIwI0GYkSDMSBBmJAgzEoQZCcKMBL/q9fX14uJCC4yPBL9kbm4uDWmEMXFwn6f0KnQB4+DUPknRpbSysnJ1daUFFY6PI6tTSh/GpB0pnZ6eatTtRrzHedWpo/aSFhYWYsP+/r5GQzHv0xodcFh1iqglI11Lqf+NsEajdJkKO+Ok6lRQU0O6kNLd3Z1Gw+Hj42MsX15eYtIXE3yMY6pTPu8C0jSl4+NjjSrDvu3tbU3bH4L3OKM6tTNaj0Yp7e7uajTaX+j1erpGhZ1xQHUKp5KO1ik9PT1p9G7b5ORkLPkeeVycTp2qGXajRUrX19cx6dNotC2NUnp4eNCoZSeqOJo6JTOIRn9qSU3ritXV1bi0tbWlERX+DedSp14qdGFAo/aedDmlvb09jajwQxxKnWIZ0nRAo7+VNDU1Fdump6c1osJ2nEidShnQaECjbg1pa0rz8/MaUWELjqNOmVRCOT8/12icejY3N3VP5S6tqbCCsxihQCr//3Z/f6/R+N0sLS3pTipsx0H8oTQqcayvr2v02WJOTk50PxW24BREUTSFsri4qNFn6UFND6/+uLtMJJgph0oivV4vJrOzsxp9TTytT+vKpO2XbgpBgg1xzMzMxOTg4ECj7xDP7NO6aVKg0hNUApUIfv9G6s7Ojkbf5ObmJp7cpxEVFp6gPvymIDY2NjT6bnpB5aUTExMxOTs706gkBf/jG9K6MlleXtboZ+g1Ta++vb3VqBiFJqgPvCmCy8tLjX6SXtb0BaytrWlUhhIT1Efd9PEfHR1p9PP0yqYvQ+sylJugFgMxOTw81PpfifdqUarS//4hUiBBCxLMIgUStCDBLFIgQQsSzCIFErQgwSxSIEELEswiBRK0IMEsUiBBCxLMIoUuCcbOLnTDh7rv/I+RYBYpfG+Cz8/Puqdd7NSiVCSYRQrdE9SiRewhwY5IMIsUSNCCBLNIgQQtSDCLFEjQggSzSIEELUgwixRI0IIEs0iBBC1IMIsUSNCCBLNIgQQtSDCLFEjQggSzSIEELUgwixRI0IIEs0iBBC1IMIsUSNCCBLNIgQQtSDCLFEjQggSzSKE73dZCmzrTbaUiwUwtdKbbWmhTZ7qtVCQIMxKEGQnCjARhRoIwI0GYkSDMSBBmJAgzEoQZCcKMBGFGgjAjQZiRIMxIEGYkCDMShBkJwowEYUaCMCNBmJEgzEgQZiQIMxKEGQnCjARhRoIwI0GYkSDMSBBmJAgzEoQZCcKMBGFGgjAjQZiRIMxIEGYkCDMShBkJwowEYUaCMCNBmJEgzEgQZiQIMxKEGQnCjARhRoKwenv7BWMQ/+p8KG1PAAAAAElFTkSuQmCC"
+                                     data-src="{f:uri.image(image: '{realEstate.pictures.0.originalResource}', height: '150c', width: '241c')}">
+                                     
+                                 <f:if condition="{realEstate.sparefield2}">
+                                    <div class="virtualtour">
+                                    <v:condition.string.contains haystack="{realEstate.sparefield2}" needle="ogulo.de">
+                                    	<img src="fileadmin/templates/img/360_icon_mit-text.svg" alt="zum virtuellen Rundgang" />
+                                    </v:condition.string.contains>
+                                    </div>
+                                </f:if>
+
+                            </div>
+                            <div class="text">
+                                <h2>{realEstate.objectTitle}</h2>
+                                <div class="meta">
+                                    <strong>{realEstate.objectZip} {realEstate.objectCity}, {realEstate.objectState}</strong>
+                                    <div>{realEstate.objectStreet}</div>
+                                    <f:if condition="{realEstate.price}">
+                                        {realEstate.priceText}
+                                        <f:if condition="{realEstate.isRent}">
+                                            <f:translate key="list.priceUnit.{realEstate.priceUnit}"/>
+                                        </f:if>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </f:link.action>
+                    </f:for>
+
+                </f:then>
+                <f:else>
+                    <div class="no-result">
+                        <f:translate key="list.noResult" />
+                    </div>
+                </f:else>
+            </f:if>
+            
+        </div>
+    </div>
+    
+</f:section>

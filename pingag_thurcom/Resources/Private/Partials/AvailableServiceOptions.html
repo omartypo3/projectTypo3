@@ -1,0 +1,18 @@
+<div class="available-service-options clearfix" xmlns:f="http://www.w3.org/1999/html">
+    <f:for each="{location.serviceOptions}" as="serviceOption">
+        <div class="service-option">
+            <div class="title">{serviceOption.service}</div>
+            <div class="state state-{serviceOption.state}">
+            </div>
+        </div>
+    </f:for>
+</div>
+<f:if condition="{location.extraText}">
+    <div class="extra-text">
+        <f:format.html>{city.extraText}</f:format.html>
+</f:if>
+<f:if condition="{location.serviceOptions.0.state} == 1">
+    <div class="partially-available-info">
+        Der Thurcom- Service ist in Ihrer Region nur teilweise verfügbar. Bitte wenden Sie sich an den folgenden Netzbetreiber:
+    </div>
+</f:if>

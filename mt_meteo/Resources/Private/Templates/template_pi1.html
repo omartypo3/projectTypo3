@@ -1,0 +1,73 @@
+<style>
+  .span3 {
+      width: 220px;
+  }
+  .meteo {
+    text-align:center;
+  }
+  .meteo li {
+    float:left;
+    width: 29%;
+    overflow:hidden;
+    list-style:none;
+    margin:0;
+    padding:0;
+    border: 1px solid #676662;
+    border-radius: 4px;
+    margin-right: 10px;
+  }
+  .meteo li:last-child {
+    margin-right: 0;
+  }
+  .meteo li.today, .meteo li:hover {
+    background: #DBD5CA;
+  }
+  .meteo img {
+    margin:0 auto;
+  }
+  .day {
+    text-transform:uppercase;
+    display:block;
+    font-size: 140%;
+  }
+  .temperature {
+    font-weight: bold;
+    font-size: 140%;
+  }
+  
+  
+</style>
+
+<!--###TEMPLATE### begin-->
+
+<!--###PART_METEO### begin-->
+<div class="span3 meteo">
+  <li class="today">
+    <span><img src="###IMAGE###" width="54" height="62" alt="###LL_TEMPERATURE###" title="###LL_TEMPERATURE###" /></span>
+    <span class="day">###DAY_SHORT###</span>
+    <span class="date">###DATE###</span>
+   	<div class="temperature">
+      ###V_TEMPERATURE###
+    </div>
+  </li>
+  <li class="tomorrow">
+    <span><img src="###IMAGE_1###" width="54" height="62" alt="###LL_TEMPERATURE_1###" title="###LL_TEMPERATURE_1###" /></span>
+    <span class="day">###DAY_SHORT_1###</span>
+    <span class="date">###DATE_1###</span>
+   	<div class="temperature">
+      ###V_TEMPERATURE_MIN_1### / ###V_TEMPERATURE_MAX_1###
+    </div>
+  </li>
+  <li class="after-tomorrow">
+    <span><img src="###IMAGE_2###" width="54" height="62" alt="###LL_TEMPERATURE_2###" title="###LL_TEMPERATURE_2###" /></span>
+    <span class="day">###DAY_SHORT_2###</span>
+    <span class="date">###DATE_2###</span>
+   	<div class="temperature">
+      ###V_TEMPERATURE_MIN_2### / ###V_TEMPERATURE_MAX_2###
+    </div>
+  </li>
+</div>
+
+<!--###PART_METEO### end-->
+
+<!--###TEMPLATE### end-->

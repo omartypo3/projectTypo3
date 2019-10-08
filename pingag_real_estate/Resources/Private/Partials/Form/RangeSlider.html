@@ -1,0 +1,16 @@
+<div class="range-slider-outter {property}">
+    <div class="range-slider" data-min="{min}" data-max="{max}" data-step="{step}">    
+        <f:form.textfield property="{property}Min" class="range-slider-min hidden" />
+        <f:form.textfield property="{property}Max" class="range-slider-max hidden" />
+
+        <div class="ui-slider-handle min">
+            <div class="value"></div>
+        </div>
+        <div class="ui-slider-handle max">
+            <div class="value"></div>
+        </div>
+    </div>
+    <div class="label">
+        <f:translate key="filter.{property}.label" /><f:if condition="{property} == 'surfaceUsable'"><sup>2</sup></f:if>
+    </div>
+</div>

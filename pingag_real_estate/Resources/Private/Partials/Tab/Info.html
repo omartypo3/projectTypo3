@@ -1,0 +1,80 @@
+<div id="tab-info" class="tab">
+    <div class="row">
+        <div class="label">
+            <f:translate key="show.header.offer"/>
+        </div>
+        <dl>
+            
+            <f:if condition="{realEstate.isRent}">
+                <dt>
+                    <f:translate key="show.rentNet"/>
+                </dt>
+                <dl>{realEstate.currency} {realEstate.rentNet}.-</dl>
+                <dt>
+                    <f:translate key="show.rentExtra"/>
+                </dt>
+                <dl>{realEstate.currency} {realEstate.rentExtra}.-</dl>
+                <dt>
+                    <f:translate key="show.rentGross"/>
+                </dt>
+                <dl>{realEstate.priceText}</dl>  
+            </f:if>
+
+            <f:if condition="{realEstate.isSale}">
+                <dt>
+                    <f:translate key="show.priceForSale"/>
+                </dt>
+                <dl>{realEstate.priceText}</dl>
+            </f:if>
+
+            <f:render partial="DataListItem" arguments="{value: realEstate.availableFrom, prop: 'availableFrom' }"/>
+           
+        </dl>
+    </div>
+
+    <div class="row">
+        <div class="label">
+            <f:translate key="show.header.information"/>
+        </div>
+        <dl>
+            <f:render partial="DataListItem"
+                      arguments="{value: realEstate.refCode, prop: 'refCode' }"/>
+            <dt>
+                <f:translate key="show.address"/>
+            </dt>
+            <dl>
+                {realEstate.objectStreet}<br/> 
+                {realEstate.objectZip} {realEstate.objectCity}<f:if condition="{realEstate.objectState}">, {realEstate.objectState}</f:if>
+            </dl>
+            <f:render partial="DataListItem" arguments="{value: realEstate.region, prop: 'region' }"/>
+            <br>
+            <f:render partial="DataListItem" arguments="{value: realEstate.floor, prop: 'floor' }"/>
+            <dt><f:translate key="show.numberOfRooms" /></dt>
+    		<dl><f:if condition="{realEstate.numberOfRooms} == 9.9">
+                            <f:then>10</f:then>
+                            <f:else>{realEstate.numberOfRooms}</f:else>
+                        </f:if></dl>
+            <f:render partial="DataListItem" arguments="{value: realEstate.surfaceLiving, prop: 'surfaceLiving', suffix: 'm&sup2;' }"/>
+            <f:render partial="DataListItem" arguments="{value: realEstate.surfaceProperty, prop: 'surfaceProperty', suffix: 'm&sup2;' }"/>
+            <f:render partial="DataListItem" arguments="{value: realEstate.surfaceUsable, prop: 'surfaceUsable', suffix: 'm&sup2;' }"/>
+            <f:render partial="DataListItem" arguments="{value: realEstate.yearBuilt, prop: 'yearBuilt' }"/>
+        </dl>
+    </div>
+
+    <f:if condition="{realEstate.availableProperties}">
+        <div class="row">
+            <div class="label">
+                <f:translate key="show.header.properties"/>
+            </div>
+    
+            <f:if condition="{realEstate.availableProperties}">
+                <ul id="availableProperties">
+                    <f:for each="{realEstate.availableProperties}" as="property">
+                        <li><f:translate key="filter.{property}"/></li>
+                    </f:for>
+                </ul>
+            </f:if>
+        </div>
+    </f:if>
+
+</div>

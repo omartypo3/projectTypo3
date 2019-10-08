@@ -1,0 +1,38 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <div class="city-search-list simple">
+
+        <form action="{current_url}?set=1" method="post" class="form-blue" name="city_available">
+            <input type="hidden" id="hide_city_list" name="hide_city_list" value="0" />
+            <input type="search" class="search-term" name="{search_field_name}" title="Search Term" value="{searchTerm}" placeholder="<f:translate key='locations.search.placeholder' />" />
+            <input type="submit" class="button-blue" value="<f:translate key='search' />"/>
+        </form>
+
+        <f:if condition="{city} && {searchTerm}">
+            <f:then>
+                <f:if condition="{showServiceOptions}">
+                    <h3 class="search-results-header">{city.zip} {city.title}:</h3>
+                    <f:render partial="AvailableServiceOptions" arguments="{location: city}" />
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:if condition="{cityArray}">
+                    <f:then>
+                        <f:render partial="SelectCity" arguments="{_all}" />
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{searchTerm}">
+                            <div class="no-results">
+                                <h3>Am gewählten Standort ist Thurcom leider nicht verfügbar.</h3>
+                                <a class="retour"><f:translate key="order.form.back" /></a>
+                            </div>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </div>
+
+</f:section>

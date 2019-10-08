@@ -1,0 +1,733 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="container bestellung" data-step="1">
+	<h1><f:translate key="order.maintitle"/></h1>
+</div>
+<f:form  action="create" method="POST" enctype="multipart/form-data"  object="{order}"  id="subscription-form" name="order">
+	<div class="allepreise hidden">
+    	<span class="abokosten"></span>
+        <span class="zubehoerkosten"></span>
+        <span class="zusatzkosten"></span>
+        Living <f:cObject typoscriptObjectPath="lib.consultLiving" /><br>
+        Internet <f:cObject typoscriptObjectPath="lib.consultInternet" /><br>
+        TV <f:cObject typoscriptObjectPath="lib.consultTelevision" /><br>
+        TV Standard <f:cObject typoscriptObjectPath="lib.consultTelevisionStandard" /><br>
+        Phone <f:cObject typoscriptObjectPath="lib.consultTelephone" /><br>
+        Phone Base<f:cObject typoscriptObjectPath="lib.consultTelephoneBase" /><br>
+        Phone only<f:cObject typoscriptObjectPath="lib.consultTelephoneOnly" /><br>
+    </div>
+    <div class="container bestellung" data-step="1">
+        <div class="internet-packages-wrap clearfix">
+            <div class="col-sm-1 static icon-row">
+                <div class="square-icon active">
+                    <img src="fileadmin/internet-icons/internet-icon.svg" alt="Internet" />
+                </div>
+            </div>
+            <div class="col-sm-11">
+                <fieldset class="internet-packages">
+                    <f:for each="{packages}" as="package">
+                    <f:if condition="{package.title} != 'none'">
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultLiving')} == 'no'">
+                            <f:then>
+                                <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultInternet')} == '10'">
+                                    <f:then>
+                                        <div class="package package-option" data-checkbox="package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                                        </f:then>
+                                    <f:else>
+                                        <div class="package package-option <f:if condition='{package.default}'>active</f:if>" data-checkbox="package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultLiving')} > {f:cObject(typoscriptObjectPath: 'lib.consultInternet')}">
+                                    <f:then>
+                                        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultLiving')} == {package.uid}">
+                                            <f:then>
+                                                <div class="package package-option active" data-checkbox="#package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                                            </f:then>
+                                            <f:else>
+                                                <div class="package package-option" data-checkbox="#package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultInternet')} == {package.uid}">
+                                            <f:then>
+                                                <div class="package package-option active" data-checkbox="#package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                                            </f:then>
+                                            <f:else>
+                                                <div class="package package-option" data-checkbox="#package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-internet.svg" data-description="{package.detailText}" style="width: {packageWidth}%;">
+                                            </f:else>
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+                    
+                            <div class="inner">
+                                <div class="image">
+                                	<f:if condition="{package.default}">
+                                    <f:then>
+                                    	<div class="bestseller"><span>Best-</span>seller</div>
+                                    </f:then>
+                                    </f:if>
+                                    <f:image width="400" src="{package.image.0.originalResource.publicUrl}"/>
+                                </div>
+                                <div class="title">{package.title}</div>
+                                <div class="big-text">{package.downloadSpeed}</div>
+                                <div class="big-text-label">
+                                    <f:translate key="internetPackages.downloadSpeed.label"/>
+                                </div>
+
+                                <div class="big-text">{package.uploadSpeed}</div>
+                                <div class="big-text-label">
+                                    <f:translate key="internetPackages.uploadSpeed.label"/>
+                                </div>
+                                <span class="preis"></span>
+                                <div class="overlay"></div>
+                            </div>
+                        </div>
+						
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+                        	<f:then>
+                        		<f:form.radio property="internetPackage" id="package-option-{package.uid}" value="{package.uid}" checked="0" />
+                            </f:then>
+                            <f:else>
+                            	<f:form.radio property="internetPackage" id="package-option-{package.uid}" value="{package.uid}" checked="{package.default}" />
+                            </f:else>
+                        </f:if>
+                        </f:if>
+                    </f:for>
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+                    	<f:form.radio property="internetPackage" id="package-option-6" value="6" checked="1" />
+                    </f:if>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="subscription-options">
+
+            <f:for each="{options}" as="option">
+            <f:if condition="{option.single} == false">
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultLiving')} == 'no'">
+                <f:then>
+                	<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '1'">
+                         <f:then>
+                         	 <f:if condition="{option.uid} == '4'">
+                             	<f:then>
+                                	<div class="option-wrap row <f:if condition='{option.radiobutton} == true'>radio opt{option.uid}</f:if>">
+                                </f:then>
+                        		<f:else>
+                                	<div class="option-wrap row <f:if condition='{option.radiobutton} == true'>radio opt{option.uid}</f:if> <f:if condition='{option.price} == 0'><f:if condition='{option.radiobutton} == false'>active</f:if></f:if>">
+                                </f:else>
+                        	</f:if>
+                        </f:then>
+                        <f:else>
+                        	<div class="option-wrap row <f:if condition='{option.radiobutton} == true'>radio opt{option.uid}</f:if> <f:if condition='{option.price} == 0'><f:if condition='{option.radiobutton} == false'>active</f:if></f:if>">
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                	<f:if condition="{option.uid} == '1'">
+                    	<f:then>
+                            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelevisionStandard')} == '0'  || {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+                                <f:then>
+                               		<div class="option-wrap row">
+                                </f:then>
+                                <f:else>
+                                    <div class="option-wrap row <f:if condition='{option.price} == 0'>active</f:if>">
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                    </f:if>
+                    <f:if condition="{option.uid} == '2'">
+                    	<f:then>
+                        <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelevision')} == '1'">
+                        <f:then>
+                    		<div class="option-wrap row active">
+                        </f:then>
+                        <f:else>
+                        	<div class="option-wrap row <f:if condition='{option.price} == 0'>active</f:if>">
+                        </f:else>
+                        </f:if>
+                        </f:then>
+                    </f:if>
+                	<f:if condition="{option.uid} == '3'">
+                    	<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '1'">
+                            <f:then>
+                            	<div class="option-wrap row <f:if condition='{option.radiobutton} == true'>radio opt3</f:if> active">
+                            </f:then>
+                            <f:else>
+                            	<div class="option-wrap row <f:if condition='{option.radiobutton} == true'>radio opt3</f:if>">
+                            </f:else>    
+                         </f:if>
+                    </f:if>
+                    <f:if condition="{option.uid} == '4'">
+                    	<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephoneBase')} == '1'">
+                            <f:then>
+                            	<div class="option-wrap row <f:if condition='{option.radiobutton} == true'>radio opt4</f:if> active">
+                            </f:then>
+                            <f:else>
+                            	<div class="option-wrap <f:if condition='{option.radiobutton} == true'>radio opt4</f:if> row">
+                            </f:else>    
+                         </f:if>
+                    </f:if>
+                </f:else>
+            </f:if>
+                    <div class="col-sm-1 static icon-row">
+                        <div class="square-icon" data-checkbox2="#option-checkbox-{option.uid}" data-option="{option.uid}" <f:if condition='{option.radiobutton} == true'>data-config="radio"</f:if>>
+                            <f:if condition="{option.icon.0}">
+                                <f:image src="{option.icon.0.originalResource.publicUrl}" alt="{option.title}" />
+                            </f:if>
+                        </div>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="checkbox <f:if condition='{option.price} == 0'><f:if condition='{option.radiobutton} == false'>disabled</f:if></f:if> option{option.uid}" data-checkbox="#option-checkbox-{option.uid}" data-option="{option.uid}" <f:if condition='{option.radiobutton} == true'>data-config="radio"</f:if> data-title="{option.title}" data-price="{option.price}" data-description="{option.detailText}" data-icon="{option.icon.0.originalResource.publicUrl}">
+                            <div class="title">{option.title}<span class="optionprice">+{option.price}.–/Mt.</span></div>
+                            <div class="description"><f:format.html>{option.detailText}</f:format.html></div>
+                            
+                            <f:if condition="{option.uid} == '1'">
+                                <f:then>
+                                    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelevisionStandard')} == '0' || {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+                                        <f:then>
+                                            <f:form.checkbox property="options" value="{option.uid}" checked="" id="option-checkbox-{option.uid}" multiple="1" class="hidden" />
+                                        </f:then>
+                                        <f:else>
+                                            <f:form.checkbox property="options" value="{option.uid}" checked="1" id="option-checkbox-{option.uid}" multiple="1" class="hidden" />
+                                        </f:else>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                	<f:form.checkbox property="options" value="{option.uid}" checked="" id="option-checkbox-{option.uid}" multiple="1" class="hidden" />
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{option.cornericon.0}">
+                                <f:image class="cornericon" src="{option.cornericon.0.originalResource.publicUrl}" alt="{option.title}" />
+                            </f:if>
+                        </div>
+                    </div>
+                </div>
+                </f:if>
+            </f:for>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11 texte">
+            <p><sub>* Gilt für Internet via Kabelmodem. Bei FTTH Anschlüssen entspricht die Uploadgeschwindigkeit der Downloadgeschwindigkeit (synchron).<br>** Nur an einem FTTH (Glas) Anschluss abonnierbar.</sub></p>
+            </div>
+            <h1 class="subtitle"><f:translate key="order.subtitle"/></h1>
+          	<f:for each="{options}" as="option">
+            	<f:if condition="{option.single} == true">
+                    <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+                    <f:then>
+                        <div class="option-wrap row single active">
+                            <div class="col-sm-1 static icon-row">
+                            </div>
+                            <div class="col-sm-11">
+                                <div class="checkbox option{option.uid}" data-checkbox="#option-checkbox-{option.uid}" data-config="single" data-option="{option.uid}" data-title="{option.title}" data-price="{option.price}" data-description="{option.detailText}" data-icon="{option.icon.0.originalResource.publicUrl}">
+                                
+                                <div class="square-icon" data-checkbox2="#option-checkbox-{option.uid}" data-option="{option.uid}">
+                                    <f:if condition="{option.icon.0}">
+                                        <f:image src="{option.icon.0.originalResource.publicUrl}" alt="{option.title}" />
+                                    </f:if>
+                                </div>
+                                    <div class="title">{option.title}<span class="optionprice">+{option.price}.–/Mt.</span></div>
+                                    <div class="description"><f:format.html>{option.detailText}</f:format.html></div>
+                                    <f:form.checkbox property="options" value="{option.uid}" checked="{option.price} == 0" id="option-checkbox-{option.uid}" multiple="1" class="hidden" />
+                                </div>
+                            </div>
+                        </div>
+                    </f:then>
+                    <f:else>
+                    	<div class="option-wrap row single">
+                            <div class="col-sm-1 static icon-row">
+                            </div>
+                            <div class="col-sm-11">
+                                <div class="checkbox option{option.uid}" data-checkbox="#option-checkbox-{option.uid}" data-config="single" data-option="{option.uid}" data-title="{option.title}" data-price="{option.price}" data-description="{option.detailText}" data-icon="{option.icon.0.originalResource.publicUrl}">
+                                
+                                <div class="square-icon" data-checkbox2="#option-checkbox-{option.uid}" data-option="{option.uid}">
+                                    <f:if condition="{option.icon.0}">
+                                        <f:image src="{option.icon.0.originalResource.publicUrl}" alt="{option.title}" />
+                                    </f:if>
+                                </div>
+                                    <div class="title">{option.title}<span class="optionprice">+{option.price}.–/Mt.</span></div>
+                                    <div class="description"><f:format.html>{option.detailText}</f:format.html></div>
+                                    <f:form.checkbox property="options" value="{option.uid}" checked="{option.price} == 0" id="option-checkbox-{option.uid}" multiple="1" class="hidden" />
+                                </div>
+                            </div>
+                        </div>
+                    </f:else>
+                    </f:if>
+                </f:if>
+            </f:for>
+        </div>
+          
+          
+    </div>
+    
+    <div class="container bestellung" data-step="2">
+    	<fieldset class="verfuegbarkeit">
+        	<h2><f:translate key="order.form.selectedOptions" /></h2>
+            <div class="subscription-selection"></div>
+            
+
+        </fieldset>
+    </div>
+    
+    <div class="container bestellung" data-step="3">
+    	<fieldset class="zubehoer">
+        	<div class="row">
+            	<div class="col-sm-12 form-field-outer textcenter steps">
+                	<span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                </div>
+            </div>
+        	<h2><f:translate key="order.form.productstitle" /></h2>
+            <div class="subscription-additions col-sm-12">
+            <f:for each="{products}" as="addition">
+            
+            	<div class="addition">
+                	<div class="col-sm-4 leftie">
+                    <label>
+                        <b>{addition.title}</b><br>
+                        CHF {addition.price}.&ndash;/Stück
+                    </label>
+                    </div>
+                    <div class="col-sm-3 massfield">
+                    	<div class="checkbox <f:if condition='{addition.price} == 0'>disabled</f:if>" data-checkbox="#zubehoer-checkbox-{addition.uid}" data-title="{addition.title}" data-price="{addition.price}" data-description="{addition.detailText}">
+                            <f:form.checkbox property="additionalProducts" value="{addition.uid}" checked="{addition.price} == 0" id="option-checkbox-{addition.uid}" class="hidden produkt" multiple="1" />							
+                            
+							<f:form.textfield class="anzahl" name="anzahl" placeholder="0" type="text" /> <label for="anzahl"><f:translate key="order.form.piece" /></label>
+                            <span class="summe hidden">0</span>
+                        </div>
+                    	
+                        
+                    </div>
+                </div>
+
+            </f:for>
+            
+            <f:form.textarea id="zubehoer" property="zubehoer" class="hidden"  />
+            <div class="keinzubehoer">
+                <div class="col-sm-4 leftie">
+                    <label><b><f:translate key="order.form.noproducts" /></b></label>
+                </div>
+                <div class="col-sm-3 noproducts">
+                    <span></span>
+                    <f:form.checkbox name="additionals" value="" checked="0" class="hidden" />
+                </div>
+            </div>
+        </div>
+        	<div class="col-sm-12 textcenter navbuttons">
+              <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelevision')} != '1' && {f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} != '1' && {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneBase')} != '1'">
+       			 <a class="back button-blue"><f:translate key="order.form.back" /></a>
+        		<a class="next button-blue skiptwo" data-goto="6"><f:translate key="order.form.next" /></a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelevision')} == '1' || {f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '1'">
+            	<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        		<a class="next button-blue"><f:translate key="order.form.next" /></a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephoneBase')} == '1'">
+            	<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        		<a class="next button-blue skip1" data-goto="5"><f:translate key="order.form.next" /></a>
+            </f:if>
+            
+    		
+            </div>
+        </fieldset>
+    </div>
+    
+     <div class="container bestellung" data-step="4">
+     <div class="col-sm-12 form-field-outer textcenter steps">
+                	<span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="point active"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                </div>
+     	<h2><f:translate key="order.form.extratitle" /></h2>
+    	
+        <div class="extraoptionen">
+
+        
+       <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '1' || {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+       		<span class="extratitel col-sm-5"><f:translate key="order.form.extranumber.title" /></span>
+            <span class="extrainfo col-sm-5"><f:translate key="order.form.extranumber.info" /></span>
+            <div class="col-sm-5 drop leftie">
+                    <span class="droptrigger">
+                        <f:translate key="order.form.extranumbers" />
+                    </span>
+                </div>
+                <div class="dropoptions">
+                <div class="col-sm-12 extra extranumber">
+                    <div class="col-sm-3 leftie">
+                        <label>
+							<b><f:translate key="order.form.extranumber1" /></b>
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="radiochoice" data-price="9">
+                            <span>CHF 9.&ndash;/Monat</span>
+                            <f:form.radio name="extra" value="<f:translate key='order.form.extranumber1' />" checked="0" class="hidden" />
+                        </div>                    	                        
+                    </div>
+                    </div>
+                    <div class="col-sm-12 extra extranumber">
+                    <div class="col-sm-3 leftie">
+                        <label>
+                            <b><f:translate key="order.form.extranumber2" /></b>
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="radiochoice" data-price="18">
+                            <span>CHF 18.&ndash;/Monat</span>
+                            <f:form.radio name="extra" value="<f:translate key='order.form.extranumber2' />" checked="0" class="hidden" />
+                        </div>                    	                        
+                    </div>
+                    </div>
+                    <div class="col-sm-12 extra extranumber">
+                    <div class="col-sm-3 leftie">
+                        <label>
+                            <b><f:translate key="order.form.extranumber3" /></b>
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="radiochoice" data-price="27">
+                            <span>CHF 27.&ndash;/Monat</span>
+                            <f:form.radio name="extra" value="<f:translate key='order.form.extranumber3' />" checked="0" class="hidden" />
+                        </div>                    	                        
+                    </div>
+                    </div>
+                    <div class="col-sm-12 extra extranumber">
+                    <div class="col-sm-3 leftie">
+                        <label>
+                            <b><f:translate key="order.form.extranumber4" /></b>
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="radiochoice" data-price="36">
+                            <span>CHF 36.&ndash;/Monat</span>
+                            <f:form.radio name="extra" value="<f:translate key='order.form.extranumber4' />" checked="0" class="hidden" />
+                        </div>                    	                        
+                    </div>
+                </div>
+            </div>    
+         </f:if>
+        
+        
+           
+             <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelevision')} == '1'">
+            <div class="col-sm-12 extra extrasettop">
+                <div class="col-sm-4 leftie">
+                    <label>
+                        <b><f:translate key="order.form.extrasettop" /></b><br>
+                        CHF 5.&ndash;/Monat
+                    </label>
+                </div>
+                <div class="col-sm-1">
+                    <div class="checkbox" data-price="5">
+                        <span></span>
+                        <f:form.checkbox name="extra" value="<f:translate key='order.form.keepnumber' />" checked="0" class="hidden" />
+                    </div>                    	                        
+                </div>
+            </div>
+              </f:if>
+        </div>
+        
+        <f:form.textarea id="zusatzoption" property="zusatzoption" class="hidden" />
+        <div class="col-sm-12 textcenter navbuttons">
+        
+         <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '0' && {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneBase')} == '0' && {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '0'">
+       			 <a class="back button-blue"><f:translate key="order.form.back" /></a>
+        		<a class="next button-blue skipone" data-goto="6"><f:translate key="order.form.next" /></a>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '1' || {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneBase')} == '1' || {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '1'">
+            	<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        		<a class="next button-blue"><f:translate key="order.form.next" /></a>
+            </f:if>
+        </div>
+    </div>
+    
+    <div class="container bestellung" data-step="5">
+    <div class="col-sm-12 textcenter">
+    	<div class="col-sm-12 form-field-outer textcenter steps">
+                	<span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="point active"></span>
+                    <span class="trenner"></span>
+                    <span class="point active"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                </div>
+        </div>
+    	<h2><f:translate key="order.form.numbertitle" /></h2>
+        
+        <div class="callnumbers">
+            <div class="col-sm-12 number keepnumber">
+                <div class="col-sm-4 leftie">
+                    <label>
+                        <b><f:translate key="order.form.keepnumber" /></b><br>
+                        <f:translate key="order.form.keepnumberInfo" />
+                    </label>
+                </div>
+                <div class="col-sm-1">
+                    <div class="checkbox">
+                        <span></span>
+                        <f:form.radio property="rufnummer" value="<f:translate key='order.form.keepnumber' />" checked="0" class="hidden" />
+                    </div>                    	                        
+                </div>
+            </div>
+            
+            <div class="col-sm-12 number getnew">
+                <div class="col-sm-4 leftie">
+                    <label>
+                        <b><f:translate key="order.form.newnumber" /></b><br>
+                        <f:translate key="order.form.newnumberInfo" />
+                    </label>
+                </div>
+                <div class="col-sm-1">
+                    <div class="checkbox">
+                        <span></span>
+                        <f:form.radio property="rufnummer" value="<f:translate key='order.form.newnumber' />" checked="0" class="hidden" />
+                    </div>                    	                        
+                </div>
+            </div>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '0' && {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneBase')} == '0' && {f:cObject(typoscriptObjectPath: 'lib.consultTelephoneOnly')} == '0'">
+            	<f:form.radio property="rufnummer" value="" checked="1" class="hidden" />
+            </f:if>
+        </div>
+        <div class="col-sm-12 number portierung">
+            <div class="col-sm-6">
+        		<f:cObject typoscriptObjectPath="lib.nummerninfo"/>
+        	</div>
+        </div>
+        
+        <div class="col-sm-12 textcenter navbuttons">
+
+            <a class="back button-blue"><f:translate key="order.form.back" /></a>
+            <a class="next button-blue"><f:translate key="order.form.next" /></a>
+        </div>
+    </div>
+
+	<div class="container bestellung" data-step="6">
+    	<fieldset class="personal-information">
+        	<div class="row">
+            	<div class="col-sm-12 form-field-outer textcenter steps">
+                	<span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="point"></span>
+                </div>
+            </div>
+          
+            <div class="row">
+            	<div class="col-sm-12 form-field-outer">
+                	<h2><f:translate key="order.form.contacttitle" /></h2>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfield" arguments="{fieldName: 'firmName'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <label for="salutation" class="mand"><f:translate key="order.labels.salutation" /> <span class="obli">*</span></label>
+                    <f:form.select id="salutation" property="salutation" class="mandatory">
+                        <option value="<f:translate key="order.labels.salutationDefault" />"><f:translate key="order.labels.salutationDefault" /></option>
+                        <option value="Herr"><f:translate key="order.labels.salutationMale" /></option>
+                        <option value="Frau"><f:translate key="order.labels.salutationFemale" /></option>
+                    </f:form.select>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'firstName'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'lastName'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'address'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'city'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'telephonePrivate'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfield" arguments="{fieldName: 'telephoneOffice'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfield" arguments="{fieldName: 'telephoneMobile'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer" id="email1">
+					 <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'email'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormTextfieldRequired" arguments="{fieldName: 'birthday'}"/>
+                </div>
+                <div class="col-sm-6 form-field-outer">
+                    <f:render partial="Order/FormUploadfile" arguments="{fieldName: 'image'}"/>
+                </div>
+
+                <div class="col-sm-12 form-field-outer">
+                    <label for="comment"><f:translate key="order.labels.comment" /> <span class="obli">*</span></label>
+                    <f:form.textarea id="comment" property="comment" />
+                </div>
+                <div class="col-sm-12">
+                	<span><f:translate key="order.form.required" /></span>
+                </div>
+                 <div class="col-sm-12 navbuttons textcenter">
+                 
+                 <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} != '1' && {f:cObject(typoscriptObjectPath: 'lib.consultTelevision')} != '1'">
+       			 <a class="back button-blue skiptwo"><f:translate key="order.form.back" /></a>
+        		<div class="personinfobuttons"><a class="next button-blue nextstep"><f:translate key="order.form.next" /></a><div class="next button-false"><f:translate key="order.form.next" /></div></div>
+            </f:if>
+            <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '0' && {f:cObject(typoscriptObjectPath: 'lib.consultTelevision')} == '1'">
+            	<a class="back button-blue skipone"><f:translate key="order.form.back" /></a>
+        		<div class="personinfobuttons"><a class="next button-blue nextstep"><f:translate key="order.form.next" /></a><div class="next button-false"><f:translate key="order.form.next" /></div></div>
+            </f:if>
+                 
+               <f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultTelephone')} == '1'">   
+                 	<a class="back button-blue"><f:translate key="order.form.back" /></a>
+                   <div class="personinfobuttons"><a class="next button-blue nextstep"><f:translate key="order.form.next" /></a><div class="next button-false"><f:translate key="order.form.next" /></div></div>
+                 </div>
+            </f:if>
+            </div>
+        </fieldset>
+    </div>
+    
+    <div class="container bestellung" data-step="7">
+    	<fieldset class="abschluss">
+        	<div class="row">
+            	<div class="col-sm-12 form-field-outer textcenter steps">
+                	<span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="active point"></span>
+                    <span class="trenner"></span>
+                    <span class="point active"></span>
+                </div>
+            </div>
+        	<h2>Zusammenfassung Ihrer Bestellung:</h2>
+            <div class="definite">
+            </div>
+            <div class="final address">
+            	<b>Adresse:</b><br>
+                <span class="salutation"></span><br>
+                <span class="lastName"></span>&nbsp;<span class="firstName"></span><br>
+                <span class="address"></span>, <span class="city"></span><br>
+                <span class="telephonePrivate"></span>, <span class="telephoneOffice"></span><br>
+                <span class="email"></span>
+            </div>
+            <div class="final additions">
+            	<b>Zubehör:</b><br>
+                <span class="zubehoerprodukte"></span>
+            </div>
+            <div class="final extras">
+            	<b>Zusatzoption:</b><br>
+                <span class="zusatzoptionen"></span>
+            </div>
+            <div class="final phonenumber">
+            	<b>Rufnummer:</b><br>
+                <span class="nummern"></span>
+            </div>
+            <div class="col-sm-12 schlusskosten">
+            	<div class="monatskosten">
+                	Total pro Monat: <b></b>
+                </div>
+                <div class="einmalkosten">
+                	Total einmalig: <b></b>
+                </div>
+                <p>Bitte kontrollieren Sie alle Angaben auf ihre Richtigkeit.</p>
+                
+                
+            </div>
+            <div style="display:none;">
+            	<f:render partial="Order/FormTextfield" arguments="{fieldName: 'costsOnce'}"/>
+            	<f:render partial="Order/FormTextfield" arguments="{fieldName: 'costsMonth'}"/>
+            </div>
+            
+            <div class="col-sm-12 agb numberagb">
+            	
+                <div class="col-sm-1"><div class="checkbox"><span></span><input class="hidden" type="checkbox" name="acceptagb" value="Ich akzeptiere die AGB"></div>
+                </div>
+                <div class="col-sm-4 leftie"><label><b>Ich akzeptiere die <a href="https://thurcom.ch/fileadmin/downloads_PDF/AGB_Thurcom_Produkte.pdf" target="_blank">AGB</a></b></label></div>
+                </div>
+            
+            
+            <div class="col-sm-12 textcenter navbuttons">
+                <a class="back button-blue"><f:translate key="order.form.back" /></a>
+                <button type="submit" href="#paynow" class="button-blue ordernow" data-submit-form="#subscription-form">Kostenpflichtig bestellen</button>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="subscription-summary bestellung" data-step="1">
+        <span class="items"></span>
+        <span class="symbol">=</span>
+        <span class="priceTotal">
+                <span class="prefix"><f:translate key="subscription.pricePerMonthPrefix" /></span>
+                <span class="price"></span>
+                <div class="text"><f:translate key="subscription.pricePerMonth" /></div>
+            </span>
+            <a class="next button-blue bestellen"><f:translate key="subscription.submit" /></a>
+    </div>
+    <div class="show-subscription-details bestellung" data-step="1">
+        <f:translate key="subscription.showDetails" />
+        <img src="fileadmin/templates/images/icon-arrow-down-w.svg" width="30" />
+        <img class="icon-open" src="fileadmin/templates/images/icon-arrow-up-w.svg" width="30" />
+    </div>
+    <div class="subscription-details bestellung" data-step="1"></div>
+
+</f:form>
+
+<form action="{current_url}?set=1" method="post" name="order_available" class="bestellformular" style="display:none;">
+                <input type="hidden" id="city_search_internet1" name="city_search_internet" value="" />
+                <input type="hidden" id="city_search_tv41" name="city_search_tv4" value="" />
+                <input type="hidden" id="city_search_tvstandard1" name="city_search_tvstandard" value="1" />
+                <input type="hidden" id="city_search_phone1" name="city_search_phone" value="" />
+                <input type="hidden" id="city_search_phone_base1" name="city_search_phone_base" value="" />
+                <input type="hidden" id="city_search_phone_only1" name="city_search_phone_only" value="" />
+                <input type="hidden" id="city_search_living" name="city_search_living" value="0" />
+                <input type="submit" class="button-blue" value="<f:translate key='subscription.submit' />"/>
+            </form>
+<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.consultLiving ')} == 'no' || {f:cObject(typoscriptObjectPath: 'lib.consultLiving ')} == '0'">
+	<f:then>
+    
+        <div class="container bestellung" data-step="2">
+        <div class="availability aboconfigurator">
+            <h2>Verfügbarkeit prüfen:</h2>
+            <f:cObject typoscriptObjectPath="lib.versorgung_berater"/>
+        </div>
+        <div class="col-sm-12 textcenter navbuttons">
+    		<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        	<a class="next button-blue"><f:translate key="order.form.next" /></a>
+            </div>
+        </div>
+    </f:then>
+    <f:else>
+    	<div class="container bestellung" data-step="2">
+        <div class="col-sm-12 textcenter navbuttons">
+    		<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        	<a class="next button-blue"><f:translate key="order.form.next" /></a>
+            </div>
+        </div>
+    </f:else>
+    </f:if>

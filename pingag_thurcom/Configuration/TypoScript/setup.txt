@@ -1,0 +1,65 @@
+config.tx_extbase {
+    persistence {
+        classes {
+            Pingag\PingagThurcom\Domain\Model\ServiceLocation{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_service_location
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\SimpleServiceLocation{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_simple_service_location
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\ContactPerson{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_contact_person
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\Service{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_service
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\ServiceOption{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_service_option
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\InternetPackage{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_internet_package
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\SubscriptionOption{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_subscription_option
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\Product{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_product
+                }
+            }
+            Pingag\PingagThurcom\Domain\Model\SubscriptionOrder{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_subscription_order
+                }
+            }
+			Pingag\PingagThurcom\Domain\Model\ProductConsultation{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_product_consultation
+                }
+            }
+			Pingag\PingagThurcom\Domain\Model\ChannelPackage{
+                mapping {
+                    tableName = tx_pingagthurcom_domain_model_channel_package
+                }
+            }
+        }
+    }
+}
+
+plugin.tx_pingag_thurcom.settings{
+    mailFrom = info@thurcom.ch
+}

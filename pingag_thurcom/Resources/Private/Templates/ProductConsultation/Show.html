@@ -1,0 +1,163 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="produktberater">
+<div class="container beratung" data-step="0">
+	<h1>Abo-Berater</h1>
+    <h3>Welches Abo ist das richtige für Sie?<br />Vier Fragen führen Sie ans Ziel:</h3>
+    <a class="button-blue next glass" data-goto="1">Starten</a>
+	
+</div>
+<div class="container beratung" data-step="1">
+	<h2>Wo wohnen Sie?</h2>
+	<f:cObject typoscriptObjectPath="lib.versorgung_berater2"/>
+    <div class="row pagination">
+    	<a class="back button-blue no-service"><f:translate key="order.form.back" /></a>
+        <div class="col-sm-12 form-field-outer textcenter steps">
+        	<span class="active point"><span class="desc">Standort</span></span>
+            <span class="trenner"></span>
+            <span class="point"></span>
+            <span class="trenner"></span>
+            <span class="point"></span>
+            <span class="trenner"></span>
+            <span class="point"></span>
+            <span class="trenner"></span>
+            <span class="point"></span>
+        </div>
+    </div>        
+</div>
+<f:form object="{consultation}" method="POST" pageUid="9" id="consultation-form" name="consultation">
+    <div class="container beratung" data-step="2">
+    	<h2>Wie wohnen Sie?</h2>
+        <f:for each="{consultoption}" as="option">
+        	<f:if condition="{option.group} == 2">
+                <div class="selection-wrap">
+                    <div class="col-sm-12">
+                        <div class="radio living" data-radio="#living-radio-{option.uid}" data-title="{option.title}" data-description="{option.detailText}" data-icon="{option.icon.0.originalResource.publicUrl}">
+                        	<f:if condition="{option.image.0}">
+                                <f:image src="{option.image.0.originalResource.publicUrl}" alt="{option.title}" />
+                            </f:if>
+                            <div class="title">{option.title}</div>
+                            <f:form.radio property="living" value="{option.abo}" checked="" id="living-radio-{option.uid}" class="hidden" />
+                        </div>
+                    </div>
+                </div>
+                 </f:if>
+            </f:for>
+        <div class="row pagination">
+        	<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        	<a class="next button-blue"><f:translate key="order.form.next" /></a>
+            <div class="col-sm-12 form-field-outer textcenter steps">
+            	<span class="active point"></span>
+                <span class="trenner"></span>
+                <span class="point active"><span class="desc">Über Sie</span></span>
+                <span class="trenner"></span>
+                <span class="point"></span>
+                <span class="trenner"></span>
+                <span class="point"></span>
+                <span class="trenner"></span>
+                <span class="point"></span>
+            </div>
+        </div>        
+    </div>
+    <div class="beratung" data-step="3">
+    	<h2>Wofür nutzen Sie das Internet?</h2>
+        <f:for each="{consultoption}" as="option">
+        	<f:if condition="{option.group} == 3">
+                <div class="selection-wrap">
+                    <div class="col-sm-12">
+                        <div class="checkbox web" data-checkbox="#web-checkbox-{option.uid}" data-title="{option.title}">
+                            <div class="title">{option.title}</div>
+                            
+                            <f:form.checkbox name="webuse" value="{option.abo}" checked="" id="web-checkbox-{option.uid}" multiple="1" class="hidden webuse" />
+                            
+                        </div>
+                    </div>
+                </div>
+                 </f:if>
+            </f:for>
+            <f:form.textfield property="internet" value="" class="hidden internet" />
+            <input type="text" name="berater_internet" value="" class="hidden internet" />
+        <div class="row pagination">
+        	<a class="back button-blue"><f:translate key="order.form.back" /></a>
+        	<a class="next button-blue"><f:translate key="order.form.next" /></a>
+            <div class="col-sm-12 form-field-outer textcenter steps">
+                <span class="active point"></span>
+                <span class="trenner"></span>
+                <span class="point active"></span>
+                <span class="trenner"></span>
+                <span class="point active"><span class="desc">Internet</span></span>
+                <span class="trenner"></span>
+                <span class="point"></span>
+                <span class="trenner"></span>
+                <span class="point"></span>
+            </div>
+        </div>    
+    </div>
+    <div class="beratung" data-step="4">
+    	<h2>Was ist Ihnen beim TV wichtig?</h2>
+        <f:for each="{consultoption}" as="option">
+        	<f:if condition="{option.group} == 4">
+                <div class="selection-wrap wide">
+                    <div class="col-sm-12">
+                        <div class="checkbox tv" data-checkbox="#tv-checkbox-{option.uid}" data-title="{option.title}">
+                            <div class="title">{option.title}</div>
+                            <f:form.checkbox property="tvuse" value="{option.television}" checked="" id="tv-checkbox-{option.uid}" multiple="1" class="hidden tvuse" />
+                        </div>
+                    </div>
+                </div>
+                 </f:if>
+            </f:for>
+            <f:form.textfield property="television" value="" class="hidden television" />
+            <input type="text" name="berater_television" value="" class="hidden television" />
+        <div class="row pagination">
+        <a class="back button-blue"><f:translate key="order.form.back" /></a>
+        	<a class="next button-blue"><f:translate key="order.form.next" /></a>
+                    <div class="col-sm-12 form-field-outer textcenter steps">
+                        <span class="active point"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"><span class="desc">TV</span></span>
+                        <span class="trenner"></span>
+                        <span class="point"></span>
+                    </div>
+                </div>
+                
+    </div>
+    <div class="beratung" data-step="5">
+    	<h2>Was ist Ihnen wichtig beim Festnetz?</h2>
+        <f:for each="{consultoption}" as="option">
+        	<f:if condition="{option.group} == 5">
+                <div class="selection-wrap large">
+                    <div class="col-sm-12">
+                        <div class="radio phone" data-radio="#phone-radio-{option.uid}" data-title="{option.title}">
+                            <div class="title">{option.title}</div>
+                            <f:form.radio property="telephone" value="{option.telephone}" checked="" id="phone-radio-{option.uid}" class="hidden phoneuse" />
+                        </div>
+                    </div>
+                </div>
+                 </f:if>
+            </f:for>
+            <input type="text" name="berater_telephone" value="" class="hidden telephone" />
+        <div class="row pagination">
+        <a class="back button-blue"><f:translate key="order.form.back" /></a>
+        	<button type="submit" class="next button-blue"><f:translate key="order.form.next" /></button>
+                    <div class="col-sm-12 form-field-outer textcenter steps">
+                        <span class="active point"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"></span>
+                        <span class="trenner"></span>
+                        <span class="point active"><span class="desc">Telefonie</span></span>
+                    </div>
+                </div>
+    </div>
+</f:form>
+</div>
+

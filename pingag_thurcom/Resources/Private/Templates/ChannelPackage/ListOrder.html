@@ -1,0 +1,10 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+	<label class="powermail_label">Wollen Sie Zusatzpakete abonnieren?</label>  
+        <div class="powermail_field"><div class="checkbox"><label for="powermail_field_zusatzpaket_0">RTL HD / Pro 7 HD Sender (kostenlos) <input class="powermail_checkbox" id="powermail_field_zusatzpaket_0" checked="checked" value="RTL HD / Pro 7 HD Sender (kostenlos)" type="checkbox"></label></div>
+         <f:for each="{package}" as="paket">      
+        	<div class="powermail_field"><div class="checkbox"><label for="powermail_field_zusatzpaket_{paket.uid}">{paket.name} (CHF {paket.price}.&ndash;/ Monat) <input class="powermail_checkbox" id="powermail_field_zusatzpaket_{paket.uid}" value="{paket.name} (CHF {paket.price}.&ndash;/ Monat)" type="checkbox"></label></div>
+        </f:for>
+</f:section>

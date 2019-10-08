@@ -1,0 +1,45 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<div class="real-estate-contact-wrap real-estate-filter">
+    
+    <f:form name="contactForm"
+            object="{contactForm}"
+            action="contactFormSuccess"
+            pluginName="show"
+            method="POST"
+            addQueryString="1"
+            class="contact-form">
+    <f:form.validationResults>
+        
+        <f:form.hidden name="action" value="contactFormSuccess" />
+        <f:form.hidden property="realEstate" value="{realEstate.uid}"/>
+
+        <div class="field-group">
+            <f:render partial="Form/Radio" arguments="{property: 'greeting', value: 'Frau'}" />
+            <f:render partial="Form/Radio" arguments="{property: 'greeting', value: 'Herr'}" />
+            <f:if condition="{validationResults.flattenedErrors.greeting}">
+                {validationResults.flattenedErrors.greeting}
+            </f:if>
+        </div>
+
+        <f:render partial="Form/TextField" arguments="{property: 'firstName', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'lastName', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'street', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'zip', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'city', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'country', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'email', formName: 'contactForm', errors: '{validationResults}'}"/>
+        <f:render partial="Form/TextField" arguments="{property: 'phone', formName: 'contactForm', errors: '{validationResults}'}"/>
+
+        <div class="field-group">
+            <label for="contactForm-comment"><f:translate key="contactForm.comment" /></label>
+            <f:form.textarea id="contactForm-comment" property="comment" placeholder="{f:translate(key: 'contactForm.comment')}" />
+        </div>
+
+        <f:form.submit value="{f:translate(key: 'contactForm.submit')}"/>
+
+    </f:form.validationResults>
+    </f:form>
+
+
+</div> 

@@ -1,0 +1,8 @@
+<f:form.validationResults for="{formName}.{property}">
+    <div class="field-group {f:if(condition: '{validationResults.flattenedErrors}', then: 'error' )}">
+        <f:form.textfield property="{property}" id="{formName}-{property}" placeholder="{f:translate(key: '{formName}.{property}' )}" />
+        <label for="{formName}-{property}">
+            <f:translate key="{formName}.{property}" />
+        </label>
+    </div>
+</f:form.validationResults>

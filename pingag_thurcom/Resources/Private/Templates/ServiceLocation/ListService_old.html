@@ -1,0 +1,49 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <div class="location-list">
+
+            <core:contentEditable table="tx_pingagthurcom_domain_model_service_location" uid="{location.uid}">
+            <div class="location-search-result">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="simpleServiceLocations" class="simple-service-locations panel-group" role="tablist" aria-multiselectable="true">
+
+                                    <f:for each="{serviceLocations}" as="serviceLocation" iteration="i">
+                                        <div class="panel panel-service-location">
+                                            <div class="panel-heading" role="tab" id="heading-{i.cycle}">
+                                                <h4 class="panel-title">
+                                                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#simpleServiceLocations"
+                                                       href="#collapse-{i.cycle}" aria-expanded="true" aria-controls="collapse-{i.cycle}">
+                                                        <span class="title">{serviceLocation.title}</span>
+                                                        <span class="dienste">
+                                                            <span class="leistung">Beratung</span>
+                                                            <span class="leistung">Anmeldung</span>
+                                                            <f:if condition="{serviceLocation.changemodem}">
+                                                            <span class="leistung">Modem-Austausch</span>
+                                                            </f:if>
+                                                        </span>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse-{i.cycle}" class="panel-collapse collapse" role="tabpanel"
+                                                 aria-labelledby="heading-{i.cycle}">
+                                                <div class="panel-body">
+                                                    <f:format.html>{serviceLocation.description}</f:format.html>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </f:for>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </core:contentEditable>
+ 
+    </div>
+
+</f:section>

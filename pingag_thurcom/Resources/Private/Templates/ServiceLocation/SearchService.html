@@ -1,0 +1,71 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <div class="location-search-list">
+
+        <form action="{current_url}" method="post" class="form-blue">
+            <input type="search" class="search-term" name="{search_field_name}" title="Search Term" value="{searchTerm}" placeholder="<f:translate key='locations.search.placeholder' />" />
+            <input type="submit" class="button-blue" value="<f:translate key='search' />"/>
+        </form>
+        <br />
+        <p><f:link.page pageUid="63" class="underlined listlink"><f:translate key="locations.search.showAllServices" /></f:link.page></p>
+        <f:if condition="{city} && {searchTerm}">
+            <f:then>
+                <div class="search-results">
+                    <div class="header clearfix">
+                        <h3 class="pull-left">
+                            <f:translate key='locations.search.nearbyServiceLocations' />
+                        </h3>
+                    </div>
+
+                    <div class="location-search-result">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="simpleServiceLocations" class="simple-service-locations panel-group" role="tablist" aria-multiselectable="true">
+
+                                    <f:for each="{serviceLocations}" as="serviceLocation" iteration="i">
+                                        <div class="panel panel-service-location">
+                                            <div class="panel-heading" role="tab" id="heading-{i.cycle}">
+                                                <h4 class="panel-title">
+                                                    <a role="button" class="collapsed" data-toggle="collapse" data-parent="#simpleServiceLocations"
+                                                       href="#collapse-{i.cycle}" aria-expanded="true" aria-controls="collapse-{i.cycle}">
+                                                        <span class="title">{serviceLocation.title}</span>
+                                                        <span class="dienste">
+                                                            <span class="leistung">Beratung</span>
+                                                            <span class="leistung">Anmeldung</span>
+                                                            <f:if condition="{serviceLocation.changemodem}">
+                                                            <span class="leistung">Kabelmodem-Austausch</span>
+                                                            </f:if>
+                                                        </span>
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapse-{i.cycle}" class="panel-collapse collapse" role="tabpanel"
+                                                 aria-labelledby="heading-{i.cycle}">
+                                                <div class="panel-body">
+                                                    <f:format.html>{serviceLocation.description}</f:format.html>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </f:for>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <f:if condition="{searchTerm}">
+                    <div class="no-results">
+                        <h3><f:translate key='locations.search.noResult' arguments="{0: '{searchTerm}'}"/></h3>
+                    </div>
+                </f:if>
+            </f:else>
+        </f:if>
+    </div>
+
+</f:section>

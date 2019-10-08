@@ -1,0 +1,78 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+<div class="subscription-order">
+    <f:form>
+        <div class="container">
+            <div class="internet-packages-wrap row">
+                <div class="col-sm-1 static">
+                    <div class="square-icon active">
+                        <img src="fileadmin/templates/images/icon-mail.svg" />
+                    </div>
+                </div>
+                <div class="col-sm-11">
+                    <fieldset class="internet-packages">
+                        <f:for each="{packages}" as="package">
+                            <div class="package <f:if condition='{package.default}'>active</f:if>" data-checkbox="#package-option-{package.uid}" data-value="{package.uid}" data-price="{package.price}" data-title="{package.title}" data-icon="fileadmin/templates/images/icon-mail.svg" style="width: {packageWidth}%;">
+                                <div class="inner">
+                                    <div class="image">
+                                        <f:image width="400" src="{package.image.0.originalResource.publicUrl}"/>
+                                    </div>
+                                    <div class="title">{package.title}</div>
+                                    <div class="big-text">{package.downloadSpeed}</div>
+                                    <div class="big-text-label">
+                                        <f:translate key="internetPackages.downloadSpeed.label"/>
+                                    </div>
+
+                                    <div class="big-text">{package.uploadSpeed}</div>
+                                    <div class="big-text-label">
+                                        <f:translate key="internetPackages.uploadSpeed.label"/>
+                                    </div>
+                                    <div class="overlay"></div>
+                                </div>
+                            </div>
+                            <input id="package-option-{package.uid}" type="radio" value="{package.uid}" name="internetPackage"
+                                   title="{package.title}">
+                        </f:for>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="subscription-options">
+
+                <f:for each="{options}" as="option">
+                    <div class="option-wrap row <f:if condition='{option.price} == 0'>active</f:if>">
+                        <div class="col-sm-1 static">
+                            <div class="square-icon">
+                                <f:if condition="{option.icon.0}">
+                                    <f:image src="{option.icon.0.originalResource.publicUrl}" />
+                                </f:if>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <div class="checkbox" data-checkbox="#option-checkbox-{option.uid}" data-title="{option.title}" data-price="{option.price}" data-icon="{option.icon.0.originalResource.publicUrl}">
+                                <div class="title">{option.title}</div>
+                                <div class="description"><f:format.html>{option.detailText}</f:format.html></div>
+                                <input id="option-checkbox-{option.uid}" type="checkbox" name="options" value="{option.uid}" class="hidden" title="{option.title}">
+                            </div>
+                        </div>
+                    </div>
+
+                </f:for>
+            </div>
+        </div>
+
+        <div class="subscription-summary">
+            <span class="items"></span>
+            <span class="symbol">=</span>
+            <span class="priceTotal">
+                <span class="price"></span>
+                <div class="text"><f:translate key="subscription.pricePerMonth" /></div>
+            </span>
+            <button type="submit" href="#paynow" class="button-blue"><f:translate key="subscription.submit" /></button>
+        </div>
+
+    </f:form>
+</div>
+</f:section>

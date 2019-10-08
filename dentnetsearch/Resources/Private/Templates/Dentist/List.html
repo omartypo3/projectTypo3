@@ -1,0 +1,166 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="background-light-blue dent-net-finder dent-net-search-wrapper container">
+	<h2 class="font-blue font-weight-light">Jetzt Zahnarzt finden</h2>
+	<f:form action="list" method="post" id="form_dentnetsearch" pageUid="{settings.searchPageUid}">
+		<div class="search-wrapper">
+			<f:form.textfield name="search[zipsearch]" id="dentnetsearch" value="{zip}" additionalAttributes="{autocomplete: 'off'}"  class="input-style"
+							  placeholder="Ihre PLZ oder Ort"/>
+			<ul id="typeAhead" class="type-a-head"></ul>
+			<div class="advanced-open"><i class="fas fa-search"></i> Suche verfeinern</div>
+		</div>
+
+		<br/>
+		<div class="advanced-search">
+
+			<p>weitere Auswahlkriterien</p>
+			<label class="control control-checkbox col-xs-6">
+				Nur Implantologie
+				<f:form.checkbox name="search[isimplant]" id="search-isimplant" checked="{isimplant}" value="1"/>
+				<div class="control_indicator"></div>
+			</label>
+			<label class="control control-checkbox col-xs-6">
+				Nur Schlafmedizin
+				<f:form.checkbox name="search[isshlaf]" id="search-issleep" checked="{isshlaf}" value="1"/>
+				<div class="control_indicator"></div>
+			</label>
+			<p>Umkreis festlegen</p>
+			<f:form.select name="search[perimeter]" id="search-perimeter">
+				<f:form.select.option value="0" selected="{f:if(condition: '{perimeter}==0', then: '1')}">Automatisch
+				</f:form.select.option>
+				<f:form.select.option value="10" selected="{f:if(condition: '{perimeter}==10', then: '1')}">10km
+				</f:form.select.option>
+				<f:form.select.option value="20" selected="{f:if(condition: '{perimeter}==20', then: '1')}">20km
+				</f:form.select.option>
+				<f:form.select.option value="30" selected="{f:if(condition: '{perimeter}==30', then: '1')}">30km
+				</f:form.select.option>
+				<f:form.select.option value="40" selected="{f:if(condition: '{perimeter}==40', then: '1')}">40km
+				</f:form.select.option>
+				<f:form.select.option value="50" selected="{f:if(condition: '{perimeter}==50', then: '1')}">50km
+				</f:form.select.option>
+				</f:form.select>
+		</div>
+		<f:form.submit class="input-style background-yellow font-white spacer" value="Filter anwenden"/>
+
+	</f:form>
+	<f:if condition="{f:count(subject: '{dentists.data}')}!=0">
+	<div class="position-info" id="info"><b></b>{f:count(subject: '{dentists.data}')} Praxen im Umkreis von <b>{f:if(condition:
+		'{perimeter}==0', then: '10', else: '{perimeter}')}km</b></div>
+
+
+
+	<div class="">
+		<div class="col-sm-6 dentnet_tabber js_phi_tabber active" data-target="dentnet_listview">
+			<i class="fa fa-list fa-1x"></i> Listenansicht
+		</div>
+		<div class="col-sm-6 dentnet_tabber js_phi_tabber map" data-target="dentnet_mapview">
+			<span aria-hidden="true" class="li_location"></span> Kartenansicht
+		</div>
+	</div>
+	<div class="js_phi_tab dentnet_mapview">
+		<div id="gmap_canvas" style="height: 850px; position: relative; overflow: hidden;width:100%;margin-top: 10px;"
+			 data-latitude="52.50172"
+			 data-longitude="13.31088"></div>
+	</div>
+
+	<div class="js_phi_tab dentnet_listview active">
+		<ul class="list-style search-list list-side" id="results">
+			<f:for each="{dentists.data}" as="dentist">
+				<li data-latitude="{dentist.latitude}" data-longitude="{dentist.longitude}"
+					data-uri="{dentist.viewuri}">
+					<div class="col col-sm-6">
+						<div class="border-blue background-image search-item"
+							 style="background-image: url('{dentist.profileimguri}');">
+						</div>
+					</div>
+					<div class="col col-sm-6">
+						<div>
+							<div class="font-size21 spacer">{dentist.type}</div>
+							<div class="font-size21 spacer">{dentist.title} {dentist.firstname} {dentist.surname}
+							</div>
+							<div>Müllerstr. 142, 13353 Berlin</div>
+							<div class="opening">
+								<f:if condition="{dentist.opening.openToday}">
+									<strong>Heute geöffnet von</strong>
+									<p>{dentist.opening.hours.0}</p>
+								</f:if>
+							</div>
+							<div class="hidePrint">
+								<f:if condition="{dentist.isimplant}">
+									<span class="label dentnet_tag">Implantologie</span>
+								</f:if>
+								<f:if condition="{dentist.issleep}">
+									<span class="label dentnet_tag">Schlafmedizin</span>
+								</f:if>
+							</div>
+							<div class="dentnet_prothumbnails hidePrint hidden-xs">
+
+								<f:for each="{dentist.images}" as="image" iteration="itemIterator">
+									<f:if condition="{image.uri} && {itemIterator.index} !=0 && {itemIterator.index}<=3">
+										<img src="{image.uri}"/>
+									</f:if>
+								</f:for>
+
+							</div>
+							<div class="pull-right dentnet-travel-button-orange fa-beat hidePrint">
+								<a href="javascript:toggleDrFlexAppointments();">zur Online-Terminvereinbarung</a>
+							</div>
+
+						</div>
+					</div>
+					<div class="row dentnet_infos hidePrint col-sm-12 {f:if(condition: '{dentist.ispro}', then: 'orangebackground', else: 'greenbackground')} ">
+						<div class="mail hidePrint">
+							<a href="mailto:{dentist.mail}"><span class="hidden-sm hidden-xs"><i
+									class="far fa-envelope"></i> E-Mail</span></a>
+						</div>
+						<div class="web hidePrint">
+							<a href="{dentist.web}" target="_BLANK" title=""><span class="hidden-sm hidden-xs"><i
+									class="fas fa-globe"></i> Webseite</span></a>
+						</div>
+						<div class="web showPrint">
+							<span class="hidden-sm hidden-xs" itemprop="URL">{dentist.web}</span>
+						</div>
+						<div class="phone hidePrint" style="width:27%;">
+							<a href="tel:{dentist.phone}"><i class="fas fa-phone"></i>
+								<span class="hidden-sm hidden-xs" aria-hidden="true">{dentist.phone}</span></a></div>
+						<div class="phone showPrint" style="width:27%;">
+							<i aria-hidden="true" class="fa fa-phone"></i> <span
+								class="hidden-sm hidden-xs">{web.phone}</span>
+						</div>
+						<f:if condition="{dentist.opening.open}">
+							<f:then>
+								<div class="">
+									<span class="hidden-xs hidden-sm"><i class="fas fa-key"></i> Geöffnet</span>
+								</div>
+							</f:then>
+							<f:else>
+								<div class="">
+									<span class="hidden-xs hidden-sm"><i class="fas fa-lock"></i> Geschlossen</span>
+								</div>
+							</f:else>
+
+						</f:if>
+
+						<div class="hidePrint moreLink">
+							<f:link.action action="show" arguments="{dentist: dentist.uri}" pageUid="{settings.detailPageUid}">Mehr</f:link.action>
+						</div>
+					</div>
+				</li>
+			</f:for>
+		</ul>
+	</div>
+	</f:if>
+</div>
+<v:asset.script>
+	var urid="{settings.uri}";
+	console.log(urid);
+	var tokene="{settings.token}";
+	var Dentnet = new Dentnet({
+	highestSaving: '0',
+	autocomplete: {
+	uri: urid,
+	token: tokene
+	}
+	});
+</v:asset.script>
+</html>

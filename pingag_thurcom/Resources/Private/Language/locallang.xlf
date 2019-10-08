@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-07-20T09:16:11Z" product-name="pingag_standard_helper">
+		<header/>
+		<body>
+			<trans-unit id="tx_pingagstandardhelper_domain_model_test">
+				<source>Test</source>
+			</trans-unit>
+
+			<trans-unit id="channel.list.counter">
+                <source>Programme</source>
+            </trans-unit>
+
+			<trans-unit id="search">
+                <source>Suchen</source>
+            </trans-unit>
+			<trans-unit id="check">
+                <source>Prüfen</source>
+            </trans-unit>
+
+			<trans-unit id="locations.search.resultTitle">
+                <source>Netzbetreiber in %s:</source>
+            </trans-unit>
+			<trans-unit id="locations.search.resultTitleAdvanced">
+                <source>Passender Netzbetreiber:</source>
+            </trans-unit>
+			<trans-unit id="locations.search.showAll">
+                <source>Alle Netzbetreiber anzeigen</source>
+            </trans-unit>
+			<trans-unit id="locations.search.showAllServices">
+                <source>Alle Thurcom-Partner anzeigen</source>
+            </trans-unit>
+			<trans-unit id="locations.search.noResult">
+                <source>Kein Thurcom-Partner unter '%s' gefunden.</source>
+            </trans-unit>
+			<trans-unit id="locations.search.placeholder">
+                <source>PLZ oder Wohnort</source>
+            </trans-unit>
+			<trans-unit id="locations.search.nearbyServiceLocations">
+                <source>Umliegende Thurcom-Partner:</source>
+            </trans-unit>
+
+			<trans-unit id="internetPackages.downloadSpeed.label">
+                <source>max. Download-Speed</source>
+            </trans-unit>
+			<trans-unit id="internetPackages.uploadSpeed.label">
+                <source>max. Upload-Speed</source>
+            </trans-unit>
+
+			<trans-unit id="subscription.submit">
+                <source>Bestellen</source>
+            </trans-unit>
+			<trans-unit id="subscription.pricePerMonth">
+                <source> pro Monat</source>
+            </trans-unit>
+			<trans-unit id="subscription.pricePerMonthPrefix">
+                <source>Total: CHF </source>
+            </trans-unit>
+			<trans-unit id="subscription.showDetails">
+                <source>Details Ihrer Auswahl anzeigen</source>
+            </trans-unit>
+
+			<trans-unit id="order.maintitle">
+				<source>Kombinieren Sie Internet, Telefonie und Digital-TV.</source>
+			</trans-unit>
+			<trans-unit id="order.subtitle">
+				<source>Telefonieren ohne Internet, ohne Kombi:</source>
+			</trans-unit>
+            <trans-unit id="order.labels.firmName">
+                <source>Firma</source>
+            </trans-unit>
+            <trans-unit id="order.labels.salutation">
+                <source>Anrede</source>
+            </trans-unit>
+            <trans-unit id="order.labels.salutationDefault">
+                <source>Auswahl</source>
+            </trans-unit>
+            <trans-unit id="order.labels.salutationMale">
+                <source>Herr</source>
+            </trans-unit>
+            <trans-unit id="order.labels.salutationFemale">
+                <source>Frau</source>
+            </trans-unit>
+            <trans-unit id="order.labels.firstName">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="order.labels.lastName">
+                <source>Vorname</source>
+            </trans-unit>
+            <trans-unit id="order.labels.address">
+                <source>Strasse / Nr.</source>
+            </trans-unit>
+            <trans-unit id="order.labels.city">
+                <source>PLZ / Ort</source>
+            </trans-unit>
+            <trans-unit id="order.labels.telephonePrivate">
+                <source>Telefon Privat</source>
+            </trans-unit>
+            <trans-unit id="order.labels.telephoneOffice">
+                <source>Telefon Geschäft</source>
+            </trans-unit>
+            <trans-unit id="order.labels.telephoneMobile">
+                <source>Mobile</source>
+            </trans-unit>
+            <trans-unit id="order.labels.email">
+                <source>E-Mail</source>
+            </trans-unit>
+            <trans-unit id="order.labels.birthday">
+                <source>Geburtsdatum</source>
+            </trans-unit>
+            <trans-unit id="order.labels.comment">
+                <source>Bemerkung</source>
+            </trans-unit>
+
+			<trans-unit id="product.list.priceLabel">
+                <source>CHF %s.–</source>
+            </trans-unit>
+			<trans-unit id="product.list.priceLabelAfter">
+                <source>inkl. MwSt.</source>
+            </trans-unit>
+			<trans-unit id="order.form.required">
+                <source>* Mit Stern markierte Felder müssen zwingend ausgefüllt werden.</source>
+            </trans-unit>
+			<trans-unit id="order.form.back">
+                <source>Zurück</source>
+            </trans-unit>
+			<trans-unit id="order.form.next">
+                <source>Weiter</source>
+            </trans-unit>
+			<trans-unit id="order.form.selectedOptions">
+                <source>Ausgewählte Produkte:</source>
+            </trans-unit>
+			<trans-unit id="order.form.productstitle">
+                <source>Zubehör:</source>
+            </trans-unit>
+			<trans-unit id="order.form.piece">
+                <source>Stück</source>
+            </trans-unit>
+			<trans-unit id="order.form.noproducts">
+                <source>ohne Zubehör</source>
+            </trans-unit>
+			<trans-unit id="order.form.extratitle">
+                <source>Zusatzoption:</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber">
+                <source>2. Rufnummer für Thurcom-Phone</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber.title">
+                <source>Bis zu vier zusätzliche Rufnummern möglich</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber.info">
+                <source>CHF 9.–/Monat pro Rufnummer</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumbers">
+                <source>Zusätzliche Rufnummern wählen</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber1">
+                <source>1 zusätzliche Rufnummer</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber2">
+                <source>2 zusätzliche Rufnummern</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber3">
+                <source>3 zusätzliche Rufnummern</source>
+            </trans-unit>
+			<trans-unit id="order.form.extranumber4">
+                <source>4 zusätzliche Rufnummern</source>
+            </trans-unit>
+			<trans-unit id="order.form.extrasettop">
+                <source>2. Set-Top-Box für Thurcom-TV 4.0</source>
+            </trans-unit>
+			<trans-unit id="order.form.numbertitle">
+                <source>Rufnummer:</source>
+            </trans-unit>
+			<trans-unit id="order.form.keepnumber">
+                <source>Rufnummer behalten</source>
+            </trans-unit>
+			<trans-unit id="order.form.keepnumberInfo">
+                <source>Möchten Sie Ihre Telefonnummer vom bestehenden Anbieter zu Thurcom wechseln?</source>
+            </trans-unit>
+			<trans-unit id="order.form.newnumber">
+                <source>Neue Rufnummer</source>
+            </trans-unit>
+			<trans-unit id="order.form.newnumberInfo">
+                <source>Hätten Sie gerne eine Thurcom-Rufnummer? Dann klicken Sie auf «neue Rufnummer»</source>
+            </trans-unit>
+			<trans-unit id="order.form.contacttitle">
+                <source>Persönliche Angaben</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

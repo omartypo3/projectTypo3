@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+   elements {
+      pingag_thurcom {
+         icon = EXT:pingag_thurcom/Resources/Public/Icons/tx_pingagthurcom_domain_model_service_location.svg
+         title = LLL:EXT: pingag_thurcom/Resources/Private/Language/tx_pingagthurcom_domain_model_service_location.xlf:plugin_title
+         description = LLL:EXT: pingag_thurcom/Resources/Private/Language/tx_pingagthurcom_domain_model_service_location.xlf:plugin_description
+         tt_content_defValues {
+            CType = list
+            list_type = pingagthurcom_service_location
+         }
+      }
+   }
+}

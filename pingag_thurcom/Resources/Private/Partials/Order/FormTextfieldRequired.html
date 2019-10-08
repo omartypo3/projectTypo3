@@ -1,0 +1,10 @@
+<f:if condition="{fieldName} == 'email'">
+    <f:then>
+        <label for="{fieldName}" class="mand"><f:translate key="order.labels.{fieldName}" />  <span class="obli">*</span></label>
+        <f:form.textfield id="{fieldName}" property="{fieldName}" type="email" required="required"/>
+    </f:then>
+    <f:else>
+        <label for="{fieldName}" class="mand"><f:translate key="order.labels.{fieldName}" />  <span class="obli">*</span></label>
+        <f:form.textfield id="{fieldName}" property="{fieldName}" type="text" required="required"/>
+    </f:else>
+</f:if>

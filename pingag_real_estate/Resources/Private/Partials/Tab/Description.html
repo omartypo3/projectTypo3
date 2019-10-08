@@ -1,0 +1,48 @@
+<div id="tab-description" class="tab in">
+    <div class="row">
+        <div class="rooms">
+            <div class="label">
+                <f:translate key="show.numberOfRooms"/>
+            </div>
+            <div class="text">
+                <f:if condition="{realEstate.numberOfRooms}">
+                    <f:then>
+                         <f:if condition="{realEstate.numberOfRooms} == 9.9">
+                            <f:then>10</f:then>
+                            <f:else>{realEstate.numberOfRooms}</f:else>
+                        </f:if>
+                    </f:then>
+                    <f:else>–</f:else>
+                </f:if>
+            </div>
+        </div>
+        <div class="address">
+            <div class="label">
+                <f:translate key="show.address"/>
+            </div>
+            <div class="text">
+                {realEstate.objectStreet}, {realEstate.objectZip} {realEstate.objectCity},
+                {realEstate.objectState}
+            </div>
+        </div>
+        <div class="price">
+            <div class="label">
+                <f:if condition="{realEstate.isRent}">
+                    <f:translate key="show.priceForRent"/>
+                </f:if>
+                <f:if condition="{realEstate.isSale}">
+                    <f:translate key="show.priceForSale"/>
+                </f:if>
+            </div>
+            <div class="text">
+                <f:then>{realEstate.priceText}</f:then>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <f:format.html>{realEstate.objectDescription}</f:format.html>
+        <div id="real-estate-map" data-address="{realEstate.address}"></div>
+    </div>
+
+</div>

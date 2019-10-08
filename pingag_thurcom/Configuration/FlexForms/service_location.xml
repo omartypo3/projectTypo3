@@ -1,0 +1,52 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Inhaltstyp</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Standardaktion des Plugins</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Liste</numIndex>
+                                        <numIndex index="1">ServiceLocation->list</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Suche</numIndex>
+                                        <numIndex index="1">ServiceLocation->search</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Suche (erweitert)</numIndex>
+                                        <numIndex index="1">ServiceLocation->searchAdvanced</numIndex>
+                                    </numIndex>
+									<numIndex index="3">
+                                        <numIndex index="0">Suche mit Liste</numIndex>
+                                        <numIndex index="1">ServiceLocation->search;ServiceLocation->list</numIndex>
+                                    </numIndex>
+									<numIndex index="4">
+                                        <numIndex index="0">Suche nur Service-Stellen</numIndex>
+                                        <numIndex index="1">ServiceLocation->searchService;ServiceLocation->listService</numIndex>
+                                    </numIndex>
+									<numIndex index="5">
+                                        <numIndex index="0">Suche für Abo-Übersicht</numIndex>
+                                        <numIndex index="1">ServiceLocation->searchAdvancedAbo</numIndex>
+                                    </numIndex>
+									<numIndex index="6">
+                                        <numIndex index="0">Liste nur Thurcom-Partner</numIndex>
+                                        <numIndex index="1">ServiceLocation->listService</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

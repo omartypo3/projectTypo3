@@ -1,0 +1,37 @@
+
+plugin.tx_aermecextension_aermecextension {
+	view {
+		templateRootPaths.0 = {$plugin.tx_aermecextension_aermecextension.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_aermecextension_aermecextension.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_aermecextension_aermecextension.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_aermecextension_aermecextension.persistence.storagePid}
+	}
+}
+
+page = PAGE
+page{
+
+	headerData{
+
+		10 = TEXT
+		10.value(
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+		)
+	}
+	includeCSS {
+	    #bootstrapcss = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+		styles = typo3conf/ext/aermec_extension/Resources/Public/Styles/style.css
+	}
+
+	includeJSFooter {
+		jquery = https://code.jquery.com/jquery-2.2.0.min.js
+		popper = https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js
+		bootstrapjs = https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
+		script = typo3conf/ext/aermec_extension/Resources/Public/Scripts/scripts.js
+
+	}
+
+}

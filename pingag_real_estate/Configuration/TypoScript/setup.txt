@@ -1,0 +1,39 @@
+config.tx_extbase.persistence {
+    storagePid = 3299
+    classes {
+        Pingag\PingagRealEstate\Domain\Model\RealEstate {
+            mapping {
+                tableName = tx_pingag_real_estate
+            }
+        }
+
+        Pingag\PingagRealEstate\Domain\Model\FileReference {
+            mapping {
+                tableName = sys_file_reference
+                columns {
+                    uid_local.mapOnProperty = originalFileIdentifier
+                }
+            }
+        }
+    }
+}
+
+plugin.tx_pingagrealestate {
+    view {
+        templateRootPaths {
+            0 = EXT:pingag_real_estate/Resources/Private/Templates/
+            1 = {$plugin.tx_pingagrealestate.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:pingag_real_estate/Resources/Private/Partials/
+            1 = {$plugin.tx_pingagrealestate.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:pingag_real_estate/Resources/Private/Layouts/
+            1 = {$plugin.tx_pingagrealestate.view.layoutRootPath}
+        }
+    }
+    settings {
+        devMailTo = {$plugin.tx_pingagrealestate.settings.devMailTo}
+   }     
+}

@@ -1,0 +1,84 @@
+<f:layout name="Default"/>
+<f:section name="main">
+
+<div class="aermec_item_menu">
+				<li class="nav">
+				<a>
+				  
+				  {translations.pr}
+				  </a>
+				
+							
+							<ul class="navi2 navi2-produkt">
+
+								<f:for each="{menus}" as="menu">
+									<li class="nav sub">
+										<a tabindex="-1">{menu.desc}</a>
+										<f:if condition="{menu.subcategory}">
+											<ul class="navi3">
+												<f:for each="{menu.subcategory}" as="submenu">
+													<li class="sub"><a tabindex="-1" class="dropdown-toggle"
+																					data-toggle="dropdown"
+																					aria-expanded="false">{submenu.desc}</a>
+
+
+														<f:if condition="{submenu.serie}">
+															<ul class="navi4">
+																<f:for each="{submenu.serie}" as="serie">
+
+																	<li>
+																		<f:link.action action="show" pageUid="1487"
+																					   arguments="{code : serie.code, categoryCode:menu.code,subcategoryCode:submenu.code}">
+																			{serie.desc}
+																		</f:link.action>
+																	</li>
+																</f:for>
+															</ul>
+														</f:if>
+													</li>
+												</f:for>
+											</ul>
+										</f:if>
+									</li>
+								</f:for>
+							</ul>
+				</li>
+				</div>	
+					
+
+    <div class="aermec_item_show">
+
+        <div id="aermec_item">
+            <div class="col-md-6 col-lg-4"><img src="{data.image}" class="img-responsive" alt="FCZ">
+                <p>&nbsp;</p></div>
+            <div class="col-md-6 col-lg-8"><h2 style="margin-top:0;color:#97d700;">{data.title}</h2>
+                <p>{data.description}</p>
+
+                <ul class="list-group">
+
+                    <f:for each="{data.attributes}" as="attribute">
+                        <li class="list-group-item">{attribute.label}
+                            <f:if condition="{attribute.option}"><span class="badge" style="background-color:#ddd;"><i
+                                    class="glyphicon glyphicon-option-horizontal"></i></span></f:if>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+            <div class="col-sm-12"><p>{data.fulldesc}</p><br>
+                <ul class="list-group">
+                    <f:for each="{data.documents}" as="document">
+                        <li class="list-group-item"><a href="{document.filename}" target="_blank"><i
+                                class="glyphicon glyphicon-download-alt"></i> <b>{document.doctype}</b> {document.info}</a>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <f:flashMessages/>
+
+
+    <br/>
+</f:section>

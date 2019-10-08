@@ -1,0 +1,21 @@
+##
+## TypoScript Setup for "mt_meteo"
+##
+## Author : David Ansermot <david.ansermot@wng.ch>
+## Date   : 2013-11-29
+##
+
+plugin.tx_mtmeteo_pi1 {
+	
+	# Flag for caching
+	no_cache = 1
+	
+	# Chemin du template
+	templateFile = EXT:mt_meteo/Resources/Private/Templates/template_pi1.html
+	
+	# Chemin ver le dossier de travail
+	meteoFolderPath = 
+	
+	# Nom du fichier à parser
+	meteoParseFile = meteo_1820fr.xhtml
+}
