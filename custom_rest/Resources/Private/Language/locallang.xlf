@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-05-24T12:43:48Z" product-name="custom_rest">
+		<header/>
+		<body>
+            <trans-unit id="tx_customrest_domain_model_person">
+				<source>Reporter</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_person.name">
+				<source>Vorname/Name</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_person.plz">
+				<source>PLZ/Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_person.telefon">
+				<source>Telefon</source>
+			</trans-unit>
+            <trans-unit id="tx_customrest_domain_model_person.email">
+				<source>Email</source>
+			</trans-unit>
+            <trans-unit id="tx_customrest_domain_model_person.bild">
+				<source>Foto/Video</source>
+			</trans-unit>
+            <trans-unit id="tx_customrest_domain_model_person.text">
+				<source>Was ist passiert?</source>
+			</trans-unit>
+            <trans-unit id="tx_customrest_domain_model_email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_email.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_email.subject">
+				<source>Subject</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_email.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_customrest_domain_model_email.text">
+				<source>Text</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

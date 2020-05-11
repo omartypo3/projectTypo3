@@ -1,0 +1,32 @@
+plugin.tx_rest.settings.paths {
+    cundd-custom_rest {
+        path = cundd-custom_rest-*
+        read = allow
+        write = allow
+        handlerClass = \Cundd\CustomRest\Rest\Handler
+    }
+
+    cundd-custom_rest-require {
+        path = cundd-custom_rest-require
+        read = require
+        write = require
+        handlerClass = \Cundd\CustomRest\Rest\Handler
+    }
+}
+
+plugin.tx_rest.settings.aliases {
+    customhandler = cundd-custom_rest-custom_handler
+    page = cundd-custom_rest-content
+    app = cundd-custom_rest-menu
+    #comment = cundd-custom_rest-dce
+    news = cundd-custom_rest-newsapp
+    likes = cundd-custom_rest-likes
+    dislikes = cundd-custom_rest-dislikes
+    votes = cundd-custom_rest-voteslike
+    send = cundd-custom_rest-send
+}
+
+# If you receive a cHash error you can either specify a valid cHash for your requests or
+# disable `features.requireCHashArgumentForActionArguments`
+# see: https://docs.typo3.org/typo3cms/extensions/core/8-dev/Changelog/8.5/Breaking-78002-EnforceCHashArgumentForExtbaseActions.html
+#plugin.tx_customrest.features.requireCHashArgumentForActionArguments = 0
