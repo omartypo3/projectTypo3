@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+	<f:if condition="{menu}">
+		<ul>
+			<f:for each="{menu}" as="page">
+				<li class="liste_home_menu btn btn-vert btn-animate">
+					<f:link.page pageUid="{page.link}" title="{f:if(condition: page.current, then: '{page.title} - Page active')}" target="{page.target}">
+						{page.title}
+					</f:link.page>
+					
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+
+</f:section>
+</html>

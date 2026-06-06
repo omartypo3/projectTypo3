@@ -1,0 +1,24 @@
+<li class="listAblageEntry" style="border:1px solid grey;padding:0px;list-style: none;margin-bottom:10px;padding:5px;" id="ablageList{ablage.uid}" data-ablage="{ablage.uid}"> <i class="bb-grid"></i>
+	
+	<f:link.action controller="Ablage" pluginName="ablage" extensionName="dslintranet" action="delete" pageType="89657999" arguments="{ablage : ablage}" class="btn doAjax" additionalAttributes="{data-ajax-action: 'removeSelector', data-ajax-selector: '#ablageList{ablage.uid}', data-ajax-id: '{ablage.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+	
+	<f:if condition="{ablage.auftrag}">
+		<f:then>
+
+
+			<f:alias map="{auftraege: ablage.auftrag}">
+				<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="show" arguments="{auftraege : auftraege}" class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{auftraege.uid}'}" onclick="$('#split-pane-middle').click();" >
+				<f:if condition="{auftraege.kunde}"><div class="auftraegeListKunde"><strong>{auftraege.kunde.name}</strong> [{auftraege.kunde.nummer}]</div></f:if>
+				<div>{auftraege.nr}: {auftraege.titel}</div>
+				</f:link.action>
+			</f:alias>
+
+		</f:then>
+
+	</f:if>
+
+	
+	
+	
+	
+</li>

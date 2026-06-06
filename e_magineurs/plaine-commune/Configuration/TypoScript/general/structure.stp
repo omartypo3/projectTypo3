@@ -1,0 +1,482 @@
+page = PAGE
+page {
+    10 {
+        templateName = TEXT
+		templateName.stdWrap.cObject = CASE
+		templateName.stdWrap.cObject {
+			key.data = pagelayout
+			default = TEXT
+			default.value = Default
+			1 = TEXT
+			1.value = Default
+			2 = TEXT
+			2.value = Accueil
+			3 = TEXT
+			3.value = PageSansColonne
+			4 = TEXT
+			4.value = Newsletter
+			14 = TEXT
+			14.value = DetailPublication
+			0 < .default
+		}
+        variables {
+        	# Ajoutez vos variables ici
+        	# variables existantes dans le package :
+        	# dossierPublic = {$e_magineurs.conf.dossierPublic}
+			# homePage = {$e_magineurs.conf.homePage}
+			# dossierLangue = LLL:{$e_package.conf.dossierLangue}/locallang.xlf
+        }
+    }
+}
+
+# active la popup sur les images du RTE
+lib.contentElement.settings.media.popup.enable = 1
+lib.contentElement.settings.media.popup.directImageLink = 1
+
+# Récupérer une image de l'onglet ressources d'une page
+# <f:cObject typoscriptObjectPath='lib.imagePage' data='{sourceUid: data.uid}' />
+lib.imagePage = FILES
+lib.imagePage {
+	references {
+		table = pages
+		uid.field = sourceUid
+		fieldName = media
+	}
+	renderObj = IMAGE
+	renderObj {
+		file {
+			import.data = file:current:publicUrl
+		}
+	}
+}
+
+lib.imageGridInfoBulle = FILES
+lib.imageGridInfoBulle {
+	references {
+		table = tt_content
+		uid.field = sourceUid
+		fieldName = image
+	}
+	renderObj = IMAGE
+	renderObj {
+		file {
+			import.data = file:current:publicUrl
+		}
+	}
+}
+
+#Exemple de récupération d'une image des propriétés d'une page. L'objet lib.imagePage est créé dans le package
+lib.imagePageDefaut < lib.imagePage
+lib.imagePageDefaut.renderObj{
+	file {
+		#width = 1980c
+		#height = 406c
+	}
+}
+
+#Exemple de récupération d'une image des propriétés d'une page. L'objet lib.imagePage est créé dans le package
+lib.imageHome < lib.imagePage
+lib.imageHome.renderObj.file {
+	width = 1980c
+	height = 949c
+}
+lib.imageHome.renderObj.params = class="backgroundHome"
+
+lib.connexionTop = EXTBASEPLUGIN
+lib.connexionTop {
+    extensionName = Felogin
+    pluginName = Login
+    vendorName = TYPO3\CMS
+    settings {
+        pages = 194
+        recursive = 0
+        showForgotPassword = 1
+        showPermaLogin = 1
+        redirectMode = login
+        redirectFirstMethod = 1
+        redirectPageLogin = 203
+        redirectPageLoginError = 203
+        redirectPageLogout = 203
+        dateFormat = Y-m-d H:i
+        welcomeHeader_stdWrap.wrap = <h3>|</h3>
+        welcomeMessage_stdWrap.wrap = <p>|</p>
+        successMessage_stdWrap.wrap = <p>|</p>
+        logoutMessage_stdWrap.wrap = <p>|</p>
+        errorMessage_stdWrap.wrap = <p>|</p>
+        forgotErrorMessage_stdWrap.wrap = <p>|</p>
+        forgotMessage_stdWrap.wrap = <p>|</p>
+    }
+    view {
+        templateRootPaths.100 = EXT:e_magineurs/plaine-commune/Resources/Extensions/felogin/
+    }
+    _LOCAL_LANG {
+        fr {
+            ll_error_message = Une erreur est survenue durant la connexion.
+            ll_forgot_reset_message = Veuillez saisir votre nom d'utilisateur ou votre email. Les instructions à la réinitialisation de votre mot de passe vous seront envoyées par mail.
+        }
+    }
+}
+
+lib.infoHeaderConnexion = CONTENT
+lib.infoHeaderConnexion {
+    table = tt_content
+    select.pidInList = {$e_magineurs.conf.infoHeaderConnexion}
+}
+
+
+/*
+#Exemple de récupération d'un contenu d'une page précise
+lib.monObjetTS = CONTENT
+lib.monObjetTS {
+    table = tt_content
+    select.pidInList = 88
+}
+*/
+
+#récuperation du munu de "restons connectés"
+lib.stayConnect = CONTENT
+lib.stayConnect {
+	table = tt_content
+	select {
+		pidInList.field = sourceUid
+		where = colPos = 2
+        orderBy = sorting ASC
+	}
+}
+
+lib.categories = CONTENT
+lib.categories {
+   table = pages
+   select {
+       languageField = pages.sys_language_uid
+       uidInList.field = recordUid
+       pidInList = 1
+       recursive = 99
+       selectFields = sys_category.title
+       join = sys_category_record_mm ON pages.uid = sys_category_record_mm.uid_foreign JOIN sys_category ON sys_category.uid = sys_category_record_mm.uid_local
+       where = sys_category_record_mm.tablenames = 'pages'
+       where = sys_category.parent = '30'
+       #en local => where = sys_category.parent = '23'
+       orderBy = sys_category.sorting
+
+   }
+   renderObj = TEXT
+   renderObj {
+       field = title
+       wrap = |
+   }
+}
+
+
+
+#récuperation du chapo
+lib.chapo = CONTENT
+lib.chapo {
+	table = tt_content
+
+	select {
+		pidInList.field = sourceUid
+		where = colPos = 2
+	}
+
+	renderObj = TEXT
+	renderObj {
+		field = bodytext
+		stripHtml = 1
+	}
+}
+
+
+# Récupérer d'une video de l'onglet ressources d'une page
+# <f:cObject typoscriptObjectPath='lib.videoPage' data='{sourceUid: data.uid}' />
+lib.videoPage = FILES
+lib.videoPage {
+	references {
+		table = pages
+		uid.field = sourceUid
+		fieldName = media
+	}
+	renderObj = TEXT
+	renderObj {
+		data = file:current:publicUrl
+		noTrimWrap (
+	    |
+	            <source src="|"  type="video/mp4" />||
+	    )
+	}
+}
+
+
+
+# Récupérer l'extension (format) un fichier
+# <f:cObject typoscriptObjectPath='lib.extensionFormat' data='{sourceUid: data.uid}' />
+lib.extensionFormat = FILES
+lib.extensionFormat {
+	references {
+		table = pages
+		uid.field = sourceUid
+		fieldName = media
+	}
+	renderObj = TEXT
+	renderObj {
+		data = file:current:extension
+
+	}
+}
+
+
+# Récupérer d'une image selon colpos
+# <f:cObject typoscriptObjectPath='lib.imageColPos4'/>
+lib.imageColPos4 = CONTENT
+lib.imageColPos4 {
+	table = tt_content
+
+	select {
+		pidInList.data = TSFE:id
+		where = colPos = 4
+	}
+
+	renderObj = FILES
+	renderObj {
+		references{
+			table = tt_content
+			uid.field = uid
+			fieldName = assets
+		}
+
+		renderObj = IMAGE
+		renderObj {
+			file.import.data = file:current:publicUrl
+			params = class="img_bg_home5"
+		}
+	}
+}
+
+lib.videoColPos4 = CONTENT
+lib.videoColPos4 {
+   table = tt_content
+
+   select {
+       pidInList.data = TSFE:id
+       where = colPos = 4
+   }
+
+   renderObj = FILES
+   renderObj {
+       references{
+           table = tt_content
+           uid.field = uid
+           fieldName = assets
+       }
+
+       renderObj = TEXT
+       renderObj {
+           data = file:current:publicUrl
+           noTrimWrap (
+  		    |
+  		            <source src="|"  type="video/mp4" />||
+  		    )
+
+       }
+   }
+}
+
+
+# Récupérer l'extension (format) un fichier d'un un colpos
+# <f:cObject typoscriptObjectPath='lib.extensionFormatColPos4'/>
+
+lib.extensionFormatColPos4 = CONTENT
+lib.extensionFormatColPos4 {
+   table = tt_content
+
+   select {
+       pidInList.data = TSFE:id
+       where = colPos = 4
+   }
+
+   renderObj = FILES
+   renderObj {
+       references{
+           table = tt_content
+           uid.field = uid
+           fieldName = assets
+       }
+
+       renderObj = TEXT
+       renderObj {
+			data = file:current:extension
+		}
+   }
+}
+
+
+# # Récupérer d'une video selon colpos
+# # <f:cObject typoscriptObjectPath='lib.videoColPos4'/>
+# lib.videoColPos4 = CONTENT
+# lib.videoColPos4 {
+# 	table = tt_content
+
+# 	select {
+# 		pidInList.data = TSFE:id
+# 		where = colPos = 4
+# 	}
+
+# 	renderObj = FILES
+# 	renderObj {
+# 		references{
+# 			table = tt_content
+# 			uid.field = uid
+# 			fieldName = media
+# 	}
+# 		renderObj = TEXT
+# 		renderObj {
+# 			data = file:current:publicUrl
+# 			noTrimWrap (
+# 		    |
+# 		            <source src="|"  type="video/mp4" />||
+# 		    )
+# 		}
+# 	}
+# }
+
+
+
+lib.getIdOffre = TEXT
+lib.getIdOffre.data = GP:tx_eannuaires_pi1|offre
+
+
+
+lib.intituleEmploi = RECORDS
+lib.intituleEmploi{
+   dontCheckPid = 1
+   tables = tx_eannuaires_domain_model_fiche
+   source.data = GP:tx_eannuaires_pi1|offre
+   source.intval = 1
+   conf.tx_eannuaires_domain_model_fiche = TEXT
+   conf.tx_eannuaires_domain_model_fiche {
+       field = title
+       htmlSpecialChars = 1
+   }
+}
+
+lib.refEmploi = RECORDS
+lib.refEmploi{
+    dontCheckPid = 1
+    tables = tx_eannuaires_domain_model_fiche
+    source.data = GP:tx_eannuaires_pi1|offre
+    source.intval = 1
+    conf.tx_eannuaires_domain_model_fiche = TEXT
+    conf.tx_eannuaires_domain_model_fiche {
+        field = bp
+        htmlSpecialChars = 1
+    }
+}
+
+
+
+
+//récupération de la catégorie gestion doc
+lib.categoriesDoc = CONTENT
+lib.categoriesDoc {
+    table = sys_file
+    select {
+        uidInList.field = sourceUid
+        pidInList = 0
+        selectFields = sys_category.title AS catTitle
+        join = sys_file_metadata ON sys_file.uid = sys_file_metadata.file join sys_category_record_mm on sys_file_metadata.uid = sys_category_record_mm.uid_foreign join sys_category on sys_category_record_mm.uid_local = sys_category.uid
+		where = sys_category_record_mm.tablenames = 'sys_file_metadata'
+    }
+    renderObj = TEXT
+    renderObj {
+        field = catTitle
+        stdWrap.noTrimWrap = | ||
+    }
+}
+
+
+
+#social share
+lib.emailPage = TEXT
+lib.emailPage {
+	value =  Envoyer par email
+	wrap = <div class="itemMail"><a href="javascript:emailCurrentPage()">|</a></div>
+}
+
+
+## CARTO ##
+lib.paramPoiNews = TEXT
+lib.paramPoiNews {
+	typolink {
+	    parameter = {$e_magineurs.conf.idPageMap}
+	    additionalParams.field = sourceUid
+	    additionalParams.wrap = &tx_egmap_gmap[pois]=tx_news_domain_model_news_|
+		useCacheHash = 1
+	}
+    value = Voir sur la carte
+}
+
+lib.paramPoiAnnuaire = TEXT
+lib.paramPoiAnnuaire {
+	typolink {
+	    parameter = {$e_magineurs.conf.idPageMap}
+	    additionalParams.field = sourceUid
+	    additionalParams.wrap = &tx_egmap_gmap[pois]=tx_eannuaires_domain_model_fiche_|
+		useCacheHash = 1
+	}
+    value = Afficher le plan
+}
+
+
+lib.uidPage = TEXT
+lib.uidPage.data = GP:tx_news_pi1|news
+
+lib.cat0 = TEXT
+lib.cat0.data = GP:cat
+
+lib.cat1 = TEXT
+lib.cat1.data = GP:cat2
+
+lib.cat2 = TEXT
+lib.cat2.data = GP:cat3
+
+
+
+lib.math = TEXT
+lib.math {
+  current = 1
+  prioriCalc = 1
+}
+
+lib.getFooterNewsletter = CONTENT
+lib.getFooterNewsletter {
+	table = tt_content
+	select {
+		pidInList = {$e_magineurs.conf.idPageNewsletterBlock}
+		max = 1
+		where = CType LIKE '%newsletterwidg%'
+		selectFields = uid
+	}
+
+	renderObj = TEXT
+	renderObj {
+		field = uid
+		wrap = |,
+	}
+}
+
+lib.getPopUpNewsletter = CONTENT
+lib.getPopUpNewsletter {
+	table = tt_content
+	select {
+		pidInList = {$e_magineurs.conf.idPageSiteConfigFolder}
+		max = 1
+		where = CType LIKE '%popupnewsletterwidg%'
+		selectFields = uid
+	}
+
+	renderObj = TEXT
+	renderObj {
+		field = uid
+		wrap = |,
+	}
+}

@@ -1,0 +1,14 @@
+<f:for each="{interval}" key="key" as="value" iteration="iterator">
+	<f:if condition="{iterator.cycle}<3">
+		{value}  
+		<f:switch expression="{key}">
+			<f:case value="jahre">Jahr{f:if(condition: '{value}!=1', then: 'e')}</f:case>
+			<f:case value="monate">Monat{f:if(condition: '{value}!=1', then: 'e')}</f:case>
+			<f:case value="tage">Tag{f:if(condition: '{value}!=1', then: 'e')}</f:case>
+   			<f:case value="stunden">Stunde{f:if(condition: '{value}!=1', then: 'n')}</f:case>
+   			<f:case value="minuten">Minute{f:if(condition: '{value}!=1', then: 'n')}</f:case>
+			<f:case value="sekunden">Sekunde{f:if(condition: '{value}!=1', then: 'n')}</f:case>
+		</f:switch>
+
+	</f:if>
+</f:for>

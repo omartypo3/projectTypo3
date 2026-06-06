@@ -1,0 +1,199 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<script>var zeiteintraegeUid = '{zeiteintraege.uid}';</script>
+<script>var wartungsvertraegeUid = '{wartungsvertraege.uid}';</script>
+
+
+<script>
+
+	$(function () {
+		
+		$('.fullDateTimePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom'
+		});
+		
+		
+		$('.fullDatePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'DD.MM.YYYY'
+		});
+		
+		
+		$('.fullTimePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'HH:mm',
+			widgetPositioning: {
+				horizontal: 'right',
+				vertical: 'bottom'
+			}
+			
+		
+			
+		}).on("dp.change", function (e) {
+
+			
+			getDiffMinutes();
+			
+        });
+		
+		$('.selectpickerFormular').selectpicker();
+		
+		
+		$(".touchspin_minuten").TouchSpin({
+			max: 59,
+			prefix: 'm',
+			prefix_extraclass: 'input-sm'
+			
+		});
+		$(".touchspin_stunden").TouchSpin({
+			max: 999,
+			prefix: 'h',
+			prefix_extraclass: 'input-sm'
+		});
+		
+		
+		$( "#zeitkontingent_gesamt" ).change(function(e) {
+			/*platzhalter wegen fluid Javascript Problem*/
+		});
+		
+		$('.animated').autosize({append: "\n"});
+		setAllTotalMinutesAfter();
+	});
+
+	
+
+	function getDiffMinutes(){
+		
+	
+		var begin = $('#formBeginTime'+zeiteintraegeUid);
+		var end = $('#formEndTime'+zeiteintraegeUid);
+		
+		var diff = moment.duration($('#formEndTime'+zeiteintraegeUid).val(), "HH:mm").asMinutes() - moment.duration($('#formBeginTime'+zeiteintraegeUid).val(), "HH:mm").asMinutes();
+		if(diff<0) diff=diff*-1;
+	
+	
+		$('#minutenGesamt').val(diff);
+		
+		
+		
+		var stunden = Math.floor(diff/60);
+		var minuten = diff-(stunden*60);
+
+		var ausgabe = '';
+		if(stunden>1) ausgabe=ausgabe+stunden+' Stunden'
+			else if(stunden>0) ausgabe=ausgabe+stunden+' Stunde'
+
+		if(minuten>0){
+			if(stunden>0) ausgabe=ausgabe+' und ';
+
+			if(minuten>1) ausgabe=ausgabe+minuten+' Minuten'
+				else ausgabe=ausgabe+minuten+' Minute'
+		}
+		
+		$('#minutenGesamtText').html(ausgabe);
+		
+		setAllTotalMinutesAfter();
+	
+		
+		 //id="formEndTime{zeiteintraege.uid}" 
+	}
+	
+function initKontingentSpinner(uid){
+	
+	
+	
+	var selector_stunden = "#"+uid+"_spinner_kontingent_stunden";
+	var selector_minuten = "#"+uid+"_spinner_kontingent_minuten";
+	var selector_kontingent = "#"+uid+"_spinner_kontingent";
+	
+	var minutenGesamt = parseInt($(selector_kontingent).val());
+	if(!isNaN(minutenGesamt)) {
+		if(minutenGesamt>0) {
+			var stunden = Math.floor(minutenGesamt/60);
+			var minuten = minutenGesamt-(stunden*60);	
+			
+			if(stunden>0) $( selector_stunden ).val(stunden);
+			if(minuten>0) $( selector_minuten ).val(minuten);
+		}
+	}
+			
+}
+
+
+	
+	
+	initKontingentSpinner(wartungsvertraegeUid+'_'+zeiteintraegeUid);
+
+	$('.validator_required').attr('required','required');
+
+	
+	
+	
+	function setAllTotalMinutesAfter(){
+		
+		var minutenGesamt = $('#minutenGesamt').val();
+		
+		var minutenZugewiesen = $('#zeitkontingent_gesamt').val();
+		var minutenUnzugewiesen = minutenGesamt-minutenZugewiesen;
+		$('#minutenUnzugewiesen').val(minutenUnzugewiesen);
+		
+		
+		
+		
+		if(minutenUnzugewiesen==0){
+			$('#kontingentFail').val(1);
+			$('#kontingent_verbleibend').attr('class','status_all_filled');
+			$('#kontingent_verbleibend').html('Die Zeit ist fertig aufgeteilt.');
+		} else {
+			if($('#formFieldsAktivitaet').length>0) $('#kontingentFail').val('');
+			
+			
+			var minutenTemp = minutenUnzugewiesen;
+			if(minutenTemp<0) minutenTemp=minutenTemp*-1;
+			var stunden = Math.floor(minutenTemp/60);
+			var minuten = minutenTemp-(stunden*60);
+
+			var ausgabe = '';
+			if(stunden>1) ausgabe=ausgabe+stunden+' Stunden'
+				else if(stunden>0) ausgabe=ausgabe+stunden+' Stunde'
+
+			if(minuten>0){
+				if(stunden>0) ausgabe=ausgabe+' und ';
+				
+				if(minuten>1) ausgabe=ausgabe+minuten+' Minuten'
+					else ausgabe=ausgabe+minuten+' Minute'
+			}
+
+			if(minutenUnzugewiesen>0){
+				$('#kontingent_verbleibend').html('Es wurden <strong>'+ausgabe+'</strong> noch nicht zugewiesen! Diese Zeit wird nicht berücksichtigt und berechnet.');
+				$('#kontingent_verbleibend').attr('class','status_less_filled');
+			} else {
+				$('#kontingent_verbleibend').html('Es wurden <strong>'+ausgabe+'</strong> zuviel zugewiesen! Dies ist nicht möglich.');
+				$('#kontingent_verbleibend').attr('class','status_more_filled');
+			}
+		}
+		//minutenUnzugewiesen
+	}
+	
+
+</script>
+
+
+

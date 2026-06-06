@@ -1,0 +1,76 @@
+# Add configuration for the editor
+# TYPO3 v13 RTE Configuration
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+  - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
+editor:
+  config:
+    contentsCss:
+      - "EXT:e_magineurs/Resources/Public/SiteFactory/Css/rte.css"
+
+    format_tags: "p;h2;h3;h4;h5;h6"
+
+    stylesSet:
+      # Title styles
+      - { name: "H2 En-tête", element: "h2", attributes: { class: "entete"} }
+      - { name: "H3 En-tête", element: "h3", attributes: { class: "entete"} }
+      # block level styles
+      - { name: "Chapo", element: "p", attributes: { class: "chapo"} }
+      - { name: "Mise en avant", element: "p", attributes: { class: "text_high"} }
+      - { name: "Fond couleur", element: "p", attributes: { class: "fond_couleur_principal"} }
+      # Inline styles
+      - { name: "Lien page", element: "a", attributes: { class: "link_files"} }
+
+    toolbar:
+      items:
+        - sourceEditing
+        - '|'
+        - undo
+        - redo
+        - '|'
+        - findAndReplace
+        - '|'
+        - removeFormat
+        - '-'
+        - heading
+        - style
+        - '|'
+        - bold
+        - italic
+        - underline
+        - strikethrough
+        - subscript
+        - superscript
+        - '|'
+        - fontColor
+        - fontBackgroundColor
+        - '|'
+        - alignment
+        - '|'
+        - bulletedList
+        - numberedList
+        - '|'
+        - indent
+        - outdent
+        - '|'
+        - blockQuote
+        - '|'
+        - link
+        - insertImage
+        - '|'
+        - insertTable
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - '|'
+        - specialCharacters
+        - horizontalLine
+
+# Allow s and u tag
+processing:
+  allowTags:
+    - s
+    - u

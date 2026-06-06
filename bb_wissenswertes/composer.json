@@ -1,0 +1,25 @@
+{
+  "name": "dslfactory/bb-wissenswertes",
+  "type": "typo3-cms-extension",
+  "description": "Dsl template structure",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "dsl dev",
+      "email": "info@dsl-factory.de"
+    }
+  ],
+  "require": {
+    "typo3/cms-core": "^12.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "BravoBuero\\BbWissenswertes\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "bb_wissenswertes"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+
+<div class="content_container_header"><span><i class="bb-document-info bb-md" aria-hidden="true"></i>Abrechnung / Nutzung</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+
+<div class="content_container">
+	
+	
+	
+	
+	<strong>Abrechnung:</strong>
+	<f:if condition="{auftraege.festpreis}">
+		<f:then> zum Projektpreis von {auftraege.festpreis->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')} €</f:then>
+		<f:else> nach Aufwand / angefallener Zeit</f:else>
+	</f:if>
+					
+	
+	<br><br><strong>Nutzungsfaktoren:</strong> <f:if condition="{auftraege.nutzungsFaktorNurEntwurfKreativleistung}">
+			<f:then>
+				nur Entwurf / Kreativleistung
+			</f:then>
+			<f:else>
+				
+				<div>&nbsp;Nutzungsumfang <i class="bb-arrow-right-large"></i> <f:switch expression="{auftraege.nutzungsfaktoren.umfang}">
+					<f:case value="0.2"><span title="Der Auftraggeber kann den Entwurf nutzen / der Entwerfer darf auch weiteren Personen Nutzungsrechte einräumen.">einfach</span></f:case>
+					<f:case value="1.0"><span title="Der Auftraggeber ist allein nutzungsberechtigt.">ausschließlich</span></f:case></f:switch></div>
+				<div>&nbsp;Nutzungsgebiet <i class="bb-arrow-right-large"></i><f:switch expression="{auftraege.nutzungsfaktoren.gebiet}">
+					<f:case value="0.1">regional</f:case>
+					<f:case value="0.3">national</f:case>
+					<f:case value="1.0">europaweit</f:case>
+					<f:case value="2.5">weltweit</f:case></f:switch></div>
+				<div>&nbsp;Nutzungsdauer <i class="bb-arrow-right-large"></i><f:switch expression="{auftraege.nutzungsfaktoren.dauer}">
+					<f:case value="0.1">1 Jahr</f:case>
+					<f:case value="0.3">5 Jahre</f:case>
+					<f:case value="0.5">10 Jahre</f:case>
+					<f:case value="1.5">unbegrenzt</f:case></f:switch></div>
+				<div>&nbsp;<span title="Die Vereinbarung über die Nutzungsintensität richtet sich nach der Nutzungsart (z.B. Print, Sendung, Internet) und quantitativen Faktoren wie Auflagenhöhe u.ä.">Nutzungsintensität</span> <i class="bb-arrow-right-large"></i><f:switch expression="{auftraege.nutzungsfaktoren.intensitaet}">
+					<f:case value="0.1">gering</f:case>
+					<f:case value="0.3">mittel</f:case>
+					<f:case value="0.7">groß</f:case>
+					<f:case value="1.0">umfangreich</f:case></f:switch></div>
+				<f:comment><!--<div class="text-success">&nbsp;<i class="bb-arrow-right-large bb-lg" style="vertical-align: bottom;"></i> <strong><f:format.number decimals="1" decimalSeparator=",">{auftraege.nutzungsfaktor}</f:format.number></strong></div--></f:comment>
+			</f:else>
+			
+		</f:if>
+	
+	
+	<f:comment>
+		<div><f:render partial="KundenAuftraege/PropertiesButtonStatusChange" arguments="{auftraege: auftraege, uniqueSelector: 'detail_auftrag_{auftraege.uid}_statuswechsel'}" /></div>
+		<div><strong>Status: </strong> <f:translate key="tx_dslintranet_domain_model_auftraege.kundenstatus.{auftraege.status}" /></div>
+
+
+		<f:render partial="KundenAuftraege/PropertiesPhasen" arguments="{_all}" />
+	</f:comment>
+	
+</div>

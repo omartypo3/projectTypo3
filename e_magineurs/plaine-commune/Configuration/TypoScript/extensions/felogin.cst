@@ -1,0 +1,6 @@
+e_magineurs.tx_felogin_pi1 {
+	# cat=Configuration de Felogin/tx_felogin_Settings; type=string; label= Chemin du template
+	templateFile = EXT:e_magineurs/plaine-commune/Resources/Extensions/felogin/Templates/
+	email_from = internet@plainecommune.fr
+	email_fromName = Plaine Commune
+}

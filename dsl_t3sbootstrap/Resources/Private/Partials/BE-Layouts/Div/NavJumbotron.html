@@ -1,0 +1,111 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:comment>
+<f:if condition="{settings.styles.navbar.onTop}">
+	<f:then>
+		<f:render partial="NavBar/_main" arguments="{_all}" />
+	</f:then>
+	<f:else>
+		<f:if condition="{settings.styles.navbar.style.fixed.top}">
+			<f:render partial="NavBar/_main" arguments="{_all}" />
+		</f:if>
+	</f:else>
+</f:if>
+</f:comment>
+<div class="pageToolbar">
+
+    	<f:cObject typoscriptObjectPath="lib.navbar-brand" />
+
+
+    	<center>
+
+				<div class="userAvatar">
+					<p>Eingeloggt als:</p>
+				</div>
+
+				<div class="userInfo">
+
+					<f:if condition="{userName}">
+					{f:image(src: 'fileadmin/kundenlogos/{userName}.png', class: 'pageToolbarKundenlogo')}
+				</f:if>
+				<f:comment>
+					{f:image(src: 'fileadmin/kundenlogos/man-user-circle-icon.png', class: 'pageToolbarKundenlogo')}
+
+					<div class="pageToolbarName">
+						<f:cObject typoscriptObjectPath="lib.email" />
+						<f:comment>{name}</f:comment>
+					</div>
+					
+					</f:comment>
+
+					<div class="pageToolbarUsername">
+						Kdnr.: <f:cObject typoscriptObjectPath="lib.userName" />
+						<f:comment>Kdnr.: {username}</f:comment>
+					</div>
+					<div>
+						<a href="index.php?logintype=logout"><i class="fa fa-sign-out fa-fw"></i>
+							&nbsp; Logout
+						</a>
+					</div>
+				</div>
+
+
+		</center>
+    	
+    	<ul class="nav_side">
+    		<li class="page-item-84"><f:link.page pageUid="84"><span class="bb-house"></span>&nbsp;Startseite</f:link.page></li>
+			<li><span class="banderole_wrapper"><span class="banderole">Demnächst</span></span><a class="demnaechst"><span class="bb-plus"></span>&nbsp;Auftrag anlegen</a></li>
+			<li class="page-item-85"><f:link.page pageUid="85"><span class="bb-pin"></span>&nbsp;Aufträge</f:link.page></li>
+			
+			<f:comment>dslIntranet>Templates>Kunden>Environment</f:comment>
+			{f:cObject(typoscriptObjectPath: 'lib.environment')}
+			
+			
+			<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.picDropZugangscode')}">
+				<li class="page-item-100"><f:link.page pageUid="100"><span class="bb-camera"></span>&nbsp;Bildarchiv</f:link.page></li>
+			</f:if>
+			
+			
+   			
+			<li class="page-item-88"><f:link.page pageUid="88"><span class="bb-download"></span>&nbsp;Downloadcenter</f:link.page></li>
+			<li class="page-item-93"><f:link.action pageUid="93" controller="KundenDateien" pluginName="kundendateien" extensionName="dslintranet" action="listrechnungen"><span class="bb-pdf-download"></span>&nbsp;Rechnungen</f:link.action></li>
+			
+			<li class="page-item-99"><f:link.page pageUid="99"><span class="bb-tool"></span>&nbsp;Stammdaten</f:link.page></li>
+			
+    		
+    		<li><a href="https://www.dsl-factory.de" target="_blank"><span class="bb-arrow-left-large"></span>&nbsp;zur Website</a></li>
+		</ul>
+    	
+    	<div class="pageToolbarContent">
+        	
+           
+       
+	       <div class="ajaxLoadingIndicator">
+           	 	<center>
+            	 <a class="ajaxLoadingIndicatorLoading"><i class="fa fa-cog fa-spin fa-lg "></i></a>
+            	 <a class="ajaxLoadingIndicatorStandby"><i class="fa fa-cog fa-lg "></i></a>
+			   </center>
+			</div>
+        </div>
+        
+        <div class="pageToolbarBottom">
+			<p><strong>Technischer Support</strong></p>
+			<p><span class="bb-md bb-tel va_top"></span><a href="tel:+493754444667" class="va_bottom">&nbsp;0375.44 44 66 7</a></p>
+			<p><span class="bb-md bb-envelope va_top"></span><f:link.email email="info@dsl-factory.de" class="va_bottom">&nbsp;info@dsl-factory.de</f:link.email></p>
+
+		</div>
+        
+    </div>
+<div class="{f:if(condition: '{settings.styles.container-fluid}',then: ' container-fluid', else: ' container')}" style="padding-left: 0 !important; padding-right: 0 !important;">
+	<f:if condition="{settings.styles.navbar.onTop}">
+		<f:else>
+			<f:if condition="{settings.styles.navbar.style.fixed.top}">
+				<f:else>
+					<f:render partial="NavBar/_main" arguments="{_all}" />
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+	<f:render partial="Page/Breadcrumb" />
+</div>
+</html>

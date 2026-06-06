@@ -1,0 +1,30 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EImportExport\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  # Repositories
+  Emagineurs\EImportExport\Domain\Repository\ConfRepository:
+    public: true
+
+  Emagineurs\EImportExport\Domain\Repository\FieldRepository:
+    public: true
+
+  Emagineurs\EImportExport\Domain\Repository\TableRepository:
+    public: true
+
+  Emagineurs\EImportExport\Domain\Repository\GenericRepository:
+    public: true
+
+  # Controllers
+  Emagineurs\EImportExport\Controller\ModuleController:
+    public: true
+
+  Emagineurs\EImportExport\Controller\ImportExportController:
+    public: true
+

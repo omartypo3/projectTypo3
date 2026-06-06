@@ -1,0 +1,85 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+<div class="agendaEdit article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article">
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+	<div class="d-lg-flex">
+
+	<div class="image_agendaEditp news-img-wrap">
+		<f:if condition="{newsItem.falMediaPreviews}">
+			<f:then>
+				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+					<f:alias map="{mediaElement: '{newsItem.falMediaPreviews.0}'}">
+						<f:if condition="{mediaElement.originalResource.type} == 2">
+							<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" width="367c" height="205c"/>
+						</f:if>
+						<f:if condition="{mediaElement.originalResource.type} == 4">
+							<f:render partial="Detail/FalMediaVideo" arguments="{mediaElement: mediaElement}"/>
+						</f:if>
+						<f:if condition="{mediaElement.originalResource.type} == 5">
+							<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" width="367c" height="205c"/>
+						</f:if>
+					</f:alias>
+				</n:link>
+			</f:then>
+			<f:else>
+				<span class="no-media-element">
+					<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+						<f:image src="{settings.list.media.dummyImage}" title="" alt="" width="367c" height="205c"/>
+					</n:link>
+				</span>
+			</f:else>
+		</f:if>
+	</div>
+	<div class="contenu_agendaEdit content-liste-actu d-flex flex-column">
+		
+		<p class="categorie_agenda wrap_cat">
+			<f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}" />
+		</p>
+
+		<div class="resume_agenda">
+			<h3><n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">{newsItem.title-> f:format.crop(maxCharacters: '60', respectWordBoundaries:'1') -> f:format.html()}</n:link></h3>
+		</div>
+
+		<p class="date_agenda">
+			<f:if condition="{newsItem.begindate->f:format.date()}=={newsItem.finishdate->f:format.date()}">
+	            <f:then>
+	                Le <f:format.date format="%d %h %Y">{newsItem.dateDebut}</f:format.date>
+	            </f:then>
+	            <f:else>
+	                <f:if condition="{newsItem.finishdate}==0">
+	                    <f:then>
+	                        A partir du <f:format.date format="%d %h %Y">{newsItem.begindate}</f:format.date>  
+	                    </f:then>
+	                    <f:else>
+	                        Du <f:format.date format="%d %h">{newsItem.begindate}</f:format.date> au <f:format.date format="%d %h %Y">{newsItem.finishdate}</f:format.date>
+	                    </f:else>
+	                </f:if>
+	            </f:else>
+	        </f:if>
+		</p>
+
+
+		<div class="description_projet">
+			{newsItem.bodytext -> f:format.crop(maxCharacters: '250', respectWordBoundaries:'1') -> f:format.raw()}
+		</div>	
+
+		<p>
+			<f:if condition="{newsItem.adminvalidation} == 0">
+	            <f:then>
+	                <strong>Status : En attente</strong>
+	            </f:then>
+	            <f:else>
+	                <f:if condition="{newsItem.adminvalidation}==1">
+	                    <f:then>
+	                       <strong>Status : Validé</strong>
+	                    </f:then>
+	                    <f:else>
+	                        <strong>Status : Refusé</strong>
+	                    </f:else>
+	                </f:if>
+	            </f:else>
+	        </f:if>
+			
+		</p>
+	</div>
+</div>
+</div>

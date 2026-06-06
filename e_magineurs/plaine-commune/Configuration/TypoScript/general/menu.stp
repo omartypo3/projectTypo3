@@ -1,0 +1,182 @@
+lib.filAriane = COA
+lib.filAriane {
+    wrap = <nav class="ariane" role="navigation" aria-label="Fil d'Ariane"><ul>|</ul></nav>
+    5 = TEXT
+    5 {
+        value = Accueil
+        typolink {
+            parameter = {$e_magineurs.conf.homePage}
+        }
+        wrap = <li class="ir filHome">|<i class="icon-LinkText"></i></li>
+    }
+    25 = HMENU
+    25 {
+        special = rootline
+        special.range = 1|-1
+        1 = TMENU
+        1{
+            NO = 1
+            NO.stdWrap.field = nav_title // title
+            NO.allWrap = <li class="item crop">|</li>
+            IFSUB = 1
+            IFSUB.wrapItemAndSub = <li class="item crop test">|</li>
+            NO.ATagParams = class="openFil"
+            NO.stdWrap.wrap = <span>|</span>
+            NO.stdWrap2.append = HMENU
+            NO.stdWrap2.append {
+                special = directory
+                special.value = {field:pid}
+                special.value.stdWrap.insertData = 1
+                wrap = <ul class="menuFil">|</ul>
+                1 = TMENU
+                1 {
+                    NO = 1
+                    NO.stdWrap.field = nav_title // title
+                    NO.allWrap = <li>|</li>
+                    CUR < .NO
+                    CUR.ATagParams = class="active"
+                    ACT < .CUR
+                }
+            }
+            CUR < .NO
+            ACT < .NO
+        }
+    }
+}
+/*
+[(request.getQueryParams()['tx_news_pi1'] ?? [])['news'] ?? 0 > 0]
+lib.filAriane.30 = RECORDS
+lib.filAriane.30 {
+    dontCheckPid = 1
+    tables = tx_news_domain_model_news
+    source.data = GP:tx_news_pi1|news
+    source.intval = 1
+    conf.tx_news_domain_model_news = TEXT
+    conf.tx_news_domain_model_news {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <li class="crop"><span>|</span></li>
+}
+[end]
+*/
+[(request.getQueryParams()['tx_fsmediagallery_mediagallery'] ?? [])['mediaAlbum'] ?? 0 > 0]
+lib.filAriane.30 = RECORDS
+lib.filAriane.30 {
+    dontCheckPid = 1
+    tables = sys_file_collection
+    source.data = GP:tx_fsmediagallery_mediagallery|mediaAlbum
+    source.intval = 1
+    conf.sys_file_collection = TEXT
+    conf.sys_file_collection {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <li class="crop"><span>|</span></li>
+}
+[end]
+
+[(request.getQueryParams()['tx_eannuaires_pi1'] ?? [])['fiche'] ?? 0 > 0]
+lib.filAriane.30 = RECORDS
+lib.filAriane.30 {
+    dontCheckPid = 1
+    tables = tx_eannuaires_domain_model_fiche
+    source.data = GP:tx_eannuaires_pi1|fiche
+    source.intval = 1
+    conf.tx_eannuaires_domain_model_fiche = TEXT
+    conf.tx_eannuaires_domain_model_fiche {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <li class="crop"><span>|</span></li>
+}
+[end]
+
+#surchage le title du lien raccourci par celui de la page de destination
+tt_content.menu.20.default.1{
+    NO.ATagTitle >
+    NO.ATagTitle.stdWrap.cObject = CASE
+    NO.ATagTitle.stdWrap.cObject {
+        key.field = doktype
+        4 = RECORDS
+        4 {
+            dontCheckPid = 1
+            tables = pages
+            source.field = shortcut
+            source.intval = 1
+            conf.pages = TEXT
+            conf.pages {
+                field = title
+                htmlSpecialChars = 1
+            }
+            stdWrap.noTrimWrap = |aller sur la page ||
+        }
+    }
+}
+
+#old fashion way : menu en typoscript - à afficher dans un musée
+/*
+lib.menuPrincipal = HMENU
+lib.menuPrincipal {
+    wrap = <nav><ul>|</ul></nav>
+    special = list
+    special.value = {$e_magineurs.conf.menuPrincipal.list}
+    1 = TMENU
+    1 {
+        NO = 1
+        NO.wrapItemAndSub = <li class="niveau1">|</li>
+        NO.stdWrap.field = nav_title // title
+        #NO.doNotLinkIt = 1
+        ACT < .NO
+        ACT.wrapItemAndSub = <li class="niveau1 active">|</li>
+        CUR < .ACT
+        CUR.ATagParams = title="Page active"
+        expAll = 1
+    }
+    2 < .1
+    2 {
+        wrap = <ul class="sousMenu">|</ul>
+        NO.wrapItemAndSub = <li>|</li>
+        ACT.doNotLinkIt = 0
+        ACT.wrapItemAndSub = <li class="active">|</li>
+        CUR < .ACT
+        CUR.ATagParams = title="Page active"
+    }
+    3 < .2
+}
+*/
+#ex menu avec special = directory
+/*
+lib.menuPid = HMENU
+lib.menuPid {
+    special = directory
+    special.value = PID
+    1 = TMENU
+    1 {
+        ...
+    }
+    ...
+}
+*/
+
+lib.menuFooterContact = HMENU
+lib.menuFooterContact {
+    wrap = <ul>|</ul>
+    special = list
+    special.value = {$e_magineurs.conf.menuFooterContact.list}
+    1 = TMENU
+    1 {
+        NO = 1
+        NO.wrapItemAndSub = <li><i class="icon-Archives"></i>|</li>||<li><i class="icon-Newsletter"></i>|</li>||<li><i class="icon-EnglishPage"></i>|</li>
+        NO.stdWrap.field = nav_title // title
+    }
+}
+
+
+#menu sites
+tt_content.menu_Sites =< tt_content.menu_pages
+tt_content.menu_Sites.templateName = MenuSites
+
+#menu Home
+tt_content.menu_Home =< tt_content.menu_sitemap_pages
+tt_content.menu_Home.templateName = MenuHome

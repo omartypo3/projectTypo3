@@ -1,0 +1,22 @@
+# Persistence configuration moved to Configuration/Extbase/Persistence/Classes.php
+
+config.tx_extbase{
+    objects {
+        GeorgRinger\News\Controller\NewsController.className = Emagineurs\ENews\Controller\EnewsController     
+        GeorgRinger\News\Domain\Model\Dto\NewsDemand.className = Emagineurs\ENews\Domain\Model\Dto\NewsDemandEnews
+        GeorgRinger\News\Domain\Model\Dto\Search.className = Emagineurs\ENews\Domain\Model\Dto\SearchEnews
+    }
+}
+lib.calameoInNews = RECORDS
+lib.calameoInNews {
+	source.field = sourceUid
+	tables = tt_content
+	dontCheckPid = 1
+}
+plugin.tx_news{
+    view {
+        templateRootPaths {
+            100 = EXT:e_news/Resources/Private/Templates/Enews
+        }
+    }
+}

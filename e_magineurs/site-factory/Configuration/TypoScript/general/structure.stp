@@ -1,0 +1,84 @@
+page = PAGE
+page {
+    10 {
+        templateName = TEXT
+		templateName.stdWrap.cObject = CASE
+		templateName.stdWrap.cObject {
+			key.data = pagelayout
+			default = TEXT
+			default.value = Default
+			8 = TEXT
+			8.value = Default
+			7 = TEXT
+			7.value = Accueil
+			11 = TEXT
+			11.value = Newsletter
+			12 = TEXT
+			12.value = Detail
+			13 = TEXT
+			13.value = NoLeft
+			0 < .default
+		}
+        variables {
+        	# Ajoutez vos variables ici
+        	# variables existantes dans le package :
+        	# dossierPublic = {$e_magineurs.conf.dossierPublic}
+			# homePage = {$e_magineurs.conf.homePage}
+			# dossierLangue = LLL:{$e_package.conf.dossierLangue}/locallang.xlf
+        }
+    }
+}
+
+# active la popup sur les images du RTE
+lib.contentElement.settings.media.popup.enable = 1
+lib.contentElement.settings.media.popup.directImageLink = 1
+
+/*
+#Exemple de récupération d'une image des propriétés d'une page. L'objet lib.imagePage est créé dans le package
+lib.monObjetTS < lib.imagePage
+lib.monObjetTS.renderObj.file {
+	width = 260c
+	height = 136c
+}
+*/
+
+/*
+#Exemple de récupération d'un contenu d'une page précise
+lib.monObjetTS = CONTENT
+lib.monObjetTS {
+    table = tt_content
+    select.pidInList = 88
+}
+*/
+
+lib.menuMiniHead = CONTENT
+lib.menuMiniHead {
+    table = tt_content
+    select.pidInList = {$e_magineurs.conf.menuMiniHead}
+}
+
+lib.headerPage = CONTENT
+lib.headerPage {
+    table = tt_content
+    select.pidInList = {$e_magineurs.conf.headerPage}
+}
+
+lib.menuSecondaire = CONTENT
+lib.menuSecondaire {
+    table = tt_content
+    select {
+        pidInList = {$e_magineurs.conf.MenuSecondaire.pid}
+    }
+}
+
+lib.planSite = CONTENT
+lib.planSite {
+    table = tt_content
+    select.pidInList = {$e_magineurs.conf.planSite}
+}
+
+lib.infoFooter = CONTENT
+lib.infoFooter {
+    table = tt_content
+    select.pidInList = {$e_magineurs.conf.infoFooter}
+}

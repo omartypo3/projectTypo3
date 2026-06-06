@@ -1,0 +1,17 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<f:comment>{agenturvertrag.nr} (ab {agenturvertrag.vertragsbegin -> f:format.date(format: 'd.m.Y')}<f:if condition="{agenturvertrag.vertragsende}"> bis {agenturvertrag.vertragsende -> f:format.date(format: 'd.m.Y')}</f:if>)
+
+{agenturvertrag.stundenMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}h / {agenturvertrag.preisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€
+	
+</f:comment>
+
+<tr data-av-uid="{agenturvertrag.uid}">
+	<td><a aria-controls="collapse-{agenturvertrag.uid}" aria-expanded="true" onClick="agenturvertraegeToggle({agenturvertrag.uid})" href="#collapse-{agenturvertrag.uid}" data-parent="#agenturvertragList" data-toggle="collapse" role="button"  class="collapsed panel-heading tableBtn agenturvertragToggleBtn" id="agenturvertrag-show-{agenturvertrag.uid}-headline" ><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></td>
+	<td>{agenturvertrag.nr}</td>
+	<td><span class="detailLabel">seit</span> {agenturvertrag.vertragsbegin -> f:format.date(format: 'd.m.Y')}<f:if condition="{agenturvertrag.vertragsende}"> <span class="detailLabel">bis</span> {agenturvertrag.vertragsende -> f:format.date(format: 'd.m.Y')}</f:if></td>
+	<td class="refreshContent" data-refresh-content="avRefreshContentListRowKontingent{agenturvertrag.uid}"><f:if condition="{agenturvertrag.monate}"><f:then><span class="detailLabel">Kontingent:</span> <span class="{f:if(condition: '{agenturvertrag.kontingentUsed}>{agenturvertrag.kontingentJahr}', then: 'text-time-over')}"><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: agenturvertrag.kontingentUsed)}' }" /></span> <span class="detailLabel">von</span> <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: agenturvertrag.kontingent)}' }" /> <span class="detailLabel">verbraucht</span></f:then><f:else>Monat Außerhalb des Agenturvertrag</f:else></f:if></td>
+	
+	<td><a onclick="loadAgenturvertragContent({agenturvertrag.uid});return false;" class="btn tableBtn" href="#" aria-label="Refresh"><i class="fa fa-refresh fa-lg fa-spin tabReloadsActive" aria-hidden="true"></i><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i></a></td>
+</tr>
+	

@@ -1,0 +1,40 @@
+<div class="property frame-bg-white">
+	<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}">
+		<div class="property-image">
+			<div class="property-category">{f:translate(key: 'tx_dslimmo_domain_model_immobilie.search_vermarktung.{immobilie.searchVermarktung}')}</div>
+			<img alt="" src="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, width:'440c', height:'330c')}">
+		</div>
+		<div class="overlay frame-layout-smallPadding">
+			<div class="info">
+				<h3>{immobilie.objekttitel}</h3>
+				<p><f:if condition="{immobilie.objektadressefreigeben}"><f:then>{immobilie.strasseHausnummer}<br />{immobilie.plzOrt}</f:then><f:else><i>Adresse auf Anfrage</i><br>&nbsp;</f:else></f:if></p>
+			</div>
+			<ul class="additional-info">
+				<li>
+
+					<f:if condition="{immobilie.searchVermarktung} == 's1020'">
+						<f:then>
+							<header>Kaufpreis:</header>
+
+						</f:then>
+						<f:else>
+							<header>Miete:</header>
+
+						</f:else>
+					</f:if>
+					<figure><f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.searchPreis,currencySign:'€',prependCurrency:'false',thousandsSeparator:'.'}" /></figure>
+
+
+				</li>
+				<li>
+					<header>Fläche:</header>
+					<figure><f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.searchFlaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></figure>
+				</li>
+				<li>
+					<header>Zimmer:</header>
+					<figure><f:if condition="{immobilie.flaechenAnzahlZimmer}"><f:then>{immobilie.flaechenAnzahlZimmer}</f:then><f:else>-</f:else></f:if></figure>
+				</li>
+			</ul>
+		</div>
+	</f:link.action>
+</div>

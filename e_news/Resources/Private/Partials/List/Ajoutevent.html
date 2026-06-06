@@ -1,0 +1,16 @@
+<div id="postAgenda">
+	<div class="postAgendaConteneur">
+		<h2 class="agenda"></h2><br>
+		<div class="intro">Vous souhaitez ajouter</div>
+		<p>Votre évènement dans l'agenda</p>
+		<div class="conclu">c'est rapide et facile!</div><br>
+		<f:if condition="{f:cObject(typoscriptObjectPath:'lib.userConnected')}">
+			<f:then>
+				<div class="lien_depot"><f:link.action pageUid="52" action="createNew" arguments="{news : newsItem}" >Postez votre évènement</f:link.action></div>
+			</f:then>
+			<f:else>
+				<div class="lien_depot"><f:link.action pageUid="54" action="createNew" arguments="{news : newsItem}" >Postez votre évènement</f:link.action></div>
+			</f:else>
+		</f:if>
+	</div>
+</div>

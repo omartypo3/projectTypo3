@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-03-07T10:11:14Z" product-name="e_powermail_multirecip" >
+		<header />
+		<body>
+			<trans-unit id="tx_epowermailmultirecip_xml.options">
+				<source>Adresse du destinataire correspondant</source>
+			</trans-unit>
+			<trans-unit id="tx_powermail_forms.xml.options">
+				<source>Saisir vos options</source>
+			</trans-unit>
+			<trans-unit id="tx_powermail_forms.xml.size">
+				<source>Taille</source>
+			</trans-unit>
+			<trans-unit id="tx_powermail_forms.xml.multiple">
+				<source>Séléction multiple autorisée</source>
+			</trans-unit>
+			<trans-unit id="tx_powermail_forms.xml.mandatory">
+				<source>Champ obligatoire</source>
+			</trans-unit>
+			<trans-unit id="tx_powermail_forms.xml.name">
+				<source>Noms des modèles</source>
+			</trans-unit>
+			<trans-unit id="tx_powermail_forms.xml.example">
+				<source>Exemple de champ</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

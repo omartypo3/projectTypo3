@@ -1,0 +1,138 @@
+plugin.tx_news{
+	view {
+		templateRootPaths.2 = {$plugin.tx_enews.view.templateRootPath}
+		partialRootPaths.2 = {$plugin.tx_enews.view.partialRootPath}
+		layoutRootPaths.2 = {$plugin.tx_enews.view.layoutRootPath}
+	}
+
+	settings{
+		orderByAllowed = sorting,author,uid,title,teaser,author,tstamp,crdate,datetime,categories.title,begindate,dates
+
+		validation {
+			user {
+				enabled = {$plugin.tx_enews.settings.validation.user.enabled}
+				page = {$plugin.tx_enews.settings.validation.user.page}
+				subject = {$plugin.tx_enews.settings.validation.user.subject}
+				template = {$plugin.tx_enews.settings.validation.user.template}
+				senderEmail = {$plugin.tx_enews.settings.validation.user.senderEmail}
+				senderName = {$plugin.tx_enews.settings.validation.user.senderName}
+			}
+			admin {
+				enabled = {$plugin.tx_enews.settings.validation.admin.enabled}
+				page = {$plugin.tx_enews.settings.validation.admin.page}
+				subject = {$plugin.tx_enews.settings.validation.admin.subject}
+				template = {$plugin.tx_enews.settings.validation.admin.template}
+				adminEmail = {$plugin.tx_enews.settings.validation.admin.adminEmail}
+				adminName = {$plugin.tx_enews.settings.validation.admin.adminName}
+				senderEmail = {$plugin.tx_enews.settings.validation.admin.senderEmail}
+				senderName = {$plugin.tx_enews.settings.validation.admin.senderName}
+			}
+		}
+
+        # Pour avoir plusieurs select, on cr�e des items de type filtreCatParent.idDuSelect = IdDeLaCatParente
+        # IdDuSelect est un nombre entre 0 et 5
+        #filtreCatParent.single = 1
+        #filtreCatParent.multiple{
+        #    0 = 1
+        #    1 = 3
+        #}
+	}
+}
+
+update = PAGE
+update {
+	typeNum = 2809741
+	config {
+		disableAllHeaderCode = 1
+		disablePrefixComment = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+	}
+	10 = USER_INT
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = News
+		pluginName = Pi1
+		vendorName = GeorgRinger
+		switchableControllerActions{
+			News{
+				1 = update
+			}
+		}
+
+		settings < plugin.tx_news.settings
+		persistence < plugin.tx_news.persistence
+		view < plugin.tx_news.view
+		view {
+			templateRootPaths.2 = {$plugin.tx_enews.view.templateRootPath}Ajax/
+		}
+	}
+}
+
+validate = PAGE
+validate {
+	typeNum = 40741
+	config {
+		disableAllHeaderCode = 1
+		disablePrefixComment = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+	}
+	10 = USER_INT
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = News
+		pluginName = Pi1
+		vendorName = GeorgRinger
+		switchableControllerActions{
+			News{
+				1 = validate
+			}
+		}
+
+		settings < plugin.tx_news.settings
+		persistence < plugin.tx_news.persistence
+		view < plugin.tx_news.view
+		view {
+			templateRootPaths.2 = {$plugin.tx_enews.view.templateRootPath}Ajax/
+		}
+	}
+}
+
+delete = PAGE
+delete {
+	typeNum = 40742
+	config {
+		disableAllHeaderCode = 1
+		disablePrefixComment = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+	}
+	10 = USER_INT
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = News
+		pluginName = Pi1
+		vendorName = GeorgRinger
+		switchableControllerActions{
+			News{
+				1 = delete
+			}
+		}
+
+		settings < plugin.tx_news.settings
+		persistence < plugin.tx_news.persistence
+		view < plugin.tx_news.view
+		view {
+			templateRootPaths.2 = {$plugin.tx_enews.view.templateRootPath}Ajax/
+		}
+	}
+}
+
+plugin.tx_enews_filtertoday < plugin.tx_news
+plugin.tx_enews_filterweekend < plugin.tx_news
+plugin.tx_enews_filterweek < plugin.tx_news
+plugin.tx_enews_filtermonth < plugin.tx_news
+plugin.tx_enews_createnews < plugin.tx_news
+plugin.tx_enews_deletenews < plugin.tx_news
+plugin.tx_enews_validatenews < plugin.tx_news

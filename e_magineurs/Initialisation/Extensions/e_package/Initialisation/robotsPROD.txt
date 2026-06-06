@@ -1,0 +1,14 @@
+User-agent: *
+
+Disallow: /typo3/
+Disallow: /typo3_src/
+Disallow: /page-404 
+Disallow: /typo3conf/
+Disallow: /typo3temp/
+Allow: /typo3temp/*.js
+Allow: /typo3temp/*.css
+Allow: /typo3conf/*.js
+Allow: /typo3conf/*.css
+Allow: /typo3conf/*.png
+Allow: /typo3conf/*.jpg
+Allow: /typo3conf/*.gif

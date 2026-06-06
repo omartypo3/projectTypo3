@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_comment/Resources/Private/Language/locallang.xlf" date="2024-01-01T00:00:00Z" product-name="e_comment">
+		<header/>
+		<body>
+			<trans-unit id="tx_ecomment.validate.success">
+				<source>The message has been correctly validated.</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.validate.error">
+				<source>The message wasn't validated, maybe have you already validated the message.</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.categories">
+				<source>Categories</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

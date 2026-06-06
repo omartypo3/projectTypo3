@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-20T14:27:19Z" product-name="apca_opus_generator">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab">
+				<source>Import-Export module</source> <target></target></trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" approved="yes">
+				<source>Export or import datas with different file types</source> <target state="translated">Exporter ou importer des données depuis différents types de fichier</target></trans-unit>
+			<trans-unit id="choose_your_config" approved="yes">
+				<source>Choose your configuration</source> <target state="translated">Choisissez votre configuration</target></trans-unit>
+			<trans-unit id="import_log_sucess" approved="yes">
+				<source>Import was processed<br/> %1$s datas were inserted<br/> %2$s datas were updated </source> <target state="translated">L'import a été effectué %1$s données ont étés crées %2$s données ont étés mis a jour</target></trans-unit>
+			<trans-unit id="please_choose_your_config" approved="yes">
+				<source>Please, choose your configuration into the select box on the top of the screen.</source> <target state="translated">Veuillez choisir votre configuration dans le menu déroulant ci dessus.</target></trans-unit>
+			<trans-unit id="import_log_error" approved="yes">
+				<source>Import error : %1$s</source> <target state="translated">Erreur lors de l'import : %1$s</target></trans-unit>
+			<trans-unit id="import" approved="yes">
+				<source>Import</source> <target state="translated">Importer</target></trans-unit>
+			<trans-unit id="export" approved="yes">
+				<source>Export</source> <target state="translated">Exporter</target></trans-unit>
+			<trans-unit id="import_type" approved="yes">
+				<source>Import type :</source> <target state="translated">Type d'import :</target></trans-unit>
+			<trans-unit id="csv" approved="yes">
+				<source>CSV</source> <target state="translated">CSV</target></trans-unit>
+			<trans-unit id="table" approved="yes">
+				<source>Table</source> <target state="translated">Tableau</target></trans-unit>
+			<trans-unit id="begin_date" approved="yes">
+				<source>Begin Date :</source> <target state="translated">Date de début :</target></trans-unit>
+			<trans-unit id="end_date" approved="yes">
+				<source>End Date :</source> <target state="translated">Date de fin :</target></trans-unit>
+		</body>
+	</file>
+</xliff>

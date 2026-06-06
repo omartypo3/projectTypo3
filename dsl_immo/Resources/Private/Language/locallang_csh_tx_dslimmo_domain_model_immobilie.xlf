@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-14T16:06:01Z" product-name="dsl_immo">
+		<header/>
+		<body>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout">
+				<source>Immobilien Ausgabe</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch">
+				<source>Immobilien Suche</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark">
+				<source>Immobilien Merkliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights">
+				<source>Immobilien Highlights</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest">
+				<source>Immobilien Latest</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks">
+				<source>Immobilien Browselinks</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail">
+				<source>Immobilien Detail</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="objekttitel.description">
+				<source>objekttitel</source>
+			</trans-unit>
+			<trans-unit id="dreizeiler.description">
+				<source>dreizeiler</source>
+			</trans-unit>
+			<trans-unit id="lage.description">
+				<source>lage</source>
+			</trans-unit>
+			<trans-unit id="ausstattbeschr.description">
+				<source>ausstattbeschr</source>
+			</trans-unit>
+			<trans-unit id="objektbeschreibung.description">
+				<source>objektbeschreibung</source>
+			</trans-unit>
+			<trans-unit id="sonstigeangaben.description">
+				<source>sonstigeangaben</source>
+			</trans-unit>
+			<trans-unit id="objekt_nrintern.description">
+				<source>objektNrintern</source>
+			</trans-unit>
+			<trans-unit id="objekt_nrextern.description">
+				<source>objektNrextern</source>
+			</trans-unit>
+			<trans-unit id="openimmoobid.description">
+				<source>openimmoobid</source>
+			</trans-unit>
+			<trans-unit id="stand_vom.description">
+				<source>standVom</source>
+			</trans-unit>
+			<trans-unit id="nutzungs_art.description">
+				<source>nutzungsArt</source>
+			</trans-unit>
+			<trans-unit id="vermarktungs_art.description">
+				<source>vermarktungsArt</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_wohnung_typ.description">
+				<source>objektArtWohnungTyp</source>
+			</trans-unit>
+			<trans-unit id="geo_plz.description">
+				<source>geoPlz</source>
+			</trans-unit>
+			<trans-unit id="geo_ort.description">
+				<source>geoOrt</source>
+			</trans-unit>
+			<trans-unit id="geo_strasse.description">
+				<source>geoStrasse</source>
+			</trans-unit>
+			<trans-unit id="geo_hausnummer.description">
+				<source>geoHausnummer</source>
+			</trans-unit>
+			<trans-unit id="geo_etage.description">
+				<source>geoEtage</source>
+			</trans-unit>
+			<trans-unit id="geo_anzahl_etagen.description">
+				<source>geoAnzahlEtagen</source>
+			</trans-unit>
+			<trans-unit id="geo_lage_im_bau.description">
+				<source>geoLageImBau</source>
+			</trans-unit>
+			<trans-unit id="geo_lage_gebiet.description">
+				<source>geoLageGebiet</source>
+			</trans-unit>
+			<trans-unit id="geo_land.description">
+				<source>geoLand</source>
+			</trans-unit>
+			<trans-unit id="geo_koordinaten_breitengrad.description">
+				<source>geoKoordinatenBreitengrad</source>
+			</trans-unit>
+			<trans-unit id="geo_koordinaten_laengengrad.description">
+				<source>geoKoordinatenLaengengrad</source>
+			</trans-unit>
+			<trans-unit id="geo_regionaler_zusatz.description">
+				<source>geoRegionalerZusatz</source>
+			</trans-unit>
+			<trans-unit id="preise_kaltmiete.description">
+				<source>preiseKaltmiete</source>
+			</trans-unit>
+			<trans-unit id="preise_warmmiete.description">
+				<source>preiseWarmmiete</source>
+			</trans-unit>
+			<trans-unit id="preise_nebenkosten.description">
+				<source>preiseNebenkosten</source>
+			</trans-unit>
+			<trans-unit id="preise_kaution.description">
+				<source>preiseKaution</source>
+			</trans-unit>
+			<trans-unit id="flaechen_wohnflaeche.description">
+				<source>flaechenWohnflaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_zimmer.description">
+				<source>flaechenAnzahlZimmer</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_balkone.description">
+				<source>flaechenAnzahlBalkone</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_terassen.description">
+				<source>flaechenAnzahlTerassen</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_logia.description">
+				<source>flaechenAnzahlLogia</source>
+			</trans-unit>
+			<trans-unit id="zustand_baujahr.description">
+				<source>zustandBaujahr</source>
+			</trans-unit>
+			<trans-unit id="zustand_art.description">
+				<source>zustandArt</source>
+			</trans-unit>
+			<trans-unit id="energiepass_epart.description">
+				<source>energiepassEpart</source>
+			</trans-unit>
+			<trans-unit id="energiepass_energieverbrauchkennwert.description">
+				<source>energiepassEnergieverbrauchkennwert</source>
+			</trans-unit>
+			<trans-unit id="energiepass_endenergiebedarf.description">
+				<source>energiepassEndenergiebedarf</source>
+			</trans-unit>
+			<trans-unit id="energiepass_gebaeudeart.description">
+				<source>energiepassGebaeudeart</source>
+			</trans-unit>
+			<trans-unit id="objektadresse_freigeben.description">
+				<source>objektadresseFreigeben</source>
+			</trans-unit>
+			<trans-unit id="verfuegbar_ab.description">
+				<source>verfuegbarAb</source>
+			</trans-unit>
+			<trans-unit id="vermietet.description">
+				<source>vermietet</source>
+			</trans-unit>
+			<trans-unit id="denkmalgeschuetzt.description">
+				<source>denkmalgeschuetzt</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_wggeeignet.description">
+				<source>ausstattungWggeeignet</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_raeumeveraenderbar.description">
+				<source>ausstattungRaeumeveraenderbar</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kamin.description">
+				<source>ausstattungKamin</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_klimatisiert.description">
+				<source>ausstattungKlimatisiert</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_gartennutzung.description">
+				<source>ausstattungGartennutzung</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_rollstuhlgerecht.description">
+				<source>ausstattungRollstuhlgerecht</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kabelsattv.description">
+				<source>ausstattungKabelsattv</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_dvbt.description">
+				<source>ausstattungDvbt</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_barrierefrei.description">
+				<source>ausstattungBarrierefrei</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_sauna.description">
+				<source>ausstattungSauna</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_swimmingpool.description">
+				<source>ausstattungSwimmingpool</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_wasch_trockenraum.description">
+				<source>ausstattungWaschTrockenraum</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_wintergarten.description">
+				<source>ausstattungWintergarten</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_dvverkabelung.description">
+				<source>ausstattungDvverkabelung</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_rampe.description">
+				<source>ausstattungRampe</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_hebebuehne.description">
+				<source>ausstattungHebebuehne</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kran.description">
+				<source>ausstattungKran</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_gastterrasse.description">
+				<source>ausstattungGastterrasse</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kantinecafeteria.description">
+				<source>ausstattungKantinecafeteria</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_teekueche.description">
+				<source>ausstattungTeekueche</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_brauereibindung.description">
+				<source>ausstattungBrauereibindung</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_sporteinrichtungen.description">
+				<source>ausstattungSporteinrichtungen</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_wellnessbereich.description">
+				<source>ausstattungWellnessbereich</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_telefonferienimmobilie.description">
+				<source>ausstattungTelefonferienimmobilie</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_umtsempfang.description">
+				<source>ausstattungUmtsempfang</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_abstellraum.description">
+				<source>ausstattungAbstellraum</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_bibliothek.description">
+				<source>ausstattungBibliothek</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_dachboden.description">
+				<source>ausstattungDachboden</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_gaestewc.description">
+				<source>ausstattungGaestewc</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kabelkanaele.description">
+				<source>ausstattungKabelkanaele</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_seniorengerecht.description">
+				<source>ausstattungSeniorengerecht</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_fahrradraum.description">
+				<source>ausstattungFahrradraum</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_rolladen.description">
+				<source>ausstattungRolladen</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_bad.description">
+				<source>ausstattungBad</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kueche.description">
+				<source>ausstattungKueche</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_boden.description">
+				<source>ausstattungBoden</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_heizungsart.description">
+				<source>ausstattungHeizungsart</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_befeuerung.description">
+				<source>ausstattungBefeuerung</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_fahrstuhl.description">
+				<source>ausstattungFahrstuhl</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_stellplatzart.description">
+				<source>ausstattungStellplatzart</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_ausricht_balkon_terasse.description">
+				<source>ausstattungAusrichtBalkonTerasse</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_angeschl_gastronomie.description">
+				<source>ausstattungAngeschlGastronomie</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_serviceleistungen.description">
+				<source>ausstattungServiceleistungen</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_sicherheitstechnik.description">
+				<source>ausstattungSicherheitstechnik</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_moebliert.description">
+				<source>ausstattungMoebliert</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_kategorie.description">
+				<source>ausstattungKategorie</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_dachform.description">
+				<source>ausstattungDachform</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_bauweise.description">
+				<source>ausstattungBauweise</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_ausbaustufe.description">
+				<source>ausstattungAusbaustufe</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_energietyp.description">
+				<source>ausstattungEnergietyp</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_unterkellert.description">
+				<source>ausstattungUnterkellert</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_hallenhoehe.description">
+				<source>ausstattungHallenhoehe</source>
+			</trans-unit>
+			<trans-unit id="ausstattung_stromanschlusswert.description">
+				<source>ausstattungStromanschlusswert</source>
+			</trans-unit>
+			<trans-unit id="energiepass_gueltig_bis.description">
+				<source>energiepassGueltigBis</source>
+			</trans-unit>
+			<trans-unit id="energiepass_mitwarmwasser.description">
+				<source>energiepassMitwarmwasser</source>
+			</trans-unit>
+			<trans-unit id="energiepass_primaerenergietraeger.description">
+				<source>energiepassPrimaerenergietraeger</source>
+			</trans-unit>
+			<trans-unit id="energiepass_stromwert.description">
+				<source>energiepassStromwert</source>
+			</trans-unit>
+			<trans-unit id="energiepass_waermewert.description">
+				<source>energiepassWaermewert</source>
+			</trans-unit>
+			<trans-unit id="energiepass_wertklasse.description">
+				<source>energiepassWertklasse</source>
+			</trans-unit>
+			<trans-unit id="energiepass_ausstelldatum.description">
+				<source>energiepassAusstelldatum</source>
+			</trans-unit>
+			<trans-unit id="energiepass_jahrgang.description">
+				<source>energiepassJahrgang</source>
+			</trans-unit>
+			<trans-unit id="highlight.description">
+				<source>highlight</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_zimmer_typ.description">
+				<source>objektArtZimmerTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_haus_typ.description">
+				<source>objektArtHausTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_grundstueck_typ.description">
+				<source>objektArtGrundstueckTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_buero_praxen_typ.description">
+				<source>objektArtBueroPraxenTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_einzelhandel_typ.description">
+				<source>objektArtEinzelhandelTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_gastgewerbe_typ.description">
+				<source>objektArtGastgewerbeTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_hallen_lager_produktion_typ.description">
+				<source>objektArtHallenLagerProduktionTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_land_forstwirtschaft_typ.description">
+				<source>objektArtLandForstwirtschaftTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_parken_typ.description">
+				<source>objektArtParkenTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_sonstige_typ.description">
+				<source>objektArtSonstigeTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_freizeitimmobilie_gewerblich_typ.description">
+				<source>objektArtFreizeitimmobilieGewerblichTyp</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_zinshaus_renditeobjekt_typ.description">
+				<source>objektArtZinshausRenditeobjektTyp</source>
+			</trans-unit>
+			<trans-unit id="flaechen_sonstflaeche.description">
+				<source>flaechenSonstflaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_vermietbare_flaeche.description">
+				<source>flaechenVermietbareFlaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_gewerbeeinheiten.description">
+				<source>flaechenAnzahlGewerbeeinheiten</source>
+			</trans-unit>
+			<trans-unit id="flaechen_nutzflaeche.description">
+				<source>flaechenNutzflaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_gesamtflaeche.description">
+				<source>flaechenGesamtflaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_bueroflaeche.description">
+				<source>flaechenBueroflaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_grundstuecksflaeche.description">
+				<source>flaechenGrundstuecksflaeche</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_badezimmer.description">
+				<source>flaechenAnzahlBadezimmer</source>
+			</trans-unit>
+			<trans-unit id="flaechen_anzahl_schlafzimmer.description">
+				<source>flaechenAnzahlSchlafzimmer</source>
+			</trans-unit>
+			<trans-unit id="preise_kaufpreis.description">
+				<source>preiseKaufpreis</source>
+			</trans-unit>
+			<trans-unit id="preise_provisionspflichtig.description">
+				<source>preiseProvisionspflichtig</source>
+			</trans-unit>
+			<trans-unit id="preise_aussen_courtage.description">
+				<source>preiseAussenCourtage</source>
+			</trans-unit>
+			<trans-unit id="preise_aussen_courtage_mit_mwst.description">
+				<source>preiseAussenCourtageMitMwst</source>
+			</trans-unit>
+			<trans-unit id="preise_waehrung_iso_waehrung.description">
+				<source>preiseWaehrungIsoWaehrung</source>
+			</trans-unit>
+			<trans-unit id="preise_mwst_satz.description">
+				<source>preiseMwstSatz</source>
+			</trans-unit>
+			<trans-unit id="preise_mieteinnahmen_ist.description">
+				<source>preiseMieteinnahmenIst</source>
+			</trans-unit>
+			<trans-unit id="preise_stp_freiplatz_anzahl.description">
+				<source>preiseStpFreiplatzAnzahl</source>
+			</trans-unit>
+			<trans-unit id="preise_stp_sonstige_anzahl.description">
+				<source>preiseStpSonstigeAnzahl</source>
+			</trans-unit>
+			<trans-unit id="preise_stp_sonstige_platzart.description">
+				<source>preiseStpSonstigePlatzart</source>
+			</trans-unit>
+			<trans-unit id="search_vermarktung.description">
+				<source>searchVermarktung</source>
+			</trans-unit>
+			<trans-unit id="search_objekt_typ.description">
+				<source>searchObjektTyp</source>
+			</trans-unit>
+			<trans-unit id="search_zimmer.description">
+				<source>searchZimmer</source>
+			</trans-unit>
+			<trans-unit id="search_flaeche.description">
+				<source>searchFlaeche</source>
+			</trans-unit>
+			<trans-unit id="search_preis.description">
+				<source>searchPreis</source>
+			</trans-unit>
+			<trans-unit id="search_wohngebiet.description">
+				<source>searchWohngebiet</source>
+			</trans-unit>
+			<trans-unit id="geo_adresse_gesperrt_koordinaten_breitengrad.description">
+				<source>geoAdresseGesperrtKoordinatenBreitengrad</source>
+			</trans-unit>
+			<trans-unit id="geo_adresse_gesperrt_koordinaten_laengengrad.description">
+				<source>geoAdresseGesperrtKoordinatenLaengengrad</source>
+			</trans-unit>
+			<trans-unit id="haustiere.description">
+				<source>haustiere</source>
+			</trans-unit>
+			<trans-unit id="additional_html_field.description">
+				<source>additionalHtmlField</source>
+			</trans-unit>
+			<trans-unit id="moderner_grundriss.description">
+				<source>modernerGrundriss</source>
+			</trans-unit>
+			<trans-unit id="energie_ausweis_link_extern.description">
+				<source>energieAusweisLinkExtern</source>
+			</trans-unit>
+			<trans-unit id="anhaenge.description">
+				<source>anhaenge</source>
+			</trans-unit>
+			<trans-unit id="importe.description">
+				<source>importe</source>
+			</trans-unit>
+			<trans-unit id="kontaktperson.description">
+				<source>kontaktperson</source>
+			</trans-unit>
+			<trans-unit id="titel_bild.description">
+				<source>titelBild</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout">
+				<source>Immobilien Ausgabe</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch">
+				<source>Immobilien Suche</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark">
+				<source>Immobilien Merkliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights">
+				<source>Immobilien Highlights</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest">
+				<source>Immobilien Latest</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks">
+				<source>Immobilien Browselinks</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail">
+				<source>Immobilien Detail</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="objektart_haus_haustyp.description">
+				<source>objektartHausHaustyp</source>
+			</trans-unit>
+			<trans-unit id="preisekaufpreis.description">
+				<source>preisekaufpreis</source>
+			</trans-unit>
+			<trans-unit id="flaeche_anzahl_gewerbeeinheiten.description">
+				<source>flaecheAnzahlGewerbeeinheiten</source>
+			</trans-unit>
+			<trans-unit id="objekt_art_freizeitimmobilie_gewerblich_zimmer_typ.description">
+				<source>objektArtFreizeitimmobilieGewerblichZimmerTyp</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

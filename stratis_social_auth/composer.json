@@ -1,0 +1,78 @@
+{
+  "name": "stratis/stratis-social-auth",
+  "description": "TYPO3 authentication with external services",
+  "type": "typo3-cms-extension",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "typo3/cms-core": "^12.4.0 || ^13.4.0",
+    "stratis/stratis-services" : "^2.0",
+    "stratis/stratis-common" : "*",
+    "hybridauth/hybridauth": "^3.0",
+    "php": ">=8.1.0"
+  },
+  "require-dev": {
+    "cakephp/cakephp-codesniffer": "^4.0",
+    "slevomat/coding-standard": "^8.0",
+    "squizlabs/php_codesniffer": "^3.1",
+    "jangregor/phpstan-prophecy": "^1.0",
+    "phpstan/phpstan": "^1.0",
+    "saschaegerer/phpstan-typo3": "^1.0",
+    "helmich/typo3-typoscript-lint": "^3.0",
+    "php-parallel-lint/php-console-highlighter": "^1.0",
+    "php-parallel-lint/php-parallel-lint": "^1.2",
+    "sclable/xml-lint": "^0.5",
+    "phpunit/phpunit": "^10.0",
+    "j13k/yaml-lint": "^1.1",
+    "typo3/testing-framework": "^8.0",
+    "phpcsstandards/phpcsutils": "1.0.0-alpha3",
+    "phpcompatibility/php-compatibility": "^9.3"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "stratis_social_auth",
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "web"
+    }
+  },
+  "replace": {
+    "stratis/stratis-social-auth": "self.version"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stratis\\StratisSocialAuth\\": "Classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Stratis\\StratisSocialAuth\\Tests\\": "Tests"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "git init",
+      "git config --local core.hooksPath .githooks/"
+    ],
+    "analyze:php": "phpstan analyse --ansi --no-progress --memory-limit=512M --configuration=phpstan.neon",
+    "fix:style": "phpcbf",
+    "lint:style": "phpcs",
+    "lint:php": "parallel-lint --exclude vendor --exclude web .",
+    "lint:xml": "xmllint --pattern '*.xlf,*.svg' Resources --ansi",
+    "lint:yaml": "yaml-lint Configuration/*.yaml",
+    "lint:typoscript": "typoscript-lint --ansi",
+    "test:unit": "phpunit --colors=always"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.dev02.stratis.fr"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}

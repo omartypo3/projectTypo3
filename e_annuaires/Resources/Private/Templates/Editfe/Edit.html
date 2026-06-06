@@ -1,0 +1,144 @@
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Edit Fiche</h1>
+
+<f:comment>	
+	<f:render partial="FormErrors" arguments="{object:Fiche}"/>
+	<f:form action="create"  enctype="multipart/form-data"  name="newFiche" object="{newFiche}">
+		<f:render partial="Editfe/FormFields" />
+		<f:form.submit value="Create new" />
+	</f:form>
+</f:comment>
+	<f:switch expression="{settings.templateLayoutManage}">
+		<f:case value="1">
+			<f:render partial="Editfe/editTypeTest" arguments="{fiche:fiche, settings:settings, datas: '{_all}'}" />
+		</f:case>
+		<f:case value="">
+
+<f:form.validationResults>
+	<f:debug>{validationResults.flattenedErrors}</f:debug>
+	
+	<f:if condition="{validationResults.flattenedErrors.fiche}">
+		<ul class="errors">
+		<f:for each="{validationResults.flattenedErrors.fiche}" as="error" >
+			<li>{error.message}</li>
+		</f:for>
+		</ul>
+	</f:if>
+</f:form.validationResults>
+
+			<f:form 
+                action="create" 
+                object="{fiche}" 
+                name="fiche" 
+                method="post" 
+                enctype="multipart/form-data" 
+                id="edit_annuaire_fe"
+            >
+				<div>
+					<label for="field_title">title : *</label>
+					<f:form.textfield property="title" id="field_title" />
+				</div>
+
+				<div>
+					Actions :
+					<f:for each="{arrayActions}" as="currentItem" iteration="itemIteration" key="key" >
+						<label for="check_actions_{itemIteration.cycle}">{currentItem}</label>
+						<f:form.checkbox multiple="1" property="actions" value="{key}" id="check_actions_{itemIteration.cycle}" />
+					</f:for>
+				</div>
+
+				<div>
+					<label for="field_beneficiaire" >beneficiaire : *</label>
+					<f:form.textarea property="beneficiaire" id="field_beneficiaire">
+						{fiche.beneficiaire}
+					</f:form.textarea>
+				</div>
+
+				<div>
+					Canton :
+					<f:for each="{arrayCanton}" as="currentItem" iteration="itemIteration" key="key" >
+						<label for="check_canton_{itemIteration.cycle}">{currentItem}</label>
+						<f:form.checkbox multiple="1" property="canton" value="{key}" id="check_canton_{itemIteration.cycle}" />
+					</f:for>
+				</div>
+
+				<div>
+					Categories :
+					<f:for each="{arrayCategories}" as="currentItem" iteration="itemIteration" key="key" >
+						<label for="check_categories_{itemIteration.cycle}">{currentItem}</label>
+						<f:form.checkbox multiple="1" property="categories" value="{key}" id="check_categories_{itemIteration.cycle}" />
+					</f:for>
+				</div>
+
+				<div>
+					<label for="field_country">country : *</label>
+					<f:form.textfield property="country" id="field_country" />
+				</div>
+
+				<div>
+					<label for="field_datefiche" >datefiche : *</label>
+					<f:form.textfield name="fiche[datefiche]" value="{f:format.date(format:'%d-%m-%Y', date: fiche.datefiche)}" id="field_datefiche" />
+				</div>
+
+				<div>
+					<label for="field_email">email : *</label>
+					<f:form.textfield property="email" id="field_email" />
+				</div>
+
+				<div>
+					<fieldset>
+						<legend>media(s) de la fiche</legend>			
+						<f:form.hidden name="uidFiche" value="{fiche.uid}" id="uidFiche" />
+						<f:for each="{fiche.media}" as="currentMedia" >
+							<div>
+								<f:image src="{currentMedia.originalResource.publicUrl}" additionalAttributes="{data-uidmedia: currentMedia.uid}" />
+								<input type="button" class="removeImage" value="supprimer media" />
+							</div>
+						</f:for>
+						<div>
+							<f:form.upload name="fiche[mediainstancier][file-1]" class="field_media" />
+							<f:form.hidden name="fiche[media]" value="" />
+							<div>
+								<p>titre de media</p>
+								<f:form.textfield name="fiche[mediainstancier][file-1][additional][title]" id="field_media_title" />
+								<p>description de media</p>
+								<f:form.textfield name="fiche[mediainstancier][file-1][additional][description]" id="field_media_description" />
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+				<div>
+					<label for="field_phone">phone : *</label>
+					<f:form.textfield property="phone" id="field_phone" />
+				</div>
+	
+				<div>
+					<p>documents : </p>
+					<div class="form_inline" id="form__inline__documents"></div>
+				</div> 
+
+                <f:if condition="{settings.editFe.activeTokenValidation}">
+                    <f:form.hidden name="token" value="{token}" />
+                    <f:form.hidden name="idForm" value="{idForm}" />
+                </f:if>
+				
+                <f:form.submit value="Proposer ma fiche" name="submit" />
+            </f:form>
+		</f:case>
+	</f:switch>
+
+</f:section>

@@ -1,0 +1,181 @@
+
+
+
+<textarea id="auftraegeSettingsPhasenJson{auftraege.uid}" style="display:none"><f:format.raw>{kontingentPhasenChartJson}</f:format.raw></textarea>
+<input type="hidden" class="auftraegeUid" value="{auftraege.uid}">
+<input type="hidden" id="auftraegeSettingsStatusPercent{auftraege.uid}" value="{auftraege.statusPercent}">
+<script>var auftraegeUid = $('.auftraegeUid').val();</script>
+
+<div class="layout-box">
+
+	
+
+	<div class="layout-table table-toolbar">
+		<div class="layout-table-row">
+			<div class="layout-table-col">
+
+
+				<div class="table-toolbar-container">
+
+
+					<h2>[{auftraege.nr}] <strong>{auftraege.titel}</strong></h2>
+					<br>
+
+					<div class="layout-table"><div class="layout-table-row"><div class="layout-table-col" style="width:250px;">
+
+						
+						<div><strong>Auftragskategorie:</strong> {auftraege.auftragsart.titel}</div>
+						<div><strong>Auftraggeber:</strong> {auftraege.durch}</div>
+
+
+					</div><div class="layout-table-col">
+
+
+						
+						<div><strong>Auftrag vom:</strong> {f:format.date(date: auftraege.datum, format: 'd.m.Y')}</div>
+						<f:if condition="{auftraege.datumfertigstellung}"><div><strong>Deadline:</strong>  {f:format.date(date: auftraege.datumfertigstellung, format: 'd.m.Y - H:i')} Uhr</div></f:if>
+						<f:if condition="{auftraege.datumproduktion}"><div><strong>Lieferung:</strong> ca. {f:format.date(date: auftraege.datumproduktion, format: 'd.m.Y')}<f:if condition="{auftraege.lieferungAnKunde}">  direkt zu Ihnen</f:if></div></f:if>
+
+
+					</div>
+					
+					</div></div>
+
+				</div>
+
+
+
+
+
+
+
+
+
+			</div>
+			<div class="layout-table-col" style="width: 280px;">
+				<div class="table-toolbar-container">
+					<div><strong>Ansprechpartner für diesen Auftrag</strong></div>
+					<br>
+					<div class="layout-table table-toolbar">
+						<div class="layout-table-row">
+							<div class="layout-table-col" style="width:80px">
+								<f:render partial="Allgemein/UserIcon" arguments="{user: auftraege.ansprechpartner, aktiv: 'true' }" />
+							</div>
+							<div class="layout-table-col">
+								{auftraege.ansprechpartner.name}<br>
+								<f:if condition="{auftraege.ansprechpartner.telephone}"><span class="bb-md bb-tel va_top"></span><a class="va_bottom" href="tel:+493754444667">&nbsp;{auftraege.ansprechpartner.telephone}</a><br></f:if>
+								<span class="bb-md bb-envelope va_top"></span><f:link.email email="{auftraege.ansprechpartner.email}">&nbsp;{auftraege.ansprechpartner.email}</f:link.email>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>        
+	</div>
+
+	</div>
+	
+	
+	
+	<div class="layout-table layout-table-medium-full">
+		<div class="layout-table-row">
+			<div class="layout-table-col">
+				<div class="layout-box">
+
+					<f:render partial="KundenAuftraege/PropertiesBeschreibung" arguments="{_all}" />
+					
+			   </div> 
+			</div>
+			
+			<div class="layout-table-col" style="width:350px">
+				<div class="layout-table layout-table-small-full">
+					<div class="layout-table-row">
+						
+						<div class="layout-table-col">
+							<div class="layout-box">
+							
+								<f:render partial="KundenAuftraege/PropertiesProjektuebersicht" arguments="{_all}" />
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="layout-table-col" style="width:350px">
+				<div class="layout-table layout-table-small-full">
+					<div class="layout-table-row">
+						
+						<div class="layout-table-col">
+							<div class="layout-box">
+							
+								<f:render partial="KundenAuftraege/PropertiesAuftragdetails" arguments="{_all}" />
+								
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+
+
+
+
+<div class="layout-box">
+
+	<div id="auftraegetabs_{auftraege.uid}">
+	  <ul class="auftrag_tabs_navigation">
+		
+		<f:if condition="{auftraege.angebote}"><li data-type="angebote"><a href="#auftraegetabs_{auftraege.uid}_angebote"><i class="bb-finance bb-lg"></i> Angebote <span class="label label-danger">{f:count(subject: auftraege.angebote)}</a></li></f:if>
+		  <f:if condition="{auftraege.rechnungen}"><li data-type="rechnungen"><a href="#auftraegetabs_{auftraege.uid}_rechnungen"><i class="bb-finance bb-lg"></i> Rechnungen <span class="label label-danger">{f:count(subject: auftraege.rechnungen)}</span></a></li></f:if>
+		
+
+		  <f:if condition="{auftraege.festpreis}"><f:else><li data-type="zeitkonto"><a href="#auftraegetabs_{auftraege.uid}_zeitkonto"><i class="bb-clock bb-lg"></i> Zeitkonto</a></li></f:else></f:if>
+		  
+		<li data-type="kommentare"><a href="#auftraegetabs_{auftraege.uid}_statusmeldungen" class="kommentareLabelAnzahl"><i class="bb-point-bars bb-lg"></i> Kommentare <span class="label label-danger" data-anzahl="{f:count(subject: auftraege.kommentare)}" id="auftraegetabs_{auftraege.uid}_statusmeldungen_anzahl">{f:count(subject: auftraege.kommentare)}</span></a></li>
+		  
+		  <li data-type="protokoll"><a href="#auftraegetabs_{auftraege.uid}_protokoll"><i class="bb-point-bars bb-lg"></i> Protokoll</a></li>
+
+		  
+		  <li data-type="downloads"><a href="#auftraegetabs_{auftraege.uid}_downloads"><i class="bb-download bb-lg"></i> Download<f:if condition="{auftraege.downloads}"> <span class="label label-danger">{f:count(subject: auftraege.downloads)}</span></f:if></a></li>
+		  
+	  </ul>
+		
+		
+
+		<f:if condition="{auftraege.angebote}"><div id="auftraegetabs_{auftraege.uid}_angebote"><f:render partial="KundenAuftraege/PropertiesAngebote" arguments="{_all}" /></div></f:if>
+		<f:if condition="{auftraege.rechnungen}"><div id="auftraegetabs_{auftraege.uid}_rechnungen"><f:render partial="KundenAuftraege/PropertiesRechnungen" arguments="{_all}" /></div></f:if>
+		
+		
+		<f:if condition="{auftraege.festpreis}"><f:else><div id="auftraegetabs_{auftraege.uid}_zeitkonto"><f:render partial="KundenZeiteintraege/List" arguments="{_all}" /></div></f:else></f:if>
+	
+		<div id="auftraegetabs_{auftraege.uid}_statusmeldungen"><f:render partial="KundenProtokolle/List" arguments="{_all}" /></div>
+
+		
+		
+		<div id="auftraegetabs_{auftraege.uid}_protokoll"><f:render partial="KundenProtokolle/ProtokolleList" arguments="{_all}" /></div>
+		
+		<div id="auftraegetabs_{auftraege.uid}_downloads"><f:render partial="KundenAuftraege/PropertiesDownloads" arguments="{_all}" /></div>
+
+		
+
+	</div>
+	
+</div>
+
+
+
+
+<script>
+	initAuftragsTab(auftraegeUid);
+</script>
+<f:render partial="KundenAuftraege/PropertiesDateiUpload" arguments="{_all}" />
+

@@ -1,0 +1,63 @@
+
+config.tx_extbase {
+  persistence {
+    classes {
+
+      TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup {
+        subclasses {
+          Tx_DslIntranet_KundenFegroups = DslFactory\DslIntranet\Domain\Model\KundenFegroups
+          Tx_DslIntranet_Fegroups = DslFactory\DslIntranet\Domain\Model\Fegroups
+          
+        }
+      }
+      DslFactory\DslIntranet\Domain\Model\Benutzer {
+        subclasses {
+          Tx_DslIntranet_Mitarbeiter = DslFactory\DslIntranet\Domain\Model\Mitarbeiter
+          Tx_DslIntranet_Kunden = DslFactory\DslIntranet\Domain\Model\Kunden
+          
+        }
+      }
+      TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+        subclasses {
+          Tx_DslIntranet_Benutzer = DslFactory\DslIntranet\Domain\Model\Benutzer
+          
+        }
+      }
+      DslFactory\DslIntranet\Domain\Model\KundenFegroups {
+        mapping {
+          tableName = fe_groups
+          recordType = Tx_DslIntranet_KundenFegroups
+        }
+      }
+
+      DslFactory\DslIntranet\Domain\Model\Fegroups {
+        mapping {
+          tableName = fe_groups
+          recordType = Tx_DslIntranet_Fegroups
+        }
+      }
+
+      DslFactory\DslIntranet\Domain\Model\Mitarbeiter {
+        mapping {
+          tableName = fe_users
+          recordType = Tx_DslIntranet_Mitarbeiter
+        }
+      }
+
+      DslFactory\DslIntranet\Domain\Model\Benutzer {
+        mapping {
+          tableName = fe_users
+          recordType = Tx_DslIntranet_Benutzer
+        }
+      }
+
+      DslFactory\DslIntranet\Domain\Model\Kunden {
+        mapping {
+          tableName = fe_users
+          recordType = Tx_DslIntranet_Kunden
+        }
+      }
+
+    }
+  }
+}

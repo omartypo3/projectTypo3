@@ -1,0 +1,19 @@
+<f:layout name="General" />
+
+<f:section name="content">
+	<f:if condition="{news.uservalidation}" >
+		<f:then>
+			<f:if condition="{news.adminvalidation}" >
+				<f:then>
+					Votre news a bien été créée.
+				</f:then>
+				<f:else>
+					Votre demande de création de news a bien été prise en compte, elle doit maitenant être acceptée par un administrateur.
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			Votre demande de création de news a bien été prise en compte, Vous devez maintenant la confirmer par mail.
+		</f:else>
+	</f:if>
+</f:section>

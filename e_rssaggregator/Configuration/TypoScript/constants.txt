@@ -1,0 +1,17 @@
+# ==============================================
+# FE-Plugin configuration for EXT:e_rssaggregator
+# ==============================================
+plugin.tx_erssaggregator {
+	view {
+		# cat=plugin.tx_erssaggregator/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:e_rssaggregator/Resources/Private/Templates/
+		# cat=plugin.tx_epdlpatrimoine/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:e_rssaggregator/Resources/Private/Partials/
+		# cat=plugin.tx_epdlpatrimoine/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:e_rssaggregator/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_erssaggregator//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

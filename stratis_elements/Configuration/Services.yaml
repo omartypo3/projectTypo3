@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Stratis\StratisElements\:
+    resource: '../Classes/*'
+
+  Stratis\StratisElements\Controller\FileDumpController:
+    public: true
+

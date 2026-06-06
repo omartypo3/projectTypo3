@@ -1,0 +1,1 @@
+<f:if condition="{0:set.stunden, 1:set.minuten}=={0:0,1:0}"><f:then></f:then><f:else><f:if condition="{set.stunden}<10">0</f:if><f:if condition="{set.stunden}"><f:then>{set.stunden}</f:then><f:else>0</f:else></f:if>:<f:if condition="{set.minuten}<10">0</f:if><f:if condition="{set.minuten}"><f:then>{set.minuten}</f:then><f:else>0</f:else></f:if> h</f:else></f:if>

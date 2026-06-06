@@ -1,0 +1,1375 @@
+<f:layout name="Newsletter2" />
+<f:section name="Main">
+
+    <style type="text/css">
+    /*<![CDATA[*/
+    < !--
+    /*TSFEinlineStyle*/
+    /* default styles for extension "tx_eadvancedfaq_pi1" */
+
+    /* default styles for extension "tx_a21glossaryadvancedoutput_pi1" */
+
+
+    .glossary dt {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .tx-a21glossaryadvancedoutput-pi1-browsebox {
+        border-color: #999999;
+        border-style: dotted;
+        border-width: 1px 0 0;
+        color: #333333;
+        font-style: italic;
+        padding-top: 5px;
+        text-align: center;
+    }
+
+    .tx-a21glossaryadvancedoutput-pi1-browsebox a {
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .tx-a21glossaryadvancedoutput-pi1-browsebox-SCell a {
+        color: #FFFFFF;
+        text-decoration: underline;
+    }
+
+    .navbar {
+        background-color: #000000;
+        color: #FFFFFF;
+        float: left;
+        margin: 30px 0;
+        padding: 7px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar a {
+        color: #FFFFFF !important;
+        padding-right: 5px;
+        text-decoration: none;
+    }
+
+    .searchform {
+        width: 100%;
+    }
+
+    .searchform input {
+        margin: 0 5px;
+        padding: 3px 1px;
+        width: 200px;
+    }
+
+    .searchform input.submit {
+        width: auto;
+        border: 0;
+    }
+
+    .searchform form label {
+        float: left;
+        margin: 5px 5px 0 0;
+    }
+
+    .result {
+        margin-bottom: 30px;
+    }
+
+    #glossary-cadre-droite input[type="text"] {
+        background: none repeat scroll 0 0 #ECEAEC;
+        border: medium none;
+        border-radius: 5px 5px 5px 5px;
+        padding: 4px;
+        width: 180px;
+    }
+
+    a acronym,
+    a abbr,
+    a dfn {
+        color: #027eb4 !important;
+    }
+
+    /* default styles for extension "tx_egooglemap_pi1" */
+    /* Map */
+    .tx_egooglemap_map .tx_egooglemap_clear {
+        clear: both;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_carto_left {
+        float: left;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_carto_right {
+        float: right;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_carto_top,
+    .tx_egooglemap_map .tx_egooglemap_carto_bottom {
+        clear: both;
+    }
+
+    .tx_egooglemap_map h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        color: #999999;
+        text-align: center;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legend_picto {
+        width: 20px;
+        height: 20px;
+    }
+
+    .tx_egooglemap_map label {
+        margin: 0;
+        padding: 0;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legend_left,
+    .tx_egooglemap_map .tx_egooglemap_legend_right {
+        width: 220px;
+        border: #CCCCCC 1px solid;
+        margin-right: 5px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legend_left {
+        float: left;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legend_right {
+        float: right;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legend_top,
+    .tx_egooglemap_map .tx_egooglemap_legend_bottom {
+        clear: both;
+        margin-top: 3px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legend_top .tx_egooglemap_maincategory,
+    .tx_egooglemap_map .tx_egooglemap_legend_bottom .tx_egooglemap_maincategory,
+    .tx_egooglemap_map .tx_egooglemap_legend_top .tx_egooglemap_kml,
+    .tx_egooglemap_map .tx_egooglemap_legend_bottom .tx_egooglemap_kml {
+        font-weight: normal;
+        margin-left: 5px;
+        float: left;
+        width: 32%;
+        margin-bottom: 5px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legendarbo {
+        padding: 2px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_btnexpend {
+        text-align: right;
+        padding: 0px 10px 5px 0px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_legendresizezone {
+        display: inline;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_categories {
+        clear: both;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_kmls {
+        clear: both;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_maincategory {
+        margin: 3px 0 5px 0;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_category {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_category input,
+    .tx_egooglemap_map .tx_egooglemap_nosubcategory {
+        padding-left: 18px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_subcategory {
+        padding-left: 18px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_kml input {
+        margin: 0 3px 0 3px;
+        padding: 0;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_category_description .tx_egooglemap_category_description_title,
+    .tx_egooglemap_map .tx_egooglemap_kml_description .tx_egooglemap_kml_description_title {
+        display: block;
+        font-weight: bold;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_category_description,
+    .tx_egooglemap_map .tx_egooglemap_kml_description {
+        clear: both;
+        border-color: #999999;
+        background-color: #FFFFFF;
+        border-style: solid;
+        border-width: 1px;
+        display: none;
+        padding: 2px 2px 2px 2px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_options {
+        margin-top: 10px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder,
+    .tx_egooglemap_map .tx_egooglemap_direction {
+        margin-bottom: 10px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder form fieldset,
+    .tx_egooglemap_map .tx_egooglemap_direction form fieldset {
+        border: #999999 1px solid;
+        padding: 3px;
+        margin: 0;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder .fieldsetlabel,
+    .tx_egooglemap_map .tx_egooglemap_direction .fieldsetlabel {
+        font-weight: bold;
+        text-align: left;
+        top: -12px;
+        left: 15px;
+        position: relative;
+        background: #F4F4F4;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder form fieldset .geocoderexemple,
+    .tx_egooglemap_map .tx_egooglemap_direction form fieldset .directionfromexemple,
+    .tx_egooglemap_map .tx_egooglemap_direction form fieldset .directiontoexemple {
+        color: #999999;
+        display: block;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder_champs,
+    .tx_egooglemap_map .tx_egooglemap_direction_champs {
+        text-align: center;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder_address {
+        width: 300px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_from_field,
+    .tx_egooglemap_map .tx_egooglemap_direction_to_field {
+        float: left;
+        margin: 0px 15px 0px 15px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_from,
+    .tx_egooglemap_map .tx_egooglemap_direction_to {
+        width: 300px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_fields {
+        clear: both;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder_submit_field,
+    .tx_egooglemap_map .tx_egooglemap_direction_submit_field {
+        clear: both;
+        padding-top: 5px;
+    }
+
+    *html .tx_egooglemap_map .tx_egooglemap_direction_fields {
+        padding-bottom: 5px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_mode label {
+        display: block;
+        text-align: left;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_geocoder_champs,
+    .tx_egooglemap_map .tx_egooglemap_direction_champs {
+        position: relative;
+        top: -5px;
+        text-align: center;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_gestion {
+        margin-bottom: 8px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_textmode {
+        margin-right: 5px;
+        position: relative;
+        top: 7px;
+        float: right;
+        font-weight: bold;
+        color: #FF0000;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_direction_result .googledir {
+        position: relative;
+        top: -12px;
+    }
+
+    /* KML Link WINDOW */
+    .tx_egooglemap_map .tx_egooglemap_kml-Link {
+        text-align: right;
+        padding-bottom: 5px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_kml-window {
+        text-align: left;
+        position: relative;
+        left: 489px;
+        width: 45%;
+        border-color: #999999;
+        background-color: #FFFFFF;
+        border-style: solid;
+        border-width: 1px;
+        display: none;
+        padding: 2px 2px 2px 2px;
+    }
+
+    *html .tx_egooglemap_map .tx_egooglemap_kml-window {
+        left: 0px;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_kml-windowbtn {
+        display: block;
+        float: right;
+    }
+
+    .tx_egooglemap_map .tx_egooglemap_kml-window input {
+        width: 99%;
+    }
+
+    /* POI Direction*/
+    .tx_egooglemap_poi_direction .tx_egooglemap_poi_radio {
+        margin-left: 5px;
+        margin-right: 3px;
+    }
+
+    .tx_egooglemap_poi_direction .tx_egooglemap_poi_address {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .tx_egooglemap_poi_direction .tx_egooglemap_poi_address_input {
+        width: 80%;
+    }
+
+    .tx_egooglemap_poi_direction .tx_egooglemap_poi_submit {
+        display: block;
+        margin-top: 10px;
+        text-align: right;
+    }
+
+    .tx_egooglemap_poi_direction .tx_egooglemap_poi_submit_input {
+        margin-right: 15px;
+    }
+
+    /* List */
+    .tx_egooglemap_list .tx_egooglemap_clear {
+        clear: both;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_list_search_form fieldset {
+        border: 1px solid #999999;
+        padding: 5px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_list_search_form .tx_egooglemap_list_search_label {
+        font-weight: bold;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_list_search_form .tx_egooglemap_list_search_input {
+        width: 300px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_list_search_limit {
+        color: #999999;
+        display: block;
+        padding-left: 200px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_list_search_noresult {
+        text-align: center;
+        color: #FF0000;
+        font-weight: bold;
+    }
+
+
+    .tx_egooglemap_list .tx_egooglemap_btnexpend {
+        text-align: right;
+        padding: 0px 10px 5px 0px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_maincategory {
+        font-weight: normal;
+        margin-left: 5px;
+        float: left;
+        width: 32%;
+        margin-bottom: 5px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_legendresizezone {
+        display: inline;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_poi_header {
+        font-weight: bold;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_legend_picto,
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_poi_picto .tx_egooglemap_poi_img img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_poi_picto .tx_egooglemap_poi_img img {
+        margin-right: 5px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_list_loupe {
+        margin-left: 5px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_poi_picto,
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_poi_picto .tx_egooglemap_poi_img_label,
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_poi_picto .tx_egooglemap_poi_img,
+    .tx_egooglemap_list .tx_egooglemap_poi_header .tx_egooglemap_poi_name {
+        display: inline;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_maincategory {
+        margin: 3px 0 5px 0;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_category {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_category input {
+        margin: 0 3px 0 3px;
+        padding: 0;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_nosubcategory {
+        padding-left: 18px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_subcategory,
+    .tx_egooglemap_list .tx_egooglemap_poi_header_content {
+        padding-left: 18px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_poi_header_content {
+        padding-bottom: 7px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_poi_content .tx_egooglemap_poi_windowstabslabel {
+        font-style: italic;
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_labeltext {
+        padding-left: 5px;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_category_description .tx_egooglemap_category_description_title {
+        display: block;
+        font-weight: bold;
+    }
+
+    .tx_egooglemap_list .tx_egooglemap_category_description {
+        clear: both;
+        border-color: #999999;
+        background-color: #FFFFFF;
+        border-style: solid;
+        border-width: 1px;
+        display: none;
+        padding: 2px 2px 2px 2px;
+    }
+
+    .tx_egooglemap_categories_coche {
+        float: right;
+    }
+
+    .e_googlemap_legend_coche,
+    .e_googlemap_legend_decoche {
+        float: left;
+    }
+
+
+
+    /* default styles for extension "tx_egooglemap_pi2" */
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder form {
+        padding-top: 10px;
+    }
+
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder form fieldset {
+        border: #999999 1px solid;
+        padding: 3px;
+        margin: 0;
+    }
+
+    .tx-e_googlemap-pi2 .fieldsetlabel {
+        font-weight: bold;
+        text-align: left;
+        top: -12px;
+        left: 15px;
+        position: relative;
+        background: #F4F4F4;
+    }
+
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder form fieldset label {
+        display: inline;
+        margin-bottom: 5px;
+    }
+
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder form fieldset .exemplesearch {
+        display: block;
+        color: #999999;
+    }
+
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder_champs {
+        position: relative;
+        top: -5px;
+        text-align: center;
+    }
+
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder_submit_field {
+        clear: both;
+        padding-top: 5px;
+    }
+
+    .tx-e_googlemap-pi2 .tx_egooglemap_geocoder_address {
+        width: 300px;
+    }
+
+    /* default styles for extension "tx_egooglemap_pi3" */
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction form {
+        padding-top: 10px;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction form fieldset {
+        border: #999999 1px solid;
+        padding: 3px;
+        margin: 0;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction .fieldsetlabel {
+        font-weight: bold;
+        text-align: left;
+        top: -12px;
+        left: 15px;
+        position: relative;
+        background: #F4F4F4;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_from_field,
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_to_field {
+        float: left;
+        margin: 0px 15px 0px 15px;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction form fieldset .directionfromexemple,
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction form fieldset .directiontoexemple {
+        color: #999999;
+        display: block;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_champs {
+        position: relative;
+        top: -5px;
+        text-align: center;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_from,
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_to {
+        width: 300px;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_fields {
+        clear: both;
+    }
+
+    *html .tx-e_googlemap-pi3 .tx_egooglemap_direction_fields {
+        padding-bottom: 5px;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_geocoder_submit_field,
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_submit_field {
+        clear: both;
+        padding-top: 5px;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_mode label {
+        display: block;
+        text-align: left;
+    }
+
+    .tx-e_googlemap-pi3 .tx_egooglemap_direction_textmode {
+        text-align: right;
+        margin-right: 5px;
+        position: relative;
+        top: -12px;
+        font-weight: bold;
+        color: #FF0000;
+    }
+
+    /* default styles for extension "tx_enewsextended" */
+    .tx-enewsextended-search_formBlock {
+        float: left;
+        width: 100%;
+        border-bottom: 1px dotted #FFFFFF;
+        padding: 10px 0px;
+    }
+
+    .tx-enewsextended-search_formBlock div {
+        color: #FFFFFF;
+    }
+
+    .tx-enewsextended-search_formBlock-SelectOption select {
+        width: 100%;
+    }
+
+    .tx-enewsextended-search_formBlock-InputText label {
+        float: left;
+        width: 100%;
+    }
+
+    .tx-enewsextended-search_formBlock-InputText input[type="text"] {
+        width: 96%;
+    }
+
+    .tx-enewsextended-search_formBlock-InputText input.tx-enewsextended-search_date {
+        float: left;
+        width: 80px;
+        padding: 3px;
+        margin: 2px 0px;
+    }
+
+    .tx-enewsextended-search_formBlock-InputText img.ui-datepicker-trigger {
+        margin: 0px 10px;
+        cursor: pointer;
+        float: left;
+    }
+
+    .tx-enewsextended-search_formBlock-Checkbox {
+        float: left;
+        width: 100%;
+        margin: 2px 0px;
+    }
+
+    .tx-enewsextended-search_formBlock-Checkbox input[type="checkbox"] {
+        margin: 0px 5px 0px 0px;
+    }
+
+
+    .tx-enewsextended-search_form span.news-search-form-submit {
+        float: right;
+        margin: 10px 0;
+    }
+
+    #ui-datepicker-div {
+        font-size: 12px;
+    }
+
+    #ui-datepicker-div select {
+        font-size: 9px;
+    }
+
+    #ui-datepicker-div th,
+    #ui-datepicker-div td {
+        font-size: 11px;
+    }
+
+    -->
+    /*]]>*/
+    </style>
+    <style type="text/css">
+    /*****************************************************************************************************/
+    /******************************    NEWSLETTER GENERALE    ********************************************/
+    /*****************************************************************************************************/
+    /*********************************************************/
+    /**********   TYPO   *************************************/
+    /*********************************************************/
+    body,
+    div,
+    fieldset,
+    ul,
+    ol,
+    li,
+    table {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+    }
+
+    h1 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+        margin: 0;
+        padding: 10px 0;
+    }
+
+    h2 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: ;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h3 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+    }
+
+    h4 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        color: #685c53;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h5 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #685c53;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h6 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #685c53;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    p {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        margin: 0 !important;
+        padding: 0 0 2px;
+    }
+
+    span {
+        font-size: 1em;
+    }
+
+    ul,
+    ol {
+        font-size: 11px;
+        margin: 0 0 0 15px;
+        padding: 0;
+    }
+
+    li {
+        font-size: 11px;
+        list-style-type: square;
+        padding: 0 0 0 15px;
+    }
+
+    a,
+    a:link {
+        text-decoration: none !important;
+        font-family: arial;
+        color: #000000;
+    }
+
+    .strong {
+        font-weight: bold;
+    }
+
+    table {
+        font-size: 11px;
+        border-collapse: collapse;
+        vertical-align: top;
+    }
+
+    td {
+        margin: 0;
+        padding: 0;
+        font-size: 11px;
+        /*vertical-align:top;*/
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+    }
+
+    form {
+        margin: 10px;
+    }
+
+    input,
+    select {
+        font-size: 11px;
+        color: #333333;
+    }
+
+    img {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    a img {
+        border: 0;
+    }
+
+    abbr,
+    acronym,
+    dfn {
+        border-bottom: 1px dotted #999999;
+        cursor: help;
+    }
+
+    /*********************************************************/
+    /**********   CLASSES GENERIQUES   ***********************/
+    /*********************************************************/
+    .align-justify {
+        text-align: justify;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .align-left {
+        text-align: left;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .text_underline {
+        text-decoration: underline;
+    }
+
+    .image_nl {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .event a {
+        color: #fff;
+    }
+
+    h2.entete {
+        font-family: helveticaneueltstd-blkcn;
+        color: #333333;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1.2;
+        padding: 9px 15px;
+        margin: 0 0 10px;
+        border-bottom: 1px dotted #242323;
+    }
+
+    .news-list-morelink a {
+        color: #80b71b !important;
+    }
+    </style>
+    <style type="text/css">
+    /*****************************************************************************************************/
+    /******************************    NEWSLETTER GENERALE    ********************************************/
+    /*****************************************************************************************************/
+    /*********************************************************/
+    /**********   TYPO   *************************************/
+    /*********************************************************/
+    body,
+    div,
+    fieldset,
+    ul,
+    ol,
+    li,
+    table {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+    }
+
+    h1 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 20px;
+        font-weight: bold;
+        color: #00B1FF;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h2 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        color: ;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h3 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+    }
+
+    h4 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        color: #685c53;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h5 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #685c53;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    h6 {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #685c53;
+        margin: 0;
+        padding: 0 0 10px;
+    }
+
+    p {
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        margin: 0 !important;
+        padding: 0 0 2px;
+    }
+
+    span {
+        font-size: 1em;
+    }
+
+    ul,
+    ol {
+        font-size: 11px;
+        margin: 0 0 0 15px;
+        padding: 0;
+    }
+
+    li {
+        font-size: 12px;
+        list-style-type: square;
+        padding: 0 0 0 15px;
+    }
+
+    a,
+    a:link {
+        text-decoration: underline;
+        font-family: arial;
+        color: #80b71b;
+    }
+
+    .strong {
+        font-weight: bold;
+    }
+
+    table {
+        font-size: 11px;
+        border-collapse: collapse;
+        vertical-align: top;
+    }
+
+    td {
+        margin: 0;
+        padding: 0;
+        font-size: 11px;
+        /*vertical-align:top;*/
+        font-family: Arial, Verdana, Helvetica, sans-serif;
+    }
+
+    form {
+        margin: 10px;
+    }
+
+    input,
+    select {
+        font-size: 11px;
+        color: #333333;
+    }
+
+    img {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    a img {
+        border: 0;
+    }
+
+    abbr,
+    acronym,
+    dfn {
+        border-bottom: 1px dotted #999999;
+        cursor: help;
+    }
+
+    body>table,
+    body>table>tbody>tr,
+    body>table>tbody>tr>td {}
+
+    /*********************************************************/
+    /**********   CLASSES GENERIQUES   ***********************/
+    /*********************************************************/
+    .align-justify {
+        text-align: justify;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .align-left {
+        text-align: left;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .left {}
+
+    .right {
+        float: right;
+    }
+
+    .text_underline {
+        text-decoration: underline;
+    }
+
+    table.colone_gauche .contenu p {
+        padding: 0 10px;
+    }
+
+    table.colone_gauche .contenu li,
+    table.colone_gauche .contenu ol {
+        padding: 0;
+        margin-left: 10px;
+    }
+
+    table.colone_gauche {
+        /*margin:0 10px;*/
+    }
+
+    table.colone_droite {
+        width: 210px !important;
+    }
+
+    table.colone_gauche a {
+        text-decoration: underline;
+        color: #80b71b;
+    }
+
+    .image_nl {
+
+        margin-right: 10px;
+    }
+
+    .event a {
+        color: #fff;
+    }
+    </style>
+    <f:alias map="{contenuDroite: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'2\'})}', col0: '{colPos: \'0\'}', col1: '{colPos: \'1\'}', col2: '{colPos: \'2\'}', col3: '{colPos: \'3\'}', col4: '{colPos: \'4\'}', col5: '{colPos: \'5\'}'}">
+    <table class="global" cellspacing="0" cellpadding="0" border="0" style=" width:620px; overflow:hidden; border-collapse:collapse; margin:0 auto; padding:0px; background-color: #e1dfd9; border: solid black 1px; font-family: Arial; font-size: 12px;">
+        <tr>
+            <td>
+                <table border="0" style="border-collapse: collapse; width:620px;" cellpadding="0" cellspacing="0">
+                    <tr class="entete" style=" background-color: #FFFFFF;">
+                        <td class="entete" style="float:none;text-align:center; height: 35px;font-family:Arial; font-size:11px; width:620px;" colspan="3">
+                            <div style="font-family:Arial;font-size:11px; margin: 0; padding: 0;">Si cette newsletter n'apparaît pas correctement, <span style="color:#666666; font-size:11px;"><a href="http://www.pdfmyurl.com/?url=http://eco.plainecommune.fr//index.php?id=3932&amp;type=4386&amp;page_size=A4&amp;orientation=portrait&amp;css_media_type=print">cliquez ici</a></span> </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table border="0" style="border-collapse: collapse; width:620px;" cellpadding="0" cellspacing="0">
+                    <tr class="bandeau" style=" background-color: #e1dfd9; border-collapse: collapse;">
+                        <td colspan="3" style=" vertical-align: top; width:620px;">
+                            <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                                <tbody>
+                                    <tr class="space">
+                                        <td colspan="5" style="height: 10px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="space" style="width: 16px; height: 45px;"></td>
+                                        <td>
+                                            <table border="0" class="titre" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="margin: 0; padding: 0; text-align: center; vertical-align: top;">
+                                                            <f:image src="EXT:e_magineurs/Resources/Public/SiteFactory/Images/logo_plaine_commune.jpg" alt="" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td>
+                                            <table border="0" style="border-collapse: collapse; width:405px;" cellpadding="0" cellspacing="0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="space" style="width: 20px;"></td>
+                                                        <td>
+                                                            <div style="vertical-align: top; color: #000; margin: 0; padding: 0; font-size: 20px; font-family: Arial; font-weight:bold; margin:0 !important;">Lettre d'informations économiques novembre 2019</div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div style="vertical-align: top; color: #FFFFFF; margin: 0; padding: 0; font-size: 18px; font-family: Arial; font-weight: 100;">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="space">
+                                        <td colspan="5" style="height: 10px;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="space">
+                        <td colspan="5" style=" height: 30px; background-color: #000000" height="30px"><span></span></td>
+                    </tr>
+                    <tr class="space" style=" border-collapse: collapse; border-top:solid 2px #80b71b; background-color: #e1dfd9;width: 620px;">
+                        <td style=" border-top: solid 2px #80b71b; background-color: #e1dfd9; height: 30px; " colspan="5"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table border="0" style="border-collapse: collapse; width:620px;" cellpadding="0" cellspacing="0">
+                    <tr class="contenu" style=" font-family:Arial; font-size: 12px; width: 620px;">
+                        <td style="width: 12px;height:50px; "></td>
+                        <td style=" width: 597px; vertical-align: top;">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td style=" vertical-align: top; width:360px; word-wrap: break-word; word-break: break-word;">
+                                         
+
+                                            <table class="colone_gauche" style="vertical-align: top; width: 360px; background-color: #FFFFFF;" border="0" cellpadding="0" cellspacing="0">
+                                            	<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col0}" />
+                                            </table>
+
+                                        </td>
+                                        <td style=" height:50px;width: 17px;"></td>
+                                        <td style=" width: 220px; vertical-align: top;   word-wrap: break-word; word-break: break-word;">
+                                            <!--  CONTENT ELEMENT, uid:34915/text [begin] -->
+                                            <!--DMAILER_SECTION_BOUNDARY_-->
+                                           
+
+                                            <table class="colone_droite">
+                                            	<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col1}" />
+                                            </table>
+                                            
+                                        </td>
+                                    </tr>
+                                    <tr class="ajout">
+                                        <td style="height: 20px;" colspan="3"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td style=" width: 11px;"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table border="0" style="border-collapse: collapse; width:620px;" cellpadding="0" cellspacing="0">
+                    <tr class="contenu" style="font-family:Arial; font-size: 12px; width: 620px;">
+                        <td style="width: 620px; vertical-align: top;">
+                        </td>
+                    </tr>
+                    <tr class="space">
+                        <td style="height: 35px; width: 220px;background:#e1dfd9;"></td>
+                    </tr>
+                    <tr class="ajout">
+                        <td style="height: 20px; border-bottom: 1px solid #80b71b;" colspan="3"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table bgcolor="#d2d0ca" width="668" cellspacing="0" cellpadding="0" border="0" style="background-color:#d2d0ca;width:600px;">
+                    <tr style="background-color:#d2d0ca;width:668px;">
+                        <td class="space" style="width: 27px;background-color:#d2d0ca;"></td>
+                        <td style="width:200px;text-align:left;vertical-align:topbackground-color:#d2d0ca;"> 
+                            <br>
+                            <div id="c3249" class="frame frame-default frame-type-textmedia frame-layout-0">
+                                <header class="">
+                                    <h2 class="entete" style="font-size: 14px;">Contacter Plaine Commune</h2>
+                                </header>
+                            <div class="ce-textpic ce-center ce-above">
+                                <div class="ce-bodytext" style="font-size: 10px;">
+                                    <p>21, avenue Jules-Rimet<br> 93218 Saint-Denis cedex<br> Tél. 01 55 93 55 55<br> Du lundi au vendredi<br> de 9h à 12h30 et de 13h30 à 17h30</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <div id="c3250" class="frame frame-default frame-type-header frame-layout-0">
+                            <header class="">
+                                <h2 class="entete" style="font-size: 14px;">Suivez-nous sur les réseaux sociaux !</h2>
+                            </header></div> 
+                            <div id="c3251" class="frame frame-default frame-type-textmedia frame-layout-0">
+                                <div class="ce-textpic ce-center ce-above">
+                                    <div class="ce-bodytext">
+                                        <table class="contenttable">
+                                            <thead>
+                                            <tr>
+                                            <th scope="col">
+                                                <p>
+                                                    <a href="https://www.facebook.com/plainecommune.fr" target="_blank" class="external-link-new-window">
+                                                        <img alt="" src="https://plainecommune.fr/fileadmin/user_upload/f695696add.jpg" style="" width="31" height="30"/>
+                                                    </a>
+                                                </p>
+                                            </th>
+                                            <th scope="col">
+                                                <a href="https://twitter.com/plainecommune/" target="_blank" class="external-link-new-window">
+                                                    <img alt="" src="https://plainecommune.fr/fileadmin/user_upload/b0cea6a9a1.png" style="" width="31" height="30"/>
+                                                </a>
+                                            </th>
+                                                <th scope="col">
+                                                    <a href="https://www.instagram.com/plainecommune/" target="_blank" class="external-link-new-window">
+                                                    <img alt="" src="https://plainecommune.fr/fileadmin/user_upload/505549975b.jpg" style="" width="31" height="30"/>
+                                                    </a>
+                                                </th>
+                                                <th scope="col">
+                                                    <a href="https://www.flickr.com/photos/plainecommune/" target="_blank" class="external-link-new-window">
+                                                        <img alt="" src="https://plainecommune.fr/fileadmin/user_upload/4b20e7108e.png" style="" width="31" height="30"/>
+                                                    </a>
+                                                </th>
+                                                <th scope="col">
+                                                    <a href="https://www.youtube.com/channel/UCxTqi43uqdtCZkx8Qtv8QiA" target="_blank" class="external-link-new-window">
+                                                        <img alt="" src="https://plainecommune.fr/fileadmin/user_upload/youtube-newsletter.png" style="" width="31" height="30"/>
+                                                    </a>
+                                                </th>
+                                                <th scope="col">
+                                                    <a href="https://www.linkedin.com/company/plaine-commune" target="_blank" class="external-link-new-window">
+                                                        <img alt="" src="https://plainecommune.fr/fileadmin/user_upload/linkedin-newsletter.png" style="" width="31" height="30"/>
+                                                    </a>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </td>
+                        <td class="space" style="width: 95px;background-color:#d2d0ca;"></td>
+                        <td style="width:230px;vertical-align:top;" align="left">
+                            <table class="image_map" cellspacing="0" cellpadding="0" border="0">
+                                <tr><td style="height: 20px;"></td></tr>
+                                <tr><td><f:image src="EXT:e_magineurs/Resources/Public/Plaine/Images/map.jpg" alt="Plan" style="width: 221px; height: 161px; margin: 0; float: left;"/></td></tr>
+                                <tr><td style="height: 12px;" height="12px"></td></tr>
+                                <tr>
+                                    <td style="vertical-align: top;">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td>
+                                                    <a href="https://maps.google.com/maps/ms?hl=fr&amp;ie=UTF8&amp;msa=0&amp;msid=102842118807271236951.00044335b0038e3f36f63&amp;ll=48.924754,2.362532&amp;spn=0.004906,0.010042&amp;z=17&amp;om=1" target="_top" style="font-family: Arial; font-size: 11px; width: 71px; text-decoration: none;">Plan d'accès</a>
+                                                </td>
+                                                <td style="width: 51px;"></td>
+                                                <td>
+                                                    <a href="https://plainecommune.e-magineurs.fr/acces-rapide/contact/" target="_self" style="font-family: Arial; font-size: 11px; width: 98px; text-decoration: none;">Envoyer un e-mail</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr><td style="height: 20px;"></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                                 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table bgcolor="#262626" style="background-color:#262626;width:100%;" cellspacing="0" cellpadding="0" border="0">
+		            <tr style="background-color:#262626;width:100%;">
+		                <td width="600px" height="40" style="background-color:#262626;">
+		                    
+		                    <p style="font-size:10px;color:#fff;text-align:center;">
+		                      Cet email a été envoyé à [[EMAIL_TO]], <a href="[[UNSUB_LINK_FR]]" style="color:#fff;text-decoration:none;" target="_blank">cliquez ici pour vous désabonner</a>.
+		                    </p> 
+		                </td>
+		            </tr>
+		        </table>
+            </td>
+        </tr>
+    </table>
+    <f:image src="EXT:direct_mail/res/gfx/dmailerping.gif" width="1" height="1" dmailerping="1" alt="" />
+</f:alias>
+    
+
+</f:section>

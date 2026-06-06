@@ -1,0 +1,137 @@
+module.tx_sitefactory {
+	fields {
+		# The domain name used for the new site.
+		domain {
+			type = text
+			label = form.field.label.domain_name
+			hint = form.field.hint.domain_name
+			placeholder = www.example.com
+			validation {
+				# Obviously we want a correct domain name here...
+				correctDomainName {
+					validator = Romm\SiteFactory\Form\Validation\DomainNameValidator
+				}
+			}
+		}
+
+		siteTitle {
+			type = text
+			label = form.field.label.site_name
+			hint = form.field.hint.site_name
+			validation {
+				# We want at least one character for the name.
+				noEmpty {
+					validator = Romm\SiteFactory\Form\Validation\NotEmptyValidator
+				}
+			}
+			foreignTable = tx_eannuaires_domain_model_fiche
+			foreignTableWhere = typeelement = 3 AND deleted = 0
+			foreignTableValueField = title
+			foreignTableLabelField = title
+		}
+
+
+		# The logo (image) of the site.
+		logo {
+			type = image_upload
+			label = form.field.label.logo
+			hint = form.field.hint.logo
+
+			# Contains the HTML template of the uploader.
+			partialsHeader.1 = Form/Fields/Header/ImageUploadHeader
+
+			settings {
+				# The file will be moved to the file mount created during the duplication.
+				moveToFileMount = 1
+
+				linkToPageMedia {
+					page = homePage
+				}
+
+				itemLimit = 1
+				# sizeLimit: 400 kB = 400 * 1024 bytes
+				sizeLimit = 409600
+				allowedExtensions {
+					0 = jpg
+					1 = jepg
+					2 = png
+					3 = gif
+				}
+			}
+		}
+
+		logoMobile {
+			type = image_upload
+			label = Logo du site en mobile
+			hint = Logo du site en mobile
+
+			# Contains the HTML template of the uploader.
+			partialsHeader.1 = Form/Fields/Header/ImageUploadHeader
+
+			settings {
+				# The file will be moved to the file mount created during the duplication.
+				moveToFileMount = 1
+
+				linkToPageMedia {
+					page = homePage
+				}
+
+				itemLimit = 1
+				# sizeLimit: 400 kB = 400 * 1024 bytes
+				sizeLimit = 409600
+				allowedExtensions {
+					0 = jpg
+					1 = jepg
+					2 = png
+					3 = gif
+				}
+			}
+		}
+		favicon {
+			type = image_upload
+			label = Favicon du site
+			hint = Favicon du site
+
+			# Contains the HTML template of the uploader.
+			partialsHeader.1 = Form/Fields/Header/ImageUploadHeader
+
+			settings {
+				# The file will be moved to the file mount created during the duplication.
+				moveToFileMount = 1
+
+				linkToPageMedia {
+					page = homePage
+				}
+
+				itemLimit = 1
+				# sizeLimit: 400 kB = 400 * 1024 bytes
+				sizeLimit = 409600
+				allowedExtensions {
+					0 = ico
+				}
+			}
+		}
+
+		couleurPrincipal{
+            type = color_picker
+			label = Couleur Principal du site
+			hint = Couleur Principal du site
+			placeholder = #cc403f
+			defaultValue = #cc403f
+		}
+
+		couleurSecondaire{
+            type = color_picker
+			label = Couleur Secondaire du site
+			hint = Couleur Secondaire du site
+			placeholder = #d2d2d2
+			defaultValue = #d2d2d2
+		}
+
+		multiLangue{
+            type = checkbox
+			label = Activer le multilangue
+			hint = Activer le multilangue
+		}
+	}
+}

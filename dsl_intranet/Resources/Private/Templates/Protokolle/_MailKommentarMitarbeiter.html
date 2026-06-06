@@ -1,0 +1,9 @@
+es gibt neue Informationen zu einem Auftrag.
+
+[{protokolle.auftrag.nr}] {protokolle.auftrag.titel}
+
+Aktueller Status: {protokolle.auftrag.statustext}
+
+<f:if condition="{protokolle.notiz}">Kommentar des Kunden: {protokolle.notiz}</f:if>
+
+<f:render partial="Mail/Signatur" arguments="{_all}" />

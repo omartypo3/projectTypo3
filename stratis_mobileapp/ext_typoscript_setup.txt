@@ -1,0 +1,26 @@
+appSettingsType = PAGE
+appSettingsType {
+    typeNum = 1636457683
+    headerData >
+    config {
+        no_cache = 1
+        disableAllHeaderCode = 1
+        additionalHeaders.10.header = Content-type:application/json; charset=utf-8
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+    }
+
+    20 = USER
+    20 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = StratisMobileapp
+        vendorName = Stratis
+        pluginName = Pi1
+        switchableControllerActions {
+            Settings {
+                0 = index
+            }
+        }
+    }
+}

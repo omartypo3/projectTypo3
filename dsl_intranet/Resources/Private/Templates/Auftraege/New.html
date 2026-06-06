@@ -1,0 +1,194 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in <th></th>e extension builder
+
+<f:section name="main">
+
+
+
+<f:form controller="Auftraege" enctype="multipart/form-data" action="ajax"  pageType="89657202" name="newDateien" pluginName="auftragsliste" extensionName="dslintranet" id="auftraegeCreateForm" additionalAttributes="{data-insert-selector: '#auftraegeList tbody'}">
+
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Auftrag Anlegen'}" />
+
+
+
+	<f:form.hidden name="switch" value="create" />
+    
+	<f:render partial="Auftraege/FormFields"  arguments="{_all}"  />
+	
+	
+
+<script type="text/javascript">
+	/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		
+		
+		$( "#auftraegeCreateForm button.confirm" ).click(function() {
+			checkSelectPicker('editAuftragsart');
+			checkSelectPicker('editKunde');
+			checkSelectPicker('editFegroups');
+			checkSelectPicker('editMitarbeiter');
+		});/*FormFields.html ebenfalls modifizieren*/
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#auftraegeCreateForm').validate({
+			invalidHandler: function(event, validator) { 
+				validateFormInvalidHandler(validator); 
+				
+				setTimeout(function(){ 
+				
+					$('.fremdkosten-verechnung-wrapper').removeClass('invalid_child');
+					$('.fremdkosten-verechnung-wrapper .sonstigesRadio.invalid').closest('.fremdkosten-verechnung-wrapper').addClass('invalid_child');
+					
+					$('.nutzungskator-verechnung-wrapper').removeClass('invalid_child');
+					$('.nutzungskator-verechnung-wrapper .sonstigesRadio.invalid').closest('.nutzungskator-verechnung-wrapper').addClass('invalid_child');
+					
+				}, 500);
+				
+			},
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				//alert('testsubmithandler');
+				//
+				
+				var editor = tinyMCE.get('auftragEditBeschreibung');
+				$('#auftragEditBeschreibung_temp').val(editor.getContent());
+				
+				var editor2 = tinyMCE.get('auftragEditNotizenIntern');
+				$('#auftragEditNotizenIntern_temp').val(editor2.getContent());
+				
+				var fileTypeError = false;
+				
+				var formData = new FormData();
+				params  = $('#auftraegeCreateForm').serializeArray();
+				files    = $('#auftraegeCreateForm').find('#fileUploadDateien')[0].files;
+				if(files.length != 0) {
+					
+               		$.each(files, function(i, file) {
+						
+						//iletype: application/postscript
+						if(file["type"] != 'application/pdf' 
+							&& file["type"] != 'image/png' 
+						    && file["type"] != 'image/jpeg'
+							&& file["type"] != 'application/vnd.ms-excel'
+							&& file["type"] != 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+							&& file["type"] != 'application/msword'
+							&& file["type"] != 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+						    && file["type"] != 'application/x-zip-compressed'
+						    && file["type"] != 'application/postscript'
+						  ) {
+							fileTypeError = true;
+						}
+						
+//						formData.append('files' + i, file);
+						formData.append('tx_dslintranet_auftragsliste[datei]', file);
+//						formData.append('tx_dslintranet_kundenliste_1', file);
+						
+					});
+				} /*else {
+					
+					
+					return false;
+				}*/
+				
+							
+				
+				//unbenutzte Nebenkostenfelder deaktivieren
+				$( "input.fremdkostenAnzahl" ).each(function( index ) {
+				  if($(this).val()=='0'||$(this).val()=='') {
+					 $(this).prop('disabled', true);
+				  }
+				});
+				$( ".formular-nebenkosten-empty input" ).each(function( index ) {
+					$(this).prop('disabled', true);
+				});
+				
+				params  = $('#auftraegeCreateForm').serializeArray();
+				$.each(params, function(i, val) {
+				
+					formData.append(val.name, val.value);
+				});
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#auftraegeCreateForm').hasClass('formSaves'))	return false;
+				$('#auftraegeCreateForm').addClass('formSaves');
+				
+				
+				$.ajax({
+					url: $('#auftraegeCreateForm').attr('action'),
+					type: 'POST',
+					data: formData,/*$('#auftraegeCreateForm').serialize(),*/
+					contentType: false,
+			        processData: false,
+					success: function(data) {
+						
+				
+						editor.remove();
+						editor2.remove();
+						
+						dataJson = JSON.parse(data);
+//console.log("!!!!!!!!!!!!: dataJson ");
+//console.log(dataJson);						
+						if(dataJson['newUid']) {
+							
+							$.colorbox.close();
+							
+							if(dataJson["protokollePendingUid"]){
+								setTimeout(function(){
+									showMailFormProtokollePending(dataJson["protokollePendingUid"]);
+								}, 300);
+
+							}
+							/*
+							if(dataJson["protokollePendingUid"]){
+								showMailFormProtokollePending(dataJson["protokollePendingUid"]);
+							}*/
+							
+							
+//console.log("!!!!!!!!!!!!: auftrag-show-"+dataJson['newUid']);
+							addProjektTab("auftrag-show-"+dataJson['newUid']);
+							dataTableReload();
+							
+							
+						} else {
+							return true;
+						}
+					}
+				});
+				
+				
+				
+				
+				
+		  	}
+		});
+		
+		
+		
+	});
+</script>
+
+ 
+    <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Auftrag Speichern'}" />    
+	
+</f:form>
+</f:section>

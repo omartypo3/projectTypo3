@@ -1,0 +1,58 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Kommentar zu „{notification.auftragTitel}“ (Nr. {notification.auftrag.uid}).</f:section>
+
+<f:section name="bodyHtml">
+	
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; color:rgb(152, 152, 152); text-align:center;"><p>{subject}</p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+            		<td colspan="2"><b style="font-family:Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);">{notification.auftragTitel} (Nr. {notification.auftrag.uid})</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">aktueller Status:</td>
+					<td>{notification.wert1}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Kunde:</td>
+					<td>{notification.kundeName}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;"><b>Kommentar:</b></td>
+					<td><b>{notification.wert2}</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</f:section>
+
+<f:section name="bodyText">{notification.wert2}
+----------------------------------
+Auftrag: {notification.auftragTitel}
+Kunde: {notification.kundeName}
+Status: {notification.wert1}
+Kommentar: {notification.wert2}
+----------------------------------</f:section>

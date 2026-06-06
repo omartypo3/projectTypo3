@@ -1,0 +1,30 @@
+# Poll Single Plugin
+plugin.tx_epoll_pollsingle {
+	view {
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.partialRootPath}
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.templateRootPath}
+	}
+}
+
+# Poll List Plugin
+plugin.tx_epoll_polllist {
+	view {
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.partialRootPath}
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.templateRootPath}
+	}
+}
+
+# Poll Result Plugin
+plugin.tx_epoll_pollresult {
+	view {
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.partialRootPath}
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.templateRootPath}
+	}
+}News->validate
+
+plugin.tx_epoll {
+	view {
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.partialRootPath}
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_epoll.view.templateRootPath}
+	}
+}

@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//intranet.dsl-factory.de//iCal Aufgaben
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Europe/Berlin
+TZURL:http://tzurl.org/zoneinfo-outlook/Europe/Berlin
+X-LIC-LOCATION:Europe/Berlin
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+<f:for each="{aufgabens}" as="aufgabe" iteration="iterator"><f:if condition="{aufgabe.notizFuerKalender}">
+BEGIN:VEVENT
+DTSTAMP:{now -> f:format.date(format: 'Ymd')}T{now -> f:format.date(format: 'His')}
+LAST-MODIFIED:{aufgabe.tstamp -> f:format.date(format: 'Ymd')}T{aufgabe.tstamp -> f:format.date(format: 'His')}
+CREATED:{aufgabe.crdate -> f:format.date(format: 'Ymd')}T{aufgabe.crdate -> f:format.date(format: 'His')}
+UID:{aufgabe.uid}@intranet.dsl-factory.de
+DTSTART;TZID="Europe/Berlin":{aufgabe.begin -> f:format.date(format: 'Ymd')}T{aufgabe.begin -> f:format.date(format: 'His')}
+DTEND;TZID="Europe/Berlin":{aufgabe.end -> f:format.date(format: 'Ymd')}T{aufgabe.end -> f:format.date(format: 'His')}
+SUMMARY:{aufgabe.notizFuerKalender}
+DESCRIPTION:{aufgabe.notizFuerKalender}
+END:VEVENT
+</f:if></f:for>
+END:VCALENDAR

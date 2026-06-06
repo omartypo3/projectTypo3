@@ -1,0 +1,27 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+>
+    <f:section name="MainOrFalImage">
+        <f:if condition="{newsItem.mainMedia}">
+            <f:then>
+                <f:render section="showImage" arguments="{newsItem: newsItem, width:width, height:height, maxWidth:maxWidth, maxHeight:maxHeight, mediaElement:'{newsItem.mainMedia -> v:iterator.first()}'}"/>
+            </f:then>
+            <f:else>
+                <f:if condition="{newsItem.falMedia}">
+                    <f:render section="showImage" arguments="{newsItem: newsItem, width:width, height:height, maxWidth:maxWidth, maxHeight:maxHeight,mediaQuery:mediaQuery, mediaElement:'{newsItem.falMedia -> v:iterator.first()}'}"/>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:section>
+    <f:section name="showImage">
+        <v:variable.set name="allowedExtension" value="{gif:1, jpg:1, jpeg:1, bmp:1 ,png:1 , pdf:1, svg:1}"/>
+        <v:variable.set name="fileInfos" value="{v:resource.file(identifier:mediaElement)}"/>
+        <v:variable.set name="fileExtension" value="{fileInfos.extension -> f:format.case(mode:'lower')}"/>
+        <f:if condition="{allowedExtension.{fileExtension}}">
+            <v:variable.set name="image">{v:site.url() -> v:format.replace(substring:'/',replacement:'') -> v:format.replace(substring:':',replacement:'://')}{f:uri.image(image:mediaElement,width:'{width}',height:'{height}')}</v:variable.set>
+            {image}
+        </f:if>
+    </f:section>
+</html>

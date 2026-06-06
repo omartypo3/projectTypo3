@@ -1,0 +1,20 @@
+<h1>{fiche.title}</h1>
+
+
+<f:debug>{_all}</f:debug>
+
+<f:for each="{fiche}" as="value" key="prop">
+    
+    
+    <f:switch expression="{prop}">
+        <f:case  value="categories">
+           {value.0.title}
+        </f:case>
+        <f:case  default="1">
+            <h2>{prop}</h2>
+            <p>{value}</p>
+        </f:case>
+    </f:switch>
+    
+    
+</f:for>

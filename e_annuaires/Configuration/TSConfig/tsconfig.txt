@@ -1,0 +1,13 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+    elements {
+        e_annuaires {
+            iconIdentifier = eannuaires-wizicon
+            title = LLL:EXT:e_annuaires/Resources/Private/Language/locallang_be.xml:pi1_title
+            description = LLL:EXT:e_annuaires/Resources/Private/Language/locallang_be.xml:pi1_plus_wiz_description
+            tt_content_defValues {
+                CType = list
+                list_type = eannuaires_pi1
+            }
+        }
+    }
+}

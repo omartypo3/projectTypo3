@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2025-01-01T00:00:00Z" product-name="e_magineurs_solr">
+        <header/>
+        <body>
+            <trans-unit id="searched_for_prefix">
+                <source>Recherche de</source>
+                <target>Recherche de</target>
+            </trans-unit>
+            <trans-unit id="results_found_ms">
+                <source>%d results found in %d milliseconds.</source>
+                <target>%d résultats ont été trouvés en %d millisecondes.</target>
+            </trans-unit>
+            <trans-unit id="results_found_no_time">
+                <source>%d results found.</source>
+                <target>%d résultats ont été trouvés.</target>
+            </trans-unit>
+            <trans-unit id="results_range_custom">
+                <source>Displaying results %d to %d of %d.</source>
+                <target>Affiche les résultats de %d à %d sur %d.</target>
+            </trans-unit>
+            <trans-unit id="results_per_page_label">
+                <source>Results per page:</source>
+                <target>Résultats par page:</target>
+            </trans-unit>
+            <trans-unit id="frequentSearches">
+                <source>Frequently searched</source>
+                <target>Recherches fréquentes</target>
+            </trans-unit>
+            <trans-unit id="lastSearches">
+                <source>Last searches</source>
+                <target>Dernières recherches</target>
+            </trans-unit>
+            <trans-unit id="faceting_narrowSearch">
+                <source>Narrow Search</source>
+                <target>Filtre de résultats</target>
+            </trans-unit>
+            <trans-unit id="sorting_sortBy">
+                <source>Sorting</source>
+                <target>Trier par</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

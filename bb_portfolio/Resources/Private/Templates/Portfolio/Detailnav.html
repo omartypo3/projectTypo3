@@ -1,0 +1,49 @@
+<div class="detailpageHeader whiteContainer">
+	<div class="container">
+	
+		
+		<f:if condition="{selectedKunden}">
+			<f:then><f:comment>Detailansicht aus dem Kundenbereich heraus.</f:comment>
+				
+				<div class="col-xs-3 col-md-1 navArrowRight"><f:if condition="{portfolioPrev}"><f:link.action rel="nofollow" pageUid="32" action="detail" arguments="{portfolio : portfolioPrev, kunden: selectedKunden}" title="Projekt: {portfolioPrev.titel}"><i class="bb-arrow-left"></i></f:link.action></f:if></div>
+				
+				<div class="col-xs-6 col-md-10 detailpageNavTitle">
+					<f:link.action pageUid="43" rel="nofollow" action="detailkunden" arguments="{kunden: selectedKunden}" section="pt{portfolio.uid}"><i class="bb-grid"></i><span class="hidden-xs">Alle Projekte </span></f:link.action><br />
+				</div>
+				
+				<div class="col-xs-3 col-md-1 navArrowLeft"><f:if condition="{portfolioNext}"><f:link.action rel="nofollow" pageUid="32" action="detail" arguments="{portfolio : portfolioNext, kunden: selectedKunden}" title="Projekt: {portfolioNext.titel}"><i class="bb-arrow-right"></i></f:link.action></f:if></div>
+				
+			</f:then>
+			<f:else><f:comment>Detailansicht aus dem Projektbereich heraus.</f:comment>
+				
+				<f:if condition="{0:'{selectedKategorie}{selectedHashtag}{selectedKunden}{offsetBefore}'} != {0:''}">
+					<f:then>
+				
+						<div class="col-xs-3 col-md-1 navArrowRight"><f:if condition="{portfolioPrev}"><f:link.action rel="nofollow" pageUid="32" action="detail" arguments="{portfolio : portfolioPrev, kategorien: selectedKategorie, hashtags: selectedHashtag, kunden: selectedKunden}" title="Projekt: {portfolioPrev.titel}"><i class="bb-arrow-left"></i></f:link.action></f:if></div>
+
+						<div class="col-xs-6 col-md-10 detailpageNavTitle">
+							<f:link.action rel="nofollow" action="list" arguments="{kategorien: selectedKategorie,hashtags: selectedHashtag}" section="pt{portfolio.uid}" additionalParams="{offsetBefore: offsetBefore}"><i class="bb-grid"></i><span class="hidden-xs">Alle Projekte</span></f:link.action><br />
+						</div>
+
+						<div class="col-xs-3 col-md-1 navArrowLeft"><f:if condition="{portfolioNext}"><f:link.action  rel="nofollow" pageUid="32" action="detail" arguments="{portfolio : portfolioNext, kategorien: selectedKategorie, hashtags: selectedHashtag, kunden: selectedKunden}" title="Projekt: {portfolioNext.titel}"><i class="bb-arrow-right"></i></f:link.action></f:if></div>
+						
+					</f:then>
+					<f:else>
+						
+						<div class="col-xs-3 col-md-1 navArrowRight"><f:if condition="{portfolioPrev}"><f:link.action pageUid="32" action="detail" arguments="{portfolio : portfolioPrev}" title="Projekt: {portfolioPrev.titel}"><i class="bb-arrow-left"></i></f:link.action></f:if></div>
+
+						<div class="col-xs-6 col-md-10 detailpageNavTitle">
+							<f:link.action action="list" rel="nofollow" section="pt{portfolio.uid}"><i class="bb-grid"></i><span class="hidden-xs">Alle Projekte</span></f:link.action><br />
+						</div>
+
+						<div class="col-xs-3 col-md-1 navArrowLeft"><f:if condition="{portfolioNext}"><f:link.action pageUid="32" action="detail" arguments="{portfolio : portfolioNext}" title="Projekt: {portfolioNext.titel}"><i class="bb-arrow-right"></i></f:link.action></f:if></div>
+						
+					</f:else>
+				</f:if>
+				
+			</f:else>
+		</f:if>
+	
+		
+	</div>
+</div>

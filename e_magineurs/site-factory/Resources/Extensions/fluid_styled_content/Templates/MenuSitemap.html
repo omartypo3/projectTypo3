@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+	<div class="unfold">
+		<span class="active"><f:translate key="{dossierLangue}:fold" /></span>
+		<span><f:translate key="{dossierLangue}:unfold" /></span>
+	</div>
+	<f:render section="Menu" arguments="{menu: menu}" />
+</f:section>
+<f:section name="Menu">
+	<f:if condition="{menu}">
+		<ul class="nosolrindex">
+			<f:for each="{menu}" as="page">
+				<li>
+					<f:link.page pageUid="{page.data.uid}" title="{f:if(condition: page.current, then: '{page.title} - Page active')}" target="{page.target}">
+						{page.title}
+					</f:link.page>
+					<f:render section="Menu" arguments="{menu: page.children}" />
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+
+</f:section>
+</html>

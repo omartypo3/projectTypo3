@@ -1,0 +1,308 @@
+RTE.default.buttons.image.options.magic.maxWidth = 1020
+RTE.default.buttons.image.options.magic.maxHeight = 800
+RTE.default.buttons.image.options.plain.maxWidth = 1020
+RTE.default.buttons.image.options.plain.maxHeight = 800
+RTE.buttons.image < .RTE.default.buttons.image
+
+TCEFORM {
+    tt_content{
+        layout {
+            removeItems = 1,2,3
+        }
+        CType.removeItems = bullets,table,form_formframework,text,textpic,image,menu_related_pages,menu_recently_updated,menu_categorized_content,menu_sitemap_pages
+        header_layout.removeItems = 1
+    }
+    pages{
+        layout {
+            removeItems = 1,2,3
+            addItems.4 = Titre caché
+        }
+    }
+    # Désactiver des types de champs
+    tx_powermail_domain_model_field.type.removeItems = captcha,location,typoscript
+    tx_powermail_domain_model_form {
+        css {
+            removeItems = layout1, layout2, layout3
+            addItems {
+                col-md-6 = 50%
+                col-md-4 = 33%
+                col-md-8 = 66%
+                col-md-8 = 66%
+            }
+        }
+    }
+    tx_powermail_domain_model_page < .tx_powermail_domain_model_form
+    tx_powermail_domain_model_field < .tx_powermail_domain_model_form
+
+    tx_news_domain_model_news {
+        author_email.label = E-mail de l'auteur
+        type.label = Type d'actualité
+        archive.label = Date d'archivage
+        bodytext.label = Texte
+        related_fsmediaalbums.label = Albums liés
+        adressetout.label = Adresse complète
+        ville.label = Commune
+    }
+}
+
+TCEMAIN {
+    table{
+        pages.disablePrependAtCopy = 1
+        tt_content.disablePrependAtCopy = 1
+        tx_news_domain_model_news.disablePrependAtCopy = 1
+    }
+    permissions {
+        user = show,edit,delete,new,editcontent
+        group = show,edit,delete,new,editcontent
+        everybody = show,edit,delete,new,editcontent
+    }
+    linkHandler {
+        tx_news {
+            handler = TYPO3\CMS\Backend\LinkHandler\RecordLinkHandler
+            label = LLL:EXT:e_package/Resources/Private/Language/locallang.xlf:linkHandlerNewsEvent
+            configuration.table = tx_news_domain_model_news
+            scanBefore = page
+        }
+        tx_eannuaires < .tx_news
+        tx_eannuaires {
+            label = LLL:EXT:e_package/Resources/Private/Language/locallang.xlf:linkHandlerDirectory
+            configuration.table = tx_eannuaires_domain_model_fiche
+        }
+        tx_fsmediagallery < .tx_news
+        tx_fsmediagallery {
+            label = LLL:EXT:e_package/Resources/Private/Language/locallang.xlf:linkHandlerPhotoGallery
+            configuration {
+                table = sys_file_collection
+                pageTreeMountPoints >
+                hidePageTree = 1
+            }
+        }
+        tx_eannuairesVids < .tx_eannuaires
+        tx_eannuairesVids {
+            label = LLL:EXT:e_package/Resources/Private/Language/locallang.xlf:linkHandlerVideosGallery
+            configuration {
+                pageTreeMountPoints >
+                hidePageTree = 1
+            }
+        }
+        folder >
+        url.displayAfter = file
+    }
+}
+
+TCAdefaults.sys_file_reference.showinpreview = 1
+
+tx_eannuaires.templateLayouts{
+    liste{
+        1 = Mise en avant Vidéo
+        5 = Mise en avant Personne
+        10 = Mise en avant Lieu
+        15 = Liste Vidéo Colonne
+        16 = Liste Vidéo Ligne
+        20 = Liste Personne Colonne
+        21 = Liste Personne Ligne
+        25 = Liste Lieu Colonne
+        26 = Liste Lieu Ligne
+    }
+    detail{
+        1 = Détail Lieu
+        30 = Détail Personne
+        40 = Détail Vidéo
+    }
+    search{
+        1 = Recherche Lieu
+        30 = Recherche Personne
+        40 = Recherche Vidéo
+    }
+    result{
+        1 = Résultat Lieu
+        30 = Résultat Personne
+        40 = Résultat Vidéo
+    }
+}
+
+tx_gridelements.setup {
+    101 {
+        title = Deux colonnes 50%-50%
+        config {
+            colCount = 2
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                        }
+                        2 {
+                            name = Contenus
+                            colPos = 1
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid5050.gif
+    }
+    102 {
+        title = Deux colonnes 25%-75%
+        config {
+            colCount = 3
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                            colspan = 2
+                        }
+                        2 {
+                            name = Contenus
+                            colPos = 1
+                            colspan = 2
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid2575.gif
+    }
+    103 {
+        title = Deux colonnes 75%-25%
+        config {
+            colCount = 3
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                            colspan = 2
+                        }
+                        2 {
+                            name = Contenus
+                            colPos = 1
+                            colspan = 1
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid7525.gif
+    }
+    104{
+        title = Deux colonnes 33%-66%
+        config {
+            rowCount = 1
+            colCount = 3
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                            colspan = 1
+                        }
+                        2 {
+                            name = Contenus
+                            colPos = 1
+                            colspan = 2
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid3366.gif
+    }
+    105 {
+        title = Deux colonnes 66%-33%
+        config {
+            colCount = 3
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                            colspan = 2
+                        }
+                        2 {
+                            name = Contenus
+                            colPos = 1
+                            colspan = 1
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid6633.gif
+    }
+    106 {
+        title = Trois colonnes 33%-33%-33%
+        config {
+            colCount = 3
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                        }
+                        2 {
+                            name = Contenus
+                            colPos = 1
+                        }
+                        3 {
+                            name = Contenus
+                            colPos = 2
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid333333.gif
+    }
+    107 {
+        title = Une colonne 100%
+        config {
+            colCount = 1
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = Contenus
+                            colPos = 0
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:e_package/Resources/Public/Images/grid100.gif
+    }
+}
+
+#################
+## AJOUT D'UN NOUVEAU MENU ##
+#################
+mod.wizards.newContentElement.wizardItems.menu {
+    elements {
+        menu_piedpage {
+            iconIdentifier = e_package_menu_icon
+            title = Menu pied de page
+            description = Menu utilisé dans le pied de page du site
+            tt_content_defValues.CType = menu_piedpage
+        }
+        menu_principal {
+            iconIdentifier = e_package_menu_icon
+            title = Menu principal
+            description = Menu principal du site
+            tt_content_defValues.CType = menu_principal
+        }
+    }
+    show := addToList(menu_piedpage,menu_principal)
+}

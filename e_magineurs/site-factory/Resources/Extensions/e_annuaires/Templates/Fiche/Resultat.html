@@ -1,0 +1,157 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="main">
+	<f:flashMessages />
+    <div class="count-msg">
+        <p>Il y a <f:count subject="{fiches}" /> 
+            <f:if condition="{f:count(subject:fiches)} > 1">
+                <f:then>résultats </f:then>
+                <f:else>résultat </f:else>
+            </f:if>
+            <f:if condition="{searchObjet.titre}">
+                pour "{searchObjet.titre}"  
+            </f:if>
+            <f:if condition="{searchObjet.categoryGeneral}">
+                sur la thématique <strong>"<f:cObject typoscriptObjectPath="lib.themeannuResult" data="{sourceUid: searchObjet.categoryGeneral}" />"</strong>
+            </f:if>
+            <f:if condition="{searchObjet.categoryPersonne}">
+                sur la thématique <strong>"<f:cObject typoscriptObjectPath="lib.themeannuResult" data="{sourceUid: searchObjet.categoryPersonne}" />"</strong>
+            </f:if>
+            <f:if condition="{searchObjet.categoryVideo}">
+                sur la thématique <strong>"<f:cObject typoscriptObjectPath="lib.themeannuResult" data="{sourceUid: searchObjet.categoryVideo}" />"</strong>
+            </f:if>
+        </p>
+    </div>
+
+    <f:if condition="{fiches}">
+        <f:if condition="{settings.pageBrowser}">
+            <f:then>
+                <f:if condition="{settings.menu_abc}">
+                    <f:then>
+                        <annuaire:widget.paginate objects="{fiches}" as="paginatedFiches" field="title" >
+                            <f:switch expression="{settings.templateLayoutResult}">
+                                <f:case value="1">
+                                    <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                        <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                            <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                        </f:for>
+                                    </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                                </f:case>
+                                <f:case value="30">
+                                    <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                        <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                            <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                        </f:for>
+                                    </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                                </f:case>
+                                <f:case value="40">
+                                    <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                        <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                            <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                        </f:for>
+                                    </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                                </f:case>
+                                <f:case value="">
+                                    <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                        <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                            <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                        </f:for>
+                                    </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                                </f:case>
+                            </f:switch>
+                        </annuaire:widget.paginate>
+                    </f:then>
+                    <f:else>
+                        <f:switch expression="{settings.templateLayoutResult}">
+                            <f:case value="1">
+                                <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                    <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                            </f:case>
+                            <f:case value="30">
+                                <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                    <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                            </f:case>
+                            <f:case value="40">
+                                <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                    <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                            </f:case>
+                            <f:case value="">
+                                <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                    <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                            </f:case>
+                        </f:switch>
+                    </f:else>
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:if condition="{settings.menu_abc}">
+                    <f:then>
+                        <annuaire:widget.paginate objects="{fiches}" as="paginatedFiches" field="title" >
+                            <f:switch expression="{settings.templateLayoutResult}">
+                                <f:case value="1">
+                                    <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:case>
+                                <f:case value="30">
+                                    <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:case>
+                                <f:case value="40">
+                                    <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:case>
+                                <f:case value="">
+                                    <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                        <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                    </f:for>
+                                </f:case>
+                            </f:switch>
+                        </annuaire:widget.paginate>
+                    </f:then>
+                    <f:else>
+                        <f:switch expression="{settings.templateLayoutResult}">
+                            <f:case value="1">
+                                <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                            </f:case>
+                            <f:case value="30">
+                                <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                            </f:case>
+                            <f:case value="40">
+                                <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                            </f:case>
+                            <f:case value="">
+                                <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                            </f:case>
+                        </f:switch>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+    </f:if>
+
+
+</f:section>
+

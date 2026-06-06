@@ -1,0 +1,245 @@
+/****************************************************************************************
+# Default css file for content edited with CKEditor
+#
+# Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+# For licensing, see LICENSE.md or http://ckeditor.com/license
+#
+# Defines a few class selectors that can be simply taken as examples by anyone who needs to configure the RTE.
+# This css file is referenced by property RTE.default.contentCSS in TSconfig.
+# ***************************************************************************************/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,500i,600,700');
+body {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+    margin: 20px; 
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+}
+
+h2.entete,h3.entete{
+    border-bottom: 1px dotted #908f8f;
+    margin: 10px 0;
+}
+
+p {
+    margin-bottom: 20px;
+}
+p.chapo {
+    font-size: 20px;
+    font-weight: bold;
+}
+p.text_high, p.fond_couleur_principal {
+    background: #f0f0f0;
+    font-weight: bold;
+}
+a {
+    text-decoration: underline;
+    color: #000;
+}
+a.link_internal {
+    display: inline-block;
+    border: 1px solid #000;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+a.link_external {
+    display: inline-block;
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    padding: 10px 15px;
+}
+
+a.link_files{
+    display: block;
+    position: relative;
+    padding-left: 12px; 
+}
+
+a.link_files:before{
+    content: ">";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    
+}
+
+table {
+    width: 100%;
+    margin: 0 0 30px 0;
+    border-collapse: separate;
+}
+
+table th {
+    background: #000;
+    color: #fff;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+table td {
+    padding: 15px 10px;
+}
+table tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+blockquote {
+    padding: 20px;
+    margin: 50px 0;
+    border: 1px solid #f0f0f0;
+}
+hr{
+    border: 0px;
+    border-top: 1px solid #ccc;
+}
+.cke_editable {
+    font-size: 13px;
+    line-height: 1.6;
+    /* Fix for missing scrollbars with RTL texts. (#10488) */
+    word-wrap: break-word;
+}
+img.right{
+    border: 1px solid #ccc;
+    float: right;
+    margin-left: 15px;
+    padding: 5px;
+}
+img.left{
+    border: 1px solid #ccc;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+}
+pre{
+    white-space: pre-wrap; /* CSS 2.1 */
+    word-wrap: break-word; /* IE7 */
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+}
+table {
+    border-collapse: collapse;
+    background-color: transparent;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    padding-left: 100px;
+}
+table th,
+table td {
+    padding: 0.25rem;
+    vertical-align: top;
+}
+table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+}
+ul{
+padding:12px;
+list-style: none;
+
+}
+li{
+    
+}
+li:before{
+    content: " ";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius:4px;
+    margin-right: 7px;
+    background:#bc2703;
+    position:relative;
+    top:-4px;
+}
+.marker{
+    background-color: Yellow;
+}
+span[lang]{
+    font-style: italic;
+}
+figure{
+    text-align: center;
+    border: solid 1px #ccc;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    margin: 10px 20px;
+    display: inline-block;
+}
+figure > figcaption{
+    text-align: center;
+    display: block; /* For IE8 */
+}
+a{
+    color:#bc2703;
+}
+a > img {
+    padding: 1px;
+    margin: 1px;
+    border: none;
+    outline: 1px solid #0782C1;
+}
+/* Widget Styles */
+.code-featured{
+    border: 5px solid #bc2703;
+}
+.math-featured{
+    padding: 20px;
+    -webkit-box-shadow: 0 0 2px rgba(200, 0, 0, 1);
+            box-shadow: 0 0 2px rgba(200, 0, 0, 1);
+    background-color: rgba(255, 0, 0, 0.05);
+
+    margin: 10px;
+}
+.image-clean{
+    border: 0;
+    background: none;
+    padding: 0;
+}
+.image-clean > figcaption{
+    font-size: .9em;
+    text-align: right;
+}
+.image-grayscale{
+    background-color: white;
+    color: #666;
+}
+.image-grayscale img, img.image-grayscale{
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+}
+.embed-240p{
+    max-width: 426px;
+    max-height: 240px;
+    margin:0 auto;
+}
+.embed-360p{
+    max-width: 640px;
+    max-height: 360px;
+    margin:0 auto;
+}
+.embed-480p{
+    max-width: 854px;
+    max-height: 480px;
+    margin:0 auto;
+}
+.embed-720p{
+    max-width: 1280px;
+    max-height: 720px;
+    margin:0 auto;
+}
+.embed-1080p{
+    max-width: 1920px;
+    max-height: 1080px;
+    margin:0 auto;
+}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+.text-right {text-align: right;}
+.text-justify {text-align: justify;}

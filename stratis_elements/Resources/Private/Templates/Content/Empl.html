@@ -1,0 +1,44 @@
+<html data-namespace-typo3-fluid="true"
+    xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/Stratis/StratisElements/ViewHelpers/"
+>
+    <f:layout name="Content"/>
+    <f:section name="Configuration">
+        <flux:form id="empl" options="{group: 'empl', icon: 'EXT:stratis_elements/Resources/Public/Icons/Content/flex-iframe.png'}" label="Offres d'emploi (iframe)" description="4 pages IFRAME (Liste des offres, Description d’une offre, Candidature à une offre, Candidature spontanée).">
+            <flux:field.select label="Niveau du titre" name="iframePage" items="{1:'Liste des offres', 2:'Description d’une offre', 3:'Candidature à une offre', 4:'Candidature spontanée'}"/>
+            <flux:field.input name="src" label="src"  default="https://preprod-talents.elsatis.fr/prod1/portal/portal.jsp" required="true"/>
+            <flux:field.input name="c" label="c"  default="109249115" required="true"/>
+            <flux:field.input name="p" label="p"  default="109458814" required="true"/>
+            <flux:field.input name="g" label="g"  default="116570016" required="true"/>
+            <flux:field.input name="idSupport" label="idSupport"  default="113863398" required="true"/>
+            <flux:field.input name="height" label="height"  default="1400" required="true"/>
+            <flux:field.input name="heightMobile" label="height (mobile)" default="1400" required="true"/>
+            <flux:field.input name="heightTablet" label="height (tablette)" default="1400"  required="true"/>
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <br/><b>Offres d'emploi (iframe)</b>
+        <br/>4 pages IFRAME (Liste des offres, Description d’une offre, Candidature à une offre, Candidature spontanée).
+    </f:section>
+    <f:section name="Main">
+        <v:variable.set name="idDiffusion" value="{s:uri.param(get:'idDiffusion')}"/>
+        <f:switch expression="{iframePage}">
+            <f:case value="1">
+                <iframe src="{src}?c={c}&p={p}&g={g}&idSupport={idSupport}" data-mob-height="{heightMobile}" data-tablet-height="{heightTablet}" id="iframe-recrutement-liste-offres" width="100%" height="{height}" style="height:{height}px; width:100%"></iframe>
+            </f:case>
+            <f:case value="2">
+                <iframe src="{src}?c={c}&p={p}&g={g}&id={idDiffusion}&idSupport={idSupport}" data-mob-height="{heightMobile}" data-tablet-height="{heightTablet}" width="100%" height="{height}" id="iframe-recrutement-afficher-offre" style="height:{height}px; width:100%"></iframe>
+            </f:case>
+            <f:case value="3">
+                <iframe src="{src}?c={c}&p={p}&g={g}&idSupport={idSupport}&idDiffusion={idDiffusion}" data-mob-height="{heightMobile}" data-tablet-height="{heightTablet}" width="100%" height="{height}" id="iframe-recrutement-postuler-offre" style="height:{height}px; width:100%"></iframe>
+            </f:case>
+            <f:case value="4">
+                <iframe src="{src}?c={c}&p={p}&g={g}&idSupport={idSupport}" data-mob-height="{heightMobile}" data-tablet-height="{heightTablet}" id="iframe-recrutement-cs" width="100%" height="{height}" style="height:{height}px; width:100%"></iframe>
+            </f:case>
+        </f:switch>
+        <v:variable.unset name="idDiffusion"/>
+    </f:section>
+</html>

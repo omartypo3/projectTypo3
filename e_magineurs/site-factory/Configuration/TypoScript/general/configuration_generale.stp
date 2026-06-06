@@ -1,0 +1,175 @@
+page.includeCSS {
+	montserrat = https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap
+	bootstrap = https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css
+	bootstrap.external = 1
+	fontawesome = https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+	fontawesome.external = 1
+#	emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/page.css
+	emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/page.scss
+#	emagineursStyles.outputdir = {$e_magineurs.conf.dossierPublic}/Css/css/
+}
+[page["uid"] == {$e_magineurs.conf.homePage}]
+#	page.includeCSS.emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/home.css
+	page.includeCSS.emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/home.scss
+[end]
+#Social Share Privacy
+page.includeJSFooter {
+	socialshareprivacy = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/socialshareprivacy.min.js
+	facebook = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/facebook.js
+	twitter = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/twitter.js
+	gplus = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/gplus.js
+	mail = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/mail.js
+	socialshareprivacyLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/socialshareprivacy.js
+	facebookLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/facebook.js
+	twitterLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/twitter.js
+	gplusLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/gplus.js
+	mailLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/mail.js
+}
+/*
+	Pour le multilangue de socialshare : 
+	[(request.getQueryParams()['L'] ?? 0) == 2]
+		page.includeJSFooter {
+			socialshareprivacyLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/de/socialshareprivacy.js
+			facebookLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/de/modules/facebook.js
+		}
+	[end]
+*/
+
+page.includeJSFooter {
+	scripts = {$e_magineurs.conf.dossierPublic}/JavaScript/scripts.js
+	# Exemple chargement external
+	#file2 = //api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.js
+	#file2.external = 1
+
+	swiper = {$e_magineurs.conf.dossierPublic}/swiper/js/swiper.min.js
+	swiper2 = {$e_magineurs.conf.dossierPublic}/JavaScript/swiper_diapo.js
+	solrPagination = {$e_magineurs.conf.dossierPublic}/JavaScript/solrPagination.js
+}
+page.headerData.50 = TEXT
+page.headerData.50 {
+	value (
+		
+		
+		<script type="text/javascript" src="{$e_magineurs.conf.dossierPublic}/tarteaucitron/tarteaucitron.js"></script>
+
+	)
+}
+
+
+page.jsFooterInline.919 >
+
+#page.jsFooterInline.919 = FLUIDTEMPLATE
+#page.jsFooterInline.919 {
+#    file = {$e_magineurs.conf.dossierPublic}/JavaScript/tarte.js
+#    variables {
+#        UA = TEXT
+#        UA.value = {$e_magineurs.tracking.UA}
+#        cookiePage = TEXT
+#        cookiePage.value = {$e_magineurs.tracking.lienInfo}
+#        message = TEXT
+#        message.value = {$e_magineurs.tracking.showBanner}
+#    }
+#}
+
+[page["uid"] == {$e_magineurs.conf.homePage}]
+page.includeCSS {
+	swiper = {$e_magineurs.conf.dossierPublic}/swiper/css/swiper.css
+	swiperMin = {$e_magineurs.conf.dossierPublic}/swiper/css/swiper.min.css
+}
+[end]
+
+# Rendering of content elements in detail view
+lib.tx_eannuaires.contentElementRendering = RECORDS
+lib.tx_eannuaires.contentElementRendering {
+    tables = tt_content
+    source.current = 1
+    dontCheckPid = 1
+}
+
+[615 in tree.rootLineIds]
+	page.headerData.120 = TEXT
+	page.headerData.120 {
+		value (
+			<!-- Matomo -->
+			<script type="text/javascript">
+				var _paq = window._paq || [];
+				/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
+				(function() {
+					var u="//plainecommune.fr/matomo/";
+					_paq.push(['setTrackerUrl', u+'matomo.php']);
+					_paq.push(['setSiteId', '2']);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				})();
+			</script>
+			<!-- End Matomo Code -->
+		)
+	}
+[799 in tree.rootLineIds]
+	page.headerData.130 = TEXT
+	page.headerData.130 {
+		value (
+			<!-- Matomo -->
+			<script type="text/javascript">
+				var _paq = window._paq || [];
+				/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
+				(function() {
+					var u="//plainecommune.fr/matomo/";
+					_paq.push(['setTrackerUrl', u+'matomo.php']);
+					_paq.push(['setSiteId', '3']);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				})();
+			</script>
+			<!-- End Matomo Code -->
+		)
+	}
+
+[908 in tree.rootLineIds]
+	page.headerData.140 = TEXT
+	page.headerData.140 {
+		value (
+			<!-- Matomo -->
+			<script type="text/javascript">
+				var _paq = window._paq || [];
+				/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
+				(function() {
+					var u="//plainecommune.fr/matomo/";
+					_paq.push(['setTrackerUrl', u+'matomo.php']);
+					_paq.push(['setSiteId', '4']);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				})();
+			</script>
+			<!-- End Matomo Code -->
+		)
+	}
+
+[990 in tree.rootLineIds]
+	page.headerData.150 = TEXT
+	page.headerData.150 {
+		value (
+			<!-- Matomo -->
+			<script type="text/javascript">
+				var _paq = window._paq || [];
+				/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
+				(function() {
+					var u="//plainecommune.fr/matomo/";
+					_paq.push(['setTrackerUrl', u+'matomo.php']);
+					_paq.push(['setSiteId', '5']);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				})();
+			</script>
+			<!-- End Matomo Code -->
+		)
+	}
+[end]

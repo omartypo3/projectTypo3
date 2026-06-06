@@ -1,0 +1,53 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<v:format.trim>
+
+
+
+	<f:comment>
+		<li>test!!</li>
+	<li>test</li>
+	SELECT * FROM tx_dslintranet_domain_model_notification WHERE mitarbeiter=2218 and gelesen = 0 and deleted = 0 order by uid DESC
+	</f:comment>
+
+
+<f:if condition="{ajax}">
+
+	<f:then>
+		<f:if condition="{notifications}">
+			<div><f:render section="items"  arguments="{_all}" /></div>
+		</f:if>
+	</f:then>
+	<f:else>
+
+		<v:asset.script path="EXT:dsl_intranet/Resources/Public/Js/notification.js" name="dslintranetnotification" dependencies="jquery,script" />
+		Derzeit gibt für Sie keine Benachrichtigungen. Sobald etwas passiert erscheinen entsprechende Meldungen hier.
+	</f:else>
+</f:if>
+
+<f:section name="items">
+	<li id="notificationInit" style="display:none;"
+		data-reload-uri="
+		{f:uri.page(pageUid:79,pageType:89658999,additionalParams:{tx_dslintranet_notificationcenter: {ajax: 'true', lastUid:'{notifications.0.uid}'}} )}
+		">
+	</li>
+	<f:for each="{notifications}" as="notification">
+
+
+		<!-- {notification.cruser.mitarbeiter.uid} -->
+		<li class="notification-item" data-notification-uid="{notification.uid}" data-notification-body="{notification.body}{f:if(condition: '{notification.zusatz}', then: ' / {notification.zusatz}')}" data-notification-titel="{notification.titel}" data-notification-icon="{f:render(partial:'Mitarbeiter/NotificationAvatarImageUrl', arguments:{notification:'{notification}'})}" data-notification-gelesen="{notification.gelesen}" data-notification-auftrag-uid="{f:if(condition: '{notification.auftrag}', then: '{notification.auftrag.uid}')}"><f:link.action action="delete" arguments="{notification : notification}" class="notificationBtnDelete doInit" pageType="89658999"><i class="glyphicon glyphicon-remove"></i></f:link.action><f:link.action action="show" arguments="{notification : notification}" class="notificationBtnDetail doInit" pageType="89658999">
+		<p><img src="{f:render(partial:'Mitarbeiter/NotificationAvatarImageUrl', arguments:{notification:'{notification}'})}" width="50">
+			<strong class="text-time-intime">{notification.titel}</strong><br>{notification.body}<br><span class="notificationCrdate"><small>{notification.crdate->f:format.date(format: 'd.m.Y H:i')} Uhr{f:if(condition: '{notification.zusatz}', then: ' / {notification.zusatz}')}</small></span></p></f:link.action></li>
+
+	</f:for>
+	<f:comment><li class="notification-item">blaa anzahl:{f:count(subject: notifications)} lastUid:{lastUid}</li></f:comment>
+
+
+
+</f:section>
+
+<f:comment>
+<f:format.crop maxCharacters="40" respectWordBoundaries="FALSE">{notification.titel}</f:format.crop>
+</f:comment>
+
+
+</v:format.trim>

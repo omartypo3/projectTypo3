@@ -1,0 +1,61 @@
+
+<f:comment>
+		$pois = array(
+			'items'=> array (
+				model poi
+			)
+			'table'=>'tx_egmap_domain_model_poi', 
+			'type'=>'Poi'
+		);
+		
+	/!\ Ne pas enlever les classes et les ids, pour le fonctionnement js! /!\
+</f:comment>
+
+
+<f:if condition="{pois}">
+	<ul class="pois">
+		<f:for each="{pois}" as="poitype">
+			<li class="type">
+				<span>{poitype.type}</span>
+				<f:if condition="{poitype.items}">
+					<ul class="allpois">
+						<f:for each="{poitype.items}" as="poi">
+							<li id="egmap_{poitype.table}_{poi.uid}">
+                                <p>
+                                    <f:if condition="{poi.iconmarker.originalResource.publicUrl}">
+                                        <img src="{poi.iconmarker.originalResource.publicUrl}"/>
+                                    </f:if>
+                                    <strong>
+                                        <f:if condition="{poi.name}">
+                                            <f:then>
+                                                <a href="#" id="{settings.map.mapUniqId}_{poitype.table}_{poi.uid}" class="eGmapLoadInfosPoi__{settings.map.mapUniqId}" >{poi.name}</a>
+                                            </f:then>
+                                            <f:else>
+												<a href="#" id="{settings.map.mapUniqId}_{poitype.table}_{poi.uid}" class="eGmapLoadInfosPoi__{settings.map.mapUniqId}" >{poi.title}</a>
+                                            </f:else>
+                                        </f:if>
+                                    </strong>
+                                </p>
+                                <p>
+									<f:if condition="{poi.address}">
+										{poi.address}
+									</f:if>
+									<f:if condition="{poi.city}">    
+										<f:if condition="{poi.city.0}">
+											<f:then>
+												<br/> {poi.city.0.codePostal} {poi.city.0.title} {poi.country}
+											</f:then>
+											<f:else>
+												<br/> {poi.zip} {poi.city} {poi.country}
+											</f:else>
+										</f:if>
+									</f:if>
+								</p>
+							</li>
+						</f:for>
+					</ul>
+				</f:if>
+			</li>
+		</f:for>
+	</ul>
+</f:if>

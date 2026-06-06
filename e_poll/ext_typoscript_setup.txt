@@ -1,0 +1,29 @@
+# ==============================================
+# FE-Plugin setup for EXT:e_poll
+# ==============================================
+
+# Poll Single Plugin
+plugin.tx_epoll_pollsingle {
+    settings {
+        rtefield_stdWrap {
+            parseFunc < lib.parseFunc_RTE
+        }
+
+        cssColors {
+            braun = brown
+            rot = red
+            gelb = yellow
+            blau = blue
+            gruen = green
+        }
+    }
+}
+
+# Poll List Plugin
+plugin.tx_epoll_polllist < plugin.tx_epoll_pollsingle
+
+# Poll Result Plugin
+plugin.tx_epoll_pollresult < plugin.tx_epoll_pollsingle
+
+# Legacy support
+plugin.tx_epoll < plugin.tx_epoll_pollsingle

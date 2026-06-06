@@ -1,0 +1,49 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<div class="content_container_header"><span><i class="bb-pie-chart bb-md" aria-hidden="true"></i>Projektübersicht</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+<div class="content_container">
+	
+    
+    <div><f:render partial="Auftraege/PropertiesButtonStatusChange" arguments="{auftraege: auftraege, uniqueSelector: 'detail_auftrag_{auftraege.uid}_statuswechsel'}" /></div>
+    
+    
+    
+    <f:render partial="Auftraege/PropertiesPhasen" arguments="{_all}" />
+    
+	
+    
+    
+	<f:render partial="Auftraege/PropertiesEndpreis" arguments="{_all}" />
+	
+	
+	
+	
+	<f:render partial="Auftraege/PropertiesFremdkosten" arguments="{_all}" />
+	
+    
+    <f:if condition="{auftraege.auftragsart.uid}==6">
+	
+        <hr style="border-top: 1px solid #dbdbdb;">
+        <f:alias map="{kontingentUsed: '{dsl:getMinutesByFixedPriceAndHourlyFee(fixedPrice: auftraege.festpreisGrundlageAgenturvertrag, hourlyFee: auftraege.defaultStundensatzAgenturvertrag)}'}">
+
+            <f:if condition="{kontingentUsed}">
+                <div class="layout-table table-auftrag-fremdkosten table-formular-padding">
+                    <div class="layout-table-row layout-table-footer">
+                        <div class="layout-table-col"><strong>Verechnung über Agenturvertrag:</strong></div>
+                        <div class="layout-table-col" align="right" title="Berechnung: {auftraege.festpreisGrundlageAgenturvertrag->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€ geteilt durch {auftraege.defaultStundensatzAgenturvertrag}€ je Stunde"><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: kontingentUsed)}' }" />
+                        </div>
+                    </div>
+                
+                </div>
+                <div align="right">({auftraege.festpreisGrundlageAgenturvertrag->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€ / {auftraege.defaultStundensatzAgenturvertrag->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€ je h)</div>
+
+            </f:if>
+        </f:alias>
+        
+    </f:if>
+        
+	
+	
+</div>

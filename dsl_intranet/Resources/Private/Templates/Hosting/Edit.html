@@ -1,0 +1,118 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Hosting" action="ajax" name="hosting"  pluginName="hostingliste" extensionName="dslintranet" id="hostingEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Hostingpaket Bearbeiten'}" />
+
+
+
+
+
+
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		/*alert('loaded:'+$('#auftraegeEditForm input').length);*/
+		
+		
+		//$('#auftraegeEditForm').submit(function() {
+
+
+
+$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#hostingEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#hostingEditForm').hasClass('formSaves'))	return false;
+				$('#hostingEditForm').addClass('formSaves');
+			
+				$.ajax({
+					url: $('#hostingEditForm').attr('action'),
+					type: 'POST',
+					data: $('#hostingEditForm').serialize(),
+					success: function(data) {
+						
+					
+						dataJson = JSON.parse(data);
+						
+						//reloadAuftragId('list',id);
+						if(!dataJson["uid"]) {
+						
+							return true;
+						} else {
+							
+							//changeProjektTab("auftrag-show-"+dataJson["uid"],dataJson["contentShow"]);
+							
+							dataTableReload();
+							
+					
+							
+			
+							
+				
+							//if(tinymce.EditorManager.editors[0]) tinymce.EditorManager.editors[0].destroy();
+							
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		
+	});
+</script>
+
+
+
+
+
+    <f:form.hidden name="hosting" value="{hosting.uid}" />
+    <f:form.hidden name="switch" value="update" />
+    
+    <f:render partial="Hosting/FormFields" arguments="{_all}" />
+	
+    
+
+   
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+    
+    
+</f:form>
+
+
+</f:section>

@@ -1,0 +1,144 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Statistik.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/Chart.min.js" name="jsChart"></v:asset.script>
+
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/moment-with-locales.min.js" name="jsMoment" dependencies="jquery"></v:asset.script>
+	<f:comment>
+	<!--
+		<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+		<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>
+	ersetzt mit http://eonasdan.github.io/bootstrap-datetimepicker/
+
+	--></f:comment>
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-dtp/bsdtp.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-dtp/bsdtp.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>
+
+	<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/Auftraege/Statistik.js" name="dslstatjs" variables="{rangeMinDate: '{rangeGesamt.0 -> f:format.date(format: \'Y-m-d\')}', rangeMaxDate: '{rangeGesamt.1 -> f:format.date(format: \'Y-m-d\')}', filterDatum: '{filterZeitraum.date -> f:format.date(format: \'Y-m-d\')}' }" />
+
+
+	<v:asset.style name="statstyle">	
+		#statistikDatePickerWoche tr>td.day.active~td.day{
+			background-color:#337ab7;
+			color:#fff;
+		}
+		.statistikWrapper h1{
+			margin:0px;
+			text-align:center;
+			cursor:pointer;
+		}
+		h1.statistikAuswahl{
+			margin:0px;
+			color:rgba(89, 89, 89,0.8);
+			padding-left:40px;
+		}
+		.statistikWrapper:not(.statistikWrapperactive) h1{
+			color:rgba(89, 89, 89,0.8);
+			
+		}
+		.statistikWrapper:not(.statistikWrapperactive) h1>span{
+			display:none;
+		}
+	</v:asset.style>
+
+	<section id="statistik" data-range-min-date="{rangeGesamt.0 -> f:format.date(format: 'Y-m-d')}" data-range-max-date="{rangeGesamt.1 -> f:format.date(format: 'Y-m-d')}" data-filter-date="{filterZeitraum.date -> f:format.date(format: 'Y-m-d')}" data-ajax-url="{f:uri.action(action: 'ajax', pageType: 89657202, pluginName:'statistik', extensionName:'dslintranet',  controller: 'Auftraege')}">
+		<div class="row">
+			
+			<div class="col-sm-3">
+				<h1 class="statistikAuswahl">Wähle einen Zeitraum:</h1>
+			</div>
+
+				<div class="col-sm-2">
+					<div class="statistikDatePickerWocheWrapper statistikWrapper statistikWrapperactive">
+						<h1 onclick="toggleDateTimePicker('Woche');"><span>&#10132; </span>Woche</h1>
+						<div class="form-group ">
+							<div class='input-group date' id='statistikDatePickerWoche'>
+								<input name="statistikDatePickerWocheInput" type='hidden' class="form-control" value="{filterZeitraum.date -> f:format.date(format: 'd.m.Y')}" />
+								<span class="input-group-addon hidden">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+								<f:comment>onClick="$('#statistikDatePickerWoche').datetimepicker('show');if(!$(this).closest('.statistikWrapper').hasClass('statistikWrapperactive')) showStatistikView('Woche');return false;" </f:comment>
+								<f:comment><span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span></f:comment>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			
+				<f:comment><!--  --></f:comment>
+				<div class="col-sm-2">
+					<div class="statistikDatePickerMonatJahrWrapper statistikWrapper">	
+					
+						<h1 onclick="toggleDateTimePicker('MonatJahr');"><span>&#10132; </span>Monat</h1>
+					
+						<div class="form-group">
+							<div class='input-group date' id='statistikDatePickerMonatJahr'>
+								<input name="statistikDatePickerMonatJahrInput" type='hidden' class="form-control" value="{filterZeitraum.date -> f:format.date(format: '%B %Y')}" />
+								<f:comment>onClick="$('#statistikDatePickerMonatJahr').datetimepicker('show');return false;"</f:comment>
+								<span class="input-group-addon hidden">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+
+				<div class="col-sm-2">
+					<div class="statistikDatePickerJahrWrapper statistikWrapper">	
+					
+						<h1 onclick="toggleDateTimePicker('Jahr');"><span>&#10132; </span>Jahr</h1>
+					
+						<div class="form-group">
+							<div class='input-group date' id='statistikDatePickerJahr'>
+								<input name="statistikDatePickerJahrInput" type='hidden' onClick="if(!$(this).closest('.statistikWrapper').hasClass('statistikWrapperactive')) showStatistikView('Jahr');$('#statistikDatePickerJahr').datetimepicker('show');return false;" class="form-control" value="{filterZeitraum.date -> f:format.date(format: 'Y')}" />
+								<span class="input-group-addon hidden">
+									<span class="glyphicon glyphicon-calendar">
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3"></div>
+			
+			</div>
+
+		<f:comment>{mitarbeiters -> f:debug(title: "mitarbeiters", inline: "1")}
+		{statistikDaten -> f:debug(title: "statistikDaten", inline: "1")}
+		{filterZeitraum -> f:debug(title: "filterZeitraum", inline: "1")}	
+		
+		{filterZeitraum.date -> f:format.date(format: '%B %Y')}
+		</f:comment>
+
+		<input type="hidden" id="statistikDatenProperties" data-diagramm-json='{v:format.json.encode(value: statistikDaten)}' >
+
+		<canvas id="chart-area-statistik-diagramm" data-statistik-xxx-uid="999999" width="720" height="300"></canvas>
+		<div class="chart-area-statistik-diagramm-loading"><center><i class="fa fa-cog fa-spin fa-lg "></i></center></div>
+			
+		<f:comment>
+			<input type="text" id="agenturvertrag{agenturvertrag.uid}Properties" data-kontingent="{agenturvertrag.kontingent}" data-kontingentUsed="{agenturvertrag.kontingentUsed}" data-monate="{agenturvertrag.monate}" data-kontingentJahr="{agenturvertrag.kontingentJahr}" data-kontingentUsedJahr="{agenturvertrag.kontingentUsedJahr}" data-monateJahr="{agenturvertrag.monateJahr}" data-labelJahr="{agenturvertrag.statistikJahr}" data-kontingentUsedSchwebend="{agenturvertrag.kontingentUsedSchwebend}" data-kontingentUsedAbgeschlossen="{agenturvertrag.kontingentUsedAbgeschlossen}" data-diagramm-json='{v:format.json.encode(value: statistikDaten)}' ></f:comment>
+		
+	</section>
+</f:section>
+
+
+</html>

@@ -1,0 +1,106 @@
+<div class="revslider-sliders-plugin-{PA.row.uid}">
+    <f:if condition="{rows}">
+        <f:then>
+            <ul id="revslider_sliders" style="padding: 0;margin: 0;">
+                <f:for each="{rows}" as="row">
+                    <li style="height: 160px; overflow: hidden; position: relative; width: 250px; list-style-type: none; display: inline-block;margin: 5px;" class="revslider-selectionHolder" data-id="{row.slider.id}" data-slider="wp_revslider_sliders_{row.slider.alias}">
+                        <f:if condition="{row.slides}">
+                            <f:then>
+                                <f:if condition="{row.slides.decodedParams.background_type} == 'solid'">
+                                    <f:then>
+                                        <div style="height: 100%; width: 100%; background: {row.slides.decodedParams.bg_color};">
+                                            <f:render section="content" arguments="{row:row, PA:PA}" />
+                                        </div>
+                                    </f:then>
+                                    <f:else>
+                                        <f:if condition="{row.slides.decodedParams.background_type} == 'image'">
+                                            <f:then>
+                                                <img src="{row.slides.decodedParams.image}" style="width: 100%; height: auto;">
+                                                <f:render section="content" arguments="{row:row, PA: PA}" />
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="{row.slides.decodedParams.thumb.customAdminThumbSrc}">
+                                                    <f:then>
+                                                        <img src="{row.slides.decodedParams.thumb.customAdminThumbSrc}" style="width: 100%; height: auto;">
+                                                        <f:render section="content" arguments="{row:row, PA: PA}" />
+                                                    </f:then>
+                                                    <f:else>
+                                                        <div style="height: 100%; width: 100%; background:url({f:uri.image(src:'EXT:ns_revolution_slider/Resources/Public/images/trans_tile.png')})">
+                                                            <f:render section="content" arguments="{row:row, PA:PA}" />
+                                                        </div>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <div style="height: 100%; width: 100%; background:url({f:uri.resource(path:'images/trans_tile.png')})">
+                                    <f:render section="content" arguments="{row:row, PA:PA}" />
+                                </div>
+                            </f:else>
+                        </f:if>
+                        <div class="checked-selectionHolder">
+                            <span>
+                                <f:image src="EXT:ns_revolution_slider/Resources/Public/Icons/actions-document-select.svg" width="64" height="64" class="svg"/>
+                            </span>
+                        </div>
+                    </li>
+                </f:for>
+            </ul>
+            <input type="hidden" name="{PA.itemFormElName}" class="revslider_values" value="{PA.itemFormElValue}" style="width: 100%;"/>
+        </f:then>
+        <f:else>
+            <div class="caption" style="padding: 20px 15px 15px;border: 1px solid lightgray;">
+                <p align="center" style="margin: 0;font-size: 15px;font-weight: 700;color: rgb(247, 119, 119);"><f:translate key="LLL:EXT:ns_revolution_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_revolution_slider_slider.no_slider" /></p>
+            </div>
+        </f:else>
+    </f:if>
+</div>
+
+
+
+<f:section name="content">
+    <div style="height: 100%; width: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 100%); position: absolute;top:0;left: 0;">
+        <span style="font-size: 11px; color: #FFF;text-transform: capitalize; position: absolute; top: 0; right: 0; padding: 10px;">{row.slider.decodedParams.source_type}</span>
+        <span style="color: #FFF;font-size: 14px;text-transform: capitalize; position: absolute; top: 20px; right: 0; padding: 10px;"><f:count>{row.slides}</f:count></span>
+        <div style="color: #333; font-size:11px; background: #ccc; position: absolute; bottom: 0; width: 100%; padding: 4px 10px;">
+            #{row.slider.id} {row.slider.title}
+        </div>
+    </div>
+</f:section>
+
+<style>
+    .revslider-selectionHolder .checked-selectionHolder {
+        display: none;
+    }
+    .revslider-selectionHolder.active .checked-selectionHolder {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(36, 149, 18, 0.4);
+        display: block;
+    }
+    .checked-selectionHolder span {
+        display: block;
+        /* margin-top: 30px; */
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .checked-selectionHolder span svg {
+        width: 32px;
+        height: 32px;
+    }
+    .checked-selectionHolder span svg path {
+        fill: #FFF;
+    }
+
+</style>
+
+

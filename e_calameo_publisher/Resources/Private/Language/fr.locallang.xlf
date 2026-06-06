@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="EXT:e_calameo_publisher/Resources/Private/Language/locallang.xlf" date="2024-01-01T00:00:00Z" product-name="e_calameo_publisher">
+		<header/>
+		<body>
+			<trans-unit id="mod.select">
+				<source>Select</source>
+				<target>Sélection</target>
+			</trans-unit>
+			<trans-unit id="mod.titlelisting">
+				<source>PDF Listing</source>
+				<target>Liste des PDF</target>
+			</trans-unit>
+			<trans-unit id="conf.apikey">
+				<source>your API key</source>
+				<target>Votre API key</target>
+			</trans-unit>
+			<trans-unit id="conf.secret">
+				<source>Secret</source>
+				<target>Secret</target>
+			</trans-unit>
+			<trans-unit id="conf.subscription">
+				<source>Id of the subscription</source>
+				<target>Id de la subscription</target>
+			</trans-unit>
+			<trans-unit id="conf.publishmode">
+				<source>Private publishing?</source>
+				<target>Publier en mode privé?</target>
+			</trans-unit>
+			<trans-unit id="conf.apimode">
+				<source>Api url:</source>
+				<target>Url de l'api:</target>
+			</trans-unit>
+			<trans-unit id="conf.uploadmode">
+				<source>Api upload url</source>
+				<target>Url d'upload de l'api</target>
+			</trans-unit>
+			<trans-unit id="pi1_title">
+				<source>Calameo Publisher extbase - Intégrer un document Calaméo</source>
+				<target>Publier un document Calameo - Intégrer un document Calaméo</target>
+			</trans-unit>
+			<trans-unit id="pi1_plus_wiz_description">
+				<source>Affiche un livret interactif (ou plusieurs) sur la page. De petite taille, celui ci pourra être aggrandi en plein écran</source>
+				<target>Affiche un livret interactif (ou plusieurs) sur la page. De petite taille, celui ci pourra être aggrandi en plein écran</target>
+			</trans-unit>
+			<trans-unit id="mod.count">
+				<source>Count</source>
+				<target>Compteur</target>
+			</trans-unit>
+			<trans-unit id="mod.delete">
+				<source>Delete</source>
+				<target>Supprimer</target>
+			</trans-unit>
+			<trans-unit id="mod.Name">
+				<source>Name</source>
+				<target>Nom</target>
+			</trans-unit>
+			<trans-unit id="mod.overview">
+				<source>Overview</source>
+				<target>Apperçu</target>
+			</trans-unit>
+			<trans-unit id="mod.codeIntegration">
+				<source>Object code</source>
+				<target>Code intégration</target>
+			</trans-unit>
+			<trans-unit id="mod.description">
+				<source>Description</source>
+				<target>Description</target>
+			</trans-unit>
+			<trans-unit id="mod.status">
+				<source>Statut</source>
+				<target>Statut</target>
+			</trans-unit>
+			<trans-unit id="mod.ispublish">
+				<source>Is publish</source>
+				<target>Est publié</target>
+			</trans-unit>
+			<trans-unit id="mod.isprivate">
+				<source>Is private</source>
+				<target>Est privé</target>
+			</trans-unit>
+			<trans-unit id="mod.allowmin">
+				<source>Allow thumb view</source>
+				<target>Vue mini autorisée</target>
+			</trans-unit>
+			<trans-unit id="noPdf">
+				<source>No PDF in this folder.</source>
+				<target>Pas de PDF dans le dossier.</target>
+			</trans-unit>
+			<trans-unit id="mod.date">
+				<source>Date</source>
+				<target>Date</target>
+			</trans-unit>
+			<trans-unit id="mod.page">
+				<source>Pages</source>
+				<target>Pages</target>
+			</trans-unit>
+			<trans-unit id="mod.width">
+				<source>Width</source>
+				<target>Largeur</target>
+			</trans-unit>
+			<trans-unit id="mod.height">
+				<source>Height</source>
+				<target>Hauteur</target>
+			</trans-unit>
+			<trans-unit id="mod.views">
+				<source>Views</source>
+				<target>Vues</target>
+			</trans-unit>
+			<trans-unit id="mod.download">
+				<source>Downloads</source>
+				<target>Téléchargements</target>
+			</trans-unit>
+			<trans-unit id="mod.comment">
+				<source>Comments</source>
+				<target>Commentaires</target>
+			</trans-unit>
+			<trans-unit id="mod.favorites">
+				<source>Favorites</source>
+				<target>Favoris</target>
+			</trans-unit>
+			<trans-unit id="mod.creation">
+				<source>Create</source>
+				<target>Création</target>
+			</trans-unit>
+			<trans-unit id="mod.modification">
+				<source>Modification</source>
+				<target>Modification</target>
+			</trans-unit>
+			<trans-unit id="mod.picturl">
+				<source>Picture</source>
+				<target>Image</target>
+			</trans-unit>
+			<trans-unit id="mod.thumburl">
+				<source>Thumbnail</source>
+				<target>Image miniature</target>
+			</trans-unit>
+			<trans-unit id="mod.publicurl">
+				<source>Public url</source>
+				<target>Adresse publique</target>
+			</trans-unit>
+			<trans-unit id="mod.viewurl">
+				<source>view url</source>
+				<target>Adresse de visualisation</target>
+			</trans-unit>
+			<trans-unit id="toutCocher">
+				<source>Check all PDF/ uncheck</source>
+				<target>Cocher / déchocher tous les PDFs</target>
+			</trans-unit>
+			<trans-unit id="attention">
+				<source>Warning, the online pdfs is not instantaneous. You immediately get the embed code, but it will not be usable immediately. Also the list of pdfs, and the prevention of publication for pdfs already online will not be updated during this period. Do not post several times the same pdf, and thank you for waiting at least 10 minutes before concluding that it did not worked.</source>
+				<target>Attention, la mise en ligne n'est pas instantanée. Le code d'intégration est directement disponible, mais il n'est pas utilisable tout de suite.  Concernant la liste des PDFs n'est pas mise à jour dans cette période afin de préserver les PDFs déjà publiés.  Ne postez pas plusieurs fois le même PDF, merci d'attendre au minimum 10 minutes avant de conclure que la publication n'a pas fonctionné.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

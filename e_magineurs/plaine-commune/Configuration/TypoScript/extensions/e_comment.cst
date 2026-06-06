@@ -1,0 +1,8 @@
+e_magineurs.tx_ecomment {
+  view {
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template partials (FE)
+    layoutRootPath  = e_comment/Layouts/
+    partialRootPath = e_comment/Partials/
+    templateRootPath = e_comment/Templates/
+  }
+}

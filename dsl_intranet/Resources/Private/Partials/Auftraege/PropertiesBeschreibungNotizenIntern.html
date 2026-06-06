@@ -1,0 +1,61 @@
+
+
+
+<div id="auftragTexteEditNotizenIntern{auftraege.uid}_panel" class="panel panel-default inlineEditing" data-uid="{auftraege.uid}">
+	<div class="panel-heading" >
+		<i class="bb-point-bars bb-lg" aria-hidden="true"></i>&nbsp;&nbsp;
+		<h3 class="panel-title titelContent" data-toggle="collapse" 
+   href="#auftragTexteEditNotizenIntern{auftraege.uid}_panel_body" data-target="#auftragTexteEditNotizenIntern{auftraege.uid}_panel_body">Interne Notizen</h3>
+		<div class="texteBeschreibungHeadingButtons">
+		
+			<f:if condition="{auftraege.rights.edit}">
+				<f:then>
+					
+					
+					<a href="#" onClick="$('#auftragTexteEditNotizenIntern{auftraege.uid}_panel_body').collapse('show');initTinyMceEditorInline(this);return false;"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+					
+					
+				</f:then>
+				<f:else>
+					
+					<a class="btnDisabled"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+				
+				</f:else>
+				
+			</f:if>
+			<a class="panel_toggle" onClick="return false;" data-toggle="collapse" href="#auftragTexteEditNotizenIntern{auftraege.uid}_panel_body" data-target="#auftragTexteEditNotizenIntern{auftraege.uid}_panel_body"><i class="bb-arrow-up bb-lg" aria-hidden="true"></i><i class="bb-arrow-down bb-lg" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	
+	
+	
+	<div class="panel-collapse collapse in" id="auftragTexteEditNotizenIntern{auftraege.uid}_panel_body">
+		<div class="panel-body">
+			<div class="textContent">
+				<div class="beschreibungContent"><f:format.html>{auftraege.notizenIntern}</f:format.html></div>
+			</div>
+
+		
+			<f:if condition="{auftraege.rights.edit}">
+				<f:form controller="Auftraege" action="ajax"  name="auftraege" pluginName="auftragsliste" extensionName="dslintranet">
+					
+
+					<div class="textBeschreibungWrapper">
+					<f:form.textarea name="beschreibung" id="auftragTexteEditNotizenIntern{auftraege.uid}" value="{auftraege.notizenIntern}" />
+					</div>
+					<f:form.textarea id="auftragTexteEditNotizenIntern{auftraege.uid}_temp" value="{auftraege.notizenIntern}" />
+
+
+
+					
+					<button class="confirm btn btn-primary" onClick="saveAuftragTexteEditNotizenIntern('auftragTexteEditNotizenIntern{auftraege.uid}');return false;"><i class="bb-tick bb-lg"></i>&nbsp;&nbsp;Speichern</button>
+					
+					<button class="btn btn-abort" onclick="closeAuftragTexteEditNotizenIntern('auftragTexteEditNotizenIntern{auftraege.uid}');return false;"><i class="bb-times bb-lg"></i>&nbsp;&nbsp;Abbrechen</button>
+
+					
+				</f:form>
+			</f:if>
+		</div>
+	</div>
+
+</div>

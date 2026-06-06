@@ -1,0 +1,32 @@
+plugin.tx_powermail {
+    # Modify localization of labels
+    _LOCAL_LANG {
+        default {
+            # confirmation_message = Are these values correct?
+        }
+        fr {
+            confirmation_message = Ces informations sont-elles correctes ?
+            datepicker_format_date = d/m/Y
+            datepicker_format_time = d/m/Y H:i:s
+            validationerror_mandatory = Ce champ doit être rempli !
+            confirmation_prev = Modifier les données
+            confirmation_next = Envoyer le message
+            validationerror_validation.1 = Veuillez utiliser une adresse e-mail valide, exemple : courriel@adresse.com
+            validationerror_mandatory_multi = Un de ces champs doit être rempli !
+            validationerror_validation.3 = Ce numéro de téléphone n'est pas valide !
+        }
+    }
+
+    settings {
+        setup {
+          validators {
+            // Validator to prevent possibility to send one form twice.
+            SecurityValidator {
+              class = Emagineurs\EMagineurs\Domain\Validator\SecurityValidator
+            }
+          }
+        }
+    }
+}
+
+plugin.tx_powermail.settings.setup.misc.ajaxSubmit = 1

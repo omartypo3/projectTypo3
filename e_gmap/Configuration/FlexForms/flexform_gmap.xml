@@ -1,0 +1,940 @@
+<T3DataStructure>
+  <meta>
+       <langDisable>1</langDisable>
+  </meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.pois>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.pois</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>*</allowed>
+								<size>10</size>
+								<maxitems>99</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<allowedProcFunc>getAllPoisTabs</allowedProcFunc>
+							</config>
+					</settings.pois>
+				</el>
+			</ROOT>
+		</sDEF>
+		<base>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:base</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.width>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.width</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+							</config>
+					</settings.width>
+					<settings.height>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.height</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+							</config>
+					</settings.height>
+					<settings.map.center.type>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.type</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<items>
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.select.auto</numIndex>
+										<numIndex index="1">auto</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.select.fix</numIndex>
+										<numIndex index="1">fix</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.select.poi</numIndex>
+										<numIndex index="1">poi</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.select.client</numIndex>
+										<numIndex index="1">client</numIndex>
+									</numIndex>
+								</items>
+							</config>
+					</settings.map.center.type>
+					<settings.map.center.lat>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.lat</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+								<default>45.77082417601594</default>
+								<wizards>
+									<_PADDING>2</_PADDING>
+									<map>
+										<type>popup</type>
+										<title>Choisir centre</title>
+										<icon>EXT:e_gmap/Resources/Public/Icons/localize.png</icon>
+										<module>
+											<name>choosePoi</name>
+										</module>
+										<JSopenParams>width=800,height=600,status=0,menubar=0,scrollbars=0</JSopenParams>
+									</map>
+								</wizards>
+							</config>
+					</settings.map.center.lat>
+					<settings.map.center.lng>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.lng</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+								<default>4.811924546957016</default>
+								<wizards>
+									<_PADDING>2</_PADDING>
+									<map>
+										<type>popup</type>
+										<title>Choisir centre</title>
+										<icon>EXT:e_gmap/Resources/Public/Icons/localize.png</icon>
+										<module>
+											<name>choosePoi</name>
+										</module>
+										<JSopenParams>width=800,height=600,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</map>
+								</wizards>
+							</config>
+					</settings.map.center.lng>
+					<settings.map.center.poi>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.center.poi</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>*</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<allowedProcFunc>getPoisTabs</allowedProcFunc>
+							</config>
+					</settings.map.center.poi>
+					<settings.map.zoom.value>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.zoom.value</label>
+							<config>
+								<type>input</type>
+								<eval>trim,int</eval>
+								<default>10</default>
+							</config>
+					</settings.map.zoom.value>
+					<settings.map.zoom.min>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.zoom.min</label>
+							<config>
+								<type>input</type>
+								<eval>trim,int</eval>
+							</config>
+					</settings.map.zoom.min>
+					<settings.map.zoom.max>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.zoom.max</label>
+							<config>
+								<type>input</type>
+								<eval>trim,int</eval>
+							</config>
+					</settings.map.zoom.max>
+					<settings.map.zoom.molette>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.zoom.molette</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.zoom.molette>
+					<settings.map.draggable>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.draggable</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.draggable>
+				</el>
+			</ROOT>
+		</base>
+		<avance>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:avance</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.cat.liste>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.cat.liste</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.cat.liste>
+					<settings.cat.label>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.cat.label</label>
+							<config>
+								<type>input</type>
+							</config>
+					</settings.cat.label>
+					<settings.cat.cats>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.cat.cats</label>
+							<config>
+								<type>category</type>
+								<relationship>oneToMany</relationship>
+								<foreign_table>sys_category</foreign_table>
+								<foreign_table_where>AND (sys_category.sys_language_uid = 0 OR sys_category.l10n_parent = 0) ORDER BY sys_category.sorting</foreign_table_where>
+								<maxitems>99</maxitems>
+								<minitems>0</minitems>
+								<size>10</size>
+								<treeConfig>
+									<parentField>parent</parentField>
+									<appearance>
+										<expandAll>1</expandAll>
+										<showHeader>1</showHeader>
+									</appearance>
+								</treeConfig>
+							</config>
+					</settings.cat.cats>
+					<!-- Include sub categories -->
+					<settings.choseandor>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.choseandor</label>
+							<config>
+								<type>check</type>
+							</config>
+					</settings.choseandor>
+					<settings.cat.check>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.cat.check</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.cat.check>
+					<settings.cat.depli>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.cat.depli</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.cat.depli>
+					<settings.poi.liste>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.poi.liste</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.poi.liste>
+					<settings.map.zoom.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.zoom.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.zoom.actif>
+					<settings.map.zoom.position>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.zoom.position</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_CENTER</numIndex>
+										<numIndex index="1">BOTTOM_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_LEFT</numIndex>
+										<numIndex index="1">BOTTOM_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_RIGHT</numIndex>
+										<numIndex index="1">BOTTOM_RIGHT</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_BOTTOM</numIndex>
+										<numIndex index="1">LEFT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_CENTER</numIndex>
+										<numIndex index="1">LEFT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_TOP</numIndex>
+										<numIndex index="1">LEFT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_BOTTOM</numIndex>
+										<numIndex index="1">RIGHT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="8" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_CENTER</numIndex>
+										<numIndex index="1">RIGHT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="9" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_TOP</numIndex>
+										<numIndex index="1">RIGHT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_CENTER</numIndex>
+										<numIndex index="1">TOP_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="11" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_LEFT</numIndex>
+										<numIndex index="1">TOP_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="12" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_RIGHT</numIndex>
+										<numIndex index="1">TOP_RIGHT</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.zoom.position>
+					<settings.map.streetview.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.streetview.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.streetview.actif>
+					<settings.map.streetview.position>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.streetview.position</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_CENTER</numIndex>
+										<numIndex index="1">BOTTOM_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_LEFT</numIndex>
+										<numIndex index="1">BOTTOM_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_RIGHT</numIndex>
+										<numIndex index="1">BOTTOM_RIGHT</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_BOTTOM</numIndex>
+										<numIndex index="1">LEFT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_CENTER</numIndex>
+										<numIndex index="1">LEFT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_TOP</numIndex>
+										<numIndex index="1">LEFT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_BOTTOM</numIndex>
+										<numIndex index="1">RIGHT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="8" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_CENTER</numIndex>
+										<numIndex index="1">RIGHT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="9" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_TOP</numIndex>
+										<numIndex index="1">RIGHT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_CENTER</numIndex>
+										<numIndex index="1">TOP_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="11" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_LEFT</numIndex>
+										<numIndex index="1">TOP_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="12" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_RIGHT</numIndex>
+										<numIndex index="1">TOP_RIGHT</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.streetview.position>
+					<settings.map.deplacement.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.deplacement.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.deplacement.actif>
+					<settings.map.deplacement.position>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.deplacement.position</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_CENTER</numIndex>
+										<numIndex index="1">BOTTOM_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_LEFT</numIndex>
+										<numIndex index="1">BOTTOM_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_RIGHT</numIndex>
+										<numIndex index="1">BOTTOM_RIGHT</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_BOTTOM</numIndex>
+										<numIndex index="1">LEFT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_CENTER</numIndex>
+										<numIndex index="1">LEFT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_TOP</numIndex>
+										<numIndex index="1">LEFT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_BOTTOM</numIndex>
+										<numIndex index="1">RIGHT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="8" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_CENTER</numIndex>
+										<numIndex index="1">RIGHT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="9" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_TOP</numIndex>
+										<numIndex index="1">RIGHT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_CENTER</numIndex>
+										<numIndex index="1">TOP_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="11" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_LEFT</numIndex>
+										<numIndex index="1">TOP_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="12" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_RIGHT</numIndex>
+										<numIndex index="1">TOP_RIGHT</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.deplacement.position>
+					<settings.map.type.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.type.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.type.actif>
+					<settings.map.type.position>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.type.position</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_CENTER</numIndex>
+										<numIndex index="1">BOTTOM_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_LEFT</numIndex>
+										<numIndex index="1">BOTTOM_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.BOTTOM_RIGHT</numIndex>
+										<numIndex index="1">BOTTOM_RIGHT</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_BOTTOM</numIndex>
+										<numIndex index="1">LEFT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_CENTER</numIndex>
+										<numIndex index="1">LEFT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.LEFT_TOP</numIndex>
+										<numIndex index="1">LEFT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="7" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_BOTTOM</numIndex>
+										<numIndex index="1">RIGHT_BOTTOM</numIndex>
+									</numIndex>
+									<numIndex index="8" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_CENTER</numIndex>
+										<numIndex index="1">RIGHT_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="9" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.RIGHT_TOP</numIndex>
+										<numIndex index="1">RIGHT_TOP</numIndex>
+									</numIndex>
+									<numIndex index="10" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_CENTER</numIndex>
+										<numIndex index="1">TOP_CENTER</numIndex>
+									</numIndex>
+									<numIndex index="11" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_LEFT</numIndex>
+										<numIndex index="1">TOP_LEFT</numIndex>
+									</numIndex>
+									<numIndex index="12" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:position.TOP_RIGHT</numIndex>
+										<numIndex index="1">TOP_RIGHT</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.type.position>
+					<settings.map.type.defaut>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.type.defaut</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:type.HYBRID</numIndex>
+										<numIndex index="1">HYBRID</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:type.ROADMAP</numIndex>
+										<numIndex index="1">ROADMAP</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:type.SATELLITE</numIndex>
+										<numIndex index="1">SATELLITE</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:type.TERRAIN</numIndex>
+										<numIndex index="1">TERRAIN</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.type.defaut>
+				</el>
+			</ROOT>
+		</avance>
+		<fonctionalite>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:fonctionalite</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.map.recherche.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.recherche.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.recherche.actif>
+					<settings.map.recherche.label>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.recherche.label</label>
+							<config>
+								<type>input</type>
+							</config>
+					</settings.map.recherche.label>
+					<settings.map.itineraire.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.itineraire.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.itineraire.actif>
+					<settings.map.itineraire.label>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.itineraire.label</label>
+							<config>
+								<type>input</type>
+							</config>
+					</settings.map.itineraire.label>
+					<settings.map.itineraire.type>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.itineraire.type</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:travel.BICYCLING</numIndex>
+										<numIndex index="1">BICYCLING</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:travel.DRIVING</numIndex>
+										<numIndex index="1">DRIVING</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:travel.TRANSIT</numIndex>
+										<numIndex index="1">TRANSIT</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:travel.WALKING</numIndex>
+										<numIndex index="1">WALKING</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.itineraire.type>
+					<settings.map.itineraire.show>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.itineraire.show</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.itineraire.show>
+					<settings.map.itineraire.panel>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.itineraire.panel</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.itineraire.panel>
+					<settings.map.trafic>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.trafic</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.trafic>
+				</el>
+			</ROOT>
+		</fonctionalite>
+		<favance>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:favance</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.styles>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.styles</label>
+							<config>
+								<type>text</type>
+								<cols>40</cols>
+								<rows>15</rows>
+							</config>
+					</settings.styles>
+					<settings.map.cluster.actif>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.map.cluster.actif</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:default</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:non</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:oui</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+					</settings.map.cluster.actif>
+					<settings.cluster.styles>
+							<label>LLL:EXT:e_gmap/Resources/Private/Language/locallang_db.xml:settings.cluster.styles</label>
+							<config>
+								<type>text</type>
+								<cols>40</cols>
+								<rows>15</rows>
+							</config>
+					</settings.cluster.styles>
+				</el>
+			</ROOT>
+		</favance>
+	</sheets>
+</T3DataStructure>

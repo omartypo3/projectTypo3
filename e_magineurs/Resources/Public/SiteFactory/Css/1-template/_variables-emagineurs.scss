@@ -1,0 +1,60 @@
+$gris: #bfbfbf;
+$gris-fonce : #656464;
+$noir-clair: #333333;
+$noir: #000000;
+$blanc : #fff;
+
+$color_principal : #bc2703;
+$color_second : #ff3300;
+
+
+
+
+
+/* Média queries */
+
+@mixin Mquerie_XL() {
+   @media (max-width: 1265px) {
+       @content;
+   }
+}
+
+@mixin Mquerie_L() {
+   @media (max-width: 1006px) {
+       @content;
+   }
+}
+
+@mixin Mquerie_M() {
+   @media (max-width: 768px) {
+       @content;
+   }
+}
+
+@-webkit-keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-top {
+  0% {
+    -webkit-transform: translateY(-20px); 
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+

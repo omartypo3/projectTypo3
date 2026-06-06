@@ -1,0 +1,26 @@
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+
+<span class="titre_tri{f:if(condition:'{filter.orderBy}=={field} && {filter.orderDirection}==\'asc\'',then:' active')}{f:if(condition:'{filter.orderBy}=={field} && {filter.orderDirection}==\'desc\'',then:' active')}"
+      aria-label="Tri par {label}{f:if(condition:'{filter.orderBy}=={field} && {filter.orderDirection}==\'asc\'',then:' ascendant actif')}{f:if(condition:'{filter.orderBy}=={field} && {filter.orderDirection}==\'desc\'',then:' descendant actif')}">{label}</span>
+
+<f:form object="{filter}" name="filter" method="post">
+    <f:form.hidden property="keywords" />
+    <f:form.hidden property="category" />
+    <f:form.hidden property="orderBy" value="{field}" />
+    <f:form.hidden property="orderDirection" value="asc" />
+    <button>
+        <span class="target_order asc{f:if(condition:'{filter.orderBy}=={field} && {filter.orderDirection}== asc',then:' active')}"></span>
+        <span class="sr-only">Trier par {label} ascendant, recharger la page</span>
+    </button>
+</f:form>
+
+<f:form object="{filter}" name="filter" method="post">
+    <f:form.hidden property="keywords" />
+    <f:form.hidden property="category" />
+    <f:form.hidden property="orderBy" value="{field}" />
+    <f:form.hidden property="orderDirection" value="desc" />
+    <button>
+        <span class="target_order desc{f:if(condition:'{filter.orderBy}=={field} && {filter.orderDirection}== desc',then:' active')}"></span>
+        <span class="sr-only">Trier par {label} descendant, recharger la page</span>
+    </button>
+</f:form>

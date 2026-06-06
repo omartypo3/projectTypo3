@@ -1,0 +1,17 @@
+# customsubcategory=tracking= Tracking
+e_magineurs.tracking {
+	# cat=Configuration du site/tracking; type=string; label= Code UA Google Analytics
+	UA = UA-
+	# cat=Configuration du site/tracking; type=string; label= Durée du cookie (selon CNIL)
+	cookieTimeout = 33696000000
+	# cat=Configuration du site/tracking; type=string; label= Texte de la bannière
+	showBanner = Ce site utilise des cookies. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d\'audience.
+	# cat=Configuration du site/tracking; type=string; label= ID de la page Plus d'infos
+	lienInfo = 20
+	# cat=Configuration du site/tracking; type=string; label= Demande de confirmation de DNT pour les utilisateurs d'IE
+	askDNTConfirmation = Le signal DoNotTrack de votre navigateur est activé, confirmez vous l\'activation de la fonction DoNotTrack?
+	# cat=Configuration du site/tracking; type=string; label= Demande de consentement
+	createInformAndAskDiv = Ce site utilise  des cookies. Ces cookies nous aident à identifier le contenu qui vous interesse le plus ainsi qu\'à repérer certains dysfonctionnements. Vos données de navigations sur ce site sont envoyées à Google Inc.
+	# cat=Configuration du site/tracking; type=string; label= Message suite à l'opposition
+	opposition = Vous vous êtes opposé au dépôt de cookies de mesures d\'audience dans votre navigateur
+}

@@ -1,0 +1,41 @@
+.unfold {
+    margin-bottom: 15px;
+    span{
+        display: none;
+        cursor: pointer;
+        &.active{
+            display: inline-block;
+            border: 1px solid #000;
+            padding: 5px 10px;
+        }
+    }
+}
+.frame-type-menu_sitemap > ul {
+    padding: 0;
+}
+.frame-type-menu_sitemap li {
+    list-style: none;
+    margin-bottom: 8px;
+    ul {
+        padding: 0 0 0 40px;
+        li {
+            margin: 5px 0;
+        }
+    }
+    a {
+        color: #000;
+    }
+    &:before, .img_plansite {
+        background: url("../../Images/spritesPlanSite.png") 0 0 no-repeat;
+        width: 16px;
+        height: 16px;
+        content: " ";
+        display: inline-block;
+        margin: 0 2px 0 -3px;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    &.nivi:before {display: none;}
+    .img_plansite {background-position: -16px 0;}
+    .img_plansite.niviclosed {background-position: -34px 0;}
+}

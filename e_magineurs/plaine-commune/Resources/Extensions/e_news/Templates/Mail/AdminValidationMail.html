@@ -1,0 +1,18 @@
+
+<h3>Un partenaire vient de proposer un nouvel événement :</h3>
+<br/>
+Titre: {news.title}
+<br/>
+Description: {news.bodytext}
+<br/>
+Dates: <f:format.date format="%d %h %Y">{news.begindate}</f:format.date> au <f:format.date format="%d %h %Y">{news.finishdate}</f:format.date>
+<br/>
+Adresse: {news.eventmail}  
+<br />
+Nom du lieu: {news.placename}
+<br />
+
+<h2><b><f:link.action pageUid="{validationPid}" action="validate" extensionName="news" controller="News" pluginName="Pi1" absolute="1" arguments="{news: news, token: news.adminvalidationtoken, validate: 1, validationType: 'admin'}" >Valider</f:link.action></b></h2><br/>
+<h2><b><f:link.action pageUid="{validationPid}" action="validate" extensionName="news" controller="News" pluginName="Pi1" absolute="1" arguments="{news: news, token: news.adminvalidationtoken, validate: 0, validationType: 'admin'}" >Refuser</f:link.action></b></h2><br/><br/>
+
+L'équipe Plaine Commune.<br/>

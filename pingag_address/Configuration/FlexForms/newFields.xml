@@ -1,0 +1,51 @@
+<extra>
+    <ROOT>
+        <TCEforms>
+            <sheetTitle>CleverReach</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+            <settings.orderBy>
+                <label>
+                    CleverReach Modus
+                </label>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items>
+                        <numIndex index="0">
+                            <numIndex index="0">
+
+                            </numIndex>
+                            <numIndex index="1"></numIndex>
+                        </numIndex>
+                        <numIndex index="1">
+                            <numIndex index="0">
+                               Anmelden
+                            </numIndex>
+                            <numIndex index="1">optin</numIndex>
+                        </numIndex>
+                    </items>
+                </config>
+            </settings.orderBy>
+            <settings.cleverReachFormID>
+                <TCEforms>
+                    <label>CleverReach Form ID</label>
+                    <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.cleverReachFormID>
+            <settings.cleverReachGroupID>
+                <TCEforms>
+                    <label>CleverReach Group ID</label>
+                    <config>
+                        <type>input</type>
+                        <eval>trim</eval>
+                    </config>
+                </TCEforms>
+            </settings.cleverReachGroupID>
+        </el>
+    </ROOT>
+</extra>

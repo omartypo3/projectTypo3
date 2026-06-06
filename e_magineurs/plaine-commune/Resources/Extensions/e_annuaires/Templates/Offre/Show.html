@@ -1,0 +1,114 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+
+<h3>
+    Candidature de :
+    <f:if condition="{candidature.civility} == 0">
+        <f:then>Monsieur</f:then>
+        <f:else>Madame</f:else>
+    </f:if>
+    {candidature.firstname} {candidature.name}
+</h3>
+
+<h4>Candidat à  l'offre : {candidature.firstCdps.title}</h4>
+
+<div>
+    <p>
+        <strong>Candidature envoyée le :</strong>
+        <f:format.date format="%d/%m/%y %H:%M">{candidature.crdate}</f:format.date>
+    </p>
+</div>
+<div>
+    <p>
+        <strong>Adresse :</strong>
+        {candidature.beneficiaire} {candidature.zipcode} {candidature.address}
+    </p>
+</div>
+<div>
+    <p>
+        <strong>Téléphone : </strong>
+        {candidature.phone}
+    </p>
+</div>
+<div>
+    <p>
+        <strong>E-mail :</strong>
+        {candidature.email}
+    </p>
+</div>
+<div>
+    <p>
+        <strong>Titulaire :</strong>
+        <f:if condition="{candidature.ouvert}">
+            <f:then>Oui</f:then>
+            <f:else>Non</f:else>
+        </f:if>
+    </p>
+</div>
+<div>
+    <p>
+        <strong>CV :</strong>
+        télécharger le CV "<a target="_blank" href="{candidature.firstMedia.originalResource.publicUrl}">{candidature.firstMedia.originalResource.name}</a>"
+    </p>
+</div>
+<div>
+    <p>
+        <strong>Lettre de motivation :</strong>
+        télécharger la lettre de motivation "<a target="_blank" href="{candidature.firstDocuments.fichier.0.originalResource.publicUrl}">{candidature.firstDocuments.fichier.0.originalResource.name}</a>"
+    </p>
+</div>
+
+<div class="eoffresdemploi_offre_formulaire_plop">
+    <f:form object="{candidature}" name="candidature" action="markAsRead" method="post" additionalParams="{type: 198809280}" pageUid="{settings.candidaturePid}" >
+        <label for="check">Marquer la candidature "comme lue"</label>
+        <input id="check" type="checkbox" name="tx_eannuaires_annuaireoffre[markAsRead]" class="checked" value="1" checked="checked">
+        <br>
+        <br>
+        <input type="submit" value="Valider la modification" name="validerMarquerCommeLu" class="eoffresdemploi_submit">
+    </f:form>
+</div>
+
+<div>
+    <a href="javascript:window.close()" class="lien">&lt; Retour</a>
+</div>
+
+<style>
+    h3 {
+        font-family: "regular",arial;
+        font-size: 1.6em;
+        color: #043964;
+        text-transform: uppercase;
+        margin: 0 0 30px 0;
+        font-weight: normal;
+        line-height: 1em;
+    }
+    h4 {
+        font-family: "regular",arial;
+        font-size: 1.3em;
+        color: #043964;
+        margin: 10px 0 20px 0;
+        font-weight: normal;
+    }
+    input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 12px 0;
+        border: none;
+        background: #4f7492;
+        color: #fff;
+        font-family: "semiBold",arial;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    p {
+        font-family: "regular",arial;
+        font-size: 1em;
+        color: #272b2e;
+        font-weight: normal;
+    }
+    .lien {
+        font-family: "regular",arial;
+        color: #272b2e;
+    }
+
+
+</style>

@@ -1,0 +1,33 @@
+<f:comment>
+    <f:debug>{contentFromTw}</f:debug>
+</f:comment>
+
+
+    <div class="titre">
+		<a href="{lienTwitter}" target="_blank">
+			<img src="{pictoTwitter}" alt="">
+		</a>
+		<p>Twitter</p>
+	</div>
+	<f:for each="{contentFromTw}" as="tweet">
+		<div class="contenu">
+			<a title="Accéder au contenu" href="{tweet.source}">
+
+				<f:if condition="{tweet.entities.media}">
+
+			        <img src="{tweet.entities.media.0.media_url}" alt="" />
+			    </f:if>
+			    <f:else>
+			    	<img src="http://pbs.twimg.com/media/Cut4emmWEAAfXH0.jpg" alt="" />
+			    </f:else>
+			</a>
+			<p class="nom texte">{tweet.user.name}</p>
+			<p class="texte"><f:format.html>{tweet.text}</f:format.html></p>
+		</div>
+		<div class="contact">
+			<span class="date texte">Posté le   <f:format.date format="%d %B %Y">{tweet.created_at}</f:format.date></span>
+		</div>
+	</f:for>
+
+
+

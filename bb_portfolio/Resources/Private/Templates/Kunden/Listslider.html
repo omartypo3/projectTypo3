@@ -1,0 +1,50 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<img src="{f:uri.image(src:kunden.logo.originalResource.originalFile.uid, height:100)}" title="{kunden.name}">
+<img src="{f:uri.image(src:kunden.logo.originalResource.originalFile.uid, width:540)}" alt="{kunden.name}" height="270" width="540" />
+
+
+<f:section name="main">
+
+
+
+<div class="boxPartner">
+			<!-- partner list -->
+				
+		<header class="content-heading">
+			<h2 class="headTitle">Unsere Kunden</h2>
+		</header>
+		
+		<div class="partner-list owl-carousel owl-theme" id="kunden-slide">
+					
+		<f:for each="{kundens}" as="kunden">
+			<f:if condition="{kunden.logo}">
+				<div class="partner">
+					<f:link.action pluginName="PortfolioausgabeKunden" controller="Portfolio" action="detailkunden" arguments="{kunden : kunden}" pageUid="43" >
+						
+						
+						<img src="{f:uri.image(src:kunden.logo.originalResource.originalFile.uid, width:540)}" alt="{kunden.name}" height="270" width="540" />
+					</f:link.action>
+				</div>
+				
+			</f:if>
+		</f:for>
+		
+
+		</div>
+		<div class="aligncenter"><f:link.page pageUid="43" class="btnBig btnPfeil">weitere Kunden</f:link.page></div>
+						
+</div>	
+		
+</f:section>

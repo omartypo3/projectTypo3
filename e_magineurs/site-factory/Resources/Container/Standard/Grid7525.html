@@ -1,0 +1,30 @@
+<div id="c{data.uid}" class="frame frame-{data.frame_class} frame-type-gridelements_pi1 frame-layout-{data.layout}">
+	<f:if condition="{data.frame_class} == 'titre_anime'">
+		<div class="case_title_anim_Page hidden-print">
+			<div class="icon_title_anim_Page"></div>
+		</div>
+	</f:if>
+	<f:if condition="{data.header}">
+		<f:render partial="Header/All" arguments="{_all}" />
+	</f:if>
+<div class="row grid">
+	<div class="col-md-9">
+		<div class="inner first">
+			<f:for each="{children_30}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+	<div class="col-md-3">
+			<div class="inner last">
+			<f:for each="{children_31}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+</div>
+</div>

@@ -1,0 +1,53 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" 
+	xmlns:bbvh="http://typo3.org/ns/BravoBuero/BbPortfolio/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<div class="whiteContainer animationHidden">
+	<div class="container">
+		<f:cObject typoscriptObjectPath="lib.kundenheader" />
+	</div>
+</div>
+
+<div class="wrap_lightblue lightblueContainer">
+	<div class="container">	
+		<div class="listKdnLogos">
+
+
+			<f:for each="<bbvh:Chunk input='{kundens}' size='6' />" as="kundensrow" iteration="tr">			
+			<div class="row logoRow">
+				<f:for each="{kundensrow}" as="kunden">
+					<div class="col-xs-6 col-sm-4 col-md-2 logoContainer">
+						<f:link.action  action="detailkunden" arguments="{kunden : kunden}"><f:image src="{kunden.logo.originalResource.originalFile.uid}"  alt="{kunden.name}"  width="480"  /></f:link.action>
+					</div>	
+				</f:for>
+			</div>
+			</f:for>
+
+		</div>
+	</div>
+</div>
+	
+<div class="whiteContainer animationHidden">
+	<div class="container">
+		<f:cObject typoscriptObjectPath="lib.kundenlistemanuell" />
+	</div>
+</div>
+
+</f:section>
+
+
+</html>

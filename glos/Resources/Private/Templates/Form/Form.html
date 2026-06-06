@@ -1,0 +1,59 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:glos="http://typo3.org/ns/Freelance/Glos/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:variable name="settings">{glos:GetSettings()}</f:variable>
+
+<section class="contact section-padding">
+        <div class="container">
+            <div class="row">
+                <!-- contact info -->
+                <div class="col-lg-5 col-md-12">
+                    <div class="item">
+                        <h2>Contact Info</h2>
+                        <div class="phone-call">
+                            <div class="icon"><span class="fa-light fa-phone"></span></div>
+                            <div class="text">
+                                <p>WhatsApp numero</p> <a href="tel:+390522967690">{settings.tel}</a>
+                            </div>
+                        </div>
+                        <div class="line-dec"></div>
+                        <div class="phone-call">
+                            <div class="icon"><span class="fa-light fa-envelope"></span></div>
+                            <div class="text">
+                                <p>E-mail</p> <a href="mailto:{settings.email}">{settings.email}</a>
+                            </div>
+                        </div>
+                        <div class="line-dec"></div>
+                        <div class="phone-call">
+                            <div class="icon"><span class="fa-light fa-location-dot"></span></div>
+                            <div class="text">
+                                {settings.address}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- leave a message -->
+                <div class="col-lg-6 offset-lg-1 col-md-12 mt-45 form-style">
+                    <formvh:renderRenderable renderable="{form}">
+                        <formvh:form
+                            object="{form}"
+                            action="{form.renderingOptions.controllerAction}"
+                            method="{form.renderingOptions.httpMethod}"
+                            id="{form.identifier}"
+                            section="{form.identifier}"
+                            enctype="{form.renderingOptions.httpEnctype}"
+                            addQueryString="{form.renderingOptions.addQueryString}"
+                            argumentsToBeExcludedFromQueryString="{form.renderingOptions.argumentsToBeExcludedFromQueryString}"
+                            additionalParams="{form.renderingOptions.additionalParams}"
+                            novalidate="1"
+                        >
+                            <f:render partial="{form.currentPage.templateName}" arguments="{page: form.currentPage}" />
+                            <div class="form-actions">
+                                <f:render partial="Form/Navigation" arguments="{form: form}" />
+                            </div>
+                        </formvh:form>
+                    </formvh:renderRenderable>
+                </div>
+            </div>
+        </div>
+    </section>
+</html>

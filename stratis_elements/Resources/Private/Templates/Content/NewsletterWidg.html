@@ -1,0 +1,70 @@
+<html data-namespace-typo3-fluid="true"
+    xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/Stratis/StratisElements/ViewHelpers/"
+>
+    <f:layout name="Content"/>
+    <f:section name="Configuration">
+        <flux:form id="newsletterwidg" options="{group: 'footer', icon: 'EXT:stratis_elements/Resources/Public/Icons/Content/flex-iframe.png'}" label="Surfooter" description="INSCRIVEZ VOUS À NOTRE NEWSLETTER">            
+            <flux:field.input name="title" label="Titre"  default="INSCRIVEZ VOUS À NOTRE NEWSLETTER" required="true"/>            
+            <flux:field.inline.fal name="image1" label="Image 1" size="1" maxItems="99" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" required="true"/>
+            <flux:field.inline.fal name="image2" label="Image 2" size="1" maxItems="99" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" required="true"/>
+            <flux:field.text name="teaser" label="Texte" default="Tous les mois, un concentré de territoire dans votre boîte mail, en articles,reportages, photos, vidéos…"/>
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <br/><b>Surfooter</b>
+        <br/>INSCRIVEZ VOUS À NOTRE NEWSLETTER
+    </f:section>
+    <f:section name="Main">
+        <v:variable.set name="dossierPublic" value="EXT:e_magineurs/Resources/Public/Plaine"/>
+        <div class="newsletter">
+            <div class="frame frame-titre_anime frame-type-header frame-layout-0 anim_active">
+                <div class="case_title_anim_Page hidden-print">
+                    <div class="icon_title_anim_Page"></div>
+                </div>
+                <header class="newsletter-header">
+                    <h2 class="newsletter-title ">{title}</h2>
+                </header>
+            </div>
+            
+            <div class="newsletter__container">                
+                <div class="newsletter-logo">
+                    {v:content.resources.fal(field:'image1') -> v:iterator.first() -> v:variable.set(name: 'image1')}
+                    <f:if condition="{image1.uid}">
+                        <f:then>
+                            <f:media file="{image1}" alt="" width="282" height="45" />
+                        </f:then>
+                        <f:else>
+                            <f:image class="img_sites" src="{dossierPublic}/Images/logo-Newsletter.png" maxWidth="300"  alt=""/>
+                        </f:else>                            
+                    </f:if>                
+                </div>                
+                <div class="newsletter-bloc">
+                    <div class="newsletter-images">
+                        {v:content.resources.fal(field:'image2') -> v:iterator.first() -> v:variable.set(name: 'image2')}
+                        <f:if condition="{image2.uid}">
+                            <f:then>
+                                <f:media file="{image2}" alt="" />
+                            </f:then>
+                            <f:else>
+                                <f:image class="img_sites" src="{dossierPublic}/Images/Mockup-Mobile.png" maxWidth="700" alt=""/>
+                            </f:else>                            
+                        </f:if>                          
+                    </div>
+                    <div class="newsletter-contact">  
+                        <f:if condition="{teaser}">
+                            <h2 class="newsletter-texte">{teaser -> f:format.nl2br()}</h2>
+                        </f:if>                              
+                        <a class="btn btn-animate btn-vert" href="{f:uri.page(pageUid:214, absolute: 1)}">JE M'ABONNE</a>
+                        <p class="newsletter-textes">Je peux me désabonner facilement à tout moment. Pour plus de renseignements, veuillez
+                            consulter notre <a href="https://plainecommune.fr/outils/mentions-legales-et-donnees/" target="_blank">Politique de Confidentialité</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:section>
+</html>

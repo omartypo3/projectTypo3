@@ -1,0 +1,91 @@
+3.1.1
+	- mise à jour constantes Tracking JS
+3.1.0
+	- mise en place modifs/nettoyage/optimisations Sophie
+3.0.20
+	- ajout du grid 100% pour l'utilisation de l'effet accordéon / toggles
+3.0.19 (apparemment il fallait mettre aussi à jour le changelog...)
+	- oups !
+3.0.14 (the last one)
+	- modification pagination pour ajouter un bouton pour les enregistrements précédents
+3.0.13 (je peaufine !)
+	- modification génération lien canonique
+	- optimisatin du code
+	- modification image quality additionalconf (65 -> 90)
+	- ajout des cases à cocher pour les contenus pliés/dépliés+fluid+js
+3.0.12 (encore un)
+	- correction tracking.js pour correction bug sous ie
+3.0.11 (ah ben non, encore un ! kiss !)
+	- ajout ligne mot de passe intall tool pour tous les environnements.
+3.0.10 (dernier push de Thomas - Have fun pour la suite !)
+	- inclusion tether et bootstrap.min.js
+	- modification appel jquery ui
+	- solr.stp conf pour l'indexation des fichiers des enregistrements
+	- ajout bootstrap v4 alpha scss
+3.0.9
+	- modification confgenerale.stp pour la gestion des meta dans news
+3.0.8
+	- modifications news.stp pour détailler constante
+3.0.7
+	- mise à jour jquery ui en 1.12.1 pour solr
+	- suppression suggest du fichier solr.stp (gérer dans le static suggest de solrfluid)
+	- maj solr.stp
+3.0.6
+	- additionalconf ajout conf mail pour environnment de DEV
+	- cookie bandeau : locallang
+3.0.5
+	- modification variablesEnvironnement.stp
+3.0.4
+	- modification additionalconf.php
+	- modification version js fancybox
+	- correction inclusions variables structure.stp
+	- ajout pagination lazyload
+3.0.3
+	- amélioration structure.stp
+	- ajout variables structure.stp
+3.0.2
+	- Ajout conf mail pour les serveurs locaux dans l'additionalconfiguration.php
+	- modification solr.stp pour suggest = 1
+3.0.1
+	- Suppression linkhandler folder
+3.0.0
+	- [BREAKING CHANGES] modification gridelements.stp pour fonctionner avec la v8 et fluid_styled_content
+2.0.13
+	- modification pour flux rss news
+2.0.12
+	- Modification ordre boutons d'enregistrements pour avoir le même sur que les v7
+2.0.11
+	- Correction additioncalconf pour les flux rss
+	- Réécriture pagination liste e_annuaires et fs_media_gallery
+2.0.10
+	- Ajout $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'] = ""; additionalconf.php
+
+2.0.9
+	- Picto pour les menus "pied de page" et "principal"
+
+2.0.8
+	- Désactivation datetimepicker de powermail
+
+2.0.6
+	- Ajout type de menu "Menu Principal"
+
+2.0.5
+	- modification robotsDEV.txt pour asqatasun
+
+2.0.2
+	- solr.stp : ajout de suggest = {$e_magineurs.tx_solr.search.results.resultsPerPage}. Constante modifiable dans emagineurs
+
+2.0.1
+	- modification lib.countcontent pour éviter erreur avec les workspaces
+
+1.0.3
+	- Suppression tracking.stp pour le remplacer par un fluidtemplate. Les textes et le lien sont gérables en typoscript via des constantes dans tracking.cst de e_magineurs (merci Xavier)
+	- AdditionalConfiguration.php : désactivation de tous les logs pour l'environnement de PROD
+	- Correction inclusion du tsconfig de e_package suite au problème rencontré par Achraf
+	- Ajout de e_annuaires.stp avec la surcharge des chemins Templates, partials, layouts et conf pagination standard
+	- Harmonisation de la pagination => suppression de la configuration de la pagination des setup de news, fs_media_gallery
+1.0.2
+	- Modification condition variablesEnvironnement.stp
+1.0.1
+	- AdditionalConfiguration.php : ajout condition dev preprod
+	- AdditionalConfiguration.php : modification versionNumberInFilename

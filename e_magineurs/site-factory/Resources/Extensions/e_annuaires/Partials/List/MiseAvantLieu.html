@@ -1,0 +1,32 @@
+<p class="titre"><f:link.action pageUid="{settings.detailPid}" action="show" arguments="{fiche : fiche}">{fiche.title}</f:link.action></p>
+
+<f:if condition="{fiche.categories}">
+    <p><strong>Catégorie(s) :</strong>
+    <f:for each="{fiche.categories}" as="category" iteration="itemIteration">
+        <f:if condition="{itemIteration.isLast}">
+            <f:then>{category.title}</f:then>
+            <f:else>{category.title},</f:else>
+        </f:if>
+    </f:for>
+    </p>
+</f:if>
+
+<f:if condition="{fiche.phone}">
+    <p>{fiche.phone}</p>
+</f:if>
+<f:if condition="{fiche.email}">
+    <p>{fiche.email}</p>
+</f:if>
+
+<f:if condition="{fiche.address}">
+        <p>{fiche.address}</p>
+    </f:if>
+<f:if condition="{fiche.city}">
+    <f:for each="{fiche.city}" as="ville">
+       {ville.codePostal} {ville.title}
+    </f:for>
+</f:if>
+<p><f:cObject typoscriptObjectPath="lib.paramPoiAnnuaire" data="{sourceUid: fiche.uid}" /></p>
+<f:if condition="{settings.detailPid}">
+    <f:link.action pageUid="{settings.detailPid}" action="show" arguments="{fiche : fiche}">Voir le détail</f:link.action>
+</f:if>

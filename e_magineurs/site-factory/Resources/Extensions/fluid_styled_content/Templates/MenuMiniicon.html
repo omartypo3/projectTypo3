@@ -1,0 +1,78 @@
+<f:comment> 
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+	<f:if condition="{menu}">
+		<ul>
+			<f:for each="{menu}" as="page">
+				<li>
+					<f:link.page pageUid="{page.link}" title="{f:if(condition: page.current, then: '{page.title} - Page active')}" target="{page.target}">
+						<f:if condition="{page.files.0}">
+						    <f:then>
+								<f:media class="img_master" file="{page.files.0}"/>
+							</f:then>
+
+						    <f:else>
+						        <f:image class="img_master" src="/fileadmin/user_upload/defaut_icon_menu.jpg"/>
+						    </f:else>
+						</f:if>
+
+						<p>
+							{page.title}
+						</p>	
+					</f:link.page>
+				</li>
+			</f:for>
+		</ul>
+	</f:if>
+</f:section>
+</html> 
+</f:comment>
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+	<nav class="nosolrindex">
+		<f:if condition="{menu}">
+			<ul class="menuminiicon">
+				<f:for each="{menu}" as="page" iteration="iterator">
+					<li>
+						<f:if condition="{page.data.doktype} == 3">
+							<f:then>
+								<f:link.external uri="{page.link}" target="_blank" title="Ouverture dans un nouvel onglet">
+									<div class="case_img">
+										<f:if condition="{page.files.0}">
+										    <f:then>
+												<f:media class="img_master" file="{page.files.0}"/>
+											</f:then>
+										    <f:else>
+										        <f:image class="img_master" src="EXT:e_magineurs/Resources/Public/SiteFactory/Images/defaut_icon_menu.png"/>
+										    </f:else>
+										</f:if>
+									</div>
+									<p>{page.title}</p>
+								</f:link.external>
+							</f:then>
+							<f:else>
+								<f:link.page pageUid="{page.data.uid}" title="{f:if(condition: page.current, then: '{page.title} - Page active')}" target="{page.target}">
+									<div class="case_img">
+										<f:if condition="{page.files.0}">
+										    <f:then>
+												<f:media class="img_master" file="{page.files.0}"/>
+											</f:then>
+										    <f:else>
+										        <f:image class="img_master" src="EXT:e_magineurs/Resources/Public/SiteFactory/Images/defaut_icon_menu.png"/>
+										    </f:else>
+										</f:if>
+									</div>
+									<p>{page.title}</p>
+								</f:link.page>
+							</f:else>
+						</f:if>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+	</nav>
+</f:section>
+</html>

@@ -1,0 +1,107 @@
+
+plugin.tx_bbportfolio_kundenslider {
+	view {
+		# cat=plugin.tx_bbportfolio_kundenslider/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_kundenslider/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_kundenslider/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_kundenslider//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_bbportfolio_portfolioausgabe {
+	view {
+		# cat=plugin.tx_bbportfolio_portfolioausgabe/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_portfolioausgabe/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_portfolioausgabe/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_portfolioausgabe//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_bbportfolio_megamenu {
+	view {
+		# cat=plugin.tx_bbportfolio_megamenu/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_megamenu/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_megamenu/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_megamenu//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_bbportfolio_pagebrowser {
+	view {
+		# cat=plugin.tx_bbportfolio_pagebrowser/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_pagebrowser/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_pagebrowser/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_pagebrowser//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_bbportfolio_pagebrowserback {
+	view {
+		# cat=plugin.tx_bbportfolio_pagebrowserback/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_pagebrowserback/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_pagebrowserback/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_pagebrowserback//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_bbportfolio_pagebrowserkunden {
+	view {
+		# cat=plugin.tx_bbportfolio_pagebrowserkunden/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_pagebrowserkunden/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_pagebrowserkunden/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_pagebrowserkunden//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+plugin.tx_bbportfolio_portfoliodetailrelated {
+	view {
+		# cat=plugin.tx_bbportfolio_portfoliodetailrelated/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_portfolio/Resources/Private/Templates/
+		# cat=plugin.tx_bbportfolio_portfoliodetailrelated/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_portfolio/Resources/Private/Partials/
+		# cat=plugin.tx_bbportfolio_portfoliodetailrelated/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_portfolio/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbportfolio_portfoliodetailrelated//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

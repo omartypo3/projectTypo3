@@ -1,0 +1,154 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+{namespace h=DslFactory\DslIntranet\ViewHelpers}
+
+<div class="content_container">
+
+
+
+	
+	
+	
+
+   
+   
+ 
+ 
+    <table id="angeboteList{auftraege.uid}" class="table table-striped table-bordered angebote table-condensed table-hover" cellspacing="0" width="100%"><thead>
+    <tr>
+        
+        <th>Angebots-Nr.</th>
+        <th>Datei</th>
+        <th>Titel</th>
+        <th>hochgeladen</th>
+      
+		
+    </tr>
+    </thead>
+    <tbody>
+       
+       
+<f:for each="{auftraege.angebote}" as="datei">
+	<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{datei.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+		<f:comment><!--<f:if condition="{fileoutput.ctime}">
+			</f:if>entfernt da auch dateieinträge ohne anhänge angezeigt werden sollen--></f:comment>
+			<tr id="auftraegeDateien_{datei.uid}">
+				<td>{datei.tempAngebotsnummer}</td>
+				<f:if condition="{fileoutput.ctime}">
+					<f:then>
+						<td data-sort="{fileoutput.name}"><span class="bb-pdf-download" aria-hidden="true"></span> <a href="{fileoutput.url}" target="_blank" class="dateidownload" download="{fileoutput.name}">{fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a></td>
+					</f:then>
+					<f:else>
+						<td data-sort="{datei.dateiName}"><span class="bb-pdf-download" aria-hidden="true"></span> {datei.dateiName} (<f:format.bytes>{datei.tempDateiGroesse}</f:format.bytes>)</td>
+					</f:else>
+				</f:if>
+				<td><f:if condition="{datei.titel}">{datei.titel}</f:if></td>
+				<td data-sort="{datei.crdate->f:format.date(format: 'YmdHis')}">{datei.crdate->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+			
+			</tr>
+		
+	</v:resource.file>
+</f:for>
+       
+       
+    </tbody></table>
+
+       
+<script>             
+	$('#angeboteList'+auftraegeUid).DataTable({
+		 "dom": '<"top"<"float_left addBtnContainer"><"float_left"i>f>rt<"bottom"><"clear">', /*http://datatables.net/examples/basic_init/dom.html*/
+			/*"orderFixed": {	"post": [ 0, 'asc' ]},*/
+			"order": [[ 0, "desc" ]],
+			"columnDefs": [
+				
+				{
+					"targets": [ 0 ],
+					"width": "90px",
+				},
+				{
+					"targets": [ 1 ],
+					"width": "350px"
+				},
+				{
+					"targets": [ 2 ],
+				},
+				{
+					"targets": [ 3 ],
+					"width": "100px"
+				}
+			
+
+			],
+			paging: false,
+			"language": {
+				"decimal":        "",
+				"emptyTable":     "Keine Daten gefunden",
+				"info":           "Einträge: _TOTAL_ ",
+				"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+				"infoFiltered":   " von _MAX_ (gefiltert)",
+				"infoPostFix":    "",
+				"thousands":      ",",
+				"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+				"loadingRecords": "Lädt...",
+				"processing":     "Processing...",
+				"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a><a class="clearFilter"><i class="fa fa-lg fa-times"></i></a>',
+				"searchPlaceholder": "Suche",
+				"zeroRecords":    "Keine Ergebnisse gefunden",
+				"paginate": {
+					"first":      "Erste",
+					"last":       "Letzte",
+					"next":       "Nächste",
+					"previous":   "Vorhergehende"
+				},
+				"aria": {
+					"sortAscending":  ": activate to sort column ascending",
+					"sortDescending": ": activate to sort column descending"
+				}
+			},
+			drawCallback: function () {
+				/*var api = this.api();
+				//$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( api.column( 4,  {page:'current'} ).data().sum() );
+				$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( getZeitraumForMinutes(api.column( 4,  {page:'current'} ).data().sum() ) );
+				
+				*/
+				$( '#'+$(this).attr('id')+'_addBtn'  ).detach().appendTo( '#'+$(this).attr('id')+'_wrapper .addBtnContainer' );
+				
+				/*
+				//$('#'+$(this).attr('id')+' .addBtnContainer').html('abc!!');
+				//.html('bääh');
+			 */
+			 
+			}
+	});
+
+	$('#angeboteList'+auftraegeUid+'_wrapper .clearFilter').on('click', function() {
+		
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		
+		setTimeout(function(){ 
+			$(tmpSelector+' input[type="search"]').val('');
+			$(tmpSelector+' .dataTable').DataTable().search( '' ).draw();
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}, 10);
+	}); 
+	$('#angeboteList'+auftraegeUid+'_wrapper input[type="search"]').keyup(function() {
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		if($(tmpSelector+' input[type="search"]').val()){
+			$(tmpSelector+' .clearFilter').css('opacity',1);
+		} else {
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}
+	});
+	$('#angeboteList'+auftraegeUid+'_wrapper .clearFilter').insertAfter('#angeboteList'+auftraegeUid+'_wrapper input[type="search"]');	
+
+	
+	
+
+
+
+</script>
+    
+    
+    
+    
+</div>
+

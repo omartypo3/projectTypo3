@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-11-24T14:50:05Z" product-name="dsl_intranet">
+		<header/>
+		<body>
+			
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.ort">
+				<target>Standort</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.links">
+				<target>Links</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.link_webseite">
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.link_facebook">
+				<target>Facebook</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse">
+				<target>Unternehmens Größe</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.10">
+				<target>1 - 10 Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.20">
+				<target>10 - 100 Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.30">
+				<target>100 - 1000 Mitarbeiter</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.40">
+				<target>über 1000 Mitarbeiter</target>
+			</trans-unit>
+			
+			
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,126 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+<f:form controller="Dateien" pageType="89657208" action="ajax" name="dateien"  pluginName="downloadcenter" extensionName="dslintranet" id="dateienEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Datei Bearbeiten / Knr.: {dateien.kunden.nummer}'}" />
+
+<f:if condition="{dateien.agenturvertraege}">
+	<f:then>
+		<script>
+			var agenturvertragToRefresh = {dateien.agenturvertraege.uid};
+		</script>
+	</f:then>
+	<f:else>
+		<script>
+			var agenturvertragToRefresh = false;
+		</script>
+		
+	</f:else>
+</f:if>
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		/*alert('loaded:'+$('#auftraegeEditForm input').length);*/
+		
+		
+		//$('#auftraegeEditForm').submit(function() {
+
+
+
+$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#dateienEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#dateienEditForm').hasClass('formSaves'))	return false;
+				$('#dateienEditForm').addClass('formSaves');
+				
+				
+			
+				$.ajax({
+					url: $('#dateienEditForm').attr('action'),
+					type: 'POST',
+					data: $('#dateienEditForm').serialize(),
+					success: function(data) {
+					
+						
+						dataJson = JSON.parse(data);
+					
+						if(!dataJson["uid"]) {
+							
+							return true;
+						} else {
+							
+							if($('#dateienList').length){
+								$('#dateienList').DataTable().row( '#dateienListDatei_'+dataJson["uid"] ).data( dataJson["data"] );
+
+								reInitAjaxCalls();
+								reInitTitleEdit();
+							} else {
+								if(agenturvertragToRefresh){
+									loadAgenturvertragContent(agenturvertragToRefresh);
+									delete agenturvertragToRefresh;
+								}
+							}
+				
+						
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		
+	});
+</script>
+
+
+	<f:form.hidden name="dateien" value="{dateien.uid}" />
+    <f:form.hidden name="switch" value="update" />
+    
+    <f:render partial="Dateien/FormFields" arguments="{_all}" />
+	
+    
+
+   
+    
+	<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+
+
+</f:form>
+
+</f:section>

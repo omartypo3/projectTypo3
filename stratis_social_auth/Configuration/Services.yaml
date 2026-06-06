@@ -1,0 +1,82 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Stratis\StratisSocialAuth\:
+    resource: '../Classes/*'
+
+  Stratis\StratisSocialAuth\Controller\AbstractController:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Controller\BindController:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Model\SocialAccount:
+    shared: false
+    public: true
+
+  TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\AbstractRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\SocialAccountRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\QueryBuilder\SocialAccountRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\UserRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Utility\PasswordUtility:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Service\AuthenticationService:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Service\MailService:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Service\MessageService:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Hooks\LogoutHook:
+    shared: false
+    public: true
+
+  TYPO3\CMS\Core\Messaging\FlashMessageService:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\QueryBuilder\UserRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\QueryBuilder\ProviderRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Domain\Repository\QueryBuilder\ConfigurationRepository:
+    shared: false
+    public: true
+
+  Stratis\StratisSocialAuth\Event\Listener\BeforeUserLogoutEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'stratis-social-auth/before-user-logged-out'
+        event: TYPO3\CMS\Core\Authentication\Event\BeforeUserLogoutEvent

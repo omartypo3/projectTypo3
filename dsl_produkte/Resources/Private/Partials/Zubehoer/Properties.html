@@ -1,0 +1,131 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+<div class="tx-dsl-produkte single">
+	<div class="headline-wrap">
+  		<h1>{zubehoer.titel}</h1>
+  		<div class="artikelnr">Artikelnr.: {zubehoer.artikelnummer}</div>
+  		<br />
+  	</div>
+  	<div class="row">
+    	<div class="col-xs-12 col-sm-6 col-md-10">
+     		<div class="img-wrap">
+      			<f:if condition="{zubehoer.bilder.0}">
+        			<f:then>
+                    	<div class="pic">
+          					<f:image src="{zubehoer.bilder.0.originalResource.originalFile.uid}" width="662c" height="443c"  />
+          					<a href="{f:uri.image(src:'{zubehoer.bilder.0.originalResource.publicUrl}' treatIdAsReference:1 maxWidth:'1100' maxHeight:'600')}" class="more gallery cboxElement" data-rel="gallery_news_detail" data-original-title="{zubehoer.bilder.0.originalResource.description}" ></a>
+          				</div>
+			   		</f:then>
+        			<f:else>
+        				<div class="pic"><img src="fileadmin/template/public/images/allg/kategorie_keinbild.png" width="658"></div>
+        			</f:else>
+      			</f:if>
+    		</div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-2">
+            <f:if condition="{zubehoer.bilder -> f:count()} > 1">
+                <f:for each="{zubehoer.bilder}" as="image"  iteration="katIterator">
+                    <f:if condition="{katIterator.cycle} > 1">
+                        <div class="pic">
+                            <f:image src="{image.originalResource.publicUrl}" width="146c" height="89c"/>
+                            <a href="{f:uri.image(src:'{image.originalResource.publicUrl}' treatIdAsReference:1 maxWidth:'1100' maxHeight:'600')}" class="more gallery cboxElement" data-rel="gallery_news_detail" data-original-title="{image.originalResource.description}"></a>
+                        </div>
+                    </f:if>
+                </f:for>
+            </f:if>
+        </div>
+    	
+  	</div>
+  	<div class="uebersicht-wrap">
+  		<div class="table uebersicht">
+    		<div class="table-cell">
+              <table>
+                <f:if condition="{zubehoer.titel}">
+                  <tr>
+                    <td>Produktname:</td>
+                    <td>{zubehoer.titel}</td>
+                  </tr>
+                </f:if>
+                <f:if condition="{zubehoer.artikelnummer}">
+                  <tr>
+                    <td>Artikelnr.:</td>
+                    <td>{zubehoer.artikelnummer}</td>
+                  </tr>
+                </f:if>
+                
+              </table>
+    		</div>
+    		<div class="table-cell">    
+      			<div class="download">
+       				<a href="{datenblatt}" download class="files-link" target="_blank">
+        			Datenblatt
+        <span class="files-size"> (
+          <dsl:FileSize file="{datenblatt}" format="{settings.relatedFiles.fileSizeLabels}" />
+          ) </span>
+          </a>
+      			</div>
+      
+      			<f:if condition="{zubehoer.anlage.originalResource.publicUrl}">
+        			<div class="download"> <a href="{zubehoer.anlage.originalResource.publicUrl}" download="{zubehoer.anlage.originalResource.title}" class="files-link" target="_blank">
+          				<f:if condition="{zubehoer.anlage.originalResource.title}">
+            				<f:then> {zubehoer.anlage.originalResource.title} </f:then>
+            				<f:else> {zubehoer.anlage.originalResource.name} </f:else>
+          				</f:if>
+          <span class="files-size"> ( <dsl:FileSize file="fileadmin{zubehoer.anlage.originalResource.identifier}" format="{settings.relatedFiles.fileSizeLabels}" />
+          ) </span> </a> 
+          			</div>
+        		</f:if>
+      			<div class="anfrage">
+        			<f:if condition="{zubehoer.preis}">
+        
+          				<f:then>
+          					<span><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{zubehoer.preis}</f:format.currency> *</span><br/>
+          					<f:link.page pageUid="37" additionalParams="{tx_powermail_pi1:{produkt: zubehoer.titel}}"  class="btn btn-small">Angebot anfordern</f:link.page>
+                      	</f:then>
+          				<f:else>
+                        	<span>Preis auf Anfrage</span><br/>
+          <f:link.page pageUid="37" additionalParams="{tx_powermail_pi1:{produkt: zubehoer.titel}}"  class="btn btn-small">Angebot anfordern</f:link.page>
+          				</f:else>
+        			</f:if>        
+      			</div>
+    		</div>
+  		</div>
+   </div>
+  
+  	<f:if condition="{zubehoer.technischedaten}">
+    	<f:then>
+      		<div class="row">
+        		<div class="col-xs-12 col-sm-6 col-md-8">
+          			<f:if condition="{zubehoer.text}">
+            
+            			<div class="teaser-text">
+                            <h6>Beschreibung</h6>
+                            <f:format.html>{zubehoer.text}</f:format.html>
+                 
+            			</div>
+          			</f:if>
+        		</div>
+        		<div class="col-xs-12 col-sm-6 col-md-4"> 
+          			<div class="technische-daten">
+          				<h6>Technische Daten</h6>
+                        <ul>
+                          <f:for each="{zubehoer.technischedaten}" as="zeile" >
+                            <li>{zeile}</li>
+                          </f:for>
+                        </ul>
+          			</div>
+        		</div>
+      		</div>
+    	</f:then>
+	    <f:else>
+      		<f:if condition="{zubehoer.text}">
+        
+        		<div class="teaser-text">
+                    <h6>Beschreibung</h6>
+                    <f:format.html>{zubehoer.text}</f:format.html>
+    
+        		</div>
+      		</f:if>
+    	</f:else>
+  	</f:if>
+  
+</div>

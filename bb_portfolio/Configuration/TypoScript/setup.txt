@@ -1,0 +1,247 @@
+
+plugin.tx_bbportfolio_kundenslider {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_kundenslider.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_kundenslider.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_kundenslider.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_kundenslider.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_portfolioausgabe {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_portfolioausgabe.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_portfolioausgabekunden {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_portfolioausgabe.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_portfolioausgabelatest {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_portfolioausgabe.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_portfolioausgabekategorien {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_portfolioausgabe.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_portfolioausgabe.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_megamenu {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_megamenu.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_megamenu.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_megamenu.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_megamenu.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_pagebrowser {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowser.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowser.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowser.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_pagebrowser.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_pagebrowserback {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowserback.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowserback.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowserback.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_pagebrowserback.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_pagebrowserkunden {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowserkunden.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowserkunden.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_pagebrowserkunden.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_pagebrowserkunden.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio_portfoliodetailrelated {
+	view {
+		templateRootPaths.0 = {$plugin.tx_bbportfolio_portfoliodetailrelated.view.templateRootPath}
+		partialRootPaths.0 = {$plugin.tx_bbportfolio_portfoliodetailrelated.view.partialRootPath}
+		layoutRootPaths.0 = {$plugin.tx_bbportfolio_portfoliodetailrelated.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_bbportfolio_portfoliodetailrelated.persistence.storagePid}
+	}
+}
+
+plugin.tx_bbportfolio._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-bb-portfolio table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-bb-portfolio table th {
+		font-weight:bold;
+	}
+
+	.tx-bb-portfolio table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+#_portfolioausgabe
+plugin.tx_bbportfolio.detail.errorHandling = pageNotFoundHandler
+
+
+lib.bbportfolio.megamenu < tt_content.list.20.bbportfolio_megamenu
+#lib.bbportfolio.portfoliodetailback < tt_content.list.20.bbportfolio_portfolioausgabe
+
+
+lib.bbportfolio.pagebrowserportfolio = USER
+lib.bbportfolio.pagebrowserportfolio {
+    # Bis TYPO3 6.2
+    # userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    # Ab TYPO3 7.6
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = BbPortfolio
+    pluginName = Pagebrowser
+    vendorName = BravoBuero
+    controller = Portfolio
+    action = Detailnav
+    #switchableControllerActions {
+    #    WeitereControllerAberOhneControllerAmEnde {
+    #        1 = list
+    #        2 = detail
+    #        3 = etc
+    #    }
+    #}
+    view < plugin.tx_bbportfolio_pagebrowser.view
+    persistence < plugin.tx_bbportfolio_pagebrowser.persistence
+    settings < plugin.tx_bbportfolio_pagebrowser.settings
+}
+
+lib.bbportfolio.pagebrowserportfolioback = USER
+lib.bbportfolio.pagebrowserportfolioback {
+    # Bis TYPO3 6.2
+    # userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    # Ab TYPO3 7.6
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = BbPortfolio
+    pluginName = Pagebrowserback
+    vendorName = BravoBuero
+    controller = Portfolio
+    action = Detailback
+    #switchableControllerActions {
+    #    WeitereControllerAberOhneControllerAmEnde {
+    #        1 = list
+    #        2 = detail
+    #        3 = etc
+    #    }
+    #}
+    view < plugin.tx_bbportfolio_pagebrowserback.view
+    persistence < plugin.tx_bbportfolio_pagebrowserback.persistence
+    settings < plugin.tx_bbportfolio_pagebrowserback.settings
+}
+
+lib.bbportfolio.pagebrowserkunden = USER
+lib.bbportfolio.pagebrowserkunden {
+    # Bis TYPO3 6.2
+    # userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    # Ab TYPO3 7.6
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = BbPortfolio
+    pluginName = Pagebrowserkunden
+    vendorName = BravoBuero
+    controller = Portfolio
+    action = Detailkundennav
+    #switchableControllerActions {
+    #    WeitereControllerAberOhneControllerAmEnde {
+    #        1 = list
+    #        2 = detail
+    #        3 = etc
+    #    }
+    #}
+    view < plugin.tx_bbportfolio_pagebrowserkunden.view
+    persistence < plugin.tx_bbportfolio_pagebrowserkunden.persistence
+    settings < plugin.tx_bbportfolio_pagebrowserkunden.settings
+}
+
+
+lib.bbportfolio.portfoliodetailrelated = USER
+lib.bbportfolio.portfoliodetailrelated {
+    # Bis TYPO3 6.2
+    # userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    # Ab TYPO3 7.6
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    extensionName = BbPortfolio
+    pluginName = Portfoliodetailrelated
+    vendorName = BravoBuero
+    controller = Portfolio
+    action = Detailrelated
+    #switchableControllerActions {
+    #    WeitereControllerAberOhneControllerAmEnde {
+    #        1 = list
+    #        2 = detail
+    #        3 = etc
+    #    }
+    #}
+    view < plugin.tx_bbportfolio_portfoliodetailrelated.view
+    persistence < plugin.tx_bbportfolio_portfoliodetailrelated.persistence
+    settings < plugin.tx_bbportfolio_portfoliodetailrelated.settings
+}

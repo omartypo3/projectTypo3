@@ -1,0 +1,31 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in <th></th>e extension builder
+
+<f:section name="main">
+
+
+
+	<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Import'}" />
+
+
+
+    
+
+	
+    <f:debug title="resultarray">{resultarray}</f:debug>
+    
+    
+    <f:render partial="Allgemein/ColorboxFooter" />    
+    
+</f:section>

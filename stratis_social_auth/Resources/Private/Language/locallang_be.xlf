@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="stratis_social_auth">
+		<header/>
+		<body>
+			<trans-unit id="pi1_title">
+				<source>STRATIS : Social Auth</source>
+			</trans-unit>
+			<trans-unit id="pi2_title">
+				<source>STRATIS : Social Auth - Bind</source>
+			</trans-unit>
+			<trans-unit id="tt_content.pi_flexform.sheet_general">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="tt_content.pi_flexform.configuration">
+				<source>Social Authentication Configuration</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,331 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	
+	
+<v:asset.script path="EXT:dsl_immo/Resources/Private/Templates/Immobilie/Show.js" fluid="1" name="dslImmoShow" />
+	
+<v:asset.style path="EXT:dsl_immo/Resources/Public/css/style.css" name="dslimmocss" dependencies="font" />
+<f:render partial="Immobilie/Opengraph" arguments="{_all}" />
+
+
+<section id="property-detail">
+                        <header><h2>Detailansicht</h2></header>
+                        <header class="property-title">
+							<h1>{immobilie.objekttitel}</h1>
+                            <figure><f:if condition="{immobilie.etage}"><f:then>{immobilie.etage}</f:then><f:else>—</f:else></f:if> · Wohnung {immobilie.objektNrextern}</figure>
+                            <!--TYPO3SEARCH_end--><span class="actions">
+                                
+								<f:link.action action="ajax" pageType="753951" additionalParams="{tx_dslimmo_immoout: '{immobilie:immobilie.uid,switch:\'bookmark\'}'}" data="{bookmark-state:'empty', uid:immobilie.uid}" class="bookmark bookmarkAjax"><span class="title-add">Merken</span><span class="title-added">Gemerkt</span></f:link.action>
+                                
+                            </span><!--TYPO3SEARCH_begin-->
+                        </header>
+                        <f:if condition="{immobilie.bilder}">
+							<section id="property-gallery">
+
+
+							   <div id="carousel-immobilie" class="carousel carousel-transition-fade slide" data-interval="5000" data-wrap="true" data-ride="carousel">
+									<div class="carousel-inner no-parallax" role="listbox">
+										<f:for each="{immobilie.bilder}" as="bild" iteration="iterator">
+											<div class="item {f:if(condition: iterator.isFirst, then: 'active')} carousel-item-type carousel-item-type-backgroundimage" data-itemno="{iterator.index}" style="background-image: url(&#039;{f:uri.image(src:bild.datei.originalResource.originalFile.uid, maxWidth:'1400', maxHeight:'1400')}&#039;); background-color: #333333;">
+												<h2><a href="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" class="lightbox" data-lightbox-caption="{bild.datei.originalResource.title}" data-lightbox-width="{bild.datei.originalResource.properties.width}" data-lightbox-height="{bild.datei.originalResource.properties.height}" rel="lightbox-group-bilder{immobilie.uid}">{bild.datei.originalResource.title}</a></h2>
+
+											</div>
+										</f:for>
+									</div>
+									<!--TYPO3SEARCH_end-->
+									<ol class="carousel-indicators">
+										<f:for each="{immobilie.bilder}" as="bild" iteration="iterator"><li data-target="#carousel-immobilie" data-slide-to="{iterator.index}" class="{f:if(condition: iterator.isFirst, then: 'active')}"></li></f:for>
+									</ol>
+									<a data-slide="prev" role="button" class="left carousel-control" href="#carousel-immobilie"><span class="carousel-control-icon"></span><span class="sr-only">Previous</span></a>
+									<a data-slide="next" role="button" class="right carousel-control" href="#carousel-immobilie"><span class="carousel-control-icon"></span><span class="sr-only">Next</span></a>
+									<!--TYPO3SEARCH_begin-->
+								</div>
+
+
+
+							</section>
+						</f:if>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12">
+                                <section id="quick-summary" class="clearfix">
+                                    <h3 class="header">Überblick</h3>
+                                    <dl>
+                                      	
+                                       	<dt class="highlight">Typ:</dt>
+                                        <dd class="highlight">Mietwohnung</dd>
+
+                                        <dt>Adresse:</dt>
+										<dd><f:if condition="{immobilie.objektadressefreigeben}"><f:then><f:if condition="{immobilie.objektadressefreigeben}">{immobilie.strasseHausnummer}<br></f:if>{immobilie.geoPlz} {immobilie.geoOrt}</f:then><f:else>auf Anfrage</f:else></f:if></dd> 
+
+                                        <dt>Gebiet:</dt>
+                                        <dd>{immobilie.geoLageGebiet}</dd>
+                                        
+                                        <f:if condition="{immobilie.objektArtWohnungTyp}!=10"><f:if condition="{immobilie.objektArtWohnungTyp}">
+                                        	<dt>Objektart:</dt>
+                                           	<dd><f:translate key="tx_dslimmo_domain_model_immobilie.objekt_art.{immobilie.objektArtWohnungTyp}" /></dd> 
+										</f:if></f:if>
+                                            
+										<dt>Etage/ Lage:</dt>
+										<dd><f:if condition="{immobilie.etage}"><f:then>{immobilie.etage}</f:then><f:else>—</f:else></f:if></dd>
+                                        
+                                        <dt>Räume:</dt>
+										<dd>{immobilie.flaechenAnzahlZimmer}-Raum</dd>
+                                       
+                                        <dt>Wohnfläche:</dt>
+                                        <dd><f:format.currency currencySign="" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.flaechenWohnflaeche}</f:format.currency> m<sup>2</sup></dd>
+                                       
+                                        <dt>Frei ab:</dt>
+										<dd>{immobilie.verfuegbarAb}</dd>
+                                        
+                                        <dt>Kaution:</dt>
+										<dd><f:if condition="{immobilie.kaution}">
+											<f:then><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.kaution}</f:format.currency></f:then>
+											<f:else>nach Vereinbarung</f:else>
+											</f:if></dd>
+                                      	
+                                        <dt>Kaltmiete</dt>
+                                        <dd><span class="tag price"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaltmiete}</f:format.currency></span></dd>
+                                        
+                                        <dt>Nebenkosten:</dt>
+										<dd><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseNebenkosten}</f:format.currency></dd>
+                                       
+                                        <dt>Gesamtmiete:</dt>
+                                       	<dd><span class="tag price"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseWarmmiete}</f:format.currency></span></dd>
+                                        
+                                            
+                                        
+									</dl>
+									<f:link.action pageUid="{settings.detailPid}" pageType="{settings.pageTypeExposePdf}" action="show" arguments="{immobilie:immobilie}" class="link-arrow">Exposé als PDF</f:link.action>
+								</section>
+                                   <f:if condition="{immobilie.energiepassEpart}">	
+                                   <f:then>
+									   <section id="quick-summary" class="clearfix">
+										   <h3 class="header">Energieausweis</h3>
+                                    
+                                    
+										<f:if condition="{immobilie.energiepassEpart == 'VERBRAUCH'}">
+											<f:then>	
+
+												<dl>
+													<dt>Ausweistyp:</dt>
+													<dd>Verbrauchsausweis</dd>
+												</dl>
+												<dl>
+													<dt>Verbrauchswert:</dt>
+													<dd>{immobilie.energiepassEnergieverbrauchkennwert} kWh/(m²*a)<f:if condition="{immobilie.energiepassMitwarmwasser}"> · inkl. WW</f:if></dd>
+												</dl>
+												
+												<f:comment>IS24:Energieverbrauchskennwert kWh/(m²*a): 68,90, Energieverbrauch für Warmwasser enthalten, Gas, Baujahr: --{immobilie.zustandBaujahr}</f:comment>
+											</f:then>
+											<f:else>
+												<dl>
+													<dt>Ausweistyp:</dt>
+													<dd>Bedarfsausweis</dd>
+												</dl>
+												
+												<dl>
+													<dt>Bedarfswert:</dt>
+													<dd>{immobilie.energiepassEndenergiebedarf} kWh/(m²*a)<f:if condition="{immobilie.energiepassMitwarmwasser}"> · inkl. WW</f:if></dd>
+												</dl>
+
+											</f:else>
+										</f:if>
+                                   
+                                    <f:if condition="{immobilie.zustandBaujahr}">
+                                    <dl>
+										<dt>Baujahr:</dt>
+										<dd>{immobilie.zustandBaujahr}</dd>
+									</dl>
+									</f:if>
+                                   
+                                    
+										
+									<f:if condition="{immobilie.energiepassPrimaerenergietraeger}">
+									<dl>
+										<dt>Energieträger:</dt>
+										<dd>{immobilie.energiepassPrimaerenergietraeger}</dd>
+									</dl>
+									</f:if>
+									
+									<f:comment><dl>
+										<dt>Gebäudeart:</dt>
+										<dt>Gebäudeart:</dt>
+										<dd>Wohnhaus?!</dd>
+										</dl></f:comment>
+										
+									 </section>
+									   </f:then>
+                                   		<f:else>
+											<f:comment>kein Energieausweis notwendig Denkmalschutz ...</f:comment>
+									   </f:else>
+                                    
+									</f:if>
+                                    
+                                    
+   
+                                        
+                                    
+                               
+                            </div><!-- /.col-md-4 -->
+                            <div class="col-md-8 col-sm-12">
+                                
+                                <section id="description">
+                                    <h3 class="header">Objektbeschreibung</h3>
+                                    <p>
+                                        {immobilie.objektbeschreibung}
+                                    </p>
+                                </section>
+                                
+                                <div class="row">
+	                                <div class="col-md-6 col-sm-12">
+										
+											<section id="property-ausstattung">
+												<h3 class="header">Ausstattung</h3>
+												<p>
+													<f:if condition="{immobilie.ausstattbeschr}"><f:then>{immobilie.ausstattbeschr}</f:then><f:else>—</f:else></f:if>
+												</p>
+											</section>
+										
+									</div>
+                                	<div class="col-md-6 col-sm-12">
+										<section id="property-lage">
+											<h3 class="header">Lage</h3>
+											<p>
+												<f:if condition="{immobilie.lage}"><f:then>{immobilie.lage}</f:then><f:else>—</f:else></f:if>
+												
+											</p>
+										</section>
+									</div>
+									
+								</div>
+                                <section id="property-features">
+                                    <h3 class="header">Besonderheiten</h3>
+                                    <ul class="list-unstyled property-features-list">
+                                       <f:if condition="{immobilie.besonderheiten}"><f:else>—</f:else></f:if>
+                                       <f:if condition="{immobilie.flaechenAnzahlBalkone}">
+                                         	<li>Balkon {f:if(condition: '{immobilie.flaechenAnzahlBalkone}>1', then: '({immobilie.flaechenAnzahlBalkone})')}</li>
+										</f:if>
+										<f:if condition="{immobilie.flaechenAnzahlTerrassen}">
+                                        	<li>Terrasse {f:if(condition: '{immobilie.flaechenAnzahlTerrassen}>1', then: '({immobilie.flaechenAnzahlTerrassen})')}</li>
+										</f:if>
+										<f:if condition="{immobilie.flaechenAnzahlLogia}">
+                                         	<li>Logia {f:if(condition: '{immobilie.flaechenAnzahlLogia}>1', then: '({immobilie.flaechenAnzahlLogia})')}</li>
+										</f:if>
+                                      	<f:if condition="{immobilie.ausstattungFahrstuhl}">
+											<li>Fahrstuhl</li>
+                                      	</f:if>
+                                      	<f:if condition="{immobilie.ausstattungKueche}"><f:for each="{immobilie.ausstattungKuecheArray}" as="ausstattungKueche" iteration="iterator">
+											<li><f:translate key="tx_dslimmo_domain_model_immobilie.ausstattung_kueche.{ausstattungKueche}" />{ausstattungKueche}</li>
+										</f:for></f:if>
+										<f:if condition="{immobilie.ausstattungGaestewc}">
+											<li>Gäste-WC</li>
+                                      	</f:if>
+                                      	<f:if condition="{immobilie.ausstattungGartennutzung}">
+											<li>Gartennutzung</li>
+                                      	</f:if>
+                                    </ul>
+                                </section><!-- /#property-features -->
+                                <f:if condition="{immobilie.GrundrissBilder}">
+									<section id="floor-plans">
+										<div class="floor-plans">
+											<header><h3>Grundriss</h3></header>
+											
+											<f:for each="{immobilie.GrundrissBilder}" as="bild" iteration="iterator">
+												
+												<a href="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" class="lightbox" data-lightbox-caption="{bild.datei.originalResource.title}" data-lightbox-width="{bild.datei.originalResource.properties.width}" data-lightbox-height="{bild.datei.originalResource.properties.height}" rel="lightbox-group-floor{immobilie.uid}"><img title="{bild.datei.originalResource.title}" alt="grundriss" src="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, width:'215c', height:'155c')}"></a>
+												
+											</f:for>
+										</div>
+									</section>
+								</f:if>
+								<f:if condition="{immobilie.objektadressefreigeben}">
+                                <!--TYPO3SEARCH_end--><section id="property-map">
+                                    <h3 class="header">Kartenansicht</h3>
+                                    <div class="property-detail-map-wrapper">
+                                        <div class="property-detail-map property-detail-single-map" id="property-detail-single-map-{immobilie.uid}" data-lat="{immobilie.geoKoordinatenBreitengrad}" data-lng="{immobilie.geoKoordinatenLaengengrad}" data-address="{immobilie.geoStrasse} {immobilie.geoHausnummer},{immobilie.geoPlz} {immobilie.geoOrt} {immobilie.geoLang}"></div>
+                                    </div>
+									</section><!--TYPO3SEARCH_begin--></f:if>
+                                
+                            </div>
+                            <!--TYPO3SEARCH_end-->
+							
+							<f:if condition="{immobilie.additionalHtmlField}">
+								
+									<div class="col-md-12 col-sm-12">
+                                		<section id="3d-rundgang" class="frame-space-before-small">
+                                    		<header><h2>3D-Rundgang</h2></header>
+											
+
+
+									<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class="embed-container"><iframe src="{immobilie.additionalHtmlField}" style="border:0px #ffffff none;" name="Wohnungsnr" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="50%" width="100%" allowfullscreen>
+										</iframe></div>
+
+											
+										</section>
+									</div>
+								
+							</f:if>
+							
+
+							
+							<div class="col-md-12 col-sm-12">
+                                <section id="contact-agent" class="frame-space-before-small">
+                                    <header><h2>Ihr Kundenbetreuer</h2></header>
+                                    <div class="row">
+                                        <section class="agent-form">
+                                           
+                                            <div class="col-md-4 col-sm-12">
+                                                <aside class="clearfix">
+                                                    
+                                                    <div class="agent-contact-info">
+														<f:if condition="{immobilie.kontaktperson}"><h3 class="highlight">{immobilie.kontaktperson.vornameName}</h3></f:if>
+                                                        <p>
+                                                            <strong>Wohnungsbaugesellschaft Reichenbach mbH</strong><br>
+															Zwickauer Straße 32<br>
+															08468 Reichenbach im Vogtland<br>
+															Telefon <f:if condition="{immobilie.kontaktperson.telzentrale}"><f:then>{immobilie.kontaktperson.telzentrale}</f:then><f:else>03765 55 33-0</f:else></f:if>
+															
+                                                        </p>
+                                                        
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                            <div class="col-md-8 col-sm-12">
+                                               
+                                               <f:render partial="Immobilie/AnfrageFormular" arguments="{_all}" />
+                                                
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                                
+                                
+                                
+                               
+                                
+                                
+                            </div><!--TYPO3SEARCH_begin-->
+							<!--TYPO3SEARCH_end--><div class="col-md-12 col-sm-12">
+							<hr>
+							<a href="#" class="link-arrow back" onClick="history.back();return false;">zurück zur Liste</a>
+							</div><!--TYPO3SEARCH_begin-->
+							
+                        </div>
+                    </section>
+
+
+</f:section>
+</html>

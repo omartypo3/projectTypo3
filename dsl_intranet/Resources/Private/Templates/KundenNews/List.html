@@ -1,0 +1,50 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+	
+<f:if condition="{news}">
+	
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/Styles/news_angebote.css" name="cssNewsAngebote" dependencies="bootstrap"></v:asset.style>
+
+
+	<div class="row outerRow">
+
+		<div class="col-sm-12 col-md-12 col-lg-12 headlines">
+			<div class="row">
+				<div class="col-sm-5 col-md-5 col-lg-5 hidden-sm">
+					<hr>
+				</div>
+				<div class="col-sm-12 col-md-2 col-lg-2">
+					<h3>Unsere Angebote</h3>
+				</div>
+				<div class="col-sm-5 col-md-5 col-lg-5 hidden-sm">
+					<hr>
+				</div>
+			</div>
+		</div>
+
+		<f:for each="{news}" as="newsItem">
+			<f:render partial="KundenNews/ListRow" arguments="{_all}" />         
+		</f:for>
+
+	</div>
+	
+</f:if>
+	
+	
+</f:section>
+	
+</html>

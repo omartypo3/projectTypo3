@@ -1,0 +1,61 @@
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+	
+<script type="text/javascript">
+
+    var kundenAjaxUrl = '<f:uri.action action="ajax" controller="Kunden" pageType="89657207" />';
+	
+</script>
+<v:asset.script  path="EXT:dsl_intranet/Resources/Private/Templates/Kunden/List.js" name="jsKu"></v:asset.script>
+	
+<f:link.action action="new" pageType="89657207" controller="Kunden" pluginName="kundenliste" extensionName="dslintranet" class="doAjaxEdit pageToolbarButton pageToolbarButtonFirstGroup pageToolbarButtonPrimary" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '910px'}"><i class="bb-plus bb-lg"></i><span>neuer Kunde</span></f:link.action>
+
+<f:link.action action="import" pageType="89657207" controller="Kunden" pluginName="kundenliste" extensionName="dslintranet" class="doAjaxEdit pageToolbarButton pageToolbarButtonSecondGroup" additionalAttributes="{data-colorbox-width: '500px', data-colorbox-height: '400px'}"><i class="fa fa-upload fa-lg"></i><span>Import aus Quickbooks</span></f:link.action>
+
+<div id="kundenListFilter">
+    
+	<f:form controller="Kunden" action="ajax"  pageType="89657207" pluginName="kundenliste" extensionName="dslintranet" id="kundenFilterForm" >
+	    <f:form.hidden name="switch" value="filterSet" />
+
+            <f:form.select title="Status" class="selectpicker kundenFormFilterSelectpicker" id="filter_aktiv" multiple="multiple" name="settings[aktiv]" value="{settings.aktiv}" property="aktiv" options="{filterAktiv}" data="{width:'auto', dropup-auto:'false'}" />
+		
+			<f:form.select title="Login" class="selectpicker kundenFormFilterSelectpicker" id="filter_login" multiple="multiple" name="settings[login]" value="{settings.login}" property="login" options="{filterLogin}" data="{width:'auto', dropup-auto:'false', max-options:'1'}" />
+            
+        
+          	<button id="saveFilter" class="btn btn-success" disabled="disabled"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filtern&nbsp;&nbsp;<span id="kundenListAnzahl">(<f:count>{kundens}</f:count>)</span></button>
+
+        	<button id="deleteFilter" class="btn btn-danger" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></button>
+		
+			
+        
+    </f:form>
+</div>	
+<br>
+	
+<f:render partial="Kunden/ListTable" arguments="{_all}" />
+
+	
+<div id="tableLegendeWrapper">	
+	<div class="tableLegende" id="tableLegende">A = Aktiviert &nbsp;&nbsp; P = Projekt &nbsp;&nbsp; W = Wartung &nbsp;&nbsp; H = Hosting &nbsp;&nbsp; E = Eingetragen &nbsp;&nbsp; i = importiert durch Quickbooks &nbsp;&nbsp; m = manuell &nbsp;&nbsp; L = Login</div>
+</div>
+
+
+
+
+</f:section>
+</html>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-02-27T15:14:20Z" product-name="bb_portfolio">
+		<header/>
+		<body>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden">
+				<source>Kunden</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.alias">
+				<source>Alias</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.ort">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.betreuung">
+				<source>Betreuung</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse">
+				<source>Unternehmen Groesse</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.link_webseite">
+				<source>Link Webseite</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.link_facebook">
+				<source>Link Facebook</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.primaer_farbe">
+				<source>Primaer Farbe</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.seo_title">
+				<source>Seo Title</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.seo_keywords">
+				<source>Seo Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.seo_description">
+				<source>Seo Description</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.branche">
+				<source>Branche</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio">
+				<source>Portfolio</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.alias">
+				<source>Alias</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.untertitel">
+				<source>Untertitel</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.zeitraum">
+				<source>Zeitraum</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.system">
+				<source>System</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.teaser_bild">
+				<source>Teaser Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.youtube">
+				<source>Youtube</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.bilder">
+				<source>Bilder</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.seo_keywords">
+				<source>Seo Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.seo_description">
+				<source>Seo Description</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kundenname">
+				<source>Kundenname</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kundennamecheck">
+				<source>Kundennamecheck</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kunde">
+				<source>Kunde</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kategorie">
+				<source>Kategorie</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.hashtags">
+				<source>Hashtags</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.related">
+				<source>Related</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_hashtags">
+				<source>Hashtags</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_hashtags.alias">
+				<source>Alias</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_hashtags.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kategorien">
+				<source>Kategorien</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kategorien.alias">
+				<source>Alias</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kategorien.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_branchen">
+				<source>Branchen</source>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_branchen.name">
+				<source>Name</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

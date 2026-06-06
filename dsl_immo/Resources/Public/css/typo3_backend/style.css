@@ -1,0 +1,22 @@
+/* CSS Document */
+
+/*
+
+table.immolisting{background-color:#00FF00 !important;}
+
+table.immolisting td,table.immolisting th{padding:5px !important;}
+
+*/
+
+
+
+/*BTN für das Editieren des 3D-Rundgang*/
+.editBtnWidthText > div,
+.editBtnWidthText > div > a {
+    display: block;
+}
+
+.editBtnWidthText > div > a .icon{
+	float:left;
+	margin-left:5px;
+}

@@ -1,0 +1,14 @@
+# Persistence configuration moved to Configuration/Extbase/Persistence/Classes.php
+
+config.tx_extbase{
+   objects {
+	  In2code\Powermail\Domain\Model\Field.className = Emagineurs\EPowermailMultirecip\Domain\Model\Field
+   }
+}
+plugin.tx_powermail {
+	view {
+		partialRootPaths {
+			multirecip = EXT:e_powermail_multirecip/Resources/Private/Partials/
+		}
+	}
+}

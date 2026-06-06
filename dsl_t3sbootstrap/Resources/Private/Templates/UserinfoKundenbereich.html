@@ -1,0 +1,29 @@
+
+
+
+{f:image(src: 'fileadmin/kundenlogos/{username}.png', class: 'pageToolbarKundenlogo')}
+
+<div class="pageToolbarName">
+	{name}
+</div>
+<div class="pageToolbarUsername">
+	Kdnr.: {username}
+</div>
+<div>
+	<a href="index.php?id=84&amp;logintype=logout"><i class="fa fa-sign-out fa-fw"></i>
+		&nbsp; Logout
+	</a>
+</div>
+
+
+<f:comment>
+
+<li class="hidden-xs"><div id="clock"><div id="date"></div><div id="time"><span class="hour"></span>:<span class="minute"></span>:<span class="second"></span> Uhr</div></div></li>
+<li class="dropdown"><f:cObject typoscriptObjectPath="lib.dslintranet.avatar" />
+<div id="notificationcenterEdge"></div>
+<ul class="dropdown-menu notificationcenter">
+	<li class="stickyToolbar"><f:link.action controller="Notification" pluginName="notificationcenter" extensionName="dslintranet" action="readall" class="notificationBtnReadAll" pageType="89658999">Alle als gelesen markieren</f:link.action><a class="logoutBtn" href="{f:uri.page(pageUid:79,additionalParams:{logintype: 'logout'} )}">Logout!  ({username})</a></li>
+	<f:cObject typoscriptObjectPath="lib.dslintranet.notificationcenter" />
+</ul>
+</li>
+</f:comment>

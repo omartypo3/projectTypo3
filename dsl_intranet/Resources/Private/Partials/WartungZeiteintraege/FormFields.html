@@ -1,0 +1,48 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<f:render partial="WartungZeiteintraege/FormFieldsScripts" arguments="{_all}" />
+
+
+<f:form.textfield class="form-control input-sm" id="kontingentFail" name="kontingentFail" value="1" style="visibility:hidden;position:absolute;" />
+<f:form.textfield class="form-control input-sm" id="minutenUnzugewiesen" name="minutenUnzugewiesen" value="0" style="visibility:hidden;position:absolute;" />
+
+<f:if condition="{zeiteintraege.tracker}">
+	<f:then>
+		<f:render partial="WartungZeiteintraege/FormFieldsTracker" arguments="{_all}" />
+	</f:then>
+	<f:else>
+		<f:render partial="WartungZeiteintraege/FormFieldsAktivitaet" arguments="{_all}" />
+	</f:else>
+</f:if>
+
+
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Tätigkeit<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textarea name="text" value="{zeiteintraege.text}" class="validator_required form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Zeitraum<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.select class="validator_required selectpicker selectpickerFormular" name="zeitraum" options="{wartungsvertraege.zeitraeumeSorted}"  optionLabelField="titel" value="{zeitraum}" id="editZeitraum"  data="{width:'100%', dropup-auto:'false'}" />
+        </div>
+	</div>
+</div>
+
+
+

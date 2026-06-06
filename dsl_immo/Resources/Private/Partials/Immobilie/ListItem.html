@@ -1,0 +1,47 @@
+<div class="property overflowVisible">
+											<f:comment><figure class="tag status">For Sale</figure></f:comment>
+
+
+											<figure class="type" title="Apartment">
+												<img src="fileadmin/zoner/assets/img/property-types/apartment.png" alt="">
+											</figure>
+
+											<div class="property-image">
+												<f:comment><figure class="ribbon">In Hold</figure></f:comment>
+												<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}">
+													<img alt="" src="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, width:'440c', height:'330c')}">
+												</f:link.action>
+											</div>
+											<div class="info">
+												<header>
+
+													<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}"><h3>{immobilie.objekttitel}</h3></f:link.action>
+												   	
+														
+													<f:link.action action="ajax" pageType="753951" additionalParams="{tx_dslimmo_immoout: '{immobilie:immobilie.uid,switch:\'bookmark\'}'}" data="{bookmark-state:'empty', uid:immobilie.uid}" class="bookmark bookmarkAjax"></f:link.action>
+															
+													
+													
+													<figure><f:if condition="{immobilie.etage}"><f:then>{immobilie.etage}</f:then><f:else>—</f:else></f:if> · Wohnung {immobilie.objektNrextern}</figure>
+												</header>
+
+
+
+												<div class="tag price"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaltmiete}</f:format.currency></div>
+												<aside>
+													<p>{immobilie.objektbeschreibung}</p>
+													<dl>
+														<dt>Typ:</dt>
+															<dd>Mietwohnung</dd>
+														<dt>Räume:</dt>
+															<dd>{immobilie.flaechenAnzahlZimmer}-Raum</dd>
+														<dt>Fläche:</dt>
+														<dd><f:format.currency currencySign="" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.flaechenWohnflaeche}</f:format.currency> m<sup>2</sup></dd>
+														<dt>zzgl. Nebenkosten:</dt>
+															<dd><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseNebenkosten}</f:format.currency></dd>
+
+													</dl>
+												</aside>
+												<f:link.action pageUid="{settings.detailPid}" class="link-arrow" action="show" arguments="{immobilie:immobilie}">Mehr lesen</f:link.action>
+											</div>
+										</div><!-- /.property -->

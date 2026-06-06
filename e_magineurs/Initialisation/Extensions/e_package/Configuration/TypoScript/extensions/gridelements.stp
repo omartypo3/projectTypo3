@@ -1,0 +1,37 @@
+lib.gridelements.defaultGridSetup.cObject =< lib.contentElement
+
+plugin.tx_gridelements_pi1 >
+tt_content.gridelements_pi1 >
+tt_content.gridelements_pi1 =< lib.contentElement
+tt_content.gridelements_pi1 {
+    templateName = Generic
+    variables {
+        content = COA
+        content {
+            10 = USER
+            10 {
+                userFunc = GridElementsTeam\Gridelements\Plugin\Gridelements->main
+                setup {
+                    default < lib.gridelements.defaultGridSetup
+                    101 < lib.gridelements.defaultGridSetup
+                    101.cObject {
+                        templateName = Grid5050
+                        templateRootPaths.20 = {$e_magineurs.conf.dossierContainer}/
+                    }
+                    102 < .101
+                    102.cObject.templateName = Grid2575
+                    103 < .101
+                    103.cObject.templateName = Grid7525
+                    104 < .101
+                    104.cObject.templateName = Grid3366
+                    105 < .101
+                    105.cObject.templateName = Grid6633
+                    106 < .101
+                    106.cObject.templateName = Grid333333
+                    107 < .101
+                    107.cObject.templateName = Grid100
+                }
+            }
+        }
+    }
+}

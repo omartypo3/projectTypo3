@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2025-01-01T00:00:00Z" product-name="e_magineurs">
+        <header/>
+        <body>
+            <trans-unit id="searched_for_prefix">
+                <source>Recherche de</source>
+                <target>Recherche de</target>
+            </trans-unit>
+            <trans-unit id="results_found_ms">
+                <source>%d résultats ont été trouvés en %d millisecondes.</source>
+                <target>%d résultats ont été trouvés en %d millisecondes.</target>
+            </trans-unit>
+            <trans-unit id="results_found_no_time">
+                <source>%d résultats ont été trouvés.</source>
+                <target>%d résultats ont été trouvés.</target>
+            </trans-unit>
+            <trans-unit id="results_range_custom">
+                <source>Affiche les résultats de %d à %d sur %d.</source>
+                <target>Affiche les résultats de %d à %d sur %d.</target>
+            </trans-unit>
+            <trans-unit id="results_per_page_label">
+                <source>Résultats par page:</source>
+                <target>Résultats par page:</target>
+            </trans-unit>
+            <trans-unit id="frequentSearches">
+                <source>Recherches fréquentes</source>
+                <target>Recherches fréquentes</target>
+            </trans-unit>
+            <trans-unit id="lastSearches">
+                <source>Dernières recherches</source>
+                <target>Dernières recherches</target>
+            </trans-unit>
+            <trans-unit id="faceting_narrowSearch">
+                <source>Filtre de résultats</source>
+                <target>Filtre de résultats</target>
+            </trans-unit>
+            <trans-unit id="sorting_sortBy">
+                <source>Trier par</source>
+                <target>Trier par</target>
+            </trans-unit>
+            <trans-unit id="relevance">
+                <source>Pertinence</source>
+                <target>Pertinence</target>
+            </trans-unit>
+            <trans-unit id="faceting_resultsNarrowedBy">
+                <source>Filtres actifs</source>
+                <target>Filtres actifs</target>
+            </trans-unit>
+            <trans-unit id="category">
+                <source>Catégorie</source>
+                <target>Catégorie</target>
+            </trans-unit>
+            <trans-unit id="noCategoriesAvailable">
+                <source>Aucune catégorie disponible</source>
+                <target>Aucune catégorie disponible</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

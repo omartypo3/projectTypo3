@@ -1,0 +1,21 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="tx-person-manager">
+	<div class="catmenu newsletterCatmenu">
+
+  <f:form action="new" name="newPerson" object="{newPerson}">
+
+    <label for="email">
+      <f:translate key="tx_personmanager_domain_model_person.email" />
+    </label><br />
+    <f:form.textfield property="email" /><br />
+
+    <f:form.submit value="{f:translate(key: 'labels.create')}" />
+  </f:form>
+
+	</div>
+</div>
+</f:section>
+

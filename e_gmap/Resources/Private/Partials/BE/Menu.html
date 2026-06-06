@@ -1,0 +1,12 @@
+{namespace core=TYPO3\CMS\Core\ViewHelpers}
+
+<f:if condition="{menusBE}">
+  <select class="t3-js-jumpMenuBox" name="moduleMenu" id="moduleMenu" data-menu-identifier="module-menu" data-global-event="change" data-action-navigate="$value">
+        <f:for each="{menusBE}" as="item">
+          <option value="{item.href}" {f:if(condition: item.active, then: 'selected')}>
+            {item.title}
+          </option>
+        </f:for>
+  </select>
+</f:if>
+

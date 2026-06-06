@@ -1,0 +1,16 @@
+{namespace femanager=In2code\Femanager\ViewHelpers}
+<div class="femanager_fieldset femanager_email form-group powermail_fieldwrap">
+	<label for="femanager_field_email" class="powermail_label control-label">
+		Adresse mail
+		<f:if condition="{femanager:Validation.IsRequiredField(fieldName:'email')}">
+			<span>*</span>
+		</f:if>
+	</label>
+	<div class="powermail_field">
+		<femanager:form.textfield
+				id="femanager_field_email"
+				property="email"
+				class="form-control"
+				additionalAttributes="{femanager:Validation.FormValidationData(settings:settings,fieldName:'email')}" />
+	</div>
+</div>

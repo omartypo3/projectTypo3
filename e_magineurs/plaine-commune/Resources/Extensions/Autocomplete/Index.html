@@ -1,0 +1,10 @@
+<f:alias map="{actionUrl: '{f:widget.uri(action:\'autocomplete\', ajax: 1)}'}">
+	<script type="text/javascript">
+	jQuery(function() {
+		jQuery("#{id}").autocomplete(<![CDATA[{]]>
+			source: "{actionUrl}",
+			minLength: 3
+		});
+	});
+	</script>
+</f:alias>

@@ -1,0 +1,427 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/Styles/allgemein.css" name="cssAllgemein" dependencies="bootstrap"></v:asset.style>
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-toggle-master/js/bootstrap-toggle.min.js" name="jsBsToggle"></v:asset.script>		
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-toggle-master/css/bootstrap-toggle.min.css" name="cssBsToggle" dependencies="bootstrap"></v:asset.style>
+	<v:asset.script  path="EXT:dsl_intranet/Resources/Private/Templates/KundenStammdaten/List.js" name="jsKuSd" fluid="1" variables="{ ajaxUrl: '{f:uri.action(action: \'ajax\', pageType: 89657004, pluginName:\'kundenstammdaten\', extensionName:\'dslintranet\',  controller: \'KundenStammdaten\')}' }"></v:asset.script>			
+
+	 
+	
+	<v:asset.style name="cssStammdaten">
+		#stammdatenpasswortaenderung{
+			display:none;
+		}
+		input.invalid{
+			background-color:rgba(250,88,88,0.3)
+		}
+		label.invalid{
+			right: 18px;
+			position: absolute;
+			top: 37px;
+		}
+		.withoutCaption label.invalid{
+			top: 7px;
+		}
+		/*:not(#tx_dslintranet_kundenstammdaten[datenschutz]-error)*/
+		#passwortGeaendert,#stammdatenGeaendert{
+			font-size: 16px;
+			float: right;		
+			display:none;
+		}
+		label.container label.invalid{
+			top:0;
+			right:0;
+			position:relative;
+		}
+		
+		
+		label.container{
+			font-weight:normal;
+		}
+		
+		/* The container */
+		
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    /*background-color: #2196F3;*/
+		/*color:#32cb94;*/
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 4px;
+    width: 8px;
+    height: 12px;
+    border: solid #32cb94;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+		
+.container .checkmark		
+
+	</v:asset.style>
+	
+	<div class="row outerRow rowMarginReset kundenStammdaten">
+		
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="innerBoxcontainer">
+						
+						<div class="row">
+							<f:render partial="KundenStammdaten/KundenDaten" arguments="{_all}" />
+							
+                                
+                            <div class="col-xs-12">
+                                <hr>
+                            </div>	
+                            <div class="col-xs-12">
+								<a data-colorbox-width="650px" data-colorbox-height="800px" class="btn btnGreenSmall" href="#" id="passwortAendernBtn"><span>Passwort ändern</span></a> <span id="passwortGeaendert" class="label label-warning">Passwort erfolgreich geändert.</span>
+                            </div>		
+							<f:form controller="KundenStammdaten" pageType="89657004" action="ajax" name="stammdatenpasswortaenderung"  id="stammdatenpasswortaenderung" >
+								<f:form.hidden name="switch" value="requestUpdatePasswort" />
+								<div class="col-xs-12">
+
+									<div class="row">
+										<div class="col-xs-12">
+											<br />
+											<h5 class="bgWeiss">Passwort ändern</h5>
+											<hr class="sub">
+										</div>
+										<div class="col-xs-12">                                
+											<p class="formName">Altes Passwort*</p>
+											<p><f:form.password id="password_alt" name="password_alt" value="" class="form-control" /></p>
+											
+										</div>
+										<div class="col-xs-6">
+											<p class="formName">Neues Passwort*</p>
+											<p><f:form.password id="password_neu" name="password_neu" value="" class="form-control" /></p>
+										</div>
+										<div class="col-xs-6">
+											<p class="formName">Neues Passwort bestätigen*</p>
+											<p><f:form.password id="password_neu_confirm" name="password_neu_confirm" value="" class="form-control" /></p>
+										</div>
+										<div class="col-xs-12">
+											<p class="text_smaller">*Pflichtfelder</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12">
+									<a data-colorbox-width="650px" data-colorbox-height="800px" id="passwortSpeichernBtn" class="btn btnGreenSmall" href="#"><span>Passwort jetzt ändern</span></a>
+									<a data-colorbox-width="650px" data-colorbox-height="800px" id="passwortSpeichernAbbrechenBtn" class="btn btnRedSmall" href="#"><span>Abbrechen</span></a>
+								</div>		
+							</f:form>
+								
+				        </div><!-- .row -->
+							
+							
+				    </div><!-- .innerBoxcontainer -->
+					<div class="innerBoxcontainer">
+                        
+								<h4 class="bgWeiss">E-Mail Benachrichtigungen</h4>
+
+                                <div class="layout-table">
+
+                                    <div class="layout-table-row">
+                                        <div class="layout-table-col layout-table-width-toggle-btn">
+                                            <input {f:if(condition: '{kunde.settingsKunde.becomeInfoGlobal}', then: 'checked')} class="stammdatenToggleChange" data-key="becomeInfoGlobal" data-toggle="toggle" data-size="mini" data-on="Aktiv" data-off="Inaktiv" data-onstyle="success" data-offstyle="danger" type="checkbox">
+                                        </div>
+                                        <div class="layout-table-col becomeInfoGlobalChildGroup">
+                                            <p class="settingsTitle"><strong>Automatische Kundencenter Benachrichtigungen</strong></p>
+                                            <p class="text_smaller">Diese Option deaktiviert alle <strong>automatischen</strong> E-Mail Benachrichtigungen vom Kundencenter.</p>
+
+
+
+                                            <div class="layout-table">
+                                                <div class="layout-table-row">
+                                                    <div class="layout-table-col layout-table-width-toggle-btn">
+                                                        <input {f:if(condition: '{kunde.settingsKunde.becomeInfoStatuschange}', then: 'checked')} class="stammdatenToggleChange" data-key="becomeInfoStatuschange"  data-toggle="toggle" data-size="mini" data-on="Aktiv" data-off="Inaktiv" data-onstyle="success" data-offstyle="danger" type="checkbox">
+                                                    </div>
+                                                    <div class="layout-table-col">
+                                                        <p class="settingsTitle">Statusänderungen</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="layout-table-row">
+                                                    <div class="layout-table-col layout-table-width-toggle-btn">
+                                                        <input {f:if(condition: '{kunde.settingsKunde.becomeInfoAngebote}', then: 'checked')} class="stammdatenToggleChange" data-key="becomeInfoAngebote" data-toggle="toggle" data-size="mini" data-on="Aktiv" data-off="Inaktiv" data-onstyle="success" data-offstyle="danger" type="checkbox">
+                                                    </div>
+                                                    <div class="layout-table-col">
+                                                        <p class="settingsTitle">Angebote</p>
+                                                    </div>
+                                                </div>
+                                                <div class="layout-table-row">
+                                                    <div class="layout-table-col layout-table-width-toggle-btn">
+                                                        <input {f:if(condition: '{kunde.settingsKunde.becomeInfoRechnungen}', then: 'checked')} class="stammdatenToggleChange" data-key="becomeInfoRechnungen" data-toggle="toggle" data-size="mini" data-on="Aktiv" data-off="Inaktiv" data-onstyle="success" data-offstyle="danger" type="checkbox">
+                                                    </div>
+                                                    <div class="layout-table-col">
+                                                        <p class="settingsTitle">Rechnungen</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                        
+                        </div><!-- .innerBoxcontainer -->
+					    <div class="innerBoxcontainer">
+                        
+                                <h4 class="bgWeiss">Newsletter</h4>
+
+                                <div class="layout-table">
+                                    <div class="layout-table-row">
+                                        <div class="layout-table-col layout-table-width-toggle-btn">
+                                            <input {f:if(condition: '{kunde.newsletter}', then: 'checked')} class="stammdatenToggleChange" data-key="newsletter" data-toggle="toggle" data-size="mini" data-on="Aktiv" data-off="Inaktiv" data-onstyle="success" data-offstyle="danger" type="checkbox">
+                                        </div>
+                                        <div class="layout-table-col">
+                                            <p class="settingsTitle"><strong>DSL Factory Newsletter</strong></p>
+                                            <p class="text_smaller">Der DSL Factory Newsletter informiert über allgemeine Neuerungen, Aktualisierungen und Projekte rund um die Agentur - unabhängig vom Kundencenter.</p>
+
+                                            <div id="emailNewsletterWrapper" class="{f:if(condition: '{kunde.newsletter}', else: 'formInaktiv')}">
+                                                <p><input class="form-control" id="emailNewsletter" value="{kunde.emailNewsletter}" required="required" type="email" {f:if(condition: '{kunde.newsletter}', else: 'disabled="disabled" ')} ></p>
+                                                <a href="#" class="btn btnGreenSmall btnIcon formSubmit" onClick="setKundeNewsletterEmail();return false;" ><i class="bb-arrow-right-large"></i> <span>E-Mail Speichern</span></a>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+							
+				    </div><!-- .innerBoxcontainer -->
+						
+				</div><!-- .col -->
+		
+			<f:form controller="KundenStammdaten" pageType="89657004" action="ajax" name="stammdatenaenderung"  id="stammdatenaenderung" >
+				<f:form.hidden name="switch" value="requestUpdateStammdaten" />
+				<div class="col-sm-12 col-md-12 col-lg-6">
+					<div class="innerBoxcontainer">
+						
+                        <h4 class="bgWeiss">Kundendaten ändern</h4>
+                        <h5 class="bgWeiss">Allgemeine Stammdaten</h5>
+                        <hr class="sub">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="formName">Firma</p>
+                                <p><f:form.textfield class="form-control" name="company" value="{kunde.company}" type="text" placeholder="Firma" /></p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="formName">Anrede</p>
+                                <p><f:form.textfield class="form-control" name="title" value="{kunde.title}" type="text" placeholder="Anrede" /></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="formName">Vorname*</p>
+                                <p><f:form.textfield class="form-control" name="firstName" value="{kunde.firstName}" required="required" type="text" placeholder="Vorname*" /></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="formName">Nachname*</p>
+                                <p><f:form.textfield class="form-control" name="lastName" value="{kunde.lastName}" required="required" type="text" placeholder="Nachname*" /></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="formName">Straße und Hausnummer*</p>
+                                <p><f:form.textfield  class="form-control" name="address" value="{kunde.address}" required="required" type="text" placeholder="Straße / Hausnummer*" /></p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p class="formName">Postleitzahl*</p>
+                                <p><f:form.textfield  class="form-control" name="zip" value="{kunde.zip}" required="required" type="text" placeholder="PLZ*" /></p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="formName">Ort*</p>
+                                <p><f:form.textfield  class="form-control" name="city" value="{kunde.city}" required="required" type="text" placeholder="Ort*" /></p>
+                            </div>
+                        </div>
+                        <br />
+                        <h5 class="bgWeiss">Kontaktdaten</h5>
+                        <hr class="sub">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="formName">Telefon</p>
+                                <p><f:form.textfield class="form-control" name="telephone" value="{kunde.telephone}" type="text" placeholder="Telefonnummer" /></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="formName">Fax</p>
+                                <p><f:form.textfield class="form-control" name="fax" value="{kunde.fax}" type="text" placeholder="Faxnummer" /></p>
+                            </div>
+							<div class="col-sm-6">
+                                <p class="formName">zus. Telefon</p>
+                                <p><f:form.textfield class="form-control" name="qbPhone2" value="{kunde.qbPhone2}" type="text" placeholder="Zusätzliche Telefonnummer" /></p>
+                            </div>
+							<div class="col-sm-6">
+                                <p class="formName">zus. Ansprechpartner</p>
+                                <p><f:form.textfield class="form-control" name="qbCont2" value="{kunde.qbCont2}" type="text" placeholder="Zusätzlicher Ansprechpartner" /></p>
+                            </div>
+                        </div>
+                        
+                        
+                        <br />
+                       
+                        
+						
+                        <h5 class="bgWeiss">Bankverbindung</h5>
+                        <hr class="sub">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="formName">Kontoinhaber</p>
+                                <p><f:form.textfield class="form-control" name="qbKtoInh" value="{kunde.qbKtoInh}" type="text" placeholder="Kontoinhaber" /></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="formName">Bank</p>
+                                <p><f:form.textfield class="form-control" name="qbBank" value="{kunde.qbBank}" type="text" placeholder="Bank" /></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="formName">IBAN</p>
+                                <p><f:form.textfield class="form-control" name="qbIban" value="{kunde.qbIban}" type="text" placeholder="IBAN" /></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="formName">BIC</p>
+                                <p><f:form.textfield class="form-control" name="qbBic" value="{kunde.qbBic}" type="text" placeholder="BIC" /></p>
+                            </div>
+                        </div>
+						<br />
+						
+						
+						 <h5 class="bgWeiss">E-Mail Adressen</h5>
+                        <hr class="sub">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="formName"><strong>Kundenkonto E-Mail Adresse*</strong></p>
+                                <p class="text_smaller formName">Bei Änderung Ihrer E-Mail-Adresse bedenken Sie bitte, dass die neue E-Mail-Adresse ab dem Zeitpunkt der Änderung zum Einloggen in Ihr Kundenkonto benötigt wird.</p>
+                            </div>
+                            <div class="col-sm-6 withoutCaption">
+                                <p><f:form.textfield class="form-control" id="email" name="email" value="{kunde.email}" required="required" type="text" placeholder="E-Mail Adresse*" /></p>
+                            </div>
+                            <div class="col-sm-6 withoutCaption">
+                                <p><f:form.textfield class="form-control" id="email_confirm" name="email_confirm" value="{kunde.email}" required="required" type="text" placeholder="E-Mail Adresse bestätigen*" /></p>
+                            </div>
+                            <div class="col-sm-12">
+                                <hr>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="formName">E-Mail Adresse für Angebote</p>
+                                <p><f:form.textfield class="form-control" name="emailAngebote" value="{kunde.emailAngebote}" type="email" placeholder="E-Mail Adresse für Angebote" /></p>
+                            </div>
+                            <div class="col-sm-12">
+                                <p class="formName">E-Mail Adresse für Rechnungen</p>
+                                <p><f:form.textfield class="form-control" name="emailRechnungen" value="{kunde.emailRechnungen}" type="email" placeholder="E-Mail Adresse für Rechnungen" /></p>
+                            </div>
+                        </div>
+						
+						
+                        <hr>
+						<p class="text_smaller"><label class="container">Ich habe die <a href="https://www.dsl-factory.de/datenschutz/" target="_blank" style=" color:#14cb96 !important;">Datenschutzerklärung</a> zur Kenntnis genommen.*<f:form.checkbox name="datenschutz" value="1" checked="" /><span class="checkmark"></span></label></p>
+                        <hr>
+                        <p class="text_smaller">Mit einem Stern (*) markierte Felder sind Pflichtfelder und müssen ausgefüllt werden.</p>
+                        
+                        <a id="stammdatenSpeichernBtn" data-colorbox-width="650px" data-colorbox-height="800px" class="btn btnGreenSmall" href="#"><span>Änderungen speichern</span></a> <span id="stammdatenGeaendert" class="label label-warning">Stammdaten erfolgreich geändert.</span>
+                    
+					</div>
+					
+				</div>
+			</f:form>
+	</div>
+	
+	
+</f:section>
+	
+</html>
+
+
+
+<f:comment><!--
+<h4 class="bgWeiss">Daten geändert?</h4>
+                        <hr class="h4">
+
+                        <p>Wenn es Änderungen in Ihren Stammdaten gibt, dann schreiben Sie uns direkt mittels des folgenden Textfeldes eine E-Mail mit den neuen/geänderten Daten. Wir aktualisieren diese Daten dann zeitnah in unserem System, sodass künftige Rechnungen oder Lieferungen auch an der richtigen Stelle ankommen.</p>
+
+
+                        <div class="stammdatenaenderungForm">
+                            <f:form controller="KundenStammdaten" pageType="89657004" action="ajax" name="stammdatenaenderung"  id="stammdatenaenderung" >
+                                <f:form.hidden name="switch" value="requestUpdateStammdaten" />
+
+                                <f:form.textarea name="text" id="stammdatenaenderungText" value="" class="validator_required form-control animated" placeholder="Bitte hier Ihre Änderungen eintragen." style="resize:none;min-height:80px;" />
+                                <p></p>
+                                <p>Mit dem Absenden des Formulars bestätige ich die Korrektheit der Eingaben</p>
+                                <div class="formSubmitWrapper">
+                                    <a href="#" class="formSubmit" onClick="$('#stammdatenaenderung').submit();return false;"><i class="bb-arrow-right-large"></i> E-Mail Absenden</a>
+                                </div>
+                            </f:form>
+                        </div>
+                        <div class="stammdatenaenderungFormSubmitted">
+                            <p><strong>Vielen Dank, Ihre Daten wurden wie folgt per E-Mail an uns übermittelt.</strong></p>
+                            <p class="stammdatenaenderungFormContent"></p>
+                            <div class="formSubmitWrapper">
+                                <a href="#" class="formSubmit" onClick="$('.stammdatenaenderungForm').show();$('.stammdatenaenderungFormSubmitted').hide();return false;"><i class="bb-arrow-left-large"></i> zurück zum Formular</a>
+                            </div>
+                        </div>
+-->
+</f:comment>

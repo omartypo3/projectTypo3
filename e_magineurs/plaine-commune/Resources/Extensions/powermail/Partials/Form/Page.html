@@ -1,0 +1,10 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+{f:if(condition: '{page.css} != \'nolabel\'', then: 'fieldset', else: 'div') -> v:variable.set(name: 'tag')}
+<v:tag name="{tag}" class="powermail_fieldset powermail_fieldset_{page.uid} {page.css}">
+	<f:if condition="{page.css} != 'nolabel'">
+		<legend class="powermail_legend">{page.title}</legend>
+	</f:if>
+	<f:for each="{page.fields}" as="field" iteration="iteration">
+			<f:render partial="Form/Field/{vh:String.Upper(string:field.type)}" arguments="{field:field}" />
+	</f:for>
+</v:tag>

@@ -1,0 +1,89 @@
+page {
+        10{
+           dataProcessing{
+            60 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            60 {
+                special = directory
+                special.value = 23
+                levels = 1
+                includeSpacer = 0
+                as = menuquicklinks
+                titleField = nav_title // title
+            }
+       } 
+         dataProcessing{
+            70 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            70 {
+                special = directory
+                special.value = 37
+                levels = 1
+                includeSpacer = 0
+                as = menuquicklinksskt
+                titleField = nav_title // title
+            }
+       } 
+            settings {
+            adress1 = Via Cancieliere Molo 11
+            adress2 = CH-6500 Bellinzona
+            email = info@sktsagl.com
+            telephone =  +41 91 225 67 97
+            address = Via Basilicata, 16 42028 Poviglio (RE)
+            twitter = https://twitter.com/username
+            instagram = https://twitter.com/username
+            youtube = https://twitter.com/username
+            facebook = https://twitter.com/username
+            linkedin = https://twitter.com/username
+            description_it = Non aspettare oltre, scopri subito le nostre offerte e porta il tuo lavoro a un nuovo livello di efficienza con GLOS.
+      		description_en = Do not wait any longer, discover our offers now and take your work to a new level of efficiency with GLOS.
+        }
+    }
+    includeCSS {
+        fonts = https://fonts.googleapis.com/
+        gstatic = https://fonts.gstatic.com/
+        gfonts = EXT:skt/Resources/Public/Css/gfonts.css
+        #theme = EXT:skt/Resources/Public/Scss/Theme/theme.scss
+        bootstrap = EXT:skt/Resources/Public/Css/bootstrap.min.css
+        bootstrapIcons = EXT:skt/Resources/Public/Css/bootstrap-icons.css
+        aos = EXT:skt/Resources/Public/Css/aos.css
+        swiper = EXT:skt/Resources/Public/Css/swiper-bundle.min.css
+        main = EXT:skt/Resources/Public/Css/main.css
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        bootstrap = EXT:skt/Resources/Public/JavaScript/bootstrap.bundle.js
+        validate = EXT:skt/Resources/Public/JavaScript/validate.js
+        aos = EXT:skt/Resources/Public/JavaScript/aos.js
+        swiper = EXT:skt/Resources/Public/JavaScript/swiper-bundle.min.js
+        glightbox = EXT:skt/Resources/Public/JavaScript/glightbox.min.js
+        imagesloaded = EXT:skt/Resources/Public/JavaScript/imagesloaded.pkgd.min.js
+        isotope = EXT:skt/Resources/Public/JavaScript/isotope.pkgd.min.js
+        purecounter = EXT:skt/Resources/Public/JavaScript/purecounter_vanilla.js
+        main = EXT:skt/Resources/Public/JavaScript/main.js
+    }
+    
+}
+
+config {
+  concatenateJs = 0
+  concatenateCss = 0
+
+  compressJs = 0
+  compressCss = 0
+  no_cache = 1
+}
+
+plugin.tx_maps2.view.layoutRootPaths.10 = EXT:skt/Resources/Private/Layouts/Map2/Layouts/
+lib.currentPageId = TEXT
+lib.currentPageId.data = TSFE:id

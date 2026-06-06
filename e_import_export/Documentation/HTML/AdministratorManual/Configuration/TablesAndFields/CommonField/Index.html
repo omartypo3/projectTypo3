@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Common Field Configuration &#8212; E Import Export 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="top" title="E Import Export 0.1.1 documentation" href="../../../../index.html" />
+   
+  <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="common-field-configuration">
+<span id="tsconfig"></span><h1>Common Field Configuration<a class="headerlink" href="#common-field-configuration" title="Permalink to this headline">¶</a></h1>
+<p>All field configuration share the same options.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Name param is the column were database datas will be exported or where the datas will be picked for importation.</p>
+<p>The field is the field where the datas will be stored for importation or picked for exportation.</p>
+<p>You can use stdwrap routines for complex after process behaviours.</p>
+<p>If we have an empty value, you can set the default behaviour, default use default mysql value, null set to null value, array give an empty array and ampty give a empty string.</p>
+<p>IMPORTANT FOR IMPORTATION : You need a field to set the pid value, otherwise the importation will not work</p>
+</div>
+<div class="section" id="specific-tips">
+<h2>Specific Tips<a class="headerlink" href="#specific-tips" title="Permalink to this headline">¶</a></h2>
+<p>For JSON, if you want to import/export objects like this :
+.. code-block:: json</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>{</dt>
+<dd><dl class="first docutils">
+<dt>&#8220;A&#8221;: {</dt>
+<dd>&#8220;B&#8221; : &#8220;value&#8221;</dd>
+</dl>
+<p class="last">},</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>You can access to it by tiping into the Name param : &#8220;A.B&#8221;</p>
+<p>For CSV, the column name is setted on the first line.</p>
+<p>For XML, is is like JSON, you will have to type A.B to access the B content in this example :
+.. code-block:: xml</p>
+<blockquote>
+<div><p>&lt;A&gt;</p>
+<blockquote>
+<div>&lt;B attr=&#8221;an attribute&#8221; &gt;The content&lt;/B&gt;</div></blockquote>
+<p>&lt;/A&gt;</p>
+</div></blockquote>
+<p>You can also access the attribute attr by typing :
+&#8220;<a class="reference external" href="mailto:A&#46;B&#37;&#52;&#48;attr">A<span>&#46;</span>B<span>&#64;</span>attr</a>&#8220;</p>
+<p>These tips are usable for every field type</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Common Field Configuration</a><ul>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#specific-tips">Specific Tips</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../../_sources/AdministratorManual/Configuration/TablesAndFields/CommonField/Index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Ian SEBBAGH.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../../../../_sources/AdministratorManual/Configuration/TablesAndFields/CommonField/Index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,10 @@
+plugin.tx_stratissocialauth {
+  view {
+    # cat=plugin.tx_stratissocialauth/file; type=string; label=Path to template root
+    templateRootPath = EXT:stratis_social_auth/Resources/Private/Templates/
+    # cat=plugin.tx_stratissocialauth/file; type=string; label=Path to template partials
+    partialRootPath = EXT:stratis_social_auth/Resources/Private/Partials/
+    # cat=plugin.tx_stratissocialauth/file; type=string; label=Path to template layouts
+    layoutRootPath = EXT:stratis_social_auth/Resources/Private/Layouts/
+  }
+}

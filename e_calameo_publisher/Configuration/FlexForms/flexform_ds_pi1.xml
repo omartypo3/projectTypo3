@@ -1,0 +1,63 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.sDEF</sheetTitle>
+				<type>array</type>
+				<el>
+					<toutCocher>
+							<label>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.sDEF.toutCocher</label>
+							<config>
+								<type>user</type>
+								<renderType>selectAllDocuments</renderType>
+							</config>
+					</toutCocher>
+					<settings.documentSelection>
+							<label>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.sDEF.whatDisplay</label>
+							<config>
+								<type>user</type>
+								<renderType>selectDocuments</renderType>
+							</config>
+					</settings.documentSelection>
+					<settings.largeViewer>
+							<label>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.advancedConf.template</label>
+							<config>
+								<type>check</type>
+							</config>
+					</settings.largeViewer>
+					<settings.width>
+							<label>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.advancedConf.width</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+								<size>28</size>
+								<wizards type="array">
+								 <link type="array">
+									 <type>text</type>
+									 <title>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.advancedConf.width</title>
+								 </link>
+								</wizards>
+							</config>
+					</settings.width>
+					<settings.height>
+							<label>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.advancedConf.heigth</label>
+							<config>
+								<type>input</type>
+								<eval>trim</eval>
+								<size>28</size>
+								<wizards type="array">
+								 <link type="array">
+									 <type>text</type>
+									 <title>LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xml:tt_content.flexform_pi1.advancedConf.heigth</title>
+								 </link>
+								</wizards>
+							</config>
+					</settings.height>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

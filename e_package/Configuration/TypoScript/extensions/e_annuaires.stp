@@ -1,0 +1,50 @@
+plugin.tx_eannuaires {
+    view {
+        templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_eannuaires.view.templateRootPath}
+        partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_eannuaires.view.partialRootPath}
+        layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_eannuaires.view.layoutRootPath}
+        widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/paginate/
+    }
+	settings{
+		list.paginate {
+			itemsPerPage = {$e_magineurs.paginate.itemsPerPage}
+			insertAbove = {$e_magineurs.paginate.insertAbove}
+			insertBelow = {$e_magineurs.paginate.insertBelow}
+			prevNextHeaderTags = {$e_magineurs.paginate.prevNextHeaderTags}
+			maximumNumberOfLinks = {$e_magineurs.paginate.maximumNumberOfLinks}
+		}
+		idmap = {$e_magineurs.tx_eannuaires.settings.idmap}
+		search{
+			properties{
+				1 = categoryPersonne
+                categoryPersonne < .category
+                categoryPersonne.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryPersonne}
+                    recursive = 1
+                }
+                2 = categoryVideo
+                categoryVideo < .category
+                categoryVideo.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryVideo}
+                    recursive = 2
+                }
+                3 = categoryLieu
+                categoryLieu < .category
+                categoryLieu.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryLieu}
+                    recursive = 2
+                }                
+                4 = categoryGeneral
+                categoryGeneral < .category
+                categoryGeneral.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryGeneral}
+                    recursive = 2
+                }
+			}
+		}
+	}
+}

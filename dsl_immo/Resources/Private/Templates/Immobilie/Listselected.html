@@ -1,0 +1,82 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+
+
+<f:layout name="Default" />
+This Template is responsible for creating a table of domain objects.
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:section name="immobilie">
+	
+	
+	
+	
+	<div class="col-md-3 col-sm-6">
+		<div class="property">
+			<f:link.page pageUid="{settings.detailPid}" additionalParams="{tx_dslimmo_immodetail: {immobilie: immobilie}}">
+			
+				<div class="property-image">
+					<img alt="" src="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, width:'440c', height:'330c')}">
+				</div>
+				<div class="overlay">
+					<div class="info">
+						<div class="tag price"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaltmiete}</f:format.currency></div>
+						<h3>{immobilie.objekttitel}</h3>
+						<figure>{immobilie.flaechenAnzahlZimmer}-Raum · <f:format.currency currencySign="" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.flaechenWohnflaeche}</f:format.currency> m<sup>2</sup></figure>
+					</div>
+					<ul class="additional-info">
+						<li>
+							<header>Fläche:</header>
+							<figure><f:format.currency currencySign="" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.flaechenWohnflaeche}</f:format.currency> m<sup>2</sup></figure>
+						</li>
+						<li>
+							<header>Räume:</header>
+							<figure>{immobilie.flaechenAnzahlZimmer}</figure>
+						</li>
+						<li>
+							<header>Balkon/L.:</header>
+							<figure>{f:if(condition: immobilie.flaechenAnzahlBalkoneTerassenLogia, then: 'ja', else: 'nein')}</figure>
+						</li>
+						<li>
+							<header>Aufzug:</header>
+							<figure>{f:if(condition: immobilie.ausstattungFahrstuhl, then: 'ja', else: 'nein')}</figure>
+						</li>
+					</ul>
+				</div>
+			</f:link.page>
+				<f:comment><f:link.action pageUid="{settings.detailPid}" pluginName="immodetail" arguments="{immobilie:immobilie}">
+					</f:link.action></f:comment>
+		</div>
+	</div>
+</f:section>
+<f:section name="main"><!--TYPO3SEARCH_end-->
+	
+	<section id="price-drop">
+		<header class="section-title">
+			<h2>Ausgewählte Objekte</h2>
+		</header>
+		<div class="row">
+			<f:render section="immobilien" arguments="{_all}"/>
+		</div>
+	</section>
+	
+	<f:debug title="settings" inline="1">{settings}</f:debug>
+	<f:debug title="filter" inline="1">{filter}</f:debug>
+	<f:debug title="immobiliesSelected" inline="1">{immobiliesSelected}</f:debug>
+<!--TYPO3SEARCH_begin--></f:section>
+	
+<f:section name="immobilien">
+	
+		<f:for each="{immobiliesSelected}" as="immobilie" iteration="iterator">
+			<f:render section="immobilie" arguments="{_all}"/>
+		</f:for>
+	
+</f:section>
+
+
+
+</html>

@@ -1,0 +1,26 @@
+{namespace lux=DslFactory\DslProdukte\ViewHelpers}
+<f:if condition="{paginator.numberOfPages} > 1">
+    <f:comment>
+        <nav aria-label="pagebrowser">
+    </f:comment>
+    <div class="paginationbox">
+        <ul class="f3-widget-paginator">
+            <f:for each="{pagination.allPageNumbers}" as="page">
+                <f:if condition="{page} == {paginator.currentPageNumber}">
+                    <f:then>
+                        <li class="current">
+                            <span>{page}</span>
+                        </li>
+                    </f:then>
+                    <f:else>
+                        <li>
+                            <a href="{lux:uri(arguments:'{currentPage:page}',name:name)}" class="page-link paginate_ajax">{page}</a>
+                        </li>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </ul>
+    </div>
+    <f:comment></nav></f:comment>
+
+</f:if>

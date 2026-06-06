@@ -1,0 +1,117 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+<f:form controller="Kunden"  pageType="89657207" action="ajax" name="kunden"  pluginName="kundenliste" extensionName="dslintranet" id="kundenEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Kunde Bearbeiten / Knr.: {kunden.nummer}'}" />
+
+
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		/*alert('loaded:'+$('#auftraegeEditForm input').length);*/
+		
+		
+		//$('#auftraegeEditForm').submit(function() {
+
+
+
+$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#kundenEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#kundenEditForm').hasClass('formSaves'))	return false;
+				$('#kundenEditForm').addClass('formSaves');
+				
+			
+				$.ajax({
+					url: $('#kundenEditForm').attr('action'),
+					type: 'POST',
+					data: $('#kundenEditForm').serialize(),
+					success: function(data) {
+						
+
+						
+						dataJson = JSON.parse(data);
+						
+						//reloadAuftragId('list',id);
+						if(!dataJson["uid"]) {
+
+							return true;
+						} else {
+							
+							var resArr = Array();
+							$( $(dataJson["contentShow"]).find('td') ).each(function( index ) {	resArr[index] = $(this).html(); });
+							console.log(resArr);
+							console.log('vorinsert');
+							//alert('vor');
+							$('#kundenList').DataTable().row( '#kundenListKunde_'+dataJson["uid"] ).data( resArr );
+							//alert('nach');
+							console.log('nachinsert');
+							reInitAjaxCalls();
+			
+							
+				
+							//if(tinymce.EditorManager.editors[0]) tinymce.EditorManager.editors[0].destroy();
+							
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		
+	});
+
+</script>
+
+
+	<f:form.hidden name="kunden" value="{kunden.uid}" />
+    <f:form.hidden name="switch" value="update" />
+    
+    <f:render partial="Kunden/FormFields" arguments="{_all}" />
+	
+    
+
+   
+    
+	<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+
+
+</f:form>
+
+</f:section>

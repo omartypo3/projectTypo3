@@ -1,0 +1,64 @@
+
+
+
+<div id="auftragTexteEditBeschreibung{text.uid}_panel" class="panel panel-default inlineEditing" data-uid="{text.uid}">
+	<div class="panel-heading" >
+		<i class="bb-point-bars bb-lg" aria-hidden="true"></i>&nbsp;&nbsp;
+		<h3 class="panel-title titelContent" data-toggle="collapse" 
+   href="#auftragTexteEditBeschreibung{text.uid}_panel_body" data-target="#auftragTexteEditBeschreibung{text.uid}_panel_body">
+			{text.titel}</h3>
+		<div class="texteBeschreibungHeadingButtons">
+			<f:if condition="{text.auftraege.rights.edit}">
+				<f:then>
+					
+					<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : text.uid, switch : 'toggleSichtbarkeitText'}" class="doAjax textSichtbarkeit auftraegeSichtbarkeitText_{text.uid} {f:if(condition: text.sichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'toggleAuftraegeSichtbarkeitTextBtn', data-ajax-selector: '.auftraegeSichtbarkeitText_{text.uid}', data-ajax-id: '{text.uid}'}" ><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i></f:link.action>
+					
+					
+					<a href="#" onClick="$('#auftragTexteEditBeschreibung{text.uid}_panel_body').collapse('show');initTinyMceEditorInline(this);return false;"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+					<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : text.uid, switch : 'deleteTexte'}" class="doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelector', data-ajax-selector: '#auftragTexteEditBeschreibung{text.uid}_panel', data-ajax-id: '{texte.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+					
+				</f:then>
+				<f:else>
+					<a class="btnDisabled {f:if(condition: text.sichtbarkeit, then: ' btnGruen')}"><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed"></i></a>
+					<a class="btnDisabled"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+					<a class="btnDisabled"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+					
+				</f:else>
+				
+			</f:if>
+			<a class="panel_toggle" onClick="return false;" data-toggle="collapse" href="#auftragTexteEditBeschreibung{text.uid}_panel_body" data-target="#auftragTexteEditBeschreibung{text.uid}_panel_body"><i class="bb-arrow-up bb-lg" aria-hidden="true"></i><i class="bb-arrow-down bb-lg" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	
+	
+	
+	<div class="panel-collapse collapse in" id="auftragTexteEditBeschreibung{text.uid}_panel_body">
+		<div class="panel-body">
+			<div class="textContent">
+				<div class="beschreibungContent"><f:format.html>{text.beschreibung}</f:format.html></div>
+			</div>
+
+		
+			<f:if condition="{text.auftraege.rights.edit}">
+				<f:form controller="Auftraege" action="ajax"  name="auftraege" pluginName="auftragsliste" extensionName="dslintranet">
+					<f:form.textfield name="titel" value="{text.titel}" class="form-control input-sm titelInput" required="true" data="{default:'{text.titel}'}"  />
+
+					<div class="textBeschreibungWrapper">
+					<f:form.textarea name="beschreibung" id="auftragTexteEditBeschreibung{text.uid}" value="{text.beschreibung}" />
+					</div>
+					<f:form.textarea id="auftragTexteEditBeschreibung{text.uid}_temp" value="{text.beschreibung}" />
+
+
+
+					
+					<button class="confirm btn btn-primary" onClick="saveAuftragTexteEditBeschreibung('auftragTexteEditBeschreibung{text.uid}');return false;"><i class="bb-tick bb-lg"></i>&nbsp;&nbsp;Speichern</button>
+					
+					<button class="btn btn-abort" onclick="closeAuftragTexteEditBeschreibung('auftragTexteEditBeschreibung{text.uid}');return false;"><i class="bb-times bb-lg"></i>&nbsp;&nbsp;Abbrechen</button>
+
+					<div class="float_right textSichtbarkeitWrapper"><a href="#" onClick="$(this).toggleClass('btnGruen'); return false;" class="textSichtbarkeit auftraegeSichtbarkeitText_{text.uid} textSichtbarkeitInput{f:if(condition: text.sichtbarkeit, then: ' btnGruen')}" data-default="{f:if(condition: text.sichtbarkeit, then: '1')}"><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i> Sichtbarkeit</a></div>
+				</f:form>
+			</f:if>
+		</div>
+	</div>
+
+</div>

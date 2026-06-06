@@ -1,0 +1,23 @@
+
+<f:if condition="{auftrag.mitarbeiterTracker}">
+
+	<f:then>
+		<span data-colorbox-width="600px" data-colorbox-height="800px" href="{f:uri.action(action:'edit', controller:'Zeiteintraege', pluginName:'auftragsliste', extensionName:'dslintranet', arguments:'{zeiteintraege : auftrag.mitarbeiterTracker}' )}"  id="auftragSaveTracker{auftrag.uid}" class="doAjaxEdit trackerToSaveLink"></span>
+
+
+	</f:then>
+	<f:else>
+	
+	</f:else>
+</f:if>
+
+<i class="bb-calendar-add bb-lg auftraegeDraggable" id="auftraegeSelectorTab{auftrag.uid}" data-id="{auftrag.uid}" data-title="{auftrag.titel}"></i>
+<i class="bb-break bb-lg"></i>
+<i class="bb-play bb-lg text-danger"></i>	
+<f:comment><i class="fa fa-pause"></i>
+	<i class="fa fa-play text-danger"></i></f:comment>
+
+<span title="{auftrag.kunde.name}: {auftrag.titel}" data-auftraege-uid="{auftrag.uid}" class="auftraegeUid"><f:format.crop maxCharacters="20">{auftrag.kunde.name}</f:format.crop>: <f:format.crop maxCharacters="20">{auftrag.titel}</f:format.crop></span>
+<f:if condition="{auftrag.kontingentUsedPercent}">
+	<f:then> -<f:render partial="Scripts/PercentWrapper" arguments="{percent:auftrag.kontingentUsedPercent}" /></f:then>
+</f:if>

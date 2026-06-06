@@ -1,0 +1,47 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Der Auftrag „{notification.auftragTitel}“ (Nr. {notification.auftrag.uid}) wurde gelöscht.</f:section>
+
+<f:section name="bodyHtml">
+	
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; color:rgb(152, 152, 152); text-align:center;"><p>{notification.body}</p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+            		<td colspan="2"><b style="font-family:Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);">{notification.auftragTitel} (Nr. {notification.auftrag.uid})</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">aktueller Status:</td>
+					<td>{notification.wert1}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Kunde:</td>
+					<td>{notification.kundeName}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</f:section>
+
+<f:section name="bodyText">{notification.body}
+----------------------------------
+Auftrag: {notification.auftragTitel}
+Kunde: {notification.kundeName}
+aktueller Status: {notification.wert1}
+----------------------------------</f:section>

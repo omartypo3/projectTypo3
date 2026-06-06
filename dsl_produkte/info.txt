@@ -1,0 +1,33 @@
+DslFactory\DslProdukte\Domain\Model\Produkte {
+	mapping {
+		tableName = tx_dslprodukte_domain_model_produkte
+	}
+	columns {
+		sorting.mapOnProperty = sorting
+	}
+}
+DslFactory\DslProdukte\Domain\Model\Zubehoer {
+	mapping {
+		tableName = tx_dslprodukte_domain_model_zubehoer
+	}
+	columns {
+		sorting.mapOnProperty = sorting
+	}
+}
+
+sortierungsfeld im Model ergänzen:
+
+http://www.typo3.net/forum/thematik/zeige/thema/104161/?show=1
+
+in der entsprehenden TCA unter Columns folgende ergänzen
+
+'sorting' => array(
+'exclude'	=> 1,
+'label'	=> 'sorting',
+'config'	=> array(
+'type' => 'input',
+'size' => 6,
+'eval' => '',
+'readOnly' => 1
+),
+),

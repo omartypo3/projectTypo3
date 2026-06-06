@@ -1,0 +1,34 @@
+<f:comment>Possible de mettre deux structures: 
+	soit data/content -> pour une infobulle simple
+	soit data/tab/content/ -> chaque tab sera un tab dans l'infobulle
+</f:comment>
+<data>
+	<key>{key}</key>
+	<uid>{infos.uid}</uid>
+	<type>{type}</type>
+	<title>{infos.title}</title>
+	<movePoint>{movePoint}</movePoint>
+	<savePoint>{savePoint}</savePoint>
+	<editPoint>{editPoint}</editPoint>
+	<content>
+		<f:format.cdata>
+			<div class="wrap" style="width: 180px;margin: 0 auto;">
+				<h4 class="title" style="font-size:20px;"><!--<f:link.page class="see-more" pageUid="26" additionalParams="{tx_news_pi1: '{news: infos}'}">-->{infos.title}<!--</f:link.page>--></h4>
+
+				<f:if condition="{infos.falMedia}">
+					<div class="img">
+						<f:image src="{infos.falMedia.0.originalResource.publicUrl}" width="180c" height="120c"/>
+					</div>
+				</f:if>
+				<div class="news-related block-left-news" style="margin: 30px 0; margin-left: 0px; border-left: 1px dotted #7db900; padding-left: 20px; margin-left: 15px; position: relative;">
+					<p>
+						<f:if condition="{infos.placename}"><strong style="font-weight:700 !important;font-size:15px">{infos.placename}</strong></f:if>
+						<f:if condition="{infos.placeadress}"><f:format.raw>{infos.placeadress}</f:format.raw></f:if>
+						<f:if condition="{infos.eventmail}">{infos.eventmail}</f:if>
+						<f:if condition="{infos.zipcode} && {infos.authorpublication}">{infos.zipcode} {infos.authorpublication}</f:if>
+					</p>
+				</div>
+			</div>
+		</f:format.cdata>
+	</content>
+</data>

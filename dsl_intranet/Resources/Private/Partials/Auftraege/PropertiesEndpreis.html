@@ -1,0 +1,195 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+
+	<f:if condition="{0:'{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreis}',1:'{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSoll}'}!={0:'0',1:''}"> <f:comment><!-- zwischensumme geändert in nettoSoll --></f:comment>
+		<f:then>
+			
+		<br>
+		<div><strong>Abrechnung / Geplant</strong></div>
+		
+			<f:comment>{auftraege.endpreisPhasen -> f:debug(title: "titel")}</f:comment>
+
+		<div class="layout-table table-auftrag-fremdkosten table-formular-padding">
+			
+			<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreis}">
+				<f:then><f:comment><!-- mit Nutzungsrechten --></f:comment>
+					
+					<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreis}">
+						<div class="layout-table-row layout-table-footer">
+
+							<div class="layout-table-col">Projektpreis</div>
+
+							<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreis->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+						</div>
+					</f:if>
+					<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreisNutzungsrechte}">
+						<div class="layout-table-row layout-table-footer">
+
+							<div class="layout-table-col">Nutzungsrechte x {auftraege.endpreisPhasen.endpreisArray.gesamt.nutzungsFaktor}</div>
+
+							<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreisNutzungsrechte->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+						</div>
+					</f:if>
+
+					<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreisGesamt}">
+						<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreisNutzungsrechte}">
+							<div class="layout-table-row layout-table-footer">
+
+								<div class="layout-table-col"><strong>Summe:</strong></div>
+
+								<div class="layout-table-col" align="right"><strong>{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreisGesamt->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</strong></div>
+							</div>
+						</f:if>
+					</f:if>
+					
+				</f:then>
+				<f:else>
+					
+				
+			
+					<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSoll}"><f:comment><!--  geändert von zwischensumme in nettoSoll  --></f:comment>
+
+
+						<div class="layout-table-row layout-table-footer">
+
+							<div class="layout-table-col">Arbeitsleistungen</div>
+
+							<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSoll->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+						</div>
+
+
+						<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSollNutzungsrechte}">
+							<div class="layout-table-row layout-table-footer">
+		
+								<div class="layout-table-col">Nutzungsrechte x {auftraege.endpreisPhasen.endpreisArray.gesamt.nutzungsFaktor}</div>
+		
+								<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSollNutzungsrechte->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+							</div>
+						</f:if>
+		
+						<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSollGesamt}">
+							<div class="layout-table-row layout-table-footer">
+		
+								<div class="layout-table-col"><strong>Summe:</strong></div>
+		
+								<div class="layout-table-col" align="right"><strong>{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSollGesamt->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</strong></div>
+							</div>
+						</f:if>
+
+
+
+					</f:if>
+					
+					
+				</f:else>
+			</f:if>
+		</div>
+		</f:then>
+		<f:else><f:comment><!-- ohne Nutzungsrechte / nur kreativleistungen --></f:comment>
+			
+			
+			<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSollGesamt}">
+				
+				<br>
+				<div><strong>Abrechnung / Geplant</strong></div>
+
+				<div class="layout-table table-auftrag-fremdkosten table-formular-padding">
+
+					<div class="layout-table-row layout-table-footer">
+
+						<div class="layout-table-col"><strong>Arbeitsleistungen:</strong></div>
+
+						<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoSollGesamt->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+					</div>
+
+				</div>
+			</f:if>
+		</f:else>
+	</f:if>
+
+	<f:comment><!-- das gleiche nochmal nur statt "Soll" => "Ist" --></f:comment>
+
+	<f:if condition="{0:'{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFestpreis}',1:'{auftraege.endpreisPhasen.endpreisArray.gesamt.zwischensumme}'}!={0:'0',1:''}">
+		<f:then>
+			
+			
+			
+					
+				
+			
+					<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.zwischensumme}">
+
+						<br>
+						<div><strong>Abrechnung / Verbraucht</strong></div>
+						
+				
+						<div class="layout-table table-auftrag-fremdkosten table-formular-padding">
+
+							<div class="layout-table-row layout-table-footer">
+
+								<div class="layout-table-col">Arbeitsleistungen</div>
+
+								<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIst->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+							</div>
+
+							<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIstNutzungsrechte}">
+								<div class="layout-table-row layout-table-footer">
+			
+									<div class="layout-table-col">Nutzungsrechte x {auftraege.endpreisPhasen.endpreisArray.gesamt.nutzungsFaktor}</div>
+			
+									<div class="layout-table-col" align="right">{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIstNutzungsrechte->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</div>
+								</div>
+							</f:if>
+			
+							<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIstGesamt}">
+								<div class="layout-table-row layout-table-footer">
+			
+									<div class="layout-table-col">
+										<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.zwischensumme}">
+											<f:then>
+												<strong>Summe:</strong>
+											</f:then>
+											<f:else>
+												Arbeitsleistungen
+											</f:else>
+										</f:if>
+									</div>
+			
+									<div class="layout-table-col" align="right"><strong>{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIstGesamt->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</strong></div>
+								</div>
+							</f:if>
+						</div> 
+						
+					</f:if>
+					
+					
+				
+		
+		</f:then>
+		<f:else><f:comment><!-- ohne Nutzungsrechte / nur kreativleistungen --></f:comment>
+			
+			<f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIstGesamt}">
+				<br>
+				<div><strong>Abrechnung / Verbraucht</strong></div>
+
+				<div class="layout-table table-auftrag-fremdkosten table-formular-padding">
+
+					<div class="layout-table-row layout-table-footer">
+
+						<div class="layout-table-col">Arbeitsleistungen:</div>
+						<div class="layout-table-col" align="right"><strong>{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoIstGesamt->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€</strong></div>
+
+					</div>
+					
+
+				</div>
+			</f:if>
+		</f:else>
+	</f:if>
+
+</f:else></f:if>
+
+
+

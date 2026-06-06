@@ -1,0 +1,50 @@
+plugin.tx_enews {
+	view {
+		# cat=plugin.tx_enews/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:e_news/Resources/Private/Templates/
+		# cat=plugin.tx_enews/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:e_news/Resources/Private/Partials/
+		# cat=plugin.tx_enews/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:e_news/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_enews/a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		validation {
+			user {
+				# cat=plugin.tx_enews/tx_enews_User_Validation;  type=boolean; label=Enable user validation
+				enabled = 0
+				# cat=plugin.tx_enews/tx_enews_User_Validation;  type=text; label=Validation Page Uid for News (if 0, use the current page when adding a news)
+				page = 0
+				# cat=plugin.tx_enews/tx_enews_User_Validation;  type=text; label=Subject of the validation mail (you can use fluid to format your subject)
+				subject = A news has to be moderated
+				# cat=plugin.tx_enews/tx_enews_User_Validation;  type=text; label=Template used to generate mail body text
+				template = EXT:e_news/Resources/Private/Templates/Mail/UserValidationMail.html
+				# cat=plugin.tx_enews/tx_enews_User_Validation;  type=text; label=Sender email
+				senderEmail = noreply@e-magineurs.fr
+				# cat=plugin.tx_enews/tx_enews_User_Validation;  type=text; label=Sender name
+				senderName = E-magineurs
+			}
+			admin {
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=boolean; label=Enable admin validation
+				enabled = 0
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Validation Page Uid for News (if 0, use the current page when adding a news)
+				page = 0
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Subject of the validation mail (you can use fluid to format your subject)
+				subject = A news has to be moderated
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Template used to generate mail body text
+				template = EXT:e_news/Resources/Private/Templates/Mail/AdminValidationMail.html
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Sender email
+				senderEmail = noreply@e-magineurs.fr
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Sender name
+				senderName = E-magineurs
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Admin email
+				adminEmail = admin@e-magineurs.fr
+				# cat=plugin.tx_enews/tx_enews_Admin_Validation;  type=text; label=Admin name
+				adminName = Admin
+			}
+		}
+	}
+}

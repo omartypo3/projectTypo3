@@ -1,0 +1,107 @@
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects. If you
+modify this template, do not forget to change the overwrite settings in
+/Configuration/ExtensionBuilder/settings.yaml: Resources: Private: Templates:
+List.html: keep Otherwise your changes will be overwritten the next time you
+save the extension in the extension builder
+
+<f:section name="main">
+	<h1><f:translate key="mod.titlelisting" /></h1>
+
+	<f:comment>
+		<f:if condition="{ajax}">
+			<f:format.HtmlentitiesDecode>{ajax}</f:format.HtmlentitiesDecode>
+		</f:if>
+	</f:comment>
+
+	<f:if condition="{items -> f:count()} > 0">
+		Nombre de PDFs : <f:count>{items}</f:count>
+	</f:if>
+
+	<f:flashMessages />
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th class="ui-state-default"><f:translate key="mod.count" /></th>
+				<th class="ui-state-default"><f:translate key="mod.delete" /></th>
+				<th class="ui-state-default"><f:translate key="mod.overview" /></th>
+				<th class="ui-state-default"><f:translate key="mod.Name" /></th>
+				<th class="ui-state-default">
+					<f:translate key="mod.codeIntegration" />
+				</th>
+				<th class="ui-state-default"><f:translate key="mod.description" /></th>
+				<th class="ui-state-default"><f:translate key="mod.status" /></th>
+				<th class="ui-state-default"><f:translate key="mod.ispublish" /></th>
+				<th class="ui-state-default"><f:translate key="mod.isprivate" /></th>
+				<th class="ui-state-default"><f:translate key="mod.allowmin" /></th>
+
+				<th class="ui-state-default"><f:translate key="mod.date" /></th>
+				<th class="ui-state-default"><f:translate key="mod.page" /></th>
+				<th class="ui-state-default"><f:translate key="mod.width" /></th>
+				<th class="ui-state-default"><f:translate key="mod.height" /></th>
+				<th class="ui-state-default"><f:translate key="mod.views" /></th>
+				<th class="ui-state-default"><f:translate key="mod.download" /></th>
+				<th class="ui-state-default"><f:translate key="mod.comment" /></th>
+				<th class="ui-state-default"><f:translate key="mod.favorites" /></th>
+				<th class="ui-state-default"><f:translate key="mod.creation" /></th>
+				<th class="ui-state-default"><f:translate key="mod.modification" /></th>
+
+				<th class="ui-state-default"><f:translate key="mod.picturl" /></th>
+				<th class="ui-state-default"><f:translate key="mod.thumburl" /></th>
+				<th class="ui-state-default"><f:translate key="mod.publicurl" /></th>
+				<th class="ui-state-default"><f:translate key="mod.viewurl" /></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<f:for each="{items}" as="item" key="key" iteration="itemIterator">
+				<tr>
+					<td>{itemIterator.index}</td>
+					<td>
+						<a href="#" class="delete-pdf-btn" data-pdf-id="{key}" id="supprPDF_{key}" title="Supprimer ce PDF">
+							<core:icon identifier="actions-edit-delete" size="large" />
+						</a>
+					</td>
+					<td><img src="{item.ThumbUrl}" /></td>
+					<td>{item.Name}</td>
+					<td>
+						<textarea
+							id="reponseECPublish_{itemIterator.index}"
+							rows="3"
+							cols="25"
+							readonly="readonly"
+							onclick="this.select();"
+						>
+						<f:format.HtmlentitiesDecode>
+							<f:render partial="Viewer/Classic" arguments="{item: item, settings: {height: 'auto', width: 'auto'}}" />
+						</f:format.HtmlentitiesDecode>
+					</textarea
+						>
+					</td>
+					<td>{item.Description}</td>
+					<td>{item.Status}</td>
+					<td>{item.IsPublished}</td>
+					<td>{item.IsPrivate}</td>
+					<td>{item.AllowMini}</td>
+
+					<td>{item.Date}</td>
+					<td>{item.Pages}</td>
+					<td>{item.Width}</td>
+					<td>{item.Height}</td>
+					<td>{item.Views}</td>
+					<td>{item.Downloads}</td>
+					<td>{item.Comments}</td>
+					<td>{item.Favorites}</td>
+					<td>{item.Creation}</td>
+					<td>{item.Modification}</td>
+
+					<td>{item.PictureUrl}</td>
+					<td>{item.ThumbUrl}</td>
+					<td>{item.PublicUrl}</td>
+					<td>{item.ViewUrl}</td>
+				</tr>
+			</f:for>
+		</tbody>
+	</table>
+</f:section>

@@ -1,0 +1,29 @@
+<p>
+    <f:if condition="{0:message} == {0:'success'}">
+        <f:then>
+            La modification a bien été enregistré,
+        </f:then>
+        <f:else>
+            L'enregistrement de la modification a échoué,
+        </f:else>
+    </f:if>
+    la candidature est enregistrée comme "<f:if condition="{etat}"><f:then>{etat}</f:then><f:else>Non lue</f:else></f:if>"
+</p>
+
+<div>
+    <a href="javascript:window.close()" class="lien">&lt; Retour</a>
+</div>
+
+<style>
+    p {
+        font-family: "regular",arial;
+        font-size: 1em;
+        color: #272b2e;
+        font-weight: normal;
+    }
+    .lien {
+        font-family: "regular",arial;
+        color: #272b2e;
+    }
+    
+</style>

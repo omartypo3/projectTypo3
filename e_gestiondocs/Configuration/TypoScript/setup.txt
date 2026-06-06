@@ -1,0 +1,20 @@
+plugin.tx_egestiondocs {
+    view {
+        templateRootPaths {
+            0 = EXT:e_gestiondocs/Resources/Private/Templates/
+            1 = {$plugin.tx_egestiondocs.view.templateRootPath}
+        }
+        partialRootPaths{
+            0 = EXT:e_gestiondocs/Resources/Private/Partials/
+            1 = {$plugin.tx_egestiondocs.view.partialRootPath}
+        }
+        layoutRootPaths{
+            0 = EXT:e_gestiondocs/Resources/Private/Layouts/
+            1 = {$plugin.tx_egestiondocs.view.layoutRootPath}
+        }
+    }
+
+    settings {
+        keywordsFields= {$plugin.tx_egestiondocs.settings.keywordsFields}
+    }
+}

@@ -1,0 +1,17 @@
+#Si fluid_styled_content .textmedia.linkWrap, sinon .imgtext.linkWrap
+styles.content.textmedia {
+	# cat=Configuration des images; type=int+; label= Taille max des images
+	maxW = 1200
+	# cat=Configuration des images; type=int+; label= Taille max des images
+	maxWInText = 1200
+	linkWrap {
+		# cat=Configuration des images; type=boolean; label= Activer la lightbox
+		lightboxEnabled = 1
+		# cat=Configuration des images; type=string; label= Class de la lightbox
+		lightboxCssClass = fancybox
+		# cat=Configuration des images; type=int+; label= Largeur de la lightbox
+		width = 1000m
+		# cat=Configuration des images; type=int+; label= Hauteur de la lightbox
+		height = 800
+	}
+}

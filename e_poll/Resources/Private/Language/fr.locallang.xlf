@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="EXT:e_poll/Resources/Private/Language/locallang.xlf" date="2024-01-01T00:00:00Z" product-name="e_poll">
+		<header/>
+		<body>
+			<trans-unit id="wrong_captcha">
+				<source>Your vote was not registered. You must insert the right captcha.</source>
+				<target>Votre vote n'a pas été enregistré, merci d'entrer correctement le code correspondant à l'image</target>
+			</trans-unit>
+			<trans-unit id="error_no_vote_selected">
+				<source>Your must select one of the answers.</source>
+				<target>Vous devez choisir une réponse.</target>
+			</trans-unit>
+			<trans-unit id="no_poll_found">
+				<source>No poll records found on this page. Please put a poll record on this page or point to a page in the field "startingpoint"</source>
+				<target>Aucune sondage trouvé sur cette page. Veuillez insérer un élément de type sondage ou pointer vers une page dans le champs "startingpoint"</target>
+			</trans-unit>
+			<trans-unit id="poll_not_visible">
+				<source>This poll is not available!</source>
+				<target>Ce sondage n'est plus disponible.</target>
+			</trans-unit>
+			<trans-unit id="votes_total">
+				<source>votes total</source>
+				<target>votes</target>
+			</trans-unit>
+			<trans-unit id="novote_label">
+				<source>No votes yet</source>
+				<target>Pas encore de vote</target>
+			</trans-unit>
+			<trans-unit id="onevote_label">
+				<source>One vote</source>
+				<target>Un vote</target>
+			</trans-unit>
+			<trans-unit id="votes_label">
+				<source>votes</source>
+				<target>votes</target>
+			</trans-unit>
+			<trans-unit id="amount_novote_label">
+				<source>No votes</source>
+				<target>Pas de votes</target>
+			</trans-unit>
+			<trans-unit id="amount_onevote_label">
+				<source>1 vote</source>
+				<target>1 vote</target>
+			</trans-unit>
+			<trans-unit id="amount_votes_label">
+				<source>votes</source>
+				<target>votes</target>
+			</trans-unit>
+			<trans-unit id="submit_button">
+				<source>Submit</source>
+				<target>Voter !</target>
+			</trans-unit>
+			<trans-unit id="submit_js_linktext">
+				<source>Submit</source>
+				<target>Voter !</target>
+			</trans-unit>
+			<trans-unit id="linklist">
+				<source>old polls</source>
+				<target>Sondages précédents</target>
+			</trans-unit>
+			<trans-unit id="link_to_poll">
+				<source>vote on this poll</source>
+				<target>Retour aux sondages</target>
+			</trans-unit>
+			<trans-unit id="link_to_result">
+				<source>switch to result of poll</source>
+				<target>afficher les résultats</target>
+			</trans-unit>
+			<trans-unit id="linkview">
+				<source>back</source>
+				<target>retour</target>
+			</trans-unit>
+			<trans-unit id="has_voted">
+				<source>Only one vote allowed per person.</source>
+				<target>Vous avez déjà participé à ce vote</target>
+			</trans-unit>
+			<trans-unit id="no_login">
+				<source>You can only vote if you log in.</source>
+				<target>Vous devez être connecté pour pouvoir voter</target>
+			</trans-unit>
+			<trans-unit id="error_no_vote">
+				<source>Your vote was not registered. You must enable cookies in your browser to vote.</source>
+				<target>Votre navigateur doit accpeter les cookie pour que votre vote soit pris en compte</target>
+			</trans-unit>
+			<trans-unit id="listFieldHeader_title">
+				<source>Title</source>
+				<target>Titre</target>
+			</trans-unit>
+			<trans-unit id="listFieldHeader_question">
+				<source>Question</source>
+				<target>Question</target>
+			</trans-unit>
+			<trans-unit id="listFieldHeader_answers">
+				<source>Answers</source>
+				<target>Réponses</target>
+			</trans-unit>
+			<trans-unit id="limit_other">
+				<source>Other</source>
+				<target>Autre</target>
+			</trans-unit>
+			<trans-unit id="errorlink">
+				<source>back to poll</source>
+				<target>Retour au sondage</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,28 @@
+plugin:
+  bootstrap_package:
+    settings:
+      scss:
+        primary: '#eb3e4a'
+        secondary: '#013859'
+    view:
+      layoutRootPath: 'EXT:glos/Resources/Private/Layouts/'
+      partialRootPath: 'EXT:glos/Resources/Private/Partials/'
+      templateRootPath: 'EXT:glos/Resources/Private/Templates/'
+  bootstrap_package_contentelements:
+    view:
+      layoutRootPath: 'EXT:glos/Resources/Private/Layouts/ContentElements/'
+      partialRootPath: 'EXT:glos/Resources/Private/Partials/ContentElements/'
+      templateRootPath: 'EXT:glos/Resources/Private/Templates/ContentElements/'
+page:
+  logo:
+    file: 'EXT:glos/Resources/Public/Images/logo.svg'
+    fileInverted: 'EXT:glos/Resources/Public/Images/logo-inverted.svg'
+    width: 192
+    alt: 'My Site Package'
+    linktitle: 'My Site Package'
+  favicon:
+    file: 'EXT:glos/Resources/Public/Icons/favicon.ico'
+  fluidtemplate:
+    layoutRootPath: 'EXT:glos/Resources/Private/Layouts/Page/'
+    partialRootPath: 'EXT:glos/Resources/Private/Partials/Page/'
+    templateRootPath: 'EXT:glos/Resources/Private/Templates/Page/'

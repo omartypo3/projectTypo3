@@ -1,0 +1,102 @@
+
+<div class="dsl-split-html">
+	<div class="dsl-split-body">
+		<div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+			
+			<div class="split-pane horizontal-percent">
+				<div class="split-pane-component" id="top-component">
+					
+					<div class="pretty-split-pane-component-inner" id="split-pane-1"></div>
+				</div>
+				<div class="split-pane-divider" id="my-divider"></div>
+				<div class="split-pane-component" id="bottom-component">
+					<div class="pretty-split-pane-component-inner" id="split-pane-2"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div hidden> 
+	<a id="split-pane-down" class=" helo   pageToolbarButton pageToolbarButtonSecondGroup" ><i class="fa fa-calendar fa-lg"></i><span>Wochenplanung</span></a>
+	<a id="split-pane-down-detail" class="pageToolbarButton pageToolbarButtonSecondGroup" ><i class="bb-detail bb-lg"></i><span>Projektdetail</span></a>
+	
+	<a id="split-pane-up" class="pageToolbarButton pageToolbarButtonSecondGroup"><i class="fa fa-tasks fa-lg"></i><span>Projektliste</span></a>
+	
+	<a href="#" class="pageToolbarButton pageToolbarButtonSecondGroup" onclick="$('.aufgaben_tabs_navigation').toggleClass('hide');return false;"><i class="bb-bars bb-lg"></i><span>Tabs aus-/einblenden</span></a>
+	
+
+	<f:link.action arguments="{key : 'projekteSplit',value: 'horizontal'}" pageUid="26" action="settings" controller="Mitarbeiter" pageType="89657003" pluginName="mitarbeiter" extensionName="dslintranet" class="pageToolbarButton pageToolbarButtonSecondGroup changeAnsichtAuftraege doAjax" additionalAttributes="{data-ajax-action: 'reloadPageAfterFinished'}"><i class="fa fa-arrows-h"></i><span>Horizontal aufteilen</span></f:link.action>
+	<a id="split-pane-middle" class="pageToolbarButton pageToolbarButtonSecondGroup active"><i class="fa fa-arrows-v"></i><span>Vertikal aufteilen</span></a>
+
+</div>
+<script type="text/javascript">
+function refreshWochenplanerHeight(){
+	$('#wochenplanung_kalender').fullCalendar('option', 'contentHeight', $('#split-pane-1').height()-70-$('#aufgaben_tabs>ul').height());
+}
+
+$(document).ready(function() {
+
+
+
+
+
+//	$(".splitPaneLeftButtons").detach().appendTo('.split-pane-buttons-left');
+
+	$('.dsl-split-html').parent().removeClass('fsc-default list');
+	
+	new ResizeSensor(jQuery('#bottom-component'), function(){ 
+		refreshWochenplanerHeight();
+	});
+
+
+
+	$("div#c13").detach().appendTo('#split-pane-1');
+	$("div#c9").detach().appendTo('#split-pane-2');
+	$("section.col-md-11").css('paddingLeft','0px');
+	$("section.col-md-11").css('paddingRight','0px');
+	
+	$('div.split-pane').splitPane();
+	
+	
+	$('div.split-pane').splitPane('firstComponentSize', ($( window ).height()-60)/2);
+	
+	//anzeige projektliste
+	$('#split-pane-up').on('click', function() { 
+		//console.log('#split-pane-up');
+		$('div.split-pane').splitPane('firstComponentSize', 0);
+		$('#ablageList').hide();
+		$('#c9').show();
+	});
+	
+	
+	$('#split-pane-middle').on('click', function() {
+		//console.log('#split-pane-middle');		
+		$('div.split-pane').splitPane('firstComponentSize', ($( window ).height()-60)/2);
+	});
+	$('#split-pane-down').on('click', function() {
+		//console.log('#split-pane-down');		
+		$('div.split-pane').splitPane('lastComponentSize', 0);
+		$('#wochenplanungTabElement>a').click();
+	});
+	$('#split-pane-down-detail').on('click', function() {
+		//console.log('#split-pane-down');		
+		$('div.split-pane').splitPane('lastComponentSize', 0);
+		
+		if($('#wochenplanungTabElement.ui-state-active').length){ //wenn wochenplanung aktiv ist
+		  $('.aufgaben_tabs_navigation>.ui-tabs-tab:not(#wochenplanungTabElement)').first().children('a').click();
+		}
+		
+	});
+	
+	$('#ablageList').hide();
+	
+	new ResizeSensor(jQuery('#mainContent'), function(){ 
+		//console.log('main content dimension changed');
+	});
+	
+
+});
+
+</script>

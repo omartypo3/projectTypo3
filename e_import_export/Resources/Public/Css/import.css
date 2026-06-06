@@ -1,0 +1,101 @@
+.simple-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.simple-dropdown button {
+  background-color: #fff;
+  border: 1px solid #333;
+  color: #000;
+  font-size: 13px;
+  padding: 3px 28px 3px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+.simple-dropdown button::after {
+  content: "▼";
+  font-size: 9px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.simple-dropdown ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 2px;
+  margin-top: 2px;
+  list-style: none;
+  padding: 0;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.simple-dropdown ul li {
+  padding: 5px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  a{
+    text-decoration: none;
+    color: #000;
+  }
+  &:hover{
+    background-color: #0b87ec;
+  }
+}
+
+
+.simple-dropdown.open ul {
+  display: block;
+}
+
+
+#typo3-docheader {
+    background: #eee;
+}
+#typo3-docheader .typo3-docheader-buttons, #typo3-docheader .typo3-docheader-functions {
+    color: #2d2d2d;
+    overflow: hidden;
+    padding: 5px 24px;
+    line-height: 27px;
+}
+
+#typo3-docheader .left {
+    float: left;
+}
+#typo3-docheader .right {
+    float: right;
+}
+
+div#typo3-docbody {
+    position: absolute;
+    top: 49px;
+    bottom: 0;
+    overflow: auto;
+    width: 100%;
+    z-index: 2;
+}
+#typo3-inner-docbody {
+    display: block;
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+}
+#typo3-docheader .typo3-docheader-functions {
+    line-height: 27px;
+}

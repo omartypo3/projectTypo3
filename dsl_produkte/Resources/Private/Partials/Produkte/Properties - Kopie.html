@@ -1,0 +1,173 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+<div class="tx-dsl-produkte single" >
+  <div class="row">
+    <div class="col-md-8 ">
+      <div class="img-wrap">
+      
+      	
+      <section id="intro"> 
+          
+           <div class="wide-container">
+          	<div id="slides">
+                <ul class="slides-container">
+    				
+                    
+                <f:if condition="{produkte.bilder.0}">
+                  <f:then>
+        	          <f:for each="{produkte.bilder}" as="image"  iteration="katIterator">
+		    		      <f:if condition="{katIterator.cycle} < 5">
+		                      <li><f:image src="{image.originalResource.originalFile.uid}" maxWidth="770" alt=""  /></li>
+                          </f:if>
+				       </f:for>
+                  </f:then>
+                  <f:else>
+                    <li><img src="fileadmin/template/public/images/layout/allgemein/kategorie_keinbild.png" width="658"></li>
+                  </f:else>
+                </f:if>
+                    
+                  <li><img src="fileadmin/template/public/images/inhalt/allgemein/1A0A4775_paar.jpg" width="770" alt="" /></li>
+                  <li><img src="fileadmin/template/public/images/inhalt/allgemein/full_service_produkt.jpg" /></li>
+                  <li><img src="fileadmin/template/public/images/inhalt/allgemein/slider_2.jpg" /></li>
+                  <li><img src="fileadmin/template/public/images/inhalt/allgemein/1A0A4775_paar.jpg" width="770" alt="" /></li>
+    
+                </ul>
+            	
+                <!-- slide navigation -->
+                <f:if condition="{produkte.bilder -> f:count()} > 1">
+                    <nav class="slides-pagination carousel">
+                   		<f:for each="{produkte.bilder}" as="image"  iteration="katIterator">
+		    		      <f:if condition="{katIterator.cycle} < 5">
+	                       	<div class="carousel_entry">
+                            	<div class="carousel_entry_inner"><f:image src="{image.originalResource.originalFile.uid}" maxWidth="220" alt=""  /></div>
+                                <a href="#1" class="special_hover">
+                                    <span class="image_hoverBefore"></span>
+                                    <span class="image_hoverAfter"></span>
+                                    <span class="hover_hintergrund"></span>
+                                </a>
+                            </div>
+		                      <li><f:image src="{image.originalResource.originalFile.uid}" maxWidth="770" alt=""  /></li>
+                          </f:if>
+				       	</f:for>
+                        
+                        
+                        <div class="carousel_entry">
+                            <div class="carousel_entry_inner"><img src="fileadmin/template/public/images/inhalt/allgemein/full_service_produkt.jpg" /></div>
+                            <a href="#2" class="special_hover">
+                                <span class="image_hoverBefore"></span>
+                                <span class="image_hoverAfter"></span>
+                                <span class="hover_hintergrund"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="carousel_entry">
+                            <div class="carousel_entry_inner"><img src="fileadmin/template/public/images/inhalt/allgemein/slider_2.jpg" /></div>
+                            <a href="#3" class="special_hover">
+                                <span class="image_hoverBefore"></span>
+                                <span class="image_hoverAfter"></span>
+                                <span class="hover_hintergrund"></span>
+                            </a>
+                        </div>
+                        
+                        <div class="carousel_entry">
+                            <div class="carousel_entry_inner"><img src="fileadmin/template/public/images/inhalt/allgemein/1A0A4775_paar.jpg" /></div>
+                            <a href="#4" class="special_hover">
+                                <span class="image_hoverBefore"></span>
+                                <span class="image_hoverAfter"></span>
+                                <span class="hover_hintergrund"></span>
+                            </a>
+                        </div>
+                        
+                    </nav>
+                </f:if>
+                
+          	</div>
+       	</div>
+
+       
+            
+      </section>
+      
+      
+      
+        <f:if condition="{produkte.bilder.0}">
+          <f:then>
+            <div class="pic">
+              <f:image src="{produkte.bilder.0.originalResource.originalFile.uid}" width="662c" height="443c"  />
+              <!--<a href="{f:uri.image(src:'{produkte.bilder.0.originalResource.publicUrl}' treatIdAsReference:1 maxWidth:'1100' maxHeight:'600')}" class="more gallery cboxElement" data-rel="gallery_news_detail" data-original-title="{produkte.bilder.0.originalResource.description}" >Lightbox</a>--> </div>
+          </f:then>
+          <f:else>
+            <div class="pic"><img src="fileadmin/template/public/images/layout/allgemein/kategorie_keinbild.png" width="658"></div>
+          </f:else>
+        </f:if>
+      </div>
+      <f:if condition="{produkte.bilder -> f:count()} > 1">
+        <f:for each="{produkte.bilder}" as="image"  iteration="katIterator">
+          <f:if condition="{katIterator.cycle} > 1">
+            <div class="pic">
+              <f:image src="{image.originalResource.publicUrl}" width="146c" height="89c"/>
+              <!--<a href="{f:uri.image(src:'{image.originalResource.publicUrl}' treatIdAsReference:1 maxWidth:'1100' maxHeight:'600')}" class="more gallery cboxElement" data-rel="gallery_news_detail" data-original-title="{image.originalResource.description}">Lightbox</a>--></div>
+          </f:if>
+        </f:for>
+      </f:if>
+      
+      
+      
+      
+      
+      
+    </div>
+    <div class="col-md-4">
+      <div class="headline-wrap">
+        <h3>{produkte.titel}</h3>
+      </div>
+       <f:if condition="{produkte.teaser}">
+                              <p>
+                                <f:then>
+                                  <f:format.crop maxCharacters="80" append="&nbsp;...">{produkte.teaser}</f:format.crop>
+                                </f:then>
+                                </p>
+                            </f:if>
+                            
+                            <div class="divider-grey-long"></div>
+                            
+                            <span class="kat-titel"><f:translate key="tx_dslprodukte_domain_model_kategorien" /> </span>
+                            <f:for each="{produkte.kategorien}" as="kategorie" iteration="katIterator">
+              <f:if condition="{katIterator.cycle} > 1"> / </f:if>
+              {kategorie.titel}</f:for>
+              
+              
+              <span class="kat-titel"><f:translate key="tx_dslprodukte_domain_model_anwendungsbereiche" /></span>
+              <f:for each="{produkte.anwendungsbereiche}" as="anwendungsbereich" iteration="katIterator">
+              <f:if condition="{katIterator.cycle} > 1"> / </f:if>
+              {anwendungsbereich.titel}</f:for>
+              
+              <span class="kat-titel"><f:translate key="tx_dslprodukte_domain_model_eigenschaften" /></span>
+              <f:for each="{produkte.eigenschaften}" as="eigenschaft" iteration="katIterator">
+              <f:if condition="{katIterator.cycle} > 1"> / </f:if>
+              {eigenschaft.titel}</f:for>
+
+      <ul class="{f:render(section: 'eigenschaftenAktiveKlassen', arguments: {array: produkte.eigenschaften})}">
+        <f:for each="{eigenschaften}" as="eigenschaft" iteration="eigIterator">
+          <li class="eig_uid_{eigenschaft.uid} ">{eigenschaft.titel}</li>
+        </f:for>
+      </ul>
+      <div class="social_box">
+        <div class="fb-share-button" data-href="{f:uri.action(controller:'Produkte' pluginName:'Produktsuche' action:'show'  absolute:'true'  arguments:{produkte : produkte})}" data-layout="button_count"></div>
+        <a href="mailto:{f:render(partial: 'Produkte/EmpfehlungMailUrl'  arguments:{produkte : produkte})}" class="icon-brief"> </a> </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 ">
+      <f:if condition="{produkte.text}">
+        <div class="teaser-text">
+          <h6>Beschreibung</h6>
+          <f:format.html>{produkte.text}</f:format.html>
+        </div>
+      </f:if>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+<f:section name="eigenschaftenAktiveKlassen">
+  <f:for each="{array}" as="item">eig_uid_{item.uid}_aktiv </f:for>
+</f:section>

@@ -1,0 +1,60 @@
+
+<table class="tx-bb-portfolio" >
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.name" />
+		</td>
+		<td>
+		{kunden.name}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.beschreibung" />
+		</td>
+		<td>
+		{kunden.beschreibung}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.logo" />
+		</td>
+		<td>
+				
+				<f:image src="{kunden.logo.originalResource.originalFile.uid}"  alt="{kunden.name}"  width="480"  />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.ort" />
+		</td>
+		<td>
+		{kunden.ort}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.link_webseite" />
+		</td>
+		<td>
+		<f:link.typolink parameter="{kunden.linkWebseite}">zur Webseite</f:link.typolink>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.link_facebook" />
+		</td>
+		<td>
+		<f:link.typolink parameter="{kunden.linkFacebook}">zu Facebook</f:link.typolink>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_bbportfolio_domain_model_kunden.unternehmen_groesse" />
+		</td>
+		<td>
+		<f:translate key="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.{kunden.unternehmenGroesse}" />
+		</td>
+	</tr>
+</table>

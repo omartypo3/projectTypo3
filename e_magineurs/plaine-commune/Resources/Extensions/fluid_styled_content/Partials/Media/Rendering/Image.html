@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:variable name="imageWidth">
+	<f:if condition="{data.imagewidth}">
+		<f:then>{data.imagewidth}</f:then>
+		<f:else>{dimensions.width}</f:else>
+	</f:if>
+</f:variable>
+<f:variable name="imageHeight">
+	<f:if condition="{data.imageheight}">
+		<f:then>{data.imageheight}</f:then>
+		<f:else>{dimensions.height}</f:else>
+	</f:if>
+</f:variable>
+<f:variable name="imageStyle">
+	<f:if condition="{data.imageborder}">
+		border: {data.imageborder}px solid;
+	</f:if>
+</f:variable>
+<f:media class="image-embed-item" file="{file}" width="{imageWidth}" height="{imageHeight}" alt="{file.alternative}" title="{file.title}" style="{imageStyle}" />
+</html>

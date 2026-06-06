@@ -1,0 +1,231 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:fpdf="http://typo3.org/ns/CodingMs/FluidFpdf/ViewHelpers"
+      xmlns:dpdf="http://typo3.org/ns/DslFactory/DslImmo/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true"><f:spaceless>
+      
+
+<dpdf:utf8DecodeViewHelper
+
+<f:format.raw>
+
+    <fpdf:pdf destination="D" filename="expose_{immobilie.objektNrextern}.pdf" title="{dpdf:utf8Decode(string:'{immobilie.objekttitel} ({immobilie.objektNrextern})')}" subject="{dpdf:utf8Decode(string:'{immobilie.objekttitel} ({immobilie.objektNrextern})')}" author="DSL Typo3 Immobilienverwaltung" keywords="Expose {immobilie.objekttitel} {immobilie.objektNrextern}" characterMap="{128: '€'}">
+
+       	<fpdf:setMargins left="20" top="50" right="20" />
+
+       
+
+        <fpdf:addPage orientation="P" size="A4" />
+
+			
+
+        <fpdf:setSourceFile file="{settings.briefpapierExposePdf}" />
+		
+
+        <fpdf:useTemplate pageNo="1" x="0" y="0" />
+
+        
+
+        <f:comment>
+        <f:link.action pageUid="{settings.detailPid}" pageType="{settings.pageTypeExposePdf}" action="show" arguments="{immobilie:immobilie}" class="link-arrow">Exposé als PDF</f:link.action>
+        {f:link.action( action: 'show', arguments: {immobilie: immobilie}, pageType: 0, absolute: 1)}
+		</f:comment>
+
+          	<fpdf:setTextColor hex="0077ba" />
+          	<fpdf:setXY x="20" y="262" />
+            <fpdf:setFont family="Arial" style="" size="8" />
+            <fpdf:cell width="40" height="10" text="Alle Angaben freibleibend. Änderungen und Irrtümer vorbehalten. Am {f:format.date(format : 'd.m.Y - H:i:s', date : generiert)} Uhr erzeugt." />
+            <fpdf:setXY x="20" y="15" />
+            <fpdf:setFont family="Arial" style="B" size="22" />
+            <fpdf:cell width="40" height="12" text="Mietexposé" />
+            <fpdf:ln />
+            <fpdf:setFont family="Arial" style="" size="14" />
+			<fpdf:setTextColor hex="000000" />
+            <fpdf:cell width="40" height="10" text="{immobilie.objekttitel} ({immobilie.objektNrextern})" link="{f:uri.action( action: 'show', arguments: {immobilie: immobilie}, absolute: 1)}" />
+            <fpdf:ln />
+            <fpdf:setDrawColor hex="0077ba" />
+            <fpdf:setLineWidth width="0.5" />
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            
+            <f:if condition="{immobilie.titelBilder.0}">
+            	<fpdf:setXY x="190" y="45" />
+          		
+				<f:alias map="{image: '{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, maxWidth:1400, maxHeight:1400)}'}">
+						
+					<dpdf:imageRight filename="{v:format.trim(content: image, characters: '/')}" link="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, absolute:1)}" height="50" maxHeight="50" maxWidth="80"  />
+						
+				</f:alias>
+				
+			</f:if>
+          	<fpdf:setXY x="20" y="40" />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="WOHNUNGSDATEN" />
+            <fpdf:ln />
+
+            
+
+            <fpdf:setFont family="Arial" style="" size="10" /><fpdf:setTextColor hex="000000" />
+
+            <fpdf:cell width="30" height="5" text="Wohngebiet:" /><fpdf:cell width="40" height="5" text="{immobilie.geoLageGebiet}" /><fpdf:ln />
+
+            <fpdf:cell width="30" height="5" text="Lage:" /><fpdf:cell width="40" height="5" text="{immobilie.etage}" /><fpdf:ln />
+
+            <fpdf:cell width="30" height="5" text="Anzahl Räume:" /><fpdf:cell width="40" height="5" text="{immobilie.flaechenAnzahlZimmer}" /><fpdf:ln />
+
+            <fpdf:cell width="30" height="5" text="Wohnfläche:" /><fpdf:cell width="40" height="5" text="{immobilie.flaechenWohnflaeche -> f:format.currency(currencySign:'', decimalSeparator:',', thousandsSeparator:'.', prependCurrency:'false')} m²" /><fpdf:ln />
+
+            <fpdf:cell width="30" height="5" text="Frei ab:" /><fpdf:cell width="40" height="5" text="{immobilie.verfuegbarAb}" /><fpdf:ln />
+
+
+
+            <fpdf:cell width="30" height="5" text="Kaution:" />
+
+            <f:if condition="{immobilie.kaution}">
+
+				<f:then><fpdf:cell width="40" height="5" text="{immobilie.kaution -> f:format.currency(currencySign:'€', decimalSeparator:',', thousandsSeparator:'.', prependCurrency:'false')}" /></f:then>
+
+				<f:else><fpdf:cell width="40" height="5" text="nach Vereinbarung" /></f:else>
+
+			</f:if>
+
+            <fpdf:ln />
+
+            
+
+            <fpdf:cell width="30" height="5" text="Kaltmiete:" /><fpdf:cell width="40" height="5" text="{immobilie.preiseKaltmiete -> f:format.currency(currencySign:'€', decimalSeparator:',', thousandsSeparator:'.', prependCurrency:'false')}" /><fpdf:ln />
+
+            <fpdf:cell width="30" height="5" text="Nebenkosten:" /><fpdf:cell width="40" height="5" text="{immobilie.preiseNebenkosten -> f:format.currency(currencySign:'€', decimalSeparator:',', thousandsSeparator:'.', prependCurrency:'false')}" /><fpdf:ln />
+
+
+
+            <fpdf:setFont family="Arial" style="B" size="10" />
+
+            <fpdf:cell width="30" height="5" text="Gesamtmiete:" /><fpdf:cell width="40" height="5" text="{immobilie.preiseWarmmiete -> f:format.currency(currencySign:'€', decimalSeparator:',', thousandsSeparator:'.', prependCurrency:'false')}" /><fpdf:ln />
+
+            
+
+            <fpdf:ln />
+
+            
+
+            
+
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="BESCHREIBUNG" />
+            <fpdf:ln />
+            <fpdf:setFont family="Arial" style="" size="10" /><fpdf:setTextColor hex="000000" />
+            <fpdf:write height="5" text="{immobilie.objektbeschreibung} {immobilie.ausstattbeschr} {immobilie.lage}" />
+			<fpdf:ln />
+
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="AUSSTATTUNG" />
+            <fpdf:ln />
+           
+
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="ENERGIEAUSWEIS" />
+            <fpdf:ln />
+            
+
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="KONTAKT" />
+            <fpdf:ln />
+
+            
+
+            
+
+			<f:for each="{immobilie.bilderInklusiveGrundrisse}" as="bild" iteration="iterator">
+
+         		
+
+          		<f:if condition="{iterator.isOdd} || {iterator.isFirst}">
+
+					<fpdf:addPage orientation="P" size="A4" />
+
+					
+<fpdf:setSourceFile file="{settings.briefpapierExposePdf}" />
+<fpdf:useTemplate pageNo="1" x="0" y="0" />					
+					
+					
+
+					<fpdf:setTextColor hex="0077ba" />
+
+					<fpdf:setXY x="20" y="262" />
+
+					<fpdf:setFont family="Arial" style="" size="8" />
+
+            		<fpdf:cell width="40" height="10" text="Alle Angaben freibleibend. Änderungen und Irrtümer vorbehalten. Am {f:format.date(format : 'd.m.Y - H:i:s', date : generiert)} Uhr erzeugt." />
+
+					<fpdf:setXY x="20" y="15" />
+
+					<fpdf:setFont family="Arial" style="B" size="22" />
+
+					<fpdf:cell width="40" height="12" text="Mietexposé" />
+
+					<fpdf:ln />
+
+					<fpdf:setFont family="Arial" style="" size="14" />
+
+					<fpdf:setTextColor hex="000000" />
+
+					<fpdf:cell width="40" height="10" text="{immobilie.objekttitel} ({immobilie.objektNrextern})" link="{f:uri.action( action: 'show', arguments: {immobilie: immobilie}, absolute: 1)}"  />
+
+					<fpdf:ln />
+
+					<fpdf:setDrawColor hex="0077ba" />
+
+					<fpdf:setLineWidth width="0.5" />
+
+					<fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+
+					<fpdf:setXY x="20" y="50" />
+
+				</f:if>
+
+          		
+
+          		<f:if condition="{iterator.isEven}"><fpdf:ln /></f:if>
+
+          		
+
+          		<f:alias map="{image: '{f:uri.image(src:bild.datei.originalResource.originalFile.uid, maxWidth:1400, maxHeight:1400)}'}">
+
+   					<fpdf:image filename="{v:format.trim(content: image, characters: '/')}" link="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, absolute:1)}" width="140" />
+
+				</f:alias>
+
+          		
+
+          		
+
+           		<f:comment><fpdf:image filename="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, maxWidth:'1400', maxHeight:'1400')}" link="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" x="50" width="100" height="50" />
+
+				</f:comment>
+
+          	</f:for>
+
+            
+
+        
+
+        
+
+    </fpdf:pdf>
+
+</f:format.raw>
+
+	</f:spaceless></html>

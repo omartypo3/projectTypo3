@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers">
+
+<f:section name="Facets">
+	<div id="tx-solr-faceting">
+		<f:if condition="{resultSet.facets.used -> f:count()}">
+			<div id="tx-solr-facets-in-use" class="secondaryContentSection">
+				<h2><f:translate key="faceting_resultsNarrowedBy" extensionName="e_magineurs">Filtres actifs</f:translate></h2>
+				<ul class="facets">
+					<f:for each="{resultSet.facets.used}" as="facet">
+						<f:for each="{facet.allFacetItems.selected}" as="item">
+							<f:if condition="{item.documentCount} > 0">
+								<li>
+									<a href="{s:uri.facet.removeFacetItem(facet: facet, facetItem: item)}" title="Supprimer le filtre {item.label}" class="facet remove-facet-option solr-ajaxified">
+										{item.label}
+										<span aria-hidden="true" class="fa fa-close"></span>
+									</a>
+								</li>
+							</f:if>
+						</f:for>
+					</f:for>
+					<li class="facets-remove-all">
+						<a href="{s:uri.facet.removeAllFacets()}" class="solr-ajaxified">
+							Supprimer tous les filtres
+						</a>
+					</li>
+				</ul>
+			</div>
+		</f:if>
+		<s:facet.area.group groupName="main" facets="{resultSet.facets.available}">
+			<div class="facet-area-main">
+				<div class="solr-facets-available secondaryContentSection">
+					<div class="csc-header">
+						<h2 class="csc-firstHeader">
+							<f:translate key="faceting_narrowSearch" extensionName="e_magineurs">Narrow Search</f:translate>
+						</h2>
+					</div>
+					<ul class="facets">
+						<f:for each="{areaFacets}" as="facet">
+							<li class="facet facet-type facet-type-{facet.type}">
+								<f:render partial="Facets/{facet.partialName}" arguments="{resultSet:resultSet, facet:facet}"/>
+							</li>
+						</f:for>
+					</ul>
+				</div>
+			</div>
+		</s:facet.area.group>
+	</div>
+
+</f:section>

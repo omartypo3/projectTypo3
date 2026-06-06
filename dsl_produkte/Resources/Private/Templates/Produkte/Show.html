@@ -1,0 +1,51 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+<f:layout name="Default" />
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:section name="main">
+
+<!--TYPO3SEARCH_end-->
+ 
+    <div class="page-navigation" id="user_navigation">
+          
+    </div>
+
+
+
+      <f:comment>
+      <f:if condition="{settings.detail.showSocialShareButtons}">
+      <hr>
+       	<div class="facebook">
+          <div class="share">
+          </div>
+        </div>
+      </f:if>
+      </f:comment>
+  
+
+  <script>
+    	
+		
+		
+		$(function () {
+			$('ol.breadcrumb').append('<li>'+$('.tx-dsl-produkte .headline-wrap h1').text()+'</li>');
+		
+		});
+	</script>
+    <f:flashMessages  />
+    	<!--TYPO3SEARCH_begin--><f:render partial="Produkte/Properties" arguments="{produkte:produkte,datenblatt:datenblatt,eigenschaften:eigenschaften}" /><!--TYPO3SEARCH_end-->
+   
+
+  
+  
+
+<!--TYPO3SEARCH_begin-->
+</f:section>

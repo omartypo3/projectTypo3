@@ -1,0 +1,22 @@
+<f:comment>
+	<f:debug>{contentFromIns}</f:debug>
+</f:comment>
+
+
+
+<div class="titre">
+	<a href="{lienInstagram}" target="_blank">
+		<img src="{pictoInstagram}" alt="" />
+	</a>
+	<p>Instagram</p>
+</div>
+<div class="contenu">
+	<a title="Accéder au contenu" href="{contentFromIns.link}">
+	<img src="{contentFromIns.images.standard_resolution.url}" alt="" />
+	</a>
+	<p class="nom texte">{contentFromIns.username.full_name}</p>
+	<p class="texte">{contentFromIns.caption.text}</p>
+</div>
+<div class="contact">
+	<span class="date texte">Posté le <f:format.date format="%d %B %Y">{contentFromIns.caption.created_time}</f:format.date></span>
+</div>

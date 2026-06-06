@@ -1,0 +1,53 @@
+<span data-table-callback-id="{dateien.uid}"></span>
+<span class="refreshDateienList{dateien.uid}"></span>
+
+{dateien.crdate->f:format.date(format: 'd.m.y')}
+
+<--break-->
+
+	
+	
+	
+<div class="logoContainer jsClick">
+	<f:image image="{dateien.datei}" width="230" />
+	<v:media.exists file="typo3conf/ext/dsl_intranet/Resources/Public/Images/keine_vorschau.jpg">
+		<then>
+			<f:image src="typo3conf/ext/dsl_intranet/Resources/Public/Images/keine_vorschau.jpg" width="230" height="80c" class="noPreview" />
+		</then>
+	</v:media.exists>
+</div>
+		
+<f:comment><!--
+<f:if condition="{dateien.auftraege}">
+	// Auftrag: [{dateien.auftraege.nr}] {dateien.auftraege.titel}
+</f:if>
+--></f:comment>
+
+<--break-->
+<h2 style="margin-top:5px;margin-bottom:5px;"><strong>{dateien.titel}</strong></h2>
+	
+<f:if condition="{fileoutput.ctime}">
+	<f:then>
+		
+		<div><span class="inline-block-85"><strong>Dateiname:</strong></span> {fileoutput.name}</div>
+		<div><span class="inline-block-85"><strong>Dateigröße:</strong></span> <f:format.bytes>{fileoutput.size}</f:format.bytes></div>
+	</f:then>
+	<f:else>
+		
+		<div><span class="inline-block-85"><strong>Dateiname:</strong></span> {dateien.dateiName}</div>
+		<div><span class="inline-block-85"><strong>Dateigröße:</strong></span> <f:format.bytes>{dateien.tempDateiGroesse}</f:format.bytes></div>
+	</f:else>
+</f:if>
+	
+
+<--break-->
+<f:translate key="tx_dslintranet_domain_model_dateien.kundentype.{dateien.type}" languageKey="de"/>
+<--break-->
+<f:if condition="{fileoutput.ctime}">
+	<f:then>
+		
+		<a href="{fileoutput.url}" class="tableBtnAdd btn btn-block" target="_blank" download="{fileoutput.name}"><i class="bb-download bb-lg"></i>&nbsp;&nbsp;<span>Download</span></a>
+	</f:then>
+	
+</f:if>	
+	

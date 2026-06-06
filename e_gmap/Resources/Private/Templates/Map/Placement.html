@@ -1,0 +1,99 @@
+{namespace map=Emagineurs\EGmap\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+
+    <f:if condition="{pageId}">
+        <f:then>
+            <h3><f:translate key="be.placement.poisList" /></h3>
+            <f:if condition="{pagination -> f:count()} > 1">
+                <f:then>
+                    <f:for each="{pagination}" as="page" iteration="iterator">
+                        <f:if condition="{iterator.isLast}">
+                            <f:then>
+                                <f:link.action action="placement" additionalParams="{pageCount: page}" class="ajaxPagination">{page}</f:link.action>
+                            </f:then>
+                            <f:else>
+                                <f:link.action action="placement" additionalParams="{pageCount: page}" class="ajaxPagination">{page}</f:link.action> -
+                            </f:else>
+                        </f:if>
+                    </f:for>
+                </f:then>
+            </f:if>
+            <table id="poi_table">
+                <tr class="table_header">
+                    <th class="title"><f:translate key="be.placement.name" /></th>
+                    <th class="datatable"><f:translate key="be.placement.table" /></th>
+                    <th class="picto"><f:translate key="be.placement.picto" /></th>
+                    <th class="cat"><f:translate key="be.placement.category" /></th>
+                    <th class="map"><f:translate key="be.placement.map" /></th>
+                </tr>
+                <f:for each="{pois}" as="poi" iteration="iterator">
+                    <f:if condition="{iterator.isEven} == 1">
+                        <f:then>
+                            <tr class="even item">
+                        </f:then>
+                        <f:else>
+                            <tr class="odd item">
+                        </f:else>
+                    </f:if>
+                        <td>
+                            <f:if condition="{poi.nom}">
+                                {poi.name}
+                            </f:if>
+                            <f:if condition="{poi.title}">
+                                {poi.title}
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:if condition="{poi.key}">
+                                {poi.key}
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:if condition="{poi.picto} != ''">
+                                <f:then>
+                                    <f:image image="{poi.picto}" width="16"/>
+                                </f:then>
+                                <f:else>
+                                    <f:image src="EXT:e_gmap/Resources/Public/Icons/picto.png" width="16"/>
+                                </f:else>
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:for each="{poi.categorie}" as="cat">
+                                {cat.title}
+                            </f:for>
+                        </td>
+                        <td><a style="cursor:pointer;" class="eGmapSeePoi" data-poi-uid="{poi.uid}" ><f:translate key="be.placement.see" /></td>
+                    </tr>
+                </f:for>
+            </table>
+
+            <div id="poiGestion">
+                <f:form>
+                    <f:form.button type="button" name="createPoi" id="createPoi"><f:translate key="be.placement.newPoi" /></f:form.button>
+                </f:form>
+                <span id="poiGestionLabel" style="display: none;"><f:translate key="be.placement.poiGestion" /></span>
+            </div>
+
+            <map:displayMap settings="{settings}" eGmapPois="{eGmapPois}" eGmapKmls="{eGmapKmls}" ></map:displayMap>
+
+            <div id="poiAttributes">
+                <f:form>
+                    <label for="lat"><f:translate key="be.placement.lat" /></label><f:form.textfield id="lat"/>
+                    <label for="lng"><f:translate key="be.placement.lng" /></label><f:form.textfield id="lng"/>
+                    <div class="hidden" id="pageId" data-tab="{pageId}"></div>
+                </f:form>
+                <form id="eGmapRecherche__{settings.map.mapUniqId}" action="#">
+                    <input id="eGmapAdress__{settings.map.mapUniqId}" type="textbox" placeholder="Entrez votre adresse">
+                    <input type="submit" value="Chercher!">
+                </form>
+            </div>
+
+        </f:then>
+        <f:else>
+			<f:translate key="be.placement.noFolder" />
+        </f:else>
+    </f:if>
+</f:section>

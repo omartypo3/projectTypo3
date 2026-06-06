@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2020-10-14T09:51:41Z" product-name="dsl_kanban">
+		<header/>
+		<body>
+			<trans-unit id="tx_dslkanban_domain_model_kanban">
+				<source>Kanban</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_kanban.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_kanban.board">
+				<source>Board</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_kanban.items_ausgeblendet">
+				<source>Items Ausgeblendet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_item">
+				<source>Item</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_item.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_item.untertitel">
+				<source>Untertitel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_item.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_item.relation">
+				<source>Relation</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_board">
+				<source>Board</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_board.kuerzel">
+				<source>Kuerzel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_board.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_board.fixiert">
+				<source>Fixiert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslkanban_domain_model_board.items">
+				<source>Items</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

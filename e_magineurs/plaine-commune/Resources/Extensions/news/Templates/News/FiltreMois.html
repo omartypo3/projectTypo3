@@ -1,0 +1,49 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace em=Emagineurs\ENews\ViewHelpers}
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/filtreMois.html
+-->
+
+<f:section name="content">                   
+    <f:if condition="{settings.navMois}">
+        <div class="navMois">
+            <div class="navMois_precedent">
+                <f:format.html><em:MoisLien label="Mois précédent" sens="precedent" target="" /></f:format.html>
+            </div>
+            <div class="navMois_encours">
+                <em:Mois />
+            </div>
+            <div class="navMois_suivant">
+                <f:format.html><em:MoisLien label="Mois suivant" sens="suivant" target="" /></f:format.html>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </f:if>
+    <f:if condition="{news}">
+        <f:then>        
+            <div class="news-list-view">
+                <f:if condition="{settings.hidePagination}">
+                    <f:then>
+                        <f:for each="{news}" as="newsItem">
+                                <f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem, settings:settings}" />
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedNews">
+                                <f:for each="{paginatedNews}" as="newsItem">
+                                        <f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem, settings:settings}" />
+                                </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:else>
+                </f:if>
+            </div>
+	   </f:then>
+	   <f:else>
+            <div class="no-news-found">
+                <f:translate key="list_nonewsfound" />
+            </div>
+	   </f:else>
+    </f:if>
+</f:section>

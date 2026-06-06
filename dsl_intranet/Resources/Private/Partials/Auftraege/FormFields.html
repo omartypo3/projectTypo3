@@ -1,0 +1,2000 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace h=DslFactory\DslIntranet\ViewHelpers}
+
+
+<f:render partial="Scripts/AuftraegeZeitkontingentEdit" />
+
+<script>
+
+	function calcAndSetNutzungsfaktor(){
+	  var nutzungsfaktorForm = 0.0;
+	  $( '.nutzungsFaktorenRadio' ).each(function( index ) {
+		if($( this ).prop('checked')) nutzungsfaktorForm+=parseFloat($( this ).val());
+	  });
+	  $('#nutzungsFaktor').val(nutzungsfaktorForm.toFixed(1));
+	  calcPreisgesamt();
+	}
+
+
+	function showHideNutzungsfaktorenFaktorenWrapper(){
+	   if($('.nutzungsFaktorEdit .sonstigesCheckboxBtn .btn').hasClass('active')){
+		  $('.nutzungsfaktoren-faktoren-wrapper').hide();
+	   } else {
+		  $('.nutzungsfaktoren-faktoren-wrapper').show();
+	   }
+	   checkAndSetAgenturvertragVerechnungWrapper()
+	   calcPreisgesamt();
+
+	}
+	//Fremd- / Nebenkosten
+	function initNebenkostenRow(element){
+		$(element).find(".touchspin_anzahl").TouchSpin();
+		$(element).find(".touchspin_preis").TouchSpin({
+			max: 99999,
+			decimals: 2,
+			prefix: '€',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			initval: 0,
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+		  	var value = $(this).val();
+		  	$(this).val(parseFloat(value.replace(',','.')).toFixed(2));
+			calcPreisgesamt();
+		});
+
+		$(element).find(".touchspin_preissumme").TouchSpin({
+			max: 99999,
+			decimals: 2,
+			prefix: '&sum;',
+			prefix_extraclass: 'input-sm prefix-disabled',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			initval: 0
+		});
+
+		$(element).find("input").focus(function() { $(this).select() });
+
+		$(element).find("input").change(function() {
+		  var row = $(this).closest('.formular-nebenkosten');
+		  var inputAnzahl = row.find('.fremdkostenAnzahl');
+		  var inputName = row.find('.fremdkostenName');
+		  var inputPreis = row.find('.fremdkostenPreis');
+		  var inputPreissumme = row.find('.fremdkostenPreissumme');
+
+		  var anzahl = parseInt(inputAnzahl.val());
+
+		  if(!anzahl) {
+			inputAnzahl.val('');
+			inputName.prop('disabled', true);
+			inputPreis.prop('disabled', true);
+			inputName.removeAttr('required');
+			inputPreis.removeAttr('required');
+			inputPreissumme.val((0).toFixed(2));
+
+			$(element).remove(); // zeile löschen da keine anzahl definiert ist
+			//  console.log('löschen');
+
+		  } else {
+			inputName.prop('disabled', false);
+			inputPreis.prop('disabled', false);
+			inputName.attr('required','required');
+			inputPreis.attr('required','required');
+			inputPreissumme.val((anzahl*inputPreis.val()).toFixed(2));
+
+		  }
+		  checkAndSetAgenturvertragVerechnungWrapper();
+		  calcPreisgesamt();
+
+		});
+		calcPreisgesamt();
+	}
+
+	function setDefaultStundensatzAgenturvertrag(){
+		var queryAjaxJson = {"tx_dslintranet_auftragsliste[switch]":'getDefaultStundensatzAgenturvertrag',"tx_dslintranet_auftragsliste[kunde]":$('#editKunde').val(),"tx_dslintranet_auftragsliste[datumAbschluss]":$('#datumAbschlussWrapper input').val()};
+
+		dslIntranetAjaxCall(auftraegeAjaxUrl,queryAjaxJson).done(function (data /* , textStatus, jqXHR */ ) {
+		  	dataJson = JSON.parse(data);
+			//console.log(dataJson.stundensatz);
+			$('.stundensatzAgenturvertrag').attr('placeholder',dataJson.stundensatz);
+			$(".stundensatzAgenturvertrag").trigger('change');
+		});
+	}
+
+	function checkAndSetAgenturvertragVerechnungWrapper(){
+		//fremdkosten-verechnung-wrapper
+	//	console.log('checkAndSetAgenturvertragVerechnungWrapper');
+		//($(this).val()
+	//	console.log('auftragsart:');
+	//	console.log($('#editAuftragsart').val());
+		if($('#editAuftragsart').val()==6){//agenturvertrag
+			if($('.formular-nebenkosten').length){
+				$('.fremdkosten-verechnung-wrapper').show();
+				$('.fremdkosten-verechnung-wrapper .sonstigesRadio').addClass('validator_required');
+				$('.fremdkosten-verechnung-wrapper .sonstigesRadio').attr('required','required');
+			} else {
+				$('.fremdkosten-verechnung-wrapper').hide();
+				$('.fremdkosten-verechnung-wrapper .sonstigesRadio').removeClass('validator_required');
+				$('.fremdkosten-verechnung-wrapper .sonstigesRadio').removeAttr('required','required');
+			}
+	//		console.log($('#nutzungsFaktorCheckbox').prop('checked'));
+			if($('#nutzungsFaktorCheckbox').prop('checked')){ // nur kreativleistungen kein faktor
+	//			console.log('verechnung nutzungsfaktor in agenturvertrag kein pflichtfeld mehr');
+
+				$('.nutzungskator-verechnung-wrapper').hide();
+				$('.nutzungskator-verechnung-wrapper .sonstigesRadio').removeClass('validator_required');
+				$('.nutzungskator-verechnung-wrapper .sonstigesRadio').removeAttr('required');
+			} else {
+	//			console.log('verechnung nutzungsfaktor in agenturvertrag als pflichtfeld');
+				$('.nutzungskator-verechnung-wrapper').show();
+				$('.nutzungskator-verechnung-wrapper .sonstigesRadio').addClass('validator_required');
+				$('.nutzungskator-verechnung-wrapper .sonstigesRadio').attr('required','required');
+
+			}
+		} else {
+
+			$('.fremdkosten-verechnung-wrapper .sonstigesRadio').removeClass('validator_required');
+			$('.fremdkosten-verechnung-wrapper').hide();
+			$('.nutzungskator-verechnung-wrapper .sonstigesRadio').removeClass('validator_required');
+			$('.nutzungskator-verechnung-wrapper').hide();
+		}
+		//$('.fremdkosten-verechnung-wrapper .sonstigesRadio.invalid').closest('fremdkosten-verechnung-wrapper').removeClass('invalid_child');
+	}
+
+
+	function mitarbeiterKontingentChanged(){
+
+		console.log('mitarbeiterKontingentChanged');
+		console.log($('#editMitarbeiter').val());
+
+		$( '.mitarbeiter-kontingent-item' ).addClass('hiddenItem');
+		//$( ".mitarbeiter-kontingent-item" ).hide();
+
+		if($('#editMitarbeiter').val()) {
+
+
+			$.each($('#editMitarbeiter').val(), function( index, value ) {
+			  console.log( index + ": " + value );
+				$( '.mitarbeiter-kontingent-item[data-id="'+value+'"]' ).removeClass('hiddenItem');
+		//		$( '.mitarbeiter-kontingent-item[data-id="'+value+'"]' ).show();
+			});
+
+
+
+		}
+		$('.mitarbeiter-kontingent-item.hiddenItem .mitarbeiterkontingent_minuten').val('');
+		calcKontingentMitarbeiterGesamt();
+	}
+
+	function calcKontingentMitarbeiterGesamt(){
+		console.clear();
+		console.log('calcKontingentMitarbeiterGesamt');
+
+		 var minutengesamt = 0;
+
+
+		  $('.mitarbeiterKontingentEdit>div>.layout-table-row[data-id]:not(.hiddenItem)').each(function( index ) {
+
+			  console.log(this);
+			  if( $(this).data('id')=='gesamt' ){
+				  console.log('ist gesamt!! // abbruch');
+			  } else {
+
+				  var userId = $(this).data('id');
+
+
+
+				  var minuten = parseInt($(this).find('.spinner_minuten').val());
+				  var stunden = parseInt($(this).find('.spinner_stunden').val());
+
+				  var gesamt = 0;
+				  if(stunden) gesamt = stunden*60;
+				  if(minuten) gesamt = gesamt+minuten;
+				  //if(minuten) = gesamt
+				  console.log(userId+': stunden: '+stunden+'   minuten: ' +minuten+'   gesamt: ' +gesamt);
+
+				  minutengesamt = minutengesamt + gesamt;
+				  console.log('minutengesamt: '+minutengesamt);
+				   //console.log(userId+': stunden: '+stunden+'   minuten: ' +minuten+'   gesamt: ' +gesamt+'   minutengesamt: ' +minutengesamt);
+
+				  $('#mitarbeiterkontingent_'+userId).val(gesamt);
+
+
+			  }
+
+
+
+		  });
+		$('#mitarbeiterkontingent_gesamt').val(minutengesamt);
+		$('.spinner_mitarbeiter_stunden_gesamt').val('');
+		$('.spinner_mitarbeiter_minuten_gesamt').val('')
+		if(minutengesamt){
+			var stunden = Math.floor(minutengesamt/60);
+			console.log('stunden:'+stunden);
+			if(stunden) $('.spinner_mitarbeiter_stunden_gesamt').val(stunden);
+
+			var minuten = minutengesamt-(stunden*60);
+			console.log('minuten:'+minuten);
+
+			if(minuten) $('.spinner_mitarbeiter_minuten_gesamt').val(minuten);
+		}
+
+
+
+
+		console.log('checkforclear!!!!!!!!!!');
+		$('.mitarbeiterKontingentEdit>div>.layout-table-row[data-id].hiddenItem').each(function( index ) {
+
+				  var userId = $(this).data('id');
+ 				console.log('clearforuser!!!!'+userId);
+				  $('#mitarbeiterkontingent_'+userId).val('');
+
+				$('.spinner_mitarbeiter_minuten_'+userId).val('');
+				$('.spinner_mitarbeiter_stunden_'+userId).val('');
+		  });
+
+
+		if($('.mitarbeiter-kontingent-item:not(.hiddenItem)').length){
+			$('.mitarbeiterKontingentEdit').show();
+		} else {
+			$('.mitarbeiterKontingentEdit').hide();
+		}
+	}
+
+
+	function mitarbeiterKontingentChangedInit(){
+
+		$('.mitarbeiterKontingentEdit>div>.layout-table-row[data-id]').each(function( index ) {
+			if( $(this).data('id')!='gesamt' ){
+
+
+				  var userId = $(this).data('id');
+
+				var gesamt = parseInt($('#mitarbeiterkontingent_'+userId).val());
+				console.log('initGESAMT: '+gesamt);
+
+				if(gesamt){
+					var stunden = Math.floor(gesamt/60);
+					console.log('stunden:'+stunden);
+					if(stunden) $('.spinner_mitarbeiter_stunden_'+userId).val(stunden);
+
+					var minuten = gesamt-(stunden*60);
+					console.log('minuten:'+minuten);
+
+					if(minuten) $('.spinner_mitarbeiter_minuten_'+userId).val(minuten);
+				}
+
+			}
+		});
+		//mitarbeiterKontingentEdit>div>.layout-table-row[data-id]:not(.hiddenItem
+
+		$(".touchspin_mitarbeiter_minuten").TouchSpin({
+			max: 59,
+			prefix: 'm',
+			prefix_extraclass: 'input-sm'
+		}).change(function() {
+			mitarbeiterKontingentChanged();
+
+		});
+		$(".touchspin_mitarbeiter_stunden").TouchSpin({
+			max: 999,
+			prefix: 'h',
+			prefix_extraclass: 'input-sm'
+		}).change(function() {
+
+			mitarbeiterKontingentChanged();
+		});
+
+
+		mitarbeiterKontingentChanged();
+	}
+
+	function calcPreisgesamt(){
+		//console.log('calcPreisgesamt');
+	  var preisgesamt = 0;
+	  $('.zeitkontingentEdit>div>.layout-table-row[data-id]').each(function( index ) {
+		//console.log( index + ": " + $( this ).data('id') );
+		//console.log( index + ": " + $( this ).data('id') );
+
+		if($( this ).data('id') != "gesamt"){
+		  var phaseId  = $( this ).data('id');
+
+		  var minuten = $('#zeitkontingent_'+phaseId).val();
+		  var stundensatz = $('.spinner_phase_'+phaseId+'_stundensatz').val();
+		  if(!stundensatz) stundensatz = $('.spinner_phase_'+phaseId+'_stundensatz').attr('placeholder')
+
+		  if(minuten){
+			var preis = (minuten/60)*stundensatz;
+			preisgesamt+=roundFloat(preis,2);
+			//preisgesamt+=preis;
+			$('.spinner_phase_'+phaseId+'_preisgesamt').val(preis);
+			//console.log('phase '+phaseId+': !!! minuten: '+minuten+' stundensatz: '+stundensatz);
+		  } else {
+			$('.spinner_phase_'+phaseId+'_preisgesamt').val('');
+		  }
+
+		} else {
+
+		  if(preisgesamt) {
+			$('.phasePreisgesamtSumme').val(preisgesamt);
+		  } else {
+
+			//console.log('gesamt');
+			var minuten = $('#zeitkontingent_gesamt').val();
+			var stundensatz = $('input.stundensatz').val();
+			if(minuten){
+			  var preis = (minuten/60)*stundensatz;
+			  $('.phasePreisgesamtSumme').val(preis);
+			} else {
+			  $('.phasePreisgesamtSumme').val('');
+			}
+
+		  }
+
+		}
+	  });
+
+
+	  $(".phasePreisgesamtSummeLabel").text($('.phasePreisgesamtSumme').val());
+
+	  $(".phasePreisgesamt").trigger('change');
+	  $(".phasePreisgesamtSumme").trigger('change');
+
+			var endpreisNetto = parseFloat($('.phasePreisgesamtSumme').val());
+
+			if($('.nutzungsFaktorEdit .sonstigesCheckbox').prop('checked')){
+			  	$('.table-formular-preise-nutzungsfaktor').addClass("hidden");
+			} else {
+			  if($('.phasePreisgesamtSumme').val()){
+				  $('.table-formular-preise-nutzungsfaktor').removeClass("hidden");
+				  var nutzungsfaktorSumme = parseFloat($('#nutzungsFaktor').val()*$('.phasePreisgesamtSumme').val());
+				  $('.nutzungsfaktorSumme').val(' x '+number_format( $('#nutzungsFaktor').val() , 2 , ',' , '.' )+' = '+number_format( nutzungsfaktorSumme , 2 , ',' , '.' ));
+				  endpreisNetto+=nutzungsfaktorSumme;
+			  } else {
+				$('.table-formular-preise-nutzungsfaktor').addClass("hidden");
+			  }
+			}
+
+			//console.log($('.formular-nebenkosten').length);
+
+			summeNebenkosten = 0;
+			if($('.formular-nebenkosten').length){
+			  $( ".formular-nebenkosten" ).each(function() {
+				summeNebenkosten+=parseFloat($( this ).find( ".fremdkostenPreissumme" ).val());
+			  });
+			}
+
+		//summeNebenkosten
+			if(summeNebenkosten>0){
+			//if($('.formular-nebenkosten').length && endpreisNetto>0){
+			  $('.table-formular-preise-fremdkosten').removeClass("hidden");
+
+			  /*$( ".formular-nebenkosten" ).each(function() {
+				summeNebenkosten+=parseFloat($( this ).find( ".fremdkostenPreissumme" ).val());
+			  });
+			  $('.fremdkostenSumme').val();
+
+			  console.log(summeNebenkosten);*/
+			  $('.fremdkostenSumme').val(number_format( summeNebenkosten , 2 , ',' , '.' ));
+			  endpreisNetto+=parseFloat(summeNebenkosten);
+			} else {
+			  $('.table-formular-preise-fremdkosten').addClass("hidden");
+
+			}
+		if(endpreisNetto>0 && endpreisNetto != $('.phasePreisgesamtSumme').val()) {
+			$('.endpreisNetto').val(number_format( endpreisNetto , 2 , ',' , '.' ));
+			$('.table-formular-preise-endpreis').removeClass("hidden");
+		} else {
+			$('.table-formular-preise-endpreis').addClass("hidden");
+		}
+	}
+
+	$(function () {
+
+
+		$('.checkboxBtn').click(function(e) {
+			if($(this).children('.btn').hasClass('active')){
+				$(this).prev('.disableCheckbox').prop( "checked", false );
+			} else {
+				$(this).prev('.disableCheckbox').prop( "checked", true );
+			}
+
+		});
+
+
+
+		$.each( $('.sichtbarkeitCheckbox:checked'), function( key, value ) {
+			$(this).next().children().addClass('active');
+		});
+
+		$('.sichtbarkeitCheckboxBtn').click(function(e) {
+			if($(this).children('.btn').hasClass('active')){
+				$(this).prev('.sichtbarkeitCheckbox').prop( "checked", false );
+			} else {
+				$(this).prev('.sichtbarkeitCheckbox').prop( "checked", true );
+			}
+		});
+
+		$.each( $('.sonstigesCheckbox:checked'), function( key, value ) {
+			$(this).next().children().addClass('active');
+		});
+
+		$('.sonstigesCheckboxBtn').click(function(e) {
+			if($(this).children('.btn').hasClass('active')){
+				$(this).prev('.sonstigesCheckbox').prop( "checked", false );
+			} else {
+				$(this).prev('.sonstigesCheckbox').prop( "checked", true );
+			}
+			setTimeout(function(){ showHideNutzungsfaktorenFaktorenWrapper(); }, 100);
+		});
+		$.each( $('.sonstigesRadio:checked'), function( key, value ) {
+			$(this).next().children().addClass('active');
+		});
+		$('.sonstigesRadioBtn').click(function(e) {
+		//	console.log('sonstigesRadioBtn click');
+		//	console.log('selector: *[data-nutzungsfaktoren-field="'+$(this).children('.btn').data('nutzungsfaktoren-field')+'"]');
+			$( '*[data-nutzungsfaktoren-field="'+$(this).children('.btn').data('nutzungsfaktoren-field')+'"]').removeClass('active');
+			$( '*[data-nutzungsfaktoren-field="'+$(this).children('.btn').data('nutzungsfaktoren-field')+'"]').removeClass('active');
+			$(this).prev('.sonstigesRadio').prop( "checked", true );
+		//	console.log($(this).prev('.sonstigesRadio').length);
+			calcAndSetNutzungsfaktor();
+		//	console.log('finished');
+		});
+		calcAndSetNutzungsfaktor();
+		showHideNutzungsfaktorenFaktorenWrapper();
+		$('.validator_required').attr('required','required');
+		$('.fullDateTimePicker').datetimepicker({
+			locale: 'de',
+			/*sideBySide: true,*/
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom'
+		}).on('dp.change',function(e){
+			//stundensatzAgenturvertrag holen
+			//console.log(e);
+				//	alert('changed!!');
+			setDefaultStundensatzAgenturvertrag();
+		});
+
+		$('.fullDatePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'DD.MM.YYYY'
+		});
+
+		$('.fullDatePicker:not(.noShowHideOnInit),.fullDateTimePicker:not(.noShowHideOnInit)').datetimepicker('show');
+		$('.fullDatePicker:not(.noShowHideOnInit),.fullDateTimePicker:not(.noShowHideOnInit)').datetimepicker('hide');
+		$('.fullTimePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'HH:mm',
+			widgetPositioning: {
+				horizontal: 'right',
+				vertical: 'bottom'
+			}
+		});
+
+
+
+
+		$(".stundensatzAgenturvertrag").TouchSpin({
+			max: 999,
+			decimals: 2,
+			prefix: '€',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+			//if($(this).val()=='0.00') $(this).val('');
+			//console.log('.stundensatzAgenturvertrag touchspin change');
+
+
+
+		  	var value = $(this).val();
+
+			if(!value) value = $(this).attr('placeholder');
+
+			if(value){
+				value = parseFloat(value.replace(',','.')).toFixed(2);
+			}
+
+			if(value>0){
+			  	if($(this).val()) $(this).val(value);
+				//placeholder für die phasen setzen
+				$(".phaseStundensatz").attr('placeholder',value);
+				//gesamt berechnen
+			} else {
+
+				$(this).val('');
+				$(".phaseStundensatz").attr('placeholder',$(this).attr('placeholder'));
+			}
+
+
+			calcPreisgesamt();
+
+
+		}).focus(function() { $(this).select() });
+
+
+
+
+		$(".stundensatz").TouchSpin({
+			max: 999,
+			decimals: 2,
+			prefix: '€',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+			//if($(this).val()=='0.00') $(this).val('');
+			//console.log('.stundensatz touchspin change');
+		  	var value = $(this).val();
+
+			if(value){
+				value = parseFloat(value.replace(',','.')).toFixed(2);
+			}
+
+			if(value>0){
+			  	$(this).val(value);
+				//placeholder für die phasen setzen
+				$(".phaseStundensatz").attr('placeholder',value);
+				//gesamt berechnen
+			} else {
+
+				$(this).val('');
+				$(".phaseStundensatz").attr('placeholder',$(this).attr('placeholder'));
+			}
+
+			calcPreisgesamt();
+
+
+		}).focus(function() { $(this).select() });
+
+
+
+
+
+
+		$('.selectpickerFormular').selectpicker().change(function() {
+
+			if($(this).hasClass('validator_required')) checkSelectPicker($(this).attr('id'));
+
+			if($(this).attr('id')=='editAuftragsart') {
+				if($(this).val()==1) {
+					//agenturvertrag
+					$('#datumAbschlussWrapper').show();
+					$('.stundensatzAgenturvertragWrapper').show();
+					$('.stundensatzWrapper').hide();
+					$(".stundensatzAgenturvertrag").trigger('change');
+
+					setDefaultStundensatzAgenturvertrag();
+
+				} else {
+					$('#datumAbschlussWrapper').hide();
+					$('.stundensatzWrapper').show();
+					$('.stundensatzAgenturvertragWrapper').hide();
+					$(".stundensatz").trigger('change');
+				}
+				checkAndSetAgenturvertragVerechnungWrapper();
+
+
+			}
+
+			if($(this).attr('id')=='editMitarbeiter') {
+				console.log('editMitarbeiter CHANGED!!');
+				mitarbeiterKontingentChanged();
+			}
+
+			console.log('auftragsartchange!!');
+		});
+		//alert($( "#editAuftragsart" ).val());
+		if($( "#editAuftragsart" ).val()) {
+			$( "#editAuftragsart" ).trigger( "change" );
+		} else {
+			$('#datumAbschlussWrapper').hide();
+			$('.stundensatzWrapper').show();
+			$('.stundensatzAgenturvertragWrapper').hide();
+			$(".stundensatz").trigger('change');
+		}
+		$( '.selectpickerCheckChildpicker').unbind( "change" );
+		$( '.selectpickerCheckChildpicker').change(function() {
+			  selector = $(this).data('optgroup-check-selector');
+
+			  $(selector+'>optgroup').attr('disabled','disabled');
+			  $(selector).selectpicker('refresh');
+
+			  $(this).find("option:selected").each(function() {
+				$(selector+'>optgroup[data-optgroup="'+$(this).val()+'"]').removeAttr('disabled');
+			  });
+			  refreshSelectpickerOptgroups(selector);
+			  $(this).selectpicker('refresh');
+
+			  if($(this).hasClass('validator_required')) checkSelectPicker($(this).attr('id'));
+		});
+		$( ".selectpickerCheckChildpicker" ).trigger( "change" );
+		$(".touchspin_minuten").TouchSpin({
+			max: 59,
+			prefix: 'm',
+			prefix_extraclass: 'input-sm'
+		}).change(function() {
+
+			calcPreisgesamt();
+		});
+		$(".touchspin_stunden").TouchSpin({
+			max: 999,
+			prefix: 'h',
+			prefix_extraclass: 'input-sm'
+		}).change(function() {
+
+			calcPreisgesamt();
+		});
+
+		$(".touchspin_minuten_gesamt").TouchSpin({
+			max: 59,
+			prefix: 'm',
+			prefix_extraclass: 'input-sm'
+
+		}).change(function() {
+			calcPreisgesamt();
+		});
+		$(".touchspin_stunden_gesamt").TouchSpin({
+			max: 999,
+			prefix: 'h',
+			prefix_extraclass: 'input-sm'
+		}).change(function() {
+			calcPreisgesamt();
+		});
+		$(".festpreis").TouchSpin({
+			max: 99999,
+			decimals: 2,
+			prefix: '€',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+			//if($(this).val()=='0.00') $(this).val('');
+
+		  	var value = $(this).val();
+
+			if(value){
+				value = parseFloat(value.replace(',','.')).toFixed(2);
+			}
+			if(value>0){
+			  	$(this).val(value);
+			} else {
+				$(this).val('');
+			}
+
+
+		}).focus(function() { $(this).select() });
+		$(".festpreis").trigger('change');
+
+
+
+
+
+		$(".phaseStundensatz").TouchSpin({
+			max: 999,
+			decimals: 2,
+			prefix: '',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+			//if($(this).val()=='0.00') $(this).val('');
+
+		  	var value = $(this).val();
+
+			if(value){
+				value = parseFloat(value.replace(',','.')).toFixed(2);
+			}
+
+			if(value>0){
+			  	$(this).val(value);
+			} else {
+				$(this).val('');
+			}
+			calcPreisgesamt();
+
+		}).focus(function() { $(this).select() });
+		$(".phaseStundensatz").trigger('change');
+
+		$(".phasePreisgesamt").TouchSpin({
+			max: 999,
+			decimals: 2,
+			prefix: '',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+			//if($(this).val()=='0.00') $(this).val('');
+
+		  	var value = $(this).val();
+
+			if(value){
+				value = parseFloat(value.replace(',','.')).toFixed(2);
+			}
+
+			if(value>0){
+			  	$(this).val(value);
+			} else {
+				$(this).val('');
+			}
+
+
+		}).focus(function() { $(this).select() });
+		$(".phasePreisgesamt").trigger('change');
+
+		$(".endpreisNetto").TouchSpin({
+			max: 9999,
+			decimals: 2,
+			prefix: '',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		});
+
+		$(".fremdkostenSumme").TouchSpin({
+			max: 9999,
+			decimals: 2,
+			prefix: '',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		});
+
+
+		$(".nutzungsfaktorSumme").TouchSpin({
+			max: 9999,
+			decimals: 2,
+			prefix: '',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		});
+
+		$(".phasePreisgesamtSumme").TouchSpin({
+			max: 999,
+			decimals: 2,
+			prefix: '',
+			prefix_extraclass: 'input-sm',
+			buttondown_class: 'hidden',
+			buttonup_class: 'hidden',
+			step: 5,
+			forcestepdivisibility: 'none'
+		}).change(function() {
+			//if($(this).val()=='0.00') $(this).val('');
+
+		  	var value = $(this).val();
+
+			if(value){
+				value = parseFloat(value.replace(',','.')).toFixed(2);
+			}
+
+			if(value>0){
+			  	$(this).val(value);
+			} else {
+				$(this).val('');
+			}
+
+
+		}).focus(function() { $(this).select() });
+
+		$(".phasePreisgesamtSumme").trigger('change');
+
+
+
+		//Fremd- / Nebenkosten
+		$( ".formular-nebenkosten" ).each(function( index ) {
+			initNebenkostenRow(this);
+			$(this).find("input").first().trigger('change');
+		});
+		$( ".fremdkostenBtnNew" ).click(function() {
+		  var wrapper = this.closest('.formular-nebenkosten-wrapper');
+		  var lastTr = $(wrapper).find('.formular-nebenkosten-empty');
+		  var newTr = lastTr.clone();
+		  newTr.removeClass('formular-nebenkosten-empty').removeClass('hidden').addClass('formular-nebenkosten');
+		  newTr.insertBefore(lastTr);
+		  initNebenkostenRow(newTr);
+		  newTr.find("input.fremdkostenAnzahl").val(1);
+		  newTr.find("input").first().trigger('change');
+
+		  return false;
+		});
+
+		$('.animated').autosize({append: "\n"});
+
+		calcPreisgesamt();
+
+//		console.log('initFormular');
+
+
+		$( "#editKunde" ).change(function() {
+			//console.log('change kunde!!');
+			if($('#editAuftragsart').val()==6) setDefaultStundensatzAgenturvertrag();
+			loadProjektListe($(this).val());
+
+		});
+
+
+
+		mitarbeiterKontingentChangedInit();
+
+	});
+
+function loadProjektListe(kundeUid){
+
+	$("#editProjekte").selectpicker('val',[]);
+	$('#editProjekte>option:gt(0)').remove();
+
+	var queryAjaxJson = {"tx_dslintranet_auftragsliste[switch]":'getProjektListeKunde',"tx_dslintranet_auftragsliste[kunde]":kundeUid};
+
+		dslIntranetAjaxCall(auftraegeAjaxUrl,queryAjaxJson).done(function (data /* , textStatus, jqXHR */ ) {
+		  	dataJson = JSON.parse(data);
+
+			$.each(dataJson.projekte, function( index, value ) {
+				$('#editProjekte').append('<option value="'+value[0]+'">'+value[1]+'</option>');
+			});
+			$('#editProjekte').selectpicker('refresh');
+
+		});
+
+}
+
+
+
+</script>
+
+<f:comment><!--
+<div>:::StundensatzAgenturvertrag:{auftraege.stundensatzAgenturvertrag}:::</div>
+<div>:::DefaultStundensatzAgenturvertrag:{auftraege.defaultStundensatzAgenturvertrag}:::</div>
+--></f:comment>
+
+<div class="form_headline">
+	<strong>Allgemeine Auftragsdaten</strong>
+    <hr>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Auftragsbezeichnung<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="titel" value="{auftraege.titel}" class="form-control input-sm" required="true"  />
+		</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Auftragsart<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+
+			<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false'}" name="auftragsart"  class="validator_required selectpicker selectpickerFormular" id="editAuftragsart"  >
+				<option value="">Bitte wählen</option>
+				<f:for each="{auftragsartens}" as="auftragsart">
+					<f:form.select.option value="{auftragsart.uid}" selected="{f:if(condition:'{auftraege.auftragsart} == {auftragsart}',then:'true')}" >{auftragsart.titel}</f:form.select.option>
+				</f:for>
+			</f:form.select>
+
+
+
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-medium">
+        	Priorität<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-small">
+        	<f:form.select class="validator_required  selectpicker selectpickerFormular" name="prioritaet" options="{prioritaets}"  optionLabelField="titel" value="{auftraege.prioritaet}" id="editPrioritaet"  data="{width:'100%', dropup-auto:'false'}" />
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding" id="datumAbschlussWrapper">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	&nbsp;
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullDateTimePicker'>
+
+
+				<f:form.textfield class="form-control input-sm" id="datumAbschluss" name="datumAbschluss" required="true"  value="{auftraege.datumAbschluss->f:format.date(format: 'd.m.Y H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+				<span class="input-group-addon border-left-none">
+					<i class="bb-calendar-date bb-lg"></i>
+				</span>
+
+			</div>
+        </div>
+        <div class="layout-table-col table-formular-spacer table-formular-very-small">&nbsp;</div>
+        <div class="layout-table-col table-formular-label">Finalisierungsdatum (bei AV)</div>
+
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Deadline
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class="input-group date fullDateTimePicker {f:if(condition: '{auftraege.datumfertigstellung}', else: ' noShowHideOnInit')}">
+
+				<f:if condition="{auftraege.datumfertigstellung}">
+					<f:then>
+						<f:form.textfield class="form-control input-sm" name="datumfertigstellung"  value="{auftraege.datumfertigstellung->f:format.date(format: 'd.m.Y H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+					</f:then>
+					<f:else>
+						<f:form.textfield class="form-control input-sm" name="datumfertigstellung" value="" additionalAttributes="{autocomplete: 'off'}"  />
+					</f:else>
+				</f:if>
+
+				<span class="input-group-addon border-left-none">
+					<i class="bb-calendar-date bb-lg"></i>
+				</span>
+
+			</div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-medium">Sichtbar für Kunde</div>
+        <div class="layout-table-col table-formular-small">
+
+
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="sichtbarkeit" value="1"  checked="{auftraege.sichtbarkeit}" />
+
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm" style="width:60px;">
+					<input value="1" class="" type="checkbox" checked="{auftraege.sichtbarkeit}">
+
+					<i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+
+                </label>
+            </div>
+
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Lieferdatum ca.
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class="input-group date fullDatePicker noShowHideOnInit">
+
+				<f:if condition="{auftraege.datumproduktion}">
+					<f:then>
+						<f:form.textfield class="form-control input-sm" name="datumproduktion"  value="{auftraege.datumproduktion->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+					</f:then>
+					<f:else>
+						<f:form.textfield class="form-control input-sm" name="datumproduktion" value="" additionalAttributes="{autocomplete: 'off'}"  />
+					</f:else>
+				</f:if>
+
+				<span class="input-group-addon border-left-none">
+					<i class="bb-calendar-date bb-lg"></i>
+				</span>
+
+			</div>
+
+
+
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+		<div class="layout-table-col table-formular-label table-formular-medium">Lieferung an Kunde</div>
+        <div class="layout-table-col table-formular-small">
+
+
+			<f:form.checkbox class="disableCheckbox" name="lieferungAnKunde" value="1"  checked="{auftraege.lieferungAnKunde}" />
+            <div class="btn-group checkboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm  {f:if(condition: auftraege.lieferungAnKunde, then: 'active')}" style="width:60px;">
+                    <input value="1" class="" type="checkbox" {f:if(condition: auftraege.lieferungAnKunde, then: ' checked="checked"')} >
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+            </div>
+
+		</div>
+
+
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Lieferanten
+        </div>
+        <div class="layout-table-col">
+
+        	<f:form.select multiple="1" additionalAttributes="{data-width:'100%', data-dropup-auto:'false', data-live-search:'true', data-selected-text-format:'count > 2', data-actions-box:'true'}" name="lieferanten"  class="selectpicker selectpickerFormular" id="editLieferanten"  >
+
+				<f:for each="{lieferantens}" as="lieferant"><f:form.select.option value="{lieferant.uid}" selected="{dsl:checked(obj: auftraege.lieferanten, prop:'{lieferant}')}" >{lieferant.name}</f:form.select.option></f:for>
+			</f:form.select>
+
+        </div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	weitere Lieferanten
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textarea name="lieferantenNeu" value="" class="form-control input-sm animated" style="resize:none;min-height:30px;" />
+        </div>
+	</div>
+</div>
+
+
+<div class="form_headline">
+	<strong>Eingangsdetails</strong>
+    <hr>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kunde<span>*</span>
+        </div>
+        <div class="layout-table-col">
+
+        	<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false', data-live-search:'true'}" name="kunde"  class="validator_required selectpicker selectpickerFormular" id="editKunde"  >
+				<option value="">Bitte wählen</option>
+				<f:for each="{kundens}" as="kunde">
+					<f:form.select.option value="{kunde.uid}" selected="{f:if(condition:'{auftraege.kunde} == {kunde}',then:'true')}" >{kunde.kundenNameForFilter}</f:form.select.option>
+				</f:for>
+			</f:form.select>
+        	<f:comment><!--
+        	<f:form.select class="validator_required selectpicker selectpickerFormular" name="kunde" options="{kundens}" optionLabelField="kundenNameForFilter" value="{auftraege.kunde}" id="editKunde"  data="{width:'100%', dropup-auto:'false', live-search:'true'}" />-->
+			</f:comment>
+        </div>
+	</div>
+</div>
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Projekt
+        </div>
+        <div class="layout-table-col">
+
+        	<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false', data-live-search:'true'}" name="projekt"  class="selectpicker selectpickerFormular" id="editProjekte"  >
+				<option value="">Bitte wählen</option>
+				<f:for each="{projekte}" as="projekt">
+					<f:form.select.option value="{projekt.uid}" selected="{f:if(condition:'{auftraege.projekt} == {projekt}',then:'true')}" >{projekt.nr}: {projekt.titel}</f:form.select.option>
+				</f:for>
+			</f:form.select>
+
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Eingegangen am<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullDatePicker'>
+
+
+                <f:form.textfield class="form-control input-sm" name="datum" required="true"  value="{auftraege.datum->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+
+            </div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Uhrzeit <span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<div class='input-group date fullTimePicker'>
+
+
+                <f:form.textfield class="form-control input-sm" name="datumTime" required="true"  value="{auftraege.datum->f:format.date(format: 'H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-clock bb-lg"></i>
+                </span>
+
+            </div>
+        </div>
+	</div>
+</div>
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Auftraggeber<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="durch" value="{auftraege.durch}" class="form-control input-sm" required="true" />
+        </div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Eingegangen per<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.select class="validator_required selectpicker selectpickerFormular" name="per" options="{pers}"  optionLabelField="titel" value="{auftraege.per}" id="editPer"  data="{width:'100%', dropup-auto:'false'}" />
+        </div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<div class="form_headline">
+	<strong>Auftragsphasen und Zeitplan</strong>
+    <hr>
+</div>
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Stundensatz
+        </div>
+        <div class="layout-table-col table-formular-small-3">
+
+			<div class="stundensatzAgenturvertragWrapper"><f:form.textfield placeholder="{auftraege.defaultStundensatzAgenturvertrag->f:format.number(decimals: 2, decimalSeparator: '.', thousandsSeparator: '')}" name="stundensatzAgenturvertrag" value="{f:if(condition: '{auftraege.stundensatzAgenturvertrag}', then: '{auftraege.stundensatzAgenturvertrag}')}" class="form-control stundensatzAgenturvertrag input-sm" additionalAttributes="{autocomplete: 'off'}" id="stundensatzAgenturvertrag" /></div>
+
+        	<div class="stundensatzWrapper"><f:form.textfield placeholder="{defaultStundensatz->f:format.number(decimals: 2, decimalSeparator: '.', thousandsSeparator: '')}" name="stundensatz" value="{auftraege.stundensatz}" class="form-control stundensatz input-sm" required="true" additionalAttributes="{autocomplete: 'off'}" /></div>
+
+		</div>
+        <div class="layout-table-col">&nbsp;</div>
+		<div class="layout-table-col table-formular-label table-formular-small-2">
+        	Projektpreis
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<f:form.textfield name="festpreis" value="{auftraege.festpreis}" class="form-control festpreis input-sm priceAlignRight"  additionalAttributes="{autocomplete: 'off'}" />
+		</div>
+
+
+	</div>
+</div>
+
+
+
+
+<div class="layout-table table-formular-padding table-formular-auftragsphasen">
+
+	<div class="layout-table-row table-formular-row">
+		<div class="layout-table-col table-formular-padding-reset">
+			<div class="layout-table table-formular-padding">
+				<div class="layout-table-col table-formular-very-small">
+					&nbsp;
+				</div>
+			 	<div class="layout-table-col table-formular-label">
+					&nbsp;
+				</div>
+				<div class="layout-table-col table-formular-small">
+					&nbsp;
+				</div>
+				<div class="layout-table-col table-formular-spacer-5"></div>
+				<div class="layout-table-col table-formular-small">
+					&nbsp;
+				</div>
+
+				<div class="layout-table-col table-formular-spacer-5"></div>
+				<div class="layout-table-col table-formular-small priceAlignRight">
+					€ / h&nbsp;&nbsp;
+				</div>
+				<div class="layout-table-col table-formular-spacer-5"></div>
+				<div class="layout-table-col table-formular-small priceAlignRight">
+					Gesamt&nbsp;&nbsp;
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="layout-table-row table-formular-row">
+        <div class="layout-table-col table-formular-padding-reset">
+            <div  class="zeitkontingentEdit">
+				<div class="layout-table table-formular-padding">
+					<f:for each="{phasens}" as="phase" key="number">
+						<div class="layout-table-row" data-id="{phase.uid}">
+							<div class="layout-table-col table-formular-very-small">
+								<f:form.checkbox name="phasen[]" value="{phase.uid}" class="phasenCheckbox" checked="{dsl:checked(obj: auftraege.phasen, prop:'{phase}')}" />
+								<div class="btn-group phasenCheckboxBtn" data-toggle="buttons">
+									<label class="btn btn-default input-sm">
+										<input class="phase_{phase.uid}" value="{phase.uid}" id="phaseCheckboxEdit{phase.uid}" type="checkbox" checked="{dsl:checked(obj: auftraege.phasen, prop:'{phase}')}">
+										<i class="bb-tick"></i>
+									</label>
+								</div>
+							</div>
+							<div class="layout-table-col table-formular-label">
+								<label for="phaseCheckboxEdit{phase.uid}" class="clickAble">{phase.titel}</label><f:form.hidden name="phasenKontingent[{phase.uid}]" class="zeitkontingent_minuten" id="zeitkontingent_{phase.uid}" value="{dsl:getFromArray(obj: auftraege.phasenKontingentArray, prop:'{phase.uid}')}" />
+							</div>
+							<div class="layout-table-col table-formular-small">
+								<f:form.textfield maxlength="3" value="" class="spinner_stunden spinner_phase spinner_phase_{phase.uid} spinner_phase_stunden_{phase.uid}  touchspin_stunden input-sm" />
+							</div>
+							<div class="layout-table-col table-formular-spacer-5"></div>
+							<div class="layout-table-col table-formular-small">
+								<f:form.textfield maxlength="2" value="" class="spinner_minuten spinner_phase spinner_phase_{phase.uid} spinner_phase_minuten_{phase.uid} touchspin_minuten  input-sm" />
+							</div>
+
+							<div class="layout-table-col table-formular-spacer-5"></div>
+							<div class="layout-table-col table-formular-small">
+								<f:form.textfield name="phasenStundensatz[{phase.uid}]" maxlength="10" value="{dsl:getFromArray(obj: auftraege.phasenStundensatzArray, prop:'{phase.uid}')}" placeholder="{defaultStundensatz->f:format.number(decimals: 2, decimalSeparator: '.', thousandsSeparator: '')}" class="spinner_phase_{phase.uid}_stundensatz phaseStundensatz input-sm priceAlignRight" />
+							</div>
+							<div class="layout-table-col table-formular-spacer-5"></div>
+							<div class="layout-table-col table-formular-small">
+								<f:form.textfield maxlength="10" value="" class="spinner_phase_{phase.uid}_preisgesamt phasePreisgesamt input-sm priceAlignRight"  disabled="true" />
+							</div>
+						</div>
+					</f:for>
+					<div class="layout-table-row" data-id="gesamt">
+						<div class="layout-table-col table-formular-very-small">&nbsp;</div>
+						<div class="layout-table-col  table-formular-label"><strong>Gesamt h / Euro</strong><f:form.hidden name="kontingent" id="zeitkontingent_gesamt" value="{auftraege.kontingent}" /></div>
+						<div class="layout-table-col table-formular-small"><f:form.textfield value="" class="spinner_stunden spinner_phase_gesamt spinner_phase_stunden_gesamt touchspin_stunden_gesamt input-sm"  id="spinner_phase_stunden_gesamt" /></div>
+						<div class="layout-table-col table-formular-spacer-5"></div>
+						<div class="layout-table-col table-formular-small"><f:form.textfield value="" class="spinner_minuten spinner_phase_gesamt spinner_phase_minuten_gesamt touchspin_minuten_gesamt input-sm"  id="spinner_phase_minuten_gesamt" /></div>
+
+						<div class="layout-table-col table-formular-spacer-5"></div>
+						<div class="layout-table-col table-formular-small">
+							&nbsp;
+						</div>
+						<div class="layout-table-col table-formular-spacer-5"></div>
+						<div class="layout-table-col table-formular-small">
+							<f:form.textfield disabled="true" maxlength="10" value="" class="phasePreisgesamtSumme input-sm priceAlignRight" />
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding ">
+	<div class="layout-table-row table-formular-preise-nutzungsfaktor">
+		<div class="layout-table-col table-formular-very-small">&nbsp;</div>
+		<div class="layout-table-col  table-formular-label" style="color:#14cb96;">Faktor Nutzungsrechte</div>
+
+		<div class="layout-table-col table-formular-small-2x">
+			<f:form.textfield disabled="true" maxlength="10" value="" class="nutzungsfaktorSumme input-sm priceAlignRight" />
+		</div>
+	</div>
+
+	<div class="layout-table-row table-formular-preise-fremdkosten">
+		<div class="layout-table-col table-formular-very-small">&nbsp;</div>
+		<div class="layout-table-col  table-formular-label" style="color:#14cb96;">Fremdkosten</div>
+		<div class="layout-table-col table-formular-small-2x">
+			<f:form.textfield disabled="true" maxlength="10" value="" class="fremdkostenSumme input-sm priceAlignRight" />
+		</div>
+	</div>
+
+	<div class="layout-table-row table-formular-preise-endpreis">
+		<div class="layout-table-col table-formular-very-small">&nbsp;</div>
+		<div class="layout-table-col  table-formular-label"><h2>Endpreis (netto)</h2></div>
+
+		<div class="layout-table-col table-formular-small-2x">
+			<f:form.textfield disabled="true" maxlength="10" value="" class="endpreisNetto input-sm priceAlignRight" />
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="form_headline">
+	<strong>Auftragdetails</strong>
+    <hr>
+</div>
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Status<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		   	<f:form.select class="validator_required selectpicker selectpickerFormular" name="status" options="{auftraege.statuss}"  optionLabelField="titel" value="{auftraege.status}" id="editStatus"  data="{width:'100%', dropup-auto:'false'}"  />
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Gruppen<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<f:form.select class="validator_required selectpicker selectpickerFormular selectpickerCheckChildpicker" name="fegroups" options="{fegroups}" optionLabelField="title" value="{auftraege.fegroups}" id="editFegroups" multiple="multiple" data="{width:'100%', dropup-auto:'false', selected-text-format:'count > 2'}" additionalAttributes="{data-optgroup-check-selector: '.auftragEditChild'}" />
+        </div>
+	</div>
+</div>
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Projektleiter<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+
+				<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false'}" name="ansprechpartner" class="auftragEditChild selectpicker selectpickerFormular validator_required"  >
+
+				<f:for each="{fegroups}" as="group">
+					<f:form.select.optgroup additionalAttributes="{data-optgroup:'{group.uid}'}" label="{group.title}">
+						<f:for each="{group.mitarbeiter}" as="user">
+							<f:form.select.option value="{user.uid}" selected="{f:if(condition: '{user}=={auftraege.ansprechpartner}', then: 'true')}" >{user.name}</f:form.select.option>
+						</f:for>
+					</f:form.select.optgroup>
+				</f:for>
+
+			</f:form.select>
+
+
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Mitarbeiter<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false', data-selected-text-format:'count > 3'}" name="mitarbeiter" id="editMitarbeiter" multiple="true" class="auftragEditChild selectpicker selectpickerFormular validator_required"  >
+
+				<f:for each="{fegroups}" as="group">
+					<f:form.select.optgroup additionalAttributes="{data-optgroup:'{group.uid}'}" label="{group.title}">
+						<f:for each="{group.mitarbeiter}" as="user">
+							<f:form.select.option value="{user.uid}" selected="{dsl:checked(obj: auftraege.mitarbeiter, prop:'{user}')}" >{user.initialien}</f:form.select.option>
+						</f:for>
+					</f:form.select.optgroup>
+				</f:for>
+
+			</f:form.select>
+
+        </div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	&nbsp;
+        </div>
+        <div class="layout-table-col">
+			<div  class="mitarbeiterKontingentEdit">
+
+				<div class="layout-table table-formular-padding">
+				<f:for each="{fegroups}" as="group">
+					<f:for each="{group.mitarbeiter}" as="user">
+
+
+
+
+
+							<div class="layout-table-row table-formular-row mitarbeiter-kontingent-item" data-id="{user.uid}">
+
+
+								<div class="layout-table-col table-formular-label" title="{user.initialien} ({group.title})">
+									{user.name}
+									<f:form.hidden name="mitarbeiterKontingent[{user.uid}]" class="mitarbeiterkontingent_minuten" id="mitarbeiterkontingent_{user.uid}" value="{dsl:getFromArray(obj: auftraege.mitarbeiterKontingentArray, prop:'{user.uid}')}" />
+								</div>
+								<div class="layout-table-col table-formular-small">
+									<f:form.textfield maxlength="3" value="" class="spinner_stunden spinner_mitarbeiter spinner_mitarbeiter_{user.uid} spinner_mitarbeiter_stunden_{user.uid} touchspin_mitarbeiter_stunden input-sm" />
+								</div>
+								<div class="layout-table-col table-formular-spacer-5"></div>
+								<div class="layout-table-col table-formular-small">
+									<f:form.textfield maxlength="2" value="" class="spinner_minuten spinner_mitarbeiter spinner_mitarbeiter_{user.uid} spinner_mitarbeiter_minuten_{user.uid} touchspin_mitarbeiter_minuten  input-sm" />
+								</div>
+							</div>
+
+
+					</f:for>
+				</f:for>
+
+
+					<div class="layout-table-row table-formular-row mitarbeiter-kontingent-gesamt" data-id="gesamt">
+						<div class="layout-table-col table-formular-label"><strong>Gesamt</strong><f:form.hidden id="mitarbeiterkontingent_gesamt" /></div>
+
+
+
+
+
+						<div class="layout-table-col table-formular-small"><f:form.textfield value="" class="spinner_stunden spinner_mitarbeiter_gesamt spinner_mitarbeiter_stunden_gesamt touchspin_stunden_gesamt input-sm"  id="spinner_mitarbeiter_stunden_gesamt"  disabled="true" /></div>
+						<div class="layout-table-col table-formular-spacer-5"></div>
+						<div class="layout-table-col table-formular-small"><f:form.textfield value="" class="spinner_minuten spinner_mitarbeiter_gesamt spinner_mitarbeiter_minuten_gesamt touchspin_minuten_gesamt input-sm"  id="spinner_mitarbeiter_minuten_gesamt"  disabled="true" /></div>
+
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="form_headline">
+	<strong>Nutzungsfaktoren</strong>
+    <hr>
+</div>
+
+
+
+<div class="formular-nutzungsfaktor-wrapper nutzungsFaktorEdit">
+
+	<div class="layout-table table-formular-padding ">
+		<div class="layout-table-row">
+
+			<div class="layout-table-col table-formular-very-small">
+				<f:form.checkbox name="nutzungsFaktorNurEntwurfKreativleistung" value="true" class="sonstigesCheckbox" checked="{f:if(condition: '{auftraege.nutzungsFaktorNurEntwurfKreativleistung}', then: 'true')}" />
+				<div class="btn-group sonstigesCheckboxBtn" data-toggle="buttons">
+					<label class="btn btn-default input-sm">
+						<input value="true" type="checkbox" {f:if(condition: '{auftraege.nutzungsFaktorNurEntwurfKreativleistung}', then: 'checked')} id="nutzungsFaktorCheckbox">
+
+						<i class="bb-tick"></i>
+
+					</label>
+				</div>
+			</div>
+
+
+			<div class="layout-table-col">
+				<label for="nutzungsFaktorCheckbox" class="clickAble">nur Entwurf / Kreativleistung</label>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="nutzungsfaktoren-faktoren-wrapper" style="padding-top: 10px;">
+
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col"><em>Nutzungsumfang</em></div>
+			</div>
+		</div>
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio  name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][umfang]" value="0.2" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.umfang} == 0.2 || !{auftraege.nutzungsFaktoren.umfang}', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.umfang} == 0.2 || !{auftraege.nutzungsFaktoren.umfang}', then: 'active')} input-sm" data-nutzungsfaktoren-field="umfang">
+							<input value="true" type="checkbox" id="nutzungUmfang1">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungUmfang1" class="clickAble">einfach</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][umfang]"  value="1.0" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.umfang} == 1.0', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.umfang} == 1.0', then: 'active')} input-sm" data-nutzungsfaktoren-field="umfang">
+							<input value="true" type="checkbox" id="nutzungUmfang2">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungUmfang2" class="clickAble">ausschließlich</label>
+				</div>
+				<div class="layout-table-col">&nbsp;</div>
+			</div>
+		</div>
+
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col"><em>Nutzungsgebiet</em></div>
+			</div>
+		</div>
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio  name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][gebiet]" value="0.1" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 0.1 || !{auftraege.nutzungsFaktoren.gebiet}', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 0.1 || !{auftraege.nutzungsFaktoren.gebiet}', then: 'active')} input-sm" data-nutzungsfaktoren-field="gebiet">
+							<input value="true" type="checkbox" id="nutzungGebiet1">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungGebiet1" class="clickAble">regional</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio  name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][gebiet]" value="0.3" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 0.3', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 0.3', then: 'active')} input-sm" data-nutzungsfaktoren-field="gebiet">
+							<input value="true" type="checkbox" id="nutzungGebiet2">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungGebiet2" class="clickAble">national</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio  name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][gebiet]" value="1.0" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 1.0', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 1.0', then: 'active')} input-sm" data-nutzungsfaktoren-field="gebiet">
+							<input value="true" type="checkbox" id="nutzungGebiet3">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungGebiet3" class="clickAble">europaweit</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio  name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][gebiet]" value="2.5" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 2.5', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.gebiet} == 2.5', then: 'active')} input-sm" data-nutzungsfaktoren-field="gebiet">
+							<input value="true" type="checkbox" id="nutzungGebiet4">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungGebiet4" class="clickAble">weltweit</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col"><em>Nutzungsdauer</em></div>
+			</div>
+		</div>
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][dauer]" value="0.1" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 0.1 || !{auftraege.nutzungsFaktoren.dauer}', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 0.1 || !{auftraege.nutzungsFaktoren.dauer}', then: 'active')} input-sm" data-nutzungsfaktoren-field="dauer">
+							<input value="true" type="checkbox" id="nutzungDauer1">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungDauer1" class="clickAble">1 Jahr</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][dauer]" value="0.3" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 0.3', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 0.3', then: 'active')} input-sm" data-nutzungsfaktoren-field="dauer">
+							<input value="true" type="checkbox" id="nutzungDauer2">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungDauer2" class="clickAble">5 Jahre</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][dauer]" value="0.5" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 0.5', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 0.5', then: 'active')} input-sm" data-nutzungsfaktoren-field="dauer">
+							<input value="true" type="checkbox" id="nutzungDauer3">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungDauer3" class="clickAble">10 Jahre</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][dauer]" value="1.5" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 1.5', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.dauer} == 1.5', then: 'active')} input-sm" data-nutzungsfaktoren-field="dauer">
+							<input value="true" type="checkbox" id="nutzungDauer4">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungDauer4" class="clickAble">unbegrenzt</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col"><em>Nutzungsintensität</em></div>
+			</div>
+		</div>
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row">
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][intensitaet]" value="0.1" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 0.1 || !{auftraege.nutzungsFaktoren.intensitaet}', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 0.1 || !{auftraege.nutzungsFaktoren.intensitaet}', then: 'active')} input-sm" data-nutzungsfaktoren-field="intensitaet">
+							<input value="true" type="checkbox" id="nutzungIntensitaet1">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungIntensitaet1" class="clickAble">gering</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][intensitaet]" value="0.3" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 0.3', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 0.3', then: 'active')} input-sm" data-nutzungsfaktoren-field="intensitaet">
+							<input value="true" type="checkbox" id="nutzungIntensitaet2">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungIntensitaet2" class="clickAble">mittel</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][intensitaet]" value="0.7" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 0.7', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 0.7', then: 'active')} input-sm" data-nutzungsfaktoren-field="intensitaet">
+							<input value="true" type="checkbox" id="nutzungIntensitaet3">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungIntensitaet3" class="clickAble">groß</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="tx_dslintranet_auftragsliste[auftraege][nutzungsFaktoren][intensitaet]" value="1" class="sonstigesRadio nutzungsFaktorenRadio"
+								  checked="{f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 1', then: 'checked')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.nutzungsFaktoren.intensitaet} == 1', then: 'active')} input-sm" data-nutzungsfaktoren-field="intensitaet">
+							<input value="true" type="checkbox" id="nutzungIntensitaet4">
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-nutzungsfaktoren">
+					<label for="nutzungIntensitaet4" class="clickAble">umfangreich</label>
+				</div>
+			</div>
+		</div>
+
+		<br>
+
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+				<div class="layout-table-col table-formular-very-small">
+					<i class="bb-arrow-right-large bb-lg"></i>
+				</div>
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.textfield id="nutzungsFaktor" name="tx_dslintranet_auftragsliste[auftraege][nutzungsfaktor]" value="{auftraege.nutzungsfaktor}" class="form-control input-sm" additionalAttributes="{autocomplete: 'off'}" style="text-align:center;font-weight:bold;" />
+				</div>
+				<div class="layout-table-col table-formular-spacer-5"></div>
+				<div class="layout-table-col">(berechneter Nutzungsfaktor)</div>
+			</div>
+		</div>
+	</div>
+	<div class="nutzungskator-verechnung-wrapper" style="display: none;">
+		<hr style="margin-bottom: 10px;">
+		<div class="layout-table table-formular-padding ">
+			<div class="layout-table-row">
+				<div class="layout-table-col" style="width:250px;">Kosten in Agenturvertrag verrechnen*</div>
+
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="verechnungAgenturvertragNutzungsfaktorInklusive" value="10" class="sonstigesRadio validator_required" checked="{f:if(condition: '{auftraege.verechnungAgenturvertragNutzungsfaktorInklusive}==10', then: 'true')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default {f:if(condition: '{auftraege.verechnungAgenturvertragNutzungsfaktorInklusive}', else: 'active')} input-sm" data-nutzungsfaktoren-field="verechnungAgenturvertragNutzungsfaktorInklusive">
+							<input value="true" type="checkbox" id="verechnungAgenturvertragNutzungsfaktorInklusive1">
+
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-very-small">
+					<label for="verechnungAgenturvertragNutzungsfaktorInklusive1" class="clickAble">Ja</label>
+				</div>
+
+				<div class="layout-table-col table-formular-very-small">
+					<f:form.radio name="verechnungAgenturvertragNutzungsfaktorInklusive" value="20" class="sonstigesRadio validator_required" checked="{f:if(condition: '{auftraege.verechnungAgenturvertragNutzungsfaktorInklusive}==20', then: 'true')}" />
+					<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+						<label class="btn btn-default input-sm" data-nutzungsfaktoren-field="verechnungAgenturvertragNutzungsfaktorInklusive">
+							<input value="true" type="checkbox" id="verechnungAgenturvertragNutzungsfaktorInklusive2">
+
+							<i class="bb-circle-empty bb-lg"></i>
+							<i class="bb-circle-tick bb-lg"></i>
+
+						</label>
+					</div>
+				</div>
+				<div class="layout-table-col table-formular-very-small">
+					<label for="verechnungAgenturvertragNutzungsfaktorInklusive2" class="clickAble">Nein</label>
+				</div>
+				<div class="layout-table-col">&nbsp;</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
+<div class="form_headline">
+	<strong>Fremdkosten</strong>
+    <hr>
+</div>
+
+<div class="formular-nebenkosten-wrapper">
+			<div class="layout-table table-formular-padding ">
+            	<f:form.hidden name="changeFremdkosten" value="true" />
+            	<f:for each="{auftraege.fremdkosten}" as="kosten">
+            	<div class="layout-table-row formular-nebenkosten">
+                	<div class="layout-table-col table-formular-small-2">
+                		<f:form.textfield name="fremdkostenAnzahl[]" placeholder="0" maxlength="2" value="{kosten.anzahl}" class=" fremdkostenAnzahl touchspin_anzahl input-sm"  additionalAttributes="{autocomplete: 'off'}" />
+
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-very-small" style="text-align: center;">
+						x
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col">
+                		<f:form.textfield name="fremdkostenName[]"  value="{kosten.name}" placeholder="Artikel/Bezeichnung hier eingeben" class="form-control input-sm fremdkostenName"  />
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-small-2-90">
+
+                		<f:form.textfield name="fremdkostenPreis[]" value="{kosten.preis->f:format.number(decimals: 2, decimalSeparator: '.', thousandsSeparator: '')}" class="form-control fremdkostenPreis touchspin_preis  input-sm" additionalAttributes="{autocomplete: 'off'}" />
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-small-2-90">
+                		<f:form.textfield disabled="true" class="form-control touchspin_preissumme fremdkostenPreissumme input-sm"  />
+					</div>
+				</div>
+				</f:for>
+
+				<div class="layout-table-row formular-nebenkosten-empty hidden">
+                	<div class="layout-table-col table-formular-small-2">
+                		<f:form.textfield name="fremdkostenAnzahl[]" placeholder="0" maxlength="2" value="" class=" fremdkostenAnzahl touchspin_anzahl input-sm"  additionalAttributes="{autocomplete: 'off'}" />
+
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-very-small" style="text-align: center;">
+						x
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col">
+                		<f:form.textfield name="fremdkostenName[]"  value="" placeholder="Artikel/Bezeichnung hier eingeben" class="form-control input-sm fremdkostenName"  />
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-small-2-90">
+
+                		<f:form.textfield name="fremdkostenPreis[]" value="0" class="form-control fremdkostenPreis touchspin_preis  input-sm"  additionalAttributes="{autocomplete: 'off'}" />
+					</div>
+					<div class="layout-table-col table-formular-spacer-5"></div>
+					<div class="layout-table-col table-formular-small-2-90">
+                		<f:form.textfield disabled="true" class="form-control touchspin_preissumme fremdkostenPreissumme input-sm"  />
+					</div>
+				</div>
+
+			</div>
+			<div class="layout-table table-formular-padding " style="margin-top:10px;">
+				<div class="layout-table-row">
+					<div class="layout-table-col table-formular-spacer-5"></div>
+               		<div class="layout-table-col">
+                		<a class="fremdkostenBtnNew" href="#"><i class="bb-plus"></i><span>&nbsp;&nbsp;&nbsp;einen weiteren Eintrag hinzufügen</span></a>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		<div class="fremdkosten-verechnung-wrapper" style="display: none;">
+			<hr style="margin-bottom: 10px;">
+			<div class="layout-table table-formular-padding ">
+				<div class="layout-table-row">
+					<div class="layout-table-col" style="width:280px;">Fremdkosten in Agenturvertrag verrechnen*</div>
+
+
+					<div class="layout-table-col table-formular-very-small">
+						<f:form.radio name="verechnungAgenturvertragFremdkostenInklusive" value="10" class="sonstigesRadio validator_required" checked="{f:if(condition: '{auftraege.verechnungAgenturvertragFremdkostenInklusive}==10', then: 'true')}" />
+						<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+							<label class="btn btn-default input-sm" data-nutzungsfaktoren-field="verechnungAgenturvertragFremdkostenInklusive">
+								<input value="true" type="checkbox" id="verechnungAgenturvertragFremdkostenInklusive1">
+
+								<i class="bb-circle-empty bb-lg"></i>
+								<i class="bb-circle-tick bb-lg"></i>
+
+							</label>
+						</div>
+					</div>
+					<div class="layout-table-col table-formular-very-small">
+						<label for="verechnungAgenturvertragFremdkostenInklusive1" class="clickAble">Ja</label>
+					</div>
+
+					<div class="layout-table-col table-formular-very-small">
+						<f:form.radio name="verechnungAgenturvertragFremdkostenInklusive" value="20" class="sonstigesRadio validator_required" checked="{f:if(condition: '{auftraege.verechnungAgenturvertragFremdkostenInklusive}==20', then: 'true')}" />
+						<div class="btn-group sonstigesRadioBtn" data-toggle="buttons">
+							<label class="btn btn-default input-sm" data-nutzungsfaktoren-field="verechnungAgenturvertragFremdkostenInklusive">
+								<input value="true" type="checkbox" id="verechnungAgenturvertragFremdkostenInklusive2">
+
+								<i class="bb-circle-empty bb-lg"></i>
+								<i class="bb-circle-tick bb-lg"></i>
+
+							</label>
+						</div>
+					</div>
+					<div class="layout-table-col table-formular-very-small">
+						<label for="verechnungAgenturvertragFremdkostenInklusive2" class="clickAble">Nein</label>
+					</div>
+					<div class="layout-table-col">&nbsp;</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		</div>
+
+
+
+<f:if condition="{auftraege.uid}">
+	<f:else>
+
+		<div class="form_headline">
+			<strong>Kunden Angebot als PDF</strong>
+			<hr>
+		</div>
+
+
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+
+				<div class="layout-table-col">
+
+					<f:comment><f:form.upload id="fileUploadDateien" property="datei"></f:form.upload></f:comment>
+
+					<input id="fileUploadDateien" type="file" name="tx_dslintranet_auftragsliste[datei]">
+					<div class="fileUploadTypen"><span class="required hidden"><i class="fa fa-info-circle" aria-hidden="true"></i> Ihr Dateityp wird leider nicht unterstützt.</span></div>
+				</div>
+			</div>
+		</div>
+
+	</f:else>
+</f:if>
+
+<f:if condition="{auftraege.uid}">
+      <f:else>
+
+	<div class="form_headline">
+		<strong>Auftragsbeschreibung</strong>
+		<hr>
+	</div>
+
+
+	<f:form.textarea name="beschreibung" id="auftragEditBeschreibung" value="" />
+	<f:form.textarea name="textBeschreibung" id="auftragEditBeschreibung_temp" value="" />
+
+		  <f:comment><f:render partial="Allgemein/TinyMce" /> </f:comment>
+
+ <div class="layout-table table-formular-padding">
+	 <div class="layout-table-row">
+		 <div class="layout-table-col">
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="sichtbarkeitBeschreibung" value="1"  checked="{auftraege.sichtbarkeit}" />
+
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm" style="width:30px;">
+					<input value="1" class="" type="checkbox" checked="{auftraege.sichtbarkeit}">
+
+					<i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+
+                </label>
+            </div>
+            Sichtbar für Kunde
+		 </div>
+	 </div>
+		  </div>
+
+
+
+	</f:else>
+</f:if>
+
+
+	<div class="form_headline">
+		<strong>Interne Notizen</strong>
+		<hr>
+	</div>
+
+	<f:form.textarea name="notizenIntern" id="auftragEditNotizenIntern" value="{auftraege.notizenIntern}" />
+	<f:form.textarea name="textNotizenIntern" id="auftragEditNotizenIntern_temp" value="{auftraege.notizenIntern}" />

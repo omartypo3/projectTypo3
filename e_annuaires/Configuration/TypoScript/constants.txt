@@ -1,0 +1,41 @@
+plugin.tx_eannuaires {
+	view {
+		# cat=plugin.tx_eannuaires/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:e_annuaires/Resources/Private/Templates/
+		# cat=plugin.tx_eannuaires/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:e_annuaires/Resources/Private/Partials/
+		# cat=plugin.tx_eannuaires/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:e_annuaires/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_eannuaires//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings {
+		test = 1
+
+		# cat=plugin.tx_eannuaires/;  type=text; label= Largeur du lecteur
+		largeurLecteur = 470
+
+		# cat=plugin.tx_eannuaires/;  type=text; label= Hauteur du lecteur
+		hauteurLecteur = 320
+
+		# cat=plugin.tx_eannuaires/;  type=text; label= chemin du mini lecteur (deprecated - Flash is no longer supported)
+		# miniLecteur = EXT:e_annuaires/Resources/Public/Flash/player.swf
+	}
+}
+
+module.tx_eannuaires {
+	settings {
+		# cat=module.tx_eannuaires/;  type=text; label= Type des offres d'emploi
+		typeOffre = 5
+		# cat=module.tx_eannuaires/;  type=text; label= Type de candidatures à récupèrer dans le module
+		typeCandidature = 5
+		# cat=module.tx_eannuaires/;  type=text; label= Page pour la validation des candidatures en BE (doit juste être un pid qui existe)
+		candidaturePid = 
+		# cat=module.tx_eannuaires/;  type=text; label= Nom du fichier Zip qui sera créé pour l'export
+		zipNameForExport = export_candidatures.zip
+		# cat=module.tx_eannuaires/;  type=text; label= Nom du fichier Csv qui sera créé pour l'export
+		csvNameForExport = export_candidatures.csv
+	}
+}

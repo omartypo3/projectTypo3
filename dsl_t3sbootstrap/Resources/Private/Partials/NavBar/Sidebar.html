@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.navigation.sidebar')}">
+	<nav class="navbar {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-default', else: 'navbar-inverse')} sidebar" role="navigation">
+    
+    
+    
+    
+			<div class="navbar-header">
+				<button data-target="#sidebar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand visible-xs-inline">
+				{f:if(condition: '{data.tx_t3sbootstrap_fontawesome_icon}', then: '<i class="fa {data.tx_t3sbootstrap_fontawesome_icon}"></i>')}
+				{data.title}</a>
+			</div>
+		<div class="collapse navbar-collapse" id="sidebar-collapse">
+			<ul class="nav nav-pills  nav-stacked">
+				<f:cObject typoscriptObjectPath="lib.navigation.sidebar" />
+			</ul>
+		</div>
+	</nav>
+</f:if>
+<f:cObject typoscriptObjectPath="lib.dslintranet.maintenance" />
+</html>

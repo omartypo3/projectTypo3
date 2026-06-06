@@ -1,0 +1,8 @@
+e_magineurs.tx_egestiondocs {
+  view {
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template partials (FE)
+    layoutRootPath  = e_gestiondocs/Layouts/
+    partialRootPath = e_gestiondocs/Partials/
+    templateRootPath = e_gestiondocs/Templates/
+  }
+}

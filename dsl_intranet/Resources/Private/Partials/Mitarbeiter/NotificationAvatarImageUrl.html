@@ -1,0 +1,13 @@
+<f:if condition="{notification.cruserIsMitarbeiter}">
+	<f:then>	
+		<f:if condition="{notification.cruserMitarbeiter.avatar}">
+			{f:uri.image(src:notification.cruserMitarbeiter.avatar.originalResource.originalFile.uid,width:'120c', height:'120c')}
+		</f:if>
+	</f:then>
+	<f:else>
+		<f:if condition="{notification.cruserKunde.username}">
+			<f:then>{f:uri.image(src: 'fileadmin/kundenlogos/{notification.cruserKunde.username}.png', height:'120c', width:'120c')}</f:then>
+			<f:else>fileadmin/template/public/images/user_system.jpg</f:else>
+		</f:if>
+	</f:else>
+</f:if>

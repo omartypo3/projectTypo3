@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-31T08:03:54Z" product-name="e_news">
+		<header/>
+		<body>
+			<trans-unit id="tx_enews_domain_model_enews">
+				<source>Enews</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.placename">
+				<source>Nom Lieu</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.zipcode">
+				<source>Code Postal</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.is_event">
+				<source>cet événement</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.begindate">
+				<source>Date Debut</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.horaire_debut">
+				<source>Horaire Debut</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.finishdate">
+				<source>Date Fin</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.horaire_fin">
+				<source>Horaire Fin</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.numberpage">
+				<source>Nombre Pages</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.prix">
+				<source>Prix</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.iframe">
+				<source>Iframe</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.date_edition">
+				<source>Date Edition</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.auteur_publication">
+				<source>Auteur Publication</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.email_publication">
+				<source>Auteur Email</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.type_document">
+				<source>Type Document</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.calameo_plugin">
+				<source>Calameo Plugin</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.calameo_html">
+				<source>Calameo Html</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.bloctexte">
+				<source>Bloctexte</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.youngaudience">
+                <source>Accessible pour jeune audience?</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.freeentrance">
+                <source>Entrée libre?</source>
+            </trans-unit>
+			<trans-unit id="tx_enews_domain_model_enews.poi">
+				<source>Poi</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_bloctexte">
+				<source>Bloctexte</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_bloctexte.title">
+				<source>Titre</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_bloctexte.content">
+				<source>Contenu</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_commune">
+				<source>Commune</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_commune.title">
+				<source>Titre</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_commune.zipcode">
+				<source>Code Postal</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_commune.zipcode">
+				<source>Code Postal</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_news.validator.wrongObjectType">
+				<source>Ce n'est pas un événement.</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_news.validator.emptyTitle">
+				<source>Le titre doit être rempli.</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_news.validator.dateBeginFormat">
+				<source>La date de fin doit être supérieure à la date de début.</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_news.validator.dateFinishFormat">
+				<source>La date de fin doit être supérieure à la date de début.</source>
+			</trans-unit>
+			<trans-unit id="tx_enews_domain_model_news.validator.dateOrder">
+				<source>La date de fin doit être supérieure à la date de début.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

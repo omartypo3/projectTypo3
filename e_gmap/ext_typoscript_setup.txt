@@ -1,0 +1,27 @@
+
+backendChoosePoi = PAGE
+backendChoosePoi {
+	typeNum = 65154
+	config {
+		disableAllHeaderCode = 1
+		disablePrefixComment = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+	}
+	10 = USER_INT
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = EGmap
+		pluginName = Gmap
+		vendorName = Emagineurs
+		switchableControllerActions{
+			Map {
+				1 = map
+			}
+		}
+
+		settings < plugin.tx_egmap.settings
+		persistence < plugin.tx_egmap.persistence
+		view < plugin.tx_egmap.view
+	}
+}

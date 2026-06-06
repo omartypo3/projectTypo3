@@ -1,0 +1,24 @@
+e_magineurs.sitemap {
+	# cat = Configuration du sitemap; type=int+; label= Limit pour le sitemap
+	limit = 1000
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des actus
+	news.startingPoint = 3
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les actus
+	news.detailPid = 26
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des agenda
+	agenda.startingPoint = 4
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les agenda
+	agenda.detailPid = 28
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les galeries photos
+	tx_fsmediagallery.detailPid = 29
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des personnes
+	tx_e_annuairesPersonnes.startingPoint = 23
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les personnes
+	tx_e_annuairesPersonnes.detailPid = 61
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des lieux
+	tx_e_annuairesLieux.startingPoint = 39
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les lieux
+	tx_e_annuairesLieux.detailPid = 62
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les vidéos
+	tx_e_annuaires.videos.detailPid = 35
+}

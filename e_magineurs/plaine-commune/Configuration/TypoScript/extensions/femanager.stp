@@ -1,0 +1,85 @@
+plugin.tx_femanager {
+    view {
+        templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_femanager.view.templateRootPath}
+        partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_femanager.view.partialRootPath}
+        layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_femanager.view.layoutRootPath}
+    }
+        _LOCAL_LANG {
+        fr {
+            titleCreateProfile = Veuillez compléter les informations de votre compte.
+            submitNew = Créer mon compte
+            tx_femanager_domain_model_user.title = Nom de la structure 
+            tx_femanager_domain_model_user.company = N° Siret 
+            tx_femanager_domain_model_user.username = Nom d'utilisateur  
+            tx_femanager_domain_model_user.firstName = Prénom du responsable
+            tx_femanager_domain_model_user.lastName = Nom du responsable
+            tx_femanager_domain_model_user.password = Mot de passe
+            tx_femanager_domain_model_user.password = Mot de passe
+            passwordRepeat = Répeter le mot de passe
+            tx_femanager_domain_model_user.email = Nom d'utilisateur 
+            tx_femanager_domain_model_user.telephone = Téléphone
+            tx_femanager_domain_model_user.www = Site internet
+            tx_femanager_domain_model_user.address = Adresse de la structure
+            tx_femanager_domain_model_user.zip = Code postal de la structure
+            tx_femanager_domain_model_user.city = Ville
+            tx_femanager_domain_model_user.name = Descriptif de la structure
+            tx_femanager_domain_model_user.terms = la chartre éditoriale de plainecommune.fr
+            tx_femanager_domain_model_user.termslinktext = Cliquez ici pour les termes et conditions
+            tx_femanager_domain_model_user.lastlogin = Dernière connexion
+            tx_femanager_domain_model_user.login = Vous êtes connecté avec succès maintenant
+            tx_femanager_domain_model_user.create = Profil créé avec succès
+            tx_femanager_domain_model_user.validationErrorRequired = est requis
+            tx_femanager_domain_model_user.lastName = Nom
+            notLoggedIn = Merci de vous identifier d'abord
+        }
+    }
+    persistence.storagePid = {$e_magineurs.tx_femanager.persistence.storagePid}
+    settings {
+        # cat=plugin.tx_femanager//0100; type=text; label= Admin Name: Default admin name for all emails to the user
+        adminName = Agglo Plaine Commune
+        # cat=plugin.tx_femanager//0101; type=text; label= Admin Email: Default admin email for all emails to the user
+        adminEmail = internet@plainecommune.fr
+         new {
+            login = {$e_magineurs.tx_femanager.settings.new.login}
+            confirmByUser = {$e_magineurs.tx_femanager.settings.new.confirmByUser}
+            confirmByAdmin = {$e_magineurs.tx_femanager.settings.new.confirmByAdmin}
+             validation {
+                _enable.client = {$e_magineurs.tx_femanager.settings.new.validation.client}
+                _enable.server = {$e_magineurs.tx_femanager.settings.new.validation.server}
+                 username.required = {$e_magineurs.tx_femanager.settings.new.validation.username.required}
+                 email.uniqueInDb = {$e_magineurs.tx_femanager.settings.new.validation.email.unique}
+                 email.required = {$e_magineurs.tx_femanager.settings.new.validation.email.required}
+                 company.required = {$e_magineurs.tx_femanager.settings.new.validation.company.required}
+                 lastName.required = {$e_magineurs.tx_femanager.settings.new.validation.lastName.required}
+                 firstName.required = {$e_magineurs.tx_femanager.settings.new.validation.firstName.required}
+                 zip.required = {$e_magineurs.tx_femanager.settings.new.validation.zip.required}
+                 city.required = {$e_magineurs.tx_femanager.settings.new.validation.city.required}
+                 address.required = {$e_magineurs.tx_femanager.settings.new.validation.address.required}
+                 name.required = {$e_magineurs.tx_femanager.settings.new.validation.name.required}
+                 terms.required = {$e_magineurs.tx_femanager.settings.new.validation.terms.required}
+                 title.required = {$e_magineurs.tx_femanager.settings.new.validation.title.required}
+                 country.required = {$e_magineurs.tx_femanager.settings.new.validation.country.required}
+
+                password {
+                    required = {$e_magineurs.tx_femanager.settings.new.validation.password.required}
+                    min = {$e_magineurs.tx_femanager.settings.new.validation.password.min}
+                }
+                password_repeat.required = {$e_magineurs.tx_femanager.settings.new.validation.password_repeat.required}
+             }
+            email{
+                #Enable mail when confirm a user
+                createUserNotify{
+                    _enable = TEXT
+                    _enable.value = 1
+                }
+            }
+         }
+    }
+}
+
+page {
+    includeJSFooter {
+        femanagerValidation = {$dossierSite}/ressources/js/Validation.js
+        femanager = {$dossierSite}/ressources/js/Femanager.js
+    }
+}

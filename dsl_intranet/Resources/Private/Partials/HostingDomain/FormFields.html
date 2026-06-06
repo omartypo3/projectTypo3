@@ -1,0 +1,228 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+
+<script>
+	$('.checkboxBtn').click(function(e) {
+		
+		if($(this).children('.btn').hasClass('active')){
+
+			$(this).prev('.disableCheckbox').prop( "checked", false );
+
+		} else {
+			$(this).prev('.disableCheckbox').prop( "checked", true );
+		}
+
+	});
+
+	$('.validator_required').attr('required','required');
+
+	
+	$('.fullMonthPicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'MM/YY',
+			widgetPositioning: { horizontal: 'right' }
+		});
+	
+	$('.fullDatePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'DD.MM.YYYY',
+			widgetPositioning: { horizontal: 'right' }
+		});
+	$('.fullDatePicker,.fullDateTimePicker').datetimepicker('show');$('.fullDatePicker,.fullDateTimePicker').datetimepicker('hide');
+	$('.selectpickerFormular').selectpicker();
+	
+	$('.animated').autosize({append: "\n"});
+	
+	
+	
+	function checkGekuendigt(){
+		if($('#checkboxGekuendigt').prop('checked')){
+			$('.gekuendigtZum_wrapper').show();
+		} else {
+			$('.gekuendigtZum_wrapper').hide();
+		}
+	}
+	$('#checkboxGekuendigt~.checkboxBtn').click(function () {
+		checkGekuendigt();
+	});
+	checkGekuendigt();
+</script>
+
+
+
+
+
+
+
+<div class="layout-table table-formular-padding" id="formFieldsAktivitaet">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Domainname<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <f:form.textfield name="domainname" value="{hostingDomain.domainname}" class="form-control input-sm"  required="true"  />
+        
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">Vertragsbegin<span>*</span></div>
+        <div class="layout-table-col table-formular-medium-2">
+        	
+            
+            <div class='input-group date fullDatePicker' >
+       
+                
+                <f:form.textfield class="form-control input-sm" name="vertragsbegin" required="true"  value="{hostingDomain.vertragsbegin->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+            </div>
+                        
+            
+            
+        </div>
+        
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Tarif<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.select class="validator_required selectpicker selectpickerFormular" name="tarif" options="{tarife}" optionLabelField="titelPreisLaufzeit" value="{hostingDomain.tarif}"  data="{size:10, width:'100%', dropup-auto:'false'}" />
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Laufzeit<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    
+		    <f:form.select class="validator_required selectpicker selectpickerFormular" name="sonderlaufzeit" options="{sonderlaufzeiten}" value="{hostingDomain.sonderlaufzeit}"  data="{width:'100%', dropup-auto:'false'}" />
+		    
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Sonderpreis
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<f:form.textfield name="sonderpreisMonatlich" value="{hostingDomain.sonderpreisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}" class="form-control input-sm"    />
+        
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	nächste Fälligkeit<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    
+		    <div class='input-group date fullMonthPicker' >
+       
+                
+                <f:form.textfield class="form-control input-sm" name="faelligmonat" required="true"  value="{hostingDomain.faelligmonat->f:format.date(format: 'm/y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+				
+            </div>
+		    
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+       
+        
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	gekündigt
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    
+		
+       
+                
+                <f:form.checkbox id="checkboxGekuendigt" class="disableCheckbox" name="gekuendigt" value="1"  checked="{hostingDomain.gekuendigt}" />
+				<div class="btn-group checkboxBtn" data-toggle="buttons">
+					<label class="btn btn-default input-sm  {f:if(condition: hostingDomain.gekuendigt, then: 'active')}" style="width:60px;">
+						<input value="1" class="" type="checkbox" {f:if(condition: hostingDomain.gekuendigt, then: ' checked="checked"')} >
+						<span class="glyphicon glyphicon-ok"></span>
+					</label>
+				</div>
+                
+				
+        
+		    
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+		
+        <div class="layout-table-col table-formular-label table-formular-small-2 gekuendigtZum_wrapper">gekündigt zum</div>
+        <div class="layout-table-col table-formular-medium-2 gekuendigtZum_wrapper">
+        	
+            
+            
+            <div class='input-group date fullMonthPicker'>
+       
+                <f:if condition="{hostingDomain.gekuendigtZum}">
+					<f:then>
+                		<f:form.textfield class="form-control input-sm" name="gekuendigtZum" value="{hostingDomain.gekuendigtZum->f:format.date(format: 'm/y')}" additionalAttributes="{autocomplete: 'off'}"  />
+					</f:then>
+					<f:else>
+						<f:form.textfield class="form-control input-sm" name="gekuendigtZum" value="" additionalAttributes="{autocomplete: 'off'}"  />
+					</f:else>
+				</f:if>
+							
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+				
+            </div>
+            
+            
+        </div>
+        
+	</div>
+</div>
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Notizen
+        </div>
+        <div class="layout-table-col">
+        	
+        	<f:form.textarea name="notiz" value="{hostingDomain.notiz}" class="form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+

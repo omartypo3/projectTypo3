@@ -1,0 +1,53 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+	
+
+<div class="boxFrischeProjekte boxFullWidth lightblueContainer">
+	<h2 class="headTitle soloTitle"><center>Frische Projekte</center></h2>
+	<div class="row">
+		<div class="col-md-6 projektContainer wow fadeInLeft">
+			<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolios.0}" />
+		</div>
+		<div class="col-md-6 projektContainer wow fadeInRight">
+			<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolios.1}" />
+		</div>
+	</div>
+	<div class="row wow slideInUp">
+		<div class="col-md-4 projektContainer">
+			<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolios.2}" />
+		</div>
+		<div class="col-md-4 projektContainer">
+			<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolios.3}" />
+		</div>
+		<div class="col-md-4 projektContainer">
+			<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolios.4}" />
+		</div>
+	</div>
+<div class="container containerAlleProjekte">
+	<div class="row">
+		<div class="col-md-8"><h3 class="bbgreen">Wo diese Projekte herkommen, gibt es noch viel mehr.</h3></div>
+		<div class="col-md-4"><f:link.page pageUid="32" class="btnBig btnPfeil">weitere Projekte</f:link.page></div>
+	</div>
+</div>
+	
+	
+</div>	
+	
+
+
+</f:section>

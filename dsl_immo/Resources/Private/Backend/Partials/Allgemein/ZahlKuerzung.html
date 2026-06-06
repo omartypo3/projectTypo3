@@ -1,0 +1,8 @@
+<f:alias map="{zahl1: '{zahl},00'}">
+	<f:alias map="{zahl2: '{zahl -> f:format.currency(thousandsSeparator: \'\', decimals: \'2\', decimalSeparator: \',\')}'}">
+		<f:if condition="{zahl1} == {zahl2}">
+			<f:then>{zahl -> f:format.currency(thousandsSeparator: '', decimals: '0', currencySign: currencySign, prependCurrency: prependCurrency, thousandsSeparator: thousandsSeparator)}</f:then>
+			<f:else>{zahl -> f:format.currency(thousandsSeparator: '', decimals: '2', currencySign: currencySign, prependCurrency: prependCurrency, thousandsSeparator: thousandsSeparator, decimalSeparator: ',')}</f:else>
+		</f:if>
+	</f:alias>
+</f:alias>

@@ -1,0 +1,114 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    820,
+                    127
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Entry",
+                "objectsettings": {
+                    "addDeletedField": false,
+                    "addHiddenField": false,
+                    "addStarttimeEndtimeFields": false,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "1304694865346"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Zeitpunkt des Downloads",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "zeitpunkt",
+                            "propertyType": "NativeDateTime",
+                            "uid": "1183030515624"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Frontend Nutzer welcher die Datei heruntergeladen hat",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "feuser",
+                            "propertyType": "String",
+                            "uid": "943326610531"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "welcherbenutzergruppe der Nutzer angeh\u00f6rte",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "feusergroups",
+                            "propertyType": "String",
+                            "uid": "572035527941"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "\\TYPO3\\CMS\\Core\\Resource\\File",
+                            "lazyLoading": true,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "file",
+                            "relationType": "manyToOne",
+                            "relationWire": "",
+                            "uid": "259616621670"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "Protokollierung von Downloads \u00fcber fal_securedownload",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": ""
+        },
+        "extensionKey": "bb_downloadlog",
+        "name": "Downloadlog",
+        "originalExtensionKey": "bb_downloadlog",
+        "originalVendorName": "BravoBuero",
+        "persons": [],
+        "plugins": [],
+        "vendorName": "BravoBuero"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2017-04-18 11:34",
+        "extension_builder_version": "7.6.0",
+        "be_user": " (1)"
+    }
+}

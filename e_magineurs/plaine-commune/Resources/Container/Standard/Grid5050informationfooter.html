@@ -1,0 +1,17 @@
+<div class="row grid">
+	<div class="col-xl-6 col-lg-12 col-md-6">
+		<div class="inner inner-50 first">
+			<f:for each="{children_83}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+	<div class="col-xl-6 col-lg-12 col-md-6 ">
+		<div class="inner last nouscontacterGauche">
+			<f:link.page pageUid="38" class="btn btn-animate btn-vert"><i class="icon-Mail" aria-hidden="true"></i>Nous contacter</f:link.page>
+			<f:link.page pageUid="53" class="btn btn-animate btn-gris-fonce"><img src="{f:uri.resource(path: 'Plaine/Images/nous-contacter.png', extensionName: 'E_magineurs')}" class="icon-Mail-contact" aria-hidden="true" />Foire aux questions</f:link.page>
+		</div>
+	</div>
+</div>

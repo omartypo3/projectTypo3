@@ -1,0 +1,7 @@
+e_magineurs.tx_epoll {
+  view {
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template partials (FE)
+    partialRootPath = e_poll/Partials/
+    templateRootPath = e_poll/Templates/
+  }
+}

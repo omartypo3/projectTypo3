@@ -1,0 +1,75 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<div class="content_container_header"><span><i class="bb-document-info bb-md" aria-hidden="true"></i>Auftragsdetails</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+<div class="content_container">
+    
+    <strong>Auftragskategorie:</strong> {auftraege.auftragsart.titel}<f:if condition="{auftraege.prioritaet}"> (<f:translate key="tx_dslintranet_domain_model_auftraege.prioritaet.{auftraege.prioritaet}" />)</f:if>
+	<f:if condition="{auftraege.auftragsart.uid}==6"><br><strong>Verechnung:</strong> {f:format.date(date: auftraege.datumAbschluss, format: '%B %Y')}
+		<f:if condition="{auftraege.agenturvertragExistiert}"><f:else><br><span class="warn_meldung"><strong>Achtung kein passender Agenturvertrag gefunden!</strong></span></f:else></f:if></f:if>
+	
+	
+	<f:if condition="{auftraege.projekt}"><br><strong>Projekt:</strong> [{auftraege.projekt.nr}] {auftraege.projekt.titel}</f:if>
+	
+	
+    <br>
+    <br><strong>Auftrag vom:</strong> {f:format.date(date: auftraege.datum, format: 'd.m.Y - H:i')} Uhr
+	
+	
+	
+
+    <f:if condition="{auftraege.per}"><br><strong>Eingegangen per:</strong> <f:translate key="tx_dslintranet_domain_model_auftraege.per.{auftraege.per}" /></f:if>
+    
+    <f:if condition="{auftraege.durch}"><br><strong>Auftraggeber:</strong> {auftraege.durch}</f:if>
+	<f:if condition="{auftraege.datumfertigstellung}"><br><strong>Deadline:</strong> {f:format.date(date: auftraege.datumfertigstellung, format: 'd.m.Y - H:i')} Uhr</f:if>
+    
+    <f:if condition="{auftraege.fegroups}"><br><strong>Gruppe:</strong> <f:for each="{auftraege.fegroups}" as="group" iteration="iterator">{f:if(condition: '{iterator.isFirst}', else: ', ')} {group.title}</f:for>
+    </f:if>
+    
+	
+	<f:if condition="{auftraege.datumproduktion}"><br><br><strong>Lieferdatum ca.:</strong> {f:format.date(date: auftraege.datumproduktion, format: 'd.m.Y')}<f:if condition="{auftraege.lieferungAnKunde}"> an Kunde</f:if></f:if> 
+	
+	
+	
+		<f:comment><br><strong>Stundensatz:</strong> XXX Fehlt noch</f:comment>
+		<br><br><strong>Nutzungsfaktoren:</strong> <f:if condition="{auftraege.nutzungsFaktorNurEntwurfKreativleistung}">
+			<f:then>
+				nur Entwurf / Kreativleistung
+			</f:then>
+			<f:else>
+				
+				<div>&nbsp;Nutzungsumfang <i class="bb-arrow-right-large"></i> <f:switch expression="{auftraege.nutzungsfaktoren.umfang}">
+					<f:case value="0.2"><span title="Der Auftraggeber kann den Entwurf nutzen / der Entwerfer darf auch weiteren Personen Nutzungsrechte einräumen.">einfach</span></f:case>
+					<f:case value="1.0"><span title="Der Auftraggeber ist allein nutzungsberechtigt.">ausschließlich</span></f:case></f:switch></div>
+				<div>&nbsp;Nutzungsgebiet <i class="bb-arrow-right-large"></i><f:switch expression="{auftraege.nutzungsfaktoren.gebiet}">
+					<f:case value="0.1">regional</f:case>
+					<f:case value="0.3">national</f:case>
+					<f:case value="1.0">europaweit</f:case>
+					<f:case value="2.5">weltweit</f:case></f:switch></div>
+				<div>&nbsp;Nutzungsdauer <i class="bb-arrow-right-large"></i><f:switch expression="{auftraege.nutzungsfaktoren.dauer}">
+					<f:case value="0.1">1 Jahr</f:case>
+					<f:case value="0.3">5 Jahre</f:case>
+					<f:case value="0.5">10 Jahre</f:case>
+					<f:case value="1.5">unbegrenzt</f:case></f:switch></div>
+				<div>&nbsp;<span title="Die Vereinbarung über die Nutzungsintensität richtet sich nach der Nutzungsart (z.B. Print, Sendung, Internet) und quantitativen Faktoren wie Auflagenhöhe u.ä.">Nutzungsintensität</span> <i class="bb-arrow-right-large"></i><f:switch expression="{auftraege.nutzungsfaktoren.intensitaet}">
+					<f:case value="0.1">gering</f:case>
+					<f:case value="0.3">mittel</f:case>
+					<f:case value="0.7">groß</f:case>
+					<f:case value="1.0">umfangreich</f:case></f:switch></div>
+				<div>&nbsp;<span class="text-success"><i class="bb-arrow-right-large bb-lg" style="vertical-align: sub;"></i> <strong><f:format.number decimals="1" decimalSeparator=",">{auftraege.nutzungsfaktor}</f:format.number></strong></span>&nbsp;<f:if condition="{auftraege.auftragsart.uid} == 6">
+					<f:if condition="{auftraege.verechnungAgenturvertragNutzungsfaktorInklusive}">
+						
+						<f:if condition="{auftraege.verechnungAgenturvertragNutzungsfaktorInklusive} == 10">
+							<f:then> (verechnung über den Agenturvertrag)</f:then>
+							<f:else> (keine Verechnung über den Agenturvertrag)</f:else>
+						</f:if>
+						
+					</f:if>
+				</f:if></div>
+			</f:else>
+			
+		</f:if>
+	
+    
+</div>

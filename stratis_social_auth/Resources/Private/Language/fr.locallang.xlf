@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2018-07-16T17:48:25Z" product-name="stratis_social_auth">
+		<header/>
+		<body>
+			<!-- Errors -->
+			<trans-unit id="hybridauth.error.0" approved="yes">
+				<target state="translated">Erreur non spécifiée.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.1" approved="yes">
+				<target state="translated">Erreur de configuration de Hybriauth.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.2" approved="yes">
+				<target state="translated">Le fournisseur n'est pas correctement configuré.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.3" approved="yes">
+				<target state="translated">Le fournisseur est inconnu.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.4" approved="yes">
+				<target state="translated">Les informations d'identification de l'application du fournisseur sont manquantes.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.5" approved="yes">
+				<target state="translated">L'utilisateur a annulé l'authentification ou le fournisseur a refusé la connexion.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.6" approved="yes">
+				<target state="translated">La demande de profil d'utilisateur a échoué. L'utilisateur n'est probablement pas connecté au fournisseur et il devrait s'authentifier à nouveau.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.7" approved="yes">
+				<target state="translated">L'utilisateur n'est pas connecté au fournisseur.</target>
+			</trans-unit>
+			<trans-unit id="hybridauth.error" approved="yes">
+				<target state="translated">Authentification de réseau social : erreur inconnue</target>
+			</trans-unit>
+
+			<!-- Bind user with social accounts -->
+			<trans-unit id="bind.success" approved="yes">
+				<target state="translated">Le nouveau compte a été lié avec succès au profil utilisateur</target>
+			</trans-unit>
+			<trans-unit id="bind.alreadyExist" approved="yes">
+				<target state="translated">Ce compte social était déjà lié au profil utilisateur</target>
+			</trans-unit>
+			<trans-unit id="bind.noLocalAuth" approved="yes">
+				<target state="translated">Seuls les utilisateurs authentifiés sont autorisés à lier les comptes</target>
+			</trans-unit>
+			<trans-unit id="bind.noExternalAuth" approved="yes">
+				<target state="translated">Vous devez être authentifié sur le service social à lier</target>
+			</trans-unit>
+
+			<!-- Providers names for FE-->
+			<trans-unit id="provider.Facebook" approved="yes">
+				<target state="translated">Facebook</target>
+			</trans-unit>
+			<trans-unit id="provider.FranceConnect" approved="yes">
+				<target state="translated">FranceConnect</target>
+			</trans-unit>
+			<trans-unit id="provider.Google" approved="yes">
+				<target state="translated">Google</target>
+			</trans-unit>
+
+			<!-- Buttons-->
+			<trans-unit id="buttons.logout" approved="yes">
+				<target state="translated">Déconnexion</target>
+			</trans-unit>
+			<trans-unit id="buttons.bind" approved="yes">
+				<target state="translated">Connect</target>
+			</trans-unit>
+
+			<!-- Notifications-->
+			<trans-unit id="notifications.passwordChangeRequired" approved="yes">
+				<target state="translated">Votre email n'a pas été défini lors de l'authentification. Par conséquent, nous n'avons pas été en mesure de vous envoyer votre mot de passe. Veuillez configurer votre email afin de pouvoir vous authentifier avec d'autres services externes. Veuillez changer votre mot de passe pour pouvoir utiliser le formulaire de connexion.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

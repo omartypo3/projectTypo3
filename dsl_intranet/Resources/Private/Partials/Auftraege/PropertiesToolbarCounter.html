@@ -1,0 +1,43 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<div id="stoppuhr_{auftraege.uid}" class="stoppuhren" data-auftraege-uid="{auftraege.uid}">
+
+	<div class="layout-table table-toolbar">
+		<div class="layout-table-row">
+	        <div class="layout-table-col table-toolbar-col-counter-toggle-btn">
+           		
+           		<f:if condition="{validToTrack}">
+           			<f:then>
+           				<a onclick="toggleStoppuhr('#stoppuhr_{auftraege.uid}');return false;" class="toggleStoppuhr" href="#"><i class="bb-play bb-xxxl text-primary" aria-hidden="true"></i><i class="bb-break bb-xxxl text-danger" aria-hidden="true"></i></a>
+					</f:then>
+           			<f:else>
+						<f:link.action controller="Zeiteintraege" pluginName="auftragsliste" extensionName="dslintranet" action="edit" arguments="{zeiteintraege : tracker}" class="doAjaxEdit saveStoppuhr toggleStoppuhr" additionalAttributes="{ data-ajax-action: 'saveStoppuhr',data-colorbox-width: '650px', data-colorbox-height: '800px' }"><i class="bb-disk bb-xxxl text-primary"></i></f:link.action>
+						
+					</f:else>
+          		</f:if>
+            </div>
+    		<div class="layout-table-col">
+    			<div class="container-counter">
+                    <div id="stoppuhr_{auftraege.uid}_clock" class="stoppuhr_init" data-kontingent="{tracker.trackerSeconds}" data-zeitnahme="{f:if(condition: '{tracker.lastTrackerSegmente.opened}', then: '1', else: '0')}"></div>
+                </div>
+				
+             </div>
+             <div class="layout-table-col table-toolbar-col-counter-btn">
+                    
+            	<f:render partial="Auftraege/PropertiesToolbarCounterBtn" arguments="{_all}" />
+		
+			</div>
+
+
+		</div>
+
+
+	</div>
+</div>    
+
+<script> 
+var stoppuhrAuftraege = '#stoppuhr_{auftraege.uid}';
+$(document).ready(function() { 
+	initStoppuhr(stoppuhrAuftraege); 
+	}); 
+</script>

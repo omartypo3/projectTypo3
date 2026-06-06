@@ -1,0 +1,157 @@
+tt_content.gridelements_pi1.variables.content.10.setup {
+    1 < .101
+    1.cObject.templateName = Grid333333informationfooter
+    2 < .101
+    2.cObject.templateName = Grid5050informationfooter
+    3 < .101
+    3.cObject.templateName = Info_bulle
+    4 < .101
+    4.cObject.templateName = Grid25252525
+}
+
+##########################################
+# TYPO3 Container Layouts
+##########################################
+
+tt_content {
+  grid_101 =< lib.contentElement
+  grid_101 {
+    templateName = Grid5050
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        10 = B13\Container\DataProcessing\ContainerProcessor
+        10 {
+            colPos = 10
+            as = children_10
+           } 
+        11 = B13\Container\DataProcessing\ContainerProcessor
+        11 {
+            colPos = 11
+            as = children_11
+           }
+     }
+  }
+
+  grid_102 =< lib.contentElement
+  grid_102 {
+    templateName = Grid2575
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        20 = B13\Container\DataProcessing\ContainerProcessor
+        20 {
+            colPos = 20
+            as = children_20
+           } 
+        21 = B13\Container\DataProcessing\ContainerProcessor
+        21 {
+            colPos = 21
+            as = children_21
+           }
+     }
+  }
+
+  grid_103 =< lib.contentElement
+  grid_103 {
+    templateName = Grid7525
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        30 = B13\Container\DataProcessing\ContainerProcessor
+        30 {
+            colPos = 30
+            as = children_30
+           } 
+        31 = B13\Container\DataProcessing\ContainerProcessor
+        31 {
+            colPos = 31
+            as = children_31
+           }
+     }
+  }
+
+  grid_104 =< lib.contentElement
+  grid_104 {
+    templateName = Grid3366
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        40 = B13\Container\DataProcessing\ContainerProcessor
+        40 {
+            colPos = 40
+            as = children_40
+           } 
+        41 = B13\Container\DataProcessing\ContainerProcessor
+        41 {
+            colPos = 41
+            as = children_41
+           }
+     }
+  }
+
+  grid_105 =< lib.contentElement
+  grid_105 {
+    templateName = Grid6633
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        50 = B13\Container\DataProcessing\ContainerProcessor
+        50 {
+            colPos = 50
+            as = children_50
+           } 
+        51 = B13\Container\DataProcessing\ContainerProcessor
+        51 {
+            colPos = 51
+            as = children_51
+           }
+     }
+  }
+
+  grid_106 =< lib.contentElement
+  grid_106 {
+    templateName = Grid333333
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        60 = B13\Container\DataProcessing\ContainerProcessor
+        60 {
+            colPos = 60
+            as = children_60
+           } 
+        61 = B13\Container\DataProcessing\ContainerProcessor
+        61 {
+            colPos = 61
+            as = children_61
+           } 
+        62 = B13\Container\DataProcessing\ContainerProcessor
+        62 {
+            colPos = 62
+            as = children_62
+           } 
+    }
+  }
+
+  grid_107 =< lib.contentElement
+  grid_107 {
+    templateName = Grid100
+    templateRootPaths {
+      10 = EXT:e_magineurs/site-factory/Resources/Container/Standard/
+    }
+    dataProcessing {
+        70 = B13\Container\DataProcessing\ContainerProcessor
+        70 {
+            colPos = 70
+            as = children_70
+          } 
+    }
+  }
+}
+

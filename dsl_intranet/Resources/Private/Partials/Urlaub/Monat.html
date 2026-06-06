@@ -1,0 +1,12 @@
+
+<table class="monatUrlaub" cellpadding="0" cellspacing="0" border="0">
+	<tr><th>&nbsp;</th><th class="wochentagHeadline">Mo</th><th class="wochentagHeadline">Di</th><th class="wochentagHeadline">Mi</th><th class="wochentagHeadline">Do</th><th class="wochentagHeadline">Fr</th><th class="wochentagHeadline">Sa</th><th class="wochentagHeadline">So</th></tr>
+	
+	<f:for each="{monat}" as="tage" key="wochennummer">
+		<tr>
+			<td class="monatWochennummer">{wochennummer}</td>
+			<f:for each="{tage}" as="tag" key="wochentag"><td class="tooltipUrlaub{f:if(condition: '{tag.filledDay}', then: ' filledDay')}{f:if(condition: '{tag.weekendDay}', then: ' weekendDay')}{f:if(condition: '{tag.feiertag}', then: ' feiertag')}{f:if(condition: '{tag.ferientag}', then: ' ferientag')}{f:if(condition: '{tag.today}', then: ' today')}{f:if(condition: '{f:count(subject: tag.termine.20)}', then: ' termin')}{f:if(condition: '{f:count(subject: tag.termine.20)}>1', then: ' termine')}{f:if(condition: '{f:count(subject: tag.termine.10)}', then: ' terminAnfrage')}{f:if(condition: '{f:count(subject: tag.termine.20)}==1', then: ' mitarbeiterBackgroundColor mitarbeiterBorderBottomColor')}" data-mitarbeiter-uid="{f:if(condition: '{f:count(subject: tag.termine.20)}==1', then: tag.termine.20.0.mitarbeiter.uid)}" >{tag.datum -> f:format.date(format: 'd')}<f:render partial="Urlaub/Tooltip" arguments="{_all}" /></td></f:for>
+		</tr>
+
+	</f:for>
+</table>

@@ -1,0 +1,81 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+	
+	<div id="uploadOverlay">
+	<div id="uploadOverlayText"><div id="messages"><div id="uploadInformation"></div></div></div>
+</div>
+<v:asset.style name="cssUOL">
+	#messages{
+		min-width:350px;
+	}
+	body.filedragAbsolute #filedrag{
+		z-index:9999;position:absolute;background-color:#fff;right:20px;
+	}
+	#uploadInformation{
+		font-weight:bold;
+		font-size:16px;
+		padding-left:10px;
+	}
+	.fileSizeRemainingWrapper{
+		font-size:12px;
+		color:#999999;
+	}
+	#filedragWrapperProgress #filedrag{
+		display:block !important;
+		float:none;
+	margin:10px !important;
+	}
+	#uploadOverlay {
+		position: fixed; /* Sit on top of the page content */
+		display: none; /* Hidden by default */
+		width: 100%; /* Full width (cover the whole page) */
+		height: 100%; /* Full height (cover the whole page) */
+		top: 0; 
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+		z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+		cursor: pointer; /* Add a pointer on hover */
+	}
+	#uploadOverlayText{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		font-size: 14px;
+		color: white;
+		transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+	
+		background-color:#fff;
+		border:1px solid #dddddd;
+		padding:5px;
+		color:#333333;
+	
+		
+	
+	}
+	.fileuploadPending hr{
+		margin-top:5px;
+		margin-bottom:5px;
+		border-top-color:#999999;
+	}
+	.fileuploadPending p{
+		margin-bottom:5px;
+	}
+	.fileuploadPending{
+		padding-left:10px;padding-right:10px;
+	}
+	
+	.fileuploadPending:not(.askForProceed) .proceedCont{
+		display:none;
+	}
+	.fileExists{
+		color:#eb6619;
+	}
+	.btn-middle{
+		margin-left:5px !important;
+		margin-right:5px !important;
+	}
+</v:asset.style>
+	
+</html>

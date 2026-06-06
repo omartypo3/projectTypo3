@@ -1,0 +1,20 @@
+plugin.tx_dpnglossary {
+	settings {
+		disableParser = true
+	}
+}
+
+plugin.tx_stratisdpnglossary {
+	view {
+		partialRootPaths {
+			100 = EXT:e_magineurs/Resources/Private/Partials/
+		}
+	}
+}
+
+tt_content.stratisdpnglossary_plugindpnglossaryfiltering {
+	settings {
+		source = {$e_magineurs.tx_dpnglossary.contentElementFilteringSource}
+	}
+}
+    

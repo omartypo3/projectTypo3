@@ -1,0 +1,31 @@
+{namespace enews=Emagineurs\ENews\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <f:form object="{searchObjet}" name="search" pageUid="{settings.resultPid}" class="rechercheFiltre clearfix">
+        <fieldset>
+            <div class="keyWord">
+                <label for="keyWord">Texte</label>
+                <f:form.textfield property="titre" id="keyWord" />
+            </div>
+            <div class="categorie">
+                <label for="categorie">Catégorie</label>
+                <f:switch expression="{settings.templateLayoutSearch}">
+                    <f:case value="1">
+                        <enews:select property="categoryLieu" options="{categoryLieu}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                    <f:case value="30">
+                        <enews:select property="categoryPersonne" options="{categoryPersonne}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                    <f:case value="40">
+                        <enews:select property="categoryVideo" options="{categoryVideo}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                    <f:case value="">
+                        <enews:select property="categoryGeneral" options="{categoryGeneral}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                </f:switch>
+            </div>
+            <f:form.submit value="Rechercher" />
+        </fieldset>
+    </f:form>                       
+</f:section> 

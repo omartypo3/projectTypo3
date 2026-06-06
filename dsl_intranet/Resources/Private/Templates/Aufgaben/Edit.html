@@ -1,0 +1,90 @@
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Aufgaben" action="update" name="aufgaben" object="{aufgaben}" pluginName="wochenlisteaufgabenplatzierung" extensionName="dslintranet" id="aufgabenEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Aufgabe Bearbeiten'}" />
+
+
+<script>
+
+
+
+	$(document).ready(function() {
+
+
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#aufgabenEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				validateFormInvalidHandlerReset();
+				$('#aufgabenEditForm').addClass('formSaves');
+			
+				$.ajax({
+					url: $('#aufgabenEditForm').attr('action'),
+					type: 'POST',
+					data: $('#aufgabenEditForm').serialize(),
+					success: function(data) {
+
+
+						dataJson = JSON.parse(data);
+						$('#wochenplanung_kalender').fullCalendar('removeEvents', dataJson['id']);
+						$('#wochenplanung_kalender').fullCalendar( 'renderEvent',  dataJson);
+
+
+						$.colorbox.close();
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		
+	});
+
+
+
+
+	
+</script>
+
+
+
+	<f:render partial="FormErrors" arguments="{object:Aufgaben}" />
+
+<f:render partial="Aufgaben/FormFields" arguments="{_all}" />
+
+
+
+    
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />      
+    
+</f:form>
+
+</f:section>

@@ -1,0 +1,23 @@
+<div class="frischesProjekt" id=""><div class="absolute"><span class="ptAnker" id="pt{portfolio.uid}"></span></div>
+	<f:if condition="{portfolio.teaserBild.0.originalResource.originalFile.uid}">
+		<f:then>
+			<f:image class="imagePreloader" src="{portfolio.teaserBild.0.originalResource.originalFile.uid}"  alt="{portfolio.titel}" width="1440c" height="810c"  />
+		</f:then>
+		<f:else>
+			<f:image src="fileadmin/template_web/Public/Images/empty_teaser.jpg" />
+		</f:else>
+	</f:if>
+	<div class="projekteOverlayText">
+		
+		<p class="headline projekteTitel">{portfolio.titel}</p>
+		<p class="projekteKunde">{portfolio.kundenname}</p>
+		
+		<f:if condition="{0:'{selectedKategorie}{selectedHashtag}{selectedKunde}{selectedOffset}'} != {0:''}">
+			<f:then><f:link.action rel="nofollow" pageUid="32" action="detail" arguments="{portfolio : portfolio, kategorien: selectedKategorie, hashtags: selectedHashtag, kunden: selectedKunde}" class="btnBig btnWhite"  rel="nofollow" >Projekt ansehen</f:link.action></f:then>
+			<f:else><f:link.action rel="nofollow" pageUid="32" action="detail" arguments="{portfolio : portfolio}" class="btnBig btnWhite">Projekt ansehen</f:link.action></f:else>
+		</f:if>
+		
+		
+	</div>
+	<div class="projekteOverlay kundePrimaerFarbeBackground{portfolio.kunde.uid}">&nbsp;</div>
+</div>

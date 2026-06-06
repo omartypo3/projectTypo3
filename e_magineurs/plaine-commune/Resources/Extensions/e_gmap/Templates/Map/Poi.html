@@ -1,0 +1,101 @@
+<f:comment>Possible de mettre deux structures: 
+	soit data/content -> pour une infobulle simple
+	soit data/tab/content -> chaque tab sera un tab dans l'infobulle
+	
+		L'essentiel :
+		Nom   								{infos.name}
+		Titre   							{infos.title}
+		Société   							{infos.society}
+		Notes   							{infos.note}
+		Lien   								{infos.link}
+		Lien "y aller / en partir" pour accéder au moteur de recherche d'itinéraire pré-rempli
+											{infos.nom}
+	Coordonnées :
+		Adresse   							{infos.address}
+		Code postal   						{infos.zip}
+		Ville    							{infos.city}
+		Pays   								{infos.country}
+		Téléphone fixe   					{infos.phone}
+		Téléphone portable   				{infos.cellphone}
+		Téléphone fax   					{infos.fax}
+		Site web   							{infos.website}
+		Courriel   							{infos.mail}
+	Services :
+		Données internes   					{infos.data}
+	Médias :
+		Image (avec taille maximum définie) {infos.image}
+		Téléchargement   					{infos.file}
+		Bloc HTML   						{infos.html}
+</f:comment>
+<data>
+	<key>{key}</key>
+	<uid>{infos.uid}</uid>
+	<type>{type}</type>
+	<title>{infos.title}</title>
+	<movePoint>{movePoint}</movePoint>
+	<savePoint>{savePoint}</savePoint>
+	<editPoint>{editPoint}</editPoint>
+	<content>
+		<f:format.cdata>
+			<div class="infobulle_carto">
+				<f:if condition="{infos.image}">
+					<f:image src="{infos.image.originalResource.publicUrl}" width="280c" height="160c" treatIdAsReference="1" />
+				</f:if>	
+				<h3 class="title">{infos.name}</h3>
+				<p class="itineraire"><a href="https://www.google.fr/maps/dir//{infos.lat},{infos.lng}" target="_blank">M'y rendre</a></p>
+				<f:if condition="{infos.note}" >
+					<p>{infos.note}</p>
+				</f:if>
+				<f:if condition="{infos.society} || {infos.address} || {infos.zip} || {infos.city} || {infos.country}" >
+					<p class="icone adresse">
+						<f:if condition="{infos.society}" >
+							<span>{infos.society}</span>, 
+						</f:if>
+						<f:if condition="{infos.address}" >
+							<span>{infos.address}</span>
+						</f:if>
+						<f:if condition="{infos.zip}" >
+							, <span>{infos.zip}</span>
+						</f:if>
+						<f:if condition="{infos.city}" >
+							<span>{infos.city}</span>
+						</f:if>
+						<f:if condition="{infos.country}" >
+							, <span>{infos.country}</span>
+						</f:if>
+					</p>
+				</f:if>	
+				<f:if condition="{infos.phone}" >
+					<p class="icone phone">{infos.phone}</p>
+				</f:if>
+				<f:if condition="{infos.cellphone}" >
+					<p class="icone cellphone">{infos.cellphone}</p>
+				</f:if>
+				<f:if condition="{infos.fax}" >
+					<p class="icone fax">{infos.fax}</p>
+				</f:if>
+				<f:if condition="{infos.mail}">
+					<p class="icone mail">
+						<f:link.email email="{infos.mail}">Nous contacter</f:link.email>
+					</p>
+				</f:if>
+				<f:if condition="{infos.website}">
+					<p class="icone web">
+						<f:link.external uri="{infos.website}" target="_blank">Site web</f:link.external>
+					</p>
+				</f:if>
+				<f:if condition="{infos.file}" >
+					<p class="icone file"><a class="related-files-link" href="{infos.file.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+						{f:if(condition:infos.file.originalResource.title, then:infos.file.originalResource.title, else:infos.file.originalResource.name)}
+						<f:if condition="{infos.file.originalResource.size} > 0">
+							<span class="files-size"> ({infos.file.originalResource.size -> f:format.bytes()})</span>
+						</f:if>
+					</a></p>
+				</f:if>
+				<f:if condition="{infos.html}">
+					<f:format.raw>{infos.html}</f:format.raw>
+				</f:if>
+			</div>
+		</f:format.cdata>
+	</content>
+</data>

@@ -1,0 +1,108 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<div class="form_headline">
+	<strong>Aktivität</strong> 
+    <hr>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="layout-table table-formular-padding" id="formFieldsAktivitaet">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Startdatum<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullDatePicker'>
+       
+                
+                <f:form.textfield class="form-control input-sm" name="begin" required="true"  value="{zeiteintraege.begin->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+            </div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">Sichtbarkeit</div>
+        <div class="layout-table-col table-formular-medium-2">
+        	
+            
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="sichtbarkeit" value="1"  checked="{auftraege.sichtbarkeit}" />
+                        
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm btnDisabled" style="width:60px;">
+					<f:comment><!--<input value="1" class="" type="checkbox" checked="{auftraege.sichtbarkeit}">--></f:comment>
+					
+                    <i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+                </label>
+            </div>
+            
+        </div>
+        
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Startzeit<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullTimePicker'>
+       
+                
+                <f:form.textfield class="form-control input-sm" id="formBeginTime{zeiteintraege.uid}" name="beginTime" required="true"  value="{zeiteintraege.begin->f:format.date(format: 'H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-clock bb-lg"></i>
+                </span>
+                
+            </div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Endzeit <span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<div class='input-group date fullTimePicker'>
+       
+                
+                <f:form.textfield class="form-control input-sm" id="formEndTime{zeiteintraege.uid}" name="endTime" required="true"  value="{zeiteintraege.end->f:format.date(format: 'H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-clock bb-lg"></i>
+                </span>
+                
+            </div>
+        </div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	berechnete Zeit
+        </div>
+        <div class="layout-table-col table-formular-large">
+			<strong id="minutenGesamtText"><f:render partial="Allgemein/Dauer" arguments="{set: '{dsl:getSetArrayFromTime(time: zeiteintraege.kontingent)}' }" /></strong>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        
+	</div>
+</div>
+
+
+<f:form.hidden class="form-control input-sm" id="minutenGesamt" value="{zeiteintraege.kontingent}" />
+
+
+
+
+
+
+
+

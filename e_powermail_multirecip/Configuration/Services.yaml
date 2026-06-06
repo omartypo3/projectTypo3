@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EPowermailMultirecip\EventListener\SendMailServiceEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'e-powermail-multirecip/send-mail-before-send'
+        method: 'modifyMailBeforeSend'
+        event: In2code\Powermail\Events\SendMailServicePowermailSendEvent
+

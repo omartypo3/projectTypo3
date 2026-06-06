@@ -1,0 +1,1506 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-03T13:31:30Z" product-name="dsl_intranet">
+		<header/>
+		<body>
+			<trans-unit id="tx_dsl_intranet_domain_model_mitarbeiterliste">
+				<source>Mitarbeiterliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_mitarbeiterliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenliste">
+				<source>Kundenliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_auftragsliste">
+				<source>Auftragsliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_auftragsliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_wochenlisteaufgabenplatzierung">
+				<source>Wochenliste/Aufgabenplatzierung</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_wochenlisteaufgabenplatzierung.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_urlaubsliste">
+				<source>Urlaubsliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_urlaubsliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_hostingliste">
+				<source>Hostingliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_hostingliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenlogin">
+				<source>Kundenlogin</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenlogin.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_maintenance">
+				<source>Maintenance</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_maintenance.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_wartungsliste">
+				<source>Wartungsliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_wartungsliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_avatar">
+				<source>Avatar</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_avatar.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenhome">
+				<source>Kundenhome</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenhome.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_downloadcenter">
+				<source>Downloadcenter</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_downloadcenter.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_notificationcenter">
+				<source>Notificationsenter</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_notificationcenter.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_agenturvertragsliste">
+				<source>Agenturvertragsliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_agenturvertragsliste.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_icalaufgaben">
+				<source>IcalAufgaben</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_icalaufgaben.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenagenturvertraege">
+				<source>KundenAgenturvertraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenagenturvertraege.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_benutzeravatar">
+				<source>BenutzerAvatar</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_benutzeravatar.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundendateien">
+				<source>KundenDateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundendateien.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenenvironment">
+				<source>KundenEnvironment</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenenvironment.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_ablage">
+				<source>Ablage</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_ablage.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_autologin">
+				<source>Autologin</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_autologin.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_news">
+				<source>News</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_news.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundennews">
+				<source>KundenNews</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundennews.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_mitarbeiter.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_splitpaneprojekte">
+				<source>Splitpaneprojekte</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_splitpaneprojekte.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenstammdaten">
+				<source>KundenStammdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_kundenstammdaten.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_protokollependingmailer">
+				<source>ProtokollePendingMailer</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_intranet_domain_model_protokollependingmailer.description">
+				<source>Intranet.</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.mobilephone">
+				<source>Mobilephone</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.spitzname">
+				<source>Spitzname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.initialien">
+				<source>Initialien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.arbeitsbegin">
+				<source>Arbeitsbegin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.arbeitsende">
+				<source>Arbeitsende</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.autostop">
+				<source>Autostop</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.kontingent_mehraufwand">
+				<source>Kontingent Mehraufwand</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.farbe">
+				<source>Farbe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.rechte">
+				<source>Rechte</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.urlaubstage_pro_jahr">
+				<source>Urlaubstage Pro Jahr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_mitarbeiter.urlaubstage_verbraucht">
+				<source>Urlaubstage Verbraucht</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden">
+				<source>Kunden</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.nummer">
+				<source>Nummer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qbrefnum">
+				<source>Qbrefnum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qbbaddr">
+				<source>Qbbaddr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.notizen">
+				<source>Notizen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.spitzname">
+				<source>Spitzname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.initialien">
+				<source>Initialien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.freigaben">
+				<source>Freigaben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.history">
+				<source>History</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_email">
+				<source>Qb Email</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_einv_email">
+				<source>Qb Einv Email</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_cont">
+				<source>Qb Cont</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_anrede">
+				<source>Qb Anrede</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_firstname">
+				<source>Qb Firstname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_lastname">
+				<source>Qb Lastname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_street">
+				<source>Qb Street</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_postal">
+				<source>Qb Postal</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_city">
+				<source>Qb City</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_phone">
+				<source>Qb Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_fax">
+				<source>Qb Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_cont2">
+				<source>Qb Cont2</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_phone2">
+				<source>Qb Phone2</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.autologin">
+				<source>Autologin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.email_rechnungen">
+				<source>Email Rechnungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.email_angebote">
+				<source>Email Angebote</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.newsletter">
+				<source>Newsletter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.email_newsletter">
+				<source>Email Newsletter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_kto_inh">
+				<source>Qb Kto Inh</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_bic">
+				<source>Qb Bic</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_iban">
+				<source>Qb Iban</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_bank">
+				<source>Qb Bank</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.pic_drop_zugangscode">
+				<source>Pic Drop Zugangscode</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.passwort_kopie">
+				<source>Passwort Kopie</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.qb_company">
+				<source>Qb Company</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kunden.dateien">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer">
+				<source>Benutzer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_hosting">
+				<source>Settings Hosting</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.geoeffneter_auftrag">
+				<source>Geoeffneter Auftrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_aufgaben">
+				<source>Settings Aufgaben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_dateien">
+				<source>Settings Dateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.avatar">
+				<source>Avatar</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_agenturauftrag">
+				<source>Settings Agenturauftrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_ablage">
+				<source>Settings Ablage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_kanban">
+				<source>Settings Kanban</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_allgemein">
+				<source>Settings Allgemein</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.settings_kunden">
+				<source>Settings Kunden</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.offene_auftraege">
+				<source>Offene Auftraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_benutzer.ablage">
+				<source>Ablage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege">
+				<source>Auftraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.datum">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet">
+				<source>Prioritaet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.10">
+				<source>A</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.20">
+				<source>B</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.30">
+				<source>C</source>
+			</trans-unit>			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.datumfertigstellung">
+				<source>Datumfertigstellung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.datumproduktion">
+				<source>Lieferdatum ca.</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.phasen_kontingent">
+				<source>Phasen Kontingent</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.sichtbarkeit">
+				<source>Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kontingent">
+				<source>Kontingent</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per">
+				<source>Per</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.durch">
+				<source>Durch</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.oldid">
+				<source>Oldid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.festpreis">
+				<source>Projektpreis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.fremdkosten_summe">
+				<source>Fremdkosten Summe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.datum_abschluss">
+				<source>Datum Abschluss</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.nutzungs_faktor_nur_entwurf_kreativleistung">
+				<source>Nutzungs Faktor Nur Entwurf Kreativleistung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.lieferung_an_kunde">
+				<source>Direktlieferung an den Kunden</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.nutzungs_faktoren">
+				<source>Nutzungs Faktoren</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.stundensatz">
+				<source>Stundensatz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.stundensatz_agenturvertrag">
+				<source>StundensatzAgenturvertrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.phasen_stundensatz">
+				<source>Phasen Stundensatz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.notizen_intern">
+				<source>Notizen Intern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.verechnung_agenturvertrag_fremdkosten_inklusive">
+				<source>Verechnung Agenturvertrag Fremdkosten Inklusive</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.verechnung_agenturvertrag_nutzungsfaktor_inklusive">
+				<source>Verechnung Agenturvertrag Nutzungsfaktor Inklusive</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kunde">
+				<source>Kunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.zeiten">
+				<source>Zeiten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.auftragsart">
+				<source>Auftragsart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.phasen">
+				<source>Phasen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.dateien">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.ansprechpartner">
+				<source>Ansprechpartner</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.texte">
+				<source>Texte</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.fegroups">
+				<source>Fegroups</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.fremdkosten">
+				<source>Fremdkosten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.lieferanten">
+				<source>Lieferanten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben">
+				<source>Aufgaben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.begin">
+				<source>Begin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.erledigt">
+				<source>Erledigt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.auftrag">
+				<source>Auftrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_aufgaben.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege">
+				<source>Zeiteintraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.begin">
+				<source>Begin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.kontingent">
+				<source>Kontingent</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.zeitnahme">
+				<source>Zeitnahme</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.oldid">
+				<source>Oldid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.sichtbarkeit">
+				<source>Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.zeitnahme_auto_stopped">
+				<source>Zeitnahme Auto Stopped</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.phase">
+				<source>Phase</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.tracker">
+				<source>Tracker</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraege.segmente">
+				<source>Segmente</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftragsarten">
+				<source>Auftragsarten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftragsarten.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_phasen">
+				<source>Phasen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_phasen.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_phasen.color">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_phasen.highlightcolor">
+				<source>Highlightcolor</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_phasen.icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_phasen.titel_kurz">
+				<source>Titel Kurz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle">
+				<source>Protokolle</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.aktion">
+				<source>Aktion</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.kundeninfo_time">
+				<source>Kundeninfo Time</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.kundeninfo_mail">
+				<source>Kundeninfo Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.notiz_system">
+				<source>Notiz System</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.zeitpunkt">
+				<source>Zeitpunkt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.kundeninfo_sichtbarkeit">
+				<source>Kundeninfo Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.auftrag_status_alt">
+				<source>Auftrag Status Alt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.auftrag_status_neu">
+				<source>Auftrag Status Neu</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.auftrag">
+				<source>Auftrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.datei">
+				<source>Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.pending">
+				<source>Pending</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokolle.agenturvertrag">
+				<source>Agenturvertrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.datei">
+				<source>Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.sichtbarkeit">
+				<source>Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_datei_name">
+				<source>Temp Datei Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_datei_groesse">
+				<source>Temp Datei Groesse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_kunden_name">
+				<source>Temp Kunden Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_type">
+				<source>Temp Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_kunden_nummer">
+				<source>Temp Kunden Nummer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_timestamp">
+				<source>Temp Timestamp</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.temp_rechnungsnummer">
+				<source>Temp Rechnungsnummer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub">
+				<source>Urlaub</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.begin">
+				<source>Begin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.tage">
+				<source>Tage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.tage_resturlaub">
+				<source>Tage Resturlaub</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.oldid">
+				<source>Oldid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.sonstiges">
+				<source>Sonstiges</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife">
+				<source>Tarife</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit">
+				<source>Laufzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.preis_monatlich">
+				<source>Preis Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting">
+				<source>Hosting</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.benutzername">
+				<source>Benutzername</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.kennwort">
+				<source>Kennwort</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statistik">
+				<source>Statistik</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.oldid">
+				<source>Oldid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.kunde">
+				<source>Kunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.haupt_tarif">
+				<source>Haupt Tarif</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.zusatz_leistungen">
+				<source>Zusatz Leistungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.zusatz_tarif">
+				<source>Zusatz Tarif</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains">
+				<source>Hosting Domains</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.domainname">
+				<source>Domainname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.sonderpreis_monatlich">
+				<source>Sonderpreis Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.gekuendigt">
+				<source>Gekuendigt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.vertragsbegin">
+				<source>Vertragsbegin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.bezahltbis">
+				<source>Bezahltbis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.oldid">
+				<source>Oldid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.sonderlaufzeit">
+				<source>Sonderlaufzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.tarif">
+				<source>Tarif</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.rechnungen">
+				<source>Rechnungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingdomains.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen">
+				<source>Hosting Tarif Rechnungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.von">
+				<source>Von</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.bis">
+				<source>Bis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.preis">
+				<source>Preis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.tarif">
+				<source>Tarif</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.domainname">
+				<source>Domainname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingtarifrechnungen.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen">
+				<source>Zusatzleistungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit">
+				<source>Laufzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.preis_monatlich">
+				<source>Preis Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen">
+				<source>Hosting Zusatzleistungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.anzahl">
+				<source>Anzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.sonderpreis_monatlich">
+				<source>Sonderpreis Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.gekuendigt">
+				<source>Gekuendigt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.vertragsbegin">
+				<source>Vertragsbegin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.bezahltbis">
+				<source>Bezahltbis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.sonderlaufzeit">
+				<source>Sonderlaufzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.zusatzleistung">
+				<source>Zusatzleistung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hostingzusatzleistungen.rechnungen">
+				<source>Rechnungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege">
+				<source>Wartungsvertraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.gekuendigt">
+				<source>Gekuendigt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.vertragsbegin">
+				<source>Vertragsbegin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.bezahltbis">
+				<source>Bezahltbis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit">
+				<source>Laufzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.preis_monatlich">
+				<source>Preis Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall">
+				<source>Re Intervall</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.stunden_pro_jahr">
+				<source>Stunden Pro Jahr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.sichtbarkeit">
+				<source>Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.preis_mehraufwand_stunde">
+				<source>Preis Mehraufwand Stunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.oldid">
+				<source>Oldid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.kuendigungs_frist">
+				<source>Kuendigungs Frist</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.kunde">
+				<source>Kunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.optionen">
+				<source>Optionen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.zeitraeume">
+				<source>Zeitraeume</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegeoptionen">
+				<source>Wartungsvertraege Optionen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegeoptionen.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen">
+				<source>Wartungsvertraege Rechnungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.von">
+				<source>Von</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.bis">
+				<source>Bis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.preis">
+				<source>Preis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.eckdaten">
+				<source>Eckdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.preis_mehraufwand">
+				<source>Preis Mehraufwand</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume">
+				<source>Wartungsvertraege Zeitraeume</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.von">
+				<source>Von</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.bis">
+				<source>Bis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.zeiten">
+				<source>Zeiten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.rechnungen">
+				<source>Rechnungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraegetexte">
+				<source>Auftraege Texte</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraegetexte.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraegetexte.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraegetexte.sichtbarkeit">
+				<source>Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_trackersegmente">
+				<source>Tracker Segmente</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_trackersegmente.begin">
+				<source>Begin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_trackersegmente.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraegesegmente">
+				<source>Zeiteintraege Segmente</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraegesegmente.minuten">
+				<source>Minuten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zeiteintraegesegmente.phase">
+				<source>Phase</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_fegroups">
+				<source>Fegroups</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundenfegroups">
+				<source>Kunden Fegroups</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_fremdkosten">
+				<source>Fremdkosten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_fremdkosten.anzahl">
+				<source>Anzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_fremdkosten.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_fremdkosten.preis">
+				<source>Preis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification">
+				<source>Notification</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.art">
+				<source>Art</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.gelesen">
+				<source>Gelesen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.wert1">
+				<source>Wert1</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.wert2">
+				<source>Wert2</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.wert3">
+				<source>Wert3</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.wert4">
+				<source>Wert4</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.kunde_name">
+				<source>Kunde Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.auftrag_titel">
+				<source>Auftrag Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.auftrag">
+				<source>Auftrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_notification.urlaub">
+				<source>Urlaub</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege">
+				<source>Agenturvertraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.stunden_monatlich">
+				<source>Stunden Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.preis_monatlich">
+				<source>Preis Monatlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.beschreibung">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.vertragsbegin">
+				<source>Vertragsbegin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.vertragsende">
+				<source>Vertragsende</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.vertrag">
+				<source>Vertrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.preis_mehraufwand_stunde">
+				<source>Preis Mehraufwand Stunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.kunde">
+				<source>Kunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_agenturvertraege.dateien">
+				<source>Dateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundenagenturvertraege">
+				<source>Kunden Agenturvertraege</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundendateien">
+				<source>Kunden Dateien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_ablage">
+				<source>Ablage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_ablage.notiz">
+				<source>Notiz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_ablage.auftrag">
+				<source>Auftrag</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_ablage.cruser">
+				<source>Cruser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news">
+				<source>News</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.untertitel">
+				<source>Untertitel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.angebot1">
+				<source>Angebot1</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.angebot2">
+				<source>Angebot2</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.angebot3">
+				<source>Angebot3</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.link_extern">
+				<source>Link Extern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.link_extern_name">
+				<source>Link Extern Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.sichtbarkeit">
+				<source>Sichtbarkeit</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.gueltig_ab">
+				<source>Gueltig Ab</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.gueltig_bis">
+				<source>Gueltig Bis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.datei">
+				<source>Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_news.countdown">
+				<source>Countdown</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundennews">
+				<source>Kunden News</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_splitpane">
+				<source>Splitpane</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_lieferanten">
+				<source>Lieferanten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_lieferanten.nummer">
+				<source>Nummer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundenstammdaten">
+				<source>Kunden Stammdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundenstammdaten.settings_kunde">
+				<source>Settings Kunde</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_kundenstammdaten.newsletter">
+				<source>Newsletter</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokollepending">
+				<source>Protokolle Pending</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokollepending.pending">
+				<source>Pending</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokollepending.timestamp">
+				<source>Timestamp</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_protokollepending.mitarbeiter">
+				<source>Mitarbeiter</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.10">
+				<source>Angebotsphase</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.20">
+				<source>Angebotsphase</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.30">
+				<source>Auftrag Erteilt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.40"> 
+				<source>in Bearbeitung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.50">
+				<source>in Produktion/Druck</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.60">
+				<source>Rechnung/Abgeschlossen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.70">
+				<source>Rechnung/Abgeschlossen</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.10">
+				<source>1</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.20">
+				<source>1</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.30">
+				<source>2</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.40"> 
+				<source>3</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.50">
+				<source>4</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.60">
+				<source>5</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.70">
+				<source>5</source>
+			</trans-unit>
+			
+			
+
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.10">
+				<source>Angebot schreiben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.20">
+				<source>Angeboten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.30">
+				<source>Auftrag Erteilt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.40"> 
+				<source>in Bearbeitung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.50">
+				<source>in Produktion</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.60">
+				<source>Rechnung schreiben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.70">
+				<source>Abgeschlossen/Archiv</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.10">
+				<source>1</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.20">
+				<source>2</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.30">
+				<source>3</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.40"> 
+				<source>4</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.50">
+				<source>5</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.60">
+				<source>6</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.70">
+				<source>7</source>
+			</trans-unit>
+
+			
+				
+				
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.10">
+				<source>A</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.20">
+				<source>B</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.30">
+				<source>C</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.10">
+				<source>Telefon</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.20">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.30">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.40">
+				<source>Persönlich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.50">
+				<source>WhatsApp</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status.10">
+				<source>Beantragt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status.20">
+				<source>Bestätigt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status.30">
+				<source>Abgelehnt</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.0">
+				<source>Standard</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.10">
+				<source>1 Monat</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.30">
+				<source>3 Monat</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.60">
+				<source>6 Monat</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.120">
+				<source>12 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.240">
+				<source>2 Jahre</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.360">
+				<source>3 Jahre</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.10">
+				<source>1 Monat</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.30">
+				<source>3 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.60">
+				<source>6 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.120">
+				<source>12 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.240">
+				<source>2 Jahre</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.360">
+				<source>3 Jahre</source>
+			</trans-unit>
+
+			<trans-unit id="tx_dslintranet_domain_model_hosting.status.10">
+				<source>nicht Fällig</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.status.20">
+				<source>Fällig</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.status.30">
+				<source>Überfällig</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statusfilter.10">
+				<source>Alle</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statusfilter.20">
+				<source>nur Fällige</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statusfilter.30">
+				<source>nur Überfällige</source>
+			</trans-unit>
+
+			
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.20">
+				<source>KD Angebot</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.30">
+				<source>KD Rechnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.40">
+				<source>LR Angebot</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.50">
+				<source>Download</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.20">
+				<source>Angebot</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.30">
+				<source>Rechnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.35">
+				<source>Rechnung Agenturvertrag</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.60">
+				<source>Logos / Vektoren / Druckdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.70">
+				<source>Fotos</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.80">
+				<source>Korrekturabzug</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.90">
+				<source>Druckdaten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.50">
+				<source>Download</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.100">
+				<source>Sonstige Dokumente</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.10">
+				<source>Vorbereitet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.10">
+				<source>1 Monat</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.30">
+				<source>3 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.60">
+				<source>6 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.120">
+				<source>12 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.240">
+				<source>2 Jahre</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.360">
+				<source>3 Jahre</source>
+			</trans-unit>			
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.10">
+				<source>Vorbereitet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.10">
+				<source>1 Monat</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.30">
+				<source>3 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.60">
+				<source>6 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.120">
+				<source>12 Monate</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.240">
+				<source>2 Jahre</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.360">
+				<source>3 Jahre</source>
+			</trans-unit>					
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.kuendigungs_frist.30">
+				<source>3 Monate</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.type.10">
+				<source>Zwischenrechnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.type.20">
+				<source>Endabrechnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.10">
+				<source>Angelegt/Geplant</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.20">
+				<source>Fällig/Rechnung schreiben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.30">
+				<source>Rechnung geschrieben</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.10">
+				<source>Offen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.20">
+				<source>Abgeschlossen</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.0">
+				<source>Angelegt/Geplant</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.20">
+				<source>Fällig/Rechnung schreiben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.30">
+				<source>Rechnung geschrieben</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.01">
+				<source>Jan</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.02">
+				<source>Feb</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.03">
+				<source>Mär</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.04">
+				<source>Apr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.05">
+				<source>Mai</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.06">
+				<source>Jun</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.07">
+				<source>Jul</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.08">
+				<source>Aug</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.09">
+				<source>Sep</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.10">
+				<source>Okt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.11">
+				<source>Nov</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.12">
+				<source>Dez</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

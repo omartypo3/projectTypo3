@@ -1,0 +1,23 @@
+# cat=Settings; type=string; label= Logo du site
+module.tx_sitefactory.config.logo = 
+
+# cat=Settings; type=string; label= Logo du site en mobile
+module.tx_sitefactory.config.logoMobile = 
+
+# cat=Settings; type=string; label= Favicon du site (fichier en .ico)
+module.tx_sitefactory.config.favicon = 
+
+# cat=Settings; type=string; label= Nom du site
+module.tx_sitefactory.config.siteTitle  = Modèle usine
+
+# cat=Settings; type=string; label= Couleur Principal du site
+module.tx_sitefactory.config.couleurPrincipal = #cc403f
+
+# cat=Settings; type=string; label= Couleur Secondaire du site
+module.tx_sitefactory.config.couleurSecondaire = #d2d2d2
+
+# cat=Settings; type=string; label= UID Page d'accueil
+module.tx_sitefactory.config.homePage = homePage
+
+# cat=Settings; type=string; label= Activer le multi-langue
+module.tx_sitefactory.config.multiLangue = 0

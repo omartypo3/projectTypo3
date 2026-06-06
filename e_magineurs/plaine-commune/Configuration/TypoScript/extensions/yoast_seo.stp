@@ -1,0 +1,48 @@
+config {
+    yoast_seo.enabled = 1
+    structuredData.providers {
+        breadcrumb {
+            provider = YoastSeoForTypo3\YoastSeo\StructuredData\BreadcrumbStructuredDataProvider
+            after = site
+            excludedDoktypes =
+        }
+
+        site {
+            provider = YoastSeoForTypo3\YoastSeo\StructuredData\SiteStructuredDataProvider
+        }
+
+        typoscript {
+            provider = YoastSeoForTypo3\YoastSeo\StructuredData\TypoScriptStructuredDataProvider
+            after = breadcrumb
+        }
+    }
+    pageTitleProviders {
+        yoastRecord {
+            provider = YoastSeoForTypo3\YoastSeo\PageTitle\RecordPageTitleProvider
+            before = record,seo
+        }
+    }
+}
+
+config.contentObjectExceptionHandler = 1
+
+# Module configuration
+module.tx_yoastseo {
+    view {
+        templateRootPaths {
+            10 = EXT:yoast_seo/Resources/Private/Templates/
+        }
+    }
+    settings {
+        itemsPerPage = 20
+    }
+}
+
+module.tx_dashboard {
+    view {
+        templateRootPaths.1589480298 = EXT:yoast_seo/Resources/Private/Templates/
+        partialRootPaths.1589480298 = EXT:yoast_seo/Resources/Private/Partials/
+        layoutRootPaths.1589480298 = EXT:yoast_seo/Resources/Private/Layouts/
+    }
+}
+

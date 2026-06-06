@@ -1,0 +1,1835 @@
+jQuery(document).ready(function($){
+
+
+/*===================================*/
+/*==============FONCTIONS===================*/
+/*===================================*/
+
+
+var ie11EstVraimentToutPourri = navigator.appName === 'Microsoft Internet Explorer' ||  !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/)) || (typeof $.browser !== "undefined" && $.browser.msie === 1) ? true : false;
+
+/*================*/
+    /*hack Internet explorer */
+    /*img-container  /  featured-image*/
+/*================*/
+
+
+var userAgent, ieReg, ie;
+userAgent = window.navigator.userAgent;
+ieReg = /msie|Trident.*rv[ :]*11\./gi;
+ie = ieReg.test(userAgent);
+
+if(ie) { 
+    $("body").addClass("ie");
+}
+
+if (document.documentMode || /Edge/.test(navigator.userAgent)) { 
+    $("body").addClass("ie_edge");
+
+  $(".img-container").each(function () {
+    var $container = $(this),
+        imgUrl = $container.find("img").prop("src");
+    if (imgUrl) {
+      $container.css("backgroundImage", 'url(' + imgUrl + ')').addClass("custom-object-fit");
+    }
+  });
+  
+
+    if($('#part9 ').length >0 ){
+        $("#content #block_content #part5 #part9 #block_info .case_info .swiper-container_salle .swiper-slide").css("background-size","cover");
+    }
+}
+
+/*================*/
+    /*hack Firefox*/
+/*================*/
+
+if (navigator.userAgent.search("Firefox") >= 0) {
+
+$('body').addClass('firefox');
+
+}
+
+
+/*==================*/
+/*apparition scroll*/
+/*==================*/
+/*
+**ARGUMENTS
+maclass = l'élement auquel la nouvelle class sera ajouté ou non.
+newclass = Nom de la nouvelle class
+whenadd = ajout de la nouvelle class avant ou apres l'apparition de l'élément sur la fenêtre.
+*/
+function anim_scroll_content(maclass,newclass,whenadd) {
+	Maclass = maclass;
+	Maclass = $('.'+Maclass);
+	NewClass = newclass; 
+	whenAdd = whenadd; 
+	
+
+	Maclass.each(function() {
+		if(!ie11EstVraimentToutPourri){
+		WindowsSizeH = $(window).height();
+		windowScroll = $(window).scrollTop();
+		objetScroll = $(this).offset().top;
+		inScreen = objetScroll - WindowsSizeH + whenAdd;
+	}
+
+	// Ajout ou suppression de la class en fonction du scroll
+
+if(!ie11EstVraimentToutPourri){
+	if( windowScroll > inScreen )
+		{
+	        $(this).addClass(NewClass);
+	    }
+		else
+		{
+	        $(this).removeClass(NewClass);
+	    }
+}else{
+	 $(this).addClass(NewClass);
+}
+	});
+}// fin de la fonction anim_scroll_content
+
+
+/*===================================*/
+/*============== FIN FONCTIONS===================*/
+/*===================================*/
+
+
+
+
+//===================
+//==========Menu Sidebar==========//
+//===================
+
+// si la sidebar existe => le menu section
+if($('.frame-type-menu_section').length >0 ){ 
+
+
+	//===================
+	//Menu Sidebar (au clic)
+	//===================
+
+    $('.content_left ul li').on('click', function() {
+
+        target_scroll = $(this).find('a').attr('target_scroll');
+        nbr=target_scroll.indexOf("#");
+        cible=target_scroll.substr(nbr);
+
+        WindowsH = $(window).height();
+        offset = $(cible).offset().top;
+        next = offset - 150;
+
+        speed = 900; // Durée de l'animation (en ms)
+        $('html, body').animate({ scrollTop: next}, speed, 'swing' ); // Go
+        return false;
+    });
+
+
+	//===================
+	//Menu Sidebar (remplissage)
+	//===================
+
+	function progress_scroll_page() {
+		windowScroll = $(window).scrollTop();
+
+		$('.content_left ul li').each(function() {
+			
+		 	target_scroll = $(this).find('a').attr('target_scroll');
+			nbr=target_scroll.indexOf("#");
+			cible=target_scroll.substr(nbr);
+			//alert(cible);
+
+			//distance entre le haut de l'element et le haut de la page.
+			offset = $(cible).offset().top;
+			//hauteur de l'élement
+			elementH = $(cible).height();
+			//distance entre le bas de l'element et le haut de la page.
+			bootom_distance = offset + elementH;
+
+			progress_page = $(this).find('.progress_page');
+			
+			// la barre de progession commenssera à Xpx du haut de l'écran.
+			distance_lecture = 100;
+
+			progress_scroll = windowScroll-offset+distance_lecture;
+
+			ratio_progress= progress_scroll/elementH*100;
+
+			if(ratio_progress > 100){
+				ratio_progress=100;
+				$(this).removeClass('en_lecture');
+			}
+			else if(ratio_progress < 0){
+				ratio_progress=0;
+				$(this).removeClass('en_lecture');
+			}
+			else{
+				$(this).addClass('en_lecture');
+			}
+
+			progress_pourcent= 100 - ratio_progress;
+
+			progress_page.css( "width", progress_pourcent+"%" );
+
+			footerTop = $("footer").offset().top;
+			footerH = $("footer").height();
+			WindowsSizeH = $(window).height();
+			limiteAllProgress = windowScroll + WindowsSizeH;
+			limiteAllProgressBottom = footerTop + footerH - 300;
+
+
+			if( limiteAllProgress > limiteAllProgressBottom )
+	        {
+	            progress_page.css( "width", 0+"%" );
+
+	        }
+
+		});
+	}
+
+
+	progress_scroll_page();
+
+	$(window).resize(function(){
+	    progress_scroll_page();
+	});
+
+	$(window).scroll(function(event){
+		progress_scroll_page();
+
+		$(window).resize(function(){
+		    progress_scroll_page();
+		});
+	});
+
+
+
+	//===================
+	//Menu Sidebar (fixed)
+	//===================
+
+
+
+	//affichage au scroll
+
+	function fixe_sidebar() {
+	    // Stockage des références des différents éléments dans des variables
+	    part1= $('#part1');
+	    sidebar= $('.content_left .block_content_left');
+	     
+	    limiteTop_salle = sidebar.offset().top - 130;
+
+	    // On déclenche un événement scroll pour mettre à jour le positionnement au chargement de la page
+	    $(window).trigger('scroll');
+
+
+	    $(window).scroll(function(event){
+	        // Valeur de défilement lors du chargement de la page
+	        windowScroll = $(window).scrollTop();
+	 
+	        // Mise à jour du positionnement en fonction du scroll
+	        if( windowScroll >= limiteTop_salle )
+	        {
+	            sidebar.addClass('fixe_sidebar');
+	        }
+	        else
+	        {
+	            sidebar.removeClass('fixe_sidebar');
+	        }
+	    });
+	}
+
+
+
+
+
+
+	    fixe_sidebar();
+
+	    //ajustement si modif de la taille de l'ecran
+	    $(window).resize(function(){
+	      fixe_sidebar();
+	    });
+
+
+
+
+
+
+	//===================
+	//Menu Sidebar (fix Bottom)
+	//===================
+
+
+
+	//hauteur de l'élement
+	sidebarH = $('.block_content_left').height();
+	sidebarH = sidebarH + 0; //50
+	//distance top de la sidebar
+	distanceSidebar = 0; //0
+	////distance bottom de la sidebar
+	bottomSidebar = distanceSidebar + sidebarH;
+	//hauteur de l'ecran
+	WindowsSizeH = $(window).height();
+	//distance top du footer
+	//distance entre le bas de la sidebare et le bas de lécran
+	
+	//difFix=WindowsSizeH-(sidebarH+distanceSidebar)-20;
+
+	 // On déclenche un événement scroll pour mettre à jour le positionnement au chargement de la page
+    $(window).trigger('scroll');
+
+
+    $(window).scroll(function(event){
+
+    		distanceFooter = $('#mainContent').height();
+	//Moment déclancheur
+	declanche = distanceFooter-0; //50
+
+        // Valeur de défilement (haut de l'ecran) lors du chargement de la page
+        windowScroll = $(window).scrollTop();
+        // valleur du défillement du bas de la page
+       	//////windowScrollBottom = windowScroll+WindowsSizeH;
+       	sidebarH = $('.block_content_left').height();
+       	limiteBottomside = windowScroll+sidebarH;
+
+        // Mise à jour du positionnement en fonction du scroll
+        if(limiteBottomside > declanche)
+        {
+            $('.block_content_left').addClass('fix_bottom');
+            //$( '.fix_bottom.fixe_sidebar' ).css( "margin-bottom", difFix + "px" );
+        }
+        else
+        {
+            $('.block_content_left').removeClass('fix_bottom'); 
+        }
+    });  
+
+
+
+	//===================
+	//Menu Sidebar (titre anim)
+	//===================
+
+
+
+    // Stockage des références des différents éléments dans des variables
+    titre_anim= $('.case_title_anim');
+     
+    topTitre_anim = sidebar.offset().top -80;
+
+    // On déclenche un événement scroll pour mettre à jour le positionnement au chargement de la page
+    $(window).trigger('scroll');
+
+
+    $(window).scroll(function(event){
+        // Valeur de défilement lors du chargement de la page
+        windowScroll = $(window).scrollTop();
+ 
+        // Mise à jour du positionnement en fonction du scroll
+        if( windowScroll >= topTitre_anim )
+        {
+            titre_anim.addClass('anim_active');
+            $('.titre_page_menu_gauche').addClass('anim_active');
+            
+        }
+        else
+        {
+            titre_anim.removeClass('anim_active');
+            $('.titre_page_menu_gauche').removeClass('anim_active');
+        }
+    });
+
+
+
+
+
+    //scroll bar
+    height_screen = parseInt($(window).height());
+    height_sidebar = height_screen - 290 + "px";
+    if($(window).width() > 990){
+    	$('.block_content_left ul').css("max-height", height_sidebar);
+    }
+
+
+	$(window).resize(function(){
+	  	height_screen = parseInt($(window).height());
+	    height_sidebar = height_screen - 290 + "px";
+    if($(window).width() > 990){
+    	$('.block_content_left ul').css("max-height", height_sidebar);
+    }
+	});
+
+
+
+
+
+
+
+	/*==================*/
+	/*apparition scroll*/
+	/*==================*/
+
+	/*--------*/
+	/*Appel de la fonction anim_scroll_content*/
+	/*--------*/
+	the_whenadd= $(window).height()-80;
+
+
+
+	anim_scroll_content('icon_title_anim','anim_active',the_whenadd);
+
+	//ajustement si modif du scroll
+	$(window).scroll(function(event){
+		anim_scroll_content('icon_title_anim','anim_active',the_whenadd);  
+	});
+
+	//ajustement si modif de la taille de l'ecran
+	$(window).resize(function(){
+	  anim_scroll_content('icon_title_anim','anim_active',the_whenadd); 
+	});
+	/*--------*/
+	/*FIN de l'appel de la fonction*/
+	/*--------*/
+
+
+
+
+//Fin sidebar
+}
+//Fin sidebar
+
+
+
+
+
+//===================
+//==========social share sidebar==========//
+//===================
+if($('.icon-Share_in_sidebar').length >0 ){
+
+	$('.icon-Share_in_sidebar').on('click', function() {
+		$('#share_sidebar').toggleClass('active');
+		windowScroll_negatif = $(window).scrollTop()-200;
+		windowScroll_positif = $(window).scrollTop()+200;
+	
+		$(window).scroll(function(event){
+			windowScroll = $(window).scrollTop();
+			if(windowScroll<windowScroll_negatif) {
+				$('#share_sidebar').removeClass('active');
+			}
+
+			if(windowScroll>windowScroll_positif) {
+				$('#share_sidebar').removeClass('active');
+			}
+
+		});
+	});
+}
+
+
+
+$("#share_sidebar a").hover(function() { // Mouse over
+  $(this).siblings('a').find('i').css('color', 'rgba(255,255,255,0.2)');
+ 
+}, function() { // Mouse out
+	$(this).siblings('a').find('i').css('color', 'rgba(255,255,255,1)');
+});
+
+
+
+
+$("#social_share_sidebar .icon_sidebar").hover(function() { // Mouse over
+  $(this).siblings('a').find('i').css('opacity', '0.2');
+ 
+}, function() { // Mouse out
+	$(this).siblings('a').find('i').css('opacity', '1');
+});
+
+
+
+
+
+
+
+
+
+//===================
+//==========Apparition anim au scroll==========//
+//===================
+
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= -80;
+
+
+
+anim_scroll_content('block_titre_page_anim','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('block_titre_page_anim','anim_active',the_whenadd); 
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('block_titre_page_anim','anim_active',the_whenadd);
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= -200;
+
+
+
+anim_scroll_content('frame-titre_anime','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('frame-titre_anime','anim_active',the_whenadd);
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('frame-titre_anime','anim_active',the_whenadd);
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= +200;
+
+
+
+anim_scroll_content('frame-layout-5','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('frame-layout-5','anim_active',the_whenadd);  
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('frame-layout-5','anim_active',the_whenadd); 
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= +100;
+
+
+
+anim_scroll_content('frame','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('frame','anim_active',the_whenadd);
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('frame','anim_active',the_whenadd);
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= +100;
+
+
+
+anim_scroll_content('move_scroll','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('move_scroll','anim_active',the_whenadd);
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('move_scroll','anim_active',the_whenadd);
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= +100;
+
+
+
+anim_scroll_content('footer .inner','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('footer .inner','anim_active',the_whenadd);
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('footer .inner','anim_active',the_whenadd);
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+/*--------*/
+/*Appel de la fonction anim_scroll_content*/
+/*--------*/
+the_whenadd= +50;
+
+
+
+anim_scroll_content('frame-type-menu_categorized_pages','anim_active',the_whenadd);
+
+//ajustement si modif du scroll
+$(window).scroll(function(event){
+	anim_scroll_content('frame-type-menu_categorized_pages','anim_active',the_whenadd);
+});
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  anim_scroll_content('frame-type-menu_categorized_pages','anim_active',the_whenadd);
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+
+
+
+//===================
+//==========bouton hover==========//
+//===================
+
+
+$( '.btn-animate' ).hover(
+  function() {
+    $(this).addClass( "hover" );
+
+    $(this).delay(400).queue( function(next){ 
+        $(this).addClass( "hover2" );
+        next();
+  	});
+
+  }, function() {
+  	
+	    $(this).removeClass( "hover" );
+	    $(this).delay(400).queue( function(next){ 
+	        $(this).removeClass( "hover2" );
+	        next();
+	  	});
+  	
+  }
+);
+
+
+//===================
+//==========Menu deroulant scroll droite gauche==========//
+//===================
+
+
+
+/*!
+ * jQuery UI Touch Punch 0.2.3
+ *
+ * Copyright 2011–2014, Dave Furfero
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ *
+ * Depends:
+ *  jquery.ui.widget.js
+ *  jquery.ui.mouse.js
+ */
+!function(a){function f(a,b){if(!(a.originalEvent.touches.length>1)){a.preventDefault();var c=a.originalEvent.changedTouches[0],d=document.createEvent("MouseEvents");d.initMouseEvent(b,!0,!0,window,1,c.screenX,c.screenY,c.clientX,c.clientY,!1,!1,!1,!1,0,null),a.target.dispatchEvent(d)}}if(a.support.touch="ontouchend"in document,a.support.touch){var e,b=a.ui.mouse.prototype,c=b._mouseInit,d=b._mouseDestroy;b._touchStart=function(a){var b=this;!e&&b._mouseCapture(a.originalEvent.changedTouches[0])&&(e=!0,b._touchMoved=!1,f(a,"mouseover"),f(a,"mousemove"),f(a,"mousedown"))},b._touchMove=function(a){e&&(this._touchMoved=!0,f(a,"mousemove"))},b._touchEnd=function(a){e&&(f(a,"mouseup"),f(a,"mouseout"),this._touchMoved||f(a,"click"),e=!1)},b._mouseInit=function(){var b=this;b.element.bind({touchstart:a.proxy(b,"_touchStart"),touchmove:a.proxy(b,"_touchMove"),touchend:a.proxy(b,"_touchEnd")}),c.call(b)},b._mouseDestroy=function(){var b=this;b.element.unbind({touchstart:a.proxy(b,"_touchStart"),touchmove:a.proxy(b,"_touchMove"),touchend:a.proxy(b,"_touchEnd")}),d.call(b)}}}(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function menu_slide() {
+
+
+windowWidth = $(window).width();
+
+if( windowWidth >= 1500 )
+{
+    nbr_display= 4;
+}
+else if( windowWidth < 1500 && windowWidth >= 997)
+{
+    nbr_display= 3;
+}
+
+else if( windowWidth < 996 && windowWidth >= 661)
+{
+    nbr_display= 2;
+}
+else if( windowWidth < 660)
+{
+    nbr_display= 1;
+}
+
+
+
+nbr_element 	= $( "ul.menu_slide li" ).length;
+Size_content 	= $( ".frame-type-menu_Sites" ).width();
+Margin 			= 80;
+
+nbr_margin 						= nbr_display-1;
+W_marge_display					= nbr_margin*Margin;
+width_total_img_without_margin	= Size_content-W_marge_display;
+Width_element					= width_total_img_without_margin/nbr_display;
+
+Total_width_element				= Width_element*nbr_element;
+
+nbr_total_margin				= nbr_element-1;
+Total_width_margin				= Margin*nbr_total_margin;
+Width_contener					= Total_width_margin+Total_width_element;
+
+
+$( "ul.menu_slide" ).css('width', Width_contener+'px');
+$( "ul.menu_slide li" ).css('width', Width_element+'px');
+
+
+
+
+
+
+//enlever le draggable slider si tout est déja affiché
+nbr_position = nbr_element-nbr_display;
+if (nbr_position <= 0){
+	$("#block_draggable").css('display', 'none');
+}
+else{
+	$("#block_draggable").css('display', 'block');
+}
+
+
+//==========
+// $( ".case_draggable" ).on('click', function () {
+//   	positionX = parseInt($(".case_draggable").css("left"));
+// 	sizeW_block = parseInt($('#block_draggable').width())-parseInt($('.case_draggable').width());
+// 	pourcent_position = positionX*100/sizeW_block*(-1);
+	
+// 	possible_width_move= Width_contener - Size_content;
+// 	result_move= possible_width_move*pourcent_position/100;
+// 	console.log(pourcent_position);
+// 	$("ul.menu_slide").css('transform', 'translate('+result_move+'px)');
+// });
+http://touchpunch.furf.com/
+$('.case_draggable').draggable({
+  axis: 'x',
+  containment: "#block_draggable",
+  start: function( event, ui ) {
+  		$("ul.menu_slide").delay(400).queue(function (next) { 
+		    $("ul.menu_slide").css('transition', '');
+		    next(); 
+		});
+  },
+
+  drag: function( event, ui ) {
+
+  		positionX = parseInt($(".case_draggable").css("left"));
+   		sizeW_block = parseInt($('#block_draggable').width())-parseInt($('.case_draggable').width());
+   		pourcent_position = positionX*100/sizeW_block*(-1);
+   		
+   		possible_width_move= Width_contener - Size_content;
+   		result_move= possible_width_move*pourcent_position/100;
+   		console.log(pourcent_position);
+   		$("ul.menu_slide").css('transform', 'translate('+result_move+'px)');
+  },
+
+  stop: function( event, ui ) {
+
+  		$("ul.menu_slide").css('transition', 'all ease-out 0.4s');
+  		$("ul.menu_slide").delay(400).queue(function (next) { 
+		    $("ul.menu_slide").css('transition', 'all ease-out 0.1s');
+		    next();
+		});
+   		pourcent_position_plus=pourcent_position*(-1);
+   		section= 100 / nbr_position;
+   		sectionDiv2 = section/2;
+
+
+   		function appel_section() {
+   			section0 = sectionDiv2 + (0*section);
+   			section1 = sectionDiv2 + (1*section);
+   			section2 = sectionDiv2 + (2*section);
+   			section3 = sectionDiv2 + (3*section);
+   			section4 = sectionDiv2 + (4*section);
+   			section5 = sectionDiv2 + (5*section);
+   			section6 = sectionDiv2 + (6*section);
+   			section7 = sectionDiv2 + (7*section);
+   			section8 = sectionDiv2 + (8*section);
+   			section9 = sectionDiv2 + (9*section);
+
+   			pourcent_position_Fixe0 = 0*section*(-1);
+   				result_move0= possible_width_move*pourcent_position_Fixe0/100;
+   			pourcent_position_Fixe1 = 1*section*(-1);
+   				result_move1= possible_width_move*pourcent_position_Fixe1/100;
+   			pourcent_position_Fixe2 = 2*section*(-1);
+   				result_move2= possible_width_move*pourcent_position_Fixe2/100;
+   			pourcent_position_Fixe3 = 3*section*(-1);
+   				result_move3= possible_width_move*pourcent_position_Fixe3/100;
+   			pourcent_position_Fixe4 = 4*section*(-1);
+   				result_move4= possible_width_move*pourcent_position_Fixe4/100;
+   			pourcent_position_Fixe5 = 5*section*(-1);
+   				result_move5= possible_width_move*pourcent_position_Fixe5/100;
+   			pourcent_position_Fixe6 = 6*section*(-1);
+   				result_move6= possible_width_move*pourcent_position_Fixe6/100;
+   			pourcent_position_Fixe7 = 7*section*(-1);
+   				result_move7= possible_width_move*pourcent_position_Fixe7/100;
+   			pourcent_position_Fixe8 = 8*section*(-1);
+   				result_move8= possible_width_move*pourcent_position_Fixe8/100;
+   			pourcent_position_Fixe9 = 9*section*(-1);
+   				result_move9= possible_width_move*pourcent_position_Fixe9/100;
+   		}
+
+
+   		
+
+   		//alert(nbr_position);
+   		switch (nbr_position) {
+	    	case 1:       
+	    	appel_section();
+	        	if (pourcent_position_plus >=0 && pourcent_position_plus < section0) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move0+'px)');
+
+			    }
+			    else if (pourcent_position_plus >=section0 && pourcent_position_plus <= 100) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move1+'px)');
+			    }
+	        break;
+	        case 2:
+	        appel_section();
+	        	if (pourcent_position_plus >=0 && pourcent_position_plus < section0) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move0+'px)');
+			    }
+			    else if (pourcent_position_plus >=section0 && pourcent_position_plus < section1) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move1+'px)');
+			    }
+			    else if (pourcent_position_plus >=section1 && pourcent_position_plus <= 100) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move2+'px)');
+			    } 
+	        break;
+	        case 3:
+	        appel_section();
+	        	if (pourcent_position_plus >=0 && pourcent_position_plus < section0) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move0+'px)');
+			    }
+			    else if (pourcent_position_plus >=section0 && pourcent_position_plus < section1) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move1+'px)');
+			    }
+			    else if (pourcent_position_plus >=section1 && pourcent_position_plus < section2) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move2+'px)');
+			    }
+			    else if (pourcent_position_plus >=section2 && pourcent_position_plus <= 100) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move3+'px)');
+			    } 
+	        break;
+	        case 4:
+	        appel_section();
+	        	if (pourcent_position_plus >=0 && pourcent_position_plus < section0) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move0+'px)');
+			    }
+			    else if (pourcent_position_plus >=section0 && pourcent_position_plus < section1) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move1+'px)');
+			    }
+			    else if (pourcent_position_plus >=section1 && pourcent_position_plus < section2) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move2+'px)');
+			    }
+			    else if (pourcent_position_plus >=section2 && pourcent_position_plus < section3) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move3+'px)');
+			    }
+			    else if (pourcent_position_plus >=section3 && pourcent_position_plus <= 100) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move4+'px)');
+			    } 
+	        break;
+	        case 5:
+	        appel_section();
+	        	if (pourcent_position_plus >=0 && pourcent_position_plus < section0) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move0+'px)');
+			    }
+			    else if (pourcent_position_plus >=section0 && pourcent_position_plus < section1) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move1+'px)');
+			    }
+			    else if (pourcent_position_plus >=section1 && pourcent_position_plus < section2) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move2+'px)');
+			    }
+			    else if (pourcent_position_plus >=section2 && pourcent_position_plus < section3) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move3+'px)');
+			    }
+			    else if (pourcent_position_plus >=section3 && pourcent_position_plus < section4) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move4+'px)');
+			    }
+			    else if (pourcent_position_plus >=section4 && pourcent_position_plus <= 100) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move5+'px)');
+			    } 
+	        break;
+	        case 6:
+	        appel_section();
+	        	if (pourcent_position_plus >=0 && pourcent_position_plus < section0) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move0+'px)');
+			    }
+			    else if (pourcent_position_plus >=section0 && pourcent_position_plus < section1) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move1+'px)');
+			    }
+			    else if (pourcent_position_plus >=section1 && pourcent_position_plus < section2) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move2+'px)');
+			    }
+			    else if (pourcent_position_plus >=section2 && pourcent_position_plus < section3) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move3+'px)');
+			    }
+			    else if (pourcent_position_plus >=section3 && pourcent_position_plus < section4) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move4+'px)');
+			    }
+			    else if (pourcent_position_plus >=section4 && pourcent_position_plus < section5) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move5+'px)');
+			    }
+			    else if (pourcent_position_plus >=section5 && pourcent_position_plus <= 100) {    
+	        		$("ul.menu_slide").css('transform', 'translate('+result_move6+'px)');
+			    }
+	        break;
+		}
+
+  }
+	
+});
+
+
+
+}//fin fonction
+
+
+
+
+menu_slide();
+$(window).resize(function(){
+	menu_slide();
+});
+
+
+$("ul.menu_slide li").hover(function() { // Mouse over
+  $(this).siblings().stop().fadeTo(300, 0.2);
+  $(this).parent().siblings().stop().fadeTo(300, 0.3); 
+}, function() { // Mouse out
+  $(this).siblings().stop().fadeTo(300, 1);
+  $(this).parent().siblings().stop().fadeTo(300, 1);
+});
+
+
+
+
+
+
+
+//===================
+//==========Click next part Home==========//
+//===================
+
+
+$('.case_souris').on('click', function() {
+    WindowsH = $(window).height();
+    offset = $('#Next_Part').offset().top;
+    next = offset;
+
+    speed = 600; // Durée de l'animation (en ms)
+    $('html, body').animate({ scrollTop: next}, speed, 'swing' ); // Go
+    return false;
+});
+
+
+
+
+
+//===================
+//==========home effet de mouvement avec souris==========//
+//===================
+
+function move_with_mouse(class_mouse,sens) {
+	class_mouse = class_mouse;
+	class_mouse = $(class_mouse);
+
+	class_mouse.each(function() {
+
+		winWidth = $('html').width();
+		winHeight = $(window).height();
+		halfWidth = winWidth/2;
+		halfHeight = winHeight/2;
+
+		if(ie || (document.documentMode || /Edge/.test(navigator.userAgent))) {  
+			//class_mouse.css( 'transform', 'scale(2) translate(0,0');
+			class_mouse.css( 'transform', 'scale(1.05) translate(0,0');
+		}else{
+		class_mouse.css( 'transform', 'scale(1.05) translate(0,0');
+		}
+
+		$('html').mousemove(function(e){
+			//permet d'avoir ton x=0 et y=0 au centre de l'écran
+			p = mousePosition(e);
+			centerW = p.x - halfWidth;
+			centerH = p.y - halfHeight;
+			
+			//objet
+			xTranslate = Math.round(centerW/15);
+			yTranslate = Math.round(centerH/15);
+			xFinalTranslate = xTranslate/50*sens;
+			yFinalTranslate = yTranslate/50*sens;
+			if(ie || (document.documentMode || /Edge/.test(navigator.userAgent))) { 
+			//class_mouse.css( 'transform', 'scale(2) translate('+xFinalTranslate+'%,'+yFinalTranslate+'%)' );
+			class_mouse.css( 'transform', 'scale(1.05) translate('+xFinalTranslate+'%,'+yFinalTranslate+'%)' );
+		}else{
+			class_mouse.css( 'transform', 'scale(1.05) translate('+xFinalTranslate+'%,'+yFinalTranslate+'%)' );
+		}
+
+		});
+
+		function mousePosition(e) {
+		  return {
+		    'x': e.pageX,
+		    'y': e.pageY
+		  }
+		}
+	});
+
+}//fin de la fonction move_with_mouse
+
+/*--------*/
+/*Appel de la fonction move_with_mouse*/
+/*--------*/
+
+
+if(ie || (document.documentMode || /Edge/.test(navigator.userAgent))) { 
+move_with_mouse('video.backgroundHome',1);
+}else{
+move_with_mouse('.backgroundHome',1);
+}
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+
+if(ie || (document.documentMode || /Edge/.test(navigator.userAgent))) { 
+move_with_mouse('video.backgroundHome',1);
+}else{
+  move_with_mouse('.backgroundHome',1); 
+}
+
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+/*--------*/
+/*Appel de la fonction move_with_mouse*/
+/*--------*/
+// move_with_mouse('HomePart1',-1);
+
+// //ajustement si modif de la taille de l'ecran
+// $(window).resize(function(){
+//   move_with_mouse('HomePart1',-1); 
+// });
+
+
+
+move_with_mouse('.marge_nav',-1);
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  move_with_mouse('.marge_nav',-1); 
+});
+
+
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+/*--------*/
+/*Appel de la fonction move_with_mouse*/
+/*--------*/
+
+
+
+if(ie || (document.documentMode || /Edge/.test(navigator.userAgent))) { 
+	move_with_mouse('video.img_bg_home5',-1);
+}else{
+	move_with_mouse('.img_bg_home5',-1);
+}
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+	if(ie || (document.documentMode || /Edge/.test(navigator.userAgent))) { 
+		move_with_mouse('video.img_bg_home5',-1);
+	}else{
+		move_with_mouse('.img_bg_home5',-1);
+	}
+});
+
+
+
+move_with_mouse('.img_bg_home5',-1);
+
+//ajustement si modif de la taille de l'ecran
+$(window).resize(function(){
+  move_with_mouse('.img_bg_home5',-1); 
+});
+/*--------*/
+/*FIN de l'appel de la fonction*/
+/*--------*/
+
+
+
+
+
+
+
+//===================
+//==========effet parralax==========//
+//===================
+
+//la fonction prends en compte l'action du scroll et le rezise
+function scroll_parallax(My_element,vitesse){
+	//récupération de la valeur du scroll  
+    windowScroll = $(window).scrollTop();
+    //récupération de la hauteur de l'écran
+    WindowsH = $(window).height();
+    //récupération de la hauteur de la moitier l'écran
+    WindowsHDiv2 =  WindowsH/2;
+    //récupération de la position du bas de l'écran
+    //bottom_screen = windowScroll+WindowsH;
+    //récupération du centre de l'écran
+    center_screen = windowScroll+WindowsHDiv2;
+    //récupération de la distance entre le centre de l'écran et le centre de l'objet
+    distance_center = center_screen-element_center;
+
+	////alert(distance_center);
+    //récupération de la vitesse de défillement.( plus le pourcentage est elevé plus l'objet défilera rapidement)
+    vitesse_defil = distance_center*vitesse;
+    
+
+    My_element.css( "transform", "translateY("+vitesse_defil+"px)");
+
+}
+
+//la fontion prends en compte le resize
+function scroll_parallax_go(the_element,vitesse){
+	the_element2 = the_element;
+	My_element = $('.'+the_element2);
+	
+	if(My_element.length >0 ){
+			My_element.each(function() {
+
+				//récupération de la position de l'élément par rapprt au haut de la page(Valeur qui doit varié juste pour un resize et non au scroll)
+			    offset = $(this).offset().top;
+			    //récupération de la hauteur de l'élément divisé par 2.
+			    elementHDiv2 = $(this).height()/2;
+			    //récupération de la position du centre de l'élément.
+			    element_center= offset+elementHDiv2;
+
+
+				//appel de la fonction
+				scroll_parallax($(this),vitesse);
+				//Dès que l'on scrool
+			});
+			$(window).scroll(function(event){
+				
+					the_element2 = the_element;
+					My_element = $('.'+the_element2);
+
+				My_element.each(function() {
+
+					//récupération de la position de l'élément par rapprt au haut de la page(Valeur qui doit varié juste pour un resize et non au scroll)
+				    offset = $(this).offset().top;
+				    //récupération de la hauteur de l'élément divisé par 2.
+				    elementHDiv2 = $(this).height()/2;
+				    //récupération de la position du centre de l'élément.
+				    element_center= offset+elementHDiv2;
+						
+						//appel de la fonction
+						scroll_parallax($(this),vitesse)
+				});	
+			});
+	}
+		
+
+}
+
+
+/*==APPEL DE LA FONCTION==*/
+//définir l'élément avec sa class (ex: the_element= maclass)
+//the_element = 'parallax';
+//définir la vitesse de défilement (nombre positif: plus rapide, nombre négatif: moins rapide)
+//vitesse = 0.6;
+
+
+if(!ie11EstVraimentToutPourri){
+var obj = {
+  "block_content_part5": "0.2",
+  "parallax": "-0.1"
+
+}
+}else{
+var obj = {
+  "parallax": "-0.1"
+
+}
+}
+
+
+
+
+
+
+$.each( obj, function( class_element, the_vitesse ) {
+
+	scroll_parallax_go(class_element,the_vitesse);
+
+	$(window).resize(function(){
+			scroll_parallax_go(class_element,the_vitesse);
+	});
+});
+
+/*==APPEL DE LA FONCTION==*/
+
+
+
+
+
+
+
+
+//===================
+//==========Click full sceen==========//
+//===================
+
+
+
+$('.bouton_play_part5').on('click', function() {
+	$('#full_screen').addClass( "active" );
+});
+
+$('.close_full_screen').on('click', function() {
+	$('#full_screen').removeClass( "active" );
+});
+
+
+
+
+
+
+
+
+
+
+//===================
+//==========Actualitées TWITTER ==========//
+//===================
+
+//si il n'y a pas d'iframe généré supression du block twitter et centrages des actus
+if($.trim($(".block_twitter blockquote").html())==''){
+ 	$( ".block_twitter" ).remove();
+ 	$( ".container_home_actu .frame-default" ).css( "width", "100%" );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//===================
+//==========BURGER MENU ==========//
+//===================
+
+// au click ajout de class
+
+
+// au click ajout de transition
+
+base=0.4;
+	$( ".menu-collapsed li" ).each(function() {
+		base=base+0.025;
+		temps=base.toFixed(3);
+		transition = "all ease-out 0.4s "+temps+"s";
+	  $( this ).css('transition',transition);
+	});
+
+$('.hamburger').on('click', function() {
+base=0.4;
+	$( ".menu-collapsed li" ).each(function() {
+		base=base+0.025;
+		temps=base.toFixed(3);
+		transition = "all ease-out 0.4s "+temps+"s";
+	  $( this ).css('transition',transition);
+	});
+});
+
+nbrLI= $('.menu-collapsed li').length;
+maxTime= (nbrLI * 0.025) + 1;
+transition_Back = "all ease-out 0.4s "+maxTime+"s";
+$('.menu-collapsed').css('transition',transition);
+
+
+
+$(".hamburger").click(function() {
+  	$(".menu-collapsed").toggleClass("menu-expanded");
+  	$(".hamburger").toggleClass("is-active");
+    if ($(".menu-collapsed").hasClass('menu-expanded')) {
+    	$('body').css('overflow','hidden');
+    	$('.logo').hide();
+    	$('.menu-header-right').addClass('open_menu');
+    }
+    else{
+    	$('body').css('overflow','auto');
+    	$('.logo').show();
+    	$('.menu-header-right').removeClass('open_menu');
+    }
+});
+
+$( ".frame-type-menu_principal .socialNetwork ul" ).hover(function() {
+  $('.frame-type-menu_principal .socialNetwork ul li').css({"transition": "all ease-out 0.4s"});
+});
+
+$('.menu-collapsed.menu-expande .hamburger').on('click', function() {
+	$('.frame-type-menu_principal .socialNetwork ul li').css({"opacity": 0});
+});
+
+
+$('.hamburger').on('click', function() {
+	contentH = $(".frame-type-menu_principal nav").height();
+	windowH = $(window).height();
+
+	if( contentH <= windowH ){
+		$(".menu-collapsed.menu-expanded .frame-type-menu_principal nav").toggleClass("marge_nav");
+	}
+});
+
+
+
+//===================
+//==========offre emploir==========//
+//===================
+
+// si la sidebar existe => le menu section
+if($('.form_emploi').length >0 ){
+
+	if($('.alert-success').length >0 ){ 
+		$('.form_emploi').addClass('display_none');
+	}
+}
+
+
+
+
+
+
+//===================
+//========== Info bulle ==========//
+//===================
+
+if($('.block_bulle_info').length){
+    if(!checkCookie('e_bulle_info') || !$('.cookieTime').length){
+        $('.block_bulle_info').addClass('active');
+        $('.block_bulle_info .case_bulle_info').addClass('active');
+        $('.block_bulle_info .close_info_bulle').addClass('active');   
+
+        $('.block_bulle_info .close_info_bulle').click(function(){ 
+            $('.block_bulle_info').removeClass('active');
+            $('.case_bulle_info').removeClass('active');
+            $('.case_bulle_info').addClass('hidden');
+        });
+
+        $('.block_bulle_info .case_bulle_info').click(function(e){           
+            e.stopPropagation();
+        });
+        // $('.block_bulle_info.active').click(function(){
+        //     $('.block_bulle_info').removeClass('active');
+        //     $('.case_bulle_info').removeClass('active');
+        //     $('.case_bulle_info').addClass('hidden');
+        // });
+        if($('.cookieTime').length){
+            var time = $('.cookieTime').val();
+            setCookie('e_bulle_info', 'visite', time);
+        }
+    }
+
+
+
+
+    //modif taille img
+    size_content_bulle = $('.case_bulle_info').height();
+    $('.case_bulle_info img').css("max-height", size_content_bulle);
+    $('.case_bulle_info video').css("max-height", size_content_bulle);
+
+    $(window).resize(function(){
+	   	size_content_bulle = $('.case_bulle_info').height();
+	    $('.case_bulle_info img').css("max-height", size_content_bulle);
+	    $('.case_bulle_info video').css("max-height", size_content_bulle);
+	});
+}
+
+//js cookie info bulle
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie(e) {
+    var user = getCookie(e);
+    if (user != "") {
+        okCookie = true;
+    } else {
+        okCookie = false;
+    }
+    return okCookie;
+}
+
+
+
+//===================
+//========== Proposition video ==========//
+//===================
+
+
+
+if($('.powermail_label').length >0 ){
+	$(".powermail_label").each(function () {
+
+		if($(this).attr('title')) {
+		    title = $(this).attr('title');
+
+			if (title !='') {
+			   $(this).parent().append( '<i class="icon-Important icon_form_info"></i><p class="form_info_p">'+title+'</p>' );
+			}
+		}
+	});
+
+	if($('.icon_form_info').length >0 ){
+		$( ".icon_form_info" ).hover(
+		  function() {
+		    $(this).parent().find(".form_info_p").addClass("hover");
+		  }, function() {
+		    $(this).parent().find(".form_info_p").removeClass("hover");
+		  }
+		);
+	}
+}
+
+
+
+//===================
+//========== dechet ==========//
+//===================
+
+if($('.bloc_ordure').length >0 ){
+
+	function ajout_marg(){
+
+		with_screen= $(window).width();
+
+		//if(with_screen>1050){
+			$( ".bloc_ordure" ).each(function() {
+
+				img=$(this).find(".illustration_bac img");
+				text=$(this).find(".details_collecte .content_case_collect");
+
+				textH= text.height();
+				imgH= img.height();
+				new_margin= (textH-imgH)/2;
+
+				if(new_margin>1){
+					img.css("margin-top",new_margin+"px");
+				}
+				
+			});
+		//}
+	}
+
+	ajout_marg();
+	$(window).resize(function(){
+	    ajout_marg();
+	});
+}
+
+
+//===================
+//========== Gestion doc ==========//
+//===================
+if($('.block_list_doc').length >0 ){
+
+	//remplacer tout les "_" par un espace
+	$(".block_list_doc h2").each(function () {
+		base_text= $(this).text();
+		new_text1= base_text.replace(/_/g," ").trim();
+		new_text2= new_text1.replace(/-/g," ").trim();
+		//alert(test3);
+		$(this).empty();
+		$(this).prepend(new_text2);
+	});
+
+
+
+	$(".the_name_doc").each(function () {
+		base_name_doc= $(this).text();
+		nbr=base_name_doc.length;
+		if(nbr>26){
+			shortText = base_name_doc.substr(0, 25) + "..."; 
+			$(this).empty();
+			$(this).prepend(shortText);
+		}
+	});
+
+	// dossiers
+
+	$("#parcour_doc li ul").each(function () {
+		$(this).closest("li").prepend('<span class="btn_pli_depli"></span>').addClass("content_li");
+	});
+
+}
+
+
+//===================
+//========== gestion doc plié déplié ==========//
+//===================
+if($('#parcour_doc').length >0 ){
+	$('#parcour_doc').delay(100).fadeTo( "fast", 1 );
+
+	$("#parcour_doc > ul > li > span.btn_pli_depli").addClass("plie_doc");
+	$("#parcour_doc > ul > li > ul > li").addClass("racine_doc");
+
+	$("#parcour_doc ul").slideDown();
+	$("#parcour_doc li.racine_doc ul").slideUp(0);
+	$("#parcour_doc li.search_inside").parents('ul').slideDown();
+
+	$("#parcour_doc li.content_li span.btn_pli_depli").click(function(){
+			$(this).toggleClass('plie_doc');
+	        $(this).closest('li').find("ul:first").slideToggle();
+	});
+
+
+
+	$("li.search_inside > a").addClass('a_search_inside');
+
+
+	// si tout seule ne pas afficher le sommaire et résulta
+
+	if($('#parcour_doc > ul > li').length <2 ){
+		
+	}
+
+	$( "#parcour_doc" ).each(function() {
+		if($( this ).find('li').length <2 ){
+			$( ".titre_sommaire" ).hide();
+			$( "#parcour_doc" ).hide();
+			$( ".nbr_resultats" ).hide();
+		}
+	});
+
+
+}
+
+
+
+
+
+
+//===================
+//========== lazy load retour ==========//
+//===================
+if($('.list_agenda').length >0 ){
+	$( document ).ready(function() {
+	    speed = 600; // Durée de l'animation (en ms)
+	    $('html, body').animate({ scrollTop: 0}, speed, 'swing' ); // Go
+	    return false;
+	});
+}
+
+
+//===================
+//========== flux hover ==========//
+//===================
+
+if($('.tx-rssaggregator').length >0 ){
+
+	$( ".tx-rssaggregator .title" ).each(function() {
+		$( this ).hover(
+		  function() {
+		    $( this ).closest("li").find(".image img").addClass( "hover" );
+		  }, function() {
+		    $( this ).closest("li").find(".image img").removeClass( "hover" );
+		  }
+		);
+	});
+
+}
+
+
+
+
+
+//===================
+//========== formulaire légende ==========//
+//===================
+
+if($('#powermail_tabmenu').length >0 ){
+	$( ".powermail_legend" ).css("display","none");
+}
+
+
+
+//===================
+//========== Info bulle ==========//
+//===================
+if($('.home_part4 .frame-layout-6 a').length >0){
+	$( ".home_part4 .frame-layout-6 a" ).each(function() {
+		$( this ).closest(".frame-layout-6").addClass( "content_a" );
+	});
+}
+
+
+
+
+
+//===================
+//========== suppression underscore gestion doc ==========//
+//===================
+if($('#tx_egestiondocs_document').length >0){
+	$("#parcour_doc a, h2").each(function() {
+	    var text = $(this).text();
+	    text = text.replace(/\_/g, " ");
+	    $(this).text(text);
+	});
+}
+
+
+//===================
+//========== ajout target blank à tous les liens de telechargement==========//
+//===================
+
+if($('.icon-LinkText-telechargement').length >0){
+		$('.icon-LinkText-telechargement').attr('target', '_blank');
+}
+
+
+
+
+
+
+//===================
+//========== Ouvre le toggle si il y a une cible dans url==========//
+//===================
+
+
+if($('.openCloseTitle').length >0){
+	url = window.location.href;
+
+	if(url.indexOf('#')>-1){
+		nbr=url.indexOf("#");
+	 	id=url.substr(nbr);
+	 	cible = $(id+' h2');
+
+	 	$(id+' header').addClass('openTitle');
+	 	$(id+' .ce-textpic').addClass('openBody open').show();
+	}
+}
+
+
+
+//===================
+//Accessibilité
+//===================
+
+$('#go_menu').click(function() { // Au clic sur un élément
+    $('.hamburger').trigger("click");
+});
+
+$('#go_recherche').click(function() { // Au clic sur un élément
+    $('#search-icon').trigger("click");
+});
+
+
+
+//===================
+//========== slide by screen ==========//
+//===================
+
+
+// //si on est sur la home Page
+// if($('.panel1').length >0 ){ 
+  
+// 	windowH= $(window).height;
+// 	topPart2= $('.home_part2').offset().top;
+// 	topPart3= $('.home_part3').offset().top;
+// 	topPart4= $('.home_part4').offset().top;
+// 	topPart5= $('.home_part5').offset().top;
+// 	lastScrollTop = 0;
+// 	speed = 900;
+// 	startScroll=1;
+	
+// 	console.log('startScroll1 = '+ startScroll);
+		
+// 	    $(window).on('wheel',function(event) {
+// 	    	if (startScroll!=0){
+// 			// Valeur du scroll
+// 			windowScroll = $(window).scrollTop();
+
+// 			//scroll down
+// 			if(event.originalEvent.deltaY > 0){
+
+// 				if (windowScroll < topPart2){
+// 				    next = topPart2 - 0;
+// 				    $('html, body').animate({ scrollTop: next}, speed, 'swing' ); // Go
+// 				    return false;
+// 				}
+
+// 				// console.log('sroll = '+windowScroll);
+// 				// console.log('part2 = '+topPart2);
+
+
+			    
+			   	
+// 			}
+// 			//scroll top
+// 			else{
+// 			  	if (windowScroll >= topPart2){
+// 				    next = topPart2 - 0;
+// 				    $('html, body').animate({ scrollTop: next}, speed, 'swing' ); // Go
+// 				    return false;
+// 				}
+// 			}
+// 			lastScrollTop = windowScroll;
+// 			startScroll=0;
+// 			 setTimeout(function(){
+// 			   startScroll=1;
+// 			 }, 900);
+
+
+// 			}
+
+// 	    });
+
+// }
+
+///////////////////////////////////////////  2Eme Solution /////////////////
+
+// //si on est sur la home Page
+// if($('.panel1').length >0 ){ 
+  
+// 	topPart2= $('.home_part2').offset().top;
+// 	speed = 900;
+// 	test=1;
+		
+// 	    $(window).on('wheel',function(event) {
+// 	    	if (test == 1){
+
+// 				windowScroll = $(window).scrollTop();
+
+// 				if(event.originalEvent.deltaY < 0){
+
+					
+// 				}
+// 				else{
+// 					if (windowScroll < topPart2){
+// 					    next = topPart2 - 0;
+// 					    $('html, body').animate({ scrollTop: next}, speed, 'swing' ); // Go
+// 					    return false;
+// 					}
+// 				}
+// 				test=0;
+// 				console.log(windowScroll);
+// 			}
+// 	    });
+
+// }
+
+
+
+// fin du fichier (ne pas suppr)
+}); // fin du fichier (ne pas suppr)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

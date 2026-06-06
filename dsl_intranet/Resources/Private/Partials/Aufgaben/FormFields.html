@@ -1,0 +1,223 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+
+<script>
+
+	
+	$(function () {
+		
+		$('.selectpickerFormular').selectpicker();
+		
+		
+		$('.validator_required').attr('required','required');
+		
+
+		$('.fullDatePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'DD.MM.YYYY'
+		});
+		$('.fullTimePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'HH:mm',
+			widgetPositioning: {
+				horizontal: 'right',
+				vertical: 'bottom'
+			}
+			
+
+		}).on("dp.change", function (e) {
+			setDiffTimeMinutes(this);
+        });
+		
+		$('.fullDatePicker').datetimepicker('show');$('.fullDatePicker').datetimepicker('hide');
+
+		setDiffTimeMinutes( $('#formBeginTime').parent());
+		$('.animated').autosize({append: "\n"});
+		
+		
+		$('.checkboxBtn').click(function(e) {
+
+			if($(this).children('.btn').hasClass('active')){
+
+				$(this).prev('.disableCheckbox').prop( "checked", false );
+				$('#erledigt').val("0");
+
+			} else {
+				$(this).prev('.disableCheckbox').prop( "checked", true );
+				$('#erledigt').val("1");
+			}
+
+		});
+	});
+
+
+	
+</script>
+
+<fieldset>
+
+<!-- Form Name -->
+
+
+
+
+<f:if condition="{aufgaben.auftrag}">
+	<div class="layout-table table-formular-padding" id="formFieldsAktivitaet">
+		<div class="layout-table-row">
+			<div class="layout-table-col table-formular-label table-formular-medium">
+				Verknüpfter Auftrag
+			</div>
+			<div class="layout-table-col">
+				<f:form.textfield class="form-control input-sm" name="auftrag" disabled="true" value="{aufgaben.notizVonAuftrag}" additionalAttributes="{autocomplete: 'off'}" />
+			</div>
+		</div>
+	</div>
+</f:if>
+
+
+
+<div class="layout-table table-formular-padding" id="formFieldsAktivitaet">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Startdatum<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullDatePicker' >
+       
+                
+                <f:form.textfield class="form-control input-sm" name="begin" required="true"  value="{aufgaben.begin->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+            </div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">Erledigt</div>
+        <div class="layout-table-col table-formular-medium-2">
+        	
+			<input type="hidden" id="erledigt" name="tx_dslintranet_wochenlisteaufgabenplatzierung[erledigt]">
+            <input class="disableCheckbox" type="checkbox" name="tx_dslintranet_wochenlisteaufgabenplatzierung[erledigt]" value="1">
+
+            <f:comment>
+            <f:form.checkbox class="disableCheckbox" name="erledigt" value="1"  checked="{aufgaben.erledigt}" />
+            </f:comment>
+			<div class="btn-group checkboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm  {f:if(condition: aufgaben.erledigt, then: 'active')}" style="width:60px;">
+                    <input value="1" class="" type="checkbox" {f:if(condition: aufgaben.erledigt, then: ' checked="checked"')} >
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+            </div>
+                        
+            
+            
+        </div>
+        
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Startzeit<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullTimePicker' data-difftime-selector='#minutenGesamtText'>
+       
+                
+                <f:form.textfield class="form-control input-sm" id="formBeginTime" name="beginTime" required="true"  value="{aufgaben.begin->f:format.date(format: 'H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-clock bb-lg"></i>
+                </span>
+                
+            </div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Endzeit <span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<div class='input-group date fullTimePicker' data-difftime-selector='#minutenGesamtText'>
+       
+                <f:form.textfield class="form-control input-sm" id="formEndTime" name="endTime" required="true"  value="{aufgaben.end->f:format.date(format: 'H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-clock bb-lg"></i>
+                </span>
+                
+            </div>
+        </div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	berechnete Zeit
+        </div>
+        <div class="layout-table-col table-formular-large">
+			<strong id="minutenGesamtText" data-difftime-start="#formBeginTime" data-difftime-end="#formEndTime"><f:render partial="Allgemein/Dauer" arguments="{set: '{dsl:getSetArrayFromTime(time: aufgaben.kontingent)}' }" /></strong>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Aufgabe<span>*</span>
+        </div>
+        <div class="layout-table-col">
+			<f:form.textarea name="notiz" value="{aufgaben.notiz}" class="form-control input-sm animated {f:if(condition: '{aufgaben.auftrag}', else: ' validator_required')}" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+	</div>
+
+
+    
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	zugewiesener MA<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+			
+        	<f:form.select class="validator_required selectpicker selectpickerFormular dropup" name="mitarbeiter" options="{mitarbeiters}" optionLabelField="name" value="{aufgaben.mitarbeiter}" id="editMitarbeiter"  data="{width:'100%', dropup-auto:'false'}" />
+        </div>
+         <div class="layout-table-col">&nbsp;</div>
+       
+	</div>
+</div>
+            
+ 
+    
+        
+
+</fieldset>
+
+
+
+
+

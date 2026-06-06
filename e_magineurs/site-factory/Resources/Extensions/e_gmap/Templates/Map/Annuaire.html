@@ -1,0 +1,23 @@
+<f:comment>Possible de mettre deux structures: 
+	soit data/content -> pour une infobulle simple
+	soit data/tab/content -> chaque tab sera un tab dans l'infobulle
+	
+</f:comment>
+<data>
+	<key>{key}</key>
+	<content>
+		<h2>{infos.title}</h2>
+		<f:if condition="{infos.poi}">
+			<p>{infos.poi.0.nom}</p>
+			<p>{infos.poi.0.adresse}</p>
+			<p>{infos.poi.0.code} {infos.poi.0.ville}</p>
+			<p><a href="#" onClick="eGmapYAller({infos.latfinal}, {infos.lngfinal}, '{infos.poi.0.adresse}, {infos.poi.0.code} {infos.poi.0.ville}');return false;">M'y rendre</a></p>
+		</f:if>
+		<f:if condition="{infos.address}">
+			{infos.nomLieu}
+			<p>{infos.address}</p>
+			<p>{infos.city.0.codePostal} {infos.city.0.title}</p>
+			<p><a href="#" onClick="eGmapYAller({infos.latfinal}, {infos.lngfinal}, '{infos.adressetout} {infos.ville.0.codePostal}, {infos.ville.0.title}');return false;">M'y rendre</a></p>
+		</f:if>
+	</content>
+</data>

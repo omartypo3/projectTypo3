@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.pdf_select_list{
+	margin: 5px 0px 0px 0px;
+	padding: 0px 0px 0px 10px;
+}
+
+.pdf_select_list td{
+	 vertical-align: middle;
+	 text-align: center;
+}
+
+.pdf_select_list IMG{
+	margin: 0px 5px 6px 2px;
+	border: none;
+}
+.pdf_select_list IMG.thumb{
+	border: #666666 1px solid;
+}
+
+.pdf_select_list {
+	vertical-align: middle;
+}
+.pdf_select_list tr{
+	background: #5DA8EE;
+}
+.pdf_select_list tr:nth-child(2n+1){
+	background: #A3CDF5;
+}
+.pdf_select_list tr:hover{
+	background: #18E7E3;
+}
+.pdf_select_list tr th{
+	font-size: 1.2em;
+	background: #1883E7;
+	text-align: center;
+	height: 30px;
+	vertical-align: middle;
+}
+.pdf_select_list tr td{
+	vertical-align: middle;
+	text-align: center;
+}
+.pdf_select_list td:hover{
+	background: #18E780;
+}
+
+.pdf_select_list img.suppr{
+	cursor: pointer;
+}
+
+.attention{
+	border: 1px solid red;
+	text-align: center;
+	margin: 0 20px;
+	padding: 10px;
+}

@@ -1,0 +1,47 @@
+v1.0.0 - Compatible v8 (tbeaurin@e-magineurs.com)
+	- Optimisation de requêtes en Doctrine
+	- Rajout de fonctions de l'ancienne version pour retrocompatibilité
+	- Rajout de la possibimité d'apeller IndexAction avec une url.
+	- Correction des appels à des fonctions obsolètes
+
+Passage en version 0.3.0 :
+	Traduction :
+	OUI - L'extension a été entièrement rendu traductible
+	OUI - Les fichiers de traduction en franglais on étés traduit en français puis en anglais
+	NON - Les fichiers de traduction ont étés corrigés
+	Propreté du code :
+	OUI - Le code en franglais a été traduit en anglais
+	OUI - La PHPDoc est faite (reste les handlers import)
+	OUI - Les fonctions inutilisés ont étés supprimés
+	OUI - La syntaxe a été néttoyée
+	OUI - La structure du code a été clarifié
+	Documentation :
+	OUI - La doc a été écrite
+	NON - La doc a été corrigée
+	Mise a jour :
+	OUI - Supression des appels a des fonctions dépréciés
+	OUI - Migration vers la nouvelle API pour les appels à la BDD
+	NON - Mettre a jour les modifs faites entre temps
+	NON - Detecter et supprimer les fonctionnalitées superflues
+	Test
+	PB  - Réparation du format xlsl -> Impossible car l'extension phpexcel_service n'est pas compatibles avec la v8
+	OUI - Réparer l'accés aux attributs XML (+ amélioration car ce n'étais pas géré a l'importation)
+	OUI - Implanter l'importation JSON
+	OUI - Reparer l'exportation JSON
+	OUI - Réparer l'interface de selection des fields
+	OUI - Test importation XML
+	OUI - Test exportation XML
+	OUI - Test importation CSV
+	OUI - Test exportation CSV
+	OUI - Test importation JSON
+	OUI - Test exportation JSON
+	OUI - Tester la mise en cache ajax
+	NON - Tests après le merge
+	Amélioration :
+	OUI - Ajout de l'ID dans le titre des enregistrements (plus pratique pour écrire les appels Ajax)
+	OUI - Correction du problème de sécu qui permet de lancer des taches non Ajax en Ajax (ça peut permettre a quelqu'un de malintentionner de bourinner des imports et saturer la BDD)
+	OUI - Améliorer l'interface du Scheduler (ajouter une select box)
+	OUI - Améliorer le TCA : la liste des types de fichier correspond maintenant a si l'on importe ou si l'on exporte, elle se charge dynamiquement a partir du GLOBALCONF
+	... - Déplacer l'endroit ou les flux sont crées, le but étant de deleguer l'ouverture des flux au controller et pas au Handler, ça pourrait être cool si dans une futuren amélioration, on permet à l'utilisateur d'uploader des fichiers ou de le copier coller (fait pour l'export)
+	NON - Améliorer l'interface du module
+	NON - Ajouter les relations multiples

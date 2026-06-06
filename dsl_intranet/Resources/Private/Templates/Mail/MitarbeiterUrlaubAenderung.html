@@ -1,0 +1,65 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Ein Urlaub für den {notification.wert3} wurde geändert.</f:section>
+
+<f:section name="bodyHtml">
+	
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; color:rgb(152, 152, 152); text-align:center;"><p>{notification.body}</p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+            		<td colspan="2"><b style="font-family:Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);">{notification.urlaubTitel}</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<f:if condition="{notification.wert2}"><tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Anmerkung:</td>
+					<td>{notification.wert2}</td>
+				</tr></f:if>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Zeitraum:</td>
+					<td>{notification.wert3}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Mitarbeiter:</td>
+					<td>{notification.urlaub.mitarbeiter.name}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Status:</td>
+					<td><f:translate key="tx_dslintranet_domain_model_urlaub.status.{notification.wert4}" /></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	
+                                
+</f:section>
+
+<f:section name="bodyText">{notification.body}
+----------------------------------
+Urlaub: {notification.urlaubTitel}
+Anmerkung: {notification.wert2}
+Zeitraum: {notification.wert3}
+Mitarbeiter: {notification.urlaub.mitarbeiter.name}
+Status: {notification.wert4}
+----------------------------------</f:section>

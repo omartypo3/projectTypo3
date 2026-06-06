@@ -1,0 +1,139 @@
+sitemap = PAGE
+sitemap {
+	typeNum = 470955600
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = none
+		admPanel = 0
+		debug = 0
+		metaCharset = utf-8
+		additionalHeaders = Content-Type:text/xml;charset=utf-8
+        additionalHeaders.10.header = Content-Type:text/xml;charset=utf-8
+		disablePrefixComment = 1
+	}
+	wrap = <?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">|</urlset>
+	#NEWS
+	10 = CONTENT
+	10 {
+		table = tx_news_domain_model_news
+		select {
+			pidInList = {$e_magineurs.sitemap.news.startingPoint}
+			recursive = 250
+			selectFields = uid,pid,tstamp,sys_language_uid,l10n_parent
+			orderBy = tstamp DESC
+			max = {$e_magineurs.sitemap.limit}
+			languageField = sys_language_uid
+			where = type=0 AND pid NOT IN(559,615,799,908,990)
+		}
+		renderObj = COA
+		renderObj {
+			wrap = <url>|</url>
+			10 = COA
+			10 {
+				wrap = <loc>|</loc>
+				10 = COA
+				10 {
+					stdWrap.htmlSpecialChars = 1
+					10 = TEXT
+					10 {
+						typolink {
+							parameter = {$e_magineurs.sitemap.news.detailPid}
+							forceAbsoluteUrl = 1
+							returnLast = url
+							additionalParams.field = uid
+							additionalParams.wrap = &tx_news_pi1[news]=|
+						}
+					}
+				}
+			}
+			20 = TEXT
+			20.wrap = <lastmod>|</lastmod>
+			20.field = tstamp
+			20.date = Y-m-d
+		}
+	}
+	10.if.isTrue = {$e_magineurs.sitemap.news.startingPoint}
+	# Ajouter d'autres news stockés dans d'autres dossier et avec une autre page détail
+	15 < .10
+	15.select.pidInList = {$e_magineurs.sitemap.agenda.startingPoint}
+	15.select.where = type=0 AND pid NOT IN(559,615,799,908,990)
+	15.renderObj.10.10.10.typolink.parameter = {$e_magineurs.sitemap.agenda.detailPid}
+	15.if.isTrue = {$e_magineurs.sitemap.agenda.startingPoint}
+	#PAGES
+	20 = CONTENT
+	20 {
+		table = pages
+		select {
+			pidInList = 1
+			recursive = 250
+			selectFields = uid,pid,tstamp
+			orderBy = tstamp DESC
+			where = doktype=1 AND nav_hide=0 AND pid NOT IN(36,27,58,41,559,615,799,908,990) AND uid NOT IN(559,615,799,908,990) AND is_siteroot = 0
+			languageField >
+		}
+		renderObj = COA
+		renderObj {
+			wrap = <url>|</url>
+			10 = COA
+			10 {
+				wrap = <loc>|</loc>
+				10 = COA
+				10 {
+					stdWrap.htmlSpecialChars = 1
+					10 = TEXT
+					10 {
+						typolink {
+							parameter.field = uid
+							forceAbsoluteUrl = 1
+							returnLast = url
+						}
+					}
+				}
+			}
+			20 = TEXT
+			20.wrap = <lastmod>|</lastmod>
+			20.field = tstamp
+			20.date = Y-m-d
+		}
+	}
+	#ANNUAIRES
+	30 = CONTENT
+	30 {
+		table = tx_eannuaires_domain_model_fiche
+		select {
+			pidInList = {$e_magineurs.sitemap.tx_e_annuaires.startingPoint}
+			recursive = 250
+			selectFields = uid,pid,tstamp
+			orderBy = tstamp DESC
+			languageField = sys_language_uid
+			where = pid NOT IN(559,615,799,908,990)
+		}
+		renderObj = COA
+		renderObj {
+			wrap = <url>|</url>
+			10 = COA
+			10 {
+				wrap = <loc>|</loc>
+				10 = COA
+				10 {
+					stdWrap.htmlSpecialChars = 1
+					10 = TEXT
+					10 {
+						typolink {
+							parameter = {$e_magineurs.sitemap.tx_e_annuaires.detailPid}
+							forceAbsoluteUrl = 1
+							returnLast = url
+							additionalParams.field = uid
+							additionalParams.wrap = &tx_eannuaires_pi1[fiche]=|
+						}
+					}
+				}
+			}
+			20 = TEXT
+			20.wrap = <lastmod>|</lastmod>
+			20.field = tstamp
+			20.date = Y-m-d
+		}
+	}
+	30.if.isTrue = {$e_magineurs.sitemap.tx_e_annuaires.startingPoint}
+}

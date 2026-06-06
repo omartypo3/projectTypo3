@@ -1,0 +1,19 @@
+<h1>Veuillez confirmer votre demande de création de news</h1>
+
+inutile de répondre à ce message
+
+<h3>Voici les éléments important de l'événemetnt</h3>
+<br/>
+Titre: {news.title}
+<br/>
+Description: {news.bodytext}
+<br/>
+Dates: {mailBeginDate} au {mailFinishDate}
+<br/>
+Adresse: {news.placename} {news.placeadress}
+<br />
+
+Cliquer sur les liens suivants pour valider ou refuser la demande d'événements
+
+<h2><b><f:link.action pageUid="{validationPid}" action="validate" extensionName="news" controller="News" pluginName="Pi1" absolute="1" arguments="{news: news, token: news.uservalidationtoken, validate: 1}" >Valider</f:link.action></b></h2><br/>
+<h2><b><f:link.action pageUid="{validationPid}" action="validate" extensionName="news" controller="News" pluginName="Pi1" absolute="1" arguments="{news: news, token: news.uservalidationtoken, validate: 0}" >Refuser</f:link.action></b></h2><br/>

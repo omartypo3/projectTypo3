@@ -1,0 +1,40 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:vh="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+  <f:layout name="Content"/>
+  <f:section name="Configuration">
+    <flux:form id="newsletternowhere" options="{icon: 'EXT:stratis_newsletter/Resources/Public/Icons/Example.gif', group: 'stratisnewsletters'}" label="[Newsletter] Nulle part ailleurs" description="Affiche nulle part ailleurs de la newsletter">
+      <flux:field.input name="title" label="Titre du bloc" required="true" default="Nulle part ailleurs"/>    
+      <flux:field.inline.fal name="picto" label="Image titre " size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />    
+      <flux:form.section name="panels" label="Créer un nouveau texte">
+        <flux:form.object name="panel" label="Ajouter une texte">          
+          <flux:field.text name="text" label="Texte" enableRichText="true"/>          
+        </flux:form.object>
+      </flux:form.section>
+    </flux:form>
+  </f:section>
+  <f:section name="Preview">      
+    <b>Nulle part ailleurs</b> 
+  </f:section>
+  <f:section name="Main">    
+    <v:variable.set name="domain" value="{v:site.url() -> v:format.replace(substring:'/',replacement:'') -> v:format.replace(substring:':',replacement:'://')}"/>              
+    <v:variable.set name="pathImages" value="EXT:stratis_newsletter/Resources/Public/Images/" />    
+    <f:if condition="{picto}">
+      <f:then>
+        {v:content.resources.fal(field:'picto',record:record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement')}
+         <v:variable.set name="picto" value="{f:uri.image(src:mediaElement.url)}"/>
+      </f:then>          
+      <f:else>
+        <v:variable.set name="picto" value="{f:uri.image(src:'{pathImages}newsletter/nulle-part-ailleurs.png')}" />
+      </f:else>
+    </f:if>
+    <v:variable.set name="pictoMain" value="{f:uri.image(src:'{pathImages}newsletter/elsewhere.png')}"/>  
+
+    <f:render partial="NewsletterNowhereElse.html" arguments="{domain:domain, title:title, pictoMain:pictoMain, picto:picto, panels:panels}"/>  
+                        
+    <v:variable.unset name="picto"/> 
+  </f:section>
+</html>

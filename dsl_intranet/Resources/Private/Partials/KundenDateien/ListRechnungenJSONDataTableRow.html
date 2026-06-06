@@ -1,0 +1,23 @@
+{dateien.tempRechnungsnummer}
+<--break-->
+	<f:if condition="{dateien.auftraege}">
+		<f:then>[{dateien.auftraege.nr}] {dateien.auftraege.titel}</f:then>
+		<f:else><f:if condition="{dateien.agenturvertraege}">
+			<f:then>{dateien.agenturvertraege.nr}: seit {dateien.agenturvertraege.vertragsbegin->f:format.date(format: 'd.m.Y')}<f:if condition="{dateien.agenturvertraege.vertragsende}"> bis {dateien.agenturvertraege.vertragsende->f:format.date(format: 'd.m.Y')}</f:if></f:then>
+			<f:else><em>Sonstige Rechnung</em></f:else>
+		</f:if></f:else>
+	</f:if>
+<--break-->	
+	
+	<f:if condition="{fileoutput.ctime}">
+		<f:then>
+			<span class="bb-pdf-download" aria-hidden="true"></span> <a href="{fileoutput.url}" class="dateidownload" target="_blank" download="{fileoutput.name}">{fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>) </a>
+		</f:then>
+		<f:else>
+			<span class="bb-pdf-download" aria-hidden="true"></span> {dateien.dateiName} (<f:format.bytes>{dateien.tempDateiGroesse}</f:format.bytes>)
+		</f:else>
+	</f:if>
+<--break-->
+{dateien.titel}	
+<--break-->
+{dateien.crdate->f:format.date(format: 'd.m.y - H:i')} Uhr

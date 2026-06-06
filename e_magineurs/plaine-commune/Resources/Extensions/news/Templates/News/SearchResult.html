@@ -1,0 +1,196 @@
+{namespace em=Emagineurs\ENews\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/SearchResult.html
+-->
+
+<f:section name="content">
+
+	<f:switch expression="{settings.templateLayout}">
+		<f:case value="75">
+			<h2 class="sr-only">Liste des résultats</h2>
+			<div class="news-search-result news-list-view-actu">
+				<f:if condition="{search}">
+					<f:if condition="{news}">
+						<f:then>
+							<div class="count-msg">
+								<p>Il y a {f:count(subject:news)} 
+									<f:if condition="{f:count(subject:news)} > 1">
+										<f:then>résultats </f:then>
+										<f:else>résultat </f:else>
+									</f:if>
+									<f:if condition="{search.subject}">
+										pour "{search.subject}"  
+									</f:if>
+									<f:if condition="{search.catEvent}">
+										sur la thématique <strong>"<em:findByUid field="title"  table="sys_category"  uid="{search.catEvent}" />" </strong>
+									</f:if>
+								</p>
+							</div>
+							<ul>
+								<f:for each="{news}" as="newsItem">
+									<f:render partial="List/ListeActu" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+								</f:for>
+							</ul>
+						</f:then>
+						<f:else>
+							<div class="no-news-found">
+								<f:translate key="search-noresult" />
+							</div>
+						</f:else>
+					</f:if>
+				</f:if>
+			</div>
+		</f:case>
+		<f:case value="76">
+			<div class="news-search-result news-list-view-actu">
+				<f:if condition="{search}">
+					<f:if condition="{news}">
+						<f:then>
+							<div class="count-msg">
+								<p>Il y a {f:count(subject:news)} 
+									<f:if condition="{f:count(subject:news)} > 1">
+										<f:then>résultats </f:then>
+										<f:else>résultat </f:else>
+									</f:if>
+									<f:if condition="{search.subject}">
+										pour "{search.subject}"  
+									</f:if>
+									<f:if condition="{search.catEvent}">
+										sur la thématique <strong>"<em:findByUid field="title"  table="sys_category"  uid="{search.catEvent}" />" </strong>
+									</f:if>
+								</p>
+							</div>
+							<f:for each="{news}" as="newsItem">
+								<f:render partial="List/FAQ" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+							</f:for>
+						</f:then>
+						<f:else>
+							<div class="no-news-found">
+								<f:translate key="search-noresult" />
+							</div>
+						</f:else>
+					</f:if>
+				</f:if>
+			</div>
+		</f:case>
+		<f:case value="80">
+			<div class="news-search-result">
+				<f:if condition="{search}">
+					<f:if condition="{news}">
+						<f:then>
+							<div class="count-msg">
+								<p>Il y a {f:count(subject:news)} 
+									<f:if condition="{f:count(subject:news)} > 1">
+										<f:then>résultats </f:then>
+										<f:else>résultat </f:else>
+									</f:if>
+									<f:if condition="{search.subject}">
+										pour "{search.subject}"  
+									</f:if>
+									<f:if condition="{search.catEvent}">
+										sur la thématique <strong>"<em:findByUid field="title"  table="sys_category"  uid="{search.catEvent}" />" </strong>
+									</f:if>									
+									<f:if condition="{search.maximumDate}">
+											jusqu'au <strong>{search.maximumDate}</strong>
+									</f:if>
+
+								</p>
+							</div>
+							<div class="news-list-view liste-agenda lazyLoadContainer">
+								<div class="row">
+									<f:for each="{news}" as="newsItem">
+										<f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+									</f:for>
+								</div>
+							</div>
+						</f:then>
+						<f:else>
+							<div class="no-news-found">
+								<f:translate key="search-noresult" />
+							</div>
+						</f:else>
+					</f:if>
+				</f:if>
+			</div>
+		</f:case>
+
+		<f:case value="93">
+			<h2 class="sr-only">Liste des résultats</h2>
+			<div class="news-search-result news-list-view-actu">
+				<f:if condition="{search}">
+					<f:if condition="{news}">
+						<f:then>
+							<div class="count-msg">
+								<p>Il y a {f:count(subject:news)} 
+									<f:if condition="{f:count(subject:news)} > 1">
+										<f:then>résultats </f:then>
+										<f:else>résultat </f:else>
+									</f:if>
+									<f:if condition="{search.subject}">
+										pour "{search.subject}"  
+									</f:if>
+									<f:if condition="{search.catEvent}">
+										sur la thématique <strong>"<em:findByUid field="title"  table="sys_category"  uid="{search.catEvent}" />" </strong>
+									</f:if>
+								</p>
+							</div>
+							<ul class="publications-list  is-columns-4 is-columns-md-1">
+								<f:for each="{news}" as="newsItem">
+									<f:render partial="List/ListePublications" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+								</f:for>
+							</ul>
+						</f:then>
+						<f:else>
+							<div class="no-news-found">
+								<f:translate key="search-noresult" />
+							</div>
+						</f:else>
+					</f:if>
+				</f:if>
+			</div>
+		</f:case>
+
+		<f:defaultCase>
+			<div class="news-search-result">
+				<f:if condition="{search}">
+					<f:if condition="{news}">
+						<f:then>
+							<div class="count-msg">
+										<p>Il y a {f:count(subject:news)} 
+											<f:if condition="{f:count(subject:news)} > 1">
+												<f:then>résultats </f:then>
+												<f:else>résultat </f:else>
+											</f:if>
+											<f:if condition="{search.subject}">
+												pour "{search.subject}"  
+											</f:if>
+											<f:if condition="{search.catEvent}">
+												sur la thématique <strong>"<em:findByUid field="title"  table="sys_category"  uid="{search.catEvent}" />" </strong>
+											</f:if>
+											<f:if condition="{search.minimumDate}">
+												pour la période du <strong>{search.minimumDate}</strong> au <strong>{search.maximumDate}</strong>
+											</f:if>
+										</p>
+									</div>
+
+							<f:for each="{news}" as="newsItem">
+								<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings, className:className, view:'list'}" />
+							</f:for>
+						</f:then>
+						<f:else>
+							<div class="no-news-found">
+								<f:translate key="search-noresult" />
+							</div>
+						</f:else>
+					</f:if>
+				</f:if>
+			</div>			
+		</f:defaultCase>
+	</f:switch>
+</f:section>
+</html>

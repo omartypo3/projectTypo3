@@ -1,0 +1,31 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in <th></th>e extension builder
+
+<f:section name="main">
+	<f:form pageType="89657210" controller="Agenturvertraege" action="update" name="agenturvertraege" pluginName="agenturvertragsliste" extensionName="dslintranet" id="agenturvertraegeEditForm" additionalAttributes="{data-insert-selector: 'xyz1234'}">
+		<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Agenturvertrag Bearbeiten'}" />
+		
+		
+		
+		<f:render partial="Agenturvertraege/FormFields" arguments="{_all}" />
+
+		<f:form.hidden name="agenturvertraege" value="{agenturvertraege}" />
+
+		<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+	</f:form>
+	<script>
+		initAgenturvertraegeNewEditForm();
+	</script>
+</f:section>
+</html>

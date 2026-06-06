@@ -1,0 +1,51 @@
+# Load default processing options
+imports:
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+- { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+- { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
+# Add configuration for the editor
+# For complete documentation see http://docs.ckeditor.com/#!/api/CKEDITOR.config
+editor:
+  externalPlugins:
+    youtube: { resource: "EXT:ckecustomise/Resources/Public/RTE/Plugins/youtube/plugin.js" }
+    facebookvideo: { resource: "EXT:ckecustomise/Resources/Public/RTE/Plugins/facebookvideo/plugin.js" }
+    #pastetext: { resource: "EXT:ckecustomise/Resources/Public/RTE/Plugins/pastetext/plugin.js" }
+  config:
+    # the CSS file to be used inside the editor
+    contentsCss: "EXT:rte_ckeditor/Resources/Public/Css/contents.css"
+    stylesSet:
+    # block level styles
+    - { name: "Button gelb", element: "a", attributes: { class: "btn-yellow" } }
+
+    extraPlugins:
+    - justify
+    - specialchar
+    - showblocks
+    - codesnippet
+    - iframe
+    - uicolor
+
+    justifyClasses:
+    - align-left
+    - align-center
+    - align-right
+    - align-justify
+
+    codeSnippet_theme: 'monokai_sublime'
+
+    #external config
+    youtube_width: '550'
+
+      #removePlugins:
+    #- image
+
+    removeButtons:
+
+
+buttons:
+  link:
+    properties:
+      class:
+        allowedClasses: "btn-yellow"

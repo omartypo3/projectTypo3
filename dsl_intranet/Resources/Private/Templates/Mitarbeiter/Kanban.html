@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+
+<f:comment><!-- https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js--></f:comment>
+<f:comment><!-- <v:asset.script path="fileadmin/template/public/jquery_datatables_1_10_16/extensions/RowGroup/js/dataTables.rowGroup.min.js" name="jdtrg"></v:asset.script>
+<v:asset.script path="https://cdn.datatables.net/rowgroup/1.1.2/js/dataTables.rowGroup.min.js" name="jdtrg"></v:asset.script>
+--></f:comment>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/kanban/kanban.js" name="jKC"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/kanban/dslkanban.js" name="jDKC"></v:asset.script>
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/kanban/dslkanban.css" name="cDKC"></v:asset.style>		
+
+<section id="kanban" data-ajax-url="{f:uri.action(action: 'ajax', pluginName: 'kanban', controller: 'Mitarbeiter', pageType: 89657008, pageUid: 104)}">
+    <div class="kanbanWrapper">
+        <h1>KanbanView!! {test}</h1>
+        <div class="kanbanContent">
+            <h2>Content</h2>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+# 1. Override t3sbootstrap restrictions
+mod.web_layout.tt_content.colPos_list := addToList(10)
+TCEFORM.tt_content.colPos.addItems.10 = SLIDER
+
+# 2. Force-enable editing for colPos=10
+TCEFORM.tt_content.colPos.disabled = 0
+TCEMAIN.permissions.groupid = *
+TCEMAIN.permissions.userid = *
+TCEMAIN.permissions.permissions = 31
+
+# 3. Special configuration for your slider backend layout
+mod.web_layout.BackendLayouts.bb_wissenswertes_4.config.backend_layout.rows.1.columns.1 {
+    allowed = *
+    CType = *
+    list_type = *
+}

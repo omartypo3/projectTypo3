@@ -1,0 +1,21 @@
+<div class="browseLinkHolder">
+	<div class="linkholder-cell link-prev">
+        <f:if condition="{prev}"><f:then><f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:prev}" class="btn btn-default btn-prev"> <span>vorherige Immobilie</span></f:link.action></f:then><f:else><a class="inaktiv btn btn-default btn-prev"> <span>vorherige Immobilie</span></a></f:else></f:if>
+    </div>
+    <div class="linkholder-cell link-center">
+        <f:link.page pageUid="{settings.listPid}" class="btn btn-default">zurück zur <strong>{settings.backLinkTitle}</strong></f:link.page>
+    </div>
+    <div class="linkholder-cell link-next">
+        <f:if condition="{next}"><f:then><f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:next}" class="btn btn-default btn-next"><span>nächste Immobilie</span> </f:link.action></f:then><f:else><a class="inaktiv btn btn-default btn-next"><span>nächste Immobilie</span> </a></f:else></f:if>
+    </div>
+</div>
+
+
+
+<f:comment><!--
+<ul>
+	<li><f:if condition="{prev}">^<f:then><f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:prev}">&lt; <span>vorherige Immobilie</span></f:link.action></f:then><f:else><a class="inaktiv">&lt; <span>vorherige Immobilie</span></a></f:else></f:if></li>
+	<li><f:link.page pageUid="{settings.listPid}">zurück zur <strong>{settings.backLinkTitle}</strong></f:link.page></li>
+	<li><f:if condition="{next}"><f:then><f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:next}"><span>nächste Immobilie</span> &gt;</f:link.action></f:then><f:else><a class="inaktiv"><span>nächste Immobilie</span> &gt;</a></f:else></f:if></li>
+</ul>
+--></f:comment>

@@ -1,0 +1,177 @@
+/* ===============
+TABLEAU RESPONSIVE
+=============== */
+.stacktable.large-only { display: none; }
+.stacktable.small-only { display: table; }
+
+@media (min-width: 768px) {
+    .stacktable.small-only { display: none; }
+    .stacktable.large-only { display: table; }
+}
+
+html{
+    font-family: 'Montserrat', sans-serif;
+    @include Mquerie_M(){
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    *{font-family: 'Montserrat', sans-serif;}
+    @include Mquerie_M(){
+        width: 100%;
+    }
+}
+.news-img-wrap img{
+    height: auto;
+}
+.legend{
+    font-style:italic;
+    font-size: 14px;
+}
+h2, h3, p{
+    &.fond_couleur_principal{
+        background:$color_principal!important;
+        display: inline!important;
+        border:none!important;
+        padding:5px!important;
+    }
+}
+iframe, video{
+    max-width: 100%;
+}
+/*==========================
+======  Font ==============
+=======================*/
+
+/*@font-face {
+    font-family: 'HelveticaNeueLTStd';
+    src: url('../../fonts/HelveticaNeueLTStd-BdCn.eot');
+    src: url('../../fonts/HelveticaNeueLTStd-BdCn.eot?#iefix') format('embedded-opentype'),
+        url('../../fonts/HelveticaNeueLTStd-BdCn.woff2') format('woff2'),
+        url('../../fonts/HelveticaNeueLTStd-BdCn.woff') format('woff'),
+        url('../../fonts/HelveticaNeueLTStd-BdCn.ttf') format('truetype'),
+        url('../../fonts/HelveticaNeueLTStd-BdCn.svg#HelveticaNeueLTStd-BdCn') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}*/
+
+a{
+    color: $color_principal;
+}
+a:hover, a:focus{
+    color: $color_principal;
+}
+p{
+    font-size: 13px;
+}
+
+ul.menuminiicon{
+    margin-top: -9px;
+    li{       
+        display: block;
+        position: relative;
+        border-bottom: 1px dotted #000000;
+        padding: 2px 0;
+
+        a{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            position: relative;
+            height: 100%;
+            &:hover{
+                text-decoration: underline;
+            }
+
+            span{
+
+            }
+
+            p{
+                
+                color: $noir;
+                line-height: 1.2;
+                font-size: 14px;
+                padding: 0 10px 0 10px;
+                width: calc(100% - 50px);
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
+
+            .case_img{
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                position: relative;
+                height: 100%;
+                width: 50px;
+
+                img{
+                    height: 42px!important;
+                    width: auto!important;
+                }
+            }       
+        }  
+    }
+}
+
+.frame{
+    .ce-textpic{
+        .ce-bodytext{
+            p{
+                padding-bottom: 6px;
+
+                &.chapo{
+                    font-weight: bold!important;
+                    font-size: 14px!important;
+                }
+            }
+        }
+    }
+}
+
+h5.results-topic{
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    a{
+
+    }
+}
+.content .case_content .content_right #tx-solr-search-functions.frame{
+    ul{
+        li{
+            padding-left:20px;
+            margin-bottom: 10px;
+            a{
+                color: black;
+            }
+        }
+    }
+}
+.content .case_content .content_right #tx-solr-search-functions.frame h3{
+    background: transparent;
+    
+}

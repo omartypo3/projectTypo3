@@ -1,0 +1,201 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.sDEF</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.listFeed>
+                            <label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.sDEF.listFeed</label>
+							<config>     		 
+								<type>text</type>
+								<cols>40</cols>
+								<rows>20</rows>
+								<eval>required</eval>
+							</config>
+					</settings.listFeed>
+				</el>
+			</ROOT>
+		</sDEF>
+		<configuration>
+			<ROOT>
+					<sheetTitle>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration</sheetTitle>
+				<type>array</type>
+				<el>
+					<settings.limit>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.limit</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.limit>
+					<settings.limit2>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.limit2</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.limit2>
+					<settings.formatDate>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.formatDate</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.formatDate.defaut</numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">10/08/2010, 16:30</numIndex>
+										<numIndex index="1">%d/%m/%Y; %H:%M</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">10/08 - 16:30</numIndex>
+										<numIndex index="1">%d/%m - %H:%M</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">Lundi 10 Aout 2010, 16h30</numIndex>
+										<numIndex index="1">%A %d %B %Y; %Hh%M</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">Lundi 10 Aout à 16h30</numIndex>
+										<numIndex index="1">%A %d %B à %Hh%M</numIndex>
+									</numIndex>
+								</items>
+								<default></default>
+							</config>
+					</settings.formatDate>
+					<settings.stripHTML>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.stripHTML</label>
+							<config>
+								<type>check</type>
+								<default>0</default>
+							</config>
+					</settings.stripHTML>
+					<settings.cropAdd>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cropAdd</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+								<eval>trim</eval>
+							</config>
+					</settings.cropAdd>
+					<settings.cropTitle>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cropTitle</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.cropTitle>
+					<settings.cropDesc>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cropDesc</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.cropDesc>
+					<settings.cropContent>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cropContent</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.cropContent>
+					<settings.cropContenu>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cropContenu</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.cropContenu>
+					<settings.target>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.target</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+								<eval>trim</eval>
+							</config>
+					</settings.target>
+					<settings.image>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.image</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+					</settings.image>
+					<settings.imageWidth>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.imageWidth</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.imageWidth>
+					<settings.imageHeight>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.imageHeight</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+							</config>
+					</settings.imageHeight>
+					<settings.cache>
+							<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cache</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cache.quatre</numIndex>
+										<numIndex index="1">4</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cache.huit</numIndex>
+										<numIndex index="1">8</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cache.douze</numIndex>
+										<numIndex index="1">12</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cache.vingtquatre</numIndex>
+										<numIndex index="1">24</numIndex>
+									</numIndex>
+									<numIndex index="4">
+										<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.cache.no</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+								</items>
+								<default>4</default>
+							</config>
+					</settings.cache>
+					<settings.orderDirection>
+						<label>LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.orderDirection</label>
+						<config>
+							<type>select</type>
+							<renderType>selectSingle</renderType>
+							<items>
+								<numIndex index="0">
+									<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.orderDirection.asc</numIndex>
+									<numIndex index="1">asc</numIndex>
+								</numIndex>
+								<numIndex index="1">
+									<numIndex index="0">LLL:EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xml:flexform_aggregator.configuration.orderDirection.desc</numIndex>
+									<numIndex index="1">desc</numIndex>
+								</numIndex>
+							</items>
+							<default>desc</default>
+						</config>
+				</settings.orderDirection>
+				</el>
+			</ROOT>
+		</configuration>
+	</sheets>
+</T3DataStructure>

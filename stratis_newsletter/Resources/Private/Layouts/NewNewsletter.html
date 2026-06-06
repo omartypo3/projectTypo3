@@ -1,0 +1,15 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<v:variable.set name="pathToImages" value="{v:variable.typoscript(path:'plugin.tx_stratisnewsletter.settings.pathToImages')}"/>
+<f:render section="HeadContentNewsletter" partial="Page/HeadContentNewsletter" arguments="{_all}"/>
+<table role="presentation" class="body" style="Margin: 0; background: #ffffff; border-collapse: collapse; border-spacing: 0; color: #0a0a0a; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; height: 100%; line-height: 1.5; margin: 0; padding: 0; text-align: left; vertical-align: top; width: 100%;">
+    <tbody>
+        <tr style="padding: 0; text-align: left; vertical-align: top;">
+            <td class="center" align="center" valign="top" style="-moz-hyphens: auto; -webkit-hyphens: auto; Margin: 0; border-collapse: collapse !important; color: #0a0a0a; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; hyphens: auto; line-height: 1.5; margin: 0; padding: 0; text-align: left; vertical-align: top; word-wrap: break-word;">
+                <center data-parsed="" style="min-width: 700px; width: 100%;">
+                    <f:render section="Main" arguments="{_all}"/>
+                </center>
+            </td>
+        </tr>
+    </tbody>    
+</table>
+

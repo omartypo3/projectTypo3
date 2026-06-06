@@ -1,0 +1,68 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Products"/>
+
+<f:section name="Main">
+    <f:if condition="{menu}">
+        <div class="yachts1-carousel owl-theme owl-carousel owl-loaded owl-drag">
+            <div class="owl-stage-outer">
+                <div class="owl-stage">
+
+                    <f:render section="Menu" arguments="{menu: menu}"/>
+
+                </div>
+            </div>
+            <div class="owl-nav">
+                <button type="button" role="presentation" class="owl-prev"><i class="ti-angle-left" aria-hidden="true"></i></button>
+                <button type="button" role="presentation" class="owl-next"><i class="ti-angle-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="owl-dots disabled"></div>
+            <div class="owl-nav">
+                <button type="button" role="presentation" class="owl-prev"><i class="ti-angle-left" aria-hidden="true"></i></button>
+                <button type="button" role="presentation" class="owl-next"><i class="ti-angle-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="owl-dots disabled"></div>
+        </div>
+    </f:if>
+</f:section>
+</html>
+
+<f:section name="Menu">
+    <f:if condition="{menu}">
+            <f:for each="{menu}" as="page">
+            <div class="owl-item">
+                <div class="item mb-15">
+                        <div class="img">
+                            <a href="{page.link}">
+                                <f:image src="fileadmin{page.files.0.originalFile.identifier}" class="img-fluid img"></f:image>
+                            </a>
+                        </div>
+                        <div class="wrapper">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="title"> <a href="{page.link}">{page.title}</a></div>
+                                    <f:if condition="{page.subtitle}">
+                                        <div class="details">
+                                            <span>
+                                                <f:if condition="{page.nav_icon}">
+                                                    {page.nav_icon}
+                                                </f:if>
+                                                {page.subtitle}
+                                            </span>
+                                        </div>
+                                    </f:if>
+                                </div>
+                                <div class="col-md-2 justify-content-end">
+                                    <div class="arrow">
+                                        <a href="{page.link}"><span class="ti-arrow-right"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:for>
+    </f:if>
+
+</f:section>

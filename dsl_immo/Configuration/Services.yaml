@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  DslFactory\DslImmo\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  DslFactory\DslImmo\Command\ImportCommand:
+    tags:
+      - name: 'console.command'
+        command: 'dslImmo:import'
+        description: 'Import Anhand von Zugangsdaten welche über das Typoscript Template gepflegt werden.'
+  DslFactory\DslImmo\Command\ImportIvmCommand:
+    tags:
+    - name: 'console.command'
+      command: 'dslImmo:importIvm'
+      description: 'IVM Import Anhand von Zugangsdaten welche über das Typoscript Template gepflegt werden.'
+

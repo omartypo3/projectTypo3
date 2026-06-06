@@ -1,0 +1,32 @@
+<f:if condition="{data.header}">
+	<f:render partial="Header/All" arguments="{_all}" />
+</f:if>
+<div class="row grid">
+	<div class="col-xl-4">
+		<div class="inner inner-33 first">
+			<f:for each="{children_60}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+	<div class="col-xl-4">
+		<div class="inner inner-33 middle">
+			<f:for each="{children_61}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+	<div class="col-xl-4">
+		<div class="inner inner-33 last">
+			<f:for each="{children_62}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,79 @@
+{namespace enews=Emagineurs\ENews\ViewHelpers}
+<f:form 
+    action="create" 
+    object="{fiche}" 
+    name="fiche" 
+    method="post" 
+    enctype="multipart/form-data" 
+    id="edit_annuaire_fe"
+    class= "move_scroll"
+>       
+        
+        <div class="powermail_fieldwrap">        
+            <label for="field_firstname">Prénom :</label>
+            <div class="powermail_field">
+                <f:form.textfield property="firstname" id="field_firstname" class="form-control" value="" />
+            </div>
+        </div>
+
+        <div class=" powermail_fieldwrap">
+            <label for="field_name">Nom :</label>
+            <div class="powermail_field">
+                <f:form.textfield property="name" id="field_name" class="form-control" value="" />
+            </div>
+        </div>
+
+        <div class="powermail_fieldwrap">        
+            <label for="field_email">Email* : </label>
+            <div class="powermail_field">
+                <f:form.textfield property="email" id="field_email" class="form-control" value="" additionalAttributes="{required:''}" />
+            </div>
+        </div>
+
+        <div class="powermail_fieldwrap">
+            <label for="field_title">titre de la vidéo* : </label>
+            <div>
+                <f:form.textfield property="title" class=" form-control" id="field_title" additionalAttributes="{required:''}"/>
+            </div>
+        </div>
+    
+        <div class="powermail_fieldwrap">
+            <label for="field_title">description* : </label>
+            <div>
+                <f:form.textarea class="form-control" property="description" id="field_description" additionalAttributes="{required:''}"/>
+            </div>
+        </div>
+
+        <div class="powermail_fieldwrap">
+            <label for="field_title">Catégorie* : </label>
+            <div>
+                <enews:select property="categories" class="form-control custom-select powermail_select" options="{datas.arrayCategories}" id="check_categories_{itemIteration.cycle}" additionalAttributes="{required:''}" />
+            </div>
+        </div>
+
+        <div class="powermail_fieldwrap">
+            <label for="field_title">Code de partage de la vidéo* : </label>
+            <div>
+                <f:form.textarea class="form-control" property="beneficiaire" id="field_beneficiaire" additionalAttributes="{required:''}"/>
+            </div>
+        </div>
+
+        <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_file powermail_fieldwrap powermail_fieldwrap_type_file">
+            <label for="form_image_video" class="form_emploi_label powermail_label">Image de la vidéo*</label>
+            <div class="powermail_field">
+                <f:form.hidden name="uidFiche" value="{fiche.uid}" id="form_image_video" />
+                <f:form.upload name="fiche[imageinstancier][file-1]" class="field_image powermail_file" additionalAttributes="{required:''}"/>
+                <f:form.hidden name="fiche[image]" value="" />
+            </div>
+        </div>
+
+        <div class="powermail_fieldwrap">
+            <f:if condition="{settings.editFe.activeTokenValidation}">
+                <f:form.hidden name="token" value="{datas.token}" />
+                <f:form.hidden name="idForm" value="{datas.idForm}" />
+            </f:if>
+            <button type="submit" class="btn btn-animate btn-fond-clair btn-vert" name="tx_eannuaires_pi1[submit]">
+                Proposer ma vidéo
+            </button>
+        </div>
+</f:form>

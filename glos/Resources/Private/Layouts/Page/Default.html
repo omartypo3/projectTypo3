@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<!-- Preloader -->
+<div class="preloader-bg" style="display: none;"></div>
+<div id="preloader" style="display: none;">
+    <div id="preloader-status">
+        <div class="preloader-position loader"><span></span></div>
+    </div>
+</div>
+<!-- Progress scroll totop -->
+<div class="progress-wrap cursor-pointer">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+              style="transition: stroke-dashoffset 10ms linear; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+        </path>
+    </svg>
+</div>
+
+    <div class="main-header">
+        <f:render partial="Navigation/Main" arguments="{_all}" />
+    </div>
+     <f:render section="Footer" optional="true" />
+
+        <f:render section="Border" optional="true" />
+        <f:render partial="Navigation/Breadcrumb" arguments="{_all}" />
+
+       
+        <!--TYPO3SEARCH_begin-->
+        <f:render section="Main" />
+        <!--TYPO3SEARCH_end-->
+       
+
+        <f:render partial="Structure/FooterMeta" arguments="{_all}" />
+
+  
+
+</html>

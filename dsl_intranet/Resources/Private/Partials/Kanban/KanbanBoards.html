@@ -1,0 +1,31 @@
+<f:comment>{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}
+{boards -> f:debug(title: 'boards', inline: '1')}
+{resArr -> f:debug(title: 'resArr', inline: '1')}
+{kanban -> f:debug(title: 'kanban', inline: '1')}
+
+//emulate drag css
+jQuery('.kanban-wrapper').addClass('board-item-drag-active');
+
+</f:comment>
+
+<div class="kanban-wrapper" data-kanban-boards="{kanban.board -> f:count()}">
+    
+    <f:for each="{kanban.board}" as="board" iteration="iBoard">
+        <div id="kanban-board-{board.uid}" class="kanban-board {f:if(condition: '{board.fixiert}', then: 'kanban-board-fixiert')}" data-board-uid="{board.uid}" data-board-kuerzel="{board.kuerzel}"  ondragleave="jQuery(this).removeClass('board-dragover');" ondrop="dropOnBoardOuterEnd(event)" ondragover="jQuery(this).addClass('board-dragover');allowDropOnBoard(event);" {f:if(condition: '{board.fixiert}', else: ' draggable="true" ondragstart="dragKanbanBoard(event)" ondragend="dragEndKanbanBoard(event)"  ')} >
+            <div class="kanban-board-header" id="kanban-board-header-{board.uid}"><f:format.raw>{board.titel}</f:format.raw></div>
+            <div class="kanban-board-body" > 
+                <f:for each="{board.items}" as="item" iteration="iItem">
+                    <f:if condition="{item.relationModel}">
+                        <f:then>
+                            <f:comment><!-- noch prüfen ob es sich um einen auftrag handelt // ggfls switch --></f:comment>
+                            <f:render partial="Kanban/AuftragItem" arguments="{_all}" />
+                        </f:then>
+                    </f:if>
+                </f:for>
+                <div id="board-{board.uid}-platzhalter" class="kanban-item-platzhalter"><div>&nbsp;</div><div class="items-empty">- kein Eintrag -</div></div>
+            </div>
+        </div>
+    </f:for>
+
+    
+</div>

@@ -1,0 +1,36 @@
+<f:layout name="Default"/>
+<f:section name="Main">
+
+	<!--TYPO3SEARCH_begin-->	
+	<f:comment>
+	<div class="socialShare"></div>
+	<f:cObject typoscriptObjectPath="lib.printPage" />
+	</f:comment>
+
+	<f:alias map="{contenuDroite: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'2\'})}', contenuGauche: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'1\'})}', col0: '{colPos: \'0\'}', col1: '{colPos: \'1\'}', col2: '{colPos: \'2\'}', col3: '{colPos: \'3\'}'}">
+	
+		<div class="content">
+			<div class="case_content_head">
+				<f:cObject typoscriptObjectPath="lib.base_menu_gauche" />
+			</div>
+			<div class="case_content">
+				
+				<div class="content_center">
+					<f:cObject typoscriptObjectPath="lib.titrePage" />
+					
+					<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col0}" />
+
+					<div id="btn_page_up">
+						Haut de page
+					</div>
+				</div>
+
+				<div class="content_right">
+					<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col1}" />
+				</div>
+			</div>
+		</div>
+
+	</f:alias>
+	<!--TYPO3SEARCH_end-->
+</f:section>

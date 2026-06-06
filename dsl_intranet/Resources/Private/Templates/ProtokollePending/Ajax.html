@@ -1,0 +1,17 @@
+<f:spaceless>
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+	
+<f:switch expression="{switch}">
+	<f:case value="getMailPreview">
+		<div>
+			<div id="protokollePendingMailPreviewHtml"><f:format.raw>{protokollePending.protokoll.mailSettings.bodyHtml}</f:format.raw></div>
+			<div id="protokollePendingMailPreview">
+				<f:format.nl2br>{protokollePending.protokoll.mailSettings.body}</f:format.nl2br>
+			</div>
+		</div>
+		
+	</f:case>
+</f:switch>
+
+</f:spaceless>

@@ -1,0 +1,178 @@
+<f:layout name="Newsletter" />
+<f:section name="Main">
+<style type="text/css">
+    body {
+    margin: 0;
+    font-family: arial, verdana, tahoma, sans-serif;
+    background-color: white;
+    width:100%;
+    padding:0;
+}
+
+p {
+    margin: 5px 0;
+    font-family: arial, verdana, tahoma, sans-serif;
+    font-size: 12px;
+}
+
+h3{
+    margin-top:0;
+}
+h2{
+    color:#80b71b;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: 17px;
+    border-bottom: 1px dotted silver;
+}
+a{
+    color:#54711e;
+    text-decoration: underline;
+}
+img{
+    max-width: 100%;
+    height: auto;   
+}
+table.align {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.newsletter{
+    width:600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.600 {
+    width: 600px;
+}
+</style>
+    <f:alias map="{contenuDroite: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'2\'})}', col0: '{colPos: \'0\'}', col1: '{colPos: \'1\'}', col2: '{colPos: \'2\'}', col3: '{colPos: \'3\'}', col4: '{colPos: \'4\'}', col5: '{colPos: \'5\'}'}">
+        <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#fff" style="font-size:12px;" align="center">
+            <tr>
+                <td align="center">
+                    <table class="align newsletter" cellspacing="0" cellpadding="0" border="1" bgcolor="#e1dfd9" style="width:668px;" align="center">
+                        <tr>
+                            <td>
+                             <table bgcolor="#fff" class="align" cellspacing="0" cellpadding="0" border="0" style="width:668px">
+                                <tr>
+                                    <td style="width:668px" height="40">
+                                        <p style="font-size:10px;color:black;text-align:center;">Si cette newsletter n'apparaît pas correctement, 
+                                            <f:cObject typoscriptObjectPath="lib.tempLienAffichage" />
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                                <table bgcolor="#e1dfd9" class="align" cellspacing="0" cellpadding="0" border="0" style="width:668px;border-bottom:30px solid black;background-color:#e1dfd9;">
+                                    <tr>
+                                        <td>
+                                            <table bgcolor="#e1dfd9" width="668" cellspacing="0" cellpadding="10" border="0" style="background-color:#e1dfd9;">
+                                                <tr> 
+                                                    <td style="width:239px;text-align:center;vertical-align:middle;background-color:#e1dfd9;">
+                                                        <f:image src="EXT:e_magineurs/Resources/Public/SiteFactory/Images/logo_plaine_commune.jpg" width="188" height="85"/>
+                                                    </td>
+                                                    <td style="width:15px">
+                                                    </td>
+                                                    <td style="width:440px;text-align:left;vertical-align:middle;background-color:#e1dfd9;">
+                                                        <h1 style="vertical-align: top; margin: 0; padding: 0; font-size: 22px; font-weight:bold; margin:0 !important;">Lettre d'informations économiques</h1>
+                                                        <f:cObject typoscriptObjectPath="lib.titreNewsletter" />
+                                                    </td>
+                                                    <td style="width:20px;"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table width="668" cellspacing="0" cellpadding="0" border="0" style="background-color: #e1dfd9;text-align:left; border-top: 3px solid #80b71b;">
+                                    <tr><td style="height:20px"></td></tr>
+                                    <tr>
+                                        <td style="width:10px"></td>
+                                        <td style="width:360px;background-color:#fff;vertical-align: top;font-size: 12px;">
+                                            <table>
+                                                <tr>
+                                                    <td style="width:10px"></td>
+                                                        <td style="font-size: 12px;"><f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col0}" /></td>
+                                                    <td style="width:10px"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width:10px"></td>
+                                        <td style="width:210px;vertical-align:top;font-size:12px;">
+                                            <table cellpadding="0" style="width:100%;">
+                                                <tr>
+                                                    <td>
+                                                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col1}" />
+                                                    </td>
+                                                </tr>
+                                            
+                                            </table>
+                                            <table class="colone_droite bas" style="background-color: #FFFFFF; border-collapse:collapse; width: 210px; vertical-align: top;" cellspacing="0" cellpadding="0" border="0">
+                                                <tr>
+                                                    <td style="width:10px"></td>
+                                                    <td style="vertical-align: top;">
+                                                       <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col2}" />
+                                                    </td>
+                                                    <td style="width:10px"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width:10px"></td>
+                                    </tr>
+                                    <tr><td style="height:20px"></td></tr>
+                                </table>
+
+                                <table bgcolor="#d2d0ca" width="668" cellspacing="0" cellpadding="0" border="0" style="background-color:#d2d0ca;width:668px;">
+                                    <tr style="background-color:#d2d0ca;width:668px;">
+                                        <td class="space" style="width: 27px;background-color:#d2d0ca;"></td>
+                                        <td style="width:200px;text-align:left;vertical-align:topbackground-color:#d2d0ca;"> 
+                                            <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col3}" />
+                                        </td>
+
+                                        <td class="space" style="width: 95px;background-color:#d2d0ca;"></td>
+                                        <td style="width:230px;vertical-align:top;" align="left">
+                                            <table class="image_map" cellspacing="0" cellpadding="0" border="0">
+                                                <tr><td style="height: 20px;"></td></tr>
+                                                <f:comment><tr><td><f:image src="EXT:e_magineurs/Resources/Public/Plaine/Images/map.jpg" alt="Plan" style="width: 221px; height: 161px; margin: 0; float: left;"/></td></tr></f:comment>
+                                                <tr><td style="height: 12px;" height="12px"></td></tr>
+                                                <tr>
+                                                    <td style="vertical-align: top;">
+                                                        <table cellspacing="0" cellpadding="0" border="0">
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="https://maps.google.com/maps/ms?hl=fr&amp;ie=UTF8&amp;msa=0&amp;msid=102842118807271236951.00044335b0038e3f36f63&amp;ll=48.924754,2.362532&amp;spn=0.004906,0.010042&amp;z=17&amp;om=1" target="_top" style="color:black;font-family: Arial; font-size: 11px; width: 71px;text-decoration: underline;">Plan d'accès</a>
+                                                                </td>
+                                                                <td style="width: 51px;"></td>
+                                                                <td>
+                                                                    <a href="https://plainecommune.e-magineurs.fr/acces-rapide/contact/" target="_self" style="font-family: Arial; font-size: 11px; color:black; text-decoration: underline; width: 98px;">Envoyer un e-mail</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr><td style="height: 20px;"></td></tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                 
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table bgcolor="#262626" style="background-color:#262626;width:100%;" cellspacing="0" cellpadding="0" border="0">
+            <tr style="background-color:#262626;width:100%;">
+                <td width="668px" height="40" style="background-color:#262626;">
+                    
+                    <p style="font-size:10px;color:#fff;text-align:center;">
+                      Cet email a été envoyé à [[EMAIL_TO]], <a href="[[UNSUB_LINK_FR]]" style="color:#fff;text-decoration:none;" target="_blank">cliquez ici pour vous désabonner</a>.
+                    </p> 
+                </td>
+            </tr>
+        </table>
+    </f:alias>
+</f:section>

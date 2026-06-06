@@ -1,0 +1,52 @@
+# customsubcategory=tx_powermail_Template= Templates
+# customsubcategory=tx_powermail_Spamshield= Spamshield
+# customsubcategory=tx_powermail_Javascript= Javascript
+# customsubcategory=tx_powermail_Settings= Settings
+e_magineurs.tx_powermail {
+	view {
+		# cat=Configuration de Powermail/tx_powermail_Template; type=string; label= Chemin du dossier Templates
+		templateRootPath = powermail/Templates/
+		# cat=Configuration de Powermail/tx_powermail_Template; type=string; label= Chemin du dossier Partials
+		partialRootPath = powermail/Partials/
+		# cat=Configuration de Powermail/tx_powermail_Template; type=string; label= Chemin du dossier Layouts
+		layoutRootPath = powermail/Layouts/
+	}
+	settings {
+		spamshield {
+			# cat=Configuration de Powermail/tx_powermail_Spamshield; type=string; label= Sujet des mails de notification si un mail est considéré comme spam
+			emailSubject = Spam détecté
+			# cat=Configuration de Powermail/tx_powermail_Spamshield/file; type=string; label= Chemin du template pour les notification de spam
+			emailTemplate = EXT:powermail/Resources/Private/Templates/Mail/SpamNotification.html
+			# cat=Configuration de Powermail/tx_powermail_Spamshield; type=string; label= Chemin du fchier log des spam (ex. typo3temp/logs/powermail_spam.log). Désactivé si vide
+			logfileLocation = 
+			# cat=Configuration de Powermail/tx_powermail_Spamshield/file; type=string; label= Chemin du template pour les logs de spam
+			logTemplate = EXT:powermail/Resources/Private/Templates/Log/SpamNotification.html
+			# cat=Configuration de Powermail/tx_powermail_Spamshield; type=int+; label= Nombre max de liens dans le message
+			linkLimit = 2
+			# cat=Configuration de Powermail/tx_powermail_Spamshield; type=string; label= Mots blacklistés
+			blacklistStringValues = viagra,sex,porn,p0rn
+			# cat=Configuration de Powermail/tx_powermail_Spamshield; type=string; label= Adresses IP blacklistées
+			blacklistIpValues = 123.132.125.123,123.132.125.124
+		}
+		misc {
+			# cat=Configuration de Powermail/tx_powermail_Settings; type=boolean; label= Affiche uniquement les champs remplis
+			showOnlyFilledValues = 1
+			# cat=Configuration de Powermail/tx_powermail_Settings; type=boolean; label= Soumission du formulaire en Ajax
+			ajaxSubmit = 0
+			# cat=Configuration de Powermail/tx_powermail_Settings; type=string; label= Dossier de stockage des fichiers proveant des champs fichiers
+			folder = uploads/tx_powermail/
+			# cat=Configuration de Powermail/tx_powermail_Settings; type=int+; label= Taille max des fichiers (10Mo par défaut)
+			size = 10485760
+			# cat=Configuration de Powermail/tx_powermail_Settings; type=text; label= Extensions de fichier autorisées pour les champs fichiers
+			extension = jpg,jpeg,gif,png,tif,txt,doc,docx,xls,xlsx,ppt,pptx,pdf,flv,mpg,mpeg,avi,mp3,zip,rar,ace,csv
+			# cat=Configuration de Powermail/tx_powermail_Settings; type=boolean; label= Par défaut on utilise le champ date HTML5. Activez ce champ pour utiliser le datepicker de votre choix
+			forceJavaScriptDatePicker = 0
+		}
+		javascript {
+			# cat=Configuration de Powermail/tx_powermail_Javascript; type=boolean; label= Inclure jQuery depuis ajax.googleapis.com
+			addJQueryFromGoogle = 0
+			# cat=Configuration de Powermail/tx_powermail_Javascript; type=boolean; label= Inclure javascript et css additionnel (validation, datepicker, etc...)
+			addAdditionalJavaScript = 1
+		}
+	}
+}

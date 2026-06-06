@@ -1,0 +1,58 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+		xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+	  
+<n:headerData>
+
+<meta property="og:title" content="{portfolio.titel}" />
+<meta property="og:type" content="article" />
+<f:if condition="{portfolio.teaserBild.0}">
+	<f:then><meta property="og:image" content="{f:uri.image(src:portfolio.teaserBild.0.originalResource.originalFile.uid, absolute:1)}" /></f:then>
+	<f:else><meta property="og:image" content="{f:uri.image(src:portfolio.bilder.0.originalResource.originalFile.uid, absolute:1)}" /></f:else>
+</f:if>
+
+
+</n:headerData>
+
+
+<f:comment>
+<n:metaTag property="og:url" content="" useCurrentDomain="1" />
+	<n:metaTag property="og:type" content="{settings.opengraph.type}" />
+	<n:metaTag property="og:url" content="" useCurrentDomain="1" />
+	<n:metaTag property="og:site_name" content="{settings.opengraph.site_name}" />
+	<f:if condition="{newsItem.firstFalImagePreview}">
+		<f:variable name="ogImagePath" value="{f:uri.image(src:'{newsItem.firstFalImagePreview.uid}', treatIdAsReference:1, maxWidth:'500')}" />
+		<n:metaTag
+			property="og:image"
+			content="{ogImagePath}"
+			forceAbsoluteUrl="1" />
+		<n:metaTag property="og:image:width" content="{n:imageSize(property:'width', image:'{ogImagePath}')}" />
+		<n:metaTag property="og:image:height" content="{n:imageSize(property:'height', image:'{ogImagePath}')}" />
+	</f:if>
+
+	<f:if condition="{newsItem.description}">
+		<f:then>
+			<n:metaTag name="description" content="{newsItem.description}" />
+			<n:metaTag property="og:description" content="{newsItem.description}" />
+		</f:then>
+		<f:else>
+			<n:metaTag name="description" content="{newsItem.teaser -> f:format.stripTags()}" />
+			<n:metaTag property="og:description" content="{newsItem.teaser -> f:format.stripTags()}" />
+		</f:else>
+	</f:if>
+	<n:metaTag name="keywords" content="{newsItem.keywords}" />
+	<n:metaTag property="fb:admins" content="{settings.opengraph.admins}" />
+	<n:metaTag property="og:email" content="{settings.opengraph.email}" />
+	<n:metaTag property="og:phone_number" content="{settings.opengraph.phone_number}" />
+	<n:metaTag property="og:fax_number" content="{settings.opengraph.fax_number}" />
+	<n:metaTag property="og:latitude" content="{settings.opengraph.latitude}" />
+	<n:metaTag property="og:longitude" content="{settings.opengraph.longitude}" />
+	<n:metaTag property="og:street-address" content="{settings.opengraph.street-address}" />
+	<n:metaTag property="og:locality" content="{settings.opengraph.locality}" />
+	<n:metaTag property="og:region" content="{settings.opengraph.region}" />
+	<n:metaTag property="og:postal-code" content="{settings.opengraph.postal-code}" />
+	<n:metaTag property="og:country-name" content="{settings.opengraph.country-name}" />
+</f:comment>
+
+</html>

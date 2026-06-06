@@ -1,0 +1,20 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+>
+    <f:section name="HeadContentNewsletter">
+        <v:variable.set name="siteConfig" value="{v:variable.typoscript(path:'e_magineurs.conf')}"/>        
+        <v:page.header>
+            <f:comment><!-- title --></f:comment>
+            <f:comment>
+                <title>
+                    {v:page.info(field: 'title')} | {siteConfig.siteTitle}
+                </title>
+            </f:comment>
+            <f:comment><!-- CSS/JS --></f:comment>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+            <f:render section="NewsletterStyles" partial="Page/NewsletterCSS"/>
+        </v:page.header>
+    </f:section>
+</html>

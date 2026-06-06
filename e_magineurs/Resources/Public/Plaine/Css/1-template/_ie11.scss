@@ -1,0 +1,44 @@
+/*IE 11 ET INFERIEUR*/
+.ie{
+    .frame-layout-0{
+        @include media-breakpoint-down(md) {
+        width:100%;
+    }
+    }
+    .HomePart1{
+        width:100% !important;
+    }
+
+    #block_bouton_menu_home{
+        .ce-bodytext{
+                display:block !important;
+                text-align:center;
+            p{
+                display:inline-block !important;
+            }
+        }
+        a{
+            
+        }
+    }
+
+    .menu-expanded .hamburger-inner {
+    &::before {
+        -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-name: none;
+                        animation-name: none;
+      }
+    }
+}
+/*IE EDGE*/
+.ie_edge:not(.ie){
+    .menu-expanded .hamburger-inner {
+    &::before {
+        -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+                -webkit-animation-name: none;
+                        animation-name: none;
+      }
+    }
+}

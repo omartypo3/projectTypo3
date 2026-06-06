@@ -1,0 +1,83 @@
+<script type="text/javascript">
+	$.datetimepicker.setLocale('de');
+	
+	
+	/*von bis verknüpfung / z.B. Urlaub*/
+	$('#dateTimePickerStart').datetimepicker({
+		dayOfWeekStart:1,
+		i18n:{
+		  de:{
+		   months:[
+			'Januar','Februar','März','April',
+			'Mai','Juni','Juli','August',
+			'September','Oktober','November','Dezember',
+		   ],
+		   dayOfWeek:[
+			"So", "Mo", "Di", "Mi", 
+			"Do", "Fr", "Sa",
+		   ]
+		  }
+		},
+  		format:'d.m.Y',
+  		onShow:function( ct ){
+			newMaxDate = get_date($('#dateTimePickerEnd').val()?$('#dateTimePickerEnd').val():'');
+   			this.setOptions({
+    			maxDate:newMaxDate
+   			})
+  		},timepicker:false
+	});
+	
+	/*Feiertage!! disabledDates: ['2016-03-10 16:00','2016-03-22 11:00'], */
+ 	$('#dateTimePickerEnd').datetimepicker({
+	 	dayOfWeekStart:1,
+	 	i18n:{
+		  de:{
+		   months:[
+			'Januar','Februar','März','April',
+			'Mai','Juni','Juli','August',
+			'September','Oktober','November','Dezember',
+		   ],
+		   dayOfWeek:[
+			"So", "Mo", "Di", "Mi", 
+			"Do", "Fr", "Sa",
+		   ]
+		  }
+		},
+	  	format:'d.m.Y',
+	  	onShow:function( ct ){
+			newMinDate = get_date($('#dateTimePickerStart').val()?$('#dateTimePickerStart').val():'');
+			this.setOptions({
+				minDate:newMinDate
+			})
+	  	},timepicker:false
+ 	});
+	
+	
+	function get_date(input) {
+		if(input == '') {
+			return false;
+		} else {
+			var arr = input.split('.');
+			return arr[2]+'/'+arr[1]+'/'+arr[0];
+		}
+	}
+	
+	
+	
+	
+	//initialisierung Allgemeine DateTimePicker
+	initDateTimePicker();
+
+
+	/* Multiple Selects */
+	$('.multipleSelectSingleFilter').change(function() {
+
+		/*activateSubmitButton();*/
+	}).multipleSelect({
+		filter:true,
+		single: true,
+		width: '300',
+		noMatchesFound: 'Keine Treffer gefunden',
+		placeholder: "Bitte wählen"
+	});
+</script>

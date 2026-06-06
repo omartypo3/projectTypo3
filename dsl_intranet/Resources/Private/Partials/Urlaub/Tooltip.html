@@ -1,0 +1,12 @@
+<div class="tooltipContent">
+	<ul>
+	<f:for each="{tag.termine.20}" as="termin">
+		<li class="markHighlightinTable" data-urlaub-uid="{termin.uid}"><div><span class="mitarbeiterTextColor mitarbeiterKreisMedium" data-uid="{termin.mitarbeiter.uid}" >{termin.mitarbeiter.initialien}</span></div><div><span class="mitarbeiterBackgroundColor mitarbeiterBorderBottomColor beschreibung" data-mitarbeiter-uid="{termin.mitarbeiter.uid}">{termin.begin -> f:format.date(format: 'd.m.')} - {termin.end -> f:format.date(format: 'd.m.')}</span></div></li>
+	</f:for>
+	<f:for each="{tag.termine.10}" as="termin">
+		<li class="terminAnfrage markHighlightinTable" data-urlaub-uid="{termin.uid}"><div><span class="mitarbeiterTextColor mitarbeiterKreisMedium" data-uid="{termin.mitarbeiter.uid}" >{termin.mitarbeiter.initialien}</span></div><div class="borderBottomAnfrage"><span class="beschreibung">{termin.begin -> f:format.date(format: 'd.m.')} - {termin.end -> f:format.date(format: 'd.m.')}</span></div></li>
+	</f:for>
+	<f:if condition="{tag.feiertag}"><li class="feiertag"><div>{tag.datum -> f:format.date(format: 'd.m.')}</div><div>{tag.feiertag}</div></li></f:if>
+	<f:if condition="{tag.ferientag}"><li class="ferientag"><div>{tag.datum -> f:format.date(format: 'd.m.')}</div><div>{tag.ferientag}</div></li></f:if>
+	</ul>
+</div>

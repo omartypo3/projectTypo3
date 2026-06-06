@@ -1,0 +1,28 @@
+plugin.tx_ecomment {
+    view {
+        templateRootPaths {
+            0 = EXT:e_gestiondocs/Resources/Private/Templates/
+            1 = {$plugin.tx_ecomment.view.templateRootPath}
+        }
+        partialRootPaths{
+            0 = EXT:e_gestiondocs/Resources/Private/Partials/
+            1 = {$plugin.tx_ecomment.view.partialRootPath}
+        }
+        layoutRootPaths{
+            0 = EXT:e_gestiondocs/Resources/Private/Layouts/
+            1 = {$plugin.tx_ecomment.view.layoutRootPath}
+        }
+    }
+
+    settings {
+        validation {
+            validationPage = {$plugin.tx_ecomment.settings.validation.validationPage}
+            needValidation = {$plugin.tx_ecomment.settings.validation.needValidation}
+            moderatorEmail = {$plugin.tx_ecomment.settings.validation.moderatorEmail}
+            moderatorName = {$plugin.tx_ecomment.settings.validation.moderatorName}
+            emailSubject = {$plugin.tx_ecomment.settings.validation.emailSubject}
+            senderEmail = {$plugin.tx_ecomment.settings.validation.senderEmail}
+            senderName = {$plugin.tx_ecomment.settings.validation.senderName}
+        }
+    }
+}

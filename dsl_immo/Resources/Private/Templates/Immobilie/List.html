@@ -1,0 +1,74 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  xmlns:dsl="http://typo3.org/ns/DslFactory/DslImmo/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<section id="search-filter">
+                            <figure><h3><i class="fa fa-search"></i>Suchergebnisse:</h3>
+                                <span class="search-count"><f:count subject="{immobilies}" /></span>
+                                <div class="sorting">
+                                    <div class="form-group">
+                                       
+                                       <f:form action="list" >
+											<v:form.select class="submitFormOnChange" name="sort"  multiple="0" value="{session.sorting.active}">
+												<v:form.select.option value="">Sortierung</v:form.select.option>
+												<v:form.select.option value="1">Preis aufsteigend</v:form.select.option>
+												<v:form.select.option value="2">Preis absteigend</v:form.select.option>
+												<v:form.select.option value="3">Neueste zuerst</v:form.select.option>
+											</v:form.select>
+										   <f:form.submit value="Send" />
+										</f:form>
+                                       
+                                      
+                                    </div><!-- /.form-group -->
+                                </div>
+                            </figure>
+                        </section>
+                        <section id="properties" class="display-lines">
+                          
+                          
+                           
+                           <v:iterator.sort as="immobiliesSorted" subject="{immobilies}" sortBy="{session.sorting.field}" order="{session.sorting.dir}" sortFlags="SORT_STRING,SORT_FLAG_CASE">
+                           
+                           		<f:widget.paginate objects="{immobiliesSorted}" as="immobiliesPaginated" configuration="{itemsPerPage: 12, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 5}">
+									<f:for each="{immobiliesPaginated}" as="immobilie" iteration="iterator">
+										
+										
+										
+										
+									    <f:comment><f:debug title="immobilie">{immobilie.titelBilder.0}</f:debug></f:comment>
+									    
+									    <f:render partial="Immobilie/ListItem" arguments="{_all}" />
+										
+                            
+                          
+										
+										
+										
+									</f:for>
+								</f:widget.paginate>
+                           
+								
+						   </v:iterator.sort>
+							
+                          
+                           
+                            
+
+                        </section><!-- /#properties-->
+
+
+</f:section>
+</html>

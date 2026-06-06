@@ -1,0 +1,120 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+<f:layout name="Main"/>
+
+<f:section name="main">
+	<div id="tx-solr-search">
+		<f:render partial="Search/Form" section="Form" arguments="{search:search, additionalFilters:additionalFilters}" />
+		<br>
+		<f:if condition="{hasSearched} || {resultSet.allResultCount} || {resultSet.searchResults}">
+			<f:render partial="Result/PerPage" section="PerPage" arguments="{resultSet: resultSet}" />
+		</f:if>
+		<hr>
+		<f:if condition="{hasSearched} || {resultSet.allResultCount} || {resultSet.usedSearch.numberOfResults} || {resultSet.searchResults}">
+			<v:variable.set name="searchQuery" value="{q}"/>
+			<f:if condition="{!searchQuery}">
+				<f:for each="{existingParameters}" key="paramName" as="paramValue">
+					<f:if condition="{paramName} == 'q'">
+						<v:variable.set name="searchQuery" value="{paramValue}"/>
+					</f:if>
+				</f:for>
+			</f:if>
+			<f:if condition="{!searchQuery}">
+				<v:variable.set name="searchQuery" value="{resultSet.usedSearchRequest.queryString}"/>
+			</f:if>
+			<f:if condition="{!searchQuery}">
+				<v:variable.set name="searchQuery" value="{resultSet.usedSearchRequest.userQuery}"/>
+			</f:if>
+			<f:if condition="{searchQuery}">
+				<f:if condition="{searchQuery} != ''">
+					<f:if condition="{searchQuery} != '*:*'">
+						<span class="searched-for" id="tx-solr-searched-for">
+							<f:translate key="searched_for_prefix" extensionName="e_magineurs" default="Recherche de">Recherche de</f:translate> <strong>"<span id="tx-solr-search-query">{searchQuery}</span>"</strong>
+						</span><br>
+					</f:if>
+				</f:if>
+			</f:if>
+		</f:if>
+		<f:if condition="{resultSet.hasSpellCheckingSuggestions}">
+			<f:then>
+				<f:translate key="didYouMean" extensionName="solr">Did you mean</f:translate>
+				<f:for each="{resultSet.spellCheckingSuggestions}" as="suggestion">
+					<f:link.page additionalParams="{q:suggestion.suggestion}" noCacheHash="1">{suggestion.suggestion}</f:link.page>
+				</f:for> ?
+			</f:then>
+		</f:if>
+		<f:if condition="{resultSet.usedSearch.numberOfResults}">
+			<span nombre_de_resultats="{resultSet.usedSearch.numberOfResults}" class="result-found">
+				<v:variable.set name="queryTimeMs" value="{resultSet.usedSearch.queryTime}"/>
+				<f:if condition="{!queryTimeMs}">
+					<v:variable.set name="queryTimeMs" value="0"/>
+				</f:if>
+				<f:translate key="results_found_ms" arguments="{0:resultSet.usedSearch.numberOfResults, 1: queryTimeMs}" extensionName="e_magineurs" default="%d résultats ont été trouvés en %d millisecondes.">%d résultats ont été trouvés en %d millisecondes.</f:translate>
+			</span><br>
+			<span class="result-range">
+				<s:pageBrowserRange>
+					<f:translate key="results_range_custom" arguments="{0:from, 1: to, 2: total}" extensionName="e_magineurs" default="Affiche les résultats de %d à %d sur %d.">Affiche les résultats de %d à %d sur %d.</f:translate>
+				</s:pageBrowserRange>
+			</span>
+		</f:if>
+		<f:if condition="{!resultSet.usedSearch.numberOfResults} && {resultSet.allResultCount}">
+			<span nombre_de_resultats="{resultSet.allResultCount}" class="result-found">
+				<f:translate key="results_found_ms" arguments="{0:resultSet.allResultCount, 1: 0}" extensionName="e_magineurs" default="%d résultats ont été trouvés en %d millisecondes.">%d résultats ont été trouvés en %d millisecondes.</f:translate>
+			</span><br>
+			<span class="result-range">
+				<s:pageBrowserRange>
+					<f:translate key="results_range_custom" arguments="{0:from, 1: to, 2: total}" extensionName="e_magineurs" default="Affiche les résultats de %d à %d sur %d.">Affiche les résultats de %d à %d sur %d.</f:translate>
+				</s:pageBrowserRange>
+			</span>
+		</f:if>
+		<br><br>
+		<f:if condition="{hasSearched} || {resultSet.allResultCount} || {resultSet.searchResults}">
+			<f:if condition="{resultSet.searchresults.hasGroups}">
+				<f:then>
+					<f:for each="{resultSet.searchresults.groups}" as="group">
+						<h2>{group.groupname}</h2>
+						<f:for each="{group.groupitems}" as="groupItem">
+							<strong>{groupItem.groupValue} <span>({groupItem.allResultCount})</span></strong>
+							<s:groupItemPaginate groupItem="{groupItem}" resultSet="{resultSet}">
+								<div class="search-conteneur">
+									<ol start="{pagination.resultCountStart}" class="results-list">
+										<f:for each="{documents}" as="document">
+											<f:render partial="Result/Document" section="Document" arguments="{resultSet:resultSet, document:document}" />
+										</f:for>
+									</ol>
+								</div>
+							</s:groupItemPaginate>
+						</f:for>
+					</f:for>
+				</f:then>
+				<f:else>
+					<f:if condition="{resultSet.allResultCount} || {resultSet.searchResults}">
+						<div class="solr-pagination">
+							<f:render partial="Result/Pagination" section="Pagination" arguments="{pagination: pagination, resultSet: resultSet, currentPage: currentPage}" />
+						</div>
+						<ol start="{pagination.displayRangeStart}" class="results-list">
+							<f:for each="{resultSet.searchResults}" as="document">
+								<f:render partial="Result/Document" section="Document" arguments="{resultSet: resultSet, document: document}" />
+							</f:for>
+						</ol>
+						<br>
+						<div class="solr-pagination">
+							<f:render partial="Result/Pagination" section="Pagination" arguments="{pagination: pagination, resultSet: resultSet, currentPage: currentPage}" />
+						</div>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:if>
+	</div>
+
+	<div id="tx-solr-search-functions" class="frame">
+		<f:render partial="Result/Sorting" section="Sorting" arguments="{resultSet:resultSet}" />
+		<f:render partial="Result/Facets" section="Facets" arguments="{resultSet:resultSet}" />
+		<f:render partial="Search/LastSearches" section="LastSearches" arguments="{resultSet:resultSet}" />
+		<f:comment> <f:render partial="Search/FrequentlySearched" section="FrequentlySearched" /> </f:comment>
+	</div>
+
+</f:section>

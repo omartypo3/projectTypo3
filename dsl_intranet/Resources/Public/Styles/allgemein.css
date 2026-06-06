@@ -1,0 +1,95 @@
+.outerRow {margin: 25px 0;}
+
+.outerRow .innerBoxcontainer{
+	background-color: #fff;
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin: 15px 0;
+}
+
+a .innerBoxcontainer:hover {text-decoration: none !important; border: solid 2px #14cb96; color:#333333;}
+a .innerBoxcontainer {border: solid 2px #fff;}
+a .innerBoxcontainer:hover .bb-lg {color:#14cb96 !important;}
+
+.rowMarginReset{
+	margin-left:-15px;
+	margin-right:-15px;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.kundenStammdaten h3{
+	margin-top:0px;
+	margin-bottom:0px;
+	color:#333333;
+}
+.kundenStammdaten hr.sub{
+	margin-top:0px;
+    margin-bottom: 10px;
+}
+
+.layout-table-spacer-10{
+	width:10px;		
+}
+.layout-table-width-toggle-btn{
+	width:70px;
+	padding-bottom: 10px;
+}
+.layout-table-width-120{
+	width:120px;
+}
+.layout-table-width-200{
+	width:200px;
+}
+
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"] .btn-danger,
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"] .btn-success{
+	background-color:#9d9d9c;
+}
+
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"] .btn-danger,
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"],
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"] .btn-success,
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"]{
+	border-color:#9d9d9c !important;
+}
+.becomeInfoGlobalChildGroup .toggle[disabled="disabled"] *{
+	cursor:not-allowed;
+}
+
+.text_smaller{
+	font-size: smaller;
+}
+
+/*formular*/
+.formSubmitWrapper{
+	text-align: right;
+}
+.formSubmit{
+	color:#14cb96 !important;
+	font-size:20px;
+	text-transform: uppercase;
+}
+
+.stammdatenaenderungFormContent{
+	padding:10px;
+	background-color:#eeeeee;
+}
+
+h4.bgWeiss{
+	background-color:#ffffff;
+	z-index: 2;
+	display:inline-block;
+	margin-top:0px;
+}
+hr.h4{
+	margin-top:-15px;
+	margin-bottom:20px;
+}
+.formInaktiv{
+	opacity:0.5;
+	display:none;
+}
+.formInaktiv .formSubmit{
+	cursor:not-allowed;
+}

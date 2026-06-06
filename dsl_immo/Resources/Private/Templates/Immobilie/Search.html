@@ -1,0 +1,127 @@
+<f:switch expression="{switch}">
+	<f:case value="requestResultCounts"><div id="immobilienAnzahl">{f:count(subject: immobilien)}</div></f:case>
+	<f:case value="requestPreview"><div id="immobilienPreview">{f:count(subject: immobilien)}</div></f:case>
+	
+	<f:defaultCase><!--TYPO3SEARCH_end--><f:comment><form role="form" id="form-sidebar" class="form-search" action="properties-listing.html">  </form><!-- /#form-map --></f:comment>
+        <h2 class="full-header side-title"><span class="texticon-size-small ion ion-dsl-detailview-house"></span> Immobilien<strong>suche</strong></h2>
+<f:form action="search"  id="form-sidebar" class="form-search">
+
+                                <div class="form-group">
+                                    <select name="type">
+                                        <option value="">Objekttyp</option>
+                                        <option value="10">Mietwohnung</option>
+                                        <option value="99">Junges??</option>
+										<option value="999">Senioren??</option>
+                                    </select>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                    <v:form.select name="gebiet"  multiple="0" value="{session.search.gebiet}">
+										<v:form.select.option value="">Wohngebiet</v:form.select.option>
+										<v:form.select.option value="910">Altbau</v:form.select.option>
+										<v:form.select.option value="920">Neubau West</v:form.select.option>
+										<v:form.select.option value="930">Wasserturmgebiet</v:form.select.option>
+									</v:form.select>
+                                </div><!-- /.form-group -->
+                                
+                                <f:if condition="{zimmer}">
+									<div class="form-group">
+										<div class="price-range">
+											<f:comment><input id="zimmer-input" type="text" name="zimmer" value="{search.zimmer.from};{search.zimmer.to}" data-from="{zimmer.from}" data-to="{zimmer.to}"></f:comment>
+											<f:form.textfield name="zimmer"  id="zimmer-input" value="{session.search.zimmer.from};{session.search.zimmer.to}" data="{from:zimmer.from,to:zimmer.to}" />
+										</div>
+									</div>
+								</f:if>
+                                <f:if condition="{flaeche}">
+									<div class="form-group">
+										<div class="price-range">
+											<f:form.textfield name="flaeche"  id="flaeche-input" value="{session.search.flaeche.from};{session.search.flaeche.to}" data="{from:flaeche.from,to:flaeche.to}" />
+										</div>
+									</div>
+								</f:if>
+                                <f:if condition="{preis}">
+									<div class="form-group">
+										<div class="price-range">
+										
+											<f:form.textfield name="preis"  id="price-input" value="{session.search.preis.from};{session.search.preis.to}" data="{from:preis.from,to:preis.to}" />
+										</div>
+									</div>
+								</f:if>
+    
+                                <div class="more-filter-group">
+                                    <div class="filter-control">
+                                        <div class="more-filter-open">
+                                            <span class="texticon-size-small ion ion-dsl-plus"></span> <a href="#">Mehr Suchkriterien</a>
+                                        </div>
+                                        <div class="more-filter-close">
+                                            <span class="texticon-size-small ion ion-dsl-minus"></span> <a href="#">Weniger Suchkriterien</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-keller">Keller
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-badewanne">Badewanne
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-balkon">Balkon / Terasse
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-haustiere">Haustiere erlaubt
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-aufzug">Aufzug
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-parkplatz">Parkplatz
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-group detail-filter">
+                                        <label class="container filter-garage-carport">Garage / Carport
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+    
+                                <div class="form-group">
+                                   <f:form.submit value="Suchen" class="btn btn-default" />
+                                </div><!-- /.form-group -->
+
+                          
+
+
+
+</f:form>
+
+
+
+<f:comment>
+
+<f:debug title="Such Umgebung">{zimmer}</f:debug>
+
+<f:debug title="Such Umgebung">{search}</f:debug>
+
+
+
+<f:debug title="gefunden">{immobilien}</f:debug>
+
+</f:comment>
+
+		<!--TYPO3SEARCH_begin--></f:defaultCase></f:switch>

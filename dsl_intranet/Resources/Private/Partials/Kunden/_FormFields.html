@@ -1,0 +1,500 @@
+
+
+<f:render partial="Scripts/KundenEdit" />
+
+<script>
+	
+
+	$( "#kundenEditLogin" ).change(function() {
+		
+		if($( "#kundenEditLogin" ).prop('checked')){
+			$('#kundenEditUsernameWrapper').removeClass('notNeeded');
+			//$('#kundenEditUsername').removeAttr('disabled');// nicht mehr benötigt da er automatisch gesetzt wird
+			$('#kundenEditUsernameValid').removeAttr('disabled');
+			
+		} else {
+			$('#kundenEditUsernameWrapper').addClass('notNeeded');
+			//$('#kundenEditUsername').attr('disabled','disabled'); // nicht mehr benötigt da er automatisch gesetzt wird
+			$('#kundenEditUsernameValid').attr('disabled','disabled');
+		}
+		
+
+	});
+	$( "#kundenEditEmail" ).keyup(function() {
+		
+		$("#kundenEditEmail").addClass('invalidField');
+		$('#kundenEditEmailValid').val('');
+		if($(this).val()=="") {
+			$('#kundenEditEmailValid').val(1);
+			$("#kundenEditEmail").removeClass('invalidField');
+		} else{
+			if(isEmail($(this).val())){
+				$('#kundenEditEmailValid').val(1);
+				$("#kundenEditEmail").removeClass('invalidField');
+			} 
+		}
+		
+
+	});
+	
+	
+	$( "#kundenEditEmailRechnungen" ).keyup(function() {
+		
+		$("#kundenEditEmailRechnungen").addClass('invalidField');
+		$('#kundenEditEmailRechnungenValid').val('');
+		if($(this).val()=="") {
+			$('#kundenEditEmailRechnungenValid').val(1);
+			$("#kundenEditEmailRechnungen").removeClass('invalidField');
+		} else{
+			if(isEmail($(this).val())){
+				$('#kundenEditEmailRechnungenValid').val(1);
+				$("#kundenEditEmailRechnungen").removeClass('invalidField');
+			} 
+		}
+		
+
+	});
+	
+	$( "#kundenEditEmailAngebote" ).keyup(function() {
+		
+		$("#kundenEditEmailAngebote").addClass('invalidField');
+		$('#kundenEditEmailAngeboteValid').val('');
+		if($(this).val()=="") {
+			$('#kundenEditEmailAngeboteValid').val(1);
+			$("#kundenEditEmailAngebote").removeClass('invalidField');
+		} else{
+			if(isEmail($(this).val())){
+				$('#kundenEditEmailAngeboteValid').val(1);
+				$("#kundenEditEmailAngebote").removeClass('invalidField');
+			} 
+		}
+		
+
+	});
+	
+	
+	
+	var ajaxCheckTimeout = {};
+	var ajaxCheckRequest = {};
+	
+	function findOtherByField(fieldKey,fieldValue,kunde,selector){
+		
+		var checkAjaxJson = {"tx_dslintranet_kundenliste[switch]":'checkForm',"tx_dslintranet_kundenliste[uid]":kunde,"tx_dslintranet_kundenliste[field]":fieldKey,"tx_dslintranet_kundenliste[value]":fieldValue};
+		
+		ajaxCheckRequest[selector] = dslIntranetAjaxCall(kundenAjaxUrl,checkAjaxJson).done(function (data  ) {
+
+			setAjaxValidatorParams(selector+"Valid",data);
+		});
+		
+	}
+	
+	 
+	$( ".ajaxValidatorField" ).keyup(function() {
+		
+		var selector = "#"+$(this).attr('id');
+		var required = $(selector).attr('required');
+		
+
+		if($(selector).data('ajax-validator-field-value')==$(selector).val()) return false;
+		$(selector).data('ajax-validator-field-value',$(selector).val());
+		$(selector+"Valid" ).val('');
+		
+		if(ajaxCheckRequest[selector]) ajaxCheckRequest[selector].abort();
+		if(ajaxCheckTimeout[selector]) clearTimeout(ajaxCheckTimeout[selector]);
+		
+		$(selector).parent().removeClass('ajaxValid').removeClass('ajaxInvalid').addClass('ajaxInValidation');
+		
+		if($(selector).val()=='') {
+			setAjaxValidatorParams(selector+"Valid",1); 
+		} else {
+			
+			ajaxCheckTimeout[selector] = setTimeout(  "findOtherByField('"+$(selector).data('ajax-validator-field-key')+"','"+$(selector).val()+"','"+$(selector).data('uid')+"','"+selector+"')" , 500);
+		}
+		
+		
+		
+		
+	});
+	
+	
+	$(".numberinput").forceNumeric();
+	
+	function setAjaxValidatorParams(selector,result){
+		if(result==0){
+			$(selector).prev().addClass('ajaxValid');
+			$(selector).val('1');
+		} else {
+			$(selector).prev().addClass('ajaxInvalid');
+			$(selector).val('');
+			
+		}
+		$(selector).prev().removeClass('ajaxInValidation');
+	}
+	
+	function isEmail(email) {
+	  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+	  return regex.test(email);
+	}
+</script>
+
+
+<div class="form_headline">
+	<strong>Kundencenter</strong>
+	<hr>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kundennummer<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+        
+        	<div class="ajaxValidate input-group date fullDatePicker {f:if(condition: '{kunden.nummer}', then: ' ajaxValid', else: ' ajaxInvalid')}">
+        		
+        		<f:if condition="{editForm}">
+        			<f:then>
+						<f:form.textfield id="kundenEditNummer" name="nummer" value="{kunden.nummer}" class="numberinput ajaxValidatorField form-control input-sm" required="true"  additionalAttributes="{ data-uid: kunden.uid, autocomplete: 'off', pattern: '[0-9]{5}', data-ajax-validator-field-key: 'nummer', data-ajax-validator-field-value: kunden.nummer }" maxlength="5" disabled="true" />
+					</f:then>
+					<f:else>
+						<f:form.textfield id="kundenEditNummer" name="nummer" value="{kunden.nummer}" class="numberinput ajaxValidatorField form-control input-sm" required="true"  additionalAttributes="{ data-uid: kunden.uid, autocomplete: 'off', pattern: '[0-9]{5}', data-ajax-validator-field-key: 'nummer', data-ajax-validator-field-value: kunden.nummer }" maxlength="5" />
+					</f:else>
+				</f:if>
+				
+				<span class="ajaxValidateValid input-group-addon border-left-none" title="Kundennummer darf verwendet werden.">
+					<span class="fa fa-check"></span>
+				</span>
+				<span class="ajaxValidateLoading input-group-addon border-left-none" title="Kundennummer wird geprüft...">
+					<span class="fa fa-cog fa-spin"></span>
+				</span>
+				<span class="ajaxValidateInvalid input-group-addon border-left-none" title="Kundennummer ist bereits vergeben">
+					<span class="fa fa-times"></span>
+				</span>
+				
+				
+			</div>
+       		<input class="unvisible" type="text" id="kundenEditNummerValid" value="1" required="required">
+       		
+       		
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-medium">Aktiv im Intranet</div>
+        <div class="layout-table-col table-formular-small">
+        	
+            
+            <f:form.checkbox class="disableCheckbox" name="disable" value="1"  checked="{f:if(condition: kunden.disable, else: 1, then: 0)}" />
+            <div class="btn-group checkboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm  {f:if(condition: kunden.disable, else: 'active')}" style="width:60px;">
+                    <input value="1" class="" type="checkbox" {f:if(condition: kunden.disable, else: ' checked="checked"')} >
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+            </div>
+                        
+            
+            
+        </div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	
+        
+        <div class="layout-table-col table-formular-label table-formular-medium">Login</div>
+        <div class="layout-table-col table-formular-small">
+        	
+           
+            <f:form.checkbox class="disableCheckbox" name="login" value="1"  checked="{f:if(condition: kunden.login, then: 1, else: 0)}" />
+            <div class="btn-group checkboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm  {f:if(condition: kunden.login, then: 'active')}" style="width:60px;">
+                    <input id="kundenEditLogin" value="1" class="" type="checkbox" {f:if(condition: kunden.login, then: ' checked="checked"')} >
+                    <span class="glyphicon glyphicon-ok"></span>
+                </label>
+            </div>
+                        
+            
+            
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        
+        <f:if condition="{editForm}">
+        <div class="layout-table-col table-formular-label table-formular-medium">
+        	Benutzername<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large{f:if(condition: '{kunden.login} == 0', then: ' notNeeded')}" id="kundenEditUsernameWrapper">
+        
+        
+		   
+      		
+      		<div class="ajaxValidate input-group date fullDatePicker {f:if(condition: '{kunden.username}', then: ' ajaxValid', else: ' ajaxInvalid')}">
+        	
+				<f:form.textfield id="kundenEditUsername" name="username" value="{kunden.username}" class="ajaxValidatorField form-control input-sm" required="true" additionalAttributes="{ data-uid: kunden.uid, autocomplete: 'off', data-ajax-validator-field-key: 'username', data-ajax-validator-field-value: kunden.username }" maxlength="15"  disabled="true" />
+				
+				<f:comment>disabled="{f:if(condition: kunden.login, else: 'disabled')}"</f:comment>
+				
+				<span class="ajaxValidateValid input-group-addon border-left-none" title="Benutzername darf verwendet werden.">
+					<span class="fa fa-check"></span>
+				</span>
+				<span class="ajaxValidateLoading input-group-addon border-left-none" title="Benutzername wird geprüft...">
+					<span class="fa fa-cog fa-spin"></span>
+				</span>
+				<span class="ajaxValidateInvalid input-group-addon border-left-none" title="Benutzername ist bereits vergeben">
+					<span class="fa fa-times"></span>
+				</span>
+				
+				
+			</div>
+      		
+       		
+       		<input name="kundenEditUsernameValid" class="unvisible"  type="text" id="kundenEditUsernameValid" value="1" required="required">
+       		
+        </div>
+		</f:if>
+	</div>
+</div>
+
+
+<br>
+
+<div class="form_headline">
+	<strong>Allgemeine Stammdaten</strong>
+    <hr>
+</div>
+
+
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Firma
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="company" value="{kunden.company}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Anrede
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="title" value="{kunden.title}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Vorname
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="firstName" value="{kunden.firstName}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Nachname
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="lastName" value="{kunden.lastName}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Straße / Hausnummer<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="address" value="{kunden.address}" class="form-control input-sm" required="true" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Postleitzahl<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="zip" value="{kunden.zip}" class="form-control input-sm" required="true" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Ort<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="city" value="{kunden.city}" class="form-control input-sm" required="true" />
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="form_headline">
+	<strong>Kontaktdaten</strong>
+    <hr>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Telefon
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="telephone" value="{kunden.telephone}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Fax
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="fax" value="{kunden.fax}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	zus. Telefonnummer
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="qbPhone2" value="{kunden.qbPhone2}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	zus. Ansprechpartner
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="qbCont2" value="{kunden.qbCont2}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<br>
+
+
+<div class="form_headline">
+	<strong>Bankverbindung</strong>
+    <hr>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kontoinhaber
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="qbKtoInh" value="{kunden.qbKtoInh}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Bank
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="qbBank" value="{kunden.qbBank}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	IBAN
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="qbIban" value="{kunden.qbIban}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	BIC
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="qbBic" value="{kunden.qbBic}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+<br>
+
+
+<div class="form_headline">
+	<strong>E-Mail Adressen</strong>
+    <hr>
+</div>
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kundenkonto
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield id="kundenEditEmail" name="email" value="{kunden.email}" class="form-control input-sm" placeholder="{f:if(condition: '{kunden.qbEmail}', then: '{kunden.qbEmail}')}" />
+        	<input class="unvisible" name="kundenEditEmailValid" id="kundenEditEmailValid" value="1" required="required">
+		</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Rechnungen
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield id="kundenEditEmailRechnungen" name="emailRechnungen" value="{kunden.emailRechnungen}" class="form-control input-sm" placeholder="{f:if(condition: '{kunden.qbEmail}', then: '{kunden.qbEmail}', else: 'falls abweichend')}" />
+        	<input class="unvisible" name="kundenEditEmailRechnungenValid" id="kundenEditEmailRechnungenValid" value="1" required="required">
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Angebote
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield id="kundenEditEmailAngebote" name="emailAngebote" value="{kunden.emailAngebote}" class="form-control input-sm" placeholder="{f:if(condition: '{kunden.qbEmail}', then: '{kunden.qbEmail}', else: 'falls abweichend')}" />
+        	<input class="unvisible" name="kundenEditEmailAngeboteValid" id="kundenEditEmailAngeboteValid" value="1" required="required">
+		</div>
+	</div>
+</div>
+
+<div class="form_headline">
+	<strong>Bildarchiv</strong>
+	<hr>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	PicDrop Zugangscode
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="picDropZugangscode" value="{kunden.picDropZugangscode}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+
+

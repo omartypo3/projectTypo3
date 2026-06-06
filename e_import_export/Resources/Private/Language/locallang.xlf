@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2011-10-17T20:22:37Z" product-name="scheduler">
+		<header/>
+		<body>
+			<trans-unit id="ImportExportTask.name" xml:space="preserve">
+				<source>Import/Export task</source>
+			</trans-unit>
+			<trans-unit id="ImportExportTask.description" xml:space="preserve">
+				<source>Allow to launch punctually or to planify an import/export task.</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf">
+				<source>Conf</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.export">
+				<source>Export</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.import">
+				<source>Import</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.module">
+				<source>Module</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.scheduler">
+				<source>Scheduler</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.ajax">
+				<source>Ajax</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.tables">
+				<source>Tables</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.fields">
+				<source>Fields</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table">
+				<source>Table</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.principale">
+				<source>Main</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.lien">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.wheres">
+				<source>Wheres</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where">
+				<source>Where</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where.field">
+				<source>Field</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where.operateur">
+				<source>Operator</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where.operande">
+				<source>Operand</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field">
+				<source>Field</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.tablefield">
+				<source>Field</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.stdwrap">
+				<source>Stdwrap</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.choose_a_field">
+				<source>Choose a field</source>
+			</trans-unit>
+            <trans-unit id="tx_eimportexport_domain_model_field.userpost">
+				<source>Relation post-processing</source>
+			</trans-unit>
+                        <trans-unit id="tx_eimportexport_domain_model_field.arrcheck">
+				<source>Display as a table ?</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.multiple">
+				<source>Multiple</source>
+			</trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.relation">
+				<source>Relation</source>
+			</trans-unit>
+			<trans-unit id="ImportExportTask.uidRec">
+				<source>The ID of the import that should be processed</source>
+			</trans-unit>
+			<trans-unit id="ImportExportTask.uidRec.error">
+				<source>The id of the import that should be processed must concord with a valid import configuration record.</source>
+			</trans-unit>
+			<trans-unit id="ImportExportTask.recap">
+				<source>Import was succesfull processed. %d entries imported. %d entries updated.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

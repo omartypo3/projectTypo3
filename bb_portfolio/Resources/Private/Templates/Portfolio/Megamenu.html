@@ -1,0 +1,17 @@
+<f:for each="{portfolios}" as="portfolio" iteration="iterator"><f:if condition="{iterator.cycle}<4">
+	<div class="col-sm-6 col-md-3 projectPre">
+		<div class="col">
+		  <div class="img-wrap">
+			<f:link.action pageUid="32" action="detail" arguments="{portfolio : portfolio}">
+			  <f:image src="{portfolio.teaserBild.0.originalResource.originalFile.uid}"  alt="{portfolio.titel}" width="648c" height="364c"  />
+			</f:link.action>
+		  </div>
+		  <div class="des">
+			<f:link.page pageUid="32">
+                <p class="dropHead">{portfolio.titel}</p>
+                <p class="dropDesc">{portfolio.kundenname}</p>
+			</f:link.page>
+		  </div>
+		</div>
+	</div>
+</f:if></f:for>

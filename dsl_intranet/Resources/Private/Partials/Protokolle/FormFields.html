@@ -1,0 +1,81 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+
+<script>var protokolleUid = '{protokolle.uid}';</script>
+<script>var auftraegeUid = '{protokolle.auftrag.uid}';</script>
+<script>
+	
+	$.each( $('.sichtbarkeitCheckbox:checked'), function( key, value ) {
+		$(this).next().children().addClass('active');
+	});
+	$('.sichtbarkeitCheckboxBtn').click(function(e) {
+
+		if($(this).children('.btn').hasClass('active')){
+
+			$(this).prev('.sichtbarkeitCheckbox').prop( "checked", false );
+
+		} else {
+			$(this).prev('.sichtbarkeitCheckbox').prop( "checked", true );
+		}
+
+	});
+	
+
+	//initMultipleSelect('#zeiteintragEditPhase'+zeiteintraegeUid);
+	//initDateTimePicker();
+	
+	
+	//initKontingentSpinner(auftraegeUid+'_'+zeiteintraegeUid);
+
+	$('.validator_required').attr('required','required');
+$('.animated').autosize({append: "\n"});
+		
+</script>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+			Kommentar<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	
+            
+            <f:form.textarea name="notiz" value="{protokolle.notiz}"   class="validator_required form-control animated" />
+            
+        </div>
+        
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Sichtbar für Kunde
+        </div>
+        <div class="layout-table-col">
+        	
+            
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="kundeninfoSichtbarkeit" value="1"  checked="{protokolle.kundeninfoSichtbarkeit}" />
+                        
+
+			<div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm" style="width:60px;">
+                    <input value="1" class="" type="checkbox" checked="{protokolle.kundeninfoSichtbarkeit}">
+                    
+					<i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+					
+                </label>
+            </div>
+            
+        </div>
+        
+	</div>
+</div>
+
+
+

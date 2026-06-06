@@ -1,0 +1,113 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+<div class="tx-dsl-produkte single" >
+  <div class="row p-top-20">
+    <div class="col-md-8 ">
+      <div class="img-wrap">
+        <section id="intro">
+          <div class="wide-container">
+            <div id="slides">
+              <ul class="slides-container">
+                <f:if condition="{produkte.bilder.0}">
+                  <f:then>
+                    <f:for each="{produkte.bilder}" as="image"  iteration="katIterator">
+                      <f:if condition="{katIterator.cycle} < 5">
+                        <li>
+                          <f:image src="{image.originalResource.originalFile.uid}" maxHeight="496" maxWidth="770" alt=""  />
+                        </li>
+                      </f:if>
+                    </f:for>
+                  </f:then>
+                  <f:else>
+                    <li><img src="fileadmin/template/public/images/layout/allgemein/kategorie_keinbild.png" width="760"></li>
+                  </f:else>
+                </f:if>
+              </ul>
+              
+              <!-- slide navigation -->
+              <f:if condition="{produkte.bilder -> f:count()} > 1">
+                <nav class="slides-pagination carousel">
+                  <f:for each="{produkte.bilder}" as="image"  iteration="katIterator">
+                    <f:if condition="{katIterator.cycle} < 5">
+                      <div class="carousel_entry">
+                        <div class="carousel_entry_inner">
+                          <f:image src="{image.originalResource.originalFile.uid}" maxWidth="220" maxHeight="92" alt=""  />
+                        </div>
+                        <a href="#{katIterator.cycle}" class="special_hover"> <span class="image_hoverBefore"></span> <span class="image_hoverAfter"></span> <span class="hover_hintergrund"></span> </a> </div>
+                    </f:if>
+                  </f:for>
+                </nav>
+              </f:if>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="headline-wrap">
+        <h1>{produkte.titel}</h1>
+      </div>
+      <f:if condition="{produkte.teaser}">
+        <p>
+          <f:then> {produkte.teaser} </f:then>
+        </p>
+      </f:if>
+      <div class="divider-lightgrey-long"></div>
+      <h6 class="kat-titel">
+        <f:translate key="tx_dslprodukte_domain_model_kategorien" />
+      </h6>
+      <ul class="marktsegment_list">
+        <f:for each="{produkte.kategorien}" as="kategorie" iteration="katIterator">
+          <li class="kat_uid_{kategorie.uid}">{kategorie.titel}</li>
+        </f:for>
+      </ul>
+      <h6 class="kat-titel">
+        <f:translate key="tx_dslprodukte_domain_model_anwendungsbereiche" />
+      </h6>
+      <f:for each="{produkte.anwendungsbereiche}" as="anwendungsbereich" iteration="katIterator">
+        <f:if condition="{katIterator.cycle} > 1"> / </f:if>
+        {anwendungsbereich.titel}</f:for>
+      <h6 class="kat-titel">
+        <f:translate key="tx_dslprodukte_domain_model_eigenschaften" />
+      </h6>
+      <ul class="{f:render(section: 'eigenschaftenAktiveKlassen', arguments: {array: produkte.eigenschaften})} eigenschaften_list">
+        <f:for each="{eigenschaften}" as="eigenschaft" iteration="eigIterator">
+          <li class="eig_uid_{eigenschaft.uid} ">{eigenschaft.titel}</li>
+        </f:for>
+      </ul>
+      <div class="social_box">
+        <div class="fb-share-button" data-href="{f:uri.action(controller:'Produkte' pluginName:'Produktsuche' action:'show'  absolute:'true'  arguments:{produkte : produkte})}" data-layout="button_count"></div>
+        <a href="mailto:{f:render(partial: 'Produkte/EmpfehlungMailUrl'  arguments:{produkte : produkte})}" class="icon-email"> </a> </div>
+    </div>
+  </div>
+  <div class="row p-top-20">
+    <div class="col-md-8 ">
+      <f:if condition="{produkte.text}">
+        <div class="teaser-text">
+          <div class="p-bottom-10"><strong><f:translate key="tx_dslprodukte_domain_model_detail.description" /></strong></div>
+          <f:format.html>{produkte.text}</f:format.html>
+        </div>
+      </f:if>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+<f:section name="eigenschaftenAktiveKlassen">
+  <f:for each="{array}" as="item">eig_uid_{item.uid}_aktiv </f:for>
+</f:section>
+<script type="text/javascript">
+
+	
+	
+    $(function() {
+		$('#slides').superslides({
+			inherit_width_from: '.wide-container',
+			inherit_height_from: '.wide-container'
+		  });
+
+		 
+
+
+		  
+	});
+	
+</script>

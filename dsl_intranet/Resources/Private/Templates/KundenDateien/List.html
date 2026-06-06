@@ -1,0 +1,260 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+	
+<script type="text/javascript">
+
+    var dateienAjaxUrl = '<f:uri.action action="ajax" controller="KundenDateien" pageType="89657209" />';
+	
+</script>
+<f:comment>
+	<f:debug title="settings" inline="1">{settings}</f:debug>
+	<f:debug title="dateiens" inline="1">{dateiens}</f:debug>
+	<ul>
+		<li>Vorschau</li>
+		<li>Dateiname</li>
+		<li>Dateigröße</li>
+		<li>Dateityp</li>
+		<li>hochgeladen am</li>
+		<li>Titel</li>
+		<li>Downloadlink</li>
+	</ul>
+
+<f:for each="{dateiens}" as="datei" iteration="iterator"><hr>
+	<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{datei.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+		<div>Download: <a href="{fileoutput.url}" target="_blank">{fileoutput.url}</a></div><br>
+		<f:debug title="fileoutput" inline="1">{fileoutput}</f:debug>
+	</v:resource.file>
+	<div>imgurl: {f:uri.image(src:datei.datei.originalResource.originalFile.uid)}</div>
+	
+	<f:image image="{datei.datei}" width="300" />
+</f:for>	
+	</f:comment>
+
+<table id="dateienList" class="table table-striped table-bordered table-condensed table-hover" cellspacing="0" width="100%"><thead>
+
+	<tr>
+	  
+
+        <th>Datum</th>
+        <th>Vorschau</th>
+        <th>Details</th>
+        <th>Typ</th>
+		<th>Download</th>
+
+        
+	</tr>
+    </thead>
+    
+    
+</table>
+
+
+<script>
+	var dataTable = false;
+
+
+	function dataTableReload(){
+		$('#dateienList').DataTable().ajax.reload();
+	}
+
+	
+
+	function dataTableInit(){
+		//return false;
+		//alert(auftraegeAjaxUrl+'&tx_dslintranet_auftragsliste%5Bswitch%5D=dateienList');
+		dataTable = $('#dateienList').DataTable({
+			
+			
+			"rowCallback": function( row, data, index ) {
+
+				$(row).attr('id','dateienListDatei_'+$(row).find("[data-table-callback-id]").data('table-callback-id'));
+
+			},
+			
+			"lengthMenu": [ [50, 100, -1], [50, 100, "Alle"] ],
+			"pageLength": 50,
+			"order": [0,'desc'],
+
+			"processing": true,
+			"serverSide": true,
+			"ajax": dateienAjaxUrl+'&tx_dslintranet_kundendateien%5Bswitch%5D=list',
+		
+			"columnDefs": [
+				
+				
+				{
+					"targets": [ 0 ],
+					"visible": true,
+					"orderable": true,
+					"width": "60px"
+					
+				},
+				{
+					"targets": [ 1 ],
+					"orderable": false,
+					"width": "235px"
+					
+				},
+				{
+					"targets": [ 2 ],
+					"orderable": false,
+					
+				},
+
+				{
+					"targets": [ 3 ],
+					"width": "130px"
+					
+				},
+
+				{
+					"targets": [ 4 ],
+					"width": "250px",
+					"orderable": false,
+					
+				}
+			],
+			"language": {
+				"decimal":        "",
+				"emptyTable":     "Keine Daten gefunden",
+				"info":           "Zeige _START_ bis _END_ von _TOTAL_ Einträgen",
+				"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+				"infoFiltered":   "(gefiltert von _MAX_ Einträgen)",
+				"infoPostFix":    "",
+				"thousands":      ",",
+				"lengthMenu":     "_MENU_ &nbsp;&nbsp;pro Seite",
+				"loadingRecords": "Lädt...",
+				"processing":     '<i class="fa fa-cog fa-spin"></i>',
+				"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a><a class="clearFilter"><i class="fa fa-lg fa-times"></i></a>',
+				"searchPlaceholder": "Suche",
+				"zeroRecords":    "Keine Ergebnisse gefunden",
+				"paginate": {
+					"first":      "Erste",
+					"last":       "Letzte",
+					"next":       "Nächste",
+					"previous":   "Vorhergehende"
+				},
+				"aria": {
+					"sortAscending":  ": activate to sort column ascending",
+					"sortDescending": ": activate to sort column descending"
+				}
+			}
+			
+		});
+
+		$('#dateienList_wrapper .clearFilter').on('click', function() {
+		  setTimeout(function(){ 
+			$('#dateienList_wrapper input[type="search"]').val('');
+			dataTable.search( '' ).draw();
+			$('#dateienList_wrapper .clearFilter').css('opacity',0);
+		  }, 10);
+		}); 
+		$('#dateienList_wrapper input[type="search"]').keyup(function() {
+		  
+			if($('#dateienList_wrapper input[type="search"]').val()){
+				$('#dateienList_wrapper .clearFilter').css('opacity',1);
+			} else {
+				$('#dateienList_wrapper .clearFilter').css('opacity',0);
+			}
+		});
+		
+		$('#dateienList_wrapper .clearFilter').insertAfter('#dateienList_wrapper input[type="search"]');	
+	}
+	
+	$(document).ready(function() {
+	
+		dataTableInit();
+
+		$('#dateienList').on( 'draw.dt', function () {
+
+		
+			reInitAjaxCalls();
+			reInitTitleEdit();
+			
+			initJsClick();
+			
+		} ).on( 'processing.dt', function ( e, settings, processing ) {
+			
+			if(processing){
+				$('#dateienList').css('opacity',0.6);
+				$('#dateienList').css('pointer-events','none');
+
+			} else {
+				$('#dateienList').css('opacity',1);			
+				$('#dateienList').css('pointer-events','auto');			
+			}
+
+		} );
+		
+		
+	});
+
+	function reInitTitleEdit(){
+		$(".editableBtn,.editableAbort,.editableSave").unbind( "click" );
+		$('.editableBtn').click(function(){
+			$(this).closest('.editableWrapper').toggleClass('editableActive');
+			$(this).closest('.editableWrapper').find('.editableEditInput').focus();
+			return false;
+		});
+		$('.editableAbort').click(function(){
+			$(this).closest('.editableWrapper').toggleClass('editableActive');
+			
+			$(this).closest('.editableWrapper').find('.editableEditInput').val($(this).closest('.editableWrapper').find('.editableText .editableTextContent').html());
+
+			return false;
+		});
+		
+		
+		$('.editableSave').click(function(){
+			
+			$(this).closest('.editableWrapper').toggleClass('editableActive');
+			
+			$(this).closest('.editableWrapper').find('.editableText .editableTextContent').html($(this).closest('.editableWrapper').find('.editableEditInput').val());
+
+			
+			if($(this).closest('.editableWrapper').find('.editableText .editableTextContent').html()){
+				
+				$(this).closest('.editableWrapper').find('.editableText').removeClass('editableTextEmpty');
+			} else {
+				$(this).closest('.editableWrapper').find('.editableText').addClass('editableTextEmpty');
+			}
+		
+			setDateiTitel('selector',$(this).closest('.editableWrapper').data('uid'),$(this).closest('.editableWrapper').find('.editableEditInput').val());
+			
+			
+			
+			
+			return false;
+		});
+	}
+	
+	
+	function initJsClick(){
+
+	  jQuery( ".jsClick").unbind( "click" );
+	  jQuery( ".jsClick" ).click(function() {
+		jQuery( this ).toggleClass('jsClicked');
+	  });
+
+	}
+
+
+
+</script>
+
+</f:section>
+

@@ -1,0 +1,75 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="Main">
+    <v:variable.set name="stratisVar" value="{v:variable.typoscript(path:'stratis.var')}"/>
+    <v:variable.set name="stratisPages" value="{v:variable.typoscript(path:'stratis.pages')}"/>
+    <v:variable.set name="stratisConfig" value="{v:variable.typoscript(path:'stratis.config')}"/>
+    <v:variable.set name="feloginGetParametrs" value="{s:uri.param(get:'tx_felogin_login')}"/>
+    <v:variable.set name="feloginGetParametrsAction" value="{feloginGetParametrs.action}"/>
+    <f:render partial="Common/Error" section="FlashMessages"/>
+    <f:if condition="{feloginGetParametrsAction}&&!{feloginGetParametrsAction}=='login' || {feloginGetParametrsAction}=='showChangePassword'">
+        <f:else>
+            <f:security.ifAuthenticated>
+                <f:comment>
+                <f:then>
+                    <footer class="extranet-footer">
+                        <div class="extranet-social">
+                            <f:if condition="{configuration.providers}">
+                                <f:for each="{configuration.providers}" as="provider">
+                                    <f:link.action action="bind" controller="Bind" class="extranet-social__item -{f:format.case(value: provider.type, mode: 'lower')}" arguments="{configuration: configuration, provider: provider}">
+                                        <v:l key="buttons.bind"/> <v:l key="{provider.type}"/>
+                                    </f:link.action>
+                                </f:for>
+                            </f:if>
+                        </div>
+                    </footer>
+                </f:then>
+                </f:comment>
+                <f:else>
+                    <div class="account-box-item__text">
+                        <h2 class="account-box-item__title">
+                            {s:l(key:'user.loginFranceConnect')}
+                        </h2>
+                        <p class="account-box-item__description">
+                            {s:l(key:'user.franceConnectsolution')}
+                        </p>
+                    </div>
+                    <div class="account-box-item__button-wrapper">
+
+                        <f:if condition="{configuration.providers}">
+                            <div class="account-box-item__info">
+                                <f:for each="{configuration.providers}" as="provider">
+                                    <f:if condition="{provider.type} == 'FranceConnect'">
+                                        <f:then>
+                                            {f:uri.page(pageType: 1530794991, additionalParams: {tx_stratissocialauth_pi1: {provider: provider, configuration: configuration, redirect: '{f:uri.page()}'}, logintype: 'login'}) -> v:variable.set(name: 'url')}
+
+                                            <a class="account-box-item__btn" href="{url}" rel="noopener">
+                                                <f:render partial="Common/SVGIcons" section="FranceconnectSVGIcon"/>
+                                                <span class="ghost">{s:l(key:'user.franceConnect')}</span>
+                                            </a>
+
+                                            <f:link.page pageType="1530794991" rel="noopener" additionalParams="{tx_stratissocialauth_pi1:{provider:provider, configuration:configuration, redirect:'{f:uri.page()}'}, logintype: 'login'}" class="extranet-social__item -{f:format.case(value: provider.type, mode: 'lower')}"  target="_blank" title="{s:l(key:'user.whatFranceConnect')} (Lien externe)">
+                                                {s:l(key:'user.whatFranceConnect')}
+                                            </f:link.page>
+                                        </f:then>
+                                        <f:else>
+                                            <f:link.page pageType="1530794991" additionalParams="{tx_stratissocialauth_pi1:{provider:provider, configuration:configuration, redirect:'{f:uri.page()}'}, logintype: 'login'}" class="extranet-social__item -{f:format.case(value: provider.type, mode: 'lower')}">
+                                                <v:l key="{provider.type}"/>
+                                            </f:link.page>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                        </f:if>
+                    </div>
+                    <div class="account-box-item__separator">{s:l(key:'user.loginFranceConnectOr')}</div>
+                </f:else>
+            </f:security.ifAuthenticated>
+        </f:else>
+    </f:if>
+    <v:variable.unset name="stratisVar" />
+    <v:variable.unset name="stratisPages" />
+    <v:variable.unset name="stratisConfig" />
+    <v:variable.unset name="feloginGetParametrs" />
+    <v:variable.unset name="feloginGetParametrsAction" />
+</f:section>

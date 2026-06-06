@@ -1,0 +1,104 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+<tr id="auftraegeZeitenListAuftrag_{zeiteintraege.uid}">
+	<td data-sort="{f:format.date(date: zeiteintraege.begin, format: 'YmdHi')}">
+	 
+		{zeiteintraege.begin->f:format.date(format: 'd.m.Y')}<br>
+		({zeiteintraege.begin->f:format.date(format: 'H:i')} - {zeiteintraege.end->f:format.date(format: 'H:i')} Uhr)
+	
+	</td>
+	<td>{zeiteintraege.text}</td>
+	<td data-sort="{zeiteintraege.phase.sorting}">
+		<f:if condition="{zeiteintraege.segmente}">
+			<f:for each="{zeiteintraege.segmente}" as="segment">
+				<div title="{segment.title}"><f:render partial="Allgemein/DauerKurzNeu" arguments="{set: '{dsl:getSetArrayFromTime(time: segment.minuten)}' }" /><span class="text_grau" > - {segment.titleKurz}</span></div>
+			</f:for>
+		</f:if>
+
+	</td>
+	<td>{zeiteintraege.kontingent}</td>
+
+	<td data-sort="{zeiteintraege.kontingent}">
+		<v:variable.set name="summe" value="0" />
+		<f:comment><!--<v:variable.set name="summe" value="{v:math.sum(a:summe,b:2)}" />
+		<v:variable.set name="summe" value="{v:math.sum(a:summe,b:2)}" />--></f:comment>
+		<f:if condition="{zeiteintraege.segmente}">
+			<f:for each="{zeiteintraege.segmente}" as="segment">
+
+				
+				
+				<f:alias map="{phaseStundensatz: '{dsl:getFromArray(obj: auftraege.endpreisPhasen.phasenStundensatzArray, prop:segment.phase.uid)}' }">
+					<f:if condition="{phaseStundensatz}">
+						<f:then>
+							<v:variable.set name="stundensatzVar" value="{phaseStundensatz}" />
+						</f:then>
+						<f:else>
+							<v:variable.set name="stundensatzVar" value="{auftraege.stundensatzValid}" />
+						</f:else>
+					</f:if>
+				</f:alias>
+
+
+				<v:variable.set name="stundenVar" value="{v:math.division(a:segment.minuten,b:60)}" />
+
+				<v:variable.set name="summe" value="{v:math.sum(a:summe,b: '{v:math.product(a:stundensatzVar,b:stundenVar)}'  )}" />
+				<div title="{segment.title}">{v:math.product(a:stundensatzVar,b:stundenVar)->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€<span class="text_grau" > - {segment.titleKurz}</span></div>
+			</f:for>
+		</f:if>
+			
+		<f:comment><!--<f:render partial="Allgemein/DauerKurzNeu" arguments="{set: '{dsl:getSetArrayFromTime(time: zeiteintraege.kontingent)}' }" />--></f:comment>
+	</td>
+	<td>{summe}</td>
+	
+	
+	<td class="text-time-over" data-sort="{zeiteintraege.kontingentMehraufwand}"><f:render partial="Allgemein/DauerKurzNeu" arguments="{set: '{dsl:getSetArrayFromTime(time: zeiteintraege.kontingentMehraufwand)}' }" /></td>
+	<td>{zeiteintraege.kontingentMehraufwand}</td>
+
+	<td>hello<f:if condition="{zeiteintraege.cruser}">{zeiteintraege.cruser.initialien}</f:if></td>
+	
+	
+	
+	
+	<td>
+     
+     	<div class="btn-group">
+     	
+
+     		<f:if condition="{auftraege.rights.edit}">
+     		
+     			<f:then>
+     			
+					<f:link.action controller="Zeiteintraege" pluginName="auftragsliste" extensionName="dslintranet" action="edit" arguments="{zeiteintraege : zeiteintraege}" class="doAjaxEdit btn tableBtn" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '800px' }"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></f:link.action>
+					
+				</f:then>
+    			<f:else>
+    			
+    				<a class="btn tableBtn inaktiv" style=""><i class="bb-pen-write bb-lg" aria-hidden="true"></i></i></a>
+     				
+				</f:else>
+    		
+     		</f:if>
+     		<f:if condition="{auftraege.rights.delete}">
+     		
+     			<f:then>
+     			
+   					<f:link.action controller="Zeiteintraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : zeiteintraege, switch : 'delete'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorZeiteintraege', data-ajax-selector: '#auftraegeZeitenListAuftrag_{zeiteintraege.uid}', data-ajax-id: '{zeiteintraege.auftraege.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+    			
+				</f:then>
+    			<f:else>
+    			
+     				<a class="btn tableBtn inaktiv" style=""><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+     			
+				</f:else>
+    		
+     		</f:if>
+     		
+     		
+     		
+     		
+		</div>
+     	
+    </td>
+	
+</tr>

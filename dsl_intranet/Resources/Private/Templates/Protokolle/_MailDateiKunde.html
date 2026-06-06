@@ -1,0 +1,17 @@
+Sehr geehrte Damen und Herren,
+
+es gibt eine neue Datei zu Ihrem Auftrag.
+
+Auftrag: [{protokolle.auftrag.nr}] {protokolle.auftrag.titel}
+Aktueller Status: {protokolle.auftrag.statustext}
+
+
+<f:if condition="{protokolle.datei.titel}">
+	<f:then>Datei: {protokolle.datei.titel} ({protokolle.datei.dateiName} / {protokolle.datei.typeName})</f:then>
+	<f:else>Datei: {protokolle.datei.dateiName} ({protokolle.datei.typeName})</f:else>
+</f:if>
+
+
+<f:if condition="{protokolle.notiz}">Kommentar: {protokolle.notiz}</f:if>
+
+<f:render partial="Mail/Signatur" arguments="{_all}" />

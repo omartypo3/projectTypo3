@@ -1,0 +1,16 @@
+{namespace femanager=In2code\Femanager\ViewHelpers}
+<div class="femanager_fieldset femanager_zip form-group powermail_fieldwrap">
+	<label for="femanager_field_zip" class="powermail_label control-label">
+		Code postal de la structure
+		<f:if condition="{femanager:Validation.IsRequiredField(fieldName:'zip')}">
+			<span>*</span>
+		</f:if>
+	</label>
+	<div class="powermail_field">
+		<femanager:form.textfield
+				id="femanager_field_zip"
+				property="zip"
+				class="form-control"
+				additionalAttributes="{femanager:Validation.FormValidationData(settings:settings,fieldName:'zip')}" />
+	</div>
+</div>

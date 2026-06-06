@@ -1,0 +1,394 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<div class="layout-box" id="auftraegeTabsWrapper{auftraege.uid}">
+		<a onclick="refreshAuftragAktivitaet(this);return false;" href="#" aria-label="Refresh" class="float_right"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i></a>
+		<div class="form-group">
+		
+			<div class='input-group fullDatePicker auftraegeAktivitaetDatePicker' id='auftraegeAktivitaetDatePicker{auftraege.uid}'  data-auftraege-uid="{auftraege.uid}" >
+			   <span class="input-group-addon">
+					<span class="fa fa-calendar"></span>
+			   </span>
+			   <span class="input-group-addon auftraegetabs_{auftraege.uid}_aktivitaet_datum">
+					{f:format.date(format: 'd.m.Y',date:aktivitaetDefaultDate)}
+			   </span>
+				<input type='text' class="form-control " id='auftraegeAktivitaetDatePickerInput{auftraege.uid}' value="{aktivitaetDefaultDate->f:format.date(format: 'd.m.Y')}" style="visibility: hidden;" />
+
+				<div class="enabledDates" data-enabledDates="{enabledDates -> f:format.raw()}"></div>
+			</div>
+
+		</div>
+        
+    
+<div class="content_container" style="padding-bottom:60px;">
+	<div class="form_headline"><strong>Effektivität <f:if condition="{aktivitaetenGesamtProzent}">- <f:render partial="Allgemein/DauerKurzText" arguments="{set: '{dsl:getSetArrayFromTime(time: aktivitaetenGesamtMinuten)}' }" /> / {aktivitaetenGesamtProzent}% </f:if></strong> (in h)</div>
+	<br>
+	
+	
+	<div class="layout-table zeitStrahl auftraegeEffektivitaet">
+		<div class="layout-table-row">
+			<f:for each="{effektivitaetArr}" as="block" iteration="iterator">
+				<div class="layout-table-col {block.class}">
+					<div class="layout-table-col-content ">
+						
+
+						<span class="labelLeft {f:if(condition: '{iterator.isFirst}', then: ' first')}"><f:if condition="{iterator.isFirst}"><f:else><span class="labelStrich"></span></f:else></f:if><span class="labelText ">{block.labelLeft}</span></span>
+						<f:if condition="{block.labelRight}"><span class="labelRight">{block.labelRight}</span></f:if>
+					</div>&nbsp;
+				</div>
+			</f:for>
+		</div>
+	</div>
+	<div class="zeitStrahlItems zeitStrahlDuration" data-begin="{effektivitaetBegin}"  data-end="{effektivitaetEnd}">
+		<f:for each="{aktivitaeten}" as="aktivitaet">
+			<div data-toggle-class="aktivitaeten{aktivitaet.uid}" class="aktivitaeten{aktivitaet.uid}" title="<f:render partial="Allgemein/DauerKurzText" arguments="{set: '{dsl:getSetArrayFromTime(time: aktivitaet.minutes)}' }" />" data-duration="{aktivitaet.minutes}" ><f:render partial="Allgemein/DauerKurzText" arguments="{set: '{dsl:getSetArrayFromTime(time: aktivitaet.minutes)}' }" /></div>
+		</f:for>
+	</div>
+	
+	
+	
+</div>
+<div class="content_container" style="padding-bottom:60px;">
+	<div class="form_headline"><strong>Tagesübersicht</strong></div>
+	<br>
+	
+	<div class="layout-table zeitStrahl auftraegeEffektivitaet">
+		<div class="layout-table-row">
+			<f:for each="{aktivitaetenArr}" as="block" iteration="iterator">
+				<div class="layout-table-col {block.class}">
+					<div class="layout-table-col-content ">
+						<span class="labelLeft {f:if(condition: '{iterator.isFirst}', then: ' first')}"><f:if condition="{iterator.isFirst}"><f:else><span class="labelStrich"></span></f:else></f:if><span class="labelText ">{block.labelLeft}</span></span>
+						<f:if condition="{block.labelRight}"><span class="labelRight">{block.labelRight}</span></f:if>
+					</div>&nbsp;
+				</div>
+			</f:for>
+		</div>
+	</div>
+	<div class="zeitStrahlItems zeitStrahlStartEnd" data-begin="{tagesuebersichtBegin}"  data-end="{tagesuebersichtEnd}">
+		<f:for each="{aktivitaeten}" as="aktivitaet">
+			<f:if condition="{aktivitaet.tracker}">
+				<f:then>
+					<f:for each="{aktivitaet.tracker}" as="trackerSegment">
+						<f:if condition="{trackerSegment.opened}">
+							<f:then>
+								<div data-toggle-class="aktivitaeten{aktivitaet.uid}" class="aktivitaeten{aktivitaet.uid}" title="<f:render partial="Allgemein/DauerKurzText" arguments="{set: '{dsl:getSetArrayFromTime(time: trackerSegment.minutes)}' }" />" data-duration="{trackerSegment.minutes}" data-begin="{f:format.date(date: trackerSegment.begin format: 'U')}" data-end="{f:format.date(date: "now" format: "U")}">
+								</div>
+							</f:then>
+							<f:else>
+								<div data-toggle-class="aktivitaeten{aktivitaet.uid}" class="aktivitaeten{aktivitaet.uid}" title="<f:render partial="Allgemein/DauerKurzText" arguments="{set: '{dsl:getSetArrayFromTime(time: trackerSegment.minutes)}' }" />" data-duration="{trackerSegment.minutes}" data-begin="{f:format.date(date: trackerSegment.begin format: 'U')}" data-end="{f:format.date(date: trackerSegment.end format: 'U')}"></div>
+							</f:else>
+						</f:if>
+					</f:for>
+				</f:then>
+				<f:else>
+					<div data-toggle-class="aktivitaeten{aktivitaet.uid}" class="aktivitaeten{aktivitaet.uid}" title="<f:render partial="Allgemein/DauerKurzText" arguments="{set: '{dsl:getSetArrayFromTime(time: aktivitaet.minutes)}' }" />" data-duration="{aktivitaet.minutes}" data-begin="{f:format.date(date: aktivitaet.begin format: 'U')}" data-end="{f:format.date(date: aktivitaet.end format: 'U')}"></div>
+				</f:else>
+			</f:if>
+		</f:for>
+	</div>
+	
+</div>
+
+
+<script type="text/javascript">
+	$( ".zeitStrahlDuration" ).each(function( index ) {
+	
+		var begin = $(this).data('begin');
+		var end = $(this).data('end');
+		var diff = end-begin;
+		$( $(this).children() ).each(function( index ) {
+			var dauerItem = $(this).data('duration');
+			var percentItem = 100 / diff * dauerItem;
+			$(this).width(percentItem+'%');
+		});
+		
+		
+		
+	});
+	
+	
+	
+	
+	$( "#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlStartEnd" ).each(function( index ) {
+		
+
+		var begin = $(this).data('begin');
+		var end = $(this).data('end');
+		var diff = end-begin;
+		
+		$( $(this).children() ).each(function( index ) {
+			var percentItemBegin = 100 / diff * ($(this).data('begin')-begin);
+			var percentItemEnd = 100 / diff * ($(this).data('end')-begin);
+			var dauerItem = $(this).data('end')-$(this).data('begin');
+			var percentItem = 100 / diff * dauerItem;
+			
+			
+			
+			if( percentItemBegin >= 100 ){
+				
+				percentItemBegin=100;
+				percentItem=0;
+			} else {
+				if(percentItemBegin + percentItem > 100) percentItem=100-percentItemBegin;
+				
+			}
+			
+			$(this).css('left',percentItemBegin+'%');
+			$(this).width(percentItem+'%');
+		});
+		
+	});
+	
+	
+	$( "#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlDuration>div,#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlStartEnd>div" ).click(function() {
+	
+		if($(this).hasClass("aktiv")){
+			$( "#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlDuration>div."+$(this).data("toggle-class")+",#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlStartEnd>div."+$(this).data("toggle-class")+",#auftraegeTabsWrapper"+auftraegeUid+" .auftraegeAktivitaeten ."+$(this).data("toggle-class")).removeClass('aktiv');
+		} else {
+			$( "#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlDuration>div."+$(this).data("toggle-class")+",#auftraegeTabsWrapper"+auftraegeUid+" .zeitStrahlStartEnd>div."+$(this).data("toggle-class")+",#auftraegeTabsWrapper"+auftraegeUid+" .auftraegeAktivitaeten ."+$(this).data("toggle-class")).addClass('aktiv');
+		}
+		 //data-toggle-class="aktivitaeten{aktivitaet.uid}" class="aktivitaeten{aktivitaet.uid}"
+	});
+	
+</script>
+
+
+	<f:if condition="{aktivitaeten}">
+
+
+		<div class="content_container">
+			<div class="form_headline">
+				<strong>Aktivitäten</strong>
+
+				<div class="layout-table auftraegeAktivitaeten">
+					<f:for each="{aktivitaeten}" as="aktivitaet">
+					
+					
+						<div class="layout-table-row aktivitaeten{aktivitaet.uid}" id="auftraegeZeitenListAuftrag_{aktivitaet.uid}">
+						
+							<f:if condition="{aktivitaet.auftraege}">
+							<f:then>
+						
+								<div class="layout-table-col layout-table-col-show layout-table-col-center">
+
+									
+									<f:if condition="{aktivitaet.auftraege}=={auftraege}">
+										<f:then>
+											<div class="trackerBtn"><a class="inactive"><div><i class="bb-search bb-lg" aria-hidden="true"></i></div><span class="btn-label">zum Projekt</span></a></div>
+										</f:then>
+										<f:else>
+											<div class="trackerBtn">
+											<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="show" arguments="{auftraege : aktivitaet.auftraege}" class="doAjax" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{aktivitaet.auftraege.uid}'}"><div><i class="bb-search bb-lg" aria-hidden="true"></i></div><span class="btn-label">zum Projekt</span></f:link.action></div>
+										</f:else>
+									</f:if>
+
+
+
+
+
+
+									{aktivitaet.wartungsvertragZeitraum.wartungsvertrag.titel}
+
+								</div>
+								<div class="layout-table-col">
+									<span class="auftraegeListKunde"><strong>{aktivitaet.auftraege.kunde.name}</strong></span> / {aktivitaet.auftraege.titel}<br>
+									{aktivitaet.text}
+								</div>
+								<div class="layout-table-col  layout-table-col-begin-end layout-table-col-center">
+									<span class="aktivitaetZeitLabel">von&nbsp;&nbsp;</span><span>{aktivitaet.begin->f:format.date(format: 'H:i')} Uhr</span><span class="aktivitaetZeitLabel">&nbsp;&nbsp;bis&nbsp;&nbsp;</span>
+									<span><f:if condition="{aktivitaet.zeitnahme}">
+										<f:then>...</f:then>
+										<f:else><f:if condition="{aktivitaet.end}"><f:then>{aktivitaet.end->f:format.date(format: 'H:i')}</f:then><f:else>{aktivitaet.lastTrackerSegmente.end->f:format.date(format: 'H:i')}</f:else></f:if> Uhr</f:else>
+									</f:if></span>
+								</div>
+								<div class="layout-table-col layout-table-col-kontingent layout-table-col-center {f:if(condition: '{aktivitaet.zeitnahme}', then: ' trackerZeitnahme')}">
+									<f:render partial="Allgemein/DauerKurzClock" arguments="{set: '{dsl:getSetArrayFromTime(time: aktivitaet.minutes)}' }" />
+								</div>
+								<div class="layout-table-col layout-table-col-tracker-status layout-table-col-center{f:if(condition: '{aktivitaet.zeitnahme}', then: ' trackerZeitnahme')} ">
+
+
+									<f:if condition="{aktivitaet.tracker}">
+										<f:then>
+
+											<f:if condition="{aktivitaet.end}"><f:then><div class="trackerBtn"><div><i class="bb-flag-finish bb-lg" aria-hidden="true"></i></div><span class="btn-label">beendet (getrackt)</span></div></f:then>
+												<f:else>
+													<f:if condition="{aktivitaet.zeitnahme}">
+														<f:then>
+															<div class="trackerBtn"><div><i class="bb-play" aria-hidden="true"></i></div><span class="btn-label">Tracking läuft</span></div>
+														</f:then>
+														<f:else>
+
+															<div class="trackerPaused">
+																<div class="trackerBtn"><div><i class="bb-break" aria-hidden="true"></i></div><span class="btn-label">pausiert</span></div>
+
+															</div>
+														</f:else>
+													</f:if>
+												</f:else>
+											</f:if>
+
+
+										</f:then>
+										<f:else>
+											<div class="trackerBtn"><div><i class="bb-flag-finish bb-lg" aria-hidden="true"></i></div><span class="btn-label">beendet (manuell)</span></div>
+										</f:else>
+
+									</f:if>
+
+								</div>
+								<div class="layout-table-col layout-table-col-aktivitaet-btn">
+
+
+									<div class="btn-group">
+
+										<f:if condition="{aktivitaet.end}">
+											<f:then>
+												<f:if condition="{aktivitaet.auftraege.rights.edit}">
+													<f:then>
+														<f:link.action controller="Zeiteintraege" pluginName="auftragsliste" extensionName="dslintranet" action="edit" arguments="{zeiteintraege : aktivitaet}" class="doAjaxEdit btn tableBtn" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '800px' }"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></f:link.action>         
+													</f:then>
+													<f:else>
+														<a class="btn tableBtn inaktiv"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+													</f:else>
+												</f:if>
+											</f:then>
+											<f:else>
+												<f:link.action controller="Zeiteintraege" pluginName="auftragsliste" extensionName="dslintranet" action="edit" arguments="{zeiteintraege : aktivitaet}" class="doAjaxEdit btn tableBtn" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '800px' }"><i class="bb-disk bb-lg" aria-hidden="true"></i></f:link.action>
+											</f:else>
+
+										</f:if>
+
+										<f:if condition="{aktivitaet.auftraege.rights.edit}">
+											<f:then>
+												<f:link.action controller="Zeiteintraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : aktivitaet, switch : 'delete'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorZeiteintraege', data-ajax-selector: '#auftraegeZeitenListAuftrag_{aktivitaet.uid}', data-ajax-id: '{aktivitaet.auftraege.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+											</f:then>
+											<f:else>
+												<a class="btn tableBtn inaktiv"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+											</f:else>
+										</f:if>
+
+									</div>
+
+								</div>
+							
+							
+							
+							</f:then>
+							<f:else>
+								<div class="layout-table-col layout-table-col-show  layout-table-col-center">
+								
+								
+
+<div class="trackerBtn">
+											<f:link.action controller="Wartungsvertraege" pageUid="11" pluginName="wartungsliste" extensionName="dslintranet" action="list" arguments="{wartungsvertraege : aktivitaet.wartungsvertraegeZeitraeume.wartungsvertrag}"><div><i class="bb-search bb-lg" aria-hidden="true"></i></div><span class="btn-label">zum WV</span></f:link.action></div>
+								
+
+									
+
+
+									
+
+								</div>
+								<div class="layout-table-col">
+									<span class="auftraegeListKunde"><strong>{aktivitaet.wartungsvertraegeZeitraeume.wartungsvertrag.kunde.name}</strong></span> / {aktivitaet.wartungsvertraegeZeitraeume.wartungsvertrag.titel}<br>
+									{aktivitaet.text}
+								</div>
+								<div class="layout-table-col  layout-table-col-begin-end layout-table-col-center">
+									<span class="aktivitaetZeitLabel">von&nbsp;&nbsp;</span><span>{aktivitaet.begin->f:format.date(format: 'H:i')} Uhr</span><span class="aktivitaetZeitLabel">&nbsp;&nbsp;bis&nbsp;&nbsp;</span>
+									<span>
+										
+										<f:if condition="{aktivitaet.end}"><f:then>{aktivitaet.end->f:format.date(format: 'H:i')}</f:then><f:else>{aktivitaet.lastTrackerSegmente.end->f:format.date(format: 'H:i')}</f:else></f:if> Uhr
+									</span>
+								</div>
+								<div class="layout-table-col layout-table-col-kontingent layout-table-col-center">
+									<f:render partial="Allgemein/DauerKurzClock" arguments="{set: '{dsl:getSetArrayFromTime(time: aktivitaet.minutes)}' }" />
+								</div>
+								<div class="layout-table-col layout-table-col-tracker-status layout-table-col-center ">
+
+
+									
+											<div class="trackerBtn"><div><i class="bb-flag-finish bb-lg" aria-hidden="true"></i></div><span class="btn-label">beendet (manuell)</span></div>
+										
+								</div>
+								<div class="layout-table-col layout-table-col-aktivitaet-btn">
+
+
+									<div class="btn-group">
+
+										
+												<f:if condition="{aktivitaet.wartungsvertraegeZeitraeume.wartungsvertrag.rights.edit}">
+													<f:then>
+													
+													
+														<f:link.action controller="Wartungsvertraege" pluginName="auftragsliste" extensionName="dslintranet" action="editZeiteintrag" arguments="{zeiteintraege : aktivitaet}" class="doAjaxEdit btn tableBtn" additionalParams="{tx_dslintranet_auftragsliste: '{auftraege:auftraege.uid}'}" additionalAttributes="{  data-colorbox-width: '650px', data-colorbox-height: '510px' }"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></f:link.action>
+													
+													     
+													</f:then>
+													<f:else>
+														<a class="btn tableBtn inaktiv"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+													</f:else>
+												</f:if>
+											
+
+										<f:if condition="{aktivitaet.wartungsvertraegeZeitraeume.wartungsvertrag.rights.edit}">
+											<f:then>
+											
+												<f:link.action controller="Wartungsvertraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : aktivitaet, switch : 'deleteZeiteintraege'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorZeiteintraege', data-ajax-selector: '#auftraegeZeitenListAuftrag_{aktivitaet.uid}', data-ajax-id: '{auftraege.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+											</f:then>
+											<f:else>
+												<a class="btn tableBtn inaktiv"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+											</f:else>
+										</f:if>
+
+									</div>
+
+								</div>	
+										
+										
+									
+							</f:else>
+							</f:if>
+							
+						</div>
+					</f:for>
+				</div>
+			</div>
+		</div>
+
+
+	</f:if>
+
+</div>
+
+<script>
+		
+			$('#auftraegeAktivitaetDatePicker'+auftraegeUid).datetimepicker({
+				locale: 'de',
+				sideBySide: true,
+				showTodayButton: true,
+				showClear: false,
+				showClose: true,
+				/*toolbarPlacement: 'bottom',*/
+				format: 'DD.MM.YYYY',
+				enabledDates: $(".enabledDates").data("enabledDates")
+			}).on("dp.change", function (e) {
+				
+				
+			
+				
+				var uid = $('#'+e.target.id).data("auftraege-uid");
+				var datum = $('#auftraegeAktivitaetDatePickerInput'+uid);
+				
+			
+				
+				$('.input-group-addon auftraegetabs_'+uid+'_aktivitaet_datum').html(datum.val());
+				
+			
+				
+				reloadAuftragAktivitaet(uid,datum.val());
+			
+
+			});
+			
+			
+        </script>

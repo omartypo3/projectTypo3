@@ -1,0 +1,92 @@
+# ==============================================
+# FE-Plugin configuration for EXT:e_poll
+# ==============================================
+plugin.tx_epoll {
+    settings {
+/*
+        ##
+        # general settings
+        ##
+        # The uid of the page containing the poll-records. If not set, the current page is used
+        pid =
+        # template file
+        template = EXT:e_poll/res/e_poll.tmpl
+        # CSS file
+        css_file =
+        # if set, allows user to select more than one answer (uses checkboxes instead of radio buttons)
+        checkbox = 0
+
+        ##
+        # list of polls
+        ##
+        # if set, create a link to a list of polls
+        list = 0
+        # limit in a list of polls
+        list_limit =
+        # if set, the latest poll is shown in a list of polls, too
+        list_first = 0
+        # if set, the results in a list of polls are shown
+        show_results_in_list = 0
+
+        ##
+        # language handling
+        ##
+
+        # language specific polls, see manual
+        check_language_specific = 0
+        # language specific vote options, see manual
+        vote_language_specific = 0
+
+        ##
+        # prevent multiple or spam voting
+        ##
+
+        # days, before a user may vote again for this poll. If set to "off", a session cookie is created.
+        cookie =
+        # if set, a user may vote only one time for each poll on the whole domain. Useful for polls on every page
+        cookie_domainpath = 1
+        # if set, prevent multiple voting by logging IP
+        check_ip = 0
+        # hours before a logged ip may vote again (check_ip needs to be set)
+        check_ip_time =
+        # if set, prevent multiple voting by logging logged in fe_users
+        check_user = 0
+        # may be set to "sr_freecap" or "captcha" (depends on extensions sr_freecap or captcha being installed)
+        captcha =
+
+        ##
+        # settings for output (form)
+        ##
+
+        # precheck first radio button in a poll
+        first_answer_selected = 0
+        # additional parameters for the submit button
+        submitbutton_params =
+        # how SUBMIT_JS marker shall behave, if no JavaScript is allowed. Options are "dontShow" or "dontLink" (default)
+        submit_js_fallback = dontLink
+        # add link back to poll to error messages
+        errorlink = 1
+
+        ##
+        # settings for output (result)
+        ##
+
+        # Page ID of page to which should be forwarded after successful vote.
+        PIDforward =
+        # keys: 0 (for horizontal result bars) or 1 (for vertical result bars)
+        type =
+        # factor to stretch the image resultbar, default 1
+        factor = 1
+        # alternative path to image files for the image resultbar with trailing slash. default: EXT:e_poll/images/
+        path_to_images =
+        # image file type
+        image_type = gif
+        # name of the image file to build up the image resultbar. File must exist as [path_to_images][color].gif
+        color = blue
+        # if set, options with 0 percent are shown as 1px line in the result
+        show_zero_percent = 0
+        # if set, bars will be shown with CSS
+        show_css_bars = 0
+*/
+    }
+}

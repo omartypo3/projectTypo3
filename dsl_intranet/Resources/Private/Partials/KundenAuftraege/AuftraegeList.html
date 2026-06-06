@@ -1,0 +1,355 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+	<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/KundenAuftraege/List.js" name="dslkundenauftraege"></v:asset.script>
+
+
+    <script type="text/javascript">
+
+        var auftraegeAjaxUrl = '<f:uri.action action="kundenajax" pluginName="kundenlogin" controller="Auftraege" pageType="89657205" />';
+
+
+
+    $(document).ready(function() {
+
+
+		$('.auftraegeFormFilterSelectpicker').change(function() {//.btn-filter-date input
+			$(this).parent().addClass('filterHighlighted');
+			setFilterNotEmptyClass('.auftraegeFormFilterSelectpicker' );
+			activateSubmitButton();
+		});
+		setFilterNotEmptyClass('.auftraegeFormFilterSelectpicker' );
+
+		$( ".btn-filter-suchtext" ).keyup(function() {
+
+			activateSubmitButton();
+
+		});
+		$("#deleteFilter").click(function() {
+
+
+			$("#filter_suche").val("");
+			$("#filter_von").val("");
+			$("#filter_bis").val("");
+			//$("#filter_auftragsartens").selectpicker("deselectAll");
+			$('#filter_statuss').selectpicker('val', [20,30,40,50]);
+
+
+			checkFilterResetButton();
+
+			//return false;
+		});
+
+		$('#saveFilter').attr('disabled','disabled');
+		$('#deleteFilter').removeAttr('disabled');
+
+
+
+		function activateSubmitButton(){
+			$('#saveFilter').removeAttr('disabled');
+			checkFilterResetButton();
+		}
+		checkFilterResetButton();
+		function checkFilterResetButton(){
+
+
+
+			var selectpickerJoin = '';
+			if($("#filter_statuss").selectpicker('val')) selectpickerJoin = $("#filter_statuss").selectpicker('val').join(',');
+
+
+
+			if(!$("#filter_von").val() && !$("#filter_bis").val() && !$("#filter_suche").val() && selectpickerJoin == "20,30,40,50"){
+
+				$("#deleteFilter").hide();
+			} else {
+
+				$("#deleteFilter").show();
+			}
+		}
+
+		/*Änderung der Alles Auswählen Funktion beim filter status*/
+		$('#filter_statuss').prev().find('button.actions-btn.bs-select-all').click(function() {
+		  $('#filter_statuss').selectpicker('val', [10,20,30,40,50]);
+
+		  return false;
+		});
+
+
+
+		$('#filter_statuss').prev().find('ul.dropdown-menu li').unbind( "dblclick" );
+		$('#filter_statuss').prev().find('ul.dropdown-menu li').dblclick(function(e) {
+
+
+
+
+			tmpIndex = $(this).data('original-index')+1;
+			$('#filter_statuss').selectpicker('val', [$('#filter_statuss option:nth-child('+tmpIndex+')').val()]);
+
+			checkFilterResetButton();
+			activateSubmitButton();
+
+			return false;
+
+		});
+
+
+        $('#auftraegeFilterForm').submit(function() {
+
+                $('#saveFilter').attr('disabled','disabled');
+
+
+
+               $('#auftraegeListAnzahl').html('<span class="ajaxLoading"><i class="fa fa-cog fa-spin"></i></span>');
+
+
+                $('#auftraegeList table').first().addClass('tabReloads');
+
+                $.ajax({
+                    url: $('#auftraegeFilterForm').attr('action'),
+                    type: 'POST',
+                    data: $('#auftraegeFilterForm').serialize(),
+                    success: function(data) {
+
+                        $('#auftraegeFilterForm').find('.filterHighlighted').removeClass('filterHighlighted');
+
+                        dataJson = JSON.parse(data);
+
+						//alert(dataJson['contentShow']);
+					//	$('#auftraegeList tbody').first().replaceWith( $('<tr><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr>'));
+
+
+
+						$('#auftraegeList tbody').first().replaceWith( $(dataJson['contentShow']));
+
+						setTimeout(function(){ initAccordionPanel("#auftraegeAccordion a.panel-heading"); }, 100);
+
+                        //$('#auftraegeListAnzahl').html( $(data).find('#auftraegeListAnzahl').html() );
+
+						$('#auftraegeListAnzahl').html( '('+dataJson['found']+')' );
+						$('#auftraegeList table').first().removeClass('tabReloads');
+                      //  dataTableReload();
+
+
+						reInitAjaxCalls();
+
+						reInitShortcutButtons();
+
+
+                        return false;
+
+                    }
+                });
+
+                return false;
+            });
+
+
+		$('.fullDatePicker').datetimepicker({
+			locale: 'de',
+			sideBySide: true,
+			showTodayButton: true,
+			showClear: true,
+			showClose: true,
+			toolbarPlacement: 'bottom',
+			format: 'DD.MM.YYYY'
+		}).on('dp.show dp.update', function () {
+			activateSubmitButton();
+		});
+
+    });
+
+</script>
+
+
+
+
+
+<div id="auftraegeListFilter">
+	<f:form controller="Auftraege" pageType="89657205" action="kundenajax"  pluginName="kundenlogin" extensionName="dslintranet" id="auftraegeFilterForm" >
+		<f:form.hidden name="switch" value="filterSet" />
+
+		<div class='btn-group date fullDatePicker input-group btn-filter-date'>
+       		<f:if condition="{settings.von}">
+       			<f:then>
+					<f:form.textfield id="filter_von" class=" btn btn-default" name="settings[von]"  value="{settings.von->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+				</f:then>
+				<f:else>
+					<f:form.textfield id="filter_von" class=" btn btn-default" name="settings[von]"  value="" additionalAttributes="{autocomplete: 'off'}"  />
+				</f:else>
+			</f:if>
+			<span class="btn btn-calendar-date btn-default border-left-none input-group-addon">
+				<span class="bb-calendar-date bb-lg"></span>
+			</span>
+
+		</div>
+		<strong>&nbsp;bis&nbsp;</strong>
+		<div class='btn-group date fullDatePicker input-group btn-filter-date'>
+       		<f:if condition="{settings.bis}">
+       			<f:then>
+					<f:form.textfield id="filter_bis" class=" btn btn-default" name="settings[bis]"  value="{settings.bis->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+				</f:then>
+				<f:else>
+					<f:form.textfield id="filter_bis" class=" btn btn-default" name="settings[bis]"  value="" additionalAttributes="{autocomplete: 'off'}"  />
+				</f:else>
+			</f:if>
+
+			<span class="btn btn-calendar-date btn-default border-left-none input-group-addon">
+				<span class="bb-calendar-date bb-lg"></span>
+			</span>
+
+		</div>
+
+
+
+        <f:form.select title="Status" class="selectpicker auftraegeFormFilterSelectpicker" id="filter_statuss" multiple="multiple" name="settings[statuss]" value="{settings.statuss}" property="statuss" options="{statuss}"  data="{width:'auto', actions-box:'true', selected-text-format:'count > 1', dropup-auto:'false'}" />
+
+		<f:form.textfield id="filter_suche" name="settings[suchtext]" value="{settings.suchtext}" class="btn btn-group btn-default btn-filter-suchtext" placeholder="Suche" />
+
+		<button id="saveFilter" class="btn btn-success"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filtern&nbsp;&nbsp;<span id="auftraegeListAnzahl">(<f:count>{auftraeges}</f:count>)</span></button>
+
+        <button id="deleteFilter" class="btn btn-danger"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></button>
+
+	</f:form>
+
+</div>
+
+
+<script>
+	$(document).ready(function() {
+		initAccordionPanel("#auftraegeAccordion a.panel-heading")
+
+	});
+	function initAccordionPanel(selector){
+		$( selector).click(function() {
+
+		  var tabPanel = $(this).parent().parent().next();
+
+		  var wvUid = tabPanel.data('wv-uid');
+
+
+
+		  var tabPanelContent = $("#auftrag-show-"+wvUid);
+
+
+		  if(!tabPanelContent.html()){
+
+			 loadAuftragContent(wvUid,0);
+		  }
+
+
+
+		});
+	}
+	function loadAuftragContent(id, activeTab){
+		if(!activeTab) activeTab=0;
+		if(activeTab<1) activeTab = $( "#auftraegetabs_"+id ).tabs( "option", "active");
+
+		$('#auftraegeList tr[data-wv-uid="'+id+'"]').addClass('tabReloads');
+		var showAjaxJson = {"tx_dslintranet_kundenlogin[switch]":'show',"tx_dslintranet_kundenlogin[uid]":id};
+		dslIntranetAjaxCall(auftraegeAjaxUrl,showAjaxJson).done(function (data /* , textStatus, jqXHR */ ) {
+			changeAuftragContent(id,data);
+			$("#auftraegetabs_"+id).tabs({ active: activeTab });
+		});
+	}
+
+	function changeAuftragContent(id,content){
+
+		var selector = "auftrag-show-"+id;
+
+		var tabPanelContent = $("#"+selector);
+
+
+		tabPanelContent.html(content);
+
+
+		$('#auftraegeList tr[data-wv-uid="'+id+'"] .removeAfterLoadsContent').remove();
+
+		$('#auftraegeList tr[data-wv-uid="'+id+'"]').first().replaceWith(tabPanelContent.find('#'+selector+'-headline-content tr'));
+
+		auftraegeToggleContentLoad(id);
+
+		tabPanelContent.find('#'+selector+'-headline-content').remove();
+
+		$('#auftraegeList tr[data-wv-uid="'+id+'"]').removeClass('tabReloads');
+
+		$('#auftraegeList tr[data-wv-uid="'+id+'"]').first().addClass('opened');
+
+		reInitAjaxCalls();
+		reInitShortcutButtons();
+	}
+
+
+	function auftraegeToggle(id){
+
+		if($('#auftraegeList tr[data-wv-uid="'+id+'"].collapse').hasClass('in')){//beimöffnen
+
+
+			$('#auftraegeList tr[data-wv-uid="'+id+'"]').first().removeClass('opened');
+
+			$('#auftraegeList tr[data-wv-uid="'+id+'"]').addClass('removedContent');
+			$("#auftrag-show-"+id).html('');
+			$("#auftrag-show-"+id).before('<div class="removeAfterLoadsContent"><i class="fa fa-refresh fa-spin tabReloadsActive" aria-hidden="true"></i></div>');
+		} else {
+			console.log('hasnotclass:in');
+
+			$('#auftraegeList tr[data-wv-uid="'+id+'"]').first().addClass('opened');
+
+
+			if($('#auftraegeList tr[data-wv-uid="'+id+'"]').hasClass('removedContent')){
+
+
+				loadAuftragContent(id,0);
+			}
+		}
+
+
+	}
+	function auftraegeToggleContentLoad(id){
+		if($('#auftraegeList tr[data-wv-uid="'+id+'"].collapse').hasClass('in'))
+			$('#auftraegeList tr[data-wv-uid="'+id+'"]').first().addClass('opened');
+				else $('#auftraegeList tr[data-wv-uid="'+id+'"]').first().removeClass('opened');
+
+
+	}
+
+</script>
+<div id="auftraegeAccordion" class="gridelement ge_collapsible_container">
+	<div aria-multiselectable="true" role="tablist" id="auftraegeList" class="panel-group">
+		<div class="dataTables_wrapper">
+			<table class="table table-striped table-bordered table-condensed table-hover dataTable no-footer" role="grid" aria-describedby="auftraegeList_info" cellspacing="0">
+				<thead>
+					<tr>
+						<th width="12">&nbsp;</th>
+						<th width="40">Auftrag</th>
+
+						<th>Auftragsbezeichnung</th>
+						<th width="60">Datum</th>
+						<th width="130">Kosten/Abrechnung</th>
+						<th width="150">Status</th>
+						<th colspan="4">Optionen</th>
+
+					</tr>
+
+				</thead>
+
+
+				<tbody>
+
+					<f:if condition="{auftraeges}">
+						<f:then>
+							<f:for each="{auftraeges}" as="auftraege">
+								<f:render partial="KundenAuftraege/AuftraegeListRow" arguments="{_all}" />
+							</f:for>
+						</f:then>
+						<f:else>
+							<tr><td colspan="9"><center>keine Aufträge gefunden</center></td></tr>
+						</f:else>
+					</f:if>
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+</html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2018-07-16T17:48:25Z" product-name="stratis_social_auth">
+		<header/>
+		<body>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration" approved="yes">
+				<target state="translated">Configuration de l'authentification</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.title" approved="yes">
+				<target state="translated">Titre</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.hidden" approved="yes">
+				<target state="translated">Cacher</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.storagePid" approved="yes">
+				<target state="translated">Dossier système des utilisateurs</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.defaultGroups" approved="yes">
+				<target state="translated">Groupe par défaut pour les nouveaux utilisateurs</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.providers" approved="yes">
+				<target state="translated">Fournisseurs disponibles</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.tab.mail" approved="yes">
+				<target state="translated">Paramètres de messagerie</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailBody" approved="yes">
+				<target state="translated">Corps du courrier</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailSenderName" approved="yes">
+				<target state="translated">Nom de l'expéditeur</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailSenderEmail" approved="yes">
+				<target state="translated">Adresse e-mail de l'expéditeur</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailSubject" approved="yes">
+				<target state="translated">Sujet</target>
+			</trans-unit>
+
+			<trans-unit id="tx_stratissocialauth_domain_model_provider" approved="yes">
+				<target state="translated">Fournisseur d'authentification de réseau social</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.title" approved="yes">
+				<target state="translated">Titre</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.hidden" approved="yes">
+				<target state="translated">Cacher</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type" approved="yes">
+				<target state="translated">Type</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type.I.Facebook" approved="yes">
+				<target state="translated">Facebook</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type.I.Google" approved="yes">
+				<target state="translated">Google</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.keyId" approved="yes">
+				<target state="translated">ID</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.keySecret" approved="yes">
+				<target state="translated">Secret</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.openIdUrl" approved="yes">
+				<target state="translated">URL OpenID / identifiant OpenID</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.scope" approved="yes">
+				<target state="translated">Portée</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values" approved="yes">
+				<target state="translated">Valeurs de la classe de contexte d'authentification</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values.eidas1" approved="yes">
+				<target state="translated">Niveau standard (exemple : authentification par identifiant/ mot de passe)</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values.eidas2" approved="yes">
+				<target state="translated">Niveau substantiel (exemple : authentification «two factor»)</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values.eidas3" approved="yes">
+				<target state="translated">Niveau fort (exemple : utilisation de certificats, lecteurs de cartes, etc.)</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.display" approved="yes">
+				<target state="translated">Affichage</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.display.page" approved="yes">
+				<target state="translated">Page</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.display.popup" approved="yes">
+				<target state="translated">Popup</target>
+			</trans-unit>
+
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account" approved="yes">
+				<target state="translated">Compte de réseau social</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account.hidden" approved="yes">
+				<target state="translated">Cacher</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account.user" approved="yes">
+				<target state="translated">Utilisateur</target>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account.provider" approved="yes">
+				<target state="translated">Fournisseur</target>
+			</trans-unit>
+
+			<trans-unit id="fe_users.social_accounts" approved="yes">
+				<target state="translated">Comptes de réseaux sociaux</target>
+			</trans-unit>
+			<trans-unit id="fe_users.tab.social" approved="yes">
+				<target state="translated">Comptes sociaux consolidés</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

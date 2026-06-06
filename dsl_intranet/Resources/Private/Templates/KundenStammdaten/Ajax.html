@@ -1,0 +1,13 @@
+<f:spaceless>
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+	
+<f:switch expression="{switch}">
+	<f:case value="requestUpdateStammdaten">
+		<f:render partial="KundenStammdaten/KundenDaten" arguments="{_all}" />
+		
+	</f:case>
+	
+</f:switch>
+{return}
+</f:spaceless>

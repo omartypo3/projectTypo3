@@ -1,0 +1,35 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 11.5.0-11.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": false,
+            "generateEditorConfig": false,
+            "generateEmptyGitRepository": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "11.5.0-11.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "pingag_rte_configuration",
+        "name": "RTE Configuration",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [],
+        "plugins": [],
+        "vendorName": "PingAG"
+    },
+    "wires": [],
+    "storagePath": "\/home\/httpd\/vhosts\/szb.ch\/relaunch.szblind.ch\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2022-05-27 12:07",
+        "extension_builder_version": "11.0.3",
+        "be_user": " (1)"
+    }
+}

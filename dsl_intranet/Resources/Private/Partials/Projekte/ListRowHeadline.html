@@ -1,0 +1,16 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<f:comment>{agenturvertrag.nr} (ab {agenturvertrag.vertragsbegin -> f:format.date(format: 'd.m.Y')}<f:if condition="{agenturvertrag.vertragsende}"> bis {agenturvertrag.vertragsende -> f:format.date(format: 'd.m.Y')}</f:if>)
+
+{agenturvertrag.stundenMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}h / {agenturvertrag.preisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€
+	
+</f:comment>
+
+<tr data-projekt-uid="{projekt.uid}">
+	<td><a aria-controls="collapse-{projekt.uid}" aria-expanded="true" onClick="projektToggle({projekt.uid})" href="#collapse-{projekt.uid}" data-parent="#projektList" data-toggle="collapse" role="button"  class="collapsed panel-heading tableBtn" id="projekt-show-{projekt.uid}-headline" ><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></td>
+	<td><strong>{projekt.kunde.name}</strong> [{projekt.kunde.nummer}] 
+	<br>{projekt.nr}: {projekt.titel}</td>
+	<td width="300" class="refreshContent" data-refresh-content="projektRefreshContentListRowKontingent{projekt.uid}"><span class="{f:if(condition: '{projekt.kontingentUsed}>{projekt.kontingent}', then: 'text-time-over')}"><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: projekt.kontingentUsed)}' }" /></span> <span class="detailLabel">von</span> <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: projekt.kontingent)}' }" /> <span class="detailLabel">verbraucht</span></td>
+	<td width="100"><a onclick="loadProjektContent({projekt.uid});return false;" class="btn tableBtn" href="#" aria-label="Refresh"><i class="fa fa-refresh fa-lg fa-spin tabReloadsActive" aria-hidden="true"></i><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i></a><f:link.action controller="Projekte" pluginName="projektliste" extensionName="dslintranet" action="edit" pageType="89657006" arguments="{projekte : projekt}" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '600px' }" class="doAjaxEdit btn tableBtn"><i class="bb-pen-write bb-lg"></i></f:link.action><f:link.action controller="Projekte" pageType="89657006" pluginName="projektliste" extensionName="dslintranet" action="delete" arguments="{projekte : projekt}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorProjekte', data-ajax-selector: '#projektList{projekt.uid}', data-ajax-id: '{projekt.uid}', data-table: '__#dateienList'}" ><i class="bb-trashcan bb-lg"></i></f:link.action></td>
+</tr>
+	

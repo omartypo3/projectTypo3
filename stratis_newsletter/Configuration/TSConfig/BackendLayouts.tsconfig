@@ -1,0 +1,23 @@
+mod.web_layout.BackendLayouts {
+    StratisNewsletter {
+        title = Stratis Newsletter
+        icon = EXT:stratis_newsletter/Resources/Public/Icons/Example.gif
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 1
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = Newsletter Content
+                                colPos = 0
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

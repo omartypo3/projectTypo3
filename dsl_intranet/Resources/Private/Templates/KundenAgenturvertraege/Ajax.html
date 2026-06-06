@@ -1,0 +1,11 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+<f:switch expression="{switch}">
+	<f:case value="setNewRange">
+		<div>
+		<f:if condition="{kundenAgenturvertraeges}"><f:for each="{kundenAgenturvertraeges}" as="agenturvertrag">
+			<div class="refreshContent" data-refresh-content="avRefreshContentListRowKontingent{agenturvertrag.uid}"><f:render partial="KundenAgenturvertraege/MonthKontingent.html" arguments="{_all}" /></div>
+		</f:for></f:if>
+		</div>
+	</f:case>
+</f:switch>	
+

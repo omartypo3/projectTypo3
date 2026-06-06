@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-04-18T11:34:34Z" product-name="bb_downloadlog">
+		<header/>
+		<body>
+			<trans-unit id="zeitpunkt.description">
+				<source>Zeitpunkt des Downloads</source>
+			</trans-unit>
+			<trans-unit id="feuser.description">
+				<source>Frontend Nutzer welcher die Datei heruntergeladen hat</source>
+			</trans-unit>
+			<trans-unit id="feusergroups.description">
+				<source>welcherbenutzergruppe der Nutzer angehörte</source>
+			</trans-unit>
+			<trans-unit id="file.description">
+				<source>file</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

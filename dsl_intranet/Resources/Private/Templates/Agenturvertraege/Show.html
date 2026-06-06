@@ -1,0 +1,357 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+<div>
+<div id="content-list-row-headline">
+	<table><f:render partial="Agenturvertraege/ListRowHeadline" arguments="{_all}" /></table>
+</div>
+<div id="content-show">
+	
+<input type="hidden" id="agenturvertrag{agenturvertrag.uid}Properties" data-kontingent="{agenturvertrag.kontingent}" data-kontingentUsed="{agenturvertrag.kontingentUsed}" data-monate="{agenturvertrag.monate}" data-kontingentJahr="{agenturvertrag.kontingentJahr}" data-kontingentUsedJahr="{agenturvertrag.kontingentUsedJahr}" data-monateJahr="{agenturvertrag.monateJahr}" data-labelJahr="{agenturvertrag.statistikJahr}" data-kontingentUsedSchwebend="{agenturvertrag.kontingentUsedSchwebend}" data-kontingentUsedAbgeschlossen="{agenturvertrag.kontingentUsedAbgeschlossen}" data-diagramm-json='{v:format.json.encode(value: agenturvertrag.kontingentJahrDiagramm)}' >
+	
+	
+	
+<div class="layout-box table-toolbar">
+	<div class="table-toolbar-container">
+	
+
+		<div class="layout-table ">
+			<div class="layout-table-row">
+				
+				<f:if condition="{agenturvertrag.monate}">
+					<div class="layout-table-col layout-table-col-chart">
+						<div style="position:relative;">
+							<div  style="position:absolute;top:30px;">
+							<div><a href="#" class="chart-btn-add" data-agenturvertrag-uid="{agenturvertrag.uid}" data-max-add="{agenturvertrag.kontingentJahrDiagramm.diagrammStepSize}"><i class="bb-search-remove bb-lg"></i></a></div>
+							<div><a href="#" class="chart-btn-sub" data-agenturvertrag-uid="{agenturvertrag.uid}" data-max-sub="{agenturvertrag.kontingentJahrDiagramm.diagrammStepSize}"><i class="bb-search-add bb-lg"></i></a></div>
+							</div>
+						</div>
+						<canvas id="chart-area-agenturvertrag-diagramm-{agenturvertrag.uid}" data-auftrag-uid="{agenturvertrag.uid}" width="720" height="300" />
+					</div>
+
+					<div class="layout-table-col" style="width:20px;">
+						&nbsp;
+					</div>
+				</f:if>
+				
+				<div class="layout-table-col">
+					
+					
+					<h2>Details zum Agenturvertrag</h2><br>
+					<div><span class="detailLabel">Agenturvertrag seit:</span> {agenturvertrag.vertragsbegin->f:format.date(format: 'd.m.Y')}<f:if condition="{agenturvertrag.vertragsende}"> <span class="detailLabel"> bis</span> {agenturvertrag.vertragsende->f:format.date(format: 'd.m.Y')}</f:if></div>
+					
+					<div><span class="detailLabel">Kontingent: </span>{agenturvertrag.stundenMonatlich} Stunden <span class="detailLabel">pro Monat / </span>{agenturvertrag.stundenJaehrlich} Stunden <span class="detailLabel">pro Jahr </span></div>
+					
+					<div><span class="detailLabel">Handlingspauschale: </span>15% </div>
+					
+					<div><span class="detailLabel">Kosten: </span>{agenturvertrag.preisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')} € <span class="detailLabel">pro Monat / </span>{agenturvertrag.stundensatz->f:format.number(decimals: 2, decimalSeparator: '.', thousandsSeparator: '')} € <span class="detailLabel">pro Stunde</span></div>
+					
+					<f:if condition="{agenturvertrag.preisMehraufwandStunde}">
+						<div><span class="detailLabel">Mehraufwand: </span>{agenturvertrag.preisMehraufwandStunde->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')} € <span class="detailLabel">pro Stunde</span></div>
+					</f:if>
+							
+					<f:if condition="{agenturvertrag.beschreibung}"><div><br><span class="detailLabel">Notiz:</span> <br>{agenturvertrag.beschreibung}</div></f:if>
+
+					<f:if condition="{agenturvertrag.vertrag}">
+					<div id="deleteAgenturvertragVertrag{agenturvertrag.uid}"><br><span class="detailLabel">Agenturvertrag als Download: </span><br>
+					<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{agenturvertrag.vertrag.uid}"  treatIdAsReference="1" as="fileoutput">
+						<span class="bb-pdf-download download-rot" aria-hidden="true"></span> <a class="dateidownload"  href="{fileoutput.url}" target="_blank" download="{fileoutput.name}">{fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a>
+					</v:resource.file>
+						
+						
+						<f:link.action controller="Agenturvertraege" pageType="89657210" pluginName="agenturvertragsliste" extensionName="dslintranet" action="ajax" arguments="{switch:'deleteAgenturvertragVertrag', agenturvertraege : agenturvertrag}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelector', data-ajax-selector: '#deleteAgenturvertragVertrag{agenturvertrag.uid}'}" title="Download löschen" ><i class="bb-trashcan bb-lg"></i></f:link.action>
+					</div>
+					</f:if>
+					
+					
+					
+				</div>
+
+				<a onclick="loadAgenturvertragContent({agenturvertrag.uid});return false;" class="hidden refreshFilterAgenturvertraege" href="#" aria-label="Refresh"><i class="fa fa-refresh fa-lg fa-spin tabReloadsActive" aria-hidden="true"></i><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i></a>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<f:if condition="{agenturvertrag.kontingent}">
+	<div class="layout-box table-toolbar">
+		<div class="table-toolbar-container"><h2 style="color:rgb(248, 131, 36)">Schwebende Aufträge</h2></div>
+		<div class="table-toolbar-container">
+			<table id="agenturvertragAuftraegeList{agenturvertrag.uid}_schwebend" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+				<tr>
+					<th>von</th>
+					
+					<th>Bezeichnung</th>
+					<th>Status</th>
+					<th>Auftragsart</th>
+					<th>Minuten verrechnet</th>
+					<th>Zeit verrechnet</th>
+					<th>monat</th>
+				</tr>
+				</thead>
+				<tbody>
+					<f:for each="{agenturvertrag.auftraege}" as="auftrag">
+						<f:if condition="{0:'{auftrag.status}'}=={0:'70'}"><f:else>
+							<tr id="agenturvertragListAuftraegeAuftrag_{auftrag.uid}_ia">
+								<td data-sort="{f:format.date(date: auftrag.datumAbschluss, format: 'YmdHi')}">
+									{auftrag.datumAbschluss->f:format.date(format: 'd.m.Y')}
+								</td>
+								
+								<td><f:link.page pageUid="12"  class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'setOpenAuftrag', data-ajax-id: '{auftrag.uid}'}">{auftrag.nr}: {auftrag.titel}</f:link.page></td>
+								<td>{auftrag.statusText}</td>
+								<td>{auftrag.abrechnungArt}</td>
+								<f:if condition="{auftrag.festpreisGrundlageAgenturvertrag}">
+									<f:then>
+
+										<f:alias map="{kontingentUsed: '{dsl:getMinutesByFixedPriceAndHourlyFee(fixedPrice: auftrag.festpreisGrundlageAgenturvertrag, hourlyFee: agenturvertrag.stundensatz)}'}">
+											<td>{kontingentUsed}</td>
+											<td data-sort="{kontingentUsed}">
+												<f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: kontingentUsed)}' }" /> ({auftrag.festpreisGrundlageAgenturvertrag->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')} €)<f:comment><!--
+												<br>(fixedPrice: {auftrag.festpreisGrundlageAgenturvertrag} // hourlyFee: {agenturvertrag.stundensatz})--></f:comment>
+											</td>
+										</f:alias>
+									</f:then>
+									<f:else>
+										<td>{auftrag.kontingentUsed}</td>
+										<td data-sort="{auftrag.kontingentUsed}">
+											<f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: auftrag.kontingentUsed)}' }" />
+										</td>
+									</f:else>
+								</f:if>
+								<td>##{auftrag.datumAbschluss->f:format.date(format: '%B')}##</td>
+							</tr>
+						</f:else></f:if>
+					</f:for>
+					
+				</tbody>
+				<tfooter>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td align="right"><strong>Gesamt:</strong></td>
+					<td><strong><span class="zeiteintraegeSum">0</span></strong></td>
+					
+
+				</tr>
+				</tfooter>
+			</table>
+		</div>
+	</div>
+	
+	
+	<div class="layout-box table-toolbar">
+		<div class="table-toolbar-container"><h2>Abgeschlossene Aufträge</h2></div>
+		<div class="table-toolbar-container">
+			<table id="agenturvertragAuftraegeList{agenturvertrag.uid}_abgeschlossen" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+				<tr>
+					<th>von</th>
+					<th>Bezeichnung</th>
+					<th>Status</th>
+					<th>Auftragsart</th>
+					<th>Minuten verrechnet</th>
+					<th>Zeit verrechnet</th>
+					<th>monat</th>
+				</tr>
+				</thead>
+				<tbody>
+					<f:for each="{agenturvertrag.auftraege}" as="auftrag">
+						<f:if condition="{0:'{auftrag.status}'}=={0:'70'}">
+							<tr id="agenturvertragListAuftraegeAuftrag_{auftrag.uid}">
+								<td data-sort="{f:format.date(date: auftrag.datumAbschluss, format: 'YmdHi')}">
+									{auftrag.datumAbschluss->f:format.date(format: 'd.m.Y')}
+								</td>
+								<td><f:link.page pageUid="12"  class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'setOpenAuftrag', data-ajax-id: '{auftrag.uid}'}">{auftrag.nr}: {auftrag.titel}</f:link.page></td>
+								<td>{auftrag.statusText}</td>
+								<td>{auftrag.abrechnungArt}</td>
+								<f:if condition="{auftrag.festpreisGrundlageAgenturvertrag}">
+									<f:then>
+
+										<f:alias map="{kontingentUsed: '{dsl:getMinutesByFixedPriceAndHourlyFee(fixedPrice: auftrag.festpreisGrundlageAgenturvertrag, hourlyFee: agenturvertrag.stundensatz)}'}">
+											<td>{kontingentUsed}</td>
+											<td data-sort="{kontingentUsed}">
+												<f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: kontingentUsed)}' }" /> ({auftrag.festpreisGrundlageAgenturvertrag->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')} €)<f:comment><!--  
+												<br>fixedPrice: {auftrag.festpreisGrundlageAgenturvertrag}<br>hourlyFee: {agenturvertrag.stundensatz}
+												<br>festpreis: {auftrag.festpreis}
+												<br>endpreisPhasen: <f:debug inline="true">{auftrag.endpreisPhasen}</f:debug>--></f:comment>
+											</td>
+										</f:alias>
+									</f:then>
+									<f:else>
+										<td>{auftrag.kontingentUsed}</td>
+										<td data-sort="{auftrag.kontingentUsed}">
+											<f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: auftrag.kontingentUsed)}' }" /><f:comment><!--
+											<br>endpreisPhasen: <f:debug inline="true">{auftrag.endpreisPhasen}</f:debug>--></f:comment>
+										</td>
+									</f:else>
+								</f:if>
+								<td>##{auftrag.datumAbschluss->f:format.date(format: '%B')}##</td>
+							</tr>
+						</f:if>
+					</f:for>
+					
+				</tbody>
+				<tfooter>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td align="right"><strong>Gesamt:</strong></td>
+					<td><strong><span class="zeiteintraegeSum">0</span></strong></td>
+					
+
+				</tr>
+				</tfooter>
+			</table>
+		</div>
+	</div>
+	
+</f:if>	
+	
+	<div class="layout-box table-toolbar filedragWrapper" id="filedragAgenturvertragWrapper{agenturvertrag.uid}" data-agenturvertrag-uid="{agenturvertrag.uid}">
+		<div class="table-toolbar-container"><h2>Rechnungen</h2></div>
+		
+
+		<f:form controller="Dateien" enctype="multipart/form-data" pageType="89657208" action="create"  pluginName="downloadcenter" extensionName="dslintranet" object="{newDateien}" name="newDateien" class="dateiUploadForm" id="dateienUploadFormAgenturvertrag{agenturvertrag.uid}" style="display:inline" >
+			<f:form.hidden name="agenturvertrag" value="{agenturvertrag}" />
+			<f:form.upload id="fileUploadDateienAgenturvertrag{agenturvertrag.uid}" property="datei"></f:form.upload>
+
+			<f:form.submit id="submitbuttonAgenturvertrag{agenturvertrag.uid}" value="Upload" />
+
+		</f:form>
+						
+		<div id="agenturvertragRechnungenList{agenturvertrag.uid}_addBtn">
+				<button class="btn tableBtnAdd" onClick="$('#fileUploadDateienAgenturvertrag{agenturvertrag.uid}').click();return false;"><i class="bb-plus bb-lg" aria-hidden="true"></i>&nbsp;&nbsp;<span>KD Rechnung&nbsp;</span></button>
+		</div>
+		
+		<div class="table-toolbar-container">
+			
+			
+			<table id="agenturvertragRechnungenList{agenturvertrag.uid}" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+				<tr>
+					<th>Titel</th>
+					<th>Datei</th>
+					<th>Dateigröße</th>
+					<th>von</th>
+					<th>hochgeladen</th>
+					<th>letzter Download</th>
+					<th>Optionen</th>
+				</tr>
+				</thead>
+				<tbody>
+					<f:for each="{agenturvertrag.dateien}" as="dateien">
+						<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{dateien.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+							<f:if condition="{fileoutput.ctime}">
+								<tr id="agenturvertragListRechnung_{dateien.uid}">
+									<td>{dateien.titel}</td>
+									<td><a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}">{fileoutput.name}</a></td>
+									<td data-sort="{fileoutput.size}"><f:format.bytes>{fileoutput.size}</f:format.bytes></td>
+									<td>{dateien.initialien}</td>
+									<td data-sort="{fileoutput.ctime->f:format.date(format: 'YmdHis')}">{fileoutput.ctime->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+									<f:if condition="{dateien.lastDownloadLog}">
+										<f:then>
+											<td data-sort="{dateien.lastDownloadLog.zeitpunkt->f:format.date(format: 'YmdHis')}">
+												{dateien.lastDownloadLog.zeitpunkt->f:format.date(format: 'd.m.y - H:i')} Uhr
+											</td>
+										</f:then>
+										<f:else>
+											<td>-</td>
+										</f:else>
+									</f:if>
+									<td><div class="btn-group">
+	
+   <f:if condition="{dateien.showBtnToggleSichtbarkeit}">
+		<f:then>
+			<f:link.action pageType="89657208" controller="Dateien" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien, switch : 'toggleSichtbarkeitDateien'}" class="btn tableBtn doAjax {f:if(condition: dateien.sichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'changeInAgenturvertrag', data-ajax-id: '{agenturvertrag.uid}'}" >
+				<i class="bb-eye-open bb-lg"></i>
+				<i class="bb-eye-closed bb-lg"></i>
+			</f:link.action>
+		</f:then>
+		<f:else>
+			<f:if condition="{dateien.sichtbarkeit}">
+				<f:then>
+					<a class="btn tableBtn inaktiv btnGruen"><i class="bb-eye-open bb-lg"></i></a>
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-eye-closed bb-lg"></i></a>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>	
+   
+   
+   
+			<f:if condition="{dateien.rights.mail}">
+				<f:then>
+					
+					<f:if condition="{dateien.sichtbarkeit}">
+						<f:then>
+							<f:link.action controller="Dateien" pageType="89657208" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien, switch : 'sendKundeninfoMailDatei'}" class="btn tableBtn doAjax kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMailRechnungInAgenturvertrag'}" title="Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+						</f:then>
+						<f:else>
+							<f:link.action controller="Dateien" pageType="89657208" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien, switch : 'sendKundeninfoMailDatei'}" class="btn tableBtn doConfirmUserAjax kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMailRechnungInAgenturvertrag', data-text: 'Die Datei wird dem Kunden vor dem Versand der E-Mail freigeschalten?', data-warning-button: 'Ja (fortfahren)'}" title="Veröffentlichen und Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+						</f:else>
+					</f:if>
+
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+				</f:else>
+
+			</f:if>
+
+   
+   
+    <f:if condition="{dateien.rights.edit}">
+		<f:then>
+			<f:if condition="{dateien.auftraege}">
+				<f:else>
+					<f:link.action controller="Dateien" pageType="89657208" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{dateien : dateien, switch : 'edit'}" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '600px' }" class="doAjaxEdit btn tableBtn"><i class="bb-pen-write bb-lg"></i></f:link.action>
+				</f:else>
+				<f:then>
+					<a class="btn tableBtn inaktiv" style=""><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+				</f:then>
+			</f:if>
+		</f:then>
+        <f:else>
+		   <a class="btn tableBtn inaktiv" style=""><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+		</f:else>
+    </f:if>
+    
+                
+  
+    
+    
+    <f:if condition="{dateien.rights.delete}">
+		<f:then>  
+			
+					
+    				<f:link.action controller="Dateien" pageType="89657208" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien.uid, switch : 'deleteDatei'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'changeInAgenturvertrag', data-ajax-id: '{agenturvertrag.uid}'}" ><i class="bb-trashcan bb-lg"></i></f:link.action>
+				
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv" style=""><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+		</f:else>
+	</f:if>
+		
+
+</div>
+									</td>
+								</tr>
+							</f:if>
+						</v:resource.file>
+					</f:for>
+					
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+	
+	
+	
+	
+</div>
+</div>

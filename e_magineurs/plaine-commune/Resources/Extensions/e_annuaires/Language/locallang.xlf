@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2014-07-31T08:03:54Z" product-name="e_news">
+        <header/>
+        <body>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.category">
+                <source>Categorie</source>
+            </trans-unit>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.action_titre">
+                <source>Nom de la categorie</source>
+            </trans-unit>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.domaine">
+                <source>Domaine d'activité</source>
+            </trans-unit>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.objet_titre">
+                <source>Nom du domaine d'activité</source>
+            </trans-unit>
+
+            <trans-unit id="tx_eannuaires_domain_model_fiche.direction">
+                <source>Direction</source>
+            </trans-unit>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.grade">
+                <source>Grade</source>
+            </trans-unit>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.cadre_emploi">
+                <source>Cadre emploi</source>
+            </trans-unit>
+            <trans-unit id="tx_eannuaires_domain_model_fiche.metier">
+                <source>Metier</source>
+            </trans-unit>
+
+
+            <trans-unit id="tx_emagineurs_domain_model_direction">
+                <source>Direction</source>
+            </trans-unit>
+            <trans-unit id="tx_emagineurs_domain_model_cadre_emploi">
+                <source>Cadre emploi</source>
+            </trans-unit>
+            <trans-unit id="tx_emagineurs_domain_model_grade">
+                <source>Grade</source>
+            </trans-unit>
+            <trans-unit id="tx_emagineurs_domain_model_metier">
+                <source>Metier</source>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Titre</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

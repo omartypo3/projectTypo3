@@ -1,0 +1,40 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:for each="{terms}" as="term">
+    <f:alias map="{arguments: '{0:\' \', 1:term.name}'}" >
+        <f:alias map="{arrayTermName: '<annuaire:PhpFunc func=\'explode\'  args=\'{arguments}\' />'}" >
+        <dl class="anchor" id="<f:format.case mode='lower'>{arrayTermName.0}</f:format.case>">
+            <dt><h2>{term.name}</h2></dt>
+            <dd>
+                <f:for each="{term.descriptions}" as="description">
+                    <div class="description">
+                        <div class="text no_glossary">
+                            <f:format.html>{description.text}</f:format.html>
+                        </div>
+                    </div>
+                </f:for>
+            </dd>
+            <f:if condition="{term.synonyms}">
+                <dd><f:translate key="LLL:{settings.dossierLangue}/locallang.xlf:glossaryTags" /> : {f:if(condition: synonymIterator.isLast, then: '{synonym.name}', else: '{synonym.name}, ') -> f:for(each: term.synonyms, iteration: 'synonymIterator', as: 'synonym')}</dd>
+            </f:if>
+            <f:if condition="{term.media}">
+                <dd class="media">
+                    <f:for each="{term.media}" as="file">
+                        <br />
+                        <div class="mediafile">
+                            <p class="download-link">
+                                <a href="{file.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">{f:if(condition:file.originalResource.title, then:file.originalResource.title, else:file.originalResource.name)}</a>
+                            </p>
+                        </div>
+                    </f:for>
+                </dd>
+            </f:if>
+        </dl>
+        </f:alias>
+    </f:alias>
+</f:for>
+
+</html>

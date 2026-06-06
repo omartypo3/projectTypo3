@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="EXT:e_poll/Resources/Private/Language/locallang_db.xlf" date="2024-01-01T00:00:00Z" product-name="e_poll">
+		<header/>
+		<body>
+			<trans-unit id="tx_epoll.general">
+				<source>General</source>
+				<target>Général</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.switchableControllerActions">
+				<source>Display</source>
+				<target>Affichage</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.switchableControllerActions.list">
+				<source>List</source>
+				<target>Liste</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.switchableControllerActions.show">
+				<source>Single</source>
+				<target>Sondage unique</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.switchableControllerActions.result">
+				<source>Result</source>
+				<target>Resultat</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.listDisplay">
+				<source>List display type</source>
+				<target>Type d'affichage de la liste</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.listDisplay.link">
+				<source>Link</source>
+				<target>Liens</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.listDisplay.poll">
+				<source>Complete poll</source>
+				<target>Sondage complet</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.singlePoll">
+				<source>Poll</source>
+				<target>Sondage</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.storagePid">
+				<source>Storage page</source>
+				<target>Page de stockage des enregistrements</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.verificationType">
+				<source>Verification type</source>
+				<target>Type de vérification</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.verificationType.cookie">
+				<source>Cookie</source>
+				<target>Cookie</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.verificationType.ip">
+				<source>IP</source>
+				<target>IP</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll.verificationPeriod">
+				<source>Verification period (as timestamp)</source>
+				<target>Durée de la vérification (en timestamp)</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll">
+				<source>Poll</source>
+				<target>Sondage</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.title">
+				<source>Title</source>
+				<target>Titre</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.fegroup">
+				<source>Frontend User Group</source>
+				<target>Groupe d'utilisateur frontend</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.image">
+				<source>Image</source>
+				<target>Image</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.question">
+				<source>Question</source>
+				<target>Question</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.explanation">
+				<source>Explanation</source>
+				<target>Explication</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.multiplechoice">
+				<source>Multiple choice</source>
+				<target>Choix multiple</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.options">
+				<source>Options</source>
+				<target>Options</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_poll.categories">
+				<source>Categories</source>
+				<target>Categories</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_option">
+				<source>Option</source>
+				<target>Option</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_option.description">
+				<source>Description</source>
+				<target>Description</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_option.image">
+				<source>Image</source>
+				<target>Image</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_option.poll">
+				<source>Poll</source>
+				<target>Sondage</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_option.votes">
+				<source>Votes</source>
+				<target>Votes</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_vote">
+				<source>Vote</source>
+				<target>Vote</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_vote.options">
+				<source>Options</source>
+				<target>Options</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_vote.feuser">
+				<source>Frontend User</source>
+				<target>Utilisateur frontend</target>
+			</trans-unit>
+			<trans-unit id="tx_epoll_domain_model_vote.ip">
+				<source>IP</source>
+				<target>IP</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

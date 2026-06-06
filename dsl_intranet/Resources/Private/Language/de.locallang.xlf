@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-11-24T14:50:05Z" product-name="dsl_intranet">
+		<header/>
+		<body>
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.10">
+				<target>Angebotsphase</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.20">
+				<target>Angebotsphase</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.30">
+				<target>Auftrag Erteilt</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.40"> 
+				<target>in Bearbeitung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.50">
+				<target>in Produktion/Druck</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.60">
+				<target>Rechnung/Abgeschlossen</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatus.70">
+				<target>Rechnung/Abgeschlossen</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.10">
+				<target>1</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.20">
+				<target>1</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.30">
+				<target>2</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.40"> 
+				<target>3</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.50">
+				<target>4</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.60">
+				<target>5</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.kundenstatusnr.70">
+				<target>5</target>
+			</trans-unit>
+			
+			
+
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.10">
+				<target>Angebot schreiben</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.20">
+				<target>Angeboten</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.30">
+				<target>Auftrag Erteilt</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.40"> 
+				<target>in Bearbeitung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.50">
+				<target>in Produktion</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.60">
+				<target>Rechnung schreiben</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.status.70">
+				<target>Abgeschlossen/Archiv</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.10">
+				<target>1</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.20">
+				<target>2</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.30">
+				<target>3</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.40"> 
+				<target>4</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.50">
+				<target>5</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.60">
+				<target>6</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.statusnr.70">
+				<target>7</target>
+			</trans-unit>
+
+			
+				
+				
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.10">
+				<source>A</source>
+				<target>A</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.20">
+				<source>B</source>
+				<target>B</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.prioritaet.30">
+				<source>C</source>
+				<target>C</target>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.10">
+				<source>Telefon</source>
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.20">
+				<source>Fax</source>
+				<target>Fax</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.30">
+				<source>E-Mail</source>
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.40">
+				<source>Persönlich</source>
+				<target>Persönlich</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_auftraege.per.50">
+				<source>WhatsApp</source>
+				<target>WhatsApp</target>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status.10">
+				<source>Beantragt</source>
+				<target>Beantragt</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status.20">
+				<source>Bestätigt</source>
+				<target>Bestätigt</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_urlaub.status.30">
+				<source>Abgelehnt</source>
+				<target>Abgelehnt</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.0">
+				<source>Standard</source>
+				<target>Standard</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.10">
+				<source>1 Monat</source>
+				<target>1 Monat</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.30">
+				<source>3 Monat</source>
+				<target>3 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.60">
+				<source>6 Monat</source>
+				<target>6 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.120">
+				<source>12 Monate</source>
+				<target>12 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.240">
+				<source>2 Jahre</source>
+				<target>2 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_tarife.laufzeit.360">
+				<source>3 Jahre</source>
+				<target>3 Jahre</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.10">
+				<source>1 Monat</source>
+				<target>1 Monat</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.30">
+				<source>3 Monate</source>
+				<target>3 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.60">
+				<source>6 Monate</source>
+				<target>6 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.120">
+				<source>12 Monate</source>
+				<target>12 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.240">
+				<source>2 Jahre</source>
+				<target>2 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_zusatzleistungen.laufzeit.360">
+				<source>3 Jahre</source>
+				<target>3 Jahre</target>
+			</trans-unit>
+
+			<trans-unit id="tx_dslintranet_domain_model_hosting.status.10">
+				<target>nicht Fällig</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.status.20">
+				<target>Fällig</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.status.30">
+				<target>Überfällig</target>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statusfilter.10">
+				<target>Alle</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statusfilter.20">
+				<target>nur Fällige</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.statusfilter.30">
+				<target>nur Überfällige</target>
+			</trans-unit>
+
+			
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.20">
+				<target>KD Angebot</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.30">
+				<target>KD Rechnung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.40">
+				<target>LR Angebot</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.type.50">
+				<target>Download</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.20">
+				<target>Angebot</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.30">
+				<target>Rechnung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.35">
+				<target>Rechnung Agenturvertrag</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.60">
+				<target>Logos / Vektoren / Druckdaten</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.70">
+				<target>Fotos</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.80">
+				<target>Korrekturabzug</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.90">
+				<target>Druckdaten</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.50">
+				<target>Download</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_dateien.kundentype.100">
+				<target>Sonstige Dokumente</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.10">
+				<target>Vorbereitet</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.10">
+				<target>1 Monat</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.30">
+				<target>3 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.60">
+				<target>6 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.120">
+				<target>12 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.240">
+				<target>2 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.laufzeit.360">
+				<target>3 Jahre</target>
+			</trans-unit>			
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.10">
+				<target>Vorbereitet</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.10">
+				<target>1 Monat</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.30">
+				<target>3 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.60">
+				<target>6 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.120">
+				<target>12 Monate</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.240">
+				<target>2 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.360">
+				<target>3 Jahre</target>
+			</trans-unit>					
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraege.kuendigungs_frist.30">
+				<target>3 Monate</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.type.10">
+				<target>Zwischenrechnung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.type.20">
+				<target>Endabrechnung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.10">
+				<target>Angelegt/Geplant</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.20">
+				<target>Fällig/Rechnung schreiben</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.30">
+				<target>Rechnung geschrieben</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.10">
+				<target>Offen</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.20">
+				<target>Abgeschlossen</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.0">
+				<target>Angelegt/Geplant</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.20">
+				<target>Fällig/Rechnung schreiben</target>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.30">
+				<target>Rechnung geschrieben</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.01">
+				<source>Jan</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.02">
+				<source>Feb</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.03">
+				<source>Mär</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.04">
+				<source>Apr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.05">
+				<source>Mai</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.06">
+				<source>Jun</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.07">
+				<source>Jul</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.08">
+				<source>Aug</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.09">
+				<source>Sep</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.10">
+				<source>Okt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.11">
+				<source>Nov</source>
+			</trans-unit>
+			<trans-unit id="tx_dslintranet_domain_model_hosting.monatkurz.12">
+				<source>Dez</source>
+			</trans-unit>
+			
+			
+		</body>
+	</file>
+</xliff>

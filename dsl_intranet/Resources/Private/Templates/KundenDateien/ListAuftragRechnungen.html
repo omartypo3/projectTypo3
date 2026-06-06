@@ -1,0 +1,62 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
+
+
+<f:section name="main">
+	
+<div class="colorbox_header_wrapper"><div class="colorbox_header"><h1><i class="fa fa-cal"></i>Rechnungen zum Auftrag {auftraege.nr}</h1></div></div>
+<div class="colorbox_form_content">
+
+ <div class="dataTables_wrapper">
+    <table  style="background-color:#fff;" id="dateienList" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%">
+      <thead>
+		  <tr><th>Re.Nr.</th><th>Datei</th><th width="140">hochgeladen</th></tr>
+		</thead>
+        <tbody>
+            <f:for each="{auftraege.rechnungen}" as="rechnung">
+            	<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{rechnung.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+            
+            	<tr id="auftraegeRechnungen_{rechnung.uid}">
+					<td>
+						
+
+						<f:if condition="{rechnung.tempRechnungsnummer}">
+							<f:then>
+								{rechnung.tempRechnungsnummer}
+							</f:then>
+							<f:else>
+								<f:if condition="{rechnung.titel}">
+									<f:then>{rechnung.titel}</f:then>
+									<f:else>{rechnung.dateiNameOhneErweiterung}</f:else>
+								</f:if>
+							</f:else>
+						</f:if>
+						
+	
+
+					</td>
+					<td><a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}"><span class="bb bb-pdf-download" aria-hidden="true"></span> {fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a></td>
+					<td>{fileoutput.ctime->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+					
+
+
+	
+                   
+                </tr>
+				</v:resource.file>
+            
+                
+            </f:for>
+			
+        </tbody>
+       
+    </table>
+
+	</div>
+
+</div>
+ <f:render partial="Allgemein/ColorboxCloseFooter" />	
+	
+	
+	
+</f:section>

@@ -1,0 +1,27 @@
+<f:if condition="{produkte}">
+    <f:then>
+        <f:alias map="{settings}">
+            <meta property="og:title" content="{produkte.titel}"/>
+            <meta property="og:type" content="product"/>
+            <meta property="og:url"
+                  content="{f:uri.action(controller:'Produkte',pluginName:'Produktsuche',action:'show',absolute:'true',arguments:{produkte : produkte})}"/>
+            <link rel="canonical"
+                  href="{f:uri.action(controller:'Produkte',pluginName:'Produktsuche',action:'show' ,absolute:'true' ,arguments:{produkte : produkte})}"/>
+            <meta property="og:description" content="{produkte.teaser}"/>
+
+            <f:if condition="{produkte.bilder.0}">
+                <meta property="og:image"
+                      content="{baseUrl}{f:uri.image(src:'{produkte.bilder.0.originalResource.originalFile.uid}',maxWidth:'1100',maxHeight:'600')}"/>
+
+            </f:if>
+        </f:alias>
+    </f:then>
+    <f:else>
+        <f:if condition="{v:page.info(field:'uid')} == 80">
+        <link rel="canonical"
+              href="{f:uri.page(pageUid:'80',absolute:'true')}"/>
+        </f:if>
+    </f:else>
+
+
+</f:if>

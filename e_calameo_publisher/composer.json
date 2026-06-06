@@ -1,0 +1,23 @@
+{
+    "name": "emagineurs/e-calameo-publisher",
+    "type": "typo3-cms-extension",
+    "description": "TYPO3 Extension for Calameo Publication Integration",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^13.4",
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Emagineurs\\ECalameoPublisher\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "e_calameo_publisher"
+        }
+    },
+    "replace": {
+        "typo3-ter/e-calameo-publisher": "self.version"
+    }
+}

@@ -1,0 +1,13 @@
+
+
+<div class="content_container_header"><span><i class="bb-pie-chart bb-md" aria-hidden="true"></i>Projektübersicht</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+<div class="content_container">
+	
+    
+	<div><f:render partial="KundenAuftraege/PropertiesButtonStatusChange" arguments="{auftraege: auftraege, uniqueSelector: 'detail_auftrag_{auftraege.uid}_statuswechsel'}" /></div>
+	<div><strong>Status: </strong> <f:translate key="tx_dslintranet_domain_model_auftraege.kundenstatus.{auftraege.status}" /></div>
+    
+    
+    <f:render partial="KundenAuftraege/PropertiesPhasen" arguments="{_all}" />
+	
+</div>

@@ -1,0 +1,107 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in <th></th>e extension builder
+
+<f:section name="main">
+
+
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Hosting Import'}" />
+
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		/*
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#auftraegeCreateForm').validate({
+			
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+		
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select 
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				
+				$('#auftraegeCreateForm').addClass('formSaves');
+				
+				$.ajax({
+					url: $('#auftraegeCreateForm').attr('action'),
+					type: 'POST',
+					data: $('#auftraegeCreateForm').serialize(),
+					success: function(data) {
+						dataJson = JSON.parse(data);
+						if(dataJson['newUid']) {
+							if($('#auftraegeCreateForm').data('insert-selector') && dataJson['contentList']) {
+								var insertSelector = $('#auftraegeCreateForm').data('insert-selector');
+								insertTableRow(insertSelector,$(dataJson['contentList']));
+								$.colorbox.close();
+							}
+						} else {
+							return true;
+						}
+					}
+				});
+				
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		/*
+		$('#auftraegeCreateForm').submit(function() {
+
+			$.ajax({
+                url: $('#auftraegeCreateForm').attr('action'),
+                type: 'POST',
+                data: $('#auftraegeCreateForm').serialize(),
+                success: function(data) {
+					dataJson = JSON.parse(data);
+					if(dataJson['newUid']) {
+						if($('#auftraegeCreateForm').data('insert-selector') && dataJson['contentList']) {
+							var insertSelector = $('#auftraegeCreateForm').data('insert-selector');
+							insertTableRow(insertSelector,$(dataJson['contentList']));
+							$.colorbox.close();
+						}
+					} else {
+						return true;
+					}
+                }
+            });
+			
+			
+		  	return false;
+		});
+		*/
+		
+	});
+
+</script>
+
+
+
+
+    
+
+	
+    <f:debug title="resultarray">{resultarray}</f:debug>
+    
+    
+    <f:render partial="Allgemein/ColorboxFooter" />    
+    
+</f:section>

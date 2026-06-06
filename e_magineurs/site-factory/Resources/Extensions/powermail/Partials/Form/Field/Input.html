@@ -1,0 +1,48 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div class="powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_{field.marker} {field.css}">
+	<f:render partial="Form/FieldLabel" arguments="{_all}" />
+	<v:variable.set name="additionalAttributes" value="{vh:validation.validationDataAttribute(field:field)}"/>
+	<v:variable.set name="additionalAttributes.autocorrect" value="off"/>
+	<v:variable.set name="type" value="{vh:validation.fieldTypeFromValidation(field:field)}"/>
+	<f:if condition="{field.validation} == 3">
+		<v:variable.set name="additionalAttributes.pattern" value="^\+?\d{10,}$"/>
+		<v:variable.set name="additionalAttributes.minlength" value="10"/>
+		<v:variable.set name="additionalAttributes.inputmode" value="tel"/>
+		<v:variable.set name="additionalAttributes.onkeypress" value="return /[0-9+]/i.test(event.key) || event.key === 'Backspace' || event.key === 'Delete' || event.key === 'ArrowLeft' || event.key === 'ArrowRight'"/>
+		<v:variable.set name="additionalAttributes.oninput" value="var val = this.value; var hasPlus = val.startsWith('+'); val = val.replace(/[^0-9+]/g, ''); if (hasPlus && !val.startsWith('+')) { val = '+' + val; } else if (!hasPlus && val.startsWith('+')) { val = val.substring(1); } this.value = val;"/>
+		<v:variable.set name="type" value="tel"/>
+	</f:if>
+	<f:if condition="{field.autocomplete}">
+		<f:then>
+			<v:variable.set name="autocompleteValue" value="{v:l(key:'powermail.autocomplete.{field.autocomplete}')}"/>
+			<v:variable.set name="additionalAttributes.autocorrect" value="off"/>
+		</f:then>
+		<f:else>
+			<v:variable.set name="autocompleteValue">
+				<f:switch expression="{field.validation}">
+					<f:case value="1">email</f:case>
+					<f:case value="2">url</f:case>
+					<f:case value="3">tel-local</f:case> 
+				</f:switch>
+			</v:variable.set>
+		</f:else>
+	</f:if>
+	<v:variable.set name="autocompleteValue" value="{autocompleteValue -> v:format.trim()}"/>
+	<f:if condition="{autocompleteValue} != ''">
+		<v:variable.set name="additionalAttributes.autocomplete" value="{autocompleteValue}"/>
+	</f:if>
+	<div class="powermail_field">
+		<f:form.textfield
+				type="{type}"
+				property="{field.marker}"
+				placeholder="{field.placeholder}"
+				value="{vh:misc.prefillField(field:field, mail:mail)}"
+				class="powermail_input {vh:validation.errorClass(field:field, class:'powermail_field_error')}"
+				additionalAttributes="{additionalAttributes}"
+				id="powermail_field_{field.marker}" />
+	</div>
+	<v:variable.unset name="additionalAttributes"/>
+	<v:variable.unset name="type"/>
+</div>
+

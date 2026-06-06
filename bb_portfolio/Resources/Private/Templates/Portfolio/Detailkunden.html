@@ -1,0 +1,157 @@
+<html xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<n:titleTag><f:if condition="{kunden.seoTitle}"><f:then>{kunden.seoTitle}</f:then><f:else>{kunden.name}</f:else></f:if></n:titleTag>
+
+<n:headerData>													
+	<meta name="keywords" content="{kunden.seoKeywords}" />			
+</n:headerData>
+
+
+<f:cObject typoscriptObjectPath="lib.bbportfolio.pagebrowserkunden" />
+
+
+
+
+<div class="detailpageInfo whiteContainer">
+	<div class="container">
+		<div class="row">
+			<div class="col col-md-8">
+				<h1>{kunden.name}</h1>
+				
+				<f:if condition="{kunden.branche}">
+					<h2 class="headSubtitle"><f:translate key="tx_bbportfolio_domain_model_kunden.branche" />: <f:for each="{kunden.branche}" as="branch" iteration="iterator"><f:if condition="{iterator.cycle}>1">, </f:if>{branch.name}</f:for></h2>
+				</f:if>
+				
+				<f:format.html>{kunden.beschreibung}</f:format.html>
+				
+			</div>
+			<div class="col col-md-4 detailInfo">
+				
+				<!--TYPO3SEARCH_end-->
+
+				
+				<hr>
+				<div class="detailKdnLogos">
+					<f:image src="{kunden.logo.originalResource.originalFile.uid}"  alt="{kunden.name}"  width="480"  />
+				</div>
+				
+				
+				
+				<f:if condition="{kunden.ort}">
+					<hr>
+					<h4><f:translate key="tx_bbportfolio_domain_model_kunden.ort" /></h4>
+					<p>{kunden.ort}</p>
+				</f:if>
+				
+				
+				
+				<f:if condition="{kunden.betreuung}">
+					<hr>
+					<h4><f:translate key="tx_bbportfolio_domain_model_kunden.betreuung" /></h4>
+					<p>{kunden.betreuung}</p>
+				</f:if>
+				
+				
+				<hr>
+				<h4><f:translate key="tx_bbportfolio_domain_model_kunden.unternehmen_groesse" /></h4>
+				<p><f:translate key="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.{kunden.unternehmenGroesse}" /></p>
+				
+				<!--TYPO3SEARCH_begin-->
+				<f:if condition="{0:kunden.linkWebseite,1:kunden.linkFacebook} != {0:'',1:''}">
+					<hr>
+					<h4><f:translate key="tx_bbportfolio_domain_model_kunden.links" /></h4>
+
+					<f:if condition="{kunden.linkWebseite}">
+						<p><f:link.typolink parameter="{kunden.linkWebseite}" class="linkPfeil"></f:link.typolink></p>
+					</f:if>
+					<f:if condition="{kunden.linkFacebook}">
+						<p><f:link.typolink parameter="{kunden.linkFacebook}" class="linkPfeil">Facebook</f:link.typolink></p>
+					</f:if>
+				</f:if>
+				
+				<f:comment><!-- <f:if condition="{kunden.linkWebseite}">
+					<hr>
+					<h4><f:translate key="tx_bbportfolio_domain_model_kunden.link_webseite" /></h4>
+					<p><f:link.typolink parameter="{kunden.linkWebseite}" class="linkPfeil"></f:link.typolink></p>
+				</f:if>
+				
+				<f:if condition="{kunden.linkFacebook}">
+					<hr>
+					<h4><f:translate key="tx_bbportfolio_domain_model_kunden.link_facebook" /></h4>
+					<p><f:link.typolink parameter="{kunden.linkFacebook}" class="linkPfeil"></f:link.typolink></p>
+				</f:if> --></f:comment>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+	
+</div>
+
+<f:if condition="{portfolios}"><!--TYPO3SEARCH_end-->
+
+	<div class="whiteContainer pBottomReset boxFullWidth">
+
+
+		<div class="container aligncenter">
+			<h3 class="h1-soloTitle">Projekte</h3>
+		</div>
+	
+		<f:comment>
+		<!--div class="whiteContainer pBottomReset boxFullWidth">
+
+
+			<div class="container aligncenter">
+				<h1>Projekte</h1>
+		</div-->
+		</f:comment>		
+
+		<div class="row projektContainerWrapper">
+			<f:for each="{portfolios}" as="portfolio" iteration="iterator">
+
+					<div class="col-md-6 projektContainer">
+						<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolio, selectedKunde: kunden}" />
+					</div>
+	
+					<f:if condition="{iterator.isLast}"><f:if condition="{iterator.cycle}%2">			
+						<div class="col-md-6 projektContainer hidden-sm hidden-xs">
+							<f:render partial="Portfolio/EmptyTeaser" />
+						</div>
+					</f:if></f:if>
+					
+			</f:for>
+		</div>	
+
+	</div>
+<!--TYPO3SEARCH_begin--></f:if>
+
+<!--TYPO3SEARCH_end--><div class="detailpageInfo">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<center><f:link.page pageUid="43" class="btnBig btnPfeilBack btnGreen">Kundenregister</f:link.page></center>
+			</div>
+			
+		</div>
+	</div>
+</div><!--TYPO3SEARCH_begin-->
+
+</f:section>
+
+</html>

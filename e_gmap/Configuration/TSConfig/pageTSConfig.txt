@@ -1,0 +1,42 @@
+TCEMAIN.linkHandler.egmap {
+	handler = TYPO3\CMS\Backend\LinkHandler\RecordLinkHandler
+    label = Maps
+    configuration {
+        table = tx_egmap_domain_model_poi
+    }
+    scanAfter = page
+}
+
+mod.wizards.newContentElement.wizardItems.plugins {
+    elements {
+        e_gmap {
+            iconIdentifier = ext-map-wizard-icon
+            title = LLL:EXT:e_gmap/Resources/Private/Language/locallang.xml:plugin_title
+            description = LLL:EXT:e_gmap/Resources/Private/Language/locallang.xml:plugin_wiz_description
+            tt_content_defValues {
+                CType = list
+                list_type = egmap_gmap
+            }
+        }
+    }
+}
+
+tx_egmap_conf{
+	extensions{
+		# News configuration disabled - ENews extension not installed
+		News {
+			table = tx_news_domain_model_news
+		 	model = Emagineurs\ENews\Domain\Model\Enews
+		 	cat = categories
+		}
+	}
+}
+
+# Configuration for geolocation module
+tx_egmap_localize{
+	tx_egmap_domain_model_poi{
+		pattern = {address}, {zip}, {city}
+		lat = lat
+		lng = lng
+	}
+}

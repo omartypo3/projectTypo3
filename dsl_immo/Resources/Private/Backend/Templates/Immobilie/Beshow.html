@@ -1,0 +1,233 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+	
+	
+	
+<f:link.action action="belist">zurück zur Liste</f:link.action><br />	
+
+	<f:flashMessages />
+	
+<br>
+	
+<h1 class="element-header">{immobilie.objekttitel}</h1>
+<h2 class="full-header"><f:if condition="{immobilie.objektadressefreigeben}"><f:then><f:if condition="{immobilie.objektadressefreigeben}">{immobilie.strasseHausnummer}, </f:if>{immobilie.geoPlz} {immobilie.geoOrt}<f:if condition="{immobilie.geoRegionalerZusatz}">/{immobilie.geoRegionalerZusatz} </f:if> </f:then><f:else>{immobilie.geoOrt}<f:if condition="{immobilie.geoRegionalerZusatz}">/{immobilie.geoRegionalerZusatz} </f:if> (Genaue Adresse auf Anfrage)</f:else></f:if></h2>
+	
+
+	
+	<div><strong>Objekt-Nr.:</strong> {immobilie.objektNrextern}</div>
+	<div><strong>Typ:</strong> <f:translate key="tx_dslimmo_domain_model_immobilie.search_vermarktung.{immobilie.searchVermarktung}" /></div>
+	<div><strong>Gebiet:</strong> {immobilie.geoLageGebiet}</div>
+	<div><strong>Objekttyp:</strong> <f:translate key="tx_dslimmo_domain_model_immobilie.search_objekt_typ.{immobilie.searchObjektTyp}" /></div>
+    <f:if condition="{immobilie.zustandArt}">
+		<div><strong>Zustand:</strong> <f:translate key="tx_dslimmo_domain_model_immobilie.zustand_art.{immobilie.zustandArt}" /></div>
+	</f:if>
+	
+	<br>
+	<f:if condition="{immobilie.etage}">
+		<div><strong>Etage/Lage:</strong> {immobilie.etage}</div>
+	</f:if>
+	
+	<div><strong>Räume:</strong> <f:if condition="{immobilie.flaechenAnzahlZimmer}"><f:then>{immobilie.flaechenAnzahlZimmer}</f:then><f:else>-</f:else></f:if></div>
+
+	<f:if condition="{immobilie.flaechenWohnflaeche}">
+		<div><strong>Wohnfläche:</strong> <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.flaechenWohnflaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></div>
+	</f:if>
+	<f:if condition="{immobilie.flaechenGrundstuecksflaeche}">
+		<div><strong>Grundstücksfläche:</strong> <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.flaechenGrundstuecksflaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></div>
+	</f:if>
+	<f:if condition="{immobilie.flaechenNutzflaeche}">
+		<div><strong>Nutzfläche:</strong> <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.flaechenNutzflaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></div>
+	</f:if>
+
+	<div><strong>Frei ab:</strong> {immobilie.verfuegbarAb}</div>
+	
+	<br>
+	<f:if condition="{0:'{immobilie.searchVermarktung}',1:''}=={0:'s1010',1:''}">
+		<div><strong>Kaution:</strong> <f:if condition="{immobilie.kaution}">
+		<f:then><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.kaution}</f:format.currency></f:then>
+		<f:else>nach Vereinbarung</f:else>
+			</f:if></div>
+	</f:if>
+
+	<f:if condition="{immobilie.preiseKaltmiete}">
+		<div><strong>Kaltmiete:</strong> <f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaltmiete}</f:format.currency></div>
+	</f:if>
+
+	<f:if condition="{immobilie.preiseNebenkosten}">
+		<div><strong>Nebenkosten:</strong> <f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseNebenkosten}</f:format.currency></div>
+	</f:if>
+
+
+	<f:if condition="{immobilie.preiseWarmmiete}">
+		<div><strong>Gesamtmiete:</strong> <f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseWarmmiete}</f:format.currency></div>
+	</f:if>
+
+	<f:if condition="{immobilie.preiseMieteinnahmenIst}">
+		<div><strong>Mieteinnahmen(ist):</strong> <f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseMieteinnahmenIst}</f:format.currency></div>
+	</f:if>
+
+	<f:if condition="{immobilie.preiseKaufpreis}">
+		<div><strong>Kaufpreis:</strong> <f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaufpreis}</f:format.currency></div>
+	</f:if>
+
+	<f:if condition="{immobilie.preiseAussenCourtage}">
+		<div><strong>Courtage:</strong> {immobilie.preiseAussenCourtage}</div>
+	</f:if>
+	
+	
+	
+	
+	<f:if condition="{immobilie.energiepassEpart}">	
+		<f:then>
+			<br>
+			<h2>Energieausweis</h2>
+				<f:if condition="{immobilie.energiepassEpart == 'VERBRAUCH'}">
+					<f:then>	
+						<div><strong>Ausweistyp:</strong> Verbrauchsausweis</div>
+						<div><strong>Verbrauchswert:</strong> {immobilie.energiepassEnergieverbrauchkennwert} kWh/(m²*a)<f:if condition="{immobilie.energiepassMitwarmwasser}"> · inkl. WW</f:if></div>
+					</f:then>
+					<f:else>
+						<div><strong>Ausweistyp:</strong> Bedarfsausweis</div>
+						<div><strong>Bedarfswert:</strong> {immobilie.energiepassEndenergiebedarf} kWh/(m²*a)<f:if condition="{immobilie.energiepassMitwarmwasser}"> · inkl. WW</f:if></div>
+					</f:else>
+				</f:if>
+				<f:if condition="{immobilie.zustandBaujahr}">
+					<div><strong>Baujahr:</strong> {immobilie.zustandBaujahr}</div>
+				</f:if>
+				<f:if condition="{immobilie.energiepassPrimaerenergietraeger}">
+					<div><strong>Energieträger:</strong> {immobilie.energiepassPrimaerenergietraeger}</div>
+				</f:if>
+
+
+	   </f:then>
+		<f:else>
+			<f:comment>kein Energieausweis notwendig Denkmalschutz ...</f:comment>
+	   </f:else>
+
+	</f:if>
+	
+
+	<br>
+	
+	<div><strong>Beschreibung:</strong><p>{immobilie.objektbeschreibung}</p></div>
+	<f:if condition="{immobilie.ausstattbeschr}">
+		<div><strong>Ausstattung:</strong><p>{immobilie.ausstattbeschr}</p></div>
+	</f:if>
+	<f:if condition="{immobilie.lage}">
+		<div><strong>Lage:</strong><p>{immobilie.lage}</p></div>
+	</f:if>
+	
+	
+	
+	<h2 class="full-header side-title">Besonderheiten:</h2>
+	<ul class="">
+
+	   <f:if condition="{immobilie.flaechenAnzahlBalkone}">
+			<li>Balkon {f:if(condition: '{immobilie.flaechenAnzahlBalkone}>1', then: '({immobilie.flaechenAnzahlBalkone})')}</li>
+		</f:if>
+		<f:if condition="{immobilie.flaechenAnzahlTerrassen}">
+			<li>Terrasse {f:if(condition: '{immobilie.flaechenAnzahlTerrassen}>1', then: '({immobilie.flaechenAnzahlTerrassen})')}</li>
+		</f:if>
+		<f:if condition="{immobilie.flaechenAnzahlLogia}">
+			<li>Logia {f:if(condition: '{immobilie.flaechenAnzahlLogia}>1', then: '({immobilie.flaechenAnzahlLogia})')}</li>
+		</f:if>
+		<f:if condition="{immobilie.ausstattungFahrstuhl}">
+			<li>Fahrstuhl</li>
+		</f:if>
+		<f:if condition="{immobilie.ausstattungKueche}"><f:for each="{immobilie.ausstattungKuecheArray}" as="ausstattungKueche" iteration="iterator">
+			<li><f:translate key="tx_dslimmo_domain_model_immobilie.ausstattung_kueche.{ausstattungKueche}" />{ausstattungKueche}</li>
+		</f:for></f:if>
+		<f:if condition="{immobilie.ausstattungGaestewc}">
+			<li>Gäste-WC</li>
+		</f:if>
+		<f:if condition="{immobilie.ausstattungGartennutzung}">
+			<li>Gartennutzung</li>
+		</f:if>
+		<f:if condition="{immobilie.ausstattungUnterkellert}">
+			<li>Keller</li>
+		</f:if>
+		<f:if condition="{immobilie.preiseStpSonstigeAnzahl}">
+			<li>{immobilie.preiseStpSonstigeAnzahl} x <f:translate key="tx_dslimmo_domain_model_immobilie.preise_stp_sonstige_platzart.{immobilie.preiseStpSonstigePlatzart}" /></li>
+		</f:if>
+		<f:if condition="{immobilie.preiseStpFreiplatzAnzahl}">
+			<li>{immobilie.preiseStpFreiplatzAnzahl} x Stellplatz im Freien</li>
+		</f:if>
+	</ul>
+
+	
+	
+	<f:if condition="{immobilie.kontaktperson}">
+		<h2>Kundenbetreuer</h2>
+		<f:if condition="{immobilie.kontaktperson.vornameName}"><div><strong>Name:</strong> {immobilie.kontaktperson.vornameName}</div></f:if>
+		<f:if condition="{immobilie.kontaktperson.telzentrale}"><div><strong>Telefon:</strong> {immobilie.kontaktperson.telzentrale}</div></f:if>
+	</f:if>
+	
+	<f:if condition="{immobilie.titelBilder}">
+		<section id="bilder">
+			<div class="bilder">
+				<header><h2>Titelbild</h2></header>
+				
+				<f:for each="{immobilie.titelBilder}" as="bild" iteration="iterator">
+
+					<a href="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" class="lightbox" data-lightbox-caption="{bild.datei.originalResource.title}" data-lightbox-width="{bild.datei.originalResource.properties.width}" data-lightbox-height="{bild.datei.originalResource.properties.height}" rel="lightbox-group-floor{immobilie.uid}"><img title="{bild.datei.originalResource.title}" alt="grundriss" src="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, width:'215c', height:'155c')}"></a>
+
+				</f:for>
+			</div>
+		</section>
+	</f:if>
+	
+	<f:if condition="{immobilie.bilder}">
+		<section id="bilder">
+			<div class="bilder">
+				<header><h2>Bilder</h2></header>
+				
+				<f:for each="{immobilie.bilder}" as="bild" iteration="iterator">
+
+					<a href="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" class="lightbox" data-lightbox-caption="{bild.datei.originalResource.title}" data-lightbox-width="{bild.datei.originalResource.properties.width}" data-lightbox-height="{bild.datei.originalResource.properties.height}" rel="lightbox-group-floor{immobilie.uid}"><img title="{bild.datei.originalResource.title}" alt="grundriss" src="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, width:'215c', height:'155c')}"></a>
+
+				</f:for>
+			</div>
+		</section>
+	</f:if>
+	
+	<f:if condition="{immobilie.GrundrissBilder}">
+		<section id="floor-plans">
+			<div class="floor-plans">
+				<header><h2>Grundriss</h2></header>
+				
+				<f:for each="{immobilie.GrundrissBilder}" as="bild" iteration="iterator">
+
+					<a href="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" class="lightbox" data-lightbox-caption="{bild.datei.originalResource.title}" data-lightbox-width="{bild.datei.originalResource.properties.width}" data-lightbox-height="{bild.datei.originalResource.properties.height}" rel="lightbox-group-floor{immobilie.uid}"><img title="{bild.datei.originalResource.title}" alt="grundriss" src="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, width:'215c', height:'155c')}"></a>
+
+				</f:for>
+			</div>
+		</section>
+	</f:if>
+	
+	<f:if condition="{immobilie.additionalHtmlField}">
+		<f:then>
+			<div class="rundgang" style="max-width:800px;">
+				<header><h2>3D-Rundgang</h2><em>{immobilie.additionalHtmlField}</em></header>
+				<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class="embed-container"><iframe src="{immobilie.additionalHtmlField}" style="border:0px #ffffff none;" name="Wohnungsnr" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="50%" width="100%" allowfullscreen>
+					</iframe></div>
+				
+			</div>
+		</f:then>
+	</f:if>
+	<br><br>&nbsp;
+
+
+</f:section>

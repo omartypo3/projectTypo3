@@ -1,0 +1,254 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+    <f:flashMessages />
+    <f:comment>
+        Abécédaire en attente de Xavier (voir pour récupérer le viewhelper de dpn_glossary)
+    </f:comment>
+    <f:switch expression="{settings.templateLayoutListe}">
+        <f:case value="1">
+            <div class="video-list-important row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <f:render partial="List/MiseAvantVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/MiseAvantVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="2">
+            <div class="offres_emploi_list">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/ListOffresEmploi" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/ListOffresEmploi" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="40">
+            <div class="video-list row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+         <f:case value="5">
+            <div class="person-list-important row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <f:render partial="List/MiseAvantPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/MiseAvantPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+         <f:case value="10">
+            <div class="lieu-list-important row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <f:render partial="List/MiseAvantLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/MiseAvantLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="15">
+            <div class="video-list-view row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="16">
+            <div class="video-list-view row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <div class="col-lg-12">
+                                    <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </div>
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <div class="col-lg-12">
+                                <f:render partial="List/ListLetterVideo" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </div>
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="20">
+            <div class="person-list-view row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <div class="col-md-4">
+                                    <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </div>
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <div class="col-md-4">
+                                <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </div>
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="21">
+            <div class="person-list-view row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <div class="col-lg-12">
+                                    <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </div>
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <div class="col-lg-12">
+                                <f:render partial="List/ListLetterPersonne" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </div>
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="25">
+            <div class="lieu-list-view row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">                            
+                                <div class="col-md-4">
+                                    <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </div>
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <div class="col-md-4">
+                                <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </div>
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="26">
+            <div class="lieu-list-view row">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">                            
+                                <div class="col-lg-12">
+                                    <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </div>
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <div class="col-lg-12">
+                                <f:render partial="List/ListLetterLieu" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </div>
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:case value="50">
+            <f:render partial="List/ListInfoDechet" arguments="{_all}" />
+        </f:case>
+        <f:case value="51">
+            <f:render partial="Fiche/DetailSidebarCollecteDechets" arguments="{_all}" />
+        </f:case>
+        <f:case value="">
+            <div class="annuaire-list-view">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <f:render partial="List/Item" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/Item" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+    </f:switch>
+
+
+</f:section>

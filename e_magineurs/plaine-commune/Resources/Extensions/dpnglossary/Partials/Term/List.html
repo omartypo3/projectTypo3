@@ -1,0 +1,46 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<html data-namespace-typo3-fluid="true" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+<f:for each="{terms}" as="term">
+    <f:alias map="{arguments: '{0:\' \', 1:term.name}'}" >
+        <f:alias map="{arrayTermName: '<annuaire:PhpFunc func=\'explode\'  args=\'{arguments}\' />'}" >
+            <div class="anchor" id="<f:format.case mode='lower'>{arrayTermName.0}</f:format.case>">
+                <h2>
+                    {term.name}
+                    <f:if condition="{term.termType}">
+                        <span class="small">
+                            <f:if condition="{term.termType} == 'definition'">
+                                <f:then>(Définition)</f:then>
+                                <f:else if="{term.termType} == 'abbreviation'">
+                                    (Abréviation)
+                                </f:else>
+                                <f:else if="{term.termType} == 'acronym'">
+                                    (Acronyme)
+                                </f:else>
+                            </f:if>
+                        </span>
+                    </f:if>
+                </h2>
+                <f:for each="{term.descriptions}" as="description">
+                    <div class="description text no_glossary">
+                        <f:format.html>{description.text}</f:format.html>
+                    </div>
+                </f:for>
+                <f:if condition="{term.synonyms}">
+                    <p>{f:translate(key: 'tx_dpnglossary_domain_model_term.synonyms')}: {f:if(condition: synonymIterator.isLast, then: '{synonym.name}', else: '{synonym.name}, ') -> f:for(each: term.synonyms, iteration: 'synonymIterator', as: 'synonym')}</p>
+                </f:if>
+                <f:if condition="{term.media}">
+                    <f:for each="{term.media}" as="media">
+                        <p class="mediafile">
+                            <f:media file="{media}" title="{media.title}" alt="{media.alt}"/>
+                        </p>
+                    </f:for>
+                </f:if>
+            </div>
+        </f:alias>
+    </f:alias>
+</f:for>
+
+</html>

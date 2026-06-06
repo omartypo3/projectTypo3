@@ -1,0 +1,30 @@
+e_magineurs.tx_min.tinysource {
+    # cat=Configuration de tx_min; type=boolean; label= Activer Tiny Source
+    enable = 1
+    head {
+        # cat=Configuration de tx_min; type=boolean; label= Strips all tabs inside of <head>
+        stripTabs = 1
+        # cat=Configuration de tx_min; type=boolean; label= Strips all new lines inside of <head>
+        stripNewLines = 0
+        # cat=Configuration de tx_min; type=boolean; label= Reduces more than one, sequenced spaces to one inside of <head>
+        stripDoubleSpaces = 1
+        # cat=Configuration de tx_min; type=boolean; label= Reduces more than two, sequenced new lines to two inside of <head>. This has no effect if head.stripNewLines is enabled.
+        stripTwoLinesToOne = 1
+    }
+    body {
+        # cat=Configuration de tx_min; type=boolean; label= Strips all html comments inside of <body>
+        stripComments = 1
+        # cat=Configuration de tx_min; type=boolean; label= Strips all tabs inside of <body>
+        stripTabs = 1
+        # cat=Configuration de tx_min; type=boolean; label= Strips all new lines inside of <body>
+        stripNewLines = 1
+        # cat=Configuration de tx_min; type=boolean; label= Reduces more than one, sequenced spaces to one inside of <body>
+        stripDoubleSpaces = 1
+        # cat=Configuration de tx_min; type=boolean; label= Reduces more than two, sequenced new lines to two inside of <body>. This has no effect if body.stripNewLines is enabled.
+        stripTwoLinesToOne = 0
+        # cat=Configuration de tx_min; type=boolean; label= Prevents replacement of the TYPO3 search comment
+        preventStripOfSearchComment = 1
+    }
+    # cat=Configuration de tx_min; type=boolean; label= When set there are no line breaks separating html, head and body tags.
+    oneLineMode = 1
+}

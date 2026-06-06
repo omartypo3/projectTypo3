@@ -1,0 +1,244 @@
+@import "1-template/variables-bootstrap";
+@import "1-template/variables-emagineurs";
+@import '../../../../../e_package/Resources/Public/Css/Bootstrap/_mixins.scss';
+@import "1-template/header";
+@import "4-hamburger/hamburgers";
+@import "1-template/main";
+@import "2-extensions/actualites";
+@import "1-template/footer";
+@import "1-template/print";
+@import "2-extensions/formulaire";
+@import "1-template/fred";
+@import "1-template/menu";
+@import "1-template/hack-navigateur";
+@import "1-template/_ie11";
+
+.screen-section.panel1{
+  position:relative;
+  overflow:hidden;
+  .backgroundHome{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -o-object-fit: fill;
+       object-fit: fill;
+    z-index:2;
+    -o-object-fit: cover;
+       object-fit: cover;
+    transition: all ease-out 0.5s;
+  }
+
+  .poster_video{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: url("/../../../../../../../../fileadmin/user_upload/plaine_co_home.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .HomePart1{
+      transition: all ease-out 0.5s;
+      z-index:3;
+    }
+  h2{
+    color:#fff;
+    font-family: 'Raleway', sans-serif;
+    font-weight:700;
+    font-size:5rem;
+    margin:0;
+    @include MquerieW(560){
+      font-size:2rem;
+    }
+  }
+  
+  h3{
+    font-size:3rem;
+    color:#fff;
+    margin:0;
+    @include MquerieW(560){
+      font-size:1rem;
+    }
+  }
+
+  .voile_home{
+    display: block;
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background:transparentize($gris-voile, 0.5);
+    z-index:2;
+  }
+
+  .container{
+    z-index:3;
+  }
+
+  #recherche-panel-1 {
+    max-width: 580px;
+    width: 100%;
+    transition:0.3 all;
+    margin:110px 0 40px 0;
+
+    @include MquerieW(1200){
+      margin:40px 0 40px 0;
+    }
+
+    @include MquerieH(680){
+      margin:40px 0 40px 0;
+    }
+
+    .inner{
+      margin:0 6rem 0 4rem;
+      display:flex;
+      align-items:center;
+      height: 93px;
+
+      .frame-default{
+      width:100%;
+      }
+    }
+
+    label{
+      position:absolute;
+      left:-9999px;
+      color:#fff;
+      font-size:1.4rem;
+      text-transform:uppercase;
+      font-weight:700;
+      margin:0;
+    }
+    .form-control {
+      background-color: #fff;
+      border: none;
+      font-size: 1.4rem;
+      color: $gris-moyen;
+      border-radius: 0;
+      font-weight: 500;
+      font-style: italic;
+      padding: 1.6rem 0.75rem 1.6rem 2rem;
+      @include MquerieW(560){
+        margin-left: 30px;
+      }
+    }
+    button {
+        color: $gris-fonce;
+        background:url('../../Images/search.png');
+        width:28px;
+        height:26px;
+        border: 0;
+        font-size: 1.8rem;
+        cursor: pointer;
+        position: relative;
+        right: 50px;
+    }
+  }
+}
+
+#agenda-home{
+  background:url('../../Images/agendaHomeBackground.jpg') no-repeat;
+  background-position: center; /* center the image */
+  background-size: cover;  
+  padding: 30px 0 20px 0;
+  h2{
+    color:$vert-fonce;
+    font-size:3.5rem;
+    text-transform:uppercase;
+  }
+  
+  .news-list-view{
+    .row{
+      justify-content:center;
+    }
+    .thematique-liste-news,h3,a,.ville-liste-news{
+      color:#fff;
+    }
+
+    .ville-liste-news{
+      &:before{
+        background: url('../../Images/agenda-ville-home.png');
+      }
+    }
+  }
+  .btn{
+    margin: 20px 0;
+  }
+}
+
+/*Suppression animation page accueil mobile Zoom Sur*/
+@include media-breakpoint-down(sm) {
+  .part5{
+    width:100%;
+   /*background-color:$vert-fonce;*/
+    video{
+      display:none !important;
+    }
+    .block_content_part5{
+      margin-right:0 !important;
+      bottom:50% !important;
+      -webkit-transform:translate(50%, 50%) !important;
+              transform:translate(50%, 50%) !important; 
+      width:80%;
+    }
+  }
+}
+
+  @media screen and (max-width:350px) {
+      .block_content_part5{
+        width:100% !important;
+    }
+  }
+
+#logo-top {
+  padding-top: 0;
+  @include MquerieWH(325, 550){
+      padding-top: 150px;
+  }
+}
+
+#tarteaucitronAlertBig {
+  box-sizing: border-box !important;
+  padding: 20px !important;
+}
+
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert {
+  margin-bottom: 15px !important;
+  text-align: center !important;
+}
+
+#tarteaucitronRoot [type="button"]::before {
+  content: none !important;
+}
+
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert {
+  display: block !important;
+}
+
+#tarteaucitronRoot div#tarteaucitronInfo,
+#tarteaucitronRoot div#tarteaucitronInfo a {
+  font-size: 1.6rem !important;
+}
+
+#fancyboxLine {
+  display: none;
+}
+
+
+.tarteaucitronDetails.tarteaucitronInfoBox {
+  display:block !important;
+  position: relative !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}

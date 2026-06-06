@@ -1,0 +1,146 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+
+
+        
+
+
+
+
+    
+    	
+<f:form controller="Kunden" action="ajax" name="kunden"  pluginName="kundenliste" extensionName="dslintranet" id="kundenZugangsdatenForm"  pageType="89657207" >
+	<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Zugangsdaten an den Kunde schicken'}" />
+
+	
+	<f:render partial="Kunden/AccessMail" arguments="{_all}" />
+
+
+	<f:form.hidden name="kunden" value="{kunden.uid}" />
+	<f:form.hidden name="switch" value="zugangsdaten" />
+
+
+	<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Zugangsdaten versenden'}" />    
+
+</f:form>
+
+<script>
+			$(document).ready(function(){
+				$('#newPasswordGenerate').pGenerator({
+					'bind': 'click',
+					'passwordElement': '#newPassword',
+			/*        'displayElement': '#my-display-element',*/
+					'passwordLength': 8,
+					'uppercase': true,
+					'lowercase': true,
+					'numbers':   true,
+					'specialChars': false,
+					'onPasswordGenerated': function(generatedPassword) {
+						/*alert('My new generated password is ' + generatedPassword);*/
+					}
+				});
+				if(!$('#newPassword').val()) $('#newPasswordGenerate').click();
+			});
+			
+		</script>
+        <script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		
+		
+		$('.validator_required').attr('required','required');
+		
+$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#kundenZugangsdatenForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#kundenZugangsdatenForm').hasClass('formSaves'))	return false;
+				$('#kundenZugangsdatenForm').addClass('formSaves');
+			
+				$.ajax({
+					url: $('#kundenZugangsdatenForm').attr('action'),
+					type: 'POST',
+					data: $('#kundenZugangsdatenForm').serialize(),
+					success: function(data) {
+						
+
+						
+						dataJson = JSON.parse(data);
+						
+						//reloadAuftragId('list',id);
+						if(!dataJson["uid"]) {
+							
+							return true;
+						} else {
+							
+							//changeProjektTab("auftrag-show-"+dataJson["uid"],dataJson["contentShow"]);
+							
+							//dataTableReload();
+							
+							if(dataJson["contentShow"]){
+								var resArr = Array();
+								$( $(dataJson["contentShow"]).find('td') ).each(function( index ) {		
+							
+									resArr[index] = $(this).html();  
+								});
+							
+								$('#kundenList').DataTable().row( '#kundenListKunde_'+dataJson["uid"] ).data( resArr );
+
+								reInitAjaxCalls();
+							
+							}
+							
+							
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		setTimeout(function(){ 
+			$('.animated').autosize({append: "\n"});
+		}, 500);
+		
+		/* Validator Ende */
+		
+		
+	});
+
+</script>
+
+    
+
+</f:section>

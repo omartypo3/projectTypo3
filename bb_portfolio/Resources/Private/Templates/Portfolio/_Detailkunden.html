@@ -1,0 +1,49 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+<div class="detailpageHeader whiteContainer">
+	<div class="container">
+		<div class="col-xs-3 col-md-1 navArrowRight"><f:if condition="{kundenPrev}"><f:link.action action="detailkunden" arguments="{kunden : kundenPrev}"><i class="bb-arrow-left"></i></f:link.action></f:if></div>
+		<div class="col-xs-6 col-md-10 detailpageNavTitle"><f:link.page pageUid="43"><i class="bb-grid"></i><span class="hidden-xs">Alle Kunden</span></f:link.page><br /></div>
+		<div class="col-xs-3 col-md-1 navArrowLeft"><f:if condition="{kundenNext}"><f:link.action action="detailkunden" arguments="{kunden : kundenNext}"><i class="bb-arrow-right"></i></f:link.action></f:if></div>
+	</div>
+</div>
+
+
+<f:render partial="Kunden/Properties" arguments="{kunden:kunden}" />
+
+
+<f:if condition="{portfolios}">
+	<div class="boxFullWidth">
+
+		<div class="row projektContainerWrapper">
+			<f:for each="{portfolios}" as="portfolio">
+
+					<div class="col-md-6 projektContainer">
+						<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolio, selectedKunde: kunden}" />
+					</div>
+
+
+			</f:for>
+		</div>	
+
+	</div>
+</f:if>
+
+
+
+</f:section>

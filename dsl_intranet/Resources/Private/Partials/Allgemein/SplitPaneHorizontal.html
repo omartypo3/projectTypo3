@@ -1,0 +1,54 @@
+<div class="dsl-split-html">
+    <div class="dsl-split-body">
+        <div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+            <div class="split-pane horizontal-percent">
+                <div class="split-pane-component" id="top-component">
+                    <div class="pretty-split-pane-component-inner" id="split-pane-1">
+
+                    </div>
+                </div>
+                <div class="split-pane-divider" id="my-divider"></div>
+                <div class="split-pane-component" id="bottom-component">
+                    <div class="pretty-split-pane-component-inner" id="split-pane-2">
+
+                    	 <div class="split-pane-buttons"><a id="split-pane-up" title="Maximieren"><i class="fa fa-arrow-up"></i></a><a id="split-pane-middle" title="Fenstergröße 50%"><i class="fa fa-arrows"></i></a><a id="split-pane-down" title="Minimieren"><i class="fa fa-arrow-down"></i></a></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/*$(".splitPaneLeftButtons").detach().appendTo('.split-pane-buttons-left');*/
+
+	$("div#split-pane-1-content").detach().appendTo('#split-pane-1');
+	$("div#split-pane-2-content").detach().appendTo('#split-pane-2');
+	$("section.col-md-11").css('paddingLeft','0px');
+	$("section.col-md-11").css('paddingRight','0px');
+
+	$('div.split-pane').splitPane();
+
+
+	$('div.split-pane').splitPane('firstComponentSize', $( window ).height()/2);
+
+	$('#split-pane-up').on('click', function() {
+
+		$('div.split-pane').splitPane('firstComponentSize', 0);
+	});
+	$('#split-pane-middle').on('click', function() {
+
+		$('div.split-pane').splitPane('firstComponentSize', $( window ).height()/2);
+	});
+	$('#split-pane-down').on('click', function() {
+
+		$('div.split-pane').splitPane('lastComponentSize', 0);
+	});
+
+});
+
+</script>

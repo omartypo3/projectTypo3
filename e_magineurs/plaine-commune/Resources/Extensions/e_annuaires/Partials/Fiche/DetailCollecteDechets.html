@@ -1,0 +1,91 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<f:alias map="{fiche: fiches.0}">
+	<h2 class="entete entete_dechet"><i class="icon-Geoloc"></i>{fiche.title} {fiche.address} {fiche.firstPack.title}</h2>
+	<div id="bloc_ordures_menageres" class="bloc_ordure">	
+		<div class="details_collecte case_collect">
+			<div class="content_case_collect">
+				<h3>Collecte des déchets ménagers</h3>
+				<div class="infos_collecte">
+					<f:if condition="{fiche.bp}">
+				  		<p class="jour_collect"><strong>{fiche.bp}</strong></p>
+				  	</f:if>
+				</div>
+				<div class="exmples_de_dechets">
+					  <p>
+					  	
+					  </p>
+				</div>
+			</div>
+		</div>
+		<div class="illustration_bac case_collect">
+			<f:image alt="Poubelle grise" class="parallax" src="EXT:e_magineurs/Resources/Public/Plaine/Images/poubelle-grise-dm.png" />
+		</div>
+	</div>
+	<div id="bloc_tri" class="bloc_ordure ordure_impaire">
+		<div class="details_collecte case_collect">
+			<div class="content_case_collect">
+				<h3>Collecte des emballages et du papier</h3>
+				<div class="infos_collecte">
+					<f:if condition="{fiche.cedex}">
+						<p class="jour_collect"><strong>{fiche.cedex}</strong></p>
+					</f:if>
+					<f:if condition="{fiche.cell}">
+						<p>{fiche.cell}</p>
+					</f:if>
+				</div>
+				<div class="exmples_de_dechets">
+					<p>
+						
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="illustration_bac case_collect">
+			<f:image alt="Poubelle jaune" class="parallax" src="EXT:e_magineurs/Resources/Public/Plaine/Images/poubelle-jaune-emballages-papier.png" />
+		</div>
+	</div>
+	<div id="bloc_verre" class="bloc_ordure">	
+		<div class="details_collecte case_collect">
+			<div class="content_case_collect">
+				<h3>Collecte du verre</h3>
+				<div class="infos_collecte">
+					<f:if condition="{fiche.country}">
+						<p class="jour_collect"><strong>{fiche.country}</strong></p><!--A apporter au conteneur-->
+					</f:if>
+				</div>
+				<div class="exmples_de_dechets">
+					<p>
+						
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="illustration_bac case_collect">
+		  	<f:image alt="Gros conteneur bleu" class="parallax" src="EXT:e_magineurs/Resources/Public/Plaine/Images/infos_dechets_bg_verre.jpg" />
+		</div>
+	</div>
+	<div id="bloc_encombrants" class="bloc_ordure ordure_impaire">
+		<div class="details_collecte case_collect">
+			<div class="content_case_collect">
+				<h3>Collecte des encombrants</h3>
+				<div class="infos_collecte">
+					<f:if condition="{fiche.fax}">
+						<p class="jour_collect"><strong>{fiche.fax}</strong></p>
+					</f:if>
+				</div>
+				<div class="exmples_de_dechets">
+					<p>
+						
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="illustration_bac case_collect">
+		  	<f:image alt="Déchets encombrants type matelas, fauteuils, meubles" class="parallax" src="EXT:e_magineurs/Resources/Public/Plaine/Images/encombrants.png"/>
+		</div>
+	</div>
+	<div class="retour">
+		<f:link.action action="list" class="btn btn-vert btn-animate btn-retour btn-fond-clair">Nouvelle recherche</f:link.action>
+		<!--<f:link.action action="list" class="btn btn-vert btn-animate btn-retour btn-fond-clair" arguments="{displayStreet: fiche.firstPack}" > Retour</f:link.action>-->
+	</div>
+</f:alias>

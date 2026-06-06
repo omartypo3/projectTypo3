@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{be_layout} == 'pagets__t3sbootstrap_10'">
+	<f:then>
+		<f:render section="Default" arguments="{_all}" />
+	</f:then>
+	<f:else>
+		<f:if condition="{settings.styles.footer.sticky}">
+			<f:then>
+				<footer id="page-footer" class="footer sticky-footer navbar {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}" >			
+					<div class="{f:if(condition: '{settings.styles.container-fluid}',then: 'container-fluid', else: 'container')}">
+						<f:cObject typoscriptObjectPath="lib.content.footer" />
+						<f:cObject typoscriptObjectPath="lib.content.footerFromPid" />
+					</div>
+				</footer>
+			</f:then>
+			<f:else>
+				<f:render section="Default" arguments="{_all}" />
+			</f:else>
+		</f:if>	
+	</f:else>
+</f:if>
+</html>
+
+<f:section name="Default">
+<f:if condition="{settings.styles.navbar.footer.fullwidth}">
+	<f:then>
+		<footer id="page-footer" class="footer navbar {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}" >
+			<div class="{f:if(condition: '{settings.styles.container-fluid}',then: 'container-fluid', else: 'container')}">
+				<f:cObject typoscriptObjectPath="lib.content.footer" />
+				<f:cObject typoscriptObjectPath="lib.content.footerFromPid" />
+			</div>
+		</footer>
+	</f:then>
+	<f:else>
+		<div class="{f:if(condition: '{settings.styles.container-fluid}',then: 'container-fluid', else: 'container')}">
+			<footer id="page-footer" class="footer navbar {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}" >
+				<f:cObject typoscriptObjectPath="lib.content.footer" />
+				<f:cObject typoscriptObjectPath="lib.content.footerFromPid" />
+			</footer>
+		</div>
+	</f:else>
+</f:if>
+</f:section>

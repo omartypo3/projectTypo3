@@ -1,0 +1,26 @@
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:flashMessages />
+		<f:comment>|******* Si l'internaute n'est pas connecté en FE, on affiche un message *******|</f:comment>
+
+		<f:if condition="{settings.editFe.defaultValues.typeelement} == 5">
+			<p>Votre candidature a bien été enregistrée.</p>
+		</f:if>
+
+		<f:if condition="{settings.editFe.defaultValues.typeelement} == 1">
+			<p>Votre vidéo a bien été enregistrée.</p>
+		</f:if>
+</f:section>

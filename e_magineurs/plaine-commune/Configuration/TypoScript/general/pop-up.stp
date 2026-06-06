@@ -1,0 +1,60 @@
+## Définition globale ##########################################################
+popup = PAGE
+popup {
+    typeNum = 100
+    meta {
+        keywords.data=page:keywords
+        description.data=page:description
+        author.data=page:author
+        author_email.data=page:author_email
+    }
+    config {
+        language = fr
+        locale_all = fr_FR.UTF-8
+        htmlTag_langKey = fr
+        htmlTag_setParams = lang="fr"
+    }
+#     javascriptLibs {
+#        jQuery = 1
+#        # (possible values: latest|1.7.2|…, default: latest)
+#        # Note: jQuery.source has to be a CDN like "google" when jQuery.version is not "latest"
+#        jQuery.version = latest
+#        # (possible values: local|google|jquery|msn, default: local)
+#        jQuery.source = google
+#        # si noConflict = 1, il faut remplacer les $ par jQuery dans les fichiers js
+#        jQuery.noConflict = 0
+#    }
+    includeJSFooterlibs {
+        jQuery = https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+        jQuery {
+            external = 1
+            disableCompression = 1
+            excludeFromConcatenation = 1
+        }
+    }
+}
+## Ajout feuilles de style et JS ###############################################
+popup.includeCSS{
+#    style = {$etcaOpus}/ressources/sass/style.scss
+#    style.outputdir = {$etcaOpus}/ressources/css
+    10 = {$etcaOpus}/ressources/css/popup.css
+    10.media = all
+}
+## Agrégtion des éléments ######################################################
+popup.10 = CONTENT
+popup.10{
+    table = tt_content
+    select.where = colPos = 0
+    select.orderBy = sorting
+    select.languageField = sys_language_uid
+    wrap = <div class="contenu_popup"> |</div>
+}
+
+pop < popup
+pop.typeNum = 101
+   
+## Agrégtion des éléments ######################################################
+pop.10 = FLUIDTEMPLATE
+pop.10{
+    file = EXT:e_magineurs/res/opus/main/TemplatesPopup/type101.html
+}

@@ -1,0 +1,139 @@
+<div class="{f:if(condition: '{currentmessage.feuser}', else: 'admin_message')}" >
+    <div class="header">
+        <f:if condition="{currentmessage.feuser}" >
+            <f:then>
+                <f:if condition="{currentmessage.feuser.image}">
+                    <f:image src="./uploads/pics/{currentmessage.feuser.image}" width="80C" />
+                </f:if>
+                <div>
+                    <span class="title">{currentmessage.feuser.firstname} {currentmessage.feuser.lastname}</span>
+                    <f:if condition="{currentmessage.crdate}">
+                        <br />
+                        <span>Publication date : </span><f:format.date format="d/m/Y H:i:s">{currentmessage.crdate}</f:format.date>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <f:if condition="{currentmessage.name} || {currentmessage.firstname}" >
+                    <f:then>
+                        <span class="title">{currentmessage.firstname} {currentmessage.name}</span>
+                    </f:then>
+                    <f:else>
+                        <span class="title">Anonymous</span>
+                    </f:else>
+                </f:if>
+                <f:if condition="{currentmessage.crdate}">
+                    <br />
+                    <span>Publication date : </span><f:format.date format="d/m/Y H:m:s">{currentmessage.crdate}</f:format.date>
+                </f:if>
+            </f:else>
+        </f:if>
+    </div>
+
+    <!-- <f:if condition="{currentmessage.title}" >
+        <h3>{currentmessage.title}</h3>
+    </f:if> -->
+
+    <div class="content-comment">
+        <br />
+        <p class="minimize"><f:format.raw>{currentmessage.bodytext}</f:format.raw></p>
+       
+        <f:if condition="{currentmessage.file}" >
+            <br />
+            <div>
+                Files :
+                <ul>
+                    <f:for each="{currentmessage.file}" as="currentfile" >
+                        <li>
+                            <f:link.typolink parameter="{currentfile.originalResource.publicUrl}" target="_blank" >{currentfile.originalResource.originalFile.name}</f:link.typolink>
+                        </li>
+                    </f:for>
+                </ul>
+            </div>
+        </f:if>
+    </div>
+
+    <f:if condition="{settings.formFieldDisplay.replyForm}" >
+        <div>
+            <f:for each="{currentmessage.children}" as="child" >
+                <f:if condition="{child.validationtoken}==''" >
+                    <f:render partial="MessageItem" arguments="{currentmessage: child, demand: demand, settings: settings, formMessage: formMessage}"/>
+                </f:if>
+            </f:for>
+        </div>
+
+        <f:if condition="{currentmessage.parent}!=''" >
+            <f:else>
+                <div>
+                    <f:form object="{message}" name="message" method="post" addQueryString="1" enctype="multipart/form-data" >
+                        <f:form.hidden property="parent" value="{currentmessage.uid}" />
+                        <f:if condition="{settings.filterByValue}" >
+                            <f:form.hidden property="paramfilter" value="{settings.filterByParam}" />
+                            <f:form.hidden property="paramvalue" value="{settings.filterByValue}" />
+                        </f:if>
+
+                        <f:if condition="{settings.formFieldDisplay.title}" >
+                            <div>
+                                <label for="name-title" >Title</label> : <f:form.textfield id="name-title" property="title" required="1" />
+                            </div>
+                        </f:if>
+
+                        <f:if condition="{feuser}" >
+                            <f:else>
+                                <f:if condition="{settings.formFieldDisplay.name}" >
+                                    <div>
+                                        <label for="name-field" >Name</label> : <f:form.textfield id="name-field" property="name" required="1" />
+                                    </div>
+                                </f:if>
+
+                                <f:if condition="{settings.formFieldDisplay.firstname}" >
+                                    <div>
+                                        <label for="firstname-field" >First Name</label> : <f:form.textfield id="firstname-field" property="firstname" required="1" />
+                                    </div>
+                                </f:if>
+
+                                <f:if condition="{settings.formFieldDisplay.email}" >
+                                    <div>
+                                        <label for="email-field" >Email</label> : <f:form.textfield id="email-field" property="email" required="1" />
+                                    </div>
+                                </f:if>
+                            </f:else>
+                        </f:if>
+
+                        <div>
+                            <f:form.textarea property="bodytext" />
+                        </div>
+
+                        <f:if condition="{settings.formFieldDisplay.file}" >
+                            <div>
+                                <div>
+                                    <label>Files</label> :
+                                </div>
+
+                                <div class="col-ting">
+                                    <f:for each="{message.file}" as="currentFile" >
+                                        <div>
+                                            <f:media file="{currentFile.originalResource}" width="256" height="256" />
+                                        </div>
+                                    </f:for>
+                                    <div>
+                                        <div class="controls">
+                                            <f:form.upload property="fileinstancier" multiple="1" class="ecomment_fileuploader" />
+                                            <span class="upload-file">Browse</span>
+                                            <button type="button" onclick="removeUploadField(this)" class="ecomment-remove-button" >Remove</button>
+                                            <p class="file-return"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:if>
+
+                        <div>
+                            <f:form.submit value="Send" />
+                        </div>
+                    </f:form>
+                </div>
+            </f:else>
+        </f:if>
+    </f:if>
+</div>

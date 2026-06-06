@@ -1,0 +1,67 @@
+.results-list{
+    margin: 0;
+    padding: 0;
+
+    > li {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px dotted silver;
+    }
+    .relevance {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        margin: 10px 0 0;
+    }
+}
+.solr-pagination{
+    margin-bottom: 20px;
+
+    li{
+        padding: 0 7px;
+
+        &:first-child{
+            padding-left: 0;
+        }
+        &.active span, a:hover, a:focus{font-weight: 700;}
+        &.active span{
+            line-height: 1;
+            display: block;
+            color: $color_principal;
+        }
+    }
+    
+    .pagination-loading {
+        .pagination-item {
+            display: none !important;
+        }
+        .pagination-dots {
+            display: none !important;
+        }
+    }
+}
+.relevance{
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.content .case_content .content_right #tx-solr-search-functions.frame{
+    h5{font-size: 1rem}
+    ul li{
+        margin-bottom: 0;
+        a{
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+    }
+}
+.document-score-analysis{
+    display: none;
+}
+.results-highlight{
+    background: #ddd;
+}

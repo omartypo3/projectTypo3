@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" product-name="stratis_newsletter" date="2021-10-07T12:50:31+01:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.newContentWizard.stratisnewsletters" approved="yes">
+				<target state="translated">Stratis Newsletter</target>
+			</trans-unit>			
+
+			<!-- Templates -->
+			<trans-unit id="templates.newsletter_page" approved="yes">
+				<target state="translated">Page lettre d'information</target>
+			</trans-unit>
+
+			<!-- Misc/Common -->
+			<trans-unit id="common.download" approved="yes">
+				<target state="translated">Télécharger</target>
+			</trans-unit>
+
+			<!-- Actualités -->
+			<trans-unit id="actus.allLink" approved="yes">
+				<target state="translated">Toutes les actualités</target>
+			</trans-unit>
+
+			<!-- Agenda -->
+			<trans-unit id="agenda.allLink3" approved="yes">
+				<target state="translated">Tous les événements</target>
+			</trans-unit>
+
+			<!-- Photos/Vidéos -->
+			<trans-unit id="photosVideo.allLink" approved="yes">
+				<target state="translated">Tous les albums</target>
+			</trans-unit>
+
+			<!-- Publications -->
+			<trans-unit id="publications.read" approved="yes">
+				<target state="translated">Feuilleter</target>
+			</trans-unit>
+
+			<!-- Newsletter -->
+			<trans-unit id="newsletter.consultArchives" approved="yes">
+				<target state="translated">Archives</target>
+			</trans-unit>
+			<trans-unit id="newsletter.unsubscribe" approved="yes">
+				<target state="translated">Désinscription</target>
+			</trans-unit>
+			<trans-unit id="newsletter.email" approved="yes">
+				<target state="translated">Nous contacter</target>
+			</trans-unit>
+			<trans-unit id="newsletter.headerMessage" approved="yes">
+				<target state="translated">Si le message ci-dessous ne s'affiche pas correctement,</target>
+			</trans-unit>
+			<trans-unit id="newsletter.headerLink" approved="yes">
+				<target state="translated">consultez la version en ligne.</target>
+			</trans-unit>
+			<trans-unit id="newsletter.publications.allLink" approved="yes">
+				<target state="translated">Toutes les publications</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

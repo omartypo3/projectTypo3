@@ -1,0 +1,28 @@
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+
+<f:if condition="{filter.orderBy}=={field}" >
+    <f:then>
+        <span class="active" >{label}</span>
+    </f:then>
+    <f:else>
+        {label}
+    </f:else>
+</f:if>
+
+<f:form object="{filter}" name="filter" method="post" >
+    <f:form.hidden property="keywords" />
+    <f:form.hidden property="category" />
+    <f:form.hidden property="folderstring" value="{filter.folder.0}" />
+    <f:form.hidden property="orderBy" value="{field}" />
+    <f:form.hidden property="orderDirection" value="asc" />
+    <button><core:icon identifier="actions-move-up" size="small" /><br></button>
+</f:form>
+
+<f:form object="{filter}" name="filter" method="post" >
+    <f:form.hidden property="keywords" />
+    <f:form.hidden property="category" />
+    <f:form.hidden property="folderstring" value="{filter.folder.0}" />
+    <f:form.hidden property="orderBy" value="{field}" />
+    <f:form.hidden property="orderDirection" value="desc" />
+    <button><core:icon identifier="actions-move-down" size="small" /><br></button>
+</f:form>

@@ -1,0 +1,28 @@
+
+<div class="col-sm-12 col-md-6 col-lg-4">
+		<div class="innerBoxcontainer">
+			<div class="imgBox">
+				<f:if condition="{newsItem.datei}">
+					<img src="{f:uri.image(src:newsItem.datei.originalResource.originalFile.uid)}">
+				</f:if>
+			</div>
+			<div class="textBlock">
+				<p class="greyDescription textSmall">{f:format.date(date: newsItem.gueltigAb, format: 'd.m.Y')} <f:if condition="{newsItem.countdown}">- <span class="angebotCounter">Angebot gültig: <f:render partial="Allgemein/CountdownTimer" arguments="{interval:newsItem.countdownTime}" /></span></f:if></p>
+				<h2 class="mainTitle">{newsItem.titel}</h2>
+				<h2 class="subTitle">{newsItem.untertitel}</h2>
+				<p><f:format.nl2br>{newsItem.text}</f:format.nl2br></p>
+			</div>
+			<div class="row">
+				<div class="col-xs-6 priceList">
+					<p class="greyDescription"><f:if condition="{newsItem.angebot1}"><f:then><span class="textGestrichen">{newsItem.angebot1}</span></f:then><f:else>&nbsp;</f:else></f:if></p>
+					<p class="newPrice">{newsItem.angebot2}</p>
+					<p class="greyDescription"><f:if condition="{newsItem.angebot3}"><f:then>{newsItem.angebot3}</f:then><f:else>&nbsp;</f:else></f:if></p>
+				</div>
+				<div class="col-xs-6 linksBox">
+					<p>&nbsp;</p>
+					<p><f:if condition="{newsItem.linkExtern}"><f:link.external uri="{newsItem.linkExtern}" target="_blank"><i class="bb-arrow-right-large"></i><span class="textLink">mehr</span></f:link.external></f:if></p>
+					<p><f:comment><!--<a href="#"><i class="bb-arrow-right-large"></i><span class="textLink">popup formular</span></a>--></f:comment>&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,193 @@
+<f:if condition="{vars.salutation} == '1'">
+    <label for="salutation">
+        <f:translate key="tx_personmanager_domain_model_person.salutation" />
+    </label>
+    <div class="powermail_field">
+        <select name="tx_personmanager_personmanagerfront[anr]" required>
+            <option value="">
+                <f:translate key="labels.choose" />
+            </option>
+            <f:if condition="{anr}==1">
+                <f:then>
+                    <option value="1" selected>
+                        <f:translate key="labels.mr" />
+                    </option>
+                </f:then>
+                <f:else>
+                    <option value="1">
+                        <f:translate key="labels.mr" />
+                    </option>
+                </f:else>
+            </f:if>
+            <f:if condition="{anr}==2">
+                <f:then>
+                    <option value="2" selected>
+                        <f:translate key="labels.mrs" />
+                    </option>
+                </f:then>
+                <f:else>
+                    <option value="2">
+                        <f:translate key="labels.mrs" />
+                    </option>
+                </f:else>
+            </f:if>
+        </select>
+    </div>
+</f:if>
+<f:if condition="{vars.titel} == '1'">
+    <label for="titel">
+        <f:translate key="tx_personmanager_domain_model_person.titel" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="titel" />
+    </div>
+</f:if>
+<div class="powermail_field form-group row">
+    <label class="col-md-3" for="firstname">
+        <f:translate key="tx_personmanager_domain_model_person.firstname" />
+    </label>
+    <div class="col-md-9">
+        <f:form.textfield property="firstname" class="form-control" />
+    </div>
+</div>
+<div class="powermail_field form-group row">
+    <label class="col-md-3" for="lastname">
+        <f:translate key="tx_personmanager_domain_model_person.lastname" />
+    </label>
+    <div class="col-md-9">
+        <f:form.textfield class="form-control" property="lastname" />
+    </div>
+</div>
+<f:if condition="{vars.nachgtitel} == '1'">
+    <label for="nachgtitel">
+        <f:translate key="tx_personmanager_domain_model_person.nachgtitel" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="nachgtitel" />
+    </div>
+</f:if>
+<div class="powermail_field form-group row">
+    <label class="col-md-3" for="email">
+        <f:translate key="tx_personmanager_domain_model_person.email" /> *
+    </label>
+    <div class="col-md-9">
+        <f:form.textfield class="form-control" property="email" required="required" />
+    </div>
+</div>
+<f:if condition="{vars.geb} == '1'">
+    <label for="geb">
+        <f:translate key="tx_personmanager_domain_model_person.geb" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="geb" />
+    </div>
+</f:if>
+<f:if condition="{vars.tel} == '1'">
+    <label for="tel">
+        <f:translate key="tx_personmanager_domain_model_person.tel" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="tel" />
+    </div>
+</f:if>
+<f:if condition="{vars.company} == '1'">
+    <label for="company">
+        <f:translate key="tx_personmanager_domain_model_person.company" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="company" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt0} == '1'">
+    <label for="frtxt0">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt0" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt0" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt1} == '1'">
+    <label for="frtxt1">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt1" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt1" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt2} == '1'">
+    <label for="frtxt2">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt2" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt2" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt3} == '1'">
+    <label for="frtxt3">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt3" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt3" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt4} == '1'">
+    <label for="frtxt4">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt4" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt4" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt5} == '1'">
+    <label for="frtxt5">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt5" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt5" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt6} == '1'">
+    <label for="frtxt6">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt6" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt6" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt7} == '1'">
+    <label for="frtxt7">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt7" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt7" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt8} == '1'">
+    <label for="frtxt8">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt8" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt8" />
+    </div>
+</f:if>
+<f:if condition="{vars.frtxt9} == '1'">
+    <label for="frtxt9">
+        <f:translate key="tx_personmanager_domain_model_person.frtxt9" />
+    </label>
+    <div class="powermail_field">
+        <f:form.textfield property="frtxt9" />
+    </div>
+</f:if>
+<f:if condition="{vars.category} == '1'">
+    <f:if condition="{kats}">
+        <label for="category">
+            <f:translate key="tx_personmanager_domain_model_person.category" />
+        </label>
+        <div class="powermail_field">
+            <f:form.select property="category" options="{kats}" optionValueField="uid" optionLabelField="name" />
+        </div>
+    </f:if>
+</f:if>
+<div class="powermail_field">
+    <f:form.textfield name="tx_personmanager_personmanagerfront[honeypot]" style="display:none;" placeholder="Bitte dieses Feld NICHT ausfüllen!!!" />
+</div>

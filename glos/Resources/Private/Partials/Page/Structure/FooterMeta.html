@@ -1,0 +1,98 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true"
+  xmlns:f="http://typo3.org/ns/TYPO3Fluid/Fluid/ViewHelpers"
+  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+<f:if condition="{theme.meta.enable} || {theme.language.enable} || {theme.copyright.enable} || {theme.socialmedia.enable} || {theme.footernavigation.enable} || {theme.contact.enable}">
+
+   <footer class="footer">
+    <div class="container">
+        <!-- First footer -->
+        <div class="first-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="links dark footer-contact-links">
+                        <div class="footer-contact-links-wrapper">
+                            <div class="footer-contact-link-wrapper">
+                                <div class="image-wrapper footer-contact-link-icon">
+                                    <div class="icon-footer"><i class="fa-light fa-phone"></i></div>
+                                </div>
+                                <div class="footer-contact-link-content">
+                                    <h6><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:whatsapp" /></h6>
+             
+
+                                    <p>{settings.tel}</p>
+                                </div>
+                            </div>
+                            <div class="footer-contact-links-divider"></div>
+                            <div class="footer-contact-link-wrapper">
+                                <div class="image-wrapper footer-contact-link-icon">
+                                    <div class="icon-footer"><i class="fa-light fa-envelope"></i></div>
+                                </div>
+                                <div class="footer-contact-link-content">
+                                    <h6><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:email" /></h6>
+                                    <p>{settings.email}</p>
+                                </div>
+                            </div>
+                            <div class="footer-contact-links-divider"></div>
+                            <div class="footer-contact-link-wrapper">
+                                <div class="image-wrapper footer-contact-link-icon">
+                                    <div class="icon-footer"><i class="fa-light fa-location-dot"></i></div>
+                                </div>
+                                <div class="footer-contact-link-content">
+                                    <h6><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:adress" /></h6>
+                                    <p>{settings.address}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Second footer -->
+        <div class="second-footer">
+            <div class="row">
+                <!-- about & social icons -->
+                <div class="col-md-4 widget-area">
+                    <div class="widget clearfix">
+                        <div class="footer-logo"><img class="img-fluid" src="{f:uri.image(image: logo.inverted,treatIdAsReference:'1')}" alt=""></div>
+                        <div class="widget-text">
+                            <p>{settings.description}</p>
+                            <div class="social-icons">
+                                <ul class="list-inline">
+                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- quick links -->
+                <div class="col-md-4 offset-md-3 widget-area">
+                    <div class="widget clearfix usful-links">
+                        <h3 class="widget-title">Quick Links</h3>
+                        <ul>
+                            <f:for each="{menuquicklinks}" as="quickPage">
+                                <li>
+                                   <f:link.typolink parameter="{quickPage.link}"
+                                       title="{quickPage.title}" target="{quickPage.target}">
+                                                {quickPage.title}
+                                    </f:link.typolink>
+                                </li>
+                            </f:for>                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom footer -->
+        <div class="bottom-footer-text">
+            <div class="row copyright">
+                <div class="col-md-12">
+                    <p class="mb-0"><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:copyright"/></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</f:if>
+</html>

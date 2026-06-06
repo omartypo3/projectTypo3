@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2017-01-20T11:13:35Z" product-name="bb_portfolio">
+		<header/>
+		<body>
+			
+			
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.titel">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.untertitel">
+				<target>Abweichender Titel in der Detailansicht (optional)</target>
+			</trans-unit>
+			
+			
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kundenauswahl">
+				<target>Kunde</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kunde">
+				<target>Vorhandener Kunde</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kundenname">
+				<target>Kundenname</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.kundennamecheck">
+				<target>Keine Kundenauswahl / Kundenname eingeben</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.name">
+				<target>Kundenname</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.ort">
+				<target>Ort / Region</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.unternehmen_groesse">
+				<target>Unternehmensgröße</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.primaer_farbe">
+				<target>Primäre Farbe des Kunden</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.youtube">
+				<target>YouTube Kürzel (Code hinter dem https://youtu.be/)</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.teaser_bild">
+				<target>Teaser Bild (8:5 / max. 960px x 600px)</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.bilder">
+				<target>Detail Bilder (Breite max. 1920px)</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.related">
+				<target>Ähnliche Projekte</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.seo_keywords">
+				<target>Stichworte (kommagetrennt)</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_portfolio.seo_description">
+				<target>Beschreibung</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.seo_title">
+				<target>Title-Tag</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.seo_keywords">
+				<target>Stichworte (kommagetrennt)</target>
+			</trans-unit>
+			<trans-unit id="tx_bbportfolio_domain_model_kunden.seo_description">
+				<target>Beschreibung</target>
+			</trans-unit>
+			
+		</body>
+	</file>
+</xliff>

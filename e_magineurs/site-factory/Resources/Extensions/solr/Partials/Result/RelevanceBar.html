@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers">
+
+<f:section name="RelevanceBar">
+
+<div class="relevance">
+	<span class="relevance-label"><f:translate key="relevance" extensionName="e_magineurs" default="Pertinence" />: </span>
+	<span class="relevance-bar">
+		<div class="tx-solr-relevance-bar">
+			<div class="tx-solr-relevance themeColorBackground" style="width: {s:document.relevance(resultSet:resultSet, document:document)}%">&nbsp;</div>
+		</div>
+	</span>
+	<span class="relevance-percent">{s:document.relevance(resultSet:resultSet, document:document)}%</span>
+</div>
+
+</f:section>
+
+</html>

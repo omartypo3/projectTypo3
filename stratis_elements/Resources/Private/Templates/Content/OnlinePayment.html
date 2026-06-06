@@ -1,0 +1,38 @@
+<html data-namespace-typo3-fluid="true"
+    xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/Stratis/StratisElements/ViewHelpers/"
+>
+    <f:layout name="Content"/>
+    <f:section name="Configuration">
+        <flux:form id="onlinepayment" options="{group: 'onlinepayment', icon: 'EXT:stratis_elements/Resources/Public/Icons/Content/flex-iframe.png'}" label="Paiement en ligne (iframe)" description="Paiement en ligne">
+            <flux:field.input name="src" label="src" required="true"/>
+            <flux:field.input name="f" label="f"/>
+            <flux:field.input name="height" label="height"  default="1400" required="true"/>
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <br/><b>Paiement en ligne (iframe)</b>
+    </f:section>
+    <f:section name="Main">
+        <v:variable.set name="fGetParametr" value="{s:uri.param(get:'f')}"/>
+        <f:if condition="{fGetParametr}">
+            <f:then>
+                <iframe src='{src}?f={fGetParametr}' style='height:{height}px; width:100%'></iframe>
+            </f:then>
+            <f:else>
+                <f:if condition="{f}">
+                    <f:then>
+                        <iframe src='{src}?f={f}' style='height:{height}px; width:100%'></iframe>
+                    </f:then>
+                    <f:else>
+                        <iframe src='{src}' style='height:{height}px; width:100%'></iframe>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+        <v:variable.unset name="fGetParametr"/>
+    </f:section>
+</html>

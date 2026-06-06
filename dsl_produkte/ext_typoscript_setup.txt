@@ -1,0 +1,22 @@
+
+config.tx_extbase{
+    persistence{
+        classes{
+
+            TYPO3\CMS\Extbase\Domain\Model\Category {
+                subclasses {
+                    Tx_DslProdukte_Category = DslFactory\DslProdukte\Domain\Model\Category
+					
+          		}
+            }
+            DslFactory\DslProdukte\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                    recordType = Tx_DslProdukte_Category
+                }
+            }
+			
+            
+    	}
+    }
+}

@@ -1,0 +1,60 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<!--TYPO3SEARCH_end-->
+<div class="row"> 
+    <div class="col-xs-12 col-sm-6 col-md-2" style="padding-top: 20px;">
+    
+     <div class="page-navigation">
+          
+     </div>
+    
+          
+      <f:if condition="{settings.detail.showSocialShareButtons}">
+      <hr>
+       			<div class="facebook">
+           <!--<div class="like">
+            <n:social.facebook.like></n:social.facebook.like>
+          </div>-->
+          <div class="share">
+            <n:social.facebook.share>Share</n:social.facebook.share>
+          </div>
+        </div>
+      </f:if>  
+  </div>
+  
+  
+  <div class="col-xs-12 col-sm-6 col-md-10">
+  
+
+<f:flashMessages  />
+<div <f:if condition="{zubehoer.produkte}">class="mit-zubehoer"</f:if>><!--TYPO3SEARCH_begin--><f:render partial="Zubehoer/Properties" arguments="{zubehoer:zubehoer,datenblatt:datenblatt}" /><!--TYPO3SEARCH_end--></div>
+
+
+
+	<f:if condition="{zubehoer.produkte}">
+        <h6 class="zubehoer-ueberschrift">zugehörige Produkte</h6>
+        <div class="row">
+        <f:for each="{zubehoer.produkte}" as="produkt">
+            <f:render partial="Produkte/DetailProdukte" arguments="{produkt:produkt,linkArgumentsArr:linkArgumentsArr}" />
+        </f:for>
+        </div>
+    </f:if>
+<p class="info">* Alle Preise verstehen sich zzgl. 19% MwSt. Das Angebot auf unserer Webseite richtet sich an gewerbliche Kundschaft.</p>
+</div>
+</div>
+<!--TYPO3SEARCH_begin-->
+</f:section>

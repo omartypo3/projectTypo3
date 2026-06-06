@@ -1,0 +1,55 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+<div class="agendaEdit article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article">
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+	<div class="image_agendaEdit">
+
+	</div>
+	<div class="contenu_agendaEdit">
+		<div class="resume_agenda">
+			<h2><n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">{newsItem.title-> f:format.crop(maxCharacters: '60', respectWordBoundaries:'1') -> f:format.html()}</n:link></h2>
+		</div>
+		<p class="categorie_agenda">
+			<f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}" />
+		</p>
+		<div class="description_projet">
+			<div><strong>Description du projet</strong></div>
+			{newsItem.bodytext -> f:format.crop(maxCharacters: '100', respectWordBoundaries:'1') -> f:format.html()}
+		</div>	
+		<p class="date_agenda">
+			Durée :
+			<f:if condition="{newsItem.begindate->f:format.date()}=={newsItem.finishdate->f:format.date()}">
+	            <f:then>
+	                Le <f:format.date format="%d %h %Y">{newsItem.dateDebut}</f:format.date>
+	            </f:then>
+	            <f:else>
+	                <f:if condition="{newsItem.finishdate}==0">
+	                    <f:then>
+	                        A partir du <f:format.date format="%d %h %Y">{newsItem.begindate}</f:format.date>  
+	                    </f:then>
+	                    <f:else>
+	                        Du <f:format.date format="%d %h">{newsItem.begindate}</f:format.date> au <f:format.date format="%d %h %Y">{newsItem.finishdate}</f:format.date>
+	                    </f:else>
+	                </f:if>
+	            </f:else>
+	        </f:if>
+		</p>
+		<p>
+			<f:if condition="{newsItem.adminvalidation} == 0">
+	            <f:then>
+	                Status : En attente
+	            </f:then>
+	            <f:else>
+	                <f:if condition="{newsItem.adminvalidation}==1">
+	                    <f:then>
+	                       Status : Validé
+	                    </f:then>
+	                    <f:else>
+	                        Status : Refusé
+	                    </f:else>
+	                </f:if>
+	            </f:else>
+	        </f:if>
+			
+		</p>
+	</div>
+</div>

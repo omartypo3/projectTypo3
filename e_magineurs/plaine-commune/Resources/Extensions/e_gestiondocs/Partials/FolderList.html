@@ -1,0 +1,19 @@
+<ul>
+    <f:for each="{folders}" as="folder">
+        <li{f:if(condition:'{doc_racine}=={folder.name}',then:' class="search_inside"')}>
+            <a href="{f:uri.action(arguments:'{folder: folder.combinedIdentifier, category: category, keywords: keywords}')}"{f:if(condition:'{doc_racine}=={folder.name}',then:' aria-current="page"')}>{folder.name}</a>
+            <f:if condition="{folder.subfolders}">
+                <f:render partial="FolderList" arguments="{folders: folder.subfolders, settings: settings, category: category, keywords: keywords,doc_racine: doc_racine}"/>
+            </f:if>
+            <f:if condition="{settings.displayFiles}">
+                <f:if condition="{folder.files}">
+                    <ul>
+                        <f:for each="{folder.files}" as="file">
+                            <li><f:link.typolink parameter="{file.publicUrl}" >{file.name}</f:link.typolink></li>
+                        </f:for>
+                    </ul>
+                </f:if>
+            </f:if>
+        </li>
+    </f:for>
+</ul>

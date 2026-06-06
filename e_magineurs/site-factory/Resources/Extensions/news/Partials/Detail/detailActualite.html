@@ -1,0 +1,236 @@
+{namespace egmap=Emagineurs\EGmap\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  data-namespace-typo3-fluid="true">
+<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+<div class="content_center">
+<div class="col_contenu">
+	<f:if condition="{newsItem.categories}">
+			<f:if condition="{newsItem.categories -> f:count()}>1">
+				<f:then>
+					<span class="cat">
+						<f:for each="{newsItem.categories}" as="category" key="key" iteration="ite">
+							<span>{category.title}</span>
+						</f:for>
+						 
+					</span>
+				</f:then>
+				<f:else>
+					<span class="cat">
+						<f:for each="{newsItem.categories}" as="category" key="key"><span>{category.title}</span></f:for>
+					</span>
+				</f:else>
+			</f:if>
+		</f:if>
+	<f:cObject typoscriptObjectPath="lib.titrePage" />
+				
+	<p class="content-date">
+	
+
+		<span class="date"> Publié le 
+			<time datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+				<f:format.date format="d.m.Y">{newsItem.datetime}</f:format.date>
+				<meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}" />
+			</time>
+		</span>
+	</p>
+	<f:if condition="{newsItem.toptitle}">
+		<div class="teaser-text" itemprop="description">
+			<f:format.html>{newsItem.toptitle}</f:format.html>
+		</div>
+	</f:if>
+	
+	<f:if condition="{newsItem.teaser}">
+		<div class="teaser-text" itemprop="description">
+			<f:format.html>{newsItem.teaser}</f:format.html>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.falMediaPreviews}">
+		<div class="news-img-wrap clearfix">
+			<f:alias map="{mediaElement: '{newsItem.falMediaPreviews.0}'}">
+				<f:if condition="{mediaElement.originalResource.type} == 2">
+					<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}"/>
+				</f:if>
+				<f:if condition="{mediaElement.originalResource.type} == 4">
+					<f:render partial="Detail/FalMediaVideo" arguments="{mediaElement: mediaElement}"/>
+				</f:if>
+				<f:if condition="{mediaElement.originalResource.type} == 5">
+					<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}"/>
+				</f:if>
+				
+				<span class="legend">{mediaElement.description}</span>
+				<f:if condition="{mediaElement.copyright}">
+					<span class="copy">© {mediaElement.copyright}</span>
+				</f:if>
+			</f:alias>
+		</div>
+	</f:if>	
+	<div class="news-text-wrap" itemprop="articleBody">
+		<f:format.html>{newsItem.bodytext}</f:format.html>
+	</div>
+	<f:if condition="{newsItem.contentElements}">
+		<!-- content elements -->
+		<f:cObject typoscriptObjectPath="lib.tx_news.contentElementRendering">{newsItem.contentElementIdList}</f:cObject>
+	</f:if>
+	<f:if condition="{newsItem.relatedFsmediaalbums}">
+		<div class="fs-media-gallery">
+			<f:for each="{newsItem.relatedFsmediaalbums}" as="mediaAlbum" iteration="itemIteration">
+				<div class="related_galery">
+					<h3 class="name">{mediaAlbum.title}</h3>
+					<ul>
+						<f:cObject typoscriptObjectPath="lib.fsMediaGalleryNews" data="{sourceUid:mediaAlbum.uid}" />
+					</ul>				
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.calameoHtml}">
+		<div class="news-calameo">
+			<div class="related_iframe">
+				<f:format.raw>{newsItem.calameoHtml}</f:format.raw>		
+			</div>	
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.iframe}">
+		<div class="news-iframe">
+			<f:if condition="{newsItem.titreIframe}">
+				<h3 class="name">{newsItem.titreIframe}</h3>
+			</f:if>
+			<div class="related_iframe">
+				<f:format.raw>{newsItem.iframe}</f:format.raw>		
+			</div>	
+		</div>
+	</f:if>
+	<f:if condition="{settings.backPid}">
+		<!-- Link Back -->
+		<div class="news-backlink-wrap">
+			<f:link.page pageUid="{settings.backPid}">
+				<f:translate key="back-link" />
+			</f:link.page>
+		</div>
+	</f:if>
+	</div>
+</div>
+<div class="content_right">
+
+	<f:if condition="{newsItem.allRelatedSorted}">
+		<div class="news-related news-related-news frame">
+			<h4>
+				<f:translate key="related-news" />
+			</h4>
+			<ul>
+				<f:for each="{newsItem.allRelatedSorted}" as="related">
+					<li>
+						<n:link newsItem="{related}" settings="{settings}" title="{related.title}">
+							{related.title}
+						</n:link>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.falRelatedFiles}">
+		<div class="news-related news-related-files frame">
+			<h4>
+				<f:translate key="related-files" />
+			</h4>
+			<ul>
+				<f:for each="{newsItem.falRelatedFiles}" as="relatedFile">
+					<li>
+						<span class="news-related-files-link">
+							<a href="{relatedFile.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+								{f:if(condition:relatedFile.originalResource.title, then:relatedFile.originalResource.title, else:relatedFile.originalResource.name)}
+							</a>
+						</span>
+						<span class="news-related-files-extension">{relatedFile.originalResource.extension}</span> - <span class="news-related-files-size"> {relatedFile.originalResource.size -> f:format.bytes()}</span>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:if>
+	<f:if condition="{f:cObject(typoscriptObjectPath:'lib.latNews',data:'{sourceUid:newsItem.uid}')}">
+		<div class="news-related carto frame">
+			<h4>Où ?</h4>
+			<div class="info">
+				<f:if condition="{newsItem.placename}"><strong>{newsItem.placename}</strong><br></f:if>
+				<f:if condition="{newsItem.placeadress}"><f:format.raw>{newsItem.placeadress}</f:format.raw><br></f:if>
+				<f:if condition="{newsItem.eventmail}"><f:format.raw>{newsItem.eventmail}</f:format.raw></f:if>	
+				<f:if condition="{newsItem.authorpublication}">
+					
+						<p>{newsItem.zipcode} {newsItem.authorpublication}</p>
+					
+				</f:if>
+				
+				<f:format.raw>
+					<egmap:map pois="tx_news_domain_model_news_{newsItem.uid}" property="{map:{recherche:{actif:0},zoom:{value:14},noBulle:1}}"/>
+				</f:format.raw>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.poi}">
+		<div class="news-related carto frame">
+			<h4>Où ?</h4>
+			<div class="info">
+				<f:for each="{newsItem.poi}" as="poi">
+					<f:if condition="{poi.name}"><p class="adresse">{poi.name}</p></f:if>
+					<f:if condition="{poi.address}"><p class="adresse">{poi.address}</p></f:if>
+					<f:if condition="{poi.city}"><p class="adresse">{poi.zip} {poi.city}</p></f:if>
+				</f:for>
+				
+				<f:format.raw>
+					<egmap:map pois="tx_news_domain_model_news_{newsItem.uid}" property="{map:{recherche:{actif:0},zoom:{value:14},noBulle:1}}"/>
+				</f:format.raw>
+			</div>
+		</div>
+	</f:if>
+
+
+	<f:if condition="{newsItem.falMedia -> f:count()}>1">
+		<div class="news-img-wrap frame">
+			<f:for each="{newsItem.falMediaPreviews}" as="falMediaPreviews" key="key" iteration="ite">
+				<f:if condition="{ite.isFirst}">
+					<f:then>
+					</f:then>
+					<f:else>
+						<f:if condition="{falMediaPreviews.originalResource.type} == 2">
+							<a href="{f:uri.image(image:falMediaPreviews, width:'{settings.detail.media.image.lightbox.width}', height:'{settings.detail.media.image.lightbox.height}')}" title="{falMediaPreviews.title}" class="{settings.detail.media.image.lightbox.class}" data-fancybox="galerie">
+								<f:image image="{falMediaPreviews}" title="{falMediaPreviews.originalResource.title}" alt="{falMediaPreviews.originalResource.alternative}"/>
+							</a>
+						</f:if>
+						<f:if condition="{falMediaPreviews.originalResource.type} == 4">
+							<f:render partial="Detail/FalMediaVideo" arguments="{falMediaPreviews: falMediaPreviews}"/>
+						</f:if>
+						<f:if condition="{falMediaPreviews.originalResource.type} == 5">
+							<a href="{f:uri.image(image:falMediaPreviews, width:'{settings.detail.media.image.lightbox.width}', height:'{settings.detail.media.image.lightbox.height}')}" title="{falMediaPreviews.title}" class="{settings.detail.media.image.lightbox.class}" data-fancybox="galerie">
+								<f:image image="{falMediaPreviews}" title="{falMediaPreviews.originalResource.title}" alt="{falMediaPreviews.originalResource.alternative}"/>
+							</a>
+						</f:if>
+					</f:else>
+				</f:if>
+			</f:for>
+		</div>
+	</f:if>
+
+	
+	<f:if condition="{newsItem.relatedLinks}">
+		<div class="news-related news-related-links frame">
+			<h4>
+				<f:translate key="related-links" />
+			</h4>
+			<ul>
+				<f:for each="{newsItem.relatedLinks}" as="relatedLink">
+					<li>
+						<f:link.page pageUid="{relatedLink.uri}" title="{relatedLink.title}" target="{n:targetLink(link:relatedLink.uri)}">{f:if(condition: relatedLink.title, then: relatedLink.title, else: relatedLink.uri)}</f:link.page>
+						<f:if condition="{relatedLink.description}"><span>{relatedLink.description}</span></f:if>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</f:if>
+				
+
+</div>
+</div>
+
+

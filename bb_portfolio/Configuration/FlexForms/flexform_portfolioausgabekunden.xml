@@ -1,0 +1,39 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.kategorien>
+						<TCEforms>
+							<label>Kategorieneinschränkung</label>
+							<config>
+								<type>select</type>
+								<renderType>selectMultipleSideBySide</renderType>
+								<foreign_table>tx_bbportfolio_domain_model_kategorien</foreign_table>
+								<size>10</size>
+								<min_items>0</min_items>
+								<max_items>99</max_items>
+								<multiple>1</multiple>
+							</config>
+						</TCEforms>
+					</settings.kategorien>
+					<settings.title>
+						<TCEforms>
+							<label>Überschrift</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+								<max>50</max>
+							</config>
+						</TCEforms>
+					</settings.title>
+					
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

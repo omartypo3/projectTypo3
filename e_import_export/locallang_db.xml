@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for personalisation of the TCA</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+				<label index="be_users.ecachestream">Autoriser le vidage du cache des flux</label>
+				<label index="ecachestream.title">Vider le cache des flux</label>
+				<label index="ecachestream.desc">Vidage du cache des flux</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+				<label index="be_users.ecachestream">Autoriser le vidage du cache des flux</label>
+				<label index="ecachestream.title">Vider le cache des flux</label>
+				<label index="ecachestream.desc">Vidage du cache des flux</label>
+		</languageKey>
+	</data>
+</T3locallang>

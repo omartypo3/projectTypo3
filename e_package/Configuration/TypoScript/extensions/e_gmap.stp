@@ -1,0 +1,52 @@
+plugin.tx_egmap {
+	view {
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$plugin.tx_egmap.view.templateRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$plugin.tx_egmap.view.partialRootPath}
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$plugin.tx_egmap.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_egmap.persistence.storagePid}
+	}
+	settings{
+		templateJs = {$plugin.tx_egmap.settings.templateJs}
+		apiKey = {$plugin.tx_egmap.settings.apiKey}
+		width = {$plugin.tx_egmap.settings.width}
+		height = {$plugin.tx_egmap.settings.height}
+		includeJs{
+			jquery = {$plugin.tx_egmap.settings.includeJs.jquery}
+			gmap = {$plugin.tx_egmap.settings.includeJs.gmap}
+			infobubble = {$plugin.tx_egmap.settings.includeJs.infobubble}
+			markerclusterer = {$plugin.tx_egmap.settings.includeJs.markerclusterer}
+		}
+		map{
+			center{
+				type = {$plugin.tx_egmap.settings.map.center.type}
+				lat = {$plugin.tx_egmap.settings.map.center.lat}
+				lng = {$plugin.tx_egmap.settings.map.center.lng}
+			}
+			zoom {
+				actif = {$plugin.tx_egmap.settings.map.zoom.actif}
+				value = {$plugin.tx_egmap.settings.map.zoom.value}
+				molette = {$plugin.tx_egmap.settings.map.zoom.molette}
+			}
+			streetview.actif = {$plugin.tx_egmap.settings.map.streetview.actif}
+			deplacement.actif = {$plugin.tx_egmap.settings.map.deplacement.actif}
+			type{
+				actif = {$plugin.tx_egmap.settings.map.type.actif}
+				defaut = {$plugin.tx_egmap.settings.map.type.defaut}
+			}
+			draggable = {$plugin.tx_egmap.settings.map.draggable}
+			recherche.actif = {$plugin.tx_egmap.settings.map.recherche.actif}
+			itineraire {
+				actif = {$plugin.tx_egmap.settings.map.itineraire.actif}
+				type = {$plugin.tx_egmap.settings.map.itineraire.type}
+				show = {$plugin.tx_egmap.settings.map.itineraire.show}
+				panel = {$plugin.tx_egmap.settings.map.itineraire.panel}
+			}
+			meteo = {$plugin.tx_egmap.settings.map.meteo}
+			cloud = {$plugin.tx_egmap.settings.map.cloud}
+			trafic = {$plugin.tx_egmap.settings.map.trafic}
+			cluster.actif = {$plugin.tx_egmap.settings.map.cluster.actif}
+		}
+	}
+}

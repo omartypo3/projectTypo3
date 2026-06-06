@@ -1,0 +1,417 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace p=Pingag\PingagAddress\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default"/>
+This template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Map:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+
+
+    <f:comment>
+        <f:debug>{addressCommunication}</f:debug>
+    </f:comment>
+
+
+    <div class="map-wrap communication">
+        <div class="map-filters">
+            <div class="wrapper_filter">
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="Geschlecht">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.geschlecht"/>
+                        </label>
+                        <select id="Geschlecht" class="selectpicker">
+                                <option value="0">
+                                    <f:translate key="tx_pingagaddress_domain_model_communication.label.egal"/>
+                                </option>
+                                <option value="m"><f:translate key="tx_pingagaddress_domain_model_communication.label.mann"/></option>
+                                <option value="f"><f:translate key="tx_pingagaddress_domain_model_communication.label.frau"/></option>
+                                <!-- <option value="v"><f:translate key="tx_pingagaddress_domain_model_communication.label.andere"/></option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="Muttersprache">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.muttersprache"/>
+                        </label>
+                        <select id="Muttersprache" class="selectpicker" data-dropup-auto="false"
+                                data-live-search="true">
+                            <option value="0">
+                                <f:translate key="tx_pingagaddress_domain_model_communication.label.alle"/>
+                            </option>
+                            <f:for each="{languageMother}" as="langMother">
+                                <option value="{langMother.uid}">
+                                    {langMother.name}
+                                </option>
+                            </f:for>
+                            <option value="999999">
+                                <f:translate key="tx_pingagaddress_domain_model_communication.label.andere"/>
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="Techniken">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.techniken"/>
+                        </label>
+                        <span style="display: block; margin-bottom: 10px; font-size: 18px; margin-top: -5px;"><f:translate key="tx_pingagaddress_domain_model_communication.label.mehrfach1"/></span>
+                        <span style="display: block; margin-bottom: 10px; font-size: 18px; margin-top: -5px;"><f:translate key="tx_pingagaddress_domain_model_communication.label.mehrfach2"/></span>
+                        <span style="display: block; margin-bottom: 10px; font-size: 18px; margin-top: -5px;"><f:translate key="tx_pingagaddress_domain_model_communication.label.mehrfach3"/></span>
+                        <select id="Techniken" class="selectpicker" multiple style="height:100px;">
+                            <option value="0">
+                                <f:translate key="tx_pingagaddress_domain_model_communication.label.alle"/>
+                            </option>
+                            <f:for each="{techniques}" as="technique">
+                                <option value="{technique.uid}">
+                                    {technique.name}
+                                </option>
+                            </f:for>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="Sprachen">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.weiteresprachen"/>
+                        </label>
+                        <span style="display: block; margin-bottom: 10px; font-size: 18px; margin-top: -5px;"><f:translate key="tx_pingagaddress_domain_model_communication.label.mehrfach1"/></span>
+                        <span style="display: block; margin-bottom: 10px; font-size: 18px; margin-top: -5px;"><f:translate key="tx_pingagaddress_domain_model_communication.label.mehrfach2"/></span>
+                        <span style="display: block; margin-bottom: 10px; font-size: 18px; margin-top: -5px;"><f:translate key="tx_pingagaddress_domain_model_communication.label.mehrfach3"/></span>
+                        <select id="Sprachen" class="selectpicker" multiple style="height:100px;">
+                            <option value="0">
+                                <f:translate key="tx_pingagaddress_domain_model_communication.label.alle"/>
+                            </option>
+                            <f:for each="{language}" as="lang">
+                                <option value="{lang.uid}">
+                                    {lang.name}
+                                </option>
+                            </f:for>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="Ort">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.einsatzort"/>
+                        </label>
+                        <select id="Ort" class="selectpicker">
+                            <option value="0">
+                                <f:translate key="tx_pingagaddress_domain_model_communication.label.alle"/>
+                            </option>
+                            <f:for each="{ort}" as="ort">
+                                <option value="{ort.uid}">
+                                    {ort.name}
+                                </option>
+                            </f:for>
+                            <f:comment>
+                            <option value="D-CH"><f:translate key="tx_pingagaddress_domain_model_communication.label.dch"/></option>
+                            <option value="Romandie"><f:translate key="tx_pingagaddress_domain_model_communication.label.romandie"/></option>
+                            <option value="TI"><f:translate key="tx_pingagaddress_domain_model_communication.label.ti"/></option>
+                            <option value="Ganze Schweiz"><f:translate key="tx_pingagaddress_domain_model_communication.label.ganzeschweiz"/></option>
+                            <option value="Ausland"><f:translate key="tx_pingagaddress_domain_model_communication.label.ausland"/></option>
+                            </f:comment>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="Gehoerlos">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.hoerstatus"/>
+                        </label>
+                        <select id="Gehoerlos" class="selectpicker">
+                            <option value="-1"><f:translate key="tx_pingagaddress_domain_model_communication.label.egal"/></option>
+                            <f:for each="{gehoerlos}" as="gehoerlos">
+                                <option value="{gehoerlos.uid}">
+                                    {gehoerlos.name}
+                                </option>
+                            </f:for>
+                            <f:comment>
+                            <option value="FALSE"><f:translate key="tx_pingagaddress_domain_model_communication.label.hoerend"/></option>
+                            <option value="TRUE"><f:translate key="tx_pingagaddress_domain_model_communication.label.gehoerlos"/></option>
+                            </f:comment>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <label for="notwenidg">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.autonotwendig"/>
+                        </label>
+                        <select id="notwenidg" class="selectpicker">
+                            <option value=""><f:translate key="tx_pingagaddress_domain_model_communication.label.egal"/></option>
+                            <option value="FALSE"><f:translate key="tx_pingagaddress_domain_model_communication.label.nein"/></option>
+                            <option value="TRUE"><f:translate key="tx_pingagaddress_domain_model_communication.label.ja"/></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="formfield">
+                        <button id="resetFiltersButton" class="btn-yellow">
+                            <f:translate key="tx_pingagaddress_domain_model_communication.label.deletefilter"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="text" hidden="true" class="ajaxaddresscommunication"
+           value="{f:uri.action(action: 'list',pageType: '1996')}">
+
+    <div id="locations" class="location-list">
+        <div class="container">
+            
+                    <h2 class="counter" data-format="" aria-live="polite">
+                        <f:translate key="tx_pingagaddress_domain_model_communication.label.kontakte"/>
+                        ({addressCommunication  -> f:count()})
+                    </h2>
+                    <button onclick="window.print()" class="btn-yellow">
+                        <f:translate key="tx_pingagaddress_domain_model_communication.label.print"/>
+                    </button>
+                    <div class="table table-hover">
+                        <f:for each="{addressCommunication}" as="communicationObj" iteration="iterator">
+
+                            <div class="location accordion" id="adr{communicationObj.uid}">
+                                <div class="locationwrapper">
+                                    <h3 class="title likeh4 event-title">
+                                        <button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect{communicationObj.uid}" id="accordion{communicationObj.uid}id">
+                                            <span class="accordion-title">
+                                                {communicationObj.lastName} {communicationObj.firstName}<f:if condition="{communicationObj.region}">, {communicationObj.region}</f:if>
+                                                <span class="accordion-icon"></span>
+                                            </span>
+                                        </button>
+                                        
+                                    </h3>
+                                    <div id="sect{communicationObj.uid}" role="region" aria-labelledby="accordion{communicationObj.uid}id" class="accordion-panel" hidden>
+                                        <div class="left">
+                                            <f:comment>
+                                                <p><f:format.html>{communicationObj.address}</f:format.html></p>
+                                            </f:comment>
+                                            
+                                            <f:if condition="{communicationObj.city}"><p><b><f:translate key="tx_pingagaddress_domain_model_communication.label.wohnort"/>:</b> {communicationObj.city}</p></f:if>
+                                            <p><f:if condition="{communicationObj.phone}"><b><f:translate key="tx_pingagaddress_domain_model_communication.label.phone"/>:</b> {communicationObj.phone}</f:if><f:if condition="{communicationObj.phone} && {communicationObj.mobile}">, </f:if><f:if condition="{communicationObj.mobile}"><b><f:translate key="tx_pingagaddress_domain_model_communication.label.mobile"/>:</b> {communicationObj.mobile}</f:if></p>
+                                            <f:if condition="{communicationObj.email}"><p style="display:inline;" class="email-infowindow"><b><f:translate key="tx_pingagaddress_domain_model_communication.label.mail"/>:</b> <f:link.email email="{communicationObj.email}">{communicationObj.email}</f:link.email></p></f:if>
+                                       
+                                            <div class="communication-details closed">
+                                                <f:if condition="{communicationObj.birthday}"><br><p><b><f:translate key="tx_pingagaddress_domain_model_communication.label.geburtsjahr"/>:</b> <f:format.date date="{communicationObj.birthday}" format="Y" /></p></f:if>
+
+                                                <f:comment>
+                                                <p><b><f:translate key="tx_pingagaddress_domain_model_communication.label.hoerstatus"/>:</b>
+                                                    <f:if condition="{communicationObj.gehoerlos}">
+                                                        <f:then>
+                                                            <f:translate key="tx_pingagaddress_domain_model_communication.label.gehoerlos"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                            <f:translate key="tx_pingagaddress_domain_model_communication.label.hoerend"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                </p>
+                                                </f:comment>
+
+
+                                                    <f:if condition="{communicationObj.gehoerlos}">
+                                                        <f:then>
+                                                            <p><b><f:translate key="tx_pingagaddress_domain_model_communication.label.hoerstatus"/>:</b>
+                                                                <f:for each="{communicationObj.gehoerlos}" as="gehoerlos" iteration="iterator">
+                                                                    {gehoerlos.name}<f:if condition="!{iterator.isLast}"> <f:translate key="tx_pingagaddress_domain_model_communication.label.und"/> </f:if>
+                                                                </f:for>
+                                                            </p>
+                                                        </f:then>
+                                                    </f:if>
+
+                                            <p><f:comment><f:translate key="tx_pingagaddress_domain_model_communication.label.kommunikationsformen"/>:</f:comment>
+                                            <f:variable name="mutterSpracheCount" value="{communicationObj.mutterSprache -> f:count()}" />
+                                                <f:if condition="{mutterSpracheCount} > 0">
+                                                    <b><f:translate key="tx_pingagaddress_domain_model_communication.label.muttersprache"/>:</b>
+                                                        <f:for each="{communicationObj.mutterSprache}" as="mutterSprache" iteration="iterator">
+                                                            {mutterSprache.name}<f:if condition="!{iterator.isLast}"> <f:translate key="tx_pingagaddress_domain_model_communication.label.und"/> </f:if>
+                                                    </f:for>
+                                                </f:if>
+                                                </p>
+
+                                                <p>
+                                                <f:variable name="weitereSprachenOralCount" value="{communicationObj.weitereSprachenOral -> f:count()}" />
+                                                <f:if condition="{weitereSprachenOralCount} > 0">
+                                                    <b><f:translate key="tx_pingagaddress_domain_model_communication.label.weiteresprachen"/>:</b> <br/>
+                                                    <f:for each="{communicationObj.weitereSprachenOral}" as="weitereSprachenOral" iteration="iterator">
+                                                        <f:comment>
+                                                        <f:variable name="getOrginalOral" value="{p:getOrginal(uid:'{weitereSprachenOral.uid}',table:'tx_pingagaddress_domain_model_languageoral')}" />
+                                                        <f:if condition="{getOrginalOral.exist} == 0">
+                                                            <f:then>
+                                                                {getOrginalOral.langugeOrgin} <f:translate key="tx_pingagaddress_domain_model_communication.label.oral"/> {getOrginalOral.levelOrgin} <f:if condition="!{iterator.isLast}"> <f:translate key="tx_pingagaddress_domain_model_communication.label.und"/> </f:if>
+                                                            </f:then>
+                                                            <f:else>
+                                                                {weitereSprachenOral.language.name} <f:translate key="tx_pingagaddress_domain_model_communication.label.oral"/> {weitereSprachenOral.level.name}<f:if condition="!{iterator.isLast}"> <f:translate key="tx_pingagaddress_domain_model_communication.label.und"/> </f:if>
+                                                            </f:else>
+                                                        </f:if>
+                                                        </f:comment>
+                                                        {weitereSprachenOral.language.name} <f:translate key="tx_pingagaddress_domain_model_communication.label.oral"/> {weitereSprachenOral.level.name}<f:if condition="!{iterator.isLast}"> <br/> </f:if>
+
+                                                    </f:for>
+                                                </f:if>
+                                                
+                                                <f:variable name="weitereSprachenWrittenCount" value="{communicationObj.weitereSprachenWritten -> f:count()}" />
+                                                <f:if condition="{weitereSprachenWrittenCount} > 0">
+                                                    <br><f:comment><f:translate key="tx_pingagaddress_domain_model_communication.label.und"/></f:comment>
+                                                    <f:for each="{communicationObj.weitereSprachenWritten}" as="weitereSprachenWritten" iteration="iterator">
+                                                        <f:comment>
+
+                                                        <f:variable name="getOrginal" value="{p:getOrginal(uid:'{weitereSprachenWritten.uid}',table:'tx_pingagaddress_domain_model_languagewritten')}" />
+                                                        <f:if condition="{getOrginal.exist} == 0">
+                                                            <f:then>
+                                                                {getOrginal.langugeOrgin} <f:translate key="tx_pingagaddress_domain_model_communication.label.written"/> {getOrginal.levelOrgin} <f:if condition="!{iterator.isLast}"> <f:translate key="tx_pingagaddress_domain_model_communication.label.und"/> </f:if>
+                                                            </f:then>
+                                                            <f:else>
+                                                                {weitereSprachenWritten.language.name} <f:translate key="tx_pingagaddress_domain_model_communication.label.written"/> {weitereSprachenWritten.level.name}<f:if condition="!{iterator.isLast}"> <f:translate key="tx_pingagaddress_domain_model_communication.label.und"/> </f:if>
+                                                            </f:else>
+                                                        </f:if>
+                                                        </f:comment>
+                                                        {weitereSprachenWritten.language.name} <f:translate key="tx_pingagaddress_domain_model_communication.label.written"/> {weitereSprachenWritten.level.name}<f:if condition="!{iterator.isLast}"> <br/> </f:if>
+
+                                                    </f:for>
+                                                </f:if>
+                                                </p>
+
+                                                <p>
+                                                    <f:variable name="technikenlevelCount" value="{communicationObj.technikenlevel  -> f:count()}" />
+                                                    <f:if condition="{technikenlevelCount} > 0">
+                                                        <b><f:translate key="tx_pingagaddress_domain_model_communication.label.techniken"/>:</b> <br/>
+                                                        <f:for each="{communicationObj.technikenlevel}" as="technikenlevel" iteration="iterator">
+                                                            {technikenlevel.techniques.name} {technikenlevel.level.name} <f:if condition="!{iterator.isLast}"> <br/> </f:if>
+                                                        </f:for>
+                                                    </f:if>
+                                                </p>
+                                            </div>
+
+                                            <f:variable name="availableCount" value="{communicationObj.available -> f:count()}" />
+                                            <f:if condition="{availableCount} > 0">
+                                                <p>
+                                                    <b><f:translate key="tx_pingagaddress_domain_model_communication.label.verfuegbarkeit"/>: </b>
+                                                    <f:for each="{communicationObj.available}" as="available" iteration="iterator">
+                                                        {available.name}<f:if condition="!{iterator.isLast}">, </f:if>
+                                                    </f:for>
+                                                </p>
+                                            </f:if>
+
+                                            <f:variable name="placeofuseCount" value="{communicationObj.placeofuse -> f:count()}" />
+                                            <f:if condition="{placeofuseCount} > 0">
+                                                <p>
+                                                    <b><f:translate key="tx_pingagaddress_domain_model_communication.label.einsatzgebiet"/>: </b>
+                                                    <f:for each="{communicationObj.placeofuse}" as="placeofuse" iteration="iterator">
+                                                        {placeofuse.name}<f:if condition="!{iterator.isLast}">, </f:if>
+                                                    </f:for>
+                                                </p>
+                                            </f:if>
+
+                                            <p><b><f:translate key="tx_pingagaddress_domain_model_communication.label.auto"/>:</b> <f:if condition="{communicationObj.autoBenoetigt}"><f:then><f:translate key="tx_pingagaddress_domain_model_communication.label.ja"/></f:then><f:else><f:translate key="tx_pingagaddress_domain_model_communication.label.nein"/></f:else></f:if></p>
+                                                           
+                                            <f:variable name="spezielleCount" value="{communicationObj.spezielle -> f:count()}" />
+                                            <f:if condition="{spezielleCount} > 0">
+                                                <b> <f:translate key="tx_pingagaddress_domain_model_communication.label.spezielle"/>: </b>
+                                                <f:for each="{communicationObj.spezielle}" as="spezielle" iteration="iterator">
+                                                    {spezielle.name}<f:if condition="!{iterator.isLast}">, </f:if>
+                                                </f:for>
+                                            </f:if>
+                                        
+                                            <!-- <p class="www"><a href="https://www.aargauer-sehhilfe.ch" target="_blank">www.aargauer-sehhilfe.ch</a></p> -->
+                                        
+                                    </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+
+                        </f:for>
+                    </div>
+        </div>
+    </div>                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <f:comment>
+    <table>
+        <tr>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Geschlecht</th>
+            <th>Adresse</th>
+            <th>Gehörlos</th>
+            <th>Techniken</th>
+            <th>Muttersprache(n)</th>
+            <th>Weitere Sprachen(n)</th>
+            <th>Einsatzort</th>
+            <th>Auto benötigt</th>
+        </tr>
+        <f:for each="{addressCommunication}" as="communicationObj">
+            <tr>
+                <td>{communicationObj.firstName}</td>
+                <td>{communicationObj.lastName}</td>
+                <td>
+                    <f:switch expression="{communicationObj.gender}">
+                        <f:case value="m">Männlich</f:case>
+                        <f:case value="w">Weiblich</f:case>
+                        <f:case value="v">Andere</f:case>
+                        <f:defaultCase>Nicht definiert</f:defaultCase>
+                    </f:switch>
+                </td>
+                <td>
+                    <f:format.html>{communicationObj.address}</f:format.html>
+                </td>
+                <td>{communicationObj.gehoerlos?"Ja":"Nein"}</td>
+                <td>
+                    <f:for each="{communicationObj.techniken}" as="technik" iteration="iterator">
+                        {technik.name}
+                        <f:if condition="!{iterator.isLast}">,</f:if>
+                    </f:for>
+                </td>
+                <td>
+                    <f:for each="{communicationObj.mutterSprache}" as="mutterSprache" iteration="iterator">
+                        {mutterSprache.name}
+                        <f:if condition="!{iterator.isLast}">,</f:if>
+                    </f:for>
+                </td>
+                <td>
+                    <f:for each="{communicationObj.weitereSprachen}" as="weitereSprache" iteration="iterator">
+                        {weitereSprache.name}
+                        <f:if condition="!{iterator.isLast}">,</f:if>
+                    </f:for>
+                </td>
+                <td>{communicationObj.einsatzort}</td>
+                <td>{communicationObj.autobenoetigt?"Ja":"Nein"}</td>
+            </tr>
+        </f:for>
+    </table>
+    </f:comment>
+
+    <!-- END: new code Google search field -->
+</f:section>
+</html>

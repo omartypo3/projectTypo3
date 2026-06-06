@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:pingag_address/Resources/Private/Language/locallang_csh_tx_pingagaddress_domain_model_addressperson.xlf" date="2023-11-09T09:29:49Z" product-name="pingag_communication">
+		<header/>
+		<body>
+            <trans-unit id="kommunikationsassistenten.description" resname="kommunikationsassistenten.description">
+				<source>kommunikationsassistenten</source>
+			</trans-unit>
+			<trans-unit id="gehoerlos.description" resname="gehoerlos.description">
+				<source>gehoerlos</source>
+			</trans-unit>
+			<trans-unit id="einsatzort.description" resname="einsatzort.description">
+				<source>einsatzort</source>
+			</trans-unit>
+			<trans-unit id="auto_benoetigt.description" resname="auto_benoetigt.description">
+				<source>autoBenoetigt</source>
+			</trans-unit>
+			<trans-unit id="techniken.description" resname="techniken.description">
+				<source>techniken</source>
+			</trans-unit>
+			<trans-unit id="mutter_sprache.description" resname="mutter_sprache.description">
+				<source>mutterSprache</source>
+			</trans-unit>
+			<trans-unit id="weitere_sprachen.description" resname="weitere_sprachen.description">
+				<source>weitereSprachen</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

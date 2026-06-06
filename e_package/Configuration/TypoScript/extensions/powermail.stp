@@ -1,0 +1,66 @@
+plugin.tx_powermail {
+	view {
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_powermail.view.templateRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_powermail.view.partialRootPath}
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_powermail.view.layoutRootPath}
+	}
+	_LOCAL_LANG {
+		fr {
+			confirmation_message = Ces informations sont-elles correctes ?
+			datepicker_format_date = d/m/Y
+			datepicker_format_time = d/m/Y H:i:s
+		}
+	}
+	settings {
+		setup {
+			spamshield {
+				email = {$e_magineurs.tx_powermail.settings.sender.email}
+				emailSubject = {$e_magineurs.tx_powermail.settings.spamshield.emailSubject}
+				emailTemplate = {$e_magineurs.tx_powermail.settings.spamshield.emailTemplate}
+				logfileLocation = {$e_magineurs.tx_powermail.settings.spamshield.logfileLocation}
+				logTemplate = {$e_magineurs.tx_powermail.settings.spamshield.logTemplate}
+				indicator {
+					linkLimit = {$e_magineurs.tx_powermail.settings.spamshield.linkLimit}
+					blacklistStringValues = {$e_magineurs.tx_powermail.settings.spamshield.blacklistStringValues}
+					blacklistIpValues = {$e_magineurs.tx_powermail.settings.spamshield.blacklistIpValues}
+				}
+			}
+			misc {
+				showOnlyFilledValues = {$e_magineurs.tx_powermail.settings.misc.showOnlyFilledValues}
+				ajaxSubmit = {$e_magineurs.tx_powermail.settings.misc.ajaxSubmit}
+				file {
+					folder = {$e_magineurs.tx_powermail.settings.misc.folder}
+					size = {$e_magineurs.tx_powermail.settings.misc.size}
+					extension = {$e_magineurs.tx_powermail.settings.misc.extension}
+				}
+				datepicker {
+					forceJavaScriptDatePicker = {$e_magineurs.tx_powermail.settings.misc.forceJavaScriptDatePicker}
+				}
+			}
+			sender {
+				name = {$e_magineurs.conf.siteTitle}
+				email = {$e_magineurs.conf.sender.email}
+			}
+			receiver.default.senderName.value = {$e_magineurs.conf.siteTitle}
+			receiver.overwrite {
+				senderEmail = TEXT
+				senderEmail.value = {$e_magineurs.conf.sender.email}
+
+				senderName = TEXT
+				senderName.value = {$e_magineurs.conf.siteTitle}
+			}
+		}
+	}
+}
+
+# add jQuery if it was turned on in the constants
+[{$e_magineurs.tx_powermail.settings.javascript.addJQueryFromGoogle} > 0]
+page.includeJSFooterlibs.powermailJQuery = {$plugin.tx_powermail.settings.javascript.powermailJQuery}
+page.includeJSFooterlibs.powermailJQuery.external = 1
+[end]
+
+# add jQuery if it was turned on in the constants
+[{$e_magineurs.tx_powermail.settings.javascript.addAdditionalJavaScript} > 0]
+	page.includeJSFooter.powermailJQueryDatepicker >
+	page.includeJSFooter.powermailJQueryTabs = {$e_magineurs.conf.dossierPublic}/JavaScript/Tabs.js
+[end]

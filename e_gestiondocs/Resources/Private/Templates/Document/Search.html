@@ -1,0 +1,21 @@
+{<f:layout name="Empty" />
+
+<f:section name="content">
+    <f:form object="{filter}" name="filter" method="post" >
+        <fieldset>
+            <legend>Search</legend>
+            <f:form.hidden property="orderBy" value="{filter.orderBy}" />
+            <f:form.hidden property="orderDirection" value="{filter.orderDirection}" />
+
+            <label for="folder-1" >Chaton</label> : <f:form.checkbox id="folder-1" property="folder" value="1:/user_upload/chaton/" /><br/>
+            <label for="folder-2" >Google</label> : <f:form.checkbox id="folder-2" property="folder" value="1:/user_upload/google/" /><br/>
+            <label for="folder-3" >Totalies spies</label> : <f:form.checkbox id="folder-3" property="folder" value="1:/user_upload/totalies_spies/" /><br/>
+
+            <label for="imageFormat" >Image format</label> : <f:form.select id="imageFormat" property="imageFormat" options="{1: 'Landscape', 2: 'Portrait', 3: 'Square'}" prependOptionLabel="All formats" prependOptionValue="" /><br/>
+
+            <label for="keywords" >Keywords</label> : <f:form.textfield id="keywords" property="keywords" /><br/>
+            <label for="category" >Category</label> : <f:form.select id="category" property="category" options="{categories}" optionLabelField="title" prependOptionValue="" prependOptionLabel="" /><br/>
+            <f:form.submit value="Send" />
+        </fieldset>
+    </f:form>
+</f:section>

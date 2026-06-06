@@ -1,0 +1,10 @@
+############################
+### CUSTOM SUBCATEGORIES ###
+###########################
+# customsubcategory=780=LLL:EXT:ns_revolution_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_revolution_slider_slider.storageConfiguration
+plugin.tx_nsrevolutionslider_slider {
+    settings {
+        # cat=plugin.tx_nsrevolutionslider_slider/780/10; type=boolean; label=LLL:EXT:ns_revolution_slider/Resources/Private/Language/locallang_db.xlf:tx_ns_revolution_slider_slider.includeJquery
+        includeJquery = 1
+    }
+}

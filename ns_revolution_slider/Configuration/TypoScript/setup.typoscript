@@ -1,0 +1,21 @@
+
+plugin.tx_nsrevolutionslider_slider {
+    features {
+        # skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+        # Should be on by default, but can be disabled if all action in the plug-in are uncached
+        requireCHashArgumentForActionArguments = 1
+    }
+}
+
+page {
+    includeJS{
+        jquery = EXT:ns_revolution_slider/Resources/Public/Js/jquery-3.5.1.min.js
+        jquery.if.isTrue = {$plugin.tx_nsrevolutionslider_slider.settings.includeJquery}
+    }
+    includeJSFooter {
+        functions = EXT:ns_revolution_slider/Resources/Public/Js/revslider.functions.typo3.js
+    }
+}
+

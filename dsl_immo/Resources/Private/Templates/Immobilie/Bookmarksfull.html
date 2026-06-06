@@ -1,0 +1,34 @@
+<!--TYPO3SEARCH_end-->
+
+<f:if condition="{immobilien}">
+	<f:else>
+		<p>Merkliste leer.</p>
+	</f:else>
+</f:if>
+
+
+
+<section id="search-filter">
+
+	<figure><h3><i class="fa fa-search"></i>Wohnungen auf der Merkliste:</h3>
+
+		<span class="search-count"><f:if condition="{immobilien}"><f:count subject="{immobilien}" /></f:if></span>
+
+		
+
+	</figure>
+
+</section>
+
+<section id="properties" class="display-lines">
+	<f:for each="{immobilien}" as="immobilie" iteration="iterator">
+		<f:render partial="Immobilie/ListItem" arguments="{_all}" />
+	</f:for>
+</section>	
+
+
+<f:comment>
+	<v:asset.script path="EXT:dsl_immo/Resources/Public/js/bookmarksFull.js" name="dslimmojs" dependencies="jquery,script" />
+</f:comment>
+
+<!--TYPO3SEARCH_begin-->

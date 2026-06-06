@@ -1,0 +1,85 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">{notification.betreff}.</f:section>
+
+<f:section name="bodyHtml">
+	<f:comment><!--{notification.bodyHtml -> f:format.raw()}<br>
+	<br>
+	Benutzername: {notification.benutzername}<br>
+	Passwort: {notification.passwort}<br>
+	<br>
+	Link zum Login: <a href="https://kd.dsl-factory.de">https://kd.dsl-factory.de</a><br>
+	=========================--></f:comment>
+	
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; color:rgb(152, 152, 152); text-align:center;"><p>{notification.betreff}.</p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+            		<td colspan="2"><b style="font-family:Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);">Ihre Zugangsdaten</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Benutzername:</td>
+					<td>{notification.benutzername}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Passwort:</td>
+					<td>{notification.passwort}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">zum Login:</td>
+					<td><a href="https://kd.dsl-factory.de/" style="font-family:Helvetica,Arial,sans-serif; text-decoration: none; color:#fd8320;">https://kd.dsl-factory.de/</a></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; margin-top: 15px; margin-bottom: 15px;">{notification.bodyHtml -> f:format.raw()}<br><br>
+	Wenn Sie Fragen zu dieser E-Mail und/oder dem <a href="https://kd.dsl-factory.de/" style="font-family:Helvetica,Arial,sans-serif; text-decoration: none; color:#fd8320;">Kundencenter</a> haben, können Sie uns gern kontaktieren.<br><br>
+	Diese E-Mail wurde automatisch von unserem System verschickt. Sollte es Probleme/Fragen zum Auftrag oder dieser Nachricht geben, kontaktieren Sie uns über die untenstehenden Kontaktdaten oder antworten einfach auf diese E-Mail.<br><br></div>
+
+	<f:render partial="Mail/FragenKundenkontoHtml" arguments="{_all}" />
+	
+	
+	
+</f:section>
+
+<f:section name="bodyText">{notification.betreff}.
+	
+----------------------------------
+	
+Ihre Zugangsdaten
+
+Benutzername: {notification.benutzername}
+Passwort: {notification.passwort}
+zum Login: https://kd.dsl-factory.de/
+	
+----------------------------------
+	
+{notification.bodyHtml -> f:format.raw()}
+	
+Wenn Sie Fragen zu dieser E-Mail und/oder dem Kundencenter (https://kd.dsl-factory.de/) haben, können Sie uns gern kontaktieren.
+	
+Diese E-Mail wurde automatisch von unserem System verschickt. Sollte es Probleme/Fragen zum Auftrag oder dieser Nachricht geben, kontaktieren Sie uns über die untenstehenden Kontaktdaten oder antworten einfach auf diese E-Mail.
+
+<f:render partial="Mail/FragenKundenkontoText" arguments="{_all}" /></f:section>

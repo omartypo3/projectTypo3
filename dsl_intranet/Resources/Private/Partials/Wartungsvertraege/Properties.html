@@ -1,0 +1,119 @@
+
+<script>var wartungsvertraegeUid = {wartungsvertraege.uid};</script>
+
+
+
+
+<div class="layout-box">
+	<div class="layout-table table-toolbar">
+		<div class="layout-table-row">
+			<div class="layout-table-col">
+
+
+				<div class="table-toolbar-container">
+
+
+					<f:if condition="{wartungsvertraege.kunde}"><h3 class="dslHeadline">[{wartungsvertraege.kunde.nummer}] <strong>{wartungsvertraege.kunde.name}</strong></h3></f:if>
+					<h2>[{wartungsvertraege.nr}] <strong>{wartungsvertraege.titel}</strong></h2>
+
+				</div>
+
+			</div>
+			<div class="layout-table-col table-toolbar-btn-list">
+				<f:render partial="Wartungsvertraege/PropertiesToolbarBtnList" arguments="{_all}" />
+			</div>
+			<f:if condition="{auftraege.status}<70"><f:if condition="{auftraege.rights.edit}">
+			   <f:then>
+				<div class="layout-table-col table-toolbar-col-counter">
+					<f:render partial="Auftraege/PropertiesToolbarCounter" arguments="{_all}" />
+				</div>
+				</f:then>
+				<f:else>
+					<div id="stoppuhr_{auftraege.uid}_clock"  data-kontingent="{tracker.trackerSeconds}" data-zeitnahme="{f:if(condition: '{tracker.lastTrackerSegmente.opened}', then: '1', else: '0')}"></div>
+				</f:else>
+				</f:if></f:if>
+		</div>        
+	</div>
+</div>
+
+
+
+<div class="layout-table layout-table-medium-full">
+    <div class="layout-table-row">
+       <div class="layout-table-col layout-table-col-50-percent">
+            <div class="layout-box">
+            	<div class="content_container_header"><span><i class="fa fa-pencil" aria-hidden="true"></i>Beschreibung / Anmerkungen</span><a href="#" class="content_container_toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i><i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+<div class="content_container">
+				
+            		<f:format.html>{wartungsvertraege.beschreibung}</f:format.html>
+	
+	<f:if condition="{wartungsvertraege.optionen}"><ul style="padding-left:15px;"><f:for each="{wartungsvertraege.optionen}" as="option"><li>{option.titel}</li></f:for></ul></f:if>
+				</div>
+           </div> 
+        </div>
+        <div class="layout-table-col layout-table-col-50-percent">
+            <div class="layout-box">
+				
+				
+				
+				<div class="content_container_header"><span><i class="fa fa-info" aria-hidden="true"></i>Vertragsdaten</span><a href="#" class="content_container_toggle"><i class="fa fa-chevron-up" aria-hidden="true"></i><i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
+<div class="content_container">
+					
+           			<div class="layout-table"><div class="layout-table-row"><div class="layout-table-col layout-table-col-50-percent">
+           			
+						<div><strong>Vertragsbegin:</strong> {wartungsvertraege.vertragsbegin->f:format.date(format: 'd.m.Y')}</div>
+						<div><strong>Laufzeit:</strong> <f:translate key="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.{wartungsvertraege.laufzeit}" /></div>
+						<div><strong>Re.-Intervall:</strong> <f:translate key="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.{wartungsvertraege.reIntervall}" /></div>
+						<div><strong>Kündigungsfrist:</strong> <f:translate key="tx_dslintranet_domain_model_wartungsvertraege.re_intervall.{wartungsvertraege.kuendigungsFrist}" /></div>
+					
+					</div><div class="layout-table-col layout-table-col-50-percent">
+					
+
+						<div><strong>Kontingent:</strong> {f:if(condition: wartungsvertraege.stundenProJahr, then: '{wartungsvertraege.stundenProJahr} Stunden pro Jahr')}</div>
+						<div><strong>Preis Monatlich:</strong> {wartungsvertraege.preisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}&nbsp;Netto in Euro</div>
+						<div><strong>Mehraufwand:</strong> {wartungsvertraege.preisMehraufwandStunde->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}&nbsp;Netto in Euro je Stunde</div>
+						
+						
+					</div></div></div>
+							
+				</div>
+				
+           </div> 
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+<br>
+<div id="wartungsvertraegetabs_{wartungsvertraege.uid}">
+  <ul>
+
+    <li><a href="#wartungsvertraegetabs_{wartungsvertraege.uid}_zeitkonto"><strong>Zeitkonto</strong></a></li>
+	  <li><a href="#wartungsvertraegetabs_{wartungsvertraege.uid}_rechnungen"><strong>Abrechnung</strong><f:if condition="{wartungsvertraege.offeneRechnungen}">&nbsp;&nbsp;<span class="label label-warning" style="font-weight:normal;"><strong>{wartungsvertraege.offeneRechnungen}</strong></span></f:if></a></li>
+	
+  </ul>
+  
+  
+  <div id="wartungsvertraegetabs_{wartungsvertraege.uid}_zeitkonto"><f:render partial="WartungZeiteintraege/List" arguments="{_all}" /></div>
+  <div id="wartungsvertraegetabs_{wartungsvertraege.uid}_rechnungen"><f:render partial="WartungRechnungen/List" arguments="{_all}" /></div>
+  
+</div>
+
+
+<script>
+	var wartungsvertraegeTabsUid = "#wartungsvertraegetabs_{wartungsvertraege.uid}";
+	$(document).ready(function() {
+		
+		$( wartungsvertraegeTabsUid ).tabs({
+			collapsible: false,
+			activate: function( event, ui ) {
+				/*platzhalter wegen fluid Javascript Problem*/
+			}
+				
+		});
+		
+	});
+</script>

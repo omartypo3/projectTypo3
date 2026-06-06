@@ -1,0 +1,191 @@
+
+<div class="content_container">
+
+
+
+
+<table id="zeiteintraegeList{auftraege.uid}" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+    <tr>
+        <th>Zeitspanne</th>
+        <th>Tätigkeit</th>
+		<th>Zeit</th>
+		<th>Minuten</th>
+		<th>Zeit verechnet</th>
+		<th>MinutenVerechnet</th>
+		<th>Mehra.</th>
+        <th>Mehraufwand Minuten</th>
+        <th>MA</th>
+		
+    </tr>
+    </thead>
+    <tbody>
+        <f:for each="{auftraege.zeiten}" as="zeiteintraege">
+        	<f:if condition="{zeiteintraege.end}">
+            	
+					<f:render partial="KundenZeiteintraege/ListRow" arguments="{_all}" />         
+			
+                
+            </f:if>
+        </f:for>
+    </tbody>
+   <tfooter>
+    <tr>
+        <td>&nbsp;</td>
+        
+        <td align="right"><strong>Gesamt:</strong></td>
+		<td><strong><span class="zeiteintraegeSum">0</span></strong></td>
+		<td><strong><span class="zeiteintraegeVerechnetSum">0</span></strong></td>
+		
+		<td><strong><span class="zeiteintraegeMehraufwandSum">0</span></strong></td>
+        <td>&nbsp;</td>
+      
+        
+    </tr>
+    </tfooter>
+</table>
+
+</div>
+
+<script>
+
+	$('#zeiteintraegeList'+auftraegeUid).DataTable({
+		 "dom": '<"top"<"float_left addBtnContainer"><"float_left"i>f>rt<"bottom"><"clear">', /*http://datatables.net/examples/basic_init/dom.html*/
+			/*"orderFixed": {	"post": [ 0, 'asc' ]},*/
+			"order": [[ 0, "desc" ]],
+			"columnDefs": [
+				{
+					"targets": [ 0 ],
+					"width":'100px'
+				},
+				{
+					"targets": [ 1 ],
+					"orderable": false
+				},
+				{
+					"targets": [ 2 ],
+					"width":'130px'
+				},
+
+
+				{
+					"targets": [ 3 ],
+					"visible": false,
+					"searchable": false,
+					
+				},
+
+				{
+					"targets": [ 4 ],
+					"width":'130px'
+				},
+				{
+					"targets": [ 5 ],
+					"visible": false,
+					"searchable": false,
+					
+				},
+				
+				
+				{
+					"targets": [ 6 ],
+					"width":'80px'
+				},
+				
+				{
+					"targets": [ 7 ],
+					"visible": false,
+					"searchable": false,
+					
+				},
+				
+				{
+					"targets": [ 8 ],
+					"width":'40px'
+				},
+				
+			],
+			paging: false,
+			"language": {
+				"decimal":        "",
+				"emptyTable":     "Keine Daten gefunden",
+				"info":           "Einträge: _TOTAL_ ",
+				"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+				"infoFiltered":   " von _MAX_ (gefiltert)",
+				"infoPostFix":    "",
+				"thousands":      ",",
+				"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+				"loadingRecords": "Lädt...",
+				"processing":     "Processing...",
+				"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a><a class="clearFilter"><i class="fa fa-lg fa-times"></i></a>',
+				"searchPlaceholder": "Suche",
+				"zeroRecords":    "Keine Ergebnisse gefunden",
+				"paginate": {
+					"first":      "Erste",
+					"last":       "Letzte",
+					"next":       "Nächste",
+					"previous":   "Vorhergehende"
+				},
+				"aria": {
+					"sortAscending":  ": activate to sort column ascending",
+					"sortDescending": ": activate to sort column descending"
+				}
+			},
+			drawCallback: function () {
+				var api = this.api();
+				//$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( api.column( 4,  {page:'current'} ).data().sum() );
+				$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( getZeitraumForMinutes(api.column( 3,  {page:'current'} ).data().sum() ) );
+				
+
+
+				var zeiteintraegeVerechnetSum = getZeitraumForMinutes(api.column( 5,  {page:'current'} ).data().sum() );
+				if(zeiteintraegeVerechnetSum){
+					$('#'+$(this).attr('id')+' .zeiteintraegeVerechnetSum').text( zeiteintraegeVerechnetSum );
+				} else {
+					$('#'+$(this).attr('id')+' .zeiteintraegeVerechnetSum').text( '' );
+				}
+
+				var zeiteintraegeMehraufwandSum = getZeitraumForMinutes(api.column( 7,  {page:'current'} ).data().sum() );
+				if(zeiteintraegeMehraufwandSum){
+					$('#'+$(this).attr('id')+' .zeiteintraegeMehraufwandSum').text( zeiteintraegeMehraufwandSum );
+				} else {
+					$('#'+$(this).attr('id')+' .zeiteintraegeMehraufwandSum').text( '' );
+				}
+				
+
+
+				
+
+				
+
+				$( '#'+$(this).attr('id')+'_addBtn'  ).detach().appendTo( '#'+$(this).attr('id')+'_wrapper .addBtnContainer' );
+				//$('#'+$(this).attr('id')+' .addBtnContainer').html('abc!!');
+				//.html('bääh');
+			 
+			 
+			}
+	});
+
+	$('#zeiteintraegeList'+auftraegeUid+'_wrapper .clearFilter').on('click', function() {
+		
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		
+		setTimeout(function(){ 
+			$(tmpSelector+' input[type="search"]').val('');
+			$(tmpSelector+' .dataTable').DataTable().search( '' ).draw();
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}, 10);
+	}); 
+	$('#zeiteintraegeList'+auftraegeUid+'_wrapper input[type="search"]').keyup(function() {
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		if($(tmpSelector+' input[type="search"]').val()){
+			$(tmpSelector+' .clearFilter').css('opacity',1);
+		} else {
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}
+	});
+	$('#zeiteintraegeList'+auftraegeUid+'_wrapper .clearFilter').insertAfter('#zeiteintraegeList'+auftraegeUid+'_wrapper input[type="search"]');	
+	
+	
+</script>
+
+

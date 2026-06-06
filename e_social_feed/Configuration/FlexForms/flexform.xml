@@ -1,0 +1,134 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+
+	<sheets>
+		<!--
+			################################
+			  SHEET General Settings
+			################################
+		-->
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_tab.settings</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<!-- View -->
+					<switchableControllerActions>
+						<TCEforms>
+						<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.mode</label>
+						<onChange>reload</onChange> 
+						<config>
+							<type>select</type>
+							<items>
+								<numIndex index="0">
+									<numIndex index="0">LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.mode.fb</numIndex>
+									<numIndex index="1">Social->handleFacebook</numIndex>
+								</numIndex>
+								<numIndex index="1">
+									<numIndex index="0">LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.mode.tw</numIndex>
+									<numIndex index="1">Social->handleTwitter</numIndex>
+								</numIndex>
+								<numIndex index="2">
+									<numIndex index="0">LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.mode.ins</numIndex>
+									<numIndex index="1">Social->handleInstagram</numIndex>
+								</numIndex>
+								<numIndex index="3">
+									<numIndex index="0">LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.mode.vim</numIndex>
+									<numIndex index="1">Social->handleVimeo</numIndex>
+								</numIndex>
+							</items>
+						</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.nbElement>
+						<TCEforms>
+							<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.nbElement</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+								<default>5</default>
+							</config>
+						</TCEforms>
+					</settings.nbElement>
+					
+					<settings.vmLink>
+						<TCEforms>
+							<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.vmLink</label>
+							<displayCond>FIELD:switchableControllerActions:=:Social->handleVimeo</displayCond>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.vmLink>
+
+					<settings.vmId>
+						<TCEforms>
+							<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.vmId</label>
+							<displayCond>FIELD:switchableControllerActions:=:Social->handleVimeo</displayCond>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.vmId>
+					<settings.vmSecret>
+						<TCEforms>
+							<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.vmSecret</label>
+							<displayCond>FIELD:switchableControllerActions:=:Social->handleVimeo</displayCond>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.vmSecret>
+					<settings.vmUser>
+						<TCEforms>
+							<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.vmUser</label>
+							<displayCond>FIELD:switchableControllerActions:=:Social->handleVimeo</displayCond>
+							<config>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.vmUser>
+
+					<settings.fbVariable>
+						<TCEforms>
+						<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.idFacebook</label>
+						<displayCond>FIELD:switchableControllerActions:=:Social->handleFacebook</displayCond>
+						<config>
+							<type>input</type>
+							<size>30</size>
+						</config>
+						</TCEforms>
+					</settings.fbVariable>
+					<settings.twVariable>
+						<TCEforms>
+						<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.idTwitter</label>
+						<displayCond>FIELD:switchableControllerActions:=:Social->handleTwitter</displayCond>
+						<config>
+							<type>input</type>
+							<size>30</size>
+						</config>
+						</TCEforms>
+					</settings.twVariable>
+					<settings.insVariable>
+						<TCEforms>
+						<label>LLL:EXT:e_social_feed/Resources/Private/Language/locallang_db.xlf:flexforms_general.idInstagram</label>
+						<displayCond>FIELD:switchableControllerActions:=:Social->handleInstagram</displayCond>
+						<config>
+							<type>input</type>
+							<size>30</size>
+						</config>
+						</TCEforms>
+					</settings.insVariable>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

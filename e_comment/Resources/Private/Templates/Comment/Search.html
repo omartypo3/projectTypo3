@@ -1,0 +1,10 @@
+<f:layout name="Empty" />
+
+<f:section name="content">
+    <f:form object="{demand}" name="demand" method="get" controller="Comment" action="list" pluginName="List">
+        <f:form.hidden property="searchFields" value="bodytext" />
+        <label for="searchKeywords" >Keywords</label> : <f:form.textfield id="searchKeywords" property="searchKeywords" /><br/>
+        <label for="category" >Category</label> : <f:form.select id="category" property="category" prependOptionValue="" prependOptionLabel="" options="{categories}" optionLabelField="title" optionValueField="uid" /><br/>
+        <f:form.submit value="Search" />
+    </f:form>
+</f:section>

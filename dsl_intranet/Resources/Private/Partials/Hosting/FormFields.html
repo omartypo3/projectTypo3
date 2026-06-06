@@ -1,0 +1,71 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<script>
+
+	$('.validator_required').attr('required','required');
+
+	
+	$('.selectpickerFormular').selectpicker();
+	
+	$('.animated').autosize({append: "\n"});
+	
+</script>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kunde<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.select class="validator_required selectpicker selectpickerFormular" name="kunde" options="{kundens}" optionLabelField="kundenNameForFilter" value="{hosting.kunde}" id="editKunde"  data="{size:20, width:'100%', dropup-auto:'false', live-search:'true'}" />
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Benutzername<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <f:form.textfield name="benutzername" value="{hosting.benutzername}" class="form-control input-sm" required="true" />
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Kennwort<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<f:form.textfield name="kennwort" value="{hosting.kennwort}" class="form-control input-sm" required="true" />
+        </div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Link zur Statistik
+        </div>
+        <div class="layout-table-col">
+        <f:form.textfield name="statistik" value="{hosting.statistik}" class="form-control input-sm"  />
+        	
+		</div>
+	</div>
+</div>
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Notizen
+        </div>
+        <div class="layout-table-col">
+        	
+        	<f:form.textarea name="notiz" value="{hosting.notiz}" class="form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+

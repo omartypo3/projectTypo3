@@ -1,0 +1,47 @@
+
+<tr  id="wartungsvertraegeRechnungenListWartungsvertrag_{rechnung.uid}">
+    <td width="150" data-sort="{f:format.date(date: rechnung.von, format: 'YmdHi')}">{rechnung.von->f:format.date(format: 'm/y')} - {rechnung.bis->f:format.date(format: 'm/y')}</td>
+    <td width="300" data-sort="{zeitraum.von->f:format.date(format: 'Ymd')}">{zeitraum.von->f:format.date(format: 'm/y')} - {zeitraum.bis->f:format.date(format: 'm/y')}</td>
+    <td data-sort="{f:if(condition: '{rechnung.preis}', then: '{rechnung.preis}', else: '{rechnung.preisBerechnet}')}"><f:if condition="{rechnung.preis}"><f:then><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{rechnung.preis}</f:format.currency></f:then><f:else>[&nbsp;<f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{rechnung.preisBerechnet}</f:format.currency>&nbsp;]
+    
+    
+    
+    </f:else></f:if></td>
+   
+    <td><f:translate key="tx_dslintranet_domain_model_wartungsvertraegerechnungen.type.{rechnung.type}" /></td>
+	<td class="{f:if(condition: '{rechnung.status} == 20', then: 'statusFaellig')}">
+    	<ul class="buttonlist float_right">
+        	<f:switch expression="{rechnung.status}">
+				<f:case value="10"><li><i class="fa fa-calendar" aria-hidden="true"></i></li></f:case>
+				<f:case value="20"><li>
+
+					<f:if condition="{feuser.rechteRechnungslegung}"><f:then><f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="ajax" arguments="{uid : rechnung, switch : 'checkRechnung'}" class="doConfirmUserAjax" additionalAttributes="{data-ajax-action: 'wartungCheckRechnung', data-ajax-selector: '#wartungsvertrag-show-{wartungsvertraege.uid}', data-text: 'Wollen Sie die Rechnung als Berechnet/Fertig markieren?', data-confirm-button: 'Ja (bestätigen)', data-ajax-id:'{wartungsvertraege.uid}'}" ><i class="fa fa-calculator" aria-hidden="true"></i></f:link.action></f:then><f:else><i class="fa fa-calculator" aria-hidden="true"></i></f:else></f:if>
+
+				</li></f:case>
+				<f:case value="30"><li><i class="fa fa-envelope" aria-hidden="true"></i></li></f:case>
+				<f:defaultCase><li><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></li></f:defaultCase>
+			</f:switch>
+      	</ul>
+    	<f:translate key="tx_dslintranet_domain_model_wartungsvertraegerechnungen.status.{rechnung.status}" />
+    </td>
+    <td><f:if condition="{rechnung.type} == 20"><f:then><f:render partial="Allgemein/DauerKurz" arguments="{set:zeitraum.zeitVerbrauchtSet}" /></f:then><f:else>&nbsp;</f:else></f:if></td>
+
+
+    <td><f:if condition="{rechnung.type} == 20"><f:if condition="{zeitraum.mehraufwandMinuten}"><f:render partial="Allgemein/DauerKurz" arguments="{set:zeitraum.mehraufwandMinutenSet}" /><br><f:if condition="{rechnung.preisMehraufwand}"><f:then>{zeitraum.mehraufwandPreis->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}&nbsp;€</f:then><f:else>[&nbsp;{zeitraum.mehraufwandPreis->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}&nbsp;€&nbsp;]</f:else></f:if></f:if></f:if></td>
+    <td width="150">
+    	<f:if condition="{rechnung.type} == 20"><f:if condition="{rechnung.zeitraum.status} > 0">
+    	<ul class="buttonlist float_right"><li>
+        	<f:switch expression="{rechnung.zeitraum.status}">
+				<f:case value="20">
+
+                    <f:if condition="{feuser.rechteRechnungslegung}">
+	                	<f:then><f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="ajax" arguments="{uid : rechnung, switch : 'checkZeitraum'}" class="doConfirmUserAjax " additionalAttributes="{data-ajax-action: 'wartungCheckZeitraum', data-ajax-selector: '#wartungsvertrag-show-{wartungsvertraege.uid}', data-text: 'Wollen Sie den Zeitraum des Wartungsvertrags als Berechnet/Fertig markieren und somit Abschließen?', data-confirm-button: 'Ja (bestätigen)', data-ajax-id:'{wartungsvertraege.uid}'}" ><i class="fa fa-calculator" aria-hidden="true"></i></f:link.action></f:then><f:else><i class="fa fa-calculator" aria-hidden="true"></i></f:else>
+                    </f:if>
+            	</f:case>
+				<f:case value="30"><li><i class="fa fa-envelope" aria-hidden="true"></i></li></f:case>
+            </f:switch>
+       	</li></ul>
+			<span class="{f:if(condition: '{rechnung.zeitraum.status} == 20', then: 'statusFaellig')}"><f:translate key="tx_dslintranet_domain_model_wartungsvertraegezeitraeume.status.{rechnung.zeitraum.status}" /></span>
+        </f:if></f:if>
+	</td>
+</tr>

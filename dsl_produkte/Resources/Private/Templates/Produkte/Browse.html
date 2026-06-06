@@ -1,0 +1,73 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+
+
+
+<f:if condition="{showNavigation} > 0">
+    <div id="produkte_pagebrowser" style="display:none;">
+        <ul class="prev-next">
+
+            <f:comment>
+                <li class="back">&lt; &lt; <a href="{pushUriLoadFromFirst}"><f:translate key="tx_dslprodukte_domain_model_produkte.browser.uebersicht" /></a>
+                </li>
+            </f:comment>
+            <li class="back">&lt; &lt; <a href="{f:uri.page(pageUid:"80")}"><f:translate key="tx_dslprodukte_domain_model_produkte.browser.uebersicht" /></a>
+            </li>
+
+            <f:if condition="{prev}">
+                <f:then>
+                    <li class="previous">
+                        <f:if condition="{0:prev.produktart} == {0:'produkt'}">
+
+                            <f:then>
+                                | <f:link.action action="show" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,produkte:prev)}">
+                                &lt; <f:translate key="tx_dslprodukte_domain_model_produkte.browser.zurueck" />
+                            </f:link.action>
+                            </f:then>
+                            <f:else>
+
+                                | <f:link.action action="showzubehoer" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,zubehoer:prev)}">
+                                &lt; Vorheriges Produkt Z
+                            </f:link.action>
+                            </f:else>
+                        </f:if>
+                    </li>
+
+                </f:then>
+            </f:if>
+
+
+
+            <f:if condition="{next}">
+                <f:then>
+                    <li class="last next previous">
+                        <f:if condition="{0:next.produktart} == {0:'produkt'}">
+                            <f:then>
+                                |  <f:link.action action="show" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,produkte:next)}">
+                                <f:translate key="tx_dslprodukte_domain_model_produkte.browser.weiter" /> &gt;
+                            </f:link.action>
+                            </f:then>
+                            <f:else>
+                                |  <f:link.action action="showzubehoer" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,zubehoer:next)}">
+                                <f:translate key="tx_dslprodukte.browser.weiter" /> &gt; </f:link.action>
+                            </f:else>
+                        </f:if>
+
+                    </li>
+                </f:then>
+            </f:if>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            /*Ersetzung Breadcrumb Produktsuche mit Link zurück zur Liste*/
+            $('ol.breadcrumb li:nth-child(3)').html('<a href="#">'+$('ol.breadcrumb li:nth-child(3)').text()+'</a>');
+            $('ol.breadcrumb li:nth-child(3) a').attr('href',$('#produkte_pagebrowser .prev-next .back a').attr('href'));
+
+            $("#produkte_pagebrowser ul").appendTo(".page-navigation");
+
+        });
+    </script>
+</f:if>

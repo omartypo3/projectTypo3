@@ -1,0 +1,115 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Stammdatenänderung</f:section>
+
+<f:section name="bodyHtml">
+	
+	<div style="font-family: Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);text-align:center;"><p><center>Änderung von Stammdaten.</center></p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td colspan="2"><b style="font-family:Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);">{kundenname}</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="vertical-align: top; width: 100px; white-space: nowrap;"><b>Stammdaten:</b></td>
+					<td>Firmenname: {protokolle.notiz.company}<br>
+						Anrede: {protokolle.notiz.title}<br>
+						Vorname: {protokolle.notiz.firstName}<br>
+						Nachname: {protokolle.notiz.lastName}<br>
+						Straße: {protokolle.notiz.address}<br>
+						PLZ: {protokolle.notiz.zip}<br>
+						Ort: {protokolle.notiz.city}<br>
+						Telefon: {protokolle.notiz.telephone}<br>
+						Fax: {protokolle.notiz.fax}<br>
+						Zus. Telefon: {protokolle.notiz.qbPhone2}<br>
+						Zus. Ansprechpartner: {protokolle.notiz.qbCont2}<br>
+						
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="vertical-align: top; width: 100px; white-space: nowrap;"><b>Bankverbindung:</b></td>
+					<td>IBAN: {protokolle.notiz.qbIban}<br>
+						BIC: {protokolle.notiz.qbBic}<br>
+						Kontoinhaber: {protokolle.notiz.qbKtoInh}<br>
+						Bankname: {protokolle.notiz.qbBank}
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="vertical-align: top; width: 100px; white-space: nowrap;"><b>E-Mail Adressen:</b></td>
+					<td>Kundenkonto: {protokolle.notiz.email}<br>
+						Angebote: {protokolle.notiz.emailAngebote}<br>
+						Rechnungen: {protokolle.notiz.emailRechnungen}
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	
+	
+</f:section>
+
+<f:section name="bodyText">Änderung von Stammdaten.
+	
+Kunde: {kundenname}
+
+--------------------
+Stammdaten
+--------------------
+Firmenname: {protokolle.notiz.company}
+Anrede: {protokolle.notiz.title}
+Vorname: {protokolle.notiz.firstName}
+Nachname: {protokolle.notiz.lastName}
+Straße: {protokolle.notiz.address}
+PLZ: {protokolle.notiz.zip}
+Ort: {protokolle.notiz.city}
+Telefon: {protokolle.notiz.telephone}
+Fax: {protokolle.notiz.fax}
+Zus. Telefon: {protokolle.notiz.qbPhone2}
+Zus. Ansprechpartner: {protokolle.notiz.qbCont2}
+
+--------------------	
+Bankverbindung
+--------------------
+IBAN: {protokolle.notiz.qbIban}
+BIC: {protokolle.notiz.qbBic}
+Kontoinhaber: {protokolle.notiz.qbKtoInh}
+Bankname: {protokolle.notiz.qbBank}
+	
+--------------------
+E-Mail Adressen:
+--------------------
+Kundenkonto: {protokolle.notiz.email}
+Angebote: {protokolle.notiz.emailAngebote}
+Rechnungen: {protokolle.notiz.emailRechnungen}	
+
+	
+</f:section>

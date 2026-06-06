@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_gestiondocs/Resources/Private/Language/locallang_db.xlf" date="2024-01-01T00:00:00Z" product-name="e_gestiondocs">
+		<header/>
+		<body>
+			<trans-unit id="tx_egestiondocs.general">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayMode">
+				<source>Display Mode</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayMode.list">
+				<source>Folders and File List</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayMode.search">
+				<source>Search form</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayMode.listNew">
+				<source>List new files</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayMode.browse">
+				<source>Browse directories</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayMode.listSelected">
+				<source>Select files to list</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.folder">
+				<source>Folder</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.files">
+				<source>Files</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.recursiveFind">
+				<source>Find into sub-directories</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.limit">
+				<source>Item number limit</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.pagination">
+				<source>Display pagination</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.itemsPerPage">
+				<source>Item per page</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.displayFiles">
+				<source>Display files</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.targetPid">
+				<source>Target page</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.folders">
+				<source>Folders</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.syscollection">
+				<source>Folders (Collection)</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.newPeriod">
+				<source>Number of days while a document is considered as new</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.orderBy">
+				<source>Order by</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.orderDirection">
+				<source>Order direction</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.orderDirection.asc">
+				<source>Ascending</source>
+			</trans-unit>
+			<trans-unit id="tx_egestiondocs.orderDirection.desc">
+				<source>Descending</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

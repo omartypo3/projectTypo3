@@ -1,0 +1,376 @@
+<?php
+namespace Emagineurs\EGmap\Domain\Model;
+
+
+/***************************************************************
+ *
+ *  Copyright notice
+ *
+ *  (c) 2014 SEBBAGH Ian <isebbagh@e-magineurs.com>, E-magineurs
+ *
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+/**
+ * News
+ * Note: Originally extended \Emagineurs\ENews\Domain\Model\Enews but that extension is not installed
+ * Changed to extend AbstractEntity for TYPO3 11+ compatibility
+ */
+class News extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+	protected $key = 'News';
+
+
+	/**
+	 * picto
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $picto = NULL;
+
+	/**
+	 * lat
+	 *
+	 * @var string
+	 */
+	protected $lat = '';
+
+	/**
+	 * lng
+	 *
+	 * @var string
+	 */
+	protected $lng = '';
+	
+	/**
+	 * poi
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Emagineurs\EGmap\Domain\Model\Poi>
+	 */
+	protected $poi;
+
+	
+	/**
+	 * __construct
+	 *
+	 * @return Diapos
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties.
+	 *
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		/**
+		 * Do not modify this method!
+		 * It will be rewritten on each save in the extension builder
+		 * You may modify the constructor of this class instead
+		 */
+		$this->poi = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+	
+	/**
+	 * Returns the key
+	 *
+	 * @return key
+	 */
+	public function getKey() {
+		return $this->key;
+	}
+
+	/**
+	 * Sets the key
+	 *
+	 * @param key
+	 * @return void
+	 */
+	public function setKey($key) {
+		$this->key = $key;
+	}
+
+	/**
+	 * Returns the picto
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $picto
+	 */
+	public function getPicto() {
+		return $this->picto;
+	}
+
+	/**
+	 * Sets the picto
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $picto
+	 * @return void
+	 */
+	public function setPicto(\TYPO3\CMS\Extbase\Domain\Model\FileReference $picto) {
+		$this->picto = $picto;
+	}
+
+
+	/**
+	 * Returns the lat
+	 *
+	 * @return string $lat
+	 */
+	public function getLat() {
+		return $this->lat;
+	}
+
+	/**
+	 * Sets the lat
+	 *
+	 * @param string $lat
+	 * @return void
+	 */
+	public function setLat($lat) {
+		$this->lat = $lat;
+	}
+
+	/**
+	 * Returns the lng
+	 *
+	 * @return string $lng
+	 */
+	public function getLng() {
+		return $this->lng;
+	}
+
+	/**
+	 * Sets the lng
+	 *
+	 * @param string $lng
+	 * @return void
+	 */
+	public function setLng($lng) {
+		$this->lng = $lng;
+	}
+
+	
+
+	
+	/**
+	 * Returns the poi
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Emagineurs\EGmap\Domain\Model\Poi> $poi
+	 */
+	public function getPoi() {
+		return $this->poi;
+	}
+
+
+	/**
+	 * Sets the poi
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Emagineurs\EGmap\Domain\Model\Poi> $poi
+	 * @return void
+	 */
+	public function setPoi(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $poi) {
+		$this->poi = $poi;
+	}
+
+	/**
+	 * Returns the marker icon
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $iconmarker
+	 */
+	public function getIconmarker() {
+		if(!empty($this->picto)){
+			return $this->picto;
+		}
+		
+		if($this->poi){
+			$poi = $this->poi->toArray();
+			if(count($poi) > 0){
+				$image = $poi[0]->getIconmarker();
+				if(!empty($image)){
+					return $image;
+				}
+			}
+		}
+		
+		$cat = $this->getEgmapCat();
+		if($cat instanceof  \Emagineurs\EGmap\Domain\Model\Category){
+			$image = $cat->getIconmarker();
+			if(!empty($image)){
+				return $image;
+			}
+		}
+		
+		return $this->picto;
+	}	
+	
+	
+	/**
+	 * Returns the last lat
+	 *
+	 * @return string $latfinal
+	 */
+	public function getLatfinal() {
+		if(!empty($this->lat) && !empty($this->lng)){
+			return $this->lat;
+		}
+		
+		if($this->poi){
+			$poi = $this->poi->toArray();
+			if(count($poi) > 0){
+				$lat = $poi[0]->getLat();
+				if(!empty($lat)){
+					return $lat;
+				}
+			}
+		}
+		
+		return $this->lat;
+	}
+	
+	
+	/**
+	 * Returns the last lng
+	 *
+	 * @return string $lngfinal
+	 */
+	public function getLngfinal() {
+		if(!empty($this->lng) && !empty($this->lat)){
+			return $this->lng;
+		}
+		
+		if($this->poi){
+			$poi = $this->poi->toArray();
+			if(count($poi) > 0){
+				$lng = $poi[0]->getLng();
+				if(!empty($lng)){
+					return $lng;
+				}
+			}
+		}
+		
+		return $this->lng;
+	}
+
+	/**
+	 * Is ok
+	 *
+	 * @return bool
+	 */
+	public function isPlaceable() {
+		$lat = $this->getLatfinal();
+		$lng = $this->getLngfinal();
+		if(!empty($lat) && !empty($lng))
+			return true;
+		return false;
+	}
+	/**
+	 * Is ok
+	 *
+	 * @return bool
+	 */
+	public function getPlaceable() {
+		return $this->isPlaceable();
+	}
+	
+	/**
+	 * Is cat egmap
+	 *
+	 * @return \Emagineurs\EGmap\Domain\Model\Category|null
+	 */
+	public function getEgmapCat($index = 0){	
+		if(empty($this->key)){
+			return null;
+		}
+
+		$pageId = (int)($GLOBALS['_GET']['id'] ?? 0);
+		if ($pageId <= 0) {
+			return null;
+		}
+		$confTS = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig($pageId);
+
+		$catField = $pageTsConfig['tx_egmap_conf.']['extensions.'][$this->key . '.']['cat'] ?? null;
+		if (empty($catField)) {
+			return null;
+		}
+
+		$getter = 'get' . ucfirst($catField);
+		if (!method_exists($this, $getter)) {
+			return null;
+		}
+
+		$cat = $this->$getter();
+		if (!$cat) {
+			return null;
+		}
+
+		// Convert ObjectStorage to array if necessary
+		if ($cat instanceof \TYPO3\CMS\Extbase\Persistence\ObjectStorage) {
+			$cat = iterator_to_array($cat);
+		}
+
+		if (is_array($cat) && count($cat) > $index) {
+			$cat = $cat[$index];
+			if ($cat instanceof \Emagineurs\EGmap\Domain\Model\Category) {
+				return $cat;
+			}
+
+			// Otherwise resolve UID using dependency injection container
+			$uidCat = (int)$cat->getUid();
+			$catRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+				\Emagineurs\EGmap\Domain\Repository\CategoryRepository::class
+			);
+			return $catRepository->findByUid($uidCat);
+		}
+
+		return null;
+	}
+	
+	
+	
+	/**
+	 * Get list cat
+	 *
+	 * @return string
+	 */
+	public function getCatliste(){
+		$liste = [];
+
+		if(empty($this->catField)){
+			$pageId = (int)($GLOBALS['_GET']['id'] ?? 0);
+			if ($pageId > 0) {
+				$pageTsConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig($pageId);
+
+				$this->catField = $pageTsConfig['tx_egmap_conf.']['extensions.'][$this->key . '.']['cat'] ?? null;
+			}
+		}
+		$catField = $this->catField ?? null;
+		if(!empty($catField)){
+			$getter = 'get'.ucfirst($catField);
+			$cats = $this->$getter();
+			if($cats){
+				foreach($cats as $cat){
+					$liste[] = $cat->getUid();
+				}
+			}
+		}
+		return implode(',', $liste);
+	}
+}

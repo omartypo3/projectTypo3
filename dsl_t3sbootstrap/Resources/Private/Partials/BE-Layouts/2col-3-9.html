@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment> BE-Layout: pagets__t3sbootstrap_5 </f:comment>
+
+
+<f:if condition="{settings.styles.navbar.onTop}">
+    <f:if condition="{settings.navigation.navbar.enable}">
+        <f:render partial="NavBar/_main" arguments="{_all}" />
+    </f:if>
+</f:if>
+
+
+
+
+<f:render partial="Page/PageHeader" arguments="{_all}" />
+
+<div class="pageToolbar pageToolbarSetHeight">
+    <div class="pageToolbarContent">
+
+        <div class="pageToolbarContentFirstGroup">
+
+        </div>
+        <div class="pageToolbarContentSecondGroup">
+
+        </div>
+        <div class="pageToolbarContentThirdGroup  ajaxLoadingIndicator">
+              <a class="pageToolbarButton ajaxLoadingIndicatorLoading"><i class="fa fa-cog fa-spin fa-lg "></i><span>... lädt gerade</span></a>
+            <a class="pageToolbarButton ajaxLoadingIndicatorStandby"><i class="fa fa-cog fa-lg "></i><span>... im Standby</span></a>
+
+        </div>
+    </div>
+</div>
+
+<f:cObject typoscriptObjectPath="lib.content.main" />
+
+{f:cObject(typoscriptObjectPath: 'lib.protokollePending')}
+
+</html>

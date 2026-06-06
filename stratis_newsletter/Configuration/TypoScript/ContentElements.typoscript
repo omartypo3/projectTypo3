@@ -1,0 +1,192 @@
+tt_content {
+    stratisnewsletter_itson =< lib.contentElement
+    stratisnewsletter_itson {
+        templateName = ItsOn
+        templateRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Templates/ContentTca/
+        }
+        partialRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Layouts/
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = assets
+                as = files
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+            20 {
+                table = tx_stratisnewsletter_breve
+                pidInList.data = page:uid
+                where {
+                    dataWrap = parentid={field:uid} AND parenttable='tt_content'
+                }
+                orderBy = sorting
+                as = breves
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = breve_image
+                        as = breveImages
+                    }
+                }
+            }
+        }
+    }
+
+    stratisnewsletter_itslocal =< lib.contentElement
+    stratisnewsletter_itslocal {
+        templateName = ItsLocal
+        templateRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Templates/ContentTca/
+        }
+        partialRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Layouts/
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = assets
+                as = files
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+            20 {
+                table = tx_stratisnewsletter_breve
+                pidInList.data = page:uid
+                where {
+                    dataWrap = parentid={field:uid} AND parenttable='tt_content'
+                }
+                orderBy = sorting
+                as = breves
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = breve_image
+                        as = breveImages
+                    }
+                }
+            }
+        }
+    }
+
+    stratisnewsletter_takeaway =< lib.contentElement
+    stratisnewsletter_takeaway {
+        templateName = TakeAway
+        templateRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Templates/ContentTca/
+        }
+        partialRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Layouts/
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = assets
+                as = files
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+            20 {
+                table = tx_stratisnewsletter_breve
+                pidInList.data = page:uid
+                where {
+                    dataWrap = parentid={field:uid} AND parenttable='tt_content'
+                }
+                orderBy = sorting
+                as = breves
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = breve_image
+                        as = breveImages
+                    }
+                }
+            }
+        }
+    }
+
+    stratisnewsletter_atyourside =< lib.contentElement
+    stratisnewsletter_atyourside {
+        templateName = AtYourSide
+        templateRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Templates/ContentTca/
+        }
+        partialRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Layouts/
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = assets
+                as = files
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+            20 {
+                table = tx_stratisnewsletter_breve
+                pidInList.data = page:uid
+                where {
+                    dataWrap = parentid={field:uid} AND parenttable='tt_content'
+                }
+                orderBy = sorting
+                as = breves
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = breve_image
+                        as = breveImages
+                    }
+                }
+            }
+        }
+    }
+
+    stratisnewsletter_ittransforms =< lib.contentElement
+    stratisnewsletter_ittransforms {
+        templateName = ItTransforms
+        templateRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Templates/ContentTca/
+        }
+        partialRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Partials/
+        }
+        layoutRootPaths {
+            10 = EXT:stratis_newsletter/Resources/Private/Layouts/
+        }
+        dataProcessing {
+            10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+            10 {
+                references.fieldName = assets
+                as = files
+            }
+            20 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+            20 {
+                table = tx_stratisnewsletter_breve
+                pidInList.data = page:uid
+                where {
+                    dataWrap = parentid={field:uid} AND parenttable='tt_content'
+                }
+                orderBy = sorting
+                as = breves
+                dataProcessing {
+                    10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+                    10 {
+                        references.fieldName = breve_image
+                        as = breveImages
+                    }
+                }
+            }
+        }
+    }
+}
+

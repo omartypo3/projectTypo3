@@ -1,0 +1,48 @@
+config.recordLinks {
+    tx_fsmediagallery {
+        forceLink = 1
+        typolink {
+            parameter = {$e_magineurs.sitemap.tx_fsmediagallery.detailPid}
+            additionalParams.data = field:uid
+            additionalParams.wrap = &tx_fsmediagallery_mediagallery[mediaAlbum]=|
+            useCacheHash = 1
+        }
+    }
+    tx_eannuairesVids < .tx_fsmediagallery
+    tx_eannuairesVids {
+        typolink {
+            parameter = {$e_magineurs.sitemap.tx_e_annuaires.videos.detailPid}
+            additionalParams.wrap = &tx_eannuaires_pi1[fiche]=|&tx_eannuaires_pi1[controller]=Fiche&tx_eannuaires_pi1[action]=show
+        }
+    }
+    tx_news < .tx_fsmediagallery
+    tx_news {
+        typolink {
+            parameter >
+            parameter.cObject = CASE
+            parameter.cObject {
+                key.field = pid
+                {$e_magineurs.sitemap.news.startingPoint} = TEXT
+                {$e_magineurs.sitemap.news.startingPoint}.value = {$e_magineurs.sitemap.news.detailPid}
+                {$e_magineurs.sitemap.agenda.startingPoint} = TEXT
+                {$e_magineurs.sitemap.agenda.startingPoint}.value = {$e_magineurs.sitemap.agenda.detailPid}
+            }
+            additionalParams.wrap = &tx_news_pi1[news]=|&tx_news_pi1[controller]=News&tx_news_pi1[action]=detail
+        }
+    }
+    tx_eannuaires < .tx_fsmediagallery
+    tx_eannuaires {
+        typolink {
+            parameter >
+            parameter.cObject = CASE
+            parameter.cObject {
+                key.field = pid
+                {$e_magineurs.sitemap.tx_e_annuairesPersonnes.startingPoint} = TEXT
+                {$e_magineurs.sitemap.tx_e_annuairesPersonnes.startingPoint}.value = {$e_magineurs.sitemap.tx_e_annuairestx_e_annuairesPersonnes.detailPid}
+                {$e_magineurs.sitemap.tx_e_annuairesLieux.startingPoint} = TEXT
+                {$e_magineurs.sitemap.tx_e_annuairesLieux.startingPoint}.value = {$e_magineurs.sitemap.tx_e_annuairesLieux.detailPid}
+            }
+            additionalParams.wrap = &tx_eannuaires_pi1[fiche]=|&tx_eannuaires_pi1[controller]=Fiche&tx_eannuaires_pi1[action]=show
+        }
+    }
+}

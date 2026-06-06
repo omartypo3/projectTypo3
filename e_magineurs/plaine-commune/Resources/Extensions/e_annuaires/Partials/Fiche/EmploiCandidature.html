@@ -1,0 +1,136 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<div class="form_emploi">
+    <f:form 
+        action="create" 
+        object="{fiche}" 
+        name="fiche" 
+        method="post" 
+        enctype="multipart/form-data" 
+        id="edit_annuaire_fe"
+    >
+
+
+        <fieldset class="form_emploi_fieldset powermail_fieldset powermail_fieldset_4">
+            <f:form.checkbox multiple="1" additionalAttributes="{checked:'checked', style:'display:none;'}" property="cdps" value="<f:cObject typoscriptObjectPath='lib.getIdOffre' />" id="check_cdps" />
+            <f:form.hidden name="offre" value="<f:cObject typoscriptObjectPath='lib.getIdOffre' />" />
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_value">
+                <label for="Intitule" class="form_emploi_label">Intitulé de l'offre :</label>
+                <f:cObject typoscriptObjectPath="lib.intituleEmploi" />
+                <f:form.hidden property="title" name="title" value="<f:cObject typoscriptObjectPath='lib.intituleEmploi' />" />
+            </div>
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_value">
+                <label for="ref" class="form_emploi_label">Référence de l'offre :</label>
+                <f:cObject typoscriptObjectPath="lib.refEmploi" />
+                <f:form.hidden property="production" name="production" value="<f:cObject typoscriptObjectPath='lib.refEmploi' />" />
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_select powermail_fieldwrap powermail_fieldwrap_type_select">
+                <label for="field_civility" class="form_emploi_label powermail_label">Civilité : *</label>
+                <div class="powermail_field">
+                    <f:form.select property="civility" class="form-control custom-select powermail_select" options="{datas.arrayCivility}" id="field_pack" additionalAttributes="{required:''}" />
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_prenom">        
+                <label for="field_firstname" class="form_emploi_label">Prénom : *</label>
+                <div class="powermail_field">
+                    <f:form.textfield property="firstname" id="field_firstname" class="form_emploi_input form-control powermail_input" value="" additionalAttributes="{required:''}" />
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input  powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_nom">
+                <label for="field_name" class="form_emploi_label">Nom : *</label>
+                <div class="powermail_field">
+                    <f:form.textfield property="name" id="field_name" class="form_emploi_input form-control powermail_input" value="" additionalAttributes="{required:''}" />
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input  powermail_fieldwrap powermail_fieldwrap_type_input powermail_fieldwrap_nom">
+                <label for="field_beneficiaire" class="form_emploi_label">Adresse : *</label>
+                <div class="powermail_field">
+                    <f:form.textarea property="beneficiaire" id="field_beneficiaire" class="form_emploi_input form-control powermail_input" value="" additionalAttributes="{required:''}" />
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input powermail_fieldwrap powermail_fieldwrap_type_input">
+                <label for="field_zipcode" class="form_emploi_label">Code Postal :</label>
+                <div class="powermail_field">
+                    <f:form.textfield property="zipcode" id="field_zipcode" class="form_emploi_input form-control powermail_input" value=""/>
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input powermail_fieldwrap powermail_fieldwrap_type_input">
+                <label for="field_address" class="form_emploi_label">Ville : *</label>
+                <div class="powermail_field">
+                    <f:form.textfield property="address" id="field_address" class="form_emploi_input form-control powermail_input" value="" additionalAttributes="{required:''}" />
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input powermail_fieldwrap powermail_fieldwrap_type_input">        
+                <label for="field_phone" class="form_emploi_label">Téléphone :</label>
+                <div class="powermail_field">
+                    <f:form.textfield property="phone" id="field_phone" class="form_emploi_input form-control powermail_input" value=""/>
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_input powermail_fieldwrap powermail_fieldwrap_type_input">        
+                <label for="field_email" class="form_emploi_label">adresse électronique : *</label>
+                <div class="powermail_field">
+                    <f:form.textfield property="email" id="field_email" class="form_emploi_input form-control powermail_input" value="" additionalAttributes="{required:''}" />
+                </div>
+            </div> 
+            
+
+            <f:form.hidden name="uidFiche" value="{fiche.uid}" id="uidFiche" />
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_file powermail_fieldwrap powermail_fieldwrap_type_file">
+                <label for="cv" class="form_emploi_label powermail_label">Votre CV*</label>
+                <p class="format-file">format doc, rtf, ou pdf</p>
+                <div class="powermail_field">
+                    <f:form.hidden name="uidFiche" value="{fiche.uid}" id="cv" />
+                    <f:form.upload name="fiche[mediainstancier][file-1]" class="field_image powermail_file"  additionalAttributes="{required:''}"/>
+                    <f:form.hidden name="fiche[media]" value="" />
+                </div>
+            </div>
+
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_file powermail_fieldwrap powermail_fieldwrap_type_file">
+                <label for="lettre" class="form_emploi_label powermail_label">Lettre de motivation* :</label>
+                <p class="format-file">format doc, rtf, ou pdf</p>
+                <div class="powermail_field">
+                    <input id="lettre" type="file" name="documents" class="field_media form_emploi_file powermail_file" additionalAttributes="{required:''}">
+                </div>
+            </div>
+            
+            <div class="form_emploi_fieldwrap form_emploi_fieldwrap_type_texterea powermail_fieldwrap powermail_fieldwrap_type_textarea">        
+                <label for="commentaire" class="form_emploi_label powermail_label">Commentaire : </label>
+                <f:form.textarea property="enjeux" id="commentaire" class="form_emploi_textarea form-control powermail_textarea" value="" additionalAttributes="" />
+            </div> 
+
+            <div class="powermail_fieldwrap powermail_fieldwrap_type_check powermail_fieldwrap_check ">
+                <div class="powermail_field">
+                    <div class="checkbox ">
+                        <input class="powermail_checkbox powermail_checkbox_278" id="powermail_field_check" type="checkbox" name="validation_des_informations" required="required">
+                        <label class="side-label" for="powermail_field_check">
+                            En soumettant ce formulaire, j’accepte que les informations saisies soient transmise au service Recrutement de la direction des ressources humaines de Plaine Commune pour lui permettre d’étudier ma candidature aux offres d’emploi proposées par Plaine Commune et, éventuellement, me recontacter.
+                        </label>
+                    </div>
+                    <div class="powermail_field_error_container powermail_field_error_container_check" ></div>
+                </div>
+            </div>
+
+        </fieldset>
+
+
+        <div class="powermail_fieldwrap">
+            <f:if condition="{settings.editFe.activeTokenValidation}">
+                <f:form.hidden name="token" value="{datas.token}" />
+                <f:form.hidden name="idForm" value="{datas.idForm}" />
+            </f:if>
+
+            <button type="submit" class="btn btn-animate btn-fond-clair btn-vert" name="tx_eannuaires_pi1[submit]">
+                Postuler
+            </button>
+        </div>  
+    </f:form>
+</div>

@@ -1,0 +1,169 @@
+31-01-18 Xavier Ley <xley@e-magineurs.com>
+
+	* Passage en version 1.1.4
+
+	* Merge de la version présente sur l'intranet e-magineurs avec la version de git (des evolutions n'avaient pas été ajoutés)
+	
+	* Ajout d'outil de surcharge des modèles de l'extension via des Traits
+	
+11-01-18 Camille Meunier <cmeunier@e-magineurs.com>
+
+	* Passage en version 1.1.3
+
+	* Ajout du filtrage par date
+	
+02-10-17 Xavier Ley <xley@e-magineurs.com>
+
+	* Passage en version 1.1.2
+
+	* Correction du dispatch des fonctions d'update des fiches en cas d'import/conversion des types d'annuaires
+	
+02-10-17 Xavier Ley <xley@e-magineurs.com>
+
+	* Passage en version 1.1.1
+
+	* Correction de la prise en compte de la configuration des envois de mail
+	
+	* Correction de l'ajout des pièces joints pour les fichier provenants de tables externes
+	
+07-08-17 Xavier Ley <xley@e-magineurs.com>
+
+	* Passage en version 1.1.0
+
+	* Ajout d'un système natif d'envoi de mail pour l'edition frontend
+	
+	* Ajout de validation pour le formulaire d'édition frontend
+	
+	* Ajout d'un système de purge pour les offres d'emplois
+	
+25-07-17 Camille Meunier <cmeunier@e-magineurs.com>
+
+	* Passage en version 1.0.3
+
+	* Ajout dans la table des horaires des champs semaines, title et durée
+		
+21-07-17 Xavier Ley <xley@e-magineurs.com>
+
+	* Passage en version 1.0.2
+
+	* Correction d'un bug dans le TCA dans le cas d'une conf exportés
+	
+	* Divers nettoyages
+	
+17-05-17 Xavier Ley <xley@e-magineurs.com>
+
+	* Passage en version 1.0.1
+
+	* Correction d'un bug dans la génération des tableau de catégorie pour le moteur de recherche (seulement 2 parents pris en compte)
+
+17-05-17 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 1.0.0
+	
+	* Pas de changements majeurs, les précédents numéro de version était attribué de façon assez aléatoire. A partir de cette version, le versionning semantique de TYPO3 sera utilisé
+	  (
+		x.0.0 > version majeur - changement impactant nécéssitant manipulation particulière
+		0.x.0 > version mineur - Ajout d'une nouvelle fonctionnalité, en théorie installable sans risque d'affecté l'existant
+		0.0.x > patch - Correctif, n'ajoute rien de nouveau et ne casse pas l'existant
+	  )
+	
+	* Ajout du système de gestion des horaires
+	
+	* Correction des setters des objectStorage dans le modèle des fiches ("$" manquant pour certaines variables)
+	
+28-02-17 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.7
+	
+	* Ajustements pour la comptabilité TYPO3 v8
+	
+	* Nettoyage de divers éléments obsolètes
+    
+23-02-17 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.6
+	
+	* Divers correctifs et ajustements
+    
+25-01-17 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.5
+	
+	* Ajustement de certains template fluid (ajout de parametres dans les viewhelpers de la pagination).
+    
+    * Modification des setter d'ObjectStorage dans le modele pour la gestion des enregistrements uniques (l'ObjectStorage doit pouvoir être associé à un select simple en frontend).
+        Ne concerne pas les propriétés contenant des infos du FAL
+    
+    * Dans les contollers, les assignations se font désormais via des assignMultiple, pour donner plus de souplesses aux signalSlots.
+    
+    * Dans la recherche par mot clé, exclusion des termes parasites ("le", "la", "de", etc ...).
+
+24-12-16 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.4
+	
+	* Récupération des dernières évolutions de Versailles (Correctifs notamment de la partie offre d'emploi).
+    
+    * Ajout dans l'edition frontend d'un système de validation par token pour éviter la soumission multiple des fiches.
+    
+    * Ajout dans le AbstractRepository de la gestion des fonctions findAllBy[PropertyName]() qui permet de rechercher en ignorant les enableFields (sauf deleted)
+
+28-10-16 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.3
+	
+	* Modification de l'abécédaire, ajout des dernières améliorations effectué sur la charente
+    
+    * Divers bugfix effectués au fur et à mesure des retours
+
+24-10-16 Tristan Beaurin <tbeaurin@e-magineurs.com>
+	
+	* Passage en version 0.3.2
+	
+	* Ajout d'une tache pour l'importation d'une table vers la table des annuaires
+    
+16-08-16 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.1
+	
+	* Modification de l'abécédaire sur la base des amélioration apportés pour la charente (amélioration des temps de réponse)
+
+29-01-16 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.3.0
+	
+	* Compatiblité avec typo3 v7
+	
+	* Ajout dans les options par défaut de la webtv
+	
+	* Ajout d'une fonctionnalité d'édition frontend des fiches + création d'un module afin de généré le template associé
+	
+	* Divers correction de bugs
+	
+	* Suppression de la dépendance à e_lib
+	
+09-10-15 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.2.2 : Ajout de hooks (signal slots) dans l'extension
+	
+29-05-15 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.2.1 : Merge des différentes versions afin de n'en avoir qu'une seule bien à jour intégrant toutes les corrections et modifications.
+
+29-05-15 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.2.0
+	
+	* Ajout d'un module pour la configuration des champs (à la place de la conf de l'extension manager), le module permet :
+		- la gestion des confs des champs de façon plus ergonomique
+		- le choix du locallang pour la redéfinition des labels
+		- un système d'import/export des conf (pour les pasasges en prod notamment)
+		- d'un système de génération automatique de la conf à partir de l'ancien système
+	
+	* Ajout d'un select sur les types d'annuaires dans les pages (onglet comportement, avant la tsconfig), ce champ permet :
+		- de remplacer la tsconfig "annuaires.type = uidAnnuaire" qui permettait l'affichage des bons noms de champs en vue liste en be
+		- la génération automatique du tsconfig "TCADefaults.tx_eannuaires_domain_model_fiche.typeelement = uidType" qui permet d'attribuer automatiquement le bon type aux enregistrement du dossier
+	
+	* Suppression de la limite en dur de 5 elements en frontend si rien n'ést indiqué
+	
+	* Création du changelog

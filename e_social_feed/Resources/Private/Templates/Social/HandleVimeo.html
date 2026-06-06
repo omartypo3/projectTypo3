@@ -1,0 +1,48 @@
+<f:comment>
+	<f:debug>{contentFromIns}</f:debug>
+</f:comment>
+
+
+
+<div class="titre">
+	<a href="{lienVimeo}" target="_blank">
+		<img src="{pictoInstagram}" alt="" />
+	</a>
+	<p>Vimeo</p>
+</div>
+<f:if condition="{messageAlert}">
+	<f:then>
+		<p>
+			Attention, il manque des des informations pour que cette fonctionnalité marche
+		</p>
+	</f:then>
+</f:if>
+
+<f:if condition="{Vimeolist}">
+	<f:then>
+		<f:for each="{Vimeolist}" as="oneVideo">
+			<div>
+				<div>
+						<div class="iframe vimeo_player" title="{titleAttr}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen videoID="{oneVideo.vimeolink}"></div>
+				</div>
+				<div>
+					Posté le {f:format.date(format:'d/m/Y H:i', date: oneVideo.vimeorelease)}
+				</div>
+				<div>
+					{oneVideo.vimeouser}
+				</div>
+				<div>
+					{oneVideo.vimeoname}
+				</div>
+				<div>
+					{oneVideo.vimeodescription} 
+				</div>
+			</div>
+		</f:for>      
+	</f:then>
+	<f:else>
+		<p>
+			Aucune vidéo n'a été trouvé
+		</p>
+	</f:else>
+</f:if>

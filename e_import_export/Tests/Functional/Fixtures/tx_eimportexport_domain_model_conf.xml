@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<dataset>
+  <tx_eimportexport_domain_model_conf>
+    <uid>1</uid>
+    <pid>17</pid>
+    <title>Test Import</title>
+    <tag>path.entries.entry</tag>
+    <url>http://testurl.com</url>
+    <type>xml</type>
+    <interaction>1</interaction>
+    <interface>0</interface>
+    <tables>1</tables>
+    <fields>1,2,3</fields>
+    <uniqfield/>
+    <deleted>0</deleted>
+    <hidden>0</hidden>
+    <forceadd>1</forceadd>
+  </tx_eimportexport_domain_model_conf>
+</dataset>

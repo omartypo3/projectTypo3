@@ -1,0 +1,4 @@
+<f:if condition="{selectedKunden}">
+	<f:then><f:link.action pageUid="43" action="detailkunden" arguments="{kunden: selectedKunden}" class="btnBig btnPfeilBack btnGreen">Projektübersicht</f:link.action></f:then>
+	<f:else><f:link.action  rel="nofollow" action="list" arguments="{kategorien: selectedKategorie,hashtags: selectedHashtag}" class="btnBig btnPfeilBack btnGreen" section="pt{portfolio.uid}" additionalParams="{offsetBefore: offsetBefore}">Projektübersicht</f:link.action></f:else> 
+</f:if>

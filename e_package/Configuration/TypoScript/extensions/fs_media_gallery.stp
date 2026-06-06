@@ -1,0 +1,82 @@
+plugin.tx_fsmediagallery {
+    view {
+        templateRootPaths.200 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_fsmediagallery.view.templateRootPath}
+        partialRootPaths.200 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_fsmediagallery.view.partialRootPath}
+        layoutRootPaths.200 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_fsmediagallery.view.layoutRootPath}
+        widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/paginate/
+    }
+    persistence {
+        storagePid = {$e_magineurs.tx_fsmediagallery.persistence.storagePid}
+        recursive = {$e_magineurs.tx_fsmediagallery.persistence.recursive}
+    }
+    settings {
+        allowedAssetMimeTypes = {$e_magineurs.tx_fsmediagallery.settings.allowedAssetMimeTypes}
+        overrideFlexformSettingsIfEmpty = list.pagination.itemsPerPage,list.thumb.width,list.thumb.height,list.thumb.resizeMode,list.thumb.random,list.hideEmptyAlbums,list.orderBy,list.orderDirection,album.pagination.itemsPerPage,album.assets.orderBy,album.assets.orderDirection,album.thumb.width,album.thumb.height,album.thumb.resizeMode,album.lightbox.enable,album.lightbox.styleClass,album.displayTitle,album.lightbox.relPrefix,detail.asset.width,detail.asset.height,detail.asset.resizeMode,random.thumb.width,random.thumb.height,random.thumb.resizeMode
+        list {
+            thumb {
+                width = {$e_magineurs.tx_fsmediagallery.settings.list.thumb.width}
+                height = {$e_magineurs.tx_fsmediagallery.settings.list.thumb.height}
+                resizeMode = {$e_magineurs.tx_fsmediagallery.settings.list.thumb.resizeMode}
+                random = {$e_magineurs.tx_fsmediagallery.settings.list.thumb.random}
+            }
+            orderBy = {$e_magineurs.tx_fsmediagallery.settings.list.orderBy}
+            orderDirection = {$e_magineurs.tx_fsmediagallery.settings.list.orderDirection}
+            pagination {
+                itemsPerPage = {$e_magineurs.paginate.itemsPerPage}
+                insertAbove = {$e_magineurs.paginate.insertAbove}
+                insertBelow = {$e_magineurs.paginate.insertBelow}
+                pagesBefore = {$e_magineurs.paginate.pagesBefore}
+                pagesAfter = {$e_magineurs.paginate.pagesAfter}
+                maximumNumberOfLinks = {$e_magineurs.paginate.maximumNumberOfLinks}
+            }
+        }
+        album {
+            displayTitle = {$e_magineurs.tx_fsmediagallery.settings.album.displayTitle}
+            thumb {
+                width = {$e_magineurs.tx_fsmediagallery.settings.album.thumb.width}
+                height = {$e_magineurs.tx_fsmediagallery.settings.album.thumb.height}
+                resizeMode = {$e_magineurs.tx_fsmediagallery.settings.album.thumb.resizeMode}
+                random = {$e_magineurs.tx_fsmediagallery.settings.album.thumb.random}
+            }
+            lightbox {
+                enable = {$e_magineurs.tx_fsmediagallery.settings.album.lightbox.enable}
+                relPrefix = {$e_magineurs.tx_fsmediagallery.settings.album.lightbox.relPrefix}
+                jsPlugin = {$e_magineurs.tx_fsmediagallery.settings.album.lightbox.jsPlugin}
+                asset {
+                    width = {$e_magineurs.tx_fsmediagallery.settings.album.lightbox.asset.width}
+                    height = {$e_magineurs.tx_fsmediagallery.settings.album.lightbox.asset.height}
+                    resizeMode = {$e_magineurs.tx_fsmediagallery.settings.album.lightbox.asset.resizeMode}
+                }
+            }
+            pagination {
+                itemsPerPage = {$e_magineurs.tx_fsmediagallery.settings.album.pagination.itemsPerPage}
+                insertAbove = {$e_magineurs.tx_fsmediagallery.settings.album.pagination.insertAbove}
+                insertBelow = {$e_magineurs.tx_fsmediagallery.settings.album.pagination.insertBelow}
+                pagesBefore = {$e_magineurs.tx_fsmediagallery.settings.album.pagination.pagesBefore}
+                pagesAfter = {$e_magineurs.tx_fsmediagallery.settings.album.pagination.pagesAfter}
+                maximumNumberOfLinks = {$e_magineurs.tx_fsmediagallery.settings.album.pagination.maximumNumberOfLinks}
+            }
+        }
+        detail {
+            asset {
+                width = {$e_magineurs.tx_fsmediagallery.settings.detail.asset.width}
+                height = {$e_magineurs.tx_fsmediagallery.settings.detail.asset.height}
+                resizeMode = {$e_magineurs.tx_fsmediagallery.settings.detail.asset.resizeMode}
+            }
+            lightbox {
+                maxWidth = {$e_magineurs.tx_fsmediagallery.settings.detail.lightbox.maxWidth}
+                maxHeight = {$e_magineurs.tx_fsmediagallery.settings.detail.lightbox.maxHeight}
+            }
+        }
+        random {
+            targetPid = {$e_magineurs.tx_fsmediagallery.settings.random.targetPid}
+            thumb {
+                width = {$e_magineurs.tx_fsmediagallery.settings.random.thumb.width}
+                height = {$e_magineurs.tx_fsmediagallery.settings.random.thumb.height}
+                resizeMode = {$e_magineurs.tx_fsmediagallery.settings.random.thumb.resizeMode}
+            }
+        }
+    }
+}
+page.includeCSS.tx-fs-media-gallery >
+plugin.tx_news.settings.detail.fsmediaalbum.targetPid = {$e_magineurs.tx_fsmediagallery.settings.random.targetPid}

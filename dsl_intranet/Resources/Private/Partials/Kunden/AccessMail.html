@@ -1,0 +1,78 @@
+
+
+
+    
+   	        
+<div class="form_headline">
+	<strong>Zugangsdaten</strong>&nbsp;&nbsp;(Passwort wurde neu generiert)
+	<hr>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	
+        <div class="layout-table-col table-formular-label table-formular-medium">
+        	Benutzername
+        </div>
+        <div class="layout-table-col table-formular-large notNeeded">
+		    <f:form.textfield name="username" value="{kunden.username}" class="form-control input-sm" disabled="disabled" />
+        </div>
+        
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Passwort<span>*</span> 
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+			
+			
+			<f:form.textfield name="password" value="{f:if(condition: '{kunden.passwortKopieKlartext}', then: '{kunden.passwortKopieKlartext}')}" id="newPassword" class="form-control input-sm" required="true" style="padding-left:25px;" />
+       		<a href="#" id="newPasswordGenerate" style="position: relative; top:-23px ; margin-left: 7px;"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+        </div>
+        
+	</div>
+</div>
+
+<br>
+<div class="form_headline" style="margin-top:-23px;">
+	<strong>Empfänger</strong>
+	<hr>
+</div>
+   	        
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	E-Mail<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="empfaenger" value="{f:if(condition: '{kunden.email}', then: '{kunden.email}', else: '{kunden.qbEmail}')}" class="form-control input-sm" required="true"  />
+		</div>
+	</div>
+</div>
+
+       	           	               	           	        
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Betreff<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="betreff" value="Ihre Zugangsdaten zum Kundencenter" class="form-control input-sm" required="true"  />
+		</div>
+	</div>
+</div>
+      	        
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Nachricht<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textarea name="nachricht" value="{f:render(partial: 'Kunden/AccessMailNachricht',  arguments:_all )}" class="validator_required form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+    	            

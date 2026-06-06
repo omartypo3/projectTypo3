@@ -1,0 +1,38 @@
+@media print {
+	body{
+		margin-top:0px;
+	}
+	.container-max{
+		width:100% !important;
+		display:block !important;
+	}
+	.content-center{
+		width:100% !important;
+		max-width:100% !important;
+		display:block !important;
+	}
+	.block_content_left{
+		display:none !important;
+		height: 0;
+	}
+	p, blockquote {
+	  orphans: 3; /* pas de ligne seule en bas */
+	  widows: 3; /* pas de ligne seule en haut */
+	}
+	blockquote, ul, ol{
+	  page-break-inside: avoid; /* pas de coupure dans ces élements */
+	}
+		.row{
+		display:block;
+	}
+	div{
+		opacity:1 !important;
+	}
+	td {
+    border-bottom: 1px solid #f0f0f0;
+	}
+
+	.thumbs, form{
+		display:none !important;
+	}
+}

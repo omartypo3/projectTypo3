@@ -1,0 +1,157 @@
+# customsubcategory=tx_solr_Template= Templates
+# customsubcategory=tx_solr_Search= Search
+# customsubcategory=tx_solr_General= General
+# customsubcategory=tx_solr_index= Index
+e_magineurs.tx_solr {
+	view {
+		# cat=Configuration de la recherche/tx_solr_Template; type=string; label= Chemin du dossier Templates
+		templateRootPath = 	solr/Templates/
+		# cat=Configuration de la recherche/tx_solr_Template; type=string; label= Chemin du dossier Partials
+		partialRootPath = 	solr/Partials/
+		# cat=Configuration de la recherche/tx_solr_Template; type=string; label= Chemin du dossier Layouts
+		layoutRootPath = solr/Layouts/
+	}
+}
+
+e_magineurs.tx_solr {
+	solr {
+		prod {
+			host = 
+			port = 
+			path = 
+		}
+		preprod {
+			host = 
+			port = 
+			path = 
+		}
+		dev {
+			host = 188.165.235.161
+			port = 8983
+			path = /solr/core_ekit/ 
+		}
+		local {
+			host = 172.16.0.199
+			port = 8983
+			path = /solr/core_ekit_local/
+		}
+
+	}
+
+	search {
+		# cat=Configuration de la recherche/tx_solr_Search; type=int+; label= Page de résultat
+		targetPage = 69
+		# cat=Configuration de la recherche/tx_solr_Search; type=int+; label= Résultat par page
+		results.resultsPerPage = 15
+		# cat=Configuration de la recherche/tx_solr_Search; type=boolean; label= Autoriser les recherches vides
+		query.allowEmptyQuery = 1
+	}
+	# cat=Configuration de la recherche/tx_solr_General; type=string; label= Format de la date
+	general.dateFormat.date = d/m/Y
+	index.queue {
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des pages
+		pages = 1
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des actualités
+		actualite = 1	
+		actualite {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers des actualités
+			pidActualites = 3
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail des actualités
+			pidActualitesDetail = 26
+			# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des fichiers en relations des actualités
+			attachements = 1
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Champs des fichiers en relations pour l'extension news
+			attachements.fields = fal_related_files
+			
+		}	
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des agendas
+		agenda = 1	
+		agenda {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers des agendas
+			pidAgenda = 4
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail des agendas
+			pidAgendaDetail = 28
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers des villes
+			pidVille  = 7
+			# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des fichiers en relations des agendas
+			attachements = 1
+		}	
+
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des communiqués de presse
+		presse = 1	
+		presse {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers des communiqués de presse
+			pidActualites = 294
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail des communiqués de presse
+			pidActualitesDetail = 108
+			# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des fichiers en relations des communiqués de presse
+			attachements = 1
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Champs des fichiers en relations pour l'extension news
+			attachements.fields = fal_related_files
+		}
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des faqs
+		faq = 1	
+		faq {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers des faqs
+			pidFaq = 12
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page liste des faqs
+			pidFaqDetail = 79
+			# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des fichiers en relations des faq
+			attachements = 1
+		}	
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation de l'annuaire des personnes
+		annuairePersonnes = 1	
+		annuaire_des_personnes {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers de l'annuaire des personnes
+			pidAnnuairePersonnes = 23
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail de l'annuaire des personnes
+			pidAnnuairePersonneDetail = 61
+			# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des fichiers en relations de l'annuaire des personnes
+			attachements = 0
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Champs des fichiers en relations pour l'annuaire des personnes
+			attachements.fields = 
+		}	
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation de l'annuaire des lieux
+		annuaireLieux = 1	
+		annuaires_des_lieux {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers de l'annuaire des lieux
+			pidAnnuaireLieux = 39
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail de l'annuaire des lieux
+			pidAnnuaireLieuxDetail = 62
+			# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des fichiers en relations de l'annuaire des lieux
+			attachements = 0
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Champs des fichiers en relations pour l'annuaire des lieux
+			attachements.fields = 
+		}	
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation de la galerie vidéo
+		galerieVideo = 1
+		galerie_video {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers de la galerie vidéo
+			pidGalerieVideo = 24
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail de la galerie vidéo
+			pidGalerieVideoDetail = 35
+		}		
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation de la galerie photo
+		galeriePhoto = 1	
+		galerie_photo {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers de la galerie photo
+			pidGaleriePhoto = 9
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail de la galerie photo
+			pidGaleriePhotoDetail = 29
+		}	
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation du glossaire
+		glossaire = 1
+		glossaire {
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Dossiers du glossaire
+			pidGlossaire = 10
+			# cat=Configuration de la recherche/tx_solr_index; type=string; label= Pid de la page détail du glossaire
+			pidGlossaireDetail = 78
+		}		
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des documents d'un dossier du fileadmin
+		storageContext = 0
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des documents reliés aux pages
+		pageContext = 1
+		# cat=Configuration de la recherche/tx_solr_index; type=boolean; label= Indexation des documents reliés aux enregistrements
+		recordContext = 0
+	}
+}

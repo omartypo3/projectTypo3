@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="stratis_newsletter" date="2021-10-07T12:50:31+01:00">
+		<header/>
+		<body>
+
+			<trans-unit id="flux.newContentWizard.stratisnewsletters">
+				<source>Stratis Newsletter</source>
+			</trans-unit>		
+			<!-- Templates -->
+			<trans-unit id="templates.newsletter_page">
+				<source>Newsletter page</source>
+			</trans-unit>
+
+			<!-- Misc/Common -->
+			<trans-unit id="common.download">
+				<source>Download</source>
+			</trans-unit>
+
+			<!-- Actualités -->
+			<trans-unit id="actus.allLink">
+				<source>All news</source>
+			</trans-unit>
+
+			<!-- Agenda -->
+			<trans-unit id="agenda.allLink3">
+				<source>All events</source>
+			</trans-unit>
+
+			<!-- Photos/Vidéos -->
+			<trans-unit id="photosVideo.allLink">
+				<source>All pictures/videos</source>
+			</trans-unit>
+
+			<!-- Publications -->
+			<trans-unit id="publications.read">
+				<source>Read</source>
+			</trans-unit>
+
+			<!-- Newsletter -->
+			<trans-unit id="newsletter.consultArchives">
+				<source>Archives</source>
+			</trans-unit>
+			<trans-unit id="newsletter.unsubscribe">
+				<source>Unsubscribe</source>
+			</trans-unit>
+			<trans-unit id="newsletter.email">
+				<source>Contact us</source>
+			</trans-unit>
+			<trans-unit id="newsletter.headerMessage">
+				<source>If the message below does not display correctly,</source>
+			</trans-unit>
+			<trans-unit id="newsletter.headerLink">
+				<source>click here to read the online version.</source>
+			</trans-unit>
+			<trans-unit id="newsletter.publications.allLink">
+				<source>All publications</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,25 @@
+{<f:layout name="Empty" />
+<f:section name="content">
+    <div class="move_scroll side_recherche">
+        <f:form object="{filter}" action="list" pluginName="List" name="filter" method="post" >
+                <f:form.hidden property="orderBy" value="{filter.orderBy}" />
+                <f:form.hidden property="orderDirection" value="{filter.orderDirection}" />
+                <div class="">
+                    <div class="block_champs_side_search">
+                        <div class="case_champs_side_search">
+                            <label for="keywords">Par mot(s) clé(s)</label>
+                            <f:form.textfield id="keywords" property="keywords" class="form-control"/>
+                        </div>
+                        <div class="case_champs_side_search">
+                            <label for="category">Par Thématique</label>
+                            <f:form.select id="category" property="category" class="custom-select" options="{categories}" optionLabelField="title" prependOptionValue="" prependOptionLabel="Thématique" />
+                        </div>
+                    </div>
+                    <div class="bontons_search_side">
+                        <button type="reset" class="btn btn-gris-fonce btn-animate" value="Effacer">Effacer</button>
+                        <button type="submit" value="Rechercher" class="btn btn-vert btn-animate btn-fond-clair" title="Rechercher des résultats sur la page {v:page.info(field: 'title')}">Rechercher</button>
+                    </div>
+                </div>
+        </f:form>
+    </div>
+</f:section>

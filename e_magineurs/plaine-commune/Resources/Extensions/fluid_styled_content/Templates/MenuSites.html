@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+	<f:section name="Main">
+		<div class="move_scroll content_ul" id="draggable-slider">
+			<f:if condition="{menu}">
+				<ul class="menu_slide">
+					<f:for each="{menu}" as="page">
+						<li>
+							<f:if condition="{page.link}">
+								<f:then>
+									<a href="{page.link}" title=' Accéder au site "{page.title}"' target="{page.target}">
+										<f:if condition="{page.files.0}">
+											<div class="case_img_sites">
+												<f:media class="img_sites" file="{page.files.0}"/>
+											</div>
+										</f:if>
+										<p>{page.title}</p>
+									</a>
+								</f:then>
+								<f:else>
+									<f:if condition="{page.files.0}">
+										<div class="case_img_sites">
+											<f:media class="img_sites" file="{page.files.0}"/>
+										</div>
+									</f:if>
+									<p>{page.title}</p>
+								</f:else>
+							</f:if>
+						</li>
+					</f:for>
+				</ul>
+			</f:if>
+			<div id="block_draggable" class="scrollbar">
+				<div class="case_draggable handle"><i class="icon-Hand"></i></div>
+				<div class="bar_draggable"></div>
+			</div>
+			<div class="controls">
+				<button type="button" class="btn prev disabled" disabled="" aria-label="Précédent" title="Précédent"><span class="fa-angle-left" aria-hidden="true"></span></button>
+				<button type="button" class="btn next" aria-label="Suivant" title="Suivant"><span class="fa-angle-right" aria-hidden="true"></span></button>
+			</div>
+		</div>
+	</f:section>
+</html>

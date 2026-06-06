@@ -1,0 +1,28 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+			xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers">
+
+	<div class="dpnglossary details">
+			<f:if condition="{term.media}">
+				<f:for each="{term.media}" as="media">
+					<p class="mediafile">
+						<f:media file="{media}" title="{media.title}" alt="{media.alt}"/>
+					</p>
+				</f:for>
+			</f:if>
+			<f:if condition="{term.synonyms}">
+				<p>{f:translate(key: 'tx_dpnglossary_domain_model_term.synonyms')}: {f:if(condition: synonymIterator.isLast, then: '{synonym.name}', else: '{synonym.name}, ') -> f:for(each: term.synonyms, iteration: 'synonymIterator', as: 'synonym')}</p>
+			</f:if>
+			<f:if condition="{term.termLang}">
+				<p>{f:translate(key: 'tx_dpnglossary_domain_model_term.term_lang')}: {term.termLang}</p>
+			</f:if>
+			<f:for each="{term.descriptions}" as="description">
+				<div class="description">
+					<div class="text">
+						<f:format.html>{description.text}</f:format.html>
+					</div>
+				</div>
+			</f:for>
+	</div>
+
+</html>

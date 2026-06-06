@@ -1,0 +1,70 @@
+
+<h3><f:link.action action="kundennew" arguments="{auftraege : auftraege}" controller="Protokolle" pluginName="kundenlogin" extensionName="dslintranet" class="doAjaxEdit"><i class="fa fa-plus-square-o" style="padding-right:15px;"></i>Neuen Kommentar</f:link.action></h3>
+
+
+<table id="protokolleList{auftraege.uid}" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+    <tr>
+        <th>Datum</th>
+        <th>Aktion / Kommentar</th>
+        <th>MA</th>
+        <th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+        <f:for each="{auftraege.protokolle}" as="protokolle">
+			<f:render partial="KundenAuftraege/ProtokolleListRow" arguments="{_all}" />         
+        </f:for>
+    </tbody>
+</table>
+
+
+<script>
+
+	$('#protokolleList'+auftraegeUid).DataTable({
+		
+		 "dom": '<"top"<"float_left"i>f>rt<"bottom"><"clear">', 
+			
+			"order": [[ 0, "desc" ]],
+			"columnDefs": [
+				{
+					"targets": [ 1 ],
+					"orderable": false
+				},
+				{
+					"targets": [ 2,3 ],
+					"orderable": false
+				}
+			],
+			paging: false,
+			"language": {
+				"decimal":        "",
+				"emptyTable":     "Keine Daten gefunden",
+				"info":           "Einträge: _TOTAL_ ",
+				"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+				"infoFiltered":   " von _MAX_ (gefiltert)",
+				"infoPostFix":    "",
+				"thousands":      ",",
+				"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+				"loadingRecords": "Lädt...",
+				"processing":     "Processing...",
+				"search":         "Suche:",
+				"zeroRecords":    "Keine Ergebnisse gefunden",
+				"paginate": {
+					"first":      "Erste",
+					"last":       "Letzte",
+					"next":       "Nächste",
+					"previous":   "Vorhergehende"
+				},
+				"aria": {
+					"sortAscending":  ": activate to sort column ascending",
+					"sortDescending": ": activate to sort column descending"
+				}
+			}
+			
+	});
+
+	
+	
+
+
+</script>

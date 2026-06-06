@@ -1,0 +1,48 @@
+
+<tr data-wv-uid="{wartungsvertraege.uid}">
+	<td><a aria-controls="collapse-{wartungsvertraege.uid}" aria-expanded="true" onClick="wartungsvertraegeToggle({wartungsvertraege.uid})" href="#collapse-{wartungsvertraege.uid}" data-parent="#wartungsvertraegeList" data-toggle="collapse" role="button"  class="collapsed panel-heading tableBtn" id="wartungsvertrag-show-{wartungsvertraege.uid}-headline" ><i class="fa fa-chevron-up" aria-hidden="true"></i><i class="fa fa-chevron-down" aria-hidden="true"></i></a></td>
+	<td>{wartungsvertraege.zeitraumAktiv.von->f:format.date(format: 'm/y')} - 
+	{wartungsvertraege.zeitraumAktiv.bis->f:format.date(format: 'm/y')}</td>
+	
+	<td><div class="auftraegeListKunde"><strong>{wartungsvertraege.kunde.name}</strong> [{wartungsvertraege.kunde.nummer}]</div>{wartungsvertraege.titel}</td>
+	<td class="{f:if(condition: '{wartungsvertraege.zeitraumAktiv.zeitVerbraucht}>{wartungsvertraege.kontingent}', then: 'text-danger', else: '')}"><center><f:render partial="Allgemein/DauerKurzWartung" arguments="{set:wartungsvertraege.zeitraumAktiv.zeitVerbrauchtSet}" /> von <f:render partial="Allgemein/DauerKurz" arguments="{set:wartungsvertraege.kontingentSet}" /></center></td>
+	<td>
+	<f:if condition="{wartungsvertraege.offeneRechnungen}">
+		<f:then>
+			{wartungsvertraege.offeneRechnungen}&nbsp;&nbsp;Abrechnung<f:if condition="{wartungsvertraege.offeneRechnungen}>1">en</f:if> fällig
+		</f:then>
+		<f:else>
+			läuft
+		</f:else>
+	</f:if>
+	
+		<f:if condition="{wartungsvertraege.gekuendigt}">&nbsp;/&nbsp;<span class="text-danger">Gekündigt</span></f:if>
+	</td>
+	<td><div class="btn-group">
+		
+		
+		
+		<f:if condition="{wartungsvertraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="edit" arguments="{uid : wartungsvertraege.uid}" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '910px'}" class="doAjaxEdit btn tableBtn"><i class="fa fa-edit"></i></f:link.action>
+			
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv"><i class="fa fa-edit" aria-hidden="true"></i></a>
+		</f:else>
+		</f:if>
+		
+		
+		<f:if condition="{wartungsvertraege.rights.delete}">
+			<f:then>
+				<f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="ajax" arguments="{uid : wartungsvertraege, switch : 'delete'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeWartungsvertraege', data-ajax-selector: '#dsl_wartungsliste_list', data-ajax-id: '{wartungsvertraege.uid}'}" ><i class="fa fa-trash-o" aria-hidden="true"></i></f:link.action>
+			</f:then>
+			<f:else>
+				<a class="btn tableBtn inaktiv"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</f:else>
+		</f:if>
+		
+		
+		
+	</div></td>
+</tr>

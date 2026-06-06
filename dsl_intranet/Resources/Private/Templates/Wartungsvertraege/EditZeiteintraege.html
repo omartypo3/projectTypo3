@@ -1,0 +1,112 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+    <f:form controller="Wartungsvertraege" action="ajax" name="zeiteintraege"  pluginName="{pluginName}" extensionName="dslintranet" id="zeiteintraegeEditForm" additionalAttributes="{data-type: '{pluginName}',data-auftraege: '{auftraegeUid}' }" >
+    
+        <f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Zeiteintrag Bearbeiten'}" />
+     		
+        
+        <script>
+            $(document).ready(function() {
+				
+				//wartungsliste
+//                $('#zeiteintraegeCreateForm').submit(function() {
+
+				$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+				$.validator.messages.min = '<i class="fa fa-exclamation-circle"></i>';
+				
+			
+				$('#zeiteintraegeEditForm').validate({
+					invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+					rules: {
+						'tx_dslintranet_wartungsliste[kontingent]': { required: true, min: 1 }
+					},
+					
+					ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+					errorClass: 'invalid',
+					submitHandler: function(form) {	
+						
+						
+						
+						validateFormInvalidHandlerReset();
+						
+						if($('#zeiteintraegeEditForm').hasClass('formSaves'))	return false;
+						$('#zeiteintraegeEditForm').addClass('formSaves');
+        			
+                    
+						$.ajax({
+							url: $('#zeiteintraegeEditForm').attr('action'),
+							type: 'POST',
+							data: $('#zeiteintraegeEditForm').serialize(),
+							success: function(data) {
+								
+							
+								
+								dataJson = JSON.parse(data);
+								
+								//reloadAuftragId('list',id);
+								if(!dataJson["wartungsvertraegeUid"]) {
+							
+									return true;
+								} else {
+									
+									if($('#zeiteintraegeEditForm').data('auftraege')) {
+										refreshProjektTabContent($('#zeiteintraegeEditForm').data('auftraege'));
+									} else {
+										loadWartungsvertragContent(dataJson["wartungsvertraegeUid"]);
+									}
+									//hier entscheidung if {pluginName}==wartungsliste...?
+									//refreshProjektTabContent(dataJson["auftraegeUid"]);
+									
+									$.colorbox.close();
+								}
+								
+								//$.colorbox.close();
+		
+				
+							}
+						});
+							
+							
+					}
+				});
+				
+				/* Validator Ende */
+		
+            });
+        
+        </script>
+                
+        
+        
+		        
+				<f:form.hidden name="zeiteintraege" value="{zeiteintraege.uid}" />
+                <f:form.hidden name="switch" value="updateZeiteintraege" />
+
+                <f:render partial="WartungZeiteintraege/FormFields" arguments="{_all}" />
+
+        
+        <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+            
+        
+    </f:form>
+
+
+</f:section>

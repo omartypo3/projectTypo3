@@ -1,0 +1,14 @@
+paths:
+  - Configuration/TypoScript
+  - ext_typoscript_setup.typoscript
+sniffs:
+  - class: Indentation
+    parameters:
+      indentPerLevel: 2
+  - class: RepeatingRValue
+    disabled: true
+  - class: NestingConsistency
+    parameters:
+      commonPathPrefixThreshold: 5
+  - class: DeadCode
+    disabled: true

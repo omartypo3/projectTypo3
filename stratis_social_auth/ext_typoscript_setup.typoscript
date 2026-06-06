@@ -1,0 +1,35 @@
+# Ajax auth calls handling for stratis_social_auth
+stratis_social_auth_auth = PAGE
+stratis_social_auth_auth {
+  typeNum = 1530794991
+  config {
+    xhtml_cleaning = 0
+    disableAllHeaderCode = 1
+    admPanel = 0
+    debug = 0
+    no_cache = 1
+  }
+  headerData >
+  10 = USER_INT
+  10 {
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    vendorName = Stratis
+    extensionName = StratisSocialAuth
+    pluginName = Pi3
+    controller = Auth
+  }
+}
+
+# Ajax endpoint calls handling for stratis_social_auth
+stratis_social_auth_endpoint = PAGE
+stratis_social_auth_endpoint < stratis_social_auth_auth
+stratis_social_auth_endpoint {
+  typeNum = 1530541022
+  10 {
+    pluginName = Pi4
+  }
+}
+
+# Map namespaces to new plugins
+plugin.tx_stratissocialauth_pi3.view.pluginNamespace = tx_stratissocialauth_pi1
+plugin.tx_stratissocialauth_pi4.view.pluginNamespace = tx_stratissocialauth_pi1

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="messages" product-name="form">
+        <header>
+            <authorName>Gert-jan Dikkescheij</authorName>
+            <authorEmail>gerry@web-manager.com</authorEmail>
+        </header>
+        <body>
+            <trans-unit id="element.contatti.renderingOptions.submitButtonLabel">
+                <source>SUBMIT THE REQUEST</source>
+            </trans-unit>
+            
+            <trans-unit id="element.page.renderingOptions.previousButtonLabel" xml:space="preserve">
+                <source>Previous</source>
+            </trans-unit>
+            <trans-unit id="element.page.renderingOptions.nextButtonLabel" xml:space="preserve">
+                <source>Next</source>
+            </trans-unit>
+
+            <trans-unit id="finisher.Confirmation.message" xml:space="preserve">
+                <source>Thank you for your inquiry.</source>
+            </trans-unit>
+
+             <trans-unit id="contatti.element.page.properties.label">
+                <source>Fill out the form to request information and quotes</source>
+            </trans-unit>
+
+             <trans-unit id="contatti.element.name.properties.label">
+                <source>name</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.name.properties.placeholder">
+                <source>Name *</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.email.properties.label">
+                <source>Email</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.email.properties.placeholder">
+                <source>Email *</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.phone.properties.label">
+                <source>telephone number</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.phone.properties.placeholder">
+                <source>telephone number</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.subject.properties.label">
+                <source>subject</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.subject.properties.placeholder">
+                <source>How can we help you? *</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.message.properties.label">
+                <source>message</source>
+            </trans-unit>
+            <trans-unit id="contatti.element.message.properties.placeholder">
+                <source>Message</source>
+            </trans-unit>
+
+            <trans-unit id="contatti.element.summary.properties.label">
+                <source>Summary</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

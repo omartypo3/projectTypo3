@@ -1,0 +1,24 @@
+plugin.tx_egestiondocs {
+	view {
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_egestiondocs.view.layoutRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_egestiondocs.view.partialRootPath}
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_egestiondocs.view.templateRootPath}
+	}
+}
+
+lib.categoriesDoc = CONTENT
+lib.categoriesDoc {
+    table = sys_file
+    select {
+        uidInList.field = sourceUid
+        pidInList = 0
+        selectFields = sys_category.title AS catTitle
+        join = sys_file_metadata ON sys_file.uid = sys_file_metadata.file join sys_category_record_mm on sys_file_metadata.uid = sys_category_record_mm.uid_foreign join sys_category on sys_category_record_mm.uid_local = sys_category.uid
+		where = sys_category_record_mm.tablenames = 'sys_file_metadata'
+    }
+    renderObj = TEXT
+    renderObj {
+        field = catTitle
+        stdWrap.noTrimWrap = | ||
+    }
+}

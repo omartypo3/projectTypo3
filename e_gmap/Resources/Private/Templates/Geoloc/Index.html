@@ -1,0 +1,108 @@
+{namespace core=TYPO3\CMS\Core\ViewHelpers}
+<f:asset.script identifier="egmap-localize" src="EXT:e_gmap/Resources/Public/JavaScript/egmap-localize.js"/>
+
+<f:layout name="Geoloc" />
+
+<f:section name="iconButtons">
+</f:section>
+
+
+<f:section name="content">
+	<h2><f:translate key="be.geoloc.header" /></h2>
+	
+	<f:flashMessages />
+	
+	<br>
+	<div class="typo3-messages alert alert-info">
+		<div class="message-body">
+			<f:translate key="be.geoloc.listext" />
+		</div>
+	</div>
+	<br>
+	<table class="table table-striped table-hover">
+		<thead>
+		<tr class="t3-row-header">
+			<td><span><f:translate key="be.geoloc.tab.key" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.table" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.extmodel" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.extcat" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.sqlfile" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.sqlbdd" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.tca" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.tsconfig" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.ts" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.model" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.repo" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.xml" /></span></td>
+			<td><span><f:translate key="be.geoloc.tab.html" /></span></td>
+		</tr>
+		</thead>
+		<tbody>
+			<f:for each="{extTables}" as="extTable">
+				<tr class="db_list_normal" >
+					<td><span>{extTable.key}</span></td>
+					<td><span>{extTable.table}</span></td>
+					<td><span>{extTable.extmodel}</span></td>
+					<td><span>{extTable.extcat}</span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isSqlfile}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isSqlbdd}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isTca}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isTSConfig}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isTSExtbase}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isModel}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isRepo}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isXml}" /></span></td>
+					<td><span><f:render partial="Geoloc/Icon" arguments="{ok: extTable.isHtml}" /></span></td>
+				</tr>
+			</f:for>
+		</tbody>
+	</table>
+		
+	<br>
+	
+	<div class="typo3-messages alert alert-success">
+		<div class="message-body">
+			<f:translate key="be.geoloc.extend" />
+			<br>
+			<br>
+			<f:form style="display:flex;/*flex-flow: row wrap*/;justify-content: space-between;margin:10px 100px 5px 10px;color:black;" action="validate" id="EGmapForm">
+				<span style="padding: 0 20px;">
+					<label><f:translate key="be.geoloc.chooseTable" /></label>
+					<select style="padding: 2px 0;" id="tables" name="tx_egmap_tools_egmapgeoloc[table]">
+						<option value="" ><f:translate key="be.geoloc.chooseTable" /></option>
+						<f:for each="{otherTables}" as="table">
+							<f:if condition="{request.table}=={table}">
+								<f:then>
+									<option value="{table}" selected="selected">
+										{table}
+									</option>
+								</f:then>
+								<f:else>
+									<option value="{table}">
+										{table}
+									</option>
+								</f:else>
+							</f:if>
+						</f:for>
+					</select>
+				</span>
+				<span style="padding: 0 20px;">
+					<label><f:translate key="be.geoloc.chooseKey" /></label>
+					<input type="text" id="key" name="tx_egmap_tools_egmapgeoloc[key]" value="{request.key}"/>
+				</span>
+				<span style="padding: 0 20px;">
+					<label><f:translate key="be.geoloc.chooseModel" /></label>
+					<input type="text" id="model" name="tx_egmap_tools_egmapgeoloc[model]" value="{request.model}" style="width:300px;"/>
+				</span>
+				<span style="padding: 0 20px;">
+					<label><f:translate key="be.geoloc.chooseCat" /></label>
+					<input type="text" id="cat" name="tx_egmap_tools_egmapgeoloc[cat]" value="{request.cat}" style="width:300px;"/>
+				</span>
+				<span style="padding: 18px 20px;">
+                    <input style="border-radius: 2px;" class="btn btn-default" type="button" id="EGmapValidateButton" value="Valider"/>
+				</span>
+			</f:form>
+		</div>
+	</div>
+	
+</f:section>

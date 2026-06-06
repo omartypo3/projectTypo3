@@ -1,0 +1,79 @@
+# customsubcategory=tx_egmap_Template= Templates
+# customsubcategory=tx_egmap_Settings= Settings
+plugin.tx_egmap {
+	view {
+		# cat=Configuration de E_gmap/tx_egmap_Template; type=string; label= Chemin du dossier Templates
+		templateRootPath = e_gmap/Templates/
+		# cat=Configuration de E_gmap/tx_egmap_Template; type=string; label= Chemin du dossier Partials
+		partialRootPath = e_gmap/Partials/
+		# cat=Configuration de E_gmap/tx_egmap_Template; type=string; label= Chemin du dossier Layouts
+		layoutRootPath = e_gmap/Layouts/
+	}
+	# cat=Configuration de E_gmap; type=ing+; label= Dossier de stockage des POI
+	persistence.storagePid = 
+	settings{
+		# cat=Configuration de E_gmap/tx_egmap_Settings; type=string; label= Chemin de Map.js
+		templateJs = EXT:e_gmap/Resources/Private/Templates/Map/Map.js
+		# cat=Configuration de E_gmap/tx_egmap_Settings; type=string; label= apiKey
+		apiKey = AIzaSyCbJ-nGo-D_hheiGpd2EyR2syOo7AldQNI
+		# cat=Configuration de E_gmap/tx_egmap_Settings; type=string; label= Largeur de la carte (avec px ou %)
+		width = 100%
+		# cat=Configuration de E_gmap/tx_egmap_Settings; type=string; label= Hauteur de la carte (avec px ou %)
+		height = 600px
+		includeJs{
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Inclure jQuery
+			jquery = 1
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Inclure gmap
+			gmap = 1
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Inclure infobubble
+			infobubble = 1
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Inclure markerclusterer
+			markerclusterer = 1
+		}
+		map{
+			center{
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=options[auto,fix,poi,client]; label= Mode de centrage de la carte
+				type = fix
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=int+; label= Latitude pour centrer la carte
+				lat = 45.77082417601594
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=int+; label= Longitude pour centrer la carte
+				lng = 4.811924546957016
+			}
+			zoom {
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Afficher le zoom
+				actif = 1
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=int+; label= Valeur du zoom
+				value = 10
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Activer le zoom molette
+				molette = 1
+			}
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Activer le streetview
+			streetview.actif = 0
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Activer les déplacements
+			deplacement.actif = 0
+			type{
+				actif = 1
+				defaut = ROADMAP
+			}
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Déplacer la carte
+			draggable = 0
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Activer la recherche
+			recherche.actif = 0
+			itineraire {
+				# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Activer la recherche d'itinéraire
+				actif = 0
+				type = DRIVING
+				show = 1
+				panel = 0
+			}
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Afficher la météo
+			meteo = 0
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Afficher le cloud
+			cloud = 0
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Afficher le traffic
+			trafic = 0
+			# cat=Configuration de E_gmap/tx_egmap_Settings; type=boolean; label= Regrouper les POI
+			cluster.actif = 0
+		}
+	}
+}

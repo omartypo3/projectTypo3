@@ -1,0 +1,130 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+	
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+    
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/Styles/allgemein.css" name="cssAllgemein" dependencies="bootstrap"></v:asset.style>
+	
+	<f:comment><!--<div class="layout-table">
+		<div class="layout-table-row">
+			<div class="layout-table-col">
+	
+				<div class="contentBlock">
+					
+					
+					
+					<div class="layout-table" style="width:100%;">
+						<div class="layout-table-row">
+							<div class="layout-table-col" style="vertical-align: middle;width:150px;">
+								<img class="bubbles wow fadeInDown" src="fileadmin/template/public/images/hallo_bubble.png" alt="Hallo Symbol" width="117" />
+							</div>
+							<div class="layout-table-col" style="padding:0 20px; width: 60%;">
+								<h1>Herzlich Willkommen <span style="font-weight:normal;">im Kundencenter</span></h1>
+								<p>Sie haben sich erfolgreich eingeloggt und befinden sich jetzt in Ihrem persönlichen Bereich zur Kontrolle Ihrer aktuellen Aufträge. Schon bald haben Sie die Möglichkeit, Projekte direkt über diesen Login in Auftrag zu geben. Bis diese Funktion fertiggestellt ist, freuen wir uns jederzeit gern über den persönlichen Kontakt per Telefon unter <strong>0375 44 44 66 7</strong> oder per E-Mail an <f:link.email email="info@dsl-factory.de"><strong>info@dsl-factory.de</strong></f:link.email>.</p>
+
+							</div>
+							<div class="layout-table-col" style="padding-left:20px; border-left: solid 2px #ccc; width:40%;">
+								<h1>News</h1>
+								<p style="font-size:14px;">Das System befindet sich derzeit noch in der Testphase. Sollten Sie Fehler feststellen melden Sie uns diese bitte telefonisch oder per E-Mail.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="contentBlock contentBlockGruen">
+					<h1>Wichtige Mitteilung</h1>
+					<p style="font-size:14px;">Achtung! Im Zeitraum vom 01.04. - 26.04. finden Wartungsarbeiten statt. Es kann in dieser Zeit zu sporadischen Ausfällen kommen. Sollten Sie Informationen zu einem Auftrag, Dateien oder andere Dinge benötigen, können Sie uns im Rahmen unserer Geschäftszeiten per Telefon oder E-Mail erreichen. Vielen Dank für Ihr Verständnis.</p>
+				</div>
+			
+			</div>
+			
+			
+		</div>
+	</div>--></f:comment>
+	
+	<div class="row outerRow">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="row innerRow">
+				<div class="col-sm-12 col-md-3 col-lg-3">
+					<h1 style="margin-top:0; text-transform:uppercase;"><span style="font-weight:bold;">Herzlich Willkommen</span> im Kundencenter</h1>
+				</div>
+				<div class="col-sm-12 col-md-9 col-lg-9">
+					<p>Sie haben sich erfolgreich eingeloggt und befinden sich jetzt in Ihrem persönlichen Bereich zur Kontrolle Ihrer aktuellen Aufträge. Schon bald haben Sie die Möglichkeit, Projekte direkt über diesen Login in Auftrag zu geben. Bis diese Funktion fertiggestellt ist, freuen wir uns jederzeit gern über den persönlichen Kontakt per Telefon unter <strong>0375 44 44 66 7</strong> oder per E-Mail an <f:link.email email="info@dsl-factory.de"><strong>info@dsl-factory.de</strong></f:link.email>.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="row outerRow">
+		
+		<div class="col-sm-12 col-md-6 col-lg-3">
+			<f:link.page pageUid="85" class="icon_big homeBox">
+				<div class="innerBoxcontainer">
+					<div class="bb-pin bb-lg"></div><br>
+					<i class="bb-arrow-right-large"></i><span class="icon_big_label">&nbsp;Meine Aufträge</span>
+				</div>
+			</f:link.page>
+		</div>
+		
+		<div class="col-sm-12 col-md-6 col-lg-3">
+			<f:link.action pageUid="93" class="icon_big homeBox" controller="KundenDateien" pluginName="kundendateien" extensionName="dslintranet" action="listrechnungen">
+				<div class="innerBoxcontainer">
+					<div class="bb-pdf-download bb-lg"></div><br>
+					<i class="bb-arrow-right-large"></i><span class="icon_big_label">&nbsp;Meine Rechnungen</span>
+				</div>
+			</f:link.action>
+		</div>
+		
+		<div class="col-sm-12 col-md-6 col-lg-3">
+			<f:link.page pageUid="88" class="icon_big homeBox">
+				<div class="innerBoxcontainer">
+					<div class="bb-download bb-lg"></div><br>
+					<i class="bb-arrow-right-large"></i><span class="icon_big_label">&nbsp;Downloadcenter</span>
+				</div>
+			</f:link.page>
+		</div>
+		
+		<div class="col-sm-12 col-md-6 col-lg-3">
+			<f:link.page pageUid="99" class="icon_big homeBox">
+				<div class="innerBoxcontainer">
+					<div class="bb-tool bb-lg"></div><br>
+					<i class="bb-arrow-right-large"></i><span class="icon_big_label">&nbsp;Meine Stammdaten</span>
+				</div>
+			</f:link.page>
+		</div>
+		
+		<f:if condition="{f:cObject(typoscriptObjectPath: 'lib.picDropZugangscode')}">
+			<div class="col-sm-12 col-md-6 col-lg-3">
+
+					<f:link.page pageUid="100" class="icon_big homeBox">
+						<div class="innerBoxcontainer">
+							<div class="bb-camera bb-lg"></div><br>
+							<i class="bb-arrow-right-large"></i><span class="icon_big_label">&nbsp;Mein Bildarchiv</span>
+						</div>
+					</f:link.page>
+
+			</div>
+		</f:if>
+		
+	</div>
+	
+		
+
+</f:section>
+</html>
+
+
+

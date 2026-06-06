@@ -1,0 +1,10 @@
+plugin.tx_stratiselements {
+	view {
+		# cat=plugin.tx_stratiselements/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:stratis_elements/Resources/Private/Templates/
+		# cat=plugin.tx_stratiselements/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:stratis_elements/Resources/Private/Partials/
+		# cat=plugin.tx_stratiselements/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:stratis_elements/Resources/Private/Layouts/
+	}
+}

@@ -1,0 +1,48 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+
+<f:render partial="Kunden/Properties" arguments="{kunden:kunden}" />
+
+<div class="boxFullWidth">
+
+	<div class="row">
+		<f:for each="{portfolios}" as="portfolio">
+
+
+			
+				<div class="col-md-6 projektContainer">
+					<div class="frischesProjekt">
+						<f:image src="{portfolio.teaserBild.0.originalResource.originalFile.uid}"  alt="{portfolio.titel}" width="1230c" height="780c"  />
+						<div class="projekteOverlayText">
+							<h2 class="projekteTitel">{portfolio.titel}</h2>
+							<p class="projekteKunde">{portfolio.kunde.name}</p>
+							<f:link.action action="detail" arguments="{portfolio : portfolio, hashtags: selectedHashtag, kunden: kunden}" class="btnBig kundePrimaerFarbe{portfolio.kunde.uid}" >Projekt ansehen</f:link.action>
+						</div>
+						<div class="projekteOverlay kundePrimaerFarbeBackground{portfolio.kunde.uid}">&nbsp;</div>
+					</div>
+				</div>
+
+
+		</f:for>
+	</div>	
+
+	
+</div>
+
+
+</f:section>

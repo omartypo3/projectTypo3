@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:pingag_address/Resources/Private/Language/locallang_db.xlf" date="2022-06-01T11:51:25Z" product-name="pingag_address">
+		<header/>
+		<body>
+			<trans-unit id="tx_pingagaddress_domain_model_map" resname="tx_pingagaddress_domain_model_map">
+				<source>Map</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.title" resname="tx_pingagaddress_domain_model_map.title">
+				<source>Title</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_dienstleistungen" resname="tx_pingagaddress_domain_model_dienstleistungen">
+				<source>Dienstleistungen</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_dienstleistungen.title" resname="tx_pingagaddress_domain_model_dienstleistungen.title">
+				<source>Title</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_veranstaltung" resname="tx_pingagaddress_domain_model_veranstaltung">
+				<source>Art der Veranstaltung</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_veranstaltung.veranstaltung" resname="tx_pingagaddress_domain_model_veranstaltung.veranstaltung">
+				<source>Art der Veranstaltung</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_zielgruppe" resname="tx_pingagaddress_domain_model_zielgruppe">
+				<source>Zielgruppe</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_zielgruppe.zielgruppe" resname="tx_pingagaddress_domain_model_zielgruppe.zielgruppe">
+				<source>Zielgruppe</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_kursthemen" resname="tx_pingagaddress_domain_model_kursthemen">
+				<source>Kursthemen</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_kursthemen.kursthemen" resname="tx_pingagaddress_domain_model_kursthemen.kursthemen">
+				<source>Kursthemen</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_sprache" resname="tx_pingagaddress_domain_model_sprache">
+				<source>Sprache</source>
+			</trans-unit>
+             <trans-unit id="tx_pingagaddress_domain_model_sprache.sprache" resname="tx_pingagaddress_domain_model_sprache.sprache">
+				<source>Sprache</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_kantone" resname="tx_pingagaddress_domain_model_kantone">
+				<source>Kantone</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_addressperson" resname="tx_pingagaddress_domain_model_addressperson">
+				<source>Address Person</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_addressperson.gehoerlos" resname="tx_pingagaddress_domain_model_addressperson.gehoerlos">
+				<source>Gehoerlos</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_addressperson.einsatzort" resname="tx_pingagaddress_domain_model_addressperson.einsatzort">
+				<source>Einsatzort</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_addressperson.auto_benoetigt" resname="tx_pingagaddress_domain_model_addressperson.auto_benoetigt">
+				<source>Auto</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_addressperson.techniken" resname="tx_pingagaddress_domain_model_addressperson.techniken">
+				<source>Techniken</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_addressperson.mutter_sprache" resname="tx_pingagaddress_domain_model_addressperson.mutter_sprache">
+				<source>Mutter Sprache</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_addressperson.weitere_sprachen" resname="tx_pingagaddress_domain_model_addressperson.weitere_sprachen">
+				<source>Weitere Sprachen</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_addressperson.kommunikationsassistenten" resname="tx_pingagaddress_domain_model_addressperson.kommunikationsassistenten">
+				<source>kommunikationsassistenten</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_language" resname="tx_pingagaddress_domain_model_language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_language.name" resname="tx_pingagaddress_domain_model_language.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_techniques" resname="tx_pingagaddress_domain_model_techniques">
+				<source>Techniques</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_techniques.name" resname="tx_pingagaddress_domain_model_techniques.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_languagewritten" resname="tx_pingagaddress_domain_model_languagewritten">
+				<source>Language Written</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_languageoral" resname="tx_pingagaddress_domain_model_languageoral">
+				<source>Language Oral</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_techniqueslevel" resname="tx_pingagaddress_domain_model_techniqueslevel">
+				<source>Techniques Level</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_spezielle" resname="tx_pingagaddress_domain_model_spezielle">
+				<source>Spezielle Kompetenzen</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_placeofuse" resname="tx_pingagaddress_domain_model_placeofuse">
+				<source>Einsatzort</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_placeofuse.name" resname="tx_pingagaddress_domain_model_placeofuse.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_available" resname="tx_pingagaddress_domain_model_available">
+				<source>Verfügbarkeit</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_available.name" resname="tx_pingagaddress_domain_model_available.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_level" resname="tx_pingagaddress_domain_model_level">
+				<source>Level</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_level.name" resname="tx_pingagaddress_domain_model_level.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_gehoerlos" resname="tx_pingagaddress_domain_model_gehoerlos">
+				<source>Gehoerlos</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_gehoerlos.name" resname="tx_pingagaddress_domain_model_gehoerlos.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_lebensalter" resname="tx_pingagaddress_domain_model_lebensalter">
+				<source>Lebensalter</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_lebensalter.name" resname="tx_pingagaddress_domain_model_lebensalter.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_angebote" resname="tx_pingagaddress_domain_model_angebote">
+				<source>Angebote</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_angebote.name" resname="tx_pingagaddress_domain_model_angebote.name">
+				<source>Name</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_weiterestandorte" resname="tx_pingagaddress_domain_model_weiterestandorte">
+				<source>Weitere Standorte</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
+

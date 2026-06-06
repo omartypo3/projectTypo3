@@ -1,0 +1,109 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+
+
+
+<f:form name="filter" action="search" onsubmit="return checkFilterSubmit();" id="form_filter">
+
+
+
+    <div class="filterbox_ueberschrift">
+        <f:translate key="tx_dslprodukte_domain_model_produkte.auswahl" />
+    </div>
+    <f:form.submit class="hideWithJS" value="Filter Setzen" style="display:none;" />
+    
+    <div class="filter_reset_outer">
+    <a class="filter_reset">
+    	<span><f:translate key="tx_dslprodukte_domain_model_filter.filter-loeschen" /></span>
+    </a></div>
+    
+  
+    <h5 class="first"><f:translate key="tx_dslprodukte_domain_model_kategorien" /></h5>
+    <f:for each="{kategorien}" as="kategorie">
+        <div class="kat_uid">
+       
+       <input type="checkbox" class="filter_alle filter_kategorien filter_kategorien_und_zubehoer" name="tx_dslprodukte_produktsuche[kategorien][]" value="{kategorie.uid}" {dsl:inArray(array:filter.kategorien,needle:kategorie.uid,then:'checked="checked"',else:'')} onClick="return checkFilterNotEmpty('.filter_kategorien');" />
+       
+<label class="filter_label"><span class="input-button-outer"><span><img src="fileadmin/template/public/images/layout/icons/filter-input.png" alt="filter input-button"></span></span><span class="kat-title kat_uid_{kategorie.uid}">{kategorie.titel}</span></label>
+        </div>
+    </f:for>
+   
+    
+    <div>
+    
+   		 
+    	<input class="filter_alle filter_zubehoer filter_kategorien_und_zubehoer" type="checkbox" name="tx_dslprodukte_produktsuche[zubehoer]" value="1" {dsl:isSet(var:filter.zubehoer,then:'checked="checked"',else:'')} onClick="return checkFilterNotEmpty('.filter_kategorien_und_zubehoer');" />
+    	
+    </div>
+
+    <h5><f:translate key="tx_dslprodukte_domain_model_anwendungsbereiche" /></h5>
+    <f:for each="{anwendungsbereiche}" as="anwendungsbereich">
+        <div>
+        
+		<input type="checkbox" class="filter_alle filter_anwendungsbereiche" name="tx_dslprodukte_produktsuche[anwendungsbereiche][]" value="{anwendungsbereich.uid}" {dsl:inArray(array:filter.anwendungsbereiche,needle:anwendungsbereich.uid,then:'checked="checked"',else:'')} onClick="return checkFilterNotEmpty('.filter_anwendungsbereiche');" />
+<label class="filter_label"><span class="input-button-outer"><span><img src="fileadmin/template/public/images/layout/icons/filter-input.png" alt="filter input-button"></span></span><span class="kat-title">{anwendungsbereich.titel}</span></label>
+        </div>
+    </f:for>
+    
+    
+    <h5><f:translate key="tx_dslprodukte_domain_model_eigenschaften" /></h5>
+    <f:for each="{eigenschaften}" as="eigenschaft">
+        <div>
+        
+		<input type="checkbox" class="filter_alle filter_eigenschaften" name="tx_dslprodukte_produktsuche[eigenschaften][]" value="{eigenschaft.uid}" {dsl:inArray(array:filter.eigenschaften,needle:eigenschaft.uid,then:'checked="checked"',else:'')} onClick="return checkFilterNotEmpty('.filter_eigenschaften');" />
+<label class="filter_label"><span class="input-button-outer"><span><img src="fileadmin/template/public/images/layout/icons/filter-input.png" alt="filter input-button"></span></span><span class="kat-title">{eigenschaft.titel}</span></label>
+        </div>
+    </f:for>
+    
+    
+    <input type="hidden" class="filter_set" name="tx_dslprodukte_produktsuche[set]" value="1" {dsl:isSet(var:filter.set,then:'id="checked"',else:'')} />
+    <input type="hidden" class="filter_perpage" name="tx_dslprodukte_produktsuche[perpage]" value="{filter.perpage}" />
+
+
+    
+
+
+<dsl:comment>     
+	<div><input type="checkbox" class="noAjax" /> kein Ajax nutzen</div>
+</dsl:comment>
+    
+   <script>
+    	/*Beim erstmaligen Seitenaufruf werden die Filter Default Mäßig gesetzt*/
+
+		var ajaxRequestUrl = "<f:format.raw>{ajaxUri}</f:format.raw>";
+		var ajaxRequest = false;
+
+		
+		
+		$(function () {
+		
+			initAjaxFields();
+			
+			$('.filter_label').click(function(){
+				$(this).prev('input').click();
+			});
+			
+			$('.hideWithJS').hide();
+			
+			
+			$('.filter_reset').click(function(){
+				$('.filter_alle').prop('checked',false);
+			
+				
+				setFilterResetBtn();
+				checkFilterSubmit();
+				return false;
+			});
+			setFilterResetBtn();
+			
+		
+			
+
+			
+		});
+		
+		
+		
+	
+		
+	</script>
+</f:form>

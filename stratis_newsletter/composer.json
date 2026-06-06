@@ -1,0 +1,23 @@
+{
+    "name": "stratis/stratis-newsletter",
+    "type": "typo3-cms-extension",
+    "description": "TYPO3 Extension for Stratis Newsletter Integration",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "typo3/cms-core": "^13.4",
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stratis\\StratisNewsletter\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "stratis_newsletter"
+        }
+    },
+    "replace": {
+        "typo3-ter/stratis_newsletter": "self.version"
+    }
+}

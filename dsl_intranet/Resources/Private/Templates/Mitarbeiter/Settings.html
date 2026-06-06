@@ -1,0 +1,31 @@
+S<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+
+
+<f:section name="main">
+	<f:if condition="{mitarbeiter}">
+		<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/Mitarbeiter/Settings.js" name="dslagenturmitarbeitersettingsjs"/>
+		<section id="mitarbeiter-settings" data-ajax-url="{f:uri.action(pageType: 89657003, arguments:{key:'keyReplace', value:'valueReplace'})}">
+			<h1>Projekte</h1>
+			<h2>Splitscreen</h2>
+			<div class="btn-group btn-toggle" data-settings-key="projekteSplit"> 
+				<button class="btn btn-lg {f:if(condition: '{mitarbeiter.settingsAllgemein.projekteSplit}==\'vertical\'', then: ' btn-primary active', else: ' btn-default')}" data-settings-value="vertical"><i class="fa fa-arrows-v"></i> &nbsp; Vertikal</button>
+				<button class="btn btn-lg {f:if(condition: '{mitarbeiter.settingsAllgemein.projekteSplit}==\'horizontal\'', then: ' btn-primary active', else: ' btn-default')}" data-settings-value="horizontal"><i class="fa fa-arrows-h"></i> &nbsp; Horizontal</button>
+			</div>
+		</section>
+		
+	</f:if>
+</f:section>
+</html>

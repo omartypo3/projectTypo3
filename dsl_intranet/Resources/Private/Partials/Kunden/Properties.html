@@ -1,0 +1,27 @@
+
+<v:media.exists file="fileadmin/kundenlogos/{kunden.username}.png">
+	<then>{f:image(src: 'fileadmin/kundenlogos/{kunden.username}.png', class: 'kundenListLogo')}</then>
+</v:media.exists>
+
+
+<h2>Zugangsdaten</h2>
+<f:if condition="{kunden.login}==1">
+	<f:then>
+    	
+    	
+    	<div><strong>Benutzername:</strong> {kunden.username}</div>
+		<div><strong>E-Mail:</strong> {kunden.email}</div>
+		<div><strong>Passwort:</strong> <f:if condition="{kunden.passwortKopieKlartext}"><f:then>{kunden.passwortKopieKlartext}</f:then><f:else>(Kennwort unbekannt)</f:else></f:if></div>
+		<br>
+        <div><strong>Letzte Anmeldung:</strong> <f:if condition="{kunden.lastlogin}"><f:then>{kunden.lastlogin->f:format.date(format: 'd.m.y - H:i')} Uhr</f:then><f:else>noch kein Login</f:else></f:if></div>
+		
+		<div><strong>Zugangsdaten Versandt:</strong> <f:if condition="{kunden.history.accessMail.0}"><f:then>{kunden.history.accessMail.0._timestamp->f:format.date(format: 'd.m.y - H:i')} Uhr / <f:link.email email="{kunden.history.accessMail.0.toMail}" /><div><br><f:format.nl2br>{kunden.history.accessMail.0.content}</f:format.nl2br></div></f:then><f:else>noch nicht</f:else></f:if></div>
+ 
+    </f:then>
+	<f:else>
+
+    	<div><i aria-hidden="true" class="fa fa-ban"></i> Kundenlogin deaktiviert</div>
+    </f:else>
+
+	
+</f:if>

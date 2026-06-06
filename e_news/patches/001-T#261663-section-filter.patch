@@ -1,0 +1,84 @@
+Subject: [PATCH] [TASK] T#261663 - EVO - Nouvelle section Articles > implement filter
+---
+Index: packages/e_news/Classes/Domain/Model/Dto/SearchEnews.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/packages/e_news/Classes/Domain/Model/Dto/SearchEnews.php b/packages/e_news/Classes/Domain/Model/Dto/SearchEnews.php
+--- a/packages/e_news/Classes/Domain/Model/Dto/SearchEnews.php	(revision 6444471cce3f78fa9e8587aaf6f74cd3d4318982)
++++ b/packages/e_news/Classes/Domain/Model/Dto/SearchEnews.php	(revision 915249771c7771b2b065b698a6334b8ee34e11a0)
+@@ -105,6 +105,10 @@
+      */
+     protected $sameDate;
+ 
++    /**
++     * @var string
++     */
++    protected $section = '';
+ 
+ 	/**
+ 	 * Get the category
+@@ -314,5 +318,20 @@
+         return $this->sameDate;
+     }
+ 
++    /**
++     * @return string
++     */
++    public function getSection()
++    {
++        return $this->section;
++    }
+ 
++    /**
++     * @param string $section
++     * @return void
++     */
++    public function setSection($section)
++    {
++        $this->section = $section;
++    }
+ }
+Index: packages/e_news/Classes/Domain/Repository/EnewsRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/packages/e_news/Classes/Domain/Repository/EnewsRepository.php b/packages/e_news/Classes/Domain/Repository/EnewsRepository.php
+--- a/packages/e_news/Classes/Domain/Repository/EnewsRepository.php	(revision 6444471cce3f78fa9e8587aaf6f74cd3d4318982)
++++ b/packages/e_news/Classes/Domain/Repository/EnewsRepository.php	(revision 915249771c7771b2b065b698a6334b8ee34e11a0)
+@@ -32,7 +32,7 @@
+  */
+ class EnewsRepository extends \GeorgRinger\News\Domain\Repository\NewsRepository {
+     
+-    public $arraySearch = ['Subject','MinimumDate','MaximumDate','SameDate','CatEvent','CatEvent2','CatEvent3','CatEvent4','CatEvent5','CityEvent', 'CatEventMultiple','TagsEvent','YoungaudienceEvent','FreeentranceEvent'];
++    public $arraySearch = ['Subject','MinimumDate','MaximumDate','SameDate','CatEvent','CatEvent2','CatEvent3','CatEvent4','CatEvent5','CityEvent', 'CatEventMultiple','TagsEvent','YoungaudienceEvent','FreeentranceEvent', 'Section'];
+ 
+     /**
+      * Permet d'accéder aux settings dans le repo si appelé dans le controller.
+@@ -809,6 +809,24 @@
+         return $searchConstraintsStep;
+     }
+ 
++    /**
++     * Implement the search by young audience
++     *
++     * @param \Emagineurs\ENews\Domain\Model\Dto\Search $searchObject
++     * @param \TYPO3\CMS\Extbase\Persistence\QueryInterface $query
++     * @return \TYPO3\CMS\Extbase\Persistence\QOM\Constraint
++     */
++    function handleSectionSearch($searchObject, $query) {
++        $section = $searchObject->getSection();
++        if ($section) {
++            $searchConstraints = $query->logicalAnd(
++                $query->equals('section', (int)$section)
++            );
++
++        }
++        return $searchConstraints;
++    }
++
+     /**
+      * Find FileReference objects by relation to other records
+      *

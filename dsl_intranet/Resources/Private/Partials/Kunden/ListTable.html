@@ -1,0 +1,33 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+<table id="kundenList" class="table table-striped table-bordered table-condensed table-hover" cellspacing="0" width="100%"><thead>
+	<tr>
+		<th>A</th>
+	    <th>Kd-Nr.</th>
+		<th>Kunde</th>
+		<th>E-Mail Adresse</th>
+		<th>Telefon</th>
+		<th><span title="Projekte">P</span></th>
+		<th><span title="Agenturverträge">AV</span></th>
+		<th><span title="Wartungsverträge">W</span></th>
+		<th><span title="Hostingverträge">H</span></th>
+		<th><span title="eingetragen durch">E</span></th>
+        <th>L</th>
+		<th>Optionen</th>
+	</tr>
+	</thead><tbody>
+    <f:for each="{kundens}" as="kunden">
+    	<f:render partial="Kunden/ListRow" arguments="{_all}" />
+	</f:for>
+	
+   
+</tbody>
+	
+	
+	
+	
+</table>
+
+<f:comment>
+<f:for each="{kundens}" as="kunden"><f:if condition="{kunden.disable}"><f:else><f:if condition="{kunden.email}">
+{kunden.email}</f:if></f:else></f:if></f:for>
+</f:comment>

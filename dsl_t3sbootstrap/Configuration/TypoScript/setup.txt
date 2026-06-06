@@ -1,0 +1,166 @@
+
+page.10.settings.grundeinstellungen.pid = {$plugin.tx_dslintranet.settings.grundeinstellungen.pid}
+
+page.10.file = EXT:dsl_t3sbootstrap/Resources/Private/Templates/Main.html
+
+page.10.partialRootPaths.10 >
+page.10.layoutRootPaths.10 >
+
+page.10.templateRootPaths.2 = EXT:dsl_t3sbootstrap/Resources/Private/Templates/
+page.10.layoutRootPaths.2 = EXT:dsl_t3sbootstrap/Resources/Private/Layouts/
+page.10.partialRootPaths.2 = EXT:dsl_t3sbootstrap/Resources/Private/Partials/
+
+ 
+
+page.includeCSS.introCondWebfont = fileadmin/template/public/introcondwebfont/MyFontsWebfontsKit.css
+
+
+page.includeCSS.bootstrapTheme >
+
+
+page.includeCSS.bootstrapt3s = EXT:dsl_t3sbootstrap/Resources/Public/Styles/t3sbootstrap.css
+page.includeCSS.bootstrapt3s_custom = EXT:dsl_t3sbootstrap/Resources/Public/Styles/t3scustom.css
+page.includeCSS.dslkanban = EXT:dsl_intranet/Resources/Public/kanban/dslkanban.css
+
+
+
+page.includeCSS.pluginBootstrapSelect = EXT:dsl_t3sbootstrap/Resources/Public/bootstrap-select-1.12.2/dist/css/bootstrap-select.min.css
+page.includeJS.jquery = EXT:dsl_t3sbootstrap/Resources/Public/jquery.min.js
+
+page.includeJS.pluginBootstrapSelect = EXT:dsl_t3sbootstrap/Resources/Public/bootstrap-select-1.12.2/dist/js/bootstrap-select.min.js
+page.includeJS.pluginBootstrapSelectGerman = EXT:dsl_t3sbootstrap/Resources/Public/bootstrap-select-de_DE.js
+page.includeJS.kanban = EXT:dsl_intranet/Resources/Public/kanban/kanban.js
+page.includeJS.dslkanban = EXT:dsl_intranet/Resources/Public/kanban/dslkanban.js
+page.includeJS.dslchecked = EXT:dsl_intranet/Resources/Public/kanban/dslchecked.js
+
+#[page["pid"] in [11,12,14,10,84,85,88,87,13]]
+	page.includeCSS.pluginBootstrapDateTimePicker = EXT:dsl_t3sbootstrap/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.min.css
+	page.includeJS.pluginBootstrapDateTimePicker_1 = EXT:dsl_t3sbootstrap/Resources/Public/moment/moment.js
+	#locale wird in dsl_intranet bereits geladen deswegen auskommentiert
+	#page.includeJS.pluginBootstrapDateTimePicker_2 = EXT:dsl_t3sbootstrap/Resources/Public/moment/locale/de.js	
+	page.includeJS.pluginBootstrapDateTimePicker_3 = EXT:dsl_t3sbootstrap/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js
+#[END]
+page.includeJS.pluginBootstrapAutosize = EXT:dsl_t3sbootstrap/Resources/Public/autosize.js
+
+
+
+
+#Zeige Unternavigation auch auf den Unterseiten / immer das level 2
+lib.navigation.sidebar.10.special > 
+lib.navigation.sidebar.10.entryLevel = 2
+lib.navigation.sidebar.10.1.NO.before.cObject.fontawesome.cObject.noTrimWrap = | <i class="fa |"></i><br> |
+lib.navigation.sidebar.10.1.ACT.before.cObject.fontawesome.cObject.noTrimWrap = | <i class="fa |"></i><br> |
+lib.navigation.sidebar.10.1.CUR.before.cObject.fontawesome.cObject.noTrimWrap = | <i class="fa |"></i><br> |
+
+
+#config.compressJs = 0
+config.compressCss = 0
+#config.concatenateJs = 0
+config.concatenateCss = 0
+
+
+# Logo in Navbar
+lib.navbar-brand = COA
+lib.navbar-brand {
+
+	10 = IMAGE
+	10.file = fileadmin/template/public/images/dsl_factory_logo_520x100px.png
+	10.params = class="img-responsive nav-logo hidden-sm hidden-md"
+	10.typolink >
+	10.stdWrap.typolink.parameter = 94
+	
+	11 = IMAGE
+	11.file = fileadmin/template/public/images/dsl_factory_logo_60x100px.png
+	11.params = class="img-responsive nav-logo hidden-lg hidden-xs"
+	11.typolink >
+	11.stdWrap.typolink.parameter = 94
+	
+	#10.imageLinkWrap = 1
+	#10.imageLinkWrap {
+}
+
+
+lib.navigation.navbar-right.wrap = |
+lib.navigation.navbar-right.5 >
+lib.navigation.navbar-right.10.wrap >
+
+lib.navigation.navbar-right = COA
+lib.navigation.navbar-right.7 = COA
+lib.navigation.navbar-right.7.1 = FLUIDTEMPLATE
+lib.navigation.navbar-right.7.1.file = typo3conf/ext/dsl_t3sbootstrap/Resources/Private/Templates/Userinfo.html
+
+lib.navigation.navbar-right.7.1.variables {
+ username = TEXT
+ username.data = TSFE:fe_user|user|username
+ email = TEXT
+ email.data = TSFE:fe_user|user|email
+ name = TEXT
+ name.data = TSFE:fe_user|user|company
+}
+
+
+#lib.dslintranet.notificationcentertestzwei = TEXT
+#lib.dslintranet.notificationcentertestzwei.value = :notificationcentertestzwei:
+
+#lib.navigation.navbar-right.7.10 = TEXT
+#lib.navigation.navbar-right.7.10.value = ???
+
+#lib.navigation.navbar-right.7.11 < lib.dslintranet.notificationcentertestzwei
+#lib.navigation.navbar-right.7.12 < lib.dslintranet.notificationcentertest
+#lib.navigation.navbar-right.7.13 < tt_content.list.20.dslintranet_notificationcenter
+
+
+#kundenlogin
+[PIDinRootline = 83]
+lib.navigation.navbar-right.wrap = |
+lib.navigation.navbar-right.7.1.file = typo3conf/ext/dsl_t3sbootstrap/Resources/Private/Templates/UserinfoKundenbereich.html
+[global]
+
+
+
+lib.navigation.navbar-right.10.1.NO.before.cObject.fontawesome.cObject.noTrimWrap = | <i class="fa fa-fw |"></i>&nbsp; |
+
+
+
+lib.navigation.main.20 >
+
+
+#durch t3sbootstrap gesetzte body styles entfernen
+page.bodyTagCObject.30.10 >
+page.bodyTagCObject.30.20 >
+page.bodyTagCObject.30.30 >
+
+page.bodyTagCObject.30.10 = TEXT
+page.bodyTagCObject.30.10.value = padding-top:50px;
+
+[globalVar = TSFE:id=88,TSFE:id=85,TSFE:id=84]
+	page.bodyTagCObject.30.10.value = 
+[global]
+
+#
+lib.templateLogin = FLUIDTEMPLATE 
+lib.templateLogin.file = fileadmin/template/extensions/KundenbereichLogout.html
+
+lib.seitentitel = TEXT
+lib.seitentitel.value = {page:nav_title//page:title}
+lib.seitentitel.insertData = 1
+
+
+
+
+
+
+
+# Define a lib object to pass user information to the Fluid template
+lib.email = TEXT
+lib.email {
+	data = TSFE:fe_user|user|email
+}
+
+lib.userName = TEXT
+lib.userName {
+	data = TSFE:fe_user|user|username
+}
+
+
+

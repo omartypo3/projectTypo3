@@ -1,0 +1,120 @@
+
+<div class="content_container">
+
+
+	
+	<f:link.action id="statusmeldungenList{auftraege.uid}_addBtn" action="kundennew" arguments="{auftraege : auftraege}" controller="Protokolle" pluginName="kundenlogin" extensionName="dslintranet" class="doAjaxEdit btn tableBtnAdd"  additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '400px' }"><i class="fa fa-lg fa-plus" aria-hidden="true"></i><span>&nbsp;&nbsp;&nbsp;&nbsp;Kommentar</span></f:link.action>
+
+
+
+
+	<table id="statusmeldungenList{auftraege.uid}" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+		<tr>
+			<th>Zeitpunkt</th>
+			<th>Kommentare</th>
+			<th>Erstellt durch</th>
+			<th>&nbsp;</th>
+			
+		</tr>
+		</thead>
+		<tbody>
+			<f:for each="{auftraege.kommentare}" as="protokolle">
+				<f:render partial="KundenProtokolle/ListRow" arguments="{_all}" />         
+			</f:for>
+		</tbody>
+	</table>
+
+</div>
+<script>
+	$('#statusmeldungenList'+auftraegeUid).DataTable({
+		"rowCallback": function( row, data, index ) {
+		
+			if(data[0]) if(data[0]["display"]) {
+				$(row).find('td').first().html(data[0]["display"]);
+				
+				if(uid = $('<div>'+data[0]["display"]+'</div>').find("[data-table-callback-id]").data('table-callback-id')) {
+					$(row).attr('id','auftraegeStatusmeldungenListAuftrag_'+uid);
+				
+				} 
+			}
+			if(uid = $(row).find("[data-table-callback-id]").data('table-callback-id')) {
+				$(row).attr('id','auftraegeStatusmeldungenListAuftrag_'+uid);
+			}
+		
+		},
+		drawCallback: function () {
+			$( '#'+$(this).attr('id')+'_addBtn'  ).detach().appendTo( '#'+$(this).attr('id')+'_wrapper .addBtnContainer' );
+		},
+		"dom": '<"top"<"float_left addBtnContainer"><"float_left"i>f>rt<"bottom"><"clear">', 
+		"order": [[ 0, "desc" ]],
+		"columnDefs": [
+			{
+				"targets": [ 0 ],
+				"width":'100px'
+			},
+			{
+				"targets": [ 1 ],
+				"orderable": false
+			},
+			{
+				"targets": [ 2 ],
+				"width":'80px'
+			},				
+			
+			{
+				"targets": [ 3 ],
+				"orderable": false,
+				"width":'20px'
+			}
+		],
+		paging: false,
+		"language": {
+			"decimal":        "",
+			"emptyTable":     "Keine Daten gefunden",
+			"info":           "Einträge: _TOTAL_ ",
+			"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+			"infoFiltered":   " von _MAX_ (gefiltert)",
+			"infoPostFix":    "",
+			"thousands":      ",",
+			"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+			"loadingRecords": "Lädt...",
+			"processing":     "Processing...",
+			"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a><a class="clearFilter"><i class="fa fa-lg fa-times"></i></a>',
+			"searchPlaceholder": "Suche",
+			"zeroRecords":    "Keine Ergebnisse gefunden",
+			"paginate": {
+				"first":      "Erste",
+				"last":       "Letzte",
+				"next":       "Nächste",
+				"previous":   "Vorhergehende"
+			},
+			"aria": {
+				"sortAscending":  ": activate to sort column ascending",
+				"sortDescending": ": activate to sort column descending"
+			}
+		}
+			
+	});
+	
+	$('#statusmeldungenList'+auftraegeUid+'_wrapper .clearFilter').on('click', function() {
+		
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		
+		setTimeout(function(){ 
+			$(tmpSelector+' input[type="search"]').val('');
+			$(tmpSelector+' .dataTable').DataTable().search( '' ).draw();
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}, 10);
+	}); 
+	$('#statusmeldungenList'+auftraegeUid+'_wrapper input[type="search"]').keyup(function() {
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		if($(tmpSelector+' input[type="search"]').val()){
+			$(tmpSelector+' .clearFilter').css('opacity',1);
+		} else {
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}
+	});
+	$('#statusmeldungenList'+auftraegeUid+'_wrapper .clearFilter').insertAfter('#statusmeldungenList'+auftraegeUid+'_wrapper input[type="search"]');	
+
+
+</script>

@@ -1,0 +1,17 @@
+<!-- categories -->
+
+<f:for each="{categories}" as="category">
+	<f:if condition="{category.shortcut}">
+		<f:then>
+			<f:link.page pageUid="{category.shortcut}">
+				<f:image src="{category.images.uid}" treatIdAsReference="1"/>{category.title}
+			</f:link.page>
+		</f:then>
+		<f:else>
+			<f:for each="{category.images}" as="image">
+				<f:image src="{image.uid}" treatIdAsReference="1"/>
+			</f:for>
+			{category.title}
+		</f:else>
+	</f:if>
+</f:for>

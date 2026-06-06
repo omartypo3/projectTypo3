@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+    <div class="main-header">
+        <f:render partial="Navigation/Main" arguments="{_all}" />
+    </div>
+
+    <main class="main">
+
+        <f:for each="{mainnavigation}" as="item">
+          
+                <f:if condition='{item.data.uid} == 34'>
+                    <f:then>
+                        <section id="contact" class="contact section">
+                            <!--TYPO3SEARCH_begin-->
+                                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{item.data.uid}', colPos: '0'}" />
+                            <!--TYPO3SEARCH_end-->
+                        </section>
+                    </f:then>
+                    <f:else>
+                         <!--TYPO3SEARCH_begin-->
+                            <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{pageUid: '{item.data.uid}', colPos: '0'}" />
+                        <!--TYPO3SEARCH_end-->
+                    </f:else>
+                </f:if>
+               
+ 
+        </f:for>
+
+
+    </main>
+
+    <f:render partial="Structure/FooterMeta" arguments="{_all}" />
+
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+  
+
+</html>

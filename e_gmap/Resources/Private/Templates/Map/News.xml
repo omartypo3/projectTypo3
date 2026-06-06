@@ -1,0 +1,18 @@
+<f:if condition="{items}"><f:for each="{items}" as="poi"><f:if condition="{poi.placeable}">
+	<poi>
+		<title>{poi.title}</title>
+		<uid>{poi.uid}</uid>
+		<lat>{poi.latfinal}</lat>
+		<lng>{poi.lngfinal}</lng>
+		<f:if condition="{poi.iconmarker}">
+			<f:then><picto>{poi.iconmarker.originalResource.publicUrl}</picto></f:then>
+			<f:else></f:else>
+		</f:if>
+		<f:if condition="{poi.categories}">
+			<f:then><cats><f:for each="{poi.categories}" as="cat">{cat.uid},</f:for></cats></f:then>
+			<f:else></f:else>
+		</f:if>
+		<type>{type}</type>
+		<table>{table}</table>
+	</poi>
+</f:if></f:for></f:if>

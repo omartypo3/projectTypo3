@@ -1,0 +1,67 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Function</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Select function</label>
+							<config>
+								<type>select</type>
+								<renderType>selectSingle</renderType>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Liste mit Kategorien und Hashtags</numIndex>
+										<numIndex index="1">Portfolio->list;Portfolio->listkunden;Portfolio->detail;Portfolio->detailkunden</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Latest Startseite Frische Projekte</numIndex>
+										<numIndex index="1">Portfolio->latest</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">Liste mit Kunden</numIndex>
+										<numIndex index="1">Portfolio->listkunden;Portfolio->detailkunden</numIndex>
+									</numIndex>
+									<numIndex index="3">
+										<numIndex index="0">Latest nach Kategorien</numIndex>
+										<numIndex index="1">Portfolio->latestkategorien</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					
+					<settings.kategorien>
+						<TCEforms>
+							<label>Kategorieneinschränkung</label>
+							<config>
+								<type>select</type>
+								<renderType>selectMultipleSideBySide</renderType>
+								<foreign_table>tx_bbportfolio_domain_model_kategorien</foreign_table>
+								<size>10</size>
+								<min_items>0</min_items>
+								<max_items>99</max_items>
+								<multiple>1</multiple>
+							</config>
+						</TCEforms>
+					</settings.kategorien>
+					<settings.title>
+						<TCEforms>
+							<label>Überschrift</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+								<max>50</max>
+							</config>
+						</TCEforms>
+					</settings.title>
+					
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

@@ -1,0 +1,18 @@
+# ==============================================
+# FE-Plugin configuration for EXT:e_gestiondocs
+# ==============================================
+plugin.tx_egestiondocs {
+  view {
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:e_gestiondocs/Resources/Private/Templates/
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:e_gestiondocs/Resources/Private/Partials/
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:tx_egestiondocs/Resources/Private/Layouts/
+  }
+
+  settings {
+    # cat=comment; type=text; label=Document keyword fields to search in
+    keywordsFields = name,title,description,alternative
+  }
+}

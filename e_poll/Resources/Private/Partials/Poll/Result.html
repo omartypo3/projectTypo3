@@ -1,0 +1,19 @@
+<div class="poll" >
+    <div class="header">
+        <h1>{poll.title}</h1>
+        <f:if condition="{poll.image}">
+            <f:image src="{poll.image}" alt="{poll.title}" />
+        </f:if>
+        <p>{poll.question}</p>
+    </div>
+
+    <div class="body">
+        <ul>
+            <f:for each="{poll.options}" as="option" >
+                <li>
+                    {option.description} : {option.votesPercent}% ({f:count(subject: option.votes)} votes)
+                </li>
+            </f:for>
+        </ul>
+    </div>
+</div>

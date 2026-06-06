@@ -1,0 +1,194 @@
+#footer{
+	color:#fff;
+	font-size:1.4rem;
+	h2{
+		margin: 0 0 6rem 0;
+		text-align:center;
+		text-transform:uppercase;
+		font-weight:600;
+		font-size:2rem;
+	}
+	h3{
+		font-size:1.5rem;
+		text-transform:uppercase;
+		margin:0 0 1rem 0;
+	}
+	.infoTop{
+		background-color:$gris-moyen;
+		padding:1rem 0 5rem 0;
+
+		.hautDePageContainer{
+			text-align:right;
+		}
+
+		.icon_title_anim_Page{
+			background:$vert-fb;
+		}
+
+		#hautDePage{
+			color:#fff;
+			font-size:1rem;
+			font-weight:300;
+			text-transform:uppercase;
+		}
+		.block-link-footer{
+			.inner{
+				border-left:1px solid $gris-fonce;
+				border-right:1px solid $gris-fonce;
+				padding: 0 60px 0 100px;
+				margin: 0 20px 0 0px;
+			}
+			i{
+				font-size:2.5rem;
+				position: relative;
+				top:.5rem;
+			}
+			font-size:1.2rem;
+			text-transform:uppercase;
+			a{
+				color:#fff;
+				margin:0 0 2rem 0.9rem;
+				font-weight:400;
+			}
+		}
+		.btn{
+			width:100%;
+		}
+		.telephone{
+			margin-top:20px;
+			i{
+				font-size:2.1rem;
+			}
+			font-size:1.7rem;
+			font-weight:700;
+			a{
+				color:#fff;
+				margin-left:.6rem;
+			}
+		}
+		.downloadApplication{
+			margin-top:1.5rem;
+			p{
+				font-size:1.2rem;
+				font-weight:400;
+				text-transform:uppercase;
+			}
+			li{
+				display:inline-block;
+				padding-right:1rem;
+			}
+		}
+	}
+	.infoBottom{
+		background-color:$gris-fonce;
+		padding:1.6rem 0;
+		font-size:1.2rem;
+		li{
+			display:inline-block;
+			padding-left:1rem;
+			&:after{
+				content:'';
+				display:inline-block;
+				width:1px;
+				height:11px;
+				background-color:$gris-moyen;
+				margin-left:1rem;
+			}
+			a{
+				color:#fff;
+				font-weight:400;
+			}
+		}
+		li:last-child{
+			&:after{
+				display:none;
+			}
+		}
+	}
+
+	.btn-vert:hover{
+		color: #fff!important;
+	}
+
+	.nouscontacterGauche{
+		.btn-gris-fonce{
+			padding-left:1rem;
+		}
+	}
+
+	.icon-Mail-contact{
+	padding-right: 1rem;
+	}
+
+		@media (min-width: 992px) and (max-width: 1500px) {
+			.infoTop{
+				.block-link-footer{
+					.inner{
+						padding:0 40px 0 40px;
+						margin:0 20px 0 40px;
+					}
+				}
+			}
+			.telephone{
+				margin:20px 0;
+			}
+			.socialNetwork{
+				li{
+					padding-left:10px;
+				}
+			}
+	}
+
+	@include media-breakpoint-down(md) { 
+		.footer-contact{
+			margin-bottom:4rem;
+		}
+		.infoTop{
+				.block-link-footer{
+					.inner{
+					border:0;
+					padding:0;
+					margin:0;
+					li{
+						/*display:inline-block;*/
+					}
+					}
+				}
+			}
+			.telephone{
+				margin:20px 0;
+			}
+		}
+	@include media-breakpoint-down(sm) { 
+		.socialNetwork{
+			ul{
+				justify-content:center;
+			}
+			li{
+				padding-left:25px;
+				}
+			}
+			.ce-bodytext, .frame-type-html{
+				text-align:center;
+			}
+		}
+	@include media-breakpoint-down(xs) { 
+		.footer-contact{
+			margin-bottom:0rem;
+		}
+			.col-md-auto{
+				width:100%;
+			}
+			.downloadApplication, .block-link-footer,.footer-contact{
+				text-align:center;
+			}
+		}
+	}
+
+	@include MquerieW(375){
+		.socialNetwork{
+			li{
+				padding-left:12px!important;
+			}
+		}
+	}

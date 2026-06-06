@@ -1,0 +1,52 @@
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+<f:flashMessages />
+
+<table  class="tx_bbportfolio" >
+	<tr>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.logo" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.name" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.beschreibung" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.logo" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.ort" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.link_webseite" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.link_facebook" /></th>
+		<th><f:translate key="tx_bbportfolio_domain_model_kunden.unternehmen_groesse" /></th>
+		<th> </th>
+		
+	</tr>
+
+	<f:for each="{kundens}" as="kunden">
+		<tr>
+			<td><f:image src="{kunden.logo.originalResource.originalFile.uid}"  alt="{kunden.name}"  width="480"  /></td>
+			<td>{kunden.name}</td>
+			<td>{kunden.beschreibung}</td>
+			<td>{kunden.logo.originalResource.name}</td>
+			<td>{kunden.ort}</td>
+			<td>{kunden.linkWebseite} <div><f:link.typolink parameter="{kunden.linkWebseite}">zur Webseite</f:link.typolink></div>
+			
+			
+			</td>
+			<td>{kunden.linkFacebook} <div><f:link.typolink parameter="{kunden.linkFacebook}">zu Facebook</f:link.typolink></div></td>
+			<td><f:translate key="tx_bbportfolio_domain_model_kunden.unternehmen_groesse.{kunden.unternehmenGroesse}" /></td>
+			<td><f:link.action  action="detailkunden" arguments="{kunden : kunden}">Kundendetail</f:link.action></td>
+
+		</tr>
+	</f:for>
+</table>
+
+</f:section>

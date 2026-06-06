@@ -1,0 +1,90 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in <th></th>e extension builder
+
+<f:section name="main">
+
+
+
+<f:form controller="Wartungsvertraege" action="ajax"  name="wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" id="wartungsvertraegeCreateForm" additionalAttributes="{data-insert-selector: '#wartungsvertraegeList tbody'}">
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Wartungsvertrag Anlegen'}" />
+
+<script>
+	/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+var newContent = "";
+	$(document).ready(function() {
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#wartungsvertraegeCreateForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#wartungsvertraegeCreateForm').hasClass('formSaves'))	return false;
+				$('#wartungsvertraegeCreateForm').addClass('formSaves');
+				
+				$.ajax({
+					url: $('#wartungsvertraegeCreateForm').attr('action'),
+					type: 'POST',
+					data: $('#wartungsvertraegeCreateForm').serialize(),
+					success: function(data) {
+						dataJson = JSON.parse(data);
+						if(dataJson['newUid']) {
+							//loadWartungsvertragContent(dataJson["uid"]);
+							newContent = dataJson['content'];
+							$(dataJson['content']).prependTo("#wartungsvertraegeList>.dataTables_wrapper>table>tbody"); 
+							initAccordionPanel('#wartungsvertraegeAccordion tr[data-wv-uid="'+dataJson['newUid']+'"] a.panel-heading');
+							//initAccordionPanel('#wartungsvertraegeAccordion .panel[data-wv-uid="'+dataJson['newUid']+'"] .panel-heading a');
+							$('#wartungsvertrag-show-'+dataJson['newUid']+'-headline').click();
+							//$('#wartungsvertraegeAccordion .panel[data-wv-uid="'+dataJson['newUid']+'"] .panel-heading a').click();
+							
+							
+							$.colorbox.close();
+							//dataTableReload();
+						} else {
+							return true;
+						}
+					}
+				});
+				
+				
+				
+				
+				
+		  	}
+		});
+		
+		
+		
+	});
+
+</script>
+
+
+	<f:form.hidden name="switch" value="create" />
+    
+	<f:render partial="Wartungsvertraege/FormFields"  arguments="{_all}"  />
+
+    
+    <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Vertrag Speichern'}" />    
+    
+</f:form>
+</f:section>

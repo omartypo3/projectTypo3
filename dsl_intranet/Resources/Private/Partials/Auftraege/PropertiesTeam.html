@@ -1,0 +1,75 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+
+
+	<div class="content_container_header" style="margin-bottom: 10px;"><span><i class="bb-team bb-md" aria-hidden="true"></i>Team</span><a href="#" class="content_container_toggle content_closed"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+	<div class="content_container team_content" style="display:none;">
+		
+		
+		<f:if condition="{auftraege.ansprechpartner}">
+			<strong>Projektleiter</strong>
+			<hr>
+			<div class="userIconWrapper">   
+				<div data-multiple="false" class="mitarbeiterSet" id="ansprechpartnerSet{auftraege.uid}">
+					<f:for each="{mitarbeiters}" as="mitarbeiter">
+						<f:render partial="Allgemein/UserIcon" arguments="{user: mitarbeiter, aktiv: '{dsl:getFromArray(obj: ansprechpartnerSet, prop:mitarbeiter.uid)}' }" />
+					</f:for>
+					
+					<f:if condition="{auftraege.rights.edit}">
+						<f:then>
+							<a title="Projektleiter Ändern" class="userIconEdit" onClick="changeAuftraegeMitarbeiter('#ansprechpartnerSet{auftraege.uid}');return false;"><span><i class="bb-pen-write bb-xxl" aria-hidden="true"></i></span></a>
+							
+							
+
+							<br class="float_clear">
+
+							<div class="mitarbeiterSetBtnContainer"><button class="mitarbeiterSetBtn btn btn-primary btn-save" onClick="setAuftraegeAnsprechpartner('#ansprechpartnerSet{auftraege.uid}',{auftraege.uid});return false;"><i class="bb-tick bb-lg"></i>&nbsp;&nbsp;Speichern</button>&nbsp;<button class="mitarbeiterSetBtn btn btn-abort" onClick="abortAuftraegeMitarbeiter('#ansprechpartnerSet{auftraege.uid}');return false;"><i class="bb-times bb-lg"></i>&nbsp;&nbsp;Abbrechen</button></div>
+
+						</f:then>
+						<f:else>
+							<br class="float_clear">
+						</f:else>
+						
+					</f:if>
+				</div>
+			</div>  
+			
+			
+
+		
+			
+		
+		</f:if> 
+		
+		
+		
+		<div style="margin-top:10px;"><strong>Mitarbeiter</strong></div>
+		<hr>
+		<div class="userIconWrapper">
+		
+			<div data-multiple="true" class="mitarbeiterSet" id="mitarbeiterSet{auftraege.uid}">
+				<f:for each="{mitarbeiters}" as="mitarbeiter">
+					
+				
+					<f:render partial="Allgemein/UserIcon" arguments="{user: mitarbeiter, aktiv: '{dsl:getFromArray(obj: mitarbeiterSet, prop:mitarbeiter.uid)}' }" />
+				</f:for>
+				
+				<f:if condition="{auftraege.rights.edit}">
+					<f:then>
+						<a title="Mitarbeiter Ändern" class="userIconEdit" onClick="changeAuftraegeMitarbeiter('#mitarbeiterSet{auftraege.uid}');return false;"><span><i class="bb-pen-write bb-xxl" aria-hidden="true"></i></span></a>
+
+						<br class="float_clear">
+
+						<div class="mitarbeiterSetBtnContainer"><button class="mitarbeiterSetBtn btn btn-primary btn-save" onClick="setAuftraegeMitarbeiter('#mitarbeiterSet{auftraege.uid}',{auftraege.uid});return false;"><i class="bb-tick bb-lg"></i>&nbsp;&nbsp;Speichern</button>&nbsp;<button class="mitarbeiterSetBtn btn btn-abort" onClick="abortAuftraegeMitarbeiter('#mitarbeiterSet{auftraege.uid}');return false;"><i class="bb-times bb-lg"></i>&nbsp;&nbsp;Abbrechen</button></div>
+					</f:then>
+					<f:else>
+						<br class="float_clear">
+					</f:else>
+				</f:if>
+			</div>
+		</div>
+	</div>
+
+</f:else></f:if>

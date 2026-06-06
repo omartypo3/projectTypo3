@@ -1,0 +1,13 @@
+<f:spaceless>
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+	
+<f:switch expression="{switch}">
+	<f:case value="filterSet">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content"><f:render partial="Kunden/ListTable" arguments="{_all}" /></div></div>
+	</f:case>
+</f:switch>
+
+</f:spaceless>
+
+

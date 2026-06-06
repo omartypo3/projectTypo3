@@ -1,0 +1,168 @@
+{namespace v=Emagineurs\EGestiondocs\ViewHelpers}
+
+
+<f:variable name="doc_racine" value="{folderName}" />
+<div class="titre_sommaire">
+    <h2>Sommaire</h2>
+</div>
+
+<div id="parcour_doc">
+    <ul>
+        <f:for each="{foldersList}" as="folder">
+            <li>
+                <f:link.action arguments="{folder: folder.combinedIdentifier,category: filter.category,keywords: filter.keywords}">{folder.name}</f:link.action>
+                <f:if condition="{folder.subfolders}">
+                    <f:render partial="FolderList" arguments="{folders: folder.subfolders, settings: settings, category: filter.category,keywords: filter.keywords,doc_racine: doc_racine}"/>
+                </f:if>
+                <f:if condition="{settings.displayFiles}">
+                    <f:if condition="{folder.files}">
+                        <ul>
+                            <f:for each="{folder.files}" as="file">
+                                <li><f:link.typolink parameter="{file.publicUrl}">{file.name}</f:link.typolink></li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</div>
+<div class="nbr_resultats">
+    <h2>Résultats de la recherche ({folderName}) : </h2>
+</div>
+
+<f:if condition="{isSearch}" >
+    <f:if condition="{f:count(subject: documents)} > 0">
+        <f:then>
+            <p><f:count subject="{documents}" /> {f:if(condition: '{f:count(subject: documents)} > 1', then: 'résultats', else: 'résultat')} pour cette recherche</p>
+        </f:then>
+        <f:else>
+            Aucun résultat
+        </f:else>
+    </f:if>
+</f:if>
+
+<f:if condition="{f:count(subject: documents)}">
+    <ul id="OrderButtons">
+        <li><div class="tri"><f:render partial="OrderButtons" arguments="{label: 'Titre', field: 'name', filter: filter}"/></div></li>
+        <li><div class="tri"><f:render partial="OrderButtons" arguments="{label: 'Type', field: 'extension', filter: filter}"/></div></li>
+        <li><div class="tri"><f:render partial="OrderButtons" arguments="{label: 'Poids', field: 'size', filter: filter}"/></div></li>
+        <li><div class="tri"><f:render partial="OrderButtons" arguments="{label: 'Date', field: 'tstamp', filter: filter}"/></div></li>
+    </ul>
+    <ul id="documents">
+        <f:for each="{f:if(condition: paginator, then: paginator.paginatedItems, else: documents)}" as="document" >
+            <li class="block_list_doc">
+                <f:link.typolink title="Télécharger le document" parameter='{document.publicUrl} target="_blank"' >
+                    <f:if condition="{document.extension}==pdf">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_pdfs.png" width="37" height="37" />
+                    </f:if>
+                    <f:if condition="{document.extension}==doc || {document.extension}==docx">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_word.png" width="37" height="37" />
+                    </f:if>
+                    <f:if condition="{document.extension}==jpg || {document.extension}==png || {document.extension}==tif || {document.extension}==bmp || {document.extension}==gif || {document.extension}==jpeg">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_img.png" width="37" height="37" />
+                    </f:if>
+                    <f:if condition="{document.extension}==ppt || {document.extension}==pptx">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_ppt.png" width="37" height="37" />
+                    </f:if>
+                    <f:if condition="{document.extension}==xls || {document.extension}==xlsx || {document.extension}==ods || {document.extension}==odp">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_xls.png" width="37" height="37" />
+                    </f:if>                            
+                    <f:if condition="{document.extension}==odt">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_odt.png" width="37" height="37" />
+                    </f:if>
+                    <f:if condition="{document.extension}==zip">
+                        <f:image class="icon_extension" src="EXT:e_magineurs/Resources/Public/Plaine/Images/doc_zip.png" width="37" height="37" />
+                    </f:if>
+                    <h2 role="heading" aria-level="3"{f:if(condition: '{document.properties.language} != \'\'', then: ' lang="{document.properties.language}"')}>
+                        {f:if(condition: '{document.properties.title}', then: document.properties.title, else: document.name)}
+                        <f:if condition="{v:isNewDocument(date: document.properties.creation_date, newPeriod: settings.newPeriod)}">
+                            <sup>Nouveau</sup>
+                        </f:if>
+                    </h2>
+                    <p class="date">
+                        Publié le <f:format.date date="{document.properties.creation_date}" format="d/m/y" />                                                      
+                    </p>
+                    <f:if condition="{document.properties.categories}">
+                        <p class="cat">
+                            <f:cObject typoscriptObjectPath='lib.categoriesDoc' data='{sourceUid: document.properties.uid}' />
+                        </p>
+                    </f:if>
+                    <f:if condition="{document.properties.description}">
+                        <p class="description_gestion_doc"{f:if(condition: '{document.properties.language} != \'\'', then: ' lang="{document.properties.language}"')}>{document.properties.description}</p>
+                    </f:if>
+                    <p class="name_doc">
+                        <span class="the_name_doc">{document.name}</span>
+                        (<span class="extension">{document.extension}</span> - <f:format.bytes>{document.size}</f:format.bytes>)
+                    </p>
+                </f:link.typolink>
+            </li>
+        </f:for>    
+    </ul>
+    
+    <f:if condition="{settings.pagination}">
+        <f:if condition="{pagination.numberOfPages} > 1">
+            <ul class="f3-widget-paginator">
+                <f:if condition="{pagination.previousPageNumber}">
+                    <li class="previous">
+                        <f:link.action arguments="{currentPage: pagination.previousPageNumber}" rel="prev">Précédent</f:link.action>
+                    </li>
+                </f:if>
+                
+                <f:if condition="{pagination.firstPageNumber}">
+                    <li class="{f:if(condition: '{pagination.firstPageNumber} == {pagination.currentPageNumber}', then: 'current', else: '')}" style="{f:if(condition: '{pagination.firstPageNumber} == {pagination.currentPageNumber}', then: 'border-bottom: 3px solid #7db900; font-weight: bold;', else: '')}">
+                        <f:if condition="{pagination.firstPageNumber} == {pagination.currentPageNumber}">
+                            <f:then>{pagination.firstPageNumber}</f:then>
+                            <f:else>
+                                <f:link.action arguments="{currentPage: pagination.firstPageNumber}">{pagination.firstPageNumber}</f:link.action>
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:if>
+                
+                <f:if condition="{pagination.displayRangeStart} > {pagination.firstPageNumber}">
+                    <li>…</li>
+                </f:if>
+                
+                <f:for each="{pagination.pages}" as="page">
+                    <f:if condition="{page.number} != {pagination.firstPageNumber}">
+                        <f:if condition="{page.number} != {pagination.lastPageNumber}">
+                            <li class="{f:if(condition: page.isCurrent, then: 'current', else: '')}" style="{f:if(condition: page.isCurrent, then: 'border-bottom: 3px solid #7db900; font-weight: bold;', else: '')}">
+                                <f:if condition="{page.isCurrent}">
+                                    <f:then>{page.number}</f:then>
+                                    <f:else>
+                                        <f:link.action arguments="{currentPage: page.number}">{page.number}</f:link.action>
+                                    </f:else>
+                                </f:if>
+                            </li>
+                        </f:if>
+                    </f:if>
+                </f:for>
+                
+                <f:if condition="{pagination.displayRangeEnd} < {pagination.lastPageNumber}">
+                    <li>…</li>
+                </f:if>
+                
+                <f:if condition="{pagination.lastPageNumber}">
+                    <f:if condition="{pagination.lastPageNumber} != {pagination.firstPageNumber}">
+                        <li class="last {f:if(condition: '{pagination.lastPageNumber} == {pagination.currentPageNumber}', then: 'current', else: '')}" style="{f:if(condition: '{pagination.lastPageNumber} == {pagination.currentPageNumber}', then: 'border-bottom: 3px solid #7db900; font-weight: bold;', else: '')}">
+                            <f:if condition="{pagination.lastPageNumber} == {pagination.currentPageNumber}">
+                                <f:then>{pagination.lastPageNumber}</f:then>
+                                <f:else>
+                                    <f:link.action arguments="{currentPage: pagination.lastPageNumber}">{pagination.lastPageNumber}</f:link.action>
+                                </f:else>
+                            </f:if>
+                        </li>
+                    </f:if>
+                </f:if>
+                
+                <f:if condition="{pagination.nextPageNumber}">
+                    <li class="next">
+                        <f:link.action arguments="{currentPage: pagination.nextPageNumber}" rel="next">Suivant</f:link.action>
+                    </li>
+                </f:if>
+            </ul>
+        </f:if>
+    </f:if>
+    
+</f:if>

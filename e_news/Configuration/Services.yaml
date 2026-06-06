@@ -1,0 +1,40 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\ENews\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+
+
+  GeorgRinger\News\Controller\NewsController:
+      public: true
+      alias: Emagineurs\ENews\Controller\EnewsController
+
+  GeorgRinger\News\Domain\Model\Dto\NewsDemand:
+    class: Emagineurs\ENews\Domain\Model\Dto\NewsDemandEnews
+    public: true
+
+  GeorgRinger\News\Domain\Model\Dto\Search:
+    class: Emagineurs\ENews\Domain\Model\Dto\SearchEnews
+    public: true
+
+  GeorgRinger\News\Updates\PluginUpdater:
+    class: Emagineurs\ENews\Updates\EnewsPluginUpdater
+    public: true
+
+  Emagineurs\ENews\Updates\EnewsPluginUpdater:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'txEnewsPluginUpdater'
+
+  Emagineurs\ENews\Updates\EnewsAdvancedViewsPluginMigrationUpdate:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'enewsAdvancedViewsPluginMigration'
+

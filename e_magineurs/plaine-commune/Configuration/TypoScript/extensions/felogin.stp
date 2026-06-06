@@ -1,0 +1,32 @@
+plugin.tx_felogin_login {
+    settings {
+        welcomeHeader_stdWrap.wrap = <h2>|</h2>
+        welcomeMessage_stdWrap.wrap = <p>|</p>
+        successMessage_stdWrap.wrap = <p>|</p>
+        logoutMessage_stdWrap.wrap = <p>|</p>
+        errorMessage_stdWrap.wrap = <p>|</p>
+        forgotErrorMessage_stdWrap.wrap = <p>|</p>
+        forgotMessage_stdWrap.wrap = <p>|</p>
+        email_from = {$e_magineurs.tx_felogin_pi1.email_from}
+        email_fromName = {$e_magineurs.tx_felogin_pi1.email_fromName}
+    }
+    view {
+        templateRootPaths.10 = {$e_magineurs.tx_felogin_pi1.templateFile}
+    }
+    ._LOCAL_LANG {
+        fr{
+            welcome_header = Identification de l'utilisateur
+            welcome_message = Entrez votre nom d'utilisateur et votre mot de passe pour vous identifier :
+            username = Nom d'utilisateur :
+            password = Mot de passe :
+            forgot_header = Mot de passe oublié ?
+            login = Connectez-vous
+            status_header = Bienvenue
+            logout = Déconnexion
+            forgot_header_backToLogin = Retourner au formulaire d'identification
+            reset_password = Réinitialiser le mot de passe
+            forgot_reset_message = Veuillez saisir votre nom d'utilisateur ou votre email. Les instructions nécessaires à la réinitialisation de votre mot de passe vous seront immédiatement envoyées par mail.
+            enter_your_data = Nom d'utilisateur ou adresse mail:
+        }
+    }
+}

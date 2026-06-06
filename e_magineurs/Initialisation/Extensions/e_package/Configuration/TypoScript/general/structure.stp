@@ -1,0 +1,63 @@
+page = PAGE
+page {
+	typeNum = 0
+	shortcutIcon = {$e_magineurs.conf.dossierPublic}/Images/favicon.ico
+    10 = FLUIDTEMPLATE
+    10 {
+        partialRootPaths.0 = {$e_magineurs.conf.dossierPrivate}/Partials/
+        layoutRootPaths.0 = {$e_magineurs.conf.dossierPrivate}/Layouts/
+        templateRootPaths.0 = {$e_magineurs.conf.dossierPrivate}/Templates/
+		variables {
+			dossierLangue = TEXT
+			dossierLangue.value = LLL:{$e_package.conf.dossierLangue}/locallang.xlf
+			dossierPublic = TEXT
+			dossierPublic.value = {$e_magineurs.conf.dossierPublic}
+			homePage = TEXT
+			homePage.value = {$e_magineurs.conf.homePage}
+		}
+    }
+}
+lib.dynamicContent < styles.content.get
+lib.dynamicContent {
+	select.where {
+		field = colPos
+		wrap = colPos = |
+	}
+}
+lib.countContent = CONTENT
+lib.countContent{
+    table = tt_content
+    select {
+        selectFields = uid
+        andWhere = (deleted = 0 AND hidden = 0)
+        max = 1
+        where.field = colPos
+        where.wrap = colPos = |
+    }
+    renderObj = TEXT
+    renderObj {
+        field = uid
+    }
+}
+tt_content {
+	menu.variables{
+		dossierLangue = TEXT
+		dossierLangue.value = LLL:{$e_package.conf.dossierLangue}/locallang.xlf
+	}
+	menu_piedpage =< tt_content.menu_pages
+	menu_piedpage.templateName = MenuFooter
+
+	menu_principal =< tt_content.menu_sitemap_pages
+	menu_principal {
+		templateName = MenuPrincipal
+	    dataProcessing {
+	        10 {
+	            special = list
+	            special.value.field = pages
+	            levels = {$e_magineurs.conf.menuPrincipal.levels}
+	            expandAll = 1
+	            includeSpacer = 1
+	        }
+    	}
+	}	
+}

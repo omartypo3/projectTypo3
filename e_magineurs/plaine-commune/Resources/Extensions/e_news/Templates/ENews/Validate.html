@@ -1,0 +1,39 @@
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/CreateNewSimple.html
+-->
+
+<f:debug title="All available variables">{_all}</f:debug>
+<f:debug  title="Les categories disponibles">{allcategories}</f:debug>
+<f:section name="content">
+	<f:if condition="{success}" >
+		<f:then>
+			<f:if condition="{validate}" >
+				<f:then>
+					<f:if condition="{validationType}=='user'" >
+						<f:then>
+							<f:if condition="{news.adminvalidation}" >
+								<f:then>
+									La news a bien été validée
+								</f:then>
+								<f:else>
+									Votre demande de création de news a bien été prise en compte, elle doit maintenant être validée par un administrateur
+								</f:else>
+							</f:if>
+						</f:then>
+						<f:else>
+							La news a bien été validée
+						</f:else>
+					</f:if>
+				</f:then>
+				<f:else>
+					La news a bien été supprimée
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			Erreur lors de la validation, peut être avez vous déjà validé votre news, sinon votre lien de validation est peut être corrompu
+		</f:else>
+	</f:if>
+</f:section>

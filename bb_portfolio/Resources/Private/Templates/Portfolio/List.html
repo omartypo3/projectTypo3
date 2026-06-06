@@ -1,0 +1,105 @@
+<html xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<div class="wrap_dark blueContainer">
+	<div class="container">
+	<div class="container-fluid navPageHeader">
+		<div class="page-header">
+			<h1 class="wow fadeInDown">Projekte</h1>
+			<h2 class="headSubtitle mReset wow fadeInDown">Projekte mit Herz, Hand und Hirn.</h2>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="whiteContainer pBottomReset">
+
+<div class="container page-container catButtons"><div class="row content-row wow fadeInDown entryText"><section class="col-xs-12">
+	<center>
+		<f:link.action rel="nofollow" action="list" controller="Portfolio"  pluginName="portfolioausgabe" class="btnBigCategory {f:if(condition: '{selectedKategorie}', else: 'btnActive')}">Alle Projekte</f:link.action>
+		<f:for each="{kategoriens}" as="kategorien">
+			<f:link.action class="btnBigCategory {f:if(condition: '{selectedKategorie}=={kategorien.uid}', then: 'btnActive')}" action="list" controller="Portfolio"  pluginName="portfolioausgabe" arguments="{kategorien : kategorien}">{kategorien.name}</f:link.action>
+			
+		
+			
+		</f:for>
+	</center>
+	<br><br>
+</section></div></div>
+
+
+<div class="container page-container catButtons center"><div class="row content-row wow fadeInDown"><section class="col-xs-12">
+
+		<f:for each="{hashtags}" as="hashtag">
+			<f:if condition="{selectedHashtag}=={hashtag.uid}">
+				<f:then>
+					<f:link.action action="list" controller="Portfolio"  pluginName="portfolioausgabe" arguments="{kategorien : selectedKategorie}" class="btnHashtag btnHashtagActive">{hashtag.name} </f:link.action>
+				</f:then>
+				<f:else>
+					<f:link.action action="list" controller="Portfolio"  pluginName="portfolioausgabe" arguments="{hashtags : hashtag, kategorien : selectedKategorie}" class="btnHashtag">{hashtag.name} </f:link.action>
+				</f:else>
+			</f:if>
+				
+		
+		</f:for>
+	
+
+	<br><br>
+</section></div></div>
+
+	
+<f:if condition="{selectedKategorie}">
+	<n:titleTag>Projekte - <f:for each="{kategoriens}" as="kategorien"><f:if condition="{selectedKategorie}=={kategorien.uid}">{kategorien.name -> f:format.stripTags()}</f:if></f:for></n:titleTag>
+</f:if>
+<f:if condition="{selectedHashtag}">
+	<n:titleTag>Projekte - <f:for each="{hashtags}" as="hashtag"><f:if condition="{selectedHashtag}=={hashtag.uid}">{hashtag.name -> f:format.stripTags()}</f:if></f:for></n:titleTag>
+</f:if>
+<f:if condition="{selectedKategorie}"><f:if condition="{selectedHashtag}">
+	<n:titleTag>Projekte - <f:for each="{kategoriens}" as="kategorien"><f:if condition="{selectedKategorie}=={kategorien.uid}">{kategorien.name -> f:format.stripTags()}</f:if></f:for><f:for each="{hashtags}" as="hashtag"><f:if condition="{selectedHashtag}=={hashtag.uid}">, {hashtag.name -> f:format.stripTags()}</f:if></f:for></n:titleTag>
+</f:if></f:if>
+
+	
+<div class="boxFullWidth">
+
+	<div class="row projektContainerWrapper">
+		<f:for each="{portfolios}" as="portfolio" iteration="iterator">
+
+
+			
+				<div class="col-md-4 projektContainer">
+					<f:render partial="Portfolio/Teaser" arguments="{portfolio:portfolio, selectedKategorie: selectedKategorie, selectedHashtag: selectedHashtag, selectedOffset: selectedOffset}" />
+				</div>
+				
+			<f:if condition="{iterator.isLast}"><f:for each="{rest}" as="r"><div class="col-md-4 projektContainer hidden-sm hidden-xs"><f:render partial="Portfolio/EmptyTeaser" /></div></f:for></f:if>
+
+		</f:for>
+	</div>	
+
+	
+</div>
+
+</div>
+
+<f:if condition="{showMore}">
+	<div class="whiteContainer projekteShowMoreBtnWrapper">
+		<div class="container aligncenter">
+			<f:link.action id="projekteShowMoreBtn" rel="nofollow" pageUid="32" action="list" arguments="{offset : offset, kategorien: selectedKategorie, hashtags: selectedHashtag}" class="btnBig btnGreen btnPfeilDown" >Mehr laden</f:link.action>
+		</div>
+	</div>
+</f:if>
+
+</f:section>
+</html>

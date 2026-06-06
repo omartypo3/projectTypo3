@@ -1,0 +1,17 @@
+
+plugin.tx_bbbildwechsel_bildwechsel {
+	view {
+		# cat=plugin.tx_bbbildwechsel_bildwechsel/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_bildwechsel/Resources/Private/Templates/
+		# cat=plugin.tx_bbbildwechsel_bildwechsel/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_bildwechsel/Resources/Private/Partials/
+		# cat=plugin.tx_bbbildwechsel_bildwechsel/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_bildwechsel/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbbildwechsel_bildwechsel//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

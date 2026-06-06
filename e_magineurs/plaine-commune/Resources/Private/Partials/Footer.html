@@ -1,0 +1,25 @@
+<div class="container-fluid block_list_sites">
+	<f:cObject typoscriptObjectPath="lib.stayConnect" data="{sourceUid: 109}"/>
+</div>
+<div class="container-fluid infoTop">
+	<div class="container">
+		<div class="hautDePageContainer"><a href="#" id="hautDePage">Haut de page &nbsp;&nbsp;<i class="icon-ArrowTopBottom"></i></a></div>
+		<f:cObject typoscriptObjectPath="lib.infoFooter" />
+	</div>
+</div>
+<div class="container-fluid infoBottom">
+	<div class="container d-flex justify-content-between align-items-center">
+		<f:if condition="{0:data.uid} == {0:homePage}">
+			<f:then>
+				<f:image src="EXT:e_magineurs/Resources/Public/Plaine/Images/logo-footer.png" alt="Logo Plaine Commune" />
+			</f:then>
+			<f:else>
+				<f:link.page pageUid="{homePage}">
+					<f:image src="EXT:e_magineurs/Resources/Public/Plaine/Images/logo-footer.png" alt="Logo Plaine Commune" />
+				</f:link.page>
+			</f:else>
+		</f:if>
+		<f:cObject typoscriptObjectPath="lib.menuFooter" />
+	</div>
+</div>
+<!-- <div id="cookieCnil"></div> -->

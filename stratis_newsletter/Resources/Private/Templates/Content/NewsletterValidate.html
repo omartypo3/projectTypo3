@@ -1,0 +1,42 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:vh="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+  <f:layout name="Content"/>
+  <f:section name="Configuration">
+    <flux:form id="newslettervalidate" options="{icon: 'EXT:stratis_newsletter/Resources/Public/Icons/Example.gif', group: 'stratisnewsletters'}" label="[Newsletter] On valide" description="Affiche on valide de la newsletter">
+      <flux:field.input name="title" label="Titre du bloc" required="true" default="On valide"/>    
+      <flux:field.inline.fal name="picto" label="Image titre " size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />      
+      <flux:form.section name="panels" label="Créer un nouveau événement">
+        <flux:form.object name="panel" label="Ajouter un événement">             
+          <flux:field.input name="eventTitle" label="Titre événement"/>          
+          <flux:field.input name="eventLocation" label="Lieu"/>
+          <flux:field.input name="eventDate" label="Date"/>          
+          <flux:field.input name="eventLink" label="Redirection" config="{renderType: 'link'}">
+          </flux:field.input>
+        </flux:form.object>
+      </flux:form.section>
+    </flux:form>
+  </f:section>
+  <f:section name="Preview">      
+    <b>On valide</b> 
+  </f:section>
+  <f:section name="Main">
+    <v:variable.set name="domain" value="{v:site.url() -> v:format.replace(substring:'/',replacement:'') -> v:format.replace(substring:':',replacement:'://')}"/>              
+    <v:variable.set name="pathImages" value="EXT:stratis_newsletter/Resources/Public/Images/" />
+    <f:if condition="{picto}">
+      <f:then>
+         {v:content.resources.fal(field:'picto', record: record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement')}
+         <v:variable.set name="picto" value="{f:uri.image(src:mediaElement.url)}"/>
+      </f:then>          
+      <f:else>
+        <v:variable.set name="picto" value="{f:uri.image(src:'{pathImages}newsletter/on-valide.png')}" />
+      </f:else>
+    </f:if>           
+    <v:variable.set name="pictotwo" value="{f:uri.image(src:'{pathImages}newsletter/valide.png')}"/>  
+    <f:render partial="NewsletterWeValidate.html" arguments="{domain:domain, picto:picto, pictotwo:pictotwo, panels:panels}"/>                      
+    <v:variable.unset name="picto"/> 
+  </f:section>
+</html>

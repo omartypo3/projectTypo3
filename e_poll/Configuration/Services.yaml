@@ -1,0 +1,31 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EPoll\:
+    resource: '../Classes/*'
+    exclude:
+      - '../Classes/Domain/Model/*'
+      - '../Classes/Updates/*'
+
+  Emagineurs\EPoll\Domain\Repository\PollRepository:
+    public: true
+
+  Emagineurs\EPoll\Domain\Repository\OptionRepository:
+    public: true
+
+  Emagineurs\EPoll\Domain\Repository\VoteRepository:
+    public: true
+
+  Emagineurs\EPoll\Domain\Repository\CategoryRepository:
+    public: true
+
+  # Upgrade Wizard
+  Emagineurs\EPoll\Updates\EPollPluginMigrationUpdate:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'ePollPluginMigration'
+

@@ -1,0 +1,77 @@
+
+<f:comment>
+		$pois = array(
+			'items'=> array (
+				model poi
+			)
+			'table'=>'tx_egmap_domain_model_poi', 
+			'type'=>'Poi'
+		);
+		
+	/!\ Ne pas enlever les classes et les ids, pour le fonctionnement js! /!\
+</f:comment>
+
+
+<f:if condition="{pois}">
+	<ul class="pois">
+		<f:for each="{pois}" as="poitype">
+			<li class="type">
+				<span>{poitype.type}</span>
+				<f:if condition="{poitype.items}">
+					<ul class="allpois">
+						<f:for each="{poitype.items}" as="poi">
+							<li id="egmap_{poitype.table}_{poi.uid}">
+                                <p>
+                                    <f:if condition="{poi.iconmarker.originalResource.publicUrl}">
+                                        <f:image src="{poi.iconmarker.originalResource.publicUrl}"/>
+                                    </f:if>
+                                    <strong>
+                                        <f:if condition="{poi.nom}">
+                                            <f:then>
+                                                <a href="javascript:void(o);" onclick="eGmapLoadInfosPoi(eGmap['uidToKey']['{poitype.table}_{poi.uid}']);">{poi.nom}</a>
+                                            </f:then>
+                                            <f:else>
+                                                <a href="javascript:void(o);" onclick="eGmapLoadInfosPoi(eGmap['uidToKey']['{poitype.table}_{poi.uid}']);">{poi.title}</a>
+                                            </f:else>
+                                        </f:if>
+                                    </strong>
+                                </p>
+                                <p>
+                                	<f:if condition="{poi.adressetout}">
+										<f:format.raw>{poi.adressetout}</f:format.raw>
+									</f:if>
+									<f:if condition="{poi.adresse}">
+										{poi.adresse}<br/>
+									</f:if>
+									<f:if condition="{poi.address}">
+										{poi.address}<br/>
+									</f:if>
+									<f:if condition="{poi.ville}">    
+										<f:if condition="{poi.ville.0}">
+											<f:then>
+												 {poi.ville.0.codePostal} {poi.ville.0.title} {poi.pays}
+											</f:then>
+											<f:else>
+												{poi.code} {poi.ville} {poi.pays}
+											</f:else>
+										</f:if>
+									</f:if>
+									<f:if condition="{poi.city}">    
+										<f:if condition="{poi.city.0}">
+											<f:then>
+												 {poi.city.0.codePostal} {poi.city.0.title} {poi.pays}
+											</f:then>
+											<f:else>
+												{poi.code} {poi.city} {poi.pays}
+											</f:else>
+										</f:if>
+									</f:if>
+								</p>
+							</li>
+						</f:for>
+					</ul>
+				</f:if>
+			</li>
+		</f:for>
+	</ul>
+</f:if>

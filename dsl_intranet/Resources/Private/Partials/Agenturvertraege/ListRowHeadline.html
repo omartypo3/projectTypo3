@@ -1,0 +1,16 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<f:comment>{agenturvertrag.nr} (ab {agenturvertrag.vertragsbegin -> f:format.date(format: 'd.m.Y')}<f:if condition="{agenturvertrag.vertragsende}"> bis {agenturvertrag.vertragsende -> f:format.date(format: 'd.m.Y')}</f:if>)
+
+{agenturvertrag.stundenMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}h / {agenturvertrag.preisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€
+	
+</f:comment>
+
+<tr data-av-uid="{agenturvertrag.uid}">
+	<td><a aria-controls="collapse-{agenturvertrag.uid}" aria-expanded="true" onClick="agenturvertraegeToggle({agenturvertrag.uid})" href="#collapse-{agenturvertrag.uid}" data-parent="#agenturvertragList" data-toggle="collapse" role="button"  class="collapsed panel-heading tableBtn" id="agenturvertrag-show-{agenturvertrag.uid}-headline" ><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></td>
+	<td><strong>{agenturvertrag.kunde.name}</strong> [{agenturvertrag.kunde.nummer}] <f:if condition="{agenturvertrag.vertragsende -> f:format.date(format: 'U')} < {f:format.date(format: 'U', date: 'now')}">&nbsp;&nbsp;<span class="label label-danger" style="font-weight:normal;" title="Ende des Agenturvertrags: {agenturvertrag.vertragsende->f:format.date(format: 'd.m.Y')}">Gekündigt</span></f:if></td>
+	<td width="300" class="refreshContent" data-refresh-content="avRefreshContentListRowKontingent{agenturvertrag.uid}"><span class="detailLabel">Kontingent:</span> <span class="{f:if(condition: '{agenturvertrag.kontingentUsed}>{agenturvertrag.kontingentJahr}', then: 'text-time-over')}"><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: agenturvertrag.kontingentUsed)}' }" /></span> <span class="detailLabel">von</span> <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: agenturvertrag.kontingentJahr)}' }" /> <span class="detailLabel">verbraucht</span></td>
+	
+	<td width="100"><a onclick="loadAgenturvertragContent({agenturvertrag.uid});return false;" class="btn tableBtn" href="#" aria-label="Refresh"><i class="fa fa-refresh fa-lg fa-spin tabReloadsActive" aria-hidden="true"></i><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i></a><f:link.action controller="Agenturvertraege" pluginName="agenturvertragsliste" extensionName="dslintranet" action="edit" pageType="89657210" arguments="{agenturvertraege : agenturvertrag}" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '600px' }" class="doAjaxEdit btn tableBtn"><i class="bb-pen-write bb-lg"></i></f:link.action><f:link.action controller="Agenturvertraege" pageType="89657210" pluginName="agenturvertragsliste" extensionName="dslintranet" action="delete" arguments="{agenturvertraege : agenturvertrag}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorAgenturvertraege', data-ajax-selector: '#agenturvertragList{agenturvertrag.uid}', data-ajax-id: '{agenturvertrag.uid}', data-table: '__#dateienList'}" ><i class="bb-trashcan bb-lg"></i></f:link.action></td>
+</tr>
+	

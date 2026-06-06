@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+<div class="the_case_sidebar">
+	<f:if condition="{menu}">
+		<div class="case_title_anim">
+			<div class="icon_title_anim">
+			
+			</div>
+		</div>
+
+		<f:for each="{menu}" as="page">
+			<f:if condition="{page.data.nav_hide}!=1">
+				<div class="case_titre_page_menu_gauche">
+					<p class="titre_page_menu_gauche">{page.title}</p>
+				</div>
+
+				<f:if condition="{page.content}">
+					<ul>
+						<f:for each="{page.content}" as="element">
+							<f:if condition="{element.data.header}">
+							<li>
+								<a target_scroll="{page.link}#c{element.data.uid}"{f:if(condition: page.target, then: ' target="{page.target}"')} title="{element.data.header}">
+									<span>{element.data.header}</span>
+								</a>
+								<span class="progress_page"></span>
+							</li>
+							</f:if>
+						</f:for>
+					</ul>
+				</f:if>
+			</f:if>
+		</f:for>
+	</f:if>
+</div>
+</f:section>
+</html>

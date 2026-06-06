@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:pingag_address/Resources/Private/Language/locallang.xlf" date="2022-06-01T11:51:25Z" product-name="pingag_address">
+		<header/>
+		<body>
+			<trans-unit id="tx_pingagaddress_domain_model_map" resname="tx_pingagaddress_domain_model_map">
+				<source>Map</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.title" resname="tx_pingagaddress_domain_model_map.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.verfasser" resname="tx_pingagaddress_domain_model_map.verfasser">
+				<source>Verfasser:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.szblindnummer" resname="tx_pingagaddress_domain_model_map.szblindnummer">
+				<source>ISBN-Nr.:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.verlag" resname="tx_pingagaddress_domain_model_map.verlag">
+				<source>Ort/Verlag:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.seitenanzahl" resname="tx_pingagaddress_domain_model_map.seitenanzahl">
+				<source>Seitenanzahl:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.jahr" resname="tx_pingagaddress_domain_model_map.jahr">
+				<source>Jahr:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.zusatzinfo" resname="tx_pingagaddress_domain_model_map.zusatzinfo">
+				<source>Information additionnelle:</source>
+			</trans-unit>
+
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.category" resname="tx_pingagaddress_domain_model_map.contacts.category">
+				<source>Category</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all" resname="tx_pingagaddress_domain_model_map.contacts.all">
+				<source>All</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.canton" resname="tx_pingagaddress_domain_model_map.contacts.canton">
+				<source>Canton</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all2" resname="tx_pingagaddress_domain_model_map.contacts.all2">
+				<source>All</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.searchFor" resname="tx_pingagaddress_domain_model_map.contacts.searchFor">
+				<source>Search for</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.contacts.searchPlaceholder" resname="tx_pingagaddress_domain_model_map.contacts.searchPlaceholder">
+				<source>Enter the search term</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.title" resname="tx_pingagaddress_domain_model_map.contacts.title">
+				<source>Contacts</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.beschreibung" resname="tx_pingagaddress_domain_model_map.contacts.beschreibung">
+				<source>Description</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.accordionTitle" resname="tx_pingagaddress_domain_model_map.contacts.accordionTitle">
+				<source>Contact</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.stk" resname="tx_pingagaddress_domain_model_map.stk">
+				<source>pc. dans le panier</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.stkbiblio" resname="tx_pingagaddress_domain_model_map.stkbiblio">
+				<source>pce dans le panier</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.downloadPDF" resname="tx_pingagaddress_domain_model_map.downloadPDF">
+				<source>Download PDF</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.downloadDOC" resname="tx_pingagaddress_domain_model_map.downloadDOC">
+				<source>Download Word Grossschrift</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.accordionDetail" resname="tx_pingagaddress_domain_model_map.accordionDetail">
+				<source>Detail</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.articleInfo" resname="tx_pingagaddress_domain_model_map.articleInfo">
+				<source>Disponible en PDF</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.notFound" resname="tx_pingagaddress_domain_model_map.notFound">
+				<source>Aucun produit trouvé.</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.accept_terms_and_conditions">
+                <source>I have read the general terms and conditions agree to them.</source>
+            </trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.accept_terms_and_conditions_with_link">
+                <source>I have read the <![CDATA[<a href="%1$s" target="%2$s">general terms and conditions</a>]]> and agree to them.</source>
+            </trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.accept_terms_and_conditions_with_link">
+                 <source>I have read the <![CDATA[<a href="%1$s" target="%2$s">general terms and conditions</a>]]> and agree to them.</source>
+             </trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.gratuit" resname="tx_pingagaddress_domain_model_map.gratuit">
+ 				<source>Free</source>
+ 			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.registrationDeadline" resname="tx_pingagaddress_domain_model_map.registrationDeadline">
+ 				<source>Registration deadline</source>
+ 			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.locationnotFound" resname="tx_pingagaddress_domain_model_map.locationnotFound">
+				<source>No Address found.</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.dropdownSpringe" resname="tx_pingagaddress_domain_model_map.dropdownSpringe">
+				<source>Jump to topic</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.update" resname="tx_pingagaddress_domain_model_map.update">
+				<source>Results have been updated</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.search" resname="tx_pingagaddress_domain_model_map.contacts.search">
+				<source>Search</source>
+			</trans-unit>
+            <trans-unit id="tx_cart_domain_model_order_item.entendu" resname="tx_cart_domain_model_order_item.entendu">
+				<source>How did you hear about us?</source>
+			</trans-unit>
+            <trans-unit id="tx_cart_domain_model_order_item.donation" resname="tx_cart_domain_model_order_item.donation">
+				<source>Thanks to donations, we can provide most of the information material free of charge. Would you also like to contribute to our work for people with visual and hearing impairments?</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.angebote" resname="tx_pingagaddress_domain_model_map.contacts.angebote">
+				<source>Offers</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.angebotTitel" resname="tx_pingagaddress_domain_model_map.contacts.angebotTitel">
+				<source>Offer Title</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.lebensalter" resname="tx_pingagaddress_domain_model_map.contacts.lebensalter">
+				<source>Age</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.zip" resname="tx_pingagaddress_domain_model_map.contacts.zip">
+				<source>Postal code</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.umkreis" resname="tx_pingagaddress_domain_model_map.contacts.umkreis">
+				<source>Radius for searching for offers</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.lebensalter" resname="tx_pingagaddress_domain_model_map.contacts.benutzers">
+				<source>Edit information of user</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.dienstleistungen" resname="tx_pingagaddress_domain_model_map.contacts.dienstleistungen">
+				<source>Services</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.kantone" resname="tx_pingagaddress_domain_model_map.contacts.kantone">
+				<source>Canton</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.dienstleister" resname="tx_pingagaddress_domain_model_map.contacts.dienstleister">
+				<source>Service provider</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.stadt" resname="tx_pingagaddress_domain_model_map.contacts.stadt">
+				<source>City</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.land" resname="tx_pingagaddress_domain_model_map.contacts.land">
+				<source>Country</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.telefon" resname="tx_pingagaddress_domain_model_map.contacts.telefon">
+				<source>Phone</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.email" resname="tx_pingagaddress_domain_model_map.contacts.email">
+				<source>E-Mail</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.submit_edit" resname="tx_pingagaddress_domain_model_map.contacts.submit_edit">
+				<source>Save</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.submit_password" resname="tx_pingagaddress_domain_model_map.contacts.submit_password">
+				<source>Take over</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

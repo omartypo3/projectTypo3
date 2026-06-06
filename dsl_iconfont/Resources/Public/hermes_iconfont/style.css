@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'dsl-hermes';
+  src:  url('fonts/dsl-hermes.eot?kb4g9p');
+  src:  url('fonts/dsl-hermes.eot?kb4g9p#iefix') format('embedded-opentype'),
+    url('fonts/dsl-hermes.ttf?kb4g9p') format('truetype'),
+    url('fonts/dsl-hermes.woff?kb4g9p') format('woff'),
+    url('fonts/dsl-hermes.svg?kb4g9p#dsl-hermes') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dsl-hermes' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-hermes-houseico:before {
+  content: "\e900";
+}
+.icon-arrow-downico:before {
+  content: "\e901";
+}
+.icon-arrow-leftico:before {
+  content: "\e902";
+}
+.icon-arrow-rightico:before {
+  content: "\e903";
+}
+.icon-arrow-upico:before {
+  content: "\e904";
+}
+.icon-minusico:before {
+  content: "\e905";
+}
+.icon-plusico:before {
+  content: "\e906";
+}
+.icon-tickico:before {
+  content: "\e907";
+}
+.icon-envelopeico:before {
+  content: "\e908";
+}
+.icon-phoneico:before {
+  content: "\e909";
+}
+.icon-contract-houseico:before {
+  content: "\e90a";
+}
+.icon-detailview-apartementico:before {
+  content: "\e90b";
+}
+.icon-detailview-houseico:before {
+  content: "\e90c";
+}
+.icon-document-certificateico:before {
+  content: "\e90d";
+}
+.icon-document-downloadico:before {
+  content: "\e90e";
+}
+.icon-hammerico:before {
+  content: "\e90f";
+}
+.icon-handshakeico:before {
+  content: "\e910";
+}
+.icon-heartico:before {
+  content: "\e911";
+}
+.icon-heart-addico:before {
+  content: "\e912";
+}
+.icon-house-questionico:before {
+  content: "\e913";
+}
+.icon-housesico:before {
+  content: "\e914";
+}
+.icon-sprechblasenico:before {
+  content: "\e915";
+}
+.icon-angebotico:before {
+  content: "\e916";
+}
+.icon-bewertungico:before {
+  content: "\e917";
+}
+.icon-wertanlageico:before {
+  content: "\e918";
+}

@@ -1,0 +1,42 @@
+<div class="kanban-pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+			
+    <div class="kanban-split-pane vertical-percent">
+        <div class="kanban-split-pane-component" id="kanban-left-component" style="{mitarbeiter.settingsAllgemein.kanbanResize.left}">
+            <div class="kanban-pretty-split-pane-component-inner">
+
+                
+<div class="kanban-btn-left" id="kanban-board-btn-wrapper"  data-kanban-boards="{kanban.board -> f:count()}">
+    <input type="text" class="form-control input-sm" placeholder="Name der Liste" onchange=""  onkeyup="if(event.keyCode===13) listeNeuAnlegen();"  id="kanban-liste-neu-name" />
+    <button class="btn btn-add-board background-color-gruen color-weiss" onclick="listeNeuAnlegen();return false;" id="kanban-liste-neu-anlegen">Anlegen</button>
+    <button class="btn btn-add-board background-color-schwarz-80 color-weiss" onclick="toggleListeNeuForm();return false;" id="kanban-liste-neu-abbruch">Abbruch</button>
+
+    <button class="btn btn-add-board background-color-gruen color-weiss" onclick="toggleListeNeuForm();return false;" id="kanban-liste-neu-toggle"><i class="bb-plus bb-sm" aria-hidden="true"></i>&nbsp;&nbsp;Neue Liste</button>
+    <button class="btn btn-refresh background-color-schwarz-80 color-weiss" onclick="refreshKanban();return false;" id="kanban-refresh-btn"><i class="bb-circle-arrow bb-sm tabReloadsInactive" aria-hidden="true"></i>&nbsp;&nbsp;Neu laden</button>
+
+    <div class="btn-group mitarbeiter-selector">
+        <f:for each="{mitarbeiters}" as="mitarbeiterItem" iteration="iterator">
+            <button type="button" class="btn mitarbeiter-button mitarbeiterBackgroundColor {f:if(condition: '{mitarbeiter.uid}=={mitarbeiterItem.uid}', then: 'mitarbeiter-button-active')}" data-mitarbeiter-uid="{mitarbeiterItem.uid}" title="{mitarbeiterItem.name} / {mitarbeiterItem.email}" onclick="kanbanChangeMitarbeiter({mitarbeiterItem.uid})">{mitarbeiterItem.initialien}</button><f:comment><!-- fc-button fc-state-default  fc-mitarbeiter-button  {f:if(condition: '{iterator.isFirst}', then: 'fc-corner-left')} {f:if(condition: '{iterator.isLast}', then: 'fc-corner-right')} fc-state-active  --></f:comment>
+        </f:for>
+    </div>
+
+    <button class="btn btn-refresh background-color-rot color-weiss" onclick="return false;" id="kanban-liste-delete" ondragover="jQuery(this).addClass('kanban-board-dragover');allowDropOnDeleteKanbanBoard(event)" ondragleave="jQuery(this).removeClass('kanban-board-dragover');"  ondrop="dropOnDeleteKanbanBoard(event);return false;" ><i class="bb-trashcan bb-sm" aria-hidden="true"></i>&nbsp;&nbsp;Liste löschen</button>
+
+
+
+</div>
+<f:comment><div id="kanbandebug" style="position:absolute;width:300px;height:200px;background-color:gray;padding:10px;">debug</div></f:comment>
+        <div id="kanbanBoardsWrapper"><f:render partial="Kanban/KanbanBoards" arguments="{_all}" /></div>
+                
+
+
+
+            </div>
+        </div>
+        <div class="kanban-split-pane-divider" id="kanban-divider" style="{mitarbeiter.settingsAllgemein.kanbanResize.divider}"></div>
+        <div class="kanban-split-pane-component" id="kanban-right-component" style="{mitarbeiter.settingsAllgemein.kanbanResize.right}">
+            <div class="kanban-pretty-split-pane-component-inner">
+                <div id="kanbanProjekteWrapper"><f:render partial="Kanban/KanbanProjekte" arguments="{_all}" /></div>
+            </div>
+        </div>
+    </div>
+</div>

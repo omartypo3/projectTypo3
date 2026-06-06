@@ -1,0 +1,116 @@
+## CARTO ##
+lib.paramPoiNews = TEXT
+lib.paramPoiNews {
+	typolink {
+	    parameter = {$e_magineurs.conf.idPageMap}
+	    additionalParams.field = sourceUid
+	    additionalParams.wrap = &tx_egmap_gmap[pois]=tx_news_domain_model_news_|
+		useCacheHash = 1
+	}
+    value = Voir sur la carte
+}
+
+lib.paramPoiAnnuaire = TEXT
+lib.paramPoiAnnuaire {
+	typolink {
+	    parameter = {$e_magineurs.conf.idPageMap}
+	    additionalParams.field = sourceUid
+	    additionalParams.wrap = &tx_egmap_gmap[pois]=tx_eannuaires_domain_model_fiche_|
+		useCacheHash = 1
+	}
+    value = Afficher le plan
+}
+
+## ANNUAIRES ##
+lib.themeannuResult = RECORDS 
+lib.themeannuResult {     
+	tables = sys_category     
+	source.field = sourceUid     
+	conf.sys_category = TEXT     
+	conf.sys_category.field = title
+}
+
+lib.printPage = TEXT
+lib.printPage {
+	value =  Imprimer
+	wrap = <div class="itemPrint"><a href="javascript:window.print();">|</a></div>
+}
+
+## INTERFACE ##
+lib.searchMini < styles.content.get
+lib.searchMini.select.pidInList = {$e_magineurs.conf.moteurRecherche}
+
+lib.menuPrincipal < styles.content.get
+lib.menuPrincipal.select.pidInList = {$e_magineurs.conf.menuPrincipal.pid}
+
+lib.menuFooter < styles.content.get
+lib.menuFooter.select.pidInList = {$e_magineurs.conf.menuFooter}
+
+lib.infoFooter < styles.content.get
+lib.infoFooter.select.pidInList = {$e_magineurs.conf.infoFooter}
+
+lib.decoration < styles.content.get
+lib.decoration.slide = -1
+lib.decoration.select.where = colPos = 9
+
+lib.latNews = RECORDS
+lib.latNews {
+	tables = tx_news_domain_model_news
+	source.field = sourceUid
+	dontCheckPid = 1
+	conf.tx_news_domain_model_news = TEXT
+	conf.tx_news_domain_model_news.field = lat
+}
+
+lib.latAnnuaires = RECORDS
+lib.latAnnuaires {
+	tables = tx_eannuaires_domain_model_fiche
+	source.field = sourceUid
+	dontCheckPid = 1
+	conf.tx_eannuaires_domain_model_fiche = TEXT
+	conf.tx_eannuaires_domain_model_fiche.field = lat
+}
+
+# Récupérer une image de l'onglet ressources d'une page
+# <f:cObject typoscriptObjectPath='lib.imagePage' data='{sourceUid: data.uid}' />
+lib.imagePage = FILES
+lib.imagePage {
+	references {
+		table = pages
+		uid.field = sourceUid
+		fieldName = media
+	}
+	renderObj = IMAGE
+	renderObj {
+		file {
+			import.data = file:current:publicUrl
+		}
+	}
+}
+
+# Récupérer une image d'un flexform de gridelement
+# <f:cObject typoscriptObjectPath='lib.imageContent' data='{sourceUid: data.uid}' />
+lib.imageContent = FILES
+lib.imageContent {
+	references {
+		table = tt_content
+		uid.field = sourceUid
+		fieldName = field_image
+	}
+	renderObj = IMAGE
+	renderObj {
+		file {
+			import.data = file:current:publicUrl
+		}
+	}
+}
+
+lib.parseFunc_RTE.tags.img.postUserFunc{
+	imageLinkWrap{
+		JSwindow = 0
+		directImageLink = 1
+		linkParams.ATagParams.dataWrap = data-fancybox="group"
+	}
+}
+
+lib.contentElement.settings.media.popup.linkParams.ATagParams.dataWrap = data-fancybox="lightbox[{field:uid}]" data-caption="{file:current:title} {file:current:description}"

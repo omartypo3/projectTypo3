@@ -1,0 +1,68 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+
+
+	<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{datei.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+		
+		<f:comment><!--<f:if condition="{fileoutput.ctime}">
+			</f:if>entfernt da auch dateieinträge ohne anhänge angezeigt werden sollen--></f:comment>
+		<tr id="auftraegeDateien_{datei.uid}">
+			
+			<f:if condition="{fileoutput.ctime}">
+				<f:then>
+					<td data-sort="{fileoutput.name}"><span class="bb-pdf-download" aria-hidden="true"></span> <a href="{fileoutput.url}" target="_blank" class="dateidownload" download="{fileoutput.name}">{fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a></td>
+				</f:then>
+				<f:else>
+					<td data-sort="{datei.dateiName}"><span class="bb-pdf-download" aria-hidden="true"></span> {datei.dateiName} (<f:format.bytes>{datei.tempDateiGroesse}</f:format.bytes>)</td>
+				</f:else>
+			</f:if>
+			<td>
+				<f:if condition="{datei.rights.edit}">
+						<f:then>
+							<div class="editableWrapper" data-uid="{datei.uid}">
+
+
+								<div class="editableText {f:if(condition: '{datei.titel}', else: ' editableTextEmpty')}">
+
+									<div class="input-group margin-bottom-sm" style="width:100%;">
+										<span class="input-group">		<span class="editableTextNoneContent">Titel</span>
+											<span class="editableTextContent">{datei.titel}</span>
+										</span>
+
+										<span class="input-group-addon editableBtn" style="width:30px"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+									</div>
+
+								</div>
+								<div class="editableEdit"><div class="input-group margin-bottom-sm" style="width:100%;">
+										<input class="form-control input-sm editableEditInput" type="text" value="{datei.titel}" placeholder="Titel"><span class="input-group-addon editableSave" style="width:30px"><i class="fa fa-check" aria-hidden="true"></i></span><span class="input-group-addon editableAbort" style="width:30px"><i class="fa fa-times" aria-hidden="true"></i></span>
+								</div></div>
+
+							</div>
+						</f:then>
+						<f:else><f:if condition="{datei.titel}">{datei.titel}</f:if></f:else>
+					</f:if>
+			</td>
+			<td data-sort="{datei.crdate->f:format.date(format: 'YmdHis')}">{datei.crdate->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+			<td><f:if condition="{datei.cruser.mitarbeiter}">
+				<f:then>
+					{datei.cruser.initialien}
+				</f:then>
+				<f:else>
+					Kunde
+				</f:else>
+			</f:if></td>
+			<td><div class="btn-group">
+					<f:if condition="{datei.rights.delete}">
+						<f:then>
+							<f:link.action controller="Auftraege" pluginName="kundenlogin" extensionName="dslintranet" action="kundenajax" arguments="{uid : datei.uid, switch : 'deleteDatei'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorDatatable', data-ajax-selector: '#auftraegeDateien_{datei.uid}', data-ajax-id: '{auftraege.uid}', data-table: '#downloadsList{datei.auftraege.uid}'}" ><i class="bb-trashcan bb-lg"></i></f:link.action>																					
+						</f:then>
+						<f:else>
+							<a class="inaktiv btn tableBtn" title="Die Datei wurde durch Dsl Factory hochgeladen, löschen nicht möglich."><i class="bb-trashcan bb-lg"></i></a>
+						</f:else>
+					</f:if>
+							
+				</div></td>
+		</tr>
+
+		
+	</v:resource.file>

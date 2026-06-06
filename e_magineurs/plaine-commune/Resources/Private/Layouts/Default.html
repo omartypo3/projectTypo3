@@ -1,0 +1,27 @@
+<header role="banner">
+	<f:render partial="Header" arguments="{_all}" />
+</header>
+
+{f:cObject(typoscriptObjectPath:'lib.getPopUpNewsletter') -> v:variable.set(name:'popinContentUid')}
+<f:if condition="{popinContentUid}">
+	<v:content.render contentUids="{0:'{popinContentUid -> v:format.trim(characters:\',\')}'}"/>
+</f:if>
+
+<v:variable.set name="siteConfigs" value="{v:variable.typoscript(path:'e_magineurs.conf')}"/>
+<v:variable.set name="class" value=""/>
+<f:if condition="{siteConfigs.publicationDetailPage} == {data.uid}">
+	<v:variable.set name="class" value="publication-single"/>
+</f:if>
+
+<main class="container-fluid {class}" id="mainContent" role="main">
+	<f:render section="Main" />
+</main>
+
+{f:cObject(typoscriptObjectPath:'lib.getFooterNewsletter') -> v:variable.set(name:'contentUid')}
+<f:if condition="{contentUid}">
+	<v:content.render contentUids="{0:'{contentUid -> v:format.trim(characters:\',\')}'}"/>
+</f:if>
+
+<footer id="footer" class="hidden-print" role="contentinfo">
+	<f:render partial="Footer" arguments="{_all}" />
+</footer>

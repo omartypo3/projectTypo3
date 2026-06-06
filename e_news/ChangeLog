@@ -1,0 +1,77 @@
+04-11-17 Léo Le Sommer <leo-robin.le-sommer@openmailbox.org>
+    * Nettoyage de e_news, le retour du plumeau
+    Attention, cette mise a jour n'est pas compatible avec les précédentes :
+    * La validation a été totalement réécrite, les variables typoscript ont pratiquements toutes été changées
+    * Idem pour l'ajout de news en frontend
+    * Certaines actions ont étés supprimées ou renommées:
+        - listNewAction a été supprimé, une option du plugin permet maintenant de faire un tri par utilisateur (a faire)
+        - deleteSimpleAction et deleteNewAction fusionnent pour donner deleteAction
+        - editNewAction devient editAction
+        - j'ai remplacé removeRelatedfilesAction par une simple updateAction avec un template et tout
+        Du coup plus d'action spécifiques pour les typenum, on fait tout avec la même action en surchargant le template, des exemples sont disponnibles dans Configuration/Typoscript/setup.txt
+    * Le modèle de donnée a été changé, bien penser a mettre a jour les tables dans l'install tool
+    * Les dialogues ont étés supprimés, je conseil d'utiliser e_comment pour faire ça
+    * Les typenum ont changé, notament au niveau de leur parametres GET, mais ils ont gardés les mêmes valeur pour le parametre "type"
+    * Les variables typoscript ont toutes étées modifiées selon, voici les liens entre les anciennes variables et les nouvelles, a noter que de nombreuses ont étées rajoutées
+        - module.tx_enews.agendaetannonces.responsableemail => plugin.tx_news.settings.validation.admin.adminEmail
+        Ces variables varient selon si l'on veut une validation de l'utilisateur ou de l'admin :
+            - module.tx_enews.agendaetannonces.pagevalidate     => plugin.tx_news.settings.validation.user.page        ou plugin.tx_news.settings.validation.admin.page
+            - module.tx_enews.agendaetannonces.titreagenda      => plugin.tx_news.settings.validation.user.subject     ou plugin.tx_news.settings.validation.admin.subject
+            - module.tx_enews.agendaetannonces.titreannonce     => plugin.tx_news.settings.validation.user.subject     ou plugin.tx_news.settings.validation.admin.subject
+            - module.tx_enews.agendaetannonces.mailexpediteur   => plugin.tx_news.settings.validation.user.senderEmail ou plugin.tx_news.settings.validation.admin.senderEmail
+
+07-08-17 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 1.0.0
+	
+	* Nettoyage de e_news (cf docs transmis à la dt sur le sujet)
+
+	* Ajout de tests unitaires
+	
+15-02-17 Tristan Beaurin <tbeaurin@e-magineurs.com>
+	
+	* Passage en version 0.2.5
+	
+	* Rajout d'un type de News spécifique pour les FAQ
+
+	* Rajout de la possibilité de traduire les tags en backend
+	
+26-01-17 Tristan Beaurin <tbeaurin@e-magineurs.com>
+	
+	* Passage en version 0.2.4
+	
+	* Rajout d'un type de News comprenant seulement la réference à une news parente (des exemples de hooks sont pour remplir cette news sont disponibles sur Pmed)
+
+	* Ajout du parent_pid pour récupérer les page détail des enregistrements parents
+	
+	* Correction de l'appel aux proprietés d'Enews dans le model (namespaces)
+    
+10-01-17 Xavier LEY <xley@e-magineurs.com>
+	
+	* Passage en version 0.2.3
+
+	* Ajout de l'option des dates récurrentes
+    
+12-12-16 Léo Le Sommer <llesommer@e-magineurs.com>
+	
+	* Passage en version 0.2.2
+
+	* Ajout du filtre par Week End
+
+22-09-16 Alexandre Roche <aroche@e-magineurs.com>
+
+	* Passage en version 0.2.1
+	
+	* Edition Frontend des news
+	
+09-03-16 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.1.0
+
+	* Adaptation pour typo3 v7 et la version de news correspondante (4.1.0)
+	
+23-10-15 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 0.0.1
+
+	* Fin de modification des appels aux anciennes classes de news (Tx_News... remplacé par GeorgRinger\News...).

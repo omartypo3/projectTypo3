@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:section name="FlashMessages">
+    <f:flashMessages as="flashMessages">
+        <div class="rte">
+            <f:for each="{flashMessages}" as="flashMessage">
+                <p class="encadre">{flashMessage.message}</p>
+            </f:for>
+        </div>
+    </f:flashMessages>
+</f:section>
+</html>

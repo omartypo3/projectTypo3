@@ -1,0 +1,138 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<tr data-wv-uid="{auftraege.uid}">
+	<td><a aria-controls="collapse-{auftraege.uid}" aria-expanded="true" onClick="auftraegeToggle({auftraege.uid})" href="#collapse-{auftraege.uid}" data-parent="#auftraegeList" data-toggle="collapse" role="button"  class="collapsed panel-heading tableBtn" id="wartungsvertrag-show-{auftraege.uid}-headline" ><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></td>
+	<td>{auftraege.nr}</td>
+	<td><strong>{auftraege.titel}</strong></td>
+	
+	
+	<td><span title="Auftrag vom: {f:format.date(date: auftraege.datum, format: 'd.m.Y')} Uhr">{f:format.date(date: auftraege.datum, format: 'd.m.Y')}</span></td>
+	
+	<td><f:if condition="{auftraege.festpreis}">
+		<f:then>Projektpreis: <strong>{auftraege.festpreis->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}</strong> €<f:if condition="{0:auftraege.auftragsart.uid}=={0:6}"><br>(Agenturvertrag)</f:if></f:then>
+		<f:else><f:if condition="{auftraege.kontingent}">
+                    	<f:then>
+                            <div>geplant: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentSet}" /></div>
+                            <div>verbraucht: <span class="{dsl:percent(percent:auftraege.kontingentUsedPercent, type:'hightlightClass')}"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedSet}" /></span></div>
+                          
+                            
+                        </f:then>
+                        <f:else>
+                            
+                            <div>verbraucht: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedSet}" /></div>
+                            
+                        </f:else>
+                    
+			</f:if><f:if condition="{0:auftraege.auftragsart.uid}=={0:6}"><div>(Agenturvertrag)</div></f:if></f:else></f:if></td>
+	
+	<td class="headlineStatusBar"><div><f:render partial="KundenAuftraege/PropertiesButtonStatusChange" arguments="{auftraege: auftraege, uniqueSelector: 'detail_auftrag_{auftraege.uid}_statuswechsel'}" /></div>
+	<div><f:translate key="tx_dslintranet_domain_model_auftraege.kundenstatus.{auftraege.status}" /></div></td>
+	
+	
+	<td width="60" style="text-align:center;">
+		<f:comment><!--<f:if condition="{auftraege.angebote}">
+			<f:then>
+				<f:if condition="{f:count(subject: auftraege.angebote)}==1">
+					<f:then>
+						<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{auftraege.angebote.0.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+							<a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}" class="btnKundeTable angeboteVorhanden">
+								<div class="bb bb-download" aria-hidden="true"></div>
+							<div class="btn-label">Angebot</div>
+							</a>
+						</v:resource.file>
+						
+					</f:then>
+					<f:else>
+						<f:link.action pageType="89657209" pageUid="93" action="listAuftragAngebote" arguments="{auftraege : auftraege}" controller="KundenDateien" pluginName="kundendateien" extensionName="dslintranet" class="doAjaxEdit btnKundeTable angeboteVorhanden"  additionalAttributes="{ data-colorbox-width: '800px', data-colorbox-height: '400px' }">
+
+							<div class="bb bb-download" aria-hidden="true"></div>
+							<div class="btn-label">Angebote</div>
+						</f:link.action>
+					</f:else>
+				</f:if>
+
+			</f:then>
+			<f:else><a class="btnKundeTable">
+
+							<div class="bb bb-download" aria-hidden="true"></div>
+							<div class="btn-label">Angebot</div>
+				</a>
+			</f:else>
+		</f:if>
+		--></f:comment>
+		
+		
+		<f:if condition="{auftraege.angebote}">
+			<f:then>
+				<a href="#" class="tableBtn withoutPadding shortcutButton" data-shortcut-type="angebote">
+					<div class="bb-finance bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Angebot<f:if condition="{f:count(subject: auftraege.angebote)}>1">e</f:if></div>
+				</a>
+			</f:then>
+			<f:else>
+				<a class="tableBtn withoutPadding inaktiv">
+					<div class="bb-finance bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Angebot</div>
+				</a>
+			</f:else>
+		</f:if>
+	</td>
+	<td style="text-align:center;" width="60">
+		
+		
+		<f:if condition="{auftraege.rechnungen}">
+			<f:then>
+				<a href="#" class="tableBtn withoutPadding shortcutButton" data-shortcut-type="rechnungen">
+					<div class="bb-finance bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Rechnung<f:if condition="{f:count(subject: auftraege.rechnungen)}>1">en</f:if></div>
+				</a>
+			</f:then>
+			<f:else>
+				<a class="tableBtn withoutPadding inaktiv">
+					<div class="bb-finance bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Rechnung</div>
+				</a>
+			</f:else>
+		</f:if>
+	</td>
+	<td style="text-align:center;" width="70">
+		
+		
+		<f:if condition="{auftraege.kommentare}">
+			<f:then>
+				<a href="#" class="tableBtn withoutPadding shortcutButton" data-shortcut-type="kommentare">
+					<div class="bb-point-bars bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Kommentar<f:if condition="{f:count(subject: auftraege.kommentare)}>1">e</f:if></div>
+				</a>
+			</f:then>
+			<f:else>
+				<a class="tableBtn withoutPadding inaktiv">
+					<div class="bb-point-bars bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Kommentar</div>
+				</a>
+			</f:else>
+		</f:if>
+	
+	
+	</td>
+	<td style="text-align:center;" width="60">
+		
+		
+		<f:if condition="{auftraege.downloads}">
+			<f:then>
+				<a href="#" class="tableBtn withoutPadding shortcutButton" data-shortcut-type="downloads">
+					<div class="bb-download bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Download<f:if condition="{f:count(subject: auftraege.downloads)}>1">s</f:if></div>
+				</a>
+			</f:then>
+			<f:else>
+				<a class="tableBtn withoutPadding inaktiv">
+					<div class="bb-download bb-lg" aria-hidden="true"></div>
+					<div class="btn-label">Download</div>
+				</a>
+			</f:else>
+		</f:if>
+	</td>
+</tr>
+	

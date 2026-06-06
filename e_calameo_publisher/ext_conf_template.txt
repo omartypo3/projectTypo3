@@ -1,0 +1,17 @@
+# cat=basic; type=string; label=LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang.xml:conf.apikey
+apikey = 
+
+# cat=basic; type=password; label=LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang.xml:conf.secret
+secret = 
+
+# cat=basic; type=string; label=LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang.xml:conf.subscription
+subscription = 
+
+# cat=basic; type=boolean; label=LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang.xml:conf.publishmode
+publishmode = 
+
+#cat=basic; type=string; label=LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang.xml:conf.apimode
+apimode = https://api.calameo.com/1.0/
+
+#cat=basic; type=string; label=LLL:EXT:e_calameo_publisher/Resources/Private/Language/locallang.xml:conf.uploadmode
+upload = https://upload.calameo.com/1.0/

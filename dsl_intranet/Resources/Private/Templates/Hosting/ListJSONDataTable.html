@@ -1,0 +1,96 @@
+<f:spaceless>
+
+<span class="hostingPaketCounter"></span><span class="hostingUid invisible">{hosting.uid}</span>{hosting.kunde.name} [{hosting.kunde.nummer}]
+<--break-->
+{hosting.benutzername}
+<span class="hostingKennwort" id="hosting{hosting.uid}Kennwort"><i class="fa fa-cog fa-spin"></i><input type="text" class="content hide" onKeyDown="return false;"  onClick="$(this).select()" /></span>
+<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : hosting, switch : 'showKennwort'}" class="doAjax" additionalAttributes="{data-ajax-action: 'showKennwort', data-ajax-selector: '#hosting{hosting.uid}Kennwort'}" ><i class="fa fa-key" aria-hidden="true"></i></f:link.action>
+
+<--break-->
+
+
+
+   <div class="btn-group">
+   		
+   		<f:link.action controller="Hosting" pageType="89657204" pluginName="hostingliste" extensionName="dslintranet" action="edit" arguments="{hosting : hosting}" class="btn tableBtn doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '510px'}"><i class="fa fa-edit"></i></f:link.action>
+   		
+   		<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : hosting, switch : 'delete'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorHosting', data-ajax-selector: '', data-ajax-id: '{hosting.uid}'}" ><i class="fa fa-trash-o"></i>
+</f:link.action>
+  		
+<!--  		<f:if condition="{hosting.statistik}">-->
+<!--			<a href="{hosting.statistik}" target="_blank" class="btn tableBtn "><i class="fa fa-bar-chart" aria-hidden="true"></i></a>-->
+<!--		</f:if>-->
+   		
+   		<f:link.action controller="Hosting" pageType="89657204" pluginName="hostingliste" extensionName="dslintranet" action="show" class="btn tableBtn doAjaxEdit" arguments="{hosting : hosting}" ><i class="fa fa-search"></i></f:link.action>
+   		
+   		<f:if condition="{hosting.hauptTarif}">
+			<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" class="btn tableBtn doAjaxEdit" arguments="{hostingUid : hosting.uid, switch : 'newZusatzTarif'}" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '510px'}" ><i class="fa fa-plus" aria-hidden="true"></i></f:link.action>
+		</f:if>
+   		
+	</div>
+
+
+
+<--break-->
+<f:if condition="{hosting.hauptTarif}">
+	<f:then>
+    	<f:if condition="{hosting.hauptTarif.domainname}"><f:link.external uri="{hosting.hauptTarif.domainname}" target="_blank" class="hostingDomainPreview">{hosting.hauptTarif.domainname}</f:link.external></f:if>
+		<f:if condition="{hosting.hauptTarif.gekuendigt}">&nbsp;&nbsp;<span class="label label-danger" style="font-weight:normal;">Gekündigt<f:if condition="{hosting.hauptTarif.gekuendigtZum}"> zum {hosting.hauptTarif.gekuendigtZum -> f:format.date(format: 'm/y')}</f:if></span></f:if>
+    </f:then>
+    <f:else>
+		<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" class="doAjaxEdit" arguments="{hostingUid : hosting.uid, switch : 'newHauptTarif'}" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '510px'}" ><i class="fa fa-plus-square-o" aria-hidden="true"></i> Hauptdomain/Tarif definieren</f:link.action>
+    </f:else>
+</f:if>
+        
+<--break-->
+{hosting.hauptTarif.tarif.titel}
+<--break-->
+<f:format.date date="{hosting.hauptTarif.vertragsbegin}" format="d.m.y" />
+<--break-->{hosting.hauptTarif.preisMonatlich}<--break-->
+<f:if condition="{hosting.hauptTarif.preisMonatlich}"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{hosting.hauptTarif.preisMonatlich}</f:format.currency></f:if>
+<--break-->
+<f:translate key="tx_dslintranet_domain_model_tarife.laufzeit.{hosting.hauptTarif.laufzeit}" />
+<--break-->
+
+
+<f:if condition="{hosting.hauptTarif}">
+	
+   
+   
+    <div class="statusHosting {f:if(condition: '{0:hosting.hauptTarif.faellig, 1:hosting.hauptTarif.Ueberfaellig}=={0:1, 1:0}', then: 'statusFaellig')}{f:if(condition: hosting.hauptTarif.ueberfaellig, then: 'statusUeberFaellig')}">
+    
+    
+    <f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : hosting.hauptTarif, switch : 'prevRechnung', produkt: 'domains'}" class="doAjax" additionalAttributes="{data-ajax-action: 'hostingNextRechnung', data-ajax-selector: '#hostingList'}" ><i class="fa fa-arrow-left" aria-hidden="true"></i></f:link.action>
+    
+    <span title="{f:format.date(date: hosting.hauptTarif.bezahltbis, format: 'd.m.Y')}"><f:translate key="tx_dslintranet_domain_model_hosting.monatkurz.{f:format.date(date: hosting.hauptTarif.bezahltbis,format: 'm')}" />&nbsp;<f:format.date date="{hosting.hauptTarif.bezahltbis}" format="y" /></span>
+		
+    	
+			
+    	
+		
+    <f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : hosting.hauptTarif, switch : 'nextRechnung', produkt: 'domains'}" class="doAjax" additionalAttributes="{data-ajax-action: 'hostingNextRechnung', data-ajax-selector: '#hostingList'}" ><i class="fa fa-arrow-right" aria-hidden="true"></i></f:link.action>
+    
+    </div>
+
+
+</f:if>
+
+
+<--break-->
+
+<f:if condition="{hosting.hauptTarif}">
+
+   <div class="btn-group">
+  		 
+  		
+   		<f:link.action pageType="89657204" controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="editDomain" arguments="{hostingDomain : hosting.hauptTarif}" class="btn tableBtn doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '510px'}"><i class="fa fa-edit"></i></f:link.action>
+   		
+   		<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : hosting.hauptTarif, switch : 'deleteDomain'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorHosting', data-ajax-selector: '', data-ajax-id: '{hosting.hauptTarif.uid}'}" ><i class="fa fa-trash-o"></i>
+        </f:link.action>
+   </div>
+ 
+
+</f:if>
+
+
+</f:spaceless>

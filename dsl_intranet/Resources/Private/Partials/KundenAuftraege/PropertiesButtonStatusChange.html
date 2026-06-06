@@ -1,0 +1,26 @@
+
+
+  <div class="layout-table table-auftrag-status table-auftrag-status-kunde table-auftrag-status-kunde-{auftraege.status}">
+    <div class="layout-table-row">
+        
+ 
+        <f:for each="{auftraege.statusNr}" as="status" key="number">
+            
+           
+				 <f:if condition="{number}!={auftraege.status}">
+					<f:then>
+
+						<div class="layout-table-col table-auftrag-status-kunde-item-{number}" title="{f:translate(key: 'tx_dslintranet_domain_model_auftraege.kundenstatus.{number}')}"><a class="{f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}"><span><f:translate key="tx_dslintranet_domain_model_auftraege.kundenstatusnr.{number}" /></span></a></div>
+
+					</f:then>
+					<f:else>
+						<div class="layout-table-col table-auftrag-status-kunde-item-{number}" title="{f:translate(key: 'tx_dslintranet_domain_model_auftraege.kundenstatus.{number}')}"><a class="aktiv"><span><f:translate key="tx_dslintranet_domain_model_auftraege.kundenstatusnr.{number}" /></span></a></div>
+					</f:else>
+				</f:if>
+            
+        </f:for>
+        
+      </div>
+  </div>
+  
+

@@ -1,0 +1,154 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Auftraege" enctype="multipart/form-data" pageType="89657202" action="ajax" name="auftraege"  pluginName="auftragsliste" extensionName="dslintranet" id="auftraegeEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Auftrag Bearbeiten'}" />
+
+
+
+
+
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+			  
+			  
+	$(document).ready(function() {
+		/*alert('loaded:'+$('#auftraegeEditForm input').length);*/
+		
+		
+		//$('#auftraegeEditForm').submit(function() {
+
+		$( "#auftraegeCreateForm button.confirm" ).click(function() {
+			checkSelectPicker('editKunde');
+			checkSelectPicker('editFegroups');
+			checkSelectPicker('editMitarbeiter');
+		});/*FormFields.html ebenfalls modifizieren*/
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#auftraegeEditForm').validate({
+			invalidHandler: function(event, validator) { 
+				validateFormInvalidHandler(validator);
+				
+				
+				setTimeout(function(){ 
+				
+					$('.fremdkosten-verechnung-wrapper').removeClass('invalid_child');
+					$('.fremdkosten-verechnung-wrapper .sonstigesRadio.invalid').closest('.fremdkosten-verechnung-wrapper').addClass('invalid_child');
+					
+					$('.nutzungskator-verechnung-wrapper').removeClass('invalid_child');
+					$('.nutzungskator-verechnung-wrapper .sonstigesRadio.invalid').closest('.nutzungskator-verechnung-wrapper').addClass('invalid_child');
+					
+				}, 500);
+		
+			},
+			//invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				var editor = tinyMCE.get('auftragEditNotizenIntern');
+				$('#auftragEditNotizenIntern_temp').val(editor.getContent());
+				
+				validateFormInvalidHandlerReset();
+				
+				
+				//unbenutzte Nebenkostenfelder deaktivieren
+				$( "input.fremdkostenAnzahl" ).each(function( index ) {
+				  if($(this).val()=='0'||$(this).val()=='') {
+					 $(this).prop('disabled', true);
+				  }
+				});
+				$( ".formular-nebenkosten-empty input" ).each(function( index ) {
+					$(this).prop('disabled', true);
+				});
+				
+				if($('#auftraegeEditForm').hasClass('formSaves'))	return false;
+				$('#auftraegeEditForm').addClass('formSaves');
+				
+				
+				$.ajax({
+					url: $('#auftraegeEditForm').attr('action'),
+					type: 'POST',
+					data: $('#auftraegeEditForm').serialize(),
+					success: function(data) {
+						
+				
+						dataJson = JSON.parse(data);
+						
+						//reloadAuftragId('list',id);
+						if(!dataJson["uid"]) {
+							
+							editor.remove();
+							
+							return true;
+						} else {
+							
+							changeProjektTab("auftrag-show-"+dataJson["uid"],dataJson["contentShow"]);
+							
+							dataTableReload();
+	
+							editor.remove();
+				
+							//if(tinymce.EditorManager.editors[0]) tinymce.EditorManager.editors[0].destroy();
+							
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		
+		/* Validator Ende */
+		
+		
+	});
+	
+</script>
+
+
+
+
+    <f:form.hidden name="auftraege" value="{auftraege.uid}" />
+    <f:form.hidden name="switch" value="update" />
+    
+    <f:render partial="Auftraege/FormFields" arguments="{_all}" />
+	
+    
+
+   
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+    
+    
+</f:form>
+
+
+</f:section>

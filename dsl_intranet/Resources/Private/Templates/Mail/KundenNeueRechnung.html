@@ -1,0 +1,74 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Ihre Rechnung</f:section>
+
+<f:section name="bodyHtml">
+
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; color:rgb(152, 152, 152); text-align:center;"><p>{subject}</p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<tr style="font-weight: 600;">
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap; vertical-align: top;">Rechnung:</td>
+					<td><f:if condition="{protokolle.datei.titel}">
+							<f:then>{protokolle.datei.titel} ({protokolle.datei.dateiName})</f:then>
+							<f:else>{protokolle.datei.dateiName}</f:else>
+						</f:if></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<f:if condition="{mitteilung}">
+					<tr style="font-weight: 600;">
+						<td style="width: 15px;">&nbsp;</td>
+						<td style="width: 100px; white-space: nowrap; vertical-align: top;">Mitteilung:</td>
+						<td><f:format.nl2br>{mitteilung}</f:format.nl2br></td>
+					</tr>
+					<tr>
+						<td style="width: 15px;">&nbsp;</td>
+						<td style="width: 100px;">&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</f:if>
+			</tbody>
+		</table>
+	</div>
+	
+	<div style="font-family:Helvetica,Arial,sans-serif; font-size:12px; margin-top: 15px; margin-bottom: 15px;">Sehr geehrte Damen und Herren,<br><br>
+	anbei erhalten Sie Ihre Rechnung. Sie finden die Rechnung im Anhang oder können sie im <a href="https://kd.dsl-factory.de/" style="font-family:Helvetica,Arial,sans-serif; text-decoration: none; color:#fd8320;">Kundencenter</a> ansehen und herunterladen.<br><br>Wir danken für Ihren Auftrag und stehen für eventuelle Rückfragen gern zur Verfügung.</div>
+	
+	<f:render partial="Mail/Trennlinie" />
+	<f:alias map="{marginTop: '0px'}"><f:render partial="Mail/HinweisEmailAutomatisiertVerschickt" section="html" arguments="{_all}" /></f:alias>
+	<f:render partial="Mail/FragenKundenkonto"  section="html" arguments="{_all}" />
+	
+</f:section>
+
+<f:section name="bodyText">{subject}
+----------------------------------
+Rechnung:<f:if condition="{protokolle.datei.titel}"><f:then>{protokolle.datei.titel} ({protokolle.datei.dateiName})</f:then><f:else>{protokolle.datei.dateiName}</f:else></f:if>
+<f:if condition="{mitteilung}">
+Mitteilung:
+{mitteilung}
+</f:if>----------------------------------
+	
+Sehr geehrte Damen und Herren,
+	
+anbei erhalten Sie Ihre Rechnung. Sie finden die Rechnung im Anhang oder können sie im Kundencenter (https://kd.dsl-factory.de/) ansehen und herunterladen.
+	
+Wir danken für Ihren Auftrag und stehen für eventuelle Rückfragen gern zur Verfügung.
+	
+<f:render partial="Mail/HinweisEmailAutomatisiertVerschickt" section="text" arguments="{_all}" />
+	
+<f:render partial="Mail/FragenKundenkonto"  section="text" arguments="{_all}" />
+	
+</f:section>

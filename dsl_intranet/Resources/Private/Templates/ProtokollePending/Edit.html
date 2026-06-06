@@ -1,0 +1,340 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  xmlns:dsl="http://typo3.org/ns/DslFactory/DslIntranet/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	
+	
+	
+	
+	
+	<f:comment><f:debug title="titel">{protokollePending.protokoll.mailSettings}</f:debug></f:comment>
+
+	
+	
+	<f:form controller="ProtokollePending"  pageType="89657005" action="update" name="protokollePending"  pluginName="protokollependingmailer" extensionName="dslintranet" id="protokollePendingEditForm" >
+		
+		<f:form.hidden name="protokollePending" value="{protokollePending.uid}" />
+		
+		<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'E-Mail Information an Kunde.'}" />
+<div class="accordionProtokollePending">
+	
+	
+	<div class="head form_headline">
+		<strong>Eckdaten der E-Mail</strong>
+		<i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i>
+		
+	</div>
+	<div class="accordionContent">
+	
+		
+		
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+				<div class="layout-table-col table-formular-label table-formular-medium">
+					Absender
+				</div>
+				
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="{protokollePending.protokoll.mailSettings.fromMail}" name="fromMail" value="{protokollePending.protokoll.mailSettings.fromMail}" class="form-control input-sm" />
+				</div>
+				<div class="layout-table-col table-formular-label" style="width:100px;"><center>E-Mail / Name</center></div>
+				
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="{protokollePending.protokoll.mailSettings.fromName}" name="fromName" value="{protokollePending.protokoll.mailSettings.fromName}" class="form-control input-sm" />
+					
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+				<div class="layout-table-col table-formular-label table-formular-medium">
+					Betreff
+				</div>
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="{protokollePending.protokoll.mailSettings.subject}" name="subject" value="{protokollePending.protokoll.mailSettings.subject}" class="form-control input-sm refreshPreviewOnChange protokollePendingMailSubject" required="true" />
+				</div>
+			</div>
+		</div>
+		
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+				<div class="layout-table-col table-formular-label table-formular-medium">
+					Empfänger
+				</div>
+				
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="{protokollePending.protokoll.mailSettings.mailTo}" name="mailTo" value="{protokollePending.protokoll.mailSettings.mailTo}" class="form-control input-sm" required="true" />
+				</div>
+				<div class="layout-table-col table-formular-label" style="width:100px;"><center>E-Mail / Name</center></div>
+				
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="{protokollePending.protokoll.mailSettings.kundeName}" name="kundeName" value="{protokollePending.protokoll.mailSettings.kundeName}" class="form-control input-sm" />
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+				<div class="layout-table-col table-formular-label table-formular-medium">
+					Empfänger (CC)
+				</div>
+				
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="" name="mailToCC" value="" class="form-control input-sm" />
+				</div>
+				<div class="layout-table-col table-formular-label" style="width:100px;"><center>E-Mail / Name</center></div>
+				
+				<div class="layout-table-col">
+					<f:form.textfield placeholder="" name="kundeNameCC" value="" class="form-control input-sm" />
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<div class="layout-table table-formular-padding">
+			<div class="layout-table-row table-formular-row">
+				<div class="layout-table-col table-formular-label table-formular-medium">
+					Mitteilung:
+				</div>
+				
+				<div class="layout-table-col">
+					<f:form.textarea name="mitteilung" value="{protokollePending.protokoll.mailSettings.mitteilung}" class="validator_required form-control input-sm animated refreshPreviewOnChange" placeholder="{protokollePending.protokoll.mailSettings.mitteilung}" style="resize:none;min-height:80px;" />
+				</div>
+				
+				
+			</div>
+		</div>
+		
+		<f:if condition="{protokollePending.protokoll.datei}">
+			
+				
+			
+					<div class="layout-table table-formular-padding">
+						<div class="layout-table-row table-formular-row">
+							<div class="layout-table-col table-formular-label table-formular-medium">
+								<f:if condition="{protokollePending.protokoll.datei.type}==20">Angebot</f:if>
+								<f:if condition="{protokollePending.protokoll.datei.type}==30">Rechnung</f:if>
+								<f:if condition="{protokollePending.protokoll.datei.type}==20"><f:else><f:if condition="{protokollePending.protokoll.datei.type}==30"><f:else>Datei</f:else></f:if></f:else></f:if>
+							</div>
+
+							<div class="layout-table-col">
+
+								<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{protokollePending.protokoll.datei.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+									<a 	href="{fileoutput.url}" target="_blank" download="{fileoutput.name}"><f:if condition="{protokollePending.protokoll.datei.type}==30"><f:then><span class="bb-pdf-download" aria-hidden="true"></span></f:then><f:else><span class="bb-download" aria-hidden="true"></span></f:else></f:if> {fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a>
+								</v:resource.file>
+
+								<f:if condition="{protokollePending.protokoll.datei.type}==20"> - wird mit der E-Mail verschickt</f:if>
+								<f:if condition="{protokollePending.protokoll.datei.type}==30"> - wird mit der E-Mail verschickt</f:if>
+								<f:if condition="{protokollePending.protokoll.datei.type}==20"><f:else><f:if condition="{protokollePending.protokoll.datei.type}==30"><f:else> - wird nicht mit der E-Mail verschickt</f:else></f:if></f:else></f:if>
+							</div>
+
+
+						</div>
+					</div>
+				
+			
+		</f:if>
+		
+	</div>
+	
+	<div class="protokollePendingMailPreview">
+		<div class="head form_headline">
+			<strong>E-Mail Vorschau</strong> - HTML Version
+			
+			<i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i>
+			<i class="fa fa-cog fa-spin"></i>
+
+		</div>
+		<div class="accordionContent" id="protokollePendingMailPreviewHtml"><f:format.raw>{protokollePending.protokoll.mailSettings.bodyHtml}</f:format.raw></div>
+
+		<div class="head form_headline accordionStateHidden">
+			<strong>E-Mail Vorschau</strong> - Text Version
+			
+			<i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i>
+			<i class="fa fa-cog fa-spin"></i>
+
+		</div>
+		<div class="accordionContent accordionHidden" id="protokollePendingMailPreview">
+			<f:format.nl2br>{protokollePending.protokoll.mailSettings.body}</f:format.nl2br>
+		</div>
+	</div>
+	
+	
+ 
+ 
+</div>
+		
+	<f:comment>		
+			
+			<div>Protokoll: <strong>{protokollePending.protokoll.uid}</strong></div>
+			<div>Template: <strong>{protokollePending.protokoll.mailSettings.template}</strong></div>
+			<div>KundenMailTo: <strong>{protokollePending.protokoll.mailSettings.mailTo}</strong></div>
+			<div>KundenName: <strong>{protokollePending.protokoll.mailSettings.kundeName}</strong></div>
+			<div>Anhänge: <strong>{f:count(subject: protokollePending.protokoll.mailSettings.attachments)}</strong></div>
+			<div>mailInfoDenied: <strong>{protokollePending.protokoll.mailSettings.mailInfoDenied}</strong></div>
+			<div>Betreff: <strong>{protokollePending.protokoll.mailSettings.subject}</strong></div>
+			<div>Body: <div style="background-color:#BCBCBC;padding:5px;border:1px solid #000;"><f:format.nl2br>{protokollePending.protokoll.mailSettings.body}</f:format.nl2br></div></div>
+
+
+			<div></div>
+			<div>Kunde: <strong>{protokollePending.protokoll.mailSettings.kunde.uid}</strong></div>
+			 {protokollePending}:: PP:{protokollePending.uid}//P:{protokollePending.protokoll.uid}//A:{protokollePending.protokoll.auftrag.uid}//Zeitpunkg:{protokollePending.timestamp -> f:format.date(format: 'Y-m-d H:i:s')}
+
+
+			<div class="form_headline">
+				<strong>Inhalt der E-Mail</strong>
+				<hr>
+			</div>
+			<div class="layout-table table-formular-padding">
+				<div class="layout-table-row table-formular-row">
+					<div class="layout-table-col table-formular-label table-formular-medium">
+						Betreff<span>*</span>
+					</div>
+					<div class="layout-table-col">
+						<f:comment><f:form.textfield name="titel" value="{protokollePending.uid}" class="form-control input-sm" required="true"  /></f:comment>
+					</div>
+				</div>
+			</div>
+	</f:comment>		
+		
+		
+		
+
+	<f:render partial="Allgemein/ColorboxFormProtokollePending" arguments="{titel:'E-Mail jetzt Versenden'}" />    
+    
+    
+</f:form>
+	
+	
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+					 
+			  
+	$(document).ready(function() {
+		
+		
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#protokollePendingEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				/*
+				
+				//unbenutzte Nebenkostenfelder deaktivieren
+				$( "input.fremdkostenAnzahl" ).each(function( index ) {
+				  if($(this).val()=='0'||$(this).val()=='') {
+					 $(this).prop('disabled', true);
+				  }
+				});
+				$( ".formular-nebenkosten-empty input" ).each(function( index ) {
+					$(this).prop('disabled', true);
+				});
+				*/
+				if($('#protokollePendingEditForm').hasClass('formSaves'))	return false;
+				$('#protokollePendingEditForm').addClass('formSaves');
+				
+				
+				$.ajax({
+					url: $('#protokollePendingEditForm').attr('action'),
+					type: 'POST',
+					data: $('#protokollePendingEditForm').serialize(),
+					success: function(data) {
+						
+						jsonString = data.replace(/&quot;/g, '"');
+		
+						dataJson = JSON.parse(jsonString);
+						
+						//reloadAuftragId('list',id);
+						if(!dataJson.uid) {
+							
+							return true;
+						} else {
+							
+							//console.log(dataJson["uid"]);
+							protokollePendingComplete(dataJson.uid)
+							//changeProjektTab("auftrag-show-"+dataJson["uid"],dataJson["contentShow"]);
+							
+						//	dataTableReload();
+	
+				
+							//if(tinymce.EditorManager.editors[0]) tinymce.EditorManager.editors[0].destroy();
+							
+						//	$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		$('.accordionProtokollePending div.head').click(function() {
+			//console.log('click');
+		   	$(this).next().toggleClass('accordionHidden');   
+		  	if($(this).next().hasClass('accordionHidden')) 
+				$(this).addClass('accordionStateHidden'); 
+					else $(this).removeClass('accordionStateHidden');
+		  	
+			//return false;
+
+		});
+		$('.animated').autosize({append: "\n"});
+		
+		
+		
+		$( "#protokollePendingEditForm .refreshPreviewOnChange" ).change(function() {
+		  
+		  refreshPreviewOnChange();
+		});
+
+		
+		var protokollePendingKeyUpTimeout = false;
+
+		$( "#protokollePendingEditForm .refreshPreviewOnChange" ).keyup(function() {
+			if(protokollePendingKeyUpTimeout) clearTimeout(protokollePendingKeyUpTimeout);
+			protokollePendingKeyUpTimeout = setTimeout(function(){ refreshPreviewOnChange(); }, 1000);
+		});
+
+	});
+
+</script>		
+
+	
+	
+	
+</f:section>
+</html>

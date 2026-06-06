@@ -1,0 +1,14 @@
+<f:if condition="{folder.combinedIdentifier}!={settings.folder}" >
+    <f:then>
+        <f:render partial="BreadcrumbElement" arguments="{folder: folder.parentFolder, settings: settings}"/>
+
+        <li>
+            {folder.name}
+        </li>
+    </f:then>
+    <f:else>
+        <li>
+            {folder.name}
+        </li>
+    </f:else>
+</f:if>

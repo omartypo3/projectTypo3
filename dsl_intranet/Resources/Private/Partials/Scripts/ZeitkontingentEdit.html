@@ -1,0 +1,285 @@
+<script type="text/javascript">
+console.clear();
+
+function setSpinnerEnable(){
+	//console.log('function setSpinnerEnable()');
+	//prüfen ob alle checkfelder aktiviert sind oder keine
+	if($('.phasenCheckbox:checked').length==0){
+		$( '.spinner_phase_gesamt' ).attr("disabled", false);
+	} else {
+		$( '.spinner_phase_gesamt' ).attr("disabled", true);
+		
+	}
+	
+	setAllTotalMinutes();
+}
+function setSpinnerMehraufwand(){
+	
+	console.log('setSpinnerMehraufwand');
+	var minuten = parseInt($('#zeitkontingent_mehraufwand').val());
+	
+	console.log(minuten);
+	var stunden = Math.floor(minuten/60);
+	console.log(stunden);
+	minuten = minuten-(stunden*60);
+	console.log(minuten);
+	if(stunden>0) $( ".spinner_phase_stunden_mehraufwand" ).val(stunden); else $( ".spinner_phase_stunden_mehraufwand" ).val('');
+	if(minuten>0) $( ".spinner_phase_minuten_mehraufwand" ).val(minuten); else $( ".spinner_phase_minuten_mehraufwand" ).val('');
+	
+}
+var disableSpinnerChange = false;
+function setTotalMinutes(id){
+//	console.log('function setTotalMinutes('+id+')');
+	console.log('setTotalMinutes('+id+') // disableSpinnerChange:'+disableSpinnerChange);
+	
+	if(!disableSpinnerChange){
+		
+		var stunden = parseInt($('.spinner_phase_stunden_'+id).val());
+		var minuten = parseInt($('.spinner_phase_minuten_'+id).val());
+		
+		if(isNaN(stunden)) stunden = 0;
+		if(isNaN(minuten)) minuten = 0;
+		
+		var minutenGesamt = (stunden*60) + minuten;
+	
+/*	
+		stunden = Math.floor(minutenGesamt/60);
+		minuten = minutenGesamt-(stunden*60);
+	
+		disableSpinnerChange = true;
+		if(stunden==0) $('.spinner_phase_stunden_'+id).val(''); else $('.spinner_phase_stunden_'+id).val(stunden);
+		if(minuten==0) $('.spinner_phase_minuten_'+id).val(''); else $('.spinner_phase_minuten_'+id).val(minuten);
+		disableSpinnerChange = false;
+*/	
+		
+		$('#zeitkontingent_'+id).val(minutenGesamt);
+	
+		if(id != "gesamt"){
+			setAllTotalMinutes();
+		}
+	}
+	
+}
+
+
+	
+function setAllTotalMinutes(){
+	
+	console.log('setAllTotalMinutes()');
+	
+	var minuten = 0;
+	$.each( $('.zeitkontingent_minuten'), function( key, value ) {
+		
+		if($(this).val()) minuten=parseInt($(this).val())+minuten;
+	});
+	
+//	console.log('(1)minuten: '+minuten);
+//	console.log('(2)#zeitkontingent_gesamt.val(): '+$('#zeitkontingent_gesamt').val());
+	var resetSpinner = false;
+	if(minuten>0) {
+		$('#zeitkontingent_gesamt').val(minuten);
+	
+		
+		
+		var minutenZugewiesenMehraufwand = $('#zeitkontingent_mehraufwand').val();
+
+		if(parseInt(minutenZugewiesenMehraufwand) > minuten){
+
+			$('#zeitkontingent_mehraufwand').val(minuten);
+			resetSpinner = true;
+			//$('#zeitkontingent_mehraufwand').trigger('change');
+		}
+		
+	} else {
+		
+		$('#zeitkontingent_gesamt').val('');
+		$('#zeitkontingent_mehraufwand').val('');
+		resetSpinner = true;
+	}
+	
+	if(resetSpinner) setSpinnerMehraufwand();
+	console.log('endedurchlauf');
+	
+	
+	
+//	console.log('(3)#zeitkontingent_gesamt.val(): '+$('#zeitkontingent_gesamt').val());
+	var stunden = Math.floor(minuten/60);
+	
+	minuten = minuten-(stunden*60);
+	
+	if(stunden>0) $( ".spinner_phase_stunden_gesamt" ).val(stunden); else $( ".spinner_phase_stunden_gesamt" ).val('');
+	if(minuten>0) $( ".spinner_phase_minuten_gesamt" ).val(minuten); else $( ".spinner_phase_minuten_gesamt" ).val('');
+	
+	
+//	console.log('(4)#zeitkontingent_gesamt.val(): '+$('#zeitkontingent_gesamt').val());	
+	
+	if (typeof setAllTotalMinutesAfter !== 'undefined') {
+		console.log("typeof setAllTotalMinutesAfter !== 'undefined'");
+		setAllTotalMinutesAfter();
+	}
+//	console.log('(5)#zeitkontingent_gesamt.val(): '+$('#zeitkontingent_gesamt').val());
+	//$.trigger( "setAllTotalMinutesAfter" );
+	/*if ($.isFunction('setAllTotalMinutesAfter')) {
+		$.setAllTotalMinutesAfter();
+	}*/
+}
+
+	
+	
+
+	
+
+$.each( $('.phasenCheckbox:checked'), function( key, value ) {
+//	console.log('each function .phasenCheckbox:checked');
+	
+	
+	
+	var id = $(this).val();
+//console.log('id: '+id);
+	var minutenGesamt = parseInt($('#zeitkontingent_'+id).val());
+//console.log('minutenGesamt: '+minutenGesamt);
+	if(!isNaN(minutenGesamt)) {
+		if(minutenGesamt>0) {
+			var stunden = Math.floor(minutenGesamt/60);
+			var minuten = minutenGesamt-(stunden*60);	
+
+			if(stunden>0) $( ".spinner_phase_stunden_"+id ).val(stunden);
+			if(minuten>0) $( ".spinner_phase_minuten_"+id ).val(minuten);
+		}
+	}
+	
+	/*setzen des btn*/	
+//	$(this).next(
+
+	$(this).next().children().addClass('active');
+	
+});
+
+
+$( ".spinner_phase" ).change(function(e) {
+	//console.log('.spinner_phase_changed!!');
+	console.log('.spinner_phase changed!!  ++ setTotalMinutes('+$(this).closest('.layout-table-row').data('id')+')');
+	setTotalMinutes($(this).closest('.layout-table-row').data('id'));     
+});
+
+$( ".spinner_phase_gesamt" ).change(function(e) {
+	console.log('.spinner_phase_gesamt_changed!!!!!!!!!!!!!!!!!!!');
+	//setTotalMinutes(); 
+	var minutenGesamt = parseInt($( "#spinner_phase_minuten_gesamt" ).val());
+	if(isNaN(minutenGesamt)) minutenGesamt=0;
+	if($( "#spinner_phase_stunden_gesamt" ).val()) minutenGesamt+=(parseInt($( "#spinner_phase_stunden_gesamt" ).val()*60));
+	$( "#zeitkontingent_gesamt").val(minutenGesamt);
+});
+$( ".spinner_phase_mehraufwand" ).change(function(e) {
+	console.log('.spinner_phase_mehraufwand_changed!!!!!!!!!!!!!!!!!!!');
+	//setTotalMinutes(); 
+	var minutenGesamt = parseInt($( "#spinner_phase_minuten_mehraufwand" ).val());
+	if(isNaN(minutenGesamt)) minutenGesamt=0;
+	if($( "#spinner_phase_stunden_mehraufwand" ).val()) minutenGesamt+=(parseInt($( "#spinner_phase_stunden_mehraufwand" ).val()*60));
+	
+	
+	var zeitKontingentGesamtMinuten = $("#zeitkontingent_gesamt").val();
+	console.log('zeitKontingentGesamtMinuten:'+zeitKontingentGesamtMinuten);
+	var resetSpinner = false;
+	if(zeitKontingentGesamtMinuten){
+		console.log(parseInt(zeitKontingentGesamtMinuten)+' > '+minutenGesamt);
+		if(parseInt(zeitKontingentGesamtMinuten)<minutenGesamt){
+			minutenGesamt = parseInt(zeitKontingentGesamtMinuten);
+			resetSpinner = true;
+		}
+		$( "#zeitkontingent_mehraufwand").val(minutenGesamt);
+	} else {
+		$( "#zeitkontingent_mehraufwand").val('');
+		
+		resetSpinner = true;
+	}
+	if(resetSpinner){
+		console.log('setzen der spinner anhand des zeitkontingent_mehraufwand');	
+		setSpinnerMehraufwand();
+	}
+	//setzen der spinner anhand des zeitkontingent_mehraufwand
+	
+	
+	
+	
+});
+		
+	
+//console.log('setAllTotalMinutes INIT !!');
+//setAllTotalMinutes();
+
+
+/*phasenCheckbox*/
+$( ".phasenCheckbox" ).change(function() {
+	//console.log('.phasenCheckbox changed!!');
+	if(this.checked){ //felder aktivieren	
+
+		$('.spinner_phase_'+$(this).val()).attr("disabled", false);
+		$('.spinner_phase_'+$(this).val()).val('');
+		//$( '.spinner_phase_'+$(this).val() ).spinner("enable").spinner("value",'');
+	} else { //einzelfeld deaktivieren	
+		
+		$('.spinner_phase_'+$(this).val()).attr("disabled", true);
+		$('.spinner_phase_'+$(this).val()).val('');
+		//$( '.spinner_phase_'+$(this).val() ).spinner("disable").spinner("value",'');
+		$( '#zeitkontingent_'+$(this).val() ).val('');
+	}
+	
+	setSpinnerEnable();
+	
+  
+});
+
+
+
+
+setSpinnerEnable();
+	
+	
+/*change on click*/
+$('.phasenCheckboxBtn').click(function(e) {
+	
+	if($(this).children('.btn').hasClass('active')){
+		
+		$(this).prev('.phasenCheckbox').prop( "checked", false );
+		$('.spinner_phase_'+$(this).prev('.phasenCheckbox').val()).attr("disabled", true);
+	
+	} else {
+	
+		$(this).prev('.phasenCheckbox').prop( "checked", true );
+		$('.spinner_phase_'+$(this).prev('.phasenCheckbox').val()).attr("disabled", false);
+	}
+
+	$(this).prev('.phasenCheckbox').trigger("change");
+	
+});
+
+
+$.each( $('.phasenCheckbox'), function( key, value ) {
+	if(this.checked == false){ $('.spinner_phase_'+$(this).val()).attr("disabled", true); 	}
+});
+
+
+
+$.each( $('.sichtbarkeitCheckbox:checked'), function( key, value ) {
+	$(this).next().children().addClass('active');
+});
+	
+	
+
+	/*
+$('.sichtbarkeitCheckboxBtn').click(function(e) {
+	
+	if($(this).children('.btn').hasClass('active')){
+		
+		$(this).prev('.sichtbarkeitCheckbox').prop( "checked", false );
+
+	} else {
+		$(this).prev('.sichtbarkeitCheckbox').prop( "checked", true );
+	}
+
+});
+
+*/
+	//console.log('zkedit!!!!!');
+</script>

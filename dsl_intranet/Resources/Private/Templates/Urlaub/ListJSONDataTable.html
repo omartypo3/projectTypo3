@@ -1,0 +1,81 @@
+<span data-urlaub-status="{urlaub.status}" data-urlaub-uid="{urlaub.uid}" class="refreshUrlaubList{urlaub.uid}"></span>
+<f:link.action controller="Urlaub" pluginName="urlaubsliste" extensionName="dslintranet" action="show" arguments="{mitarbeiter : urlaub.mitarbeiter, jahr: '--ajaxReplace--urlaubs_jahr--'}" class="doAjax" additionalAttributes="{data-ajax-action: 'showColorbox', data-ajax-id: '{urlaub.mitarbeiter.uid}'}" ><span class="mitarbeiterTextColor mitarbeiterKreisMedium" data-uid="{urlaub.mitarbeiter.uid}" >{urlaub.mitarbeiter.initialien}</span></f:link.action>
+<--break-->
+<span class="{f:if(condition: '{urlaub.status}==10', then: 'beantragt')}">
+{urlaub.begin->f:format.date(format: 'd.m.Y')}
+<f:if condition="{urlaub.begin->f:format.date(format: 'dmY')}!={urlaub.end->f:format.date(format: 'dmY')}"> - {urlaub.end->f:format.date(format: 'd.m.Y')}</f:if>
+</span>
+<--break-->
+{urlaub.titel}
+<f:if condition="{urlaub.notiz}"><div class="auftraegeListKunde">Anmerkung: {urlaub.notiz}</div></f:if>
+
+<--break-->
+<center title="{f:if(condition: '{urlaub.sonstiges}', then: 'Sonstiges / keine Anrechnung als Urlaub ')}"> {f:if(condition: '{urlaub.sonstiges}', then: '(')}{urlaub.arbeitstage}{f:if(condition: '{urlaub.sonstiges}', then: ')')}</center>
+<--break-->
+<f:if condition="{urlaub.status}">
+	<f:then>
+		<f:switch expression="{urlaub.status}">
+			<f:case value="10">
+				<span>Beantragt</span>
+			</f:case>
+			<f:case value="20">
+				<span>Bestätigt</span>
+			</f:case>
+			<f:case value="30">
+				<span>Abgelehnt</span>
+			</f:case>
+		</f:switch>
+	</f:then>
+</f:if>
+<--break-->
+
+<div class="btn-group">
+
+	<f:if condition="{urlaub.rechteUrlaubsManager}">
+		<f:then>
+
+			<f:if condition="{urlaub.status}!=20">
+				<f:then>
+					<f:link.action pageType="89657203" controller="Urlaub" pluginName="urlaubsliste" extensionName="dslintranet" action="ajax" arguments="{uid : urlaub, switch : 'accept'}" class="doConfirmUserAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'acceptUrlaub', data-ajax-id: '{urlaub.uid}', data-text: 'Wollen Sie den Urlaubswunsch wirklich bestätigen?', data-confirm-button: 'Ja (bestätigen)'}" ><i class="bb-circle-tick bb-lg" aria-hidden="true"></i></f:link.action>
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-circle-tick bb-lg" aria-hidden="true"></i></a>
+				</f:else>
+
+			</f:if>
+			<f:if condition="{urlaub.status}==10">
+				<f:then>
+					<f:link.action pageType="89657203" controller="Urlaub" pluginName="urlaubsliste" extensionName="dslintranet" action="ajax" arguments="{uid : urlaub, switch : 'refuse'}" class="doConfirmUserAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'refuseUrlaub', data-ajax-id: '{urlaub.uid}', data-text: 'Wollen Sie den Urlaubswunsch wirklich ablehnen?', data-confirm-button: 'Ja (ablehnen)'}" ><i class="bb-circle-times bb-lg" aria-hidden="true"></i></f:link.action>
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-circle-times bb-lg" aria-hidden="true"></i></a>
+				</f:else>
+			</f:if>   
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv"><i class="bb-circle-tick bb-lg" aria-hidden="true"></i></a>
+			<a class="btn tableBtn inaktiv"><i class="bb-circle-times bb-lg" aria-hidden="true"></i></a>
+			
+		</f:else>
+	</f:if>
+
+	<f:if condition="{urlaub.rechteUrlaubEdit}">
+
+		<f:then>
+
+			<f:link.action pageType="89657203" controller="Urlaub" pluginName="urlaubsliste" extensionName="dslintranet" action="edit" arguments="{urlaub : urlaub}" class="doAjaxEdit btn tableBtn" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '500px'}"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></f:link.action>
+		
+			<f:link.action pageType="89657203" controller="Urlaub" pluginName="urlaubsliste" extensionName="dslintranet" action="ajax" arguments="{uid : urlaub, switch : 'delete'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'deleteUrlaub', data-ajax-id: '{urlaub.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i>
+			</f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+			<a class="btn tableBtn inaktiv"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+		</f:else>
+				
+	</f:if>
+
+
+
+
+</div>

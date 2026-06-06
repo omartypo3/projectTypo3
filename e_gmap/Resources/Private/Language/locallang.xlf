@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-21T15:09:48Z" product-name="e_gmap">
+		<header/>
+		<body>
+			<trans-unit id="plugin_title">
+				<source>Carte</source>
+			</trans-unit>				
+			<trans-unit id="plugin_wiz_description">
+				<source>Une carte Google ou OSM configurable</source>
+			</trans-unit>
+
+			<trans-unit id="ext_conf_template.mapEngine">
+				<source>Type de carte</source>
+			</trans-unit>
+			<trans-unit id="ext_conf_template.gmap">
+				<source>Google Map</source>
+			</trans-unit>
+			<trans-unit id="ext_conf_template.leaflet">
+				<source>Leaflet (Open Street Map)</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_egmap_domain_model_poi">
+				<source>Poi</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.name">
+				<source>Nom</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.title">
+				<source>Titre</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.society">
+				<source>Societe</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.link">
+				<source>Lien</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.zip">
+				<source>Code postal</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.city">
+				<source>Ville</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.country">
+				<source>Pays</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.phone">
+				<source>Tél</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.cellphone">
+				<source>Portable</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.fax">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.website">
+				<source>Site Web</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.mail">
+				<source>Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.file">
+				<source>Fichier</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.html">
+				<source>Intégrer du code HTML</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.lat">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.lng">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.category">
+				<source>Categorie</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category">
+				<source>Categorie</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.name">
+				<source>Nom</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.category">
+				<source>Catégorie</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml">
+				<source>Kml</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.name">
+				<source>Nom</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.file">
+				<source>Fichier</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.url">
+				<source>Url du fichier en ligne</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.category">
+				<source>Catégorie</source>
+			</trans-unit>
+			
+			<trans-unit id="poi.general">
+				<source>L'essentiel</source>
+			</trans-unit>			
+			<trans-unit id="poi.go">
+				<source>Y aller</source>
+			</trans-unit>			
+			<trans-unit id="poi.more">
+				<source>Plus d'info</source>
+			</trans-unit>
+			<trans-unit id="poi.coord">
+				<source>Coordonnées</source>
+			</trans-unit>
+			<trans-unit id="poi.service">
+				<source>Services</source>
+			</trans-unit>
+			<trans-unit id="poi.media">
+				<source>Médias</source>
+			</trans-unit>
+			
+			<trans-unit id="be.geoloc.header">
+				<source>Gélocalisation d'enregistrement.</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.listext">
+				<source>Liste des tables déjà surchargées:</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.extend">
+				<source>Etendre une nouvelle table:</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.chooseTable">
+				<source>Choisir la table</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.chooseKey">
+				<source>Clée a utiliser: </source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.chooseModel">
+				<source>Model à étendre: </source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.chooseCat">
+				<source>Champ catégorie (facultatif): </source>
+			</trans-unit>
+			
+			<trans-unit id="be.geoloc.tab.table">
+				<source>Nom de la table</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.key">
+				<source>Clé</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.extmodel">
+				<source>Model étendu</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.extcat">
+				<source>Catégorie</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.sqlfile">
+				<source>Sql (fichier)</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.sqlbdd">
+				<source>Sql (BDD)</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.tca">
+				<source>TCA</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.tsconfig">
+				<source>TS Config</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.ts">
+				<source>TS</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.model">
+				<source>Model</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.repo">
+				<source>Repo</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.xml">
+				<source>Fichier Xml</source>
+			</trans-unit>
+			<trans-unit id="be.geoloc.tab.html">
+				<source>Fchier HTML</source>
+			</trans-unit>
+			
+			<trans-unit id="error">
+				<source>Erreur à la validation:</source>
+			</trans-unit>
+			<trans-unit id="empty.key">
+				<source>Le champ "Clé" est vide.</source>
+			</trans-unit>
+			<trans-unit id="empty.model">
+				<source>Le model a surcharger n'est pas renseigné (spécifier le model extbase de base, si aucun pré-existant).</source>
+			</trans-unit>
+			<trans-unit id="empty.table">
+				<source>Aucune table choisis.</source>
+			</trans-unit>
+			<trans-unit id="error.key">
+				<source>Le champ "Clé" est déjà utilisé.</source>
+			</trans-unit>
+			<trans-unit id="error.model">
+				<source>Le model a surcharger n'est pas instanciable.</source>
+			</trans-unit>
+			<trans-unit id="error.cat">
+				<source>Le champ catégorie n'existe pas pour la table.</source>
+			</trans-unit>
+			
+			<trans-unit id="be.localize.header">
+				<source>Enregistrements à géolocaliser:</source>
+			</trans-unit>
+			<trans-unit id="be.localize.chooseTable">
+				<source>Choisir la table</source>
+			</trans-unit>
+			<trans-unit id="be.localize.noTable">
+				<source>Pas d'enregistrements géolocalisable sur cette page.</source>
+			</trans-unit>
+			<trans-unit id="be.localize.noConf">
+				<source>Aucune configuration TSConfig trouvée.&lt;br&gt;
+Exemple: &lt;br&gt;
+tx_egmap_localize{&lt;br&gt;
+	tx_egmap_domain_model_poi{&lt;br&gt;
+		pattern = {adresse}, {code}, {ville}&lt;br&gt;
+		lat = lat&lt;br&gt;
+		lng = lng&lt;br&gt;
+	}&lt;br&gt;
+}</source>
+			</trans-unit>
+			<trans-unit id="be.localize.pattern">
+				<source>Model du texte a envoyer pour la géolocalisation : </source>
+			</trans-unit>
+			<trans-unit id="be.localize.lat">
+				<source>Champ dans lequel sera stocké la lattitude : </source>
+			</trans-unit>
+			<trans-unit id="be.localize.lng">
+				<source>Champ dans lequel sera stocké la longitude : </source>
+			</trans-unit>
+			<trans-unit id="be.localize.row.key">
+				<source>Clé</source>
+			</trans-unit>
+			<trans-unit id="be.localize.row.title">
+				<source>Label</source>
+			</trans-unit>
+			<trans-unit id="be.localize.row.coord">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="be.localize.row.lat">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="be.localize.row.lng">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="be.localize.row.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="be.localize.total">
+				<source>Nombre d'enregistrements listés : </source>
+			</trans-unit>
+			<trans-unit id="be.localize.toLocalize">
+				<source>Nombre d'enregistrements à géolocaliser : </source>
+			</trans-unit>
+			<trans-unit id="be.localize.finish">
+				<source>Fin de la localisation! </source>
+			</trans-unit>			
+			<trans-unit id="be.localize.start">
+				<source>Lancer la géolocalisation: </source>
+			</trans-unit>
+
+			<trans-unit id="be.button.newPoint">
+            	<source>Sauvegarder le point</source>
+            </trans-unit>
+            <trans-unit id="be.button.editPoint">
+            	<source>Modifier le point</source>
+            </trans-unit>
+            <trans-unit id="be.button.movePoint">
+            	<source>Deplacer le point</source>
+            </trans-unit>
+            <trans-unit id="be.button.savePoint">
+            	<source>Enregistrer le point</source>
+            </trans-unit>            
+			
+			<trans-unit id="be.placement.poisList">
+            	<source>Liste des points</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.name">
+            	<source>Nom</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.table">
+            	<source>Table associée</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.picto">
+            	<source>Pictogramme</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.category">
+            	<source>Catégorie</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.map">
+            	<source>Carte</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.see">
+            	<source>Voir</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.newPoi">
+            	<source>Créer un nouveau point</source>
+            </trans-unit>					
+			<trans-unit id="be.placement.poiGestion">
+            	<source>Gestion des points</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.lat">
+            	<source>Latitude</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.lng">
+            	<source>Longitutde</source>
+            </trans-unit>			
+			<trans-unit id="be.placement.noFolder">
+            	<source>Pas de page/dossier séléctionné. Séléctionner page/dossier.</source>
+            </trans-unit>
+			
+
+			<trans-unit id="ajax.error">
+				<source>Erreur: Vous n'avez pas le droit d'effectuer cette action.</source>
+			</trans-unit>
+			
+			<trans-unit id="map.recherche">
+				<source>Votre adresse : </source>
+			</trans-unit>
+			<trans-unit id="map.addresse">
+				<source>Entrez votre ville : </source>
+			</trans-unit>
+			<trans-unit id="map.search">
+				<source>Chercher</source>
+			</trans-unit>
+			<trans-unit id="map.reinit">
+				<source>Réinitialiser</source>
+			</trans-unit>
+			<trans-unit id="map.itineraire">
+				<source>Votre itinéraire : </source>
+			</trans-unit>
+			<trans-unit id="map.depart">
+				<source>Votre lieu de départ :</source>
+			</trans-unit>
+			<trans-unit id="map.arrivee">
+				<source>Votre lieu d'arrivée :</source>
+			</trans-unit>
+			<trans-unit id="map.filter">
+				<source>Filtrer les lieux :</source>
+			</trans-unit>
+			
+			
+			<trans-unit id="type.HYBRID">
+				<source>Mixte</source>
+			</trans-unit>
+			<trans-unit id="type.ROADMAP">
+				<source>Plan</source>
+			</trans-unit>
+			<trans-unit id="type.SATELLITE">
+				<source>Satellite</source>
+			</trans-unit>
+			<trans-unit id="type.TERRAIN">
+				<source>Plan avec reliefs</source>
+			</trans-unit>
+			<trans-unit id="travel.BICYCLING">
+				<source>Vélo</source>
+			</trans-unit>
+			<trans-unit id="travel.DRIVING">
+				<source>Voiture</source>
+			</trans-unit>
+			<trans-unit id="travel.TRANSIT">
+				<source>Transport en commun</source>
+			</trans-unit>
+			<trans-unit id="travel.WALKING">
+				<source>Piéton</source>
+			</trans-unit>
+			
+			<trans-unit id="map.bulle.phone">
+				<source>Tél : </source>
+			</trans-unit>
+			<trans-unit id="map.bulle.fax">
+				<source>Fax : </source>
+			</trans-unit>
+			<trans-unit id="map.bulle.cellphone">
+				<source>Portable : </source>
+			</trans-unit>
+			<trans-unit id="map.bulle.website">
+				<source>Site Web : </source>
+			</trans-unit>
+			<trans-unit id="map.bulle.mail">
+				<source>Courriel : </source>
+			</trans-unit>
+
+			<trans-unit id="poi.choose">
+				<source>Choisissez votre poi</source>
+			</trans-unit>
+
+			<trans-unit id="cat.checkAll">
+				<source>Cocher tout</source>
+			</trans-unit>
+			<trans-unit id="cat.uncheckAll">
+				<source>Décocher tout</source>
+			</trans-unit>
+			
+			<trans-unit id="LocalizeTask.name" xml:space="preserve">
+				<source>Tache de géolocalisation automatique d'enregistrements</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.description" xml:space="preserve">
+				<source>Permet de géolocaliser des enregistrements régulièrement importés, via leur adresse, si correctement configuré en TS-Config.</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.nbrec" xml:space="preserve">
+				<source>Nombre d'enregistrements à traiter</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.nbrec.error" xml:space="preserve">
+				<source>Merci d'entrer un nombre d'enregistrements à traiter valide.</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.nbrec.warning" xml:space="preserve">
+				<source>Attention, chaque requete de traitement ne peux intervenir que 1 seconde après la précédente, l'API google le nécessite. Traiter trop d'enregistrements d'un coup risque d'amener la tache au maximum de temps d'execution autorisé.</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.pid" xml:space="preserve">
+				<source>Dossier des enregistrements à traiter</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.pid.error" xml:space="preserve">
+				<source>Merci d'entrer un id de page valide, qui contiens les enregistrements à traiter.</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.table" xml:space="preserve">
+				<source>Nom de la table des enregistrements à traiter</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.table.error" xml:space="preserve">
+				<source>Merci d'entrer un nom de table valide, configurée pour être géolocalisé. Voir le module UX-Geoloc.</source>
+			</trans-unit>
+			<trans-unit id="LocalizeTask.mailReport" xml:space="preserve">
+				<source>Mail, ou liste de mails separes par des virgules, pour le rapport d'erreur.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

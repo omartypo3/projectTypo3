@@ -1,0 +1,36 @@
+<div class="col-sm-12 col-md-6 col-lg-4" id="newsList_{newsItem.uid}" data-news="{newsItem.uid}">
+	<div class="innerBoxcontainer">
+		<div style="text-align: right;">
+			<div class="angebotControls">
+				<f:link.action controller="News" pluginName="news" extensionName="dslintranet" action="toggleCountdown" arguments="{news : newsItem}" pageType="89657001" class="doAjax btn tableBtn toggleBtn{f:if(condition: '{newsItem.countdown}', then: ' active btnGruen')}" additionalAttributes="{data-ajax-action:'throwEvent',data-ajax-event:'updateNews',data-ajax-selector: 'newsList_{newsItem.uid}', data-ajax-id: '{newsItem.uid}'}"><i class="bb-count bb-lg"></i></f:link.action>
+				<f:link.action controller="News" pluginName="news" extensionName="dslintranet" action="toggleSichtbarkeit" arguments="{news : newsItem}" pageType="89657001" class="doAjax btn tableBtn toggleBtn{f:if(condition: '{newsItem.sichtbarkeit}', then: ' active btnGruen')}" additionalAttributes="{data-ajax-action:'throwEvent',data-ajax-event:'updateNews',data-ajax-selector: '#newsList_{newsItem.uid}', data-ajax-id: '{newsItem.uid}'}"><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i></f:link.action>
+				<f:link.action controller="News" pluginName="news" extensionName="dslintranet" action="edit" arguments="{news : newsItem}" pageType="89657001" additionalAttributes="{ data-colorbox-width: '700px', data-colorbox-height: '750px' }" class="doAjaxEdit btn tableBtn"><i class="bb-pen-write bb-lg"></i></f:link.action>
+				<f:link.action controller="News" pluginName="news" extensionName="dslintranet" action="delete" arguments="{news : newsItem}" pageType="89657001" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action:'throwEvent',data-ajax-event:'deleteNews',data-ajax-selector: '#newsList_{newsItem.uid}', data-ajax-id: '{newsItem.uid}'}" ><i class="bb-trashcan bb-lg"></i></f:link.action>
+			</div>
+		</div>
+		
+		<div class="imgBox">
+			<f:if condition="{newsItem.datei}"><f:then>
+				<img src="{f:uri.image(src:newsItem.datei.originalResource.originalFile.uid)}"></f:then><f:else><img src="typo3conf/ext/dsl_intranet/Resources/Public/Images/kein_bild.jpg" /></f:else>
+			</f:if>
+		</div>
+		<div class="textBlock">
+			<p class="greyDescription textSmall"><f:if condition="{newsItem.gueltigBis}">ab </f:if>{f:format.date(date: newsItem.gueltigAb, format: 'd.m.Y, H:i')} Uhr<f:if condition="{newsItem.gueltigBis}"> bis {f:format.date(date: newsItem.gueltigBis, format: 'd.m.Y, H:i')} Uhr</f:if> <f:if condition="{newsItem.statusAbgelaufen}"><span class="angebotAbgelaufen">(abgelaufen)</span></f:if><f:if condition="{newsItem.statusVorbereitet}"><span class="angebotVorbereitet">(vorbereitet)</span></f:if></p>
+			<h2 class="mainTitle">{newsItem.titel}</h2>
+			<h2 class="subTitle">{newsItem.untertitel}</h2>
+			<p><f:format.nl2br>{newsItem.text}</f:format.nl2br></p>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 priceList">
+				<p class="greyDescription textGestrichen"><f:if condition="{newsItem.angebot1}"><f:then>{newsItem.angebot1}</f:then><f:else>&nbsp;</f:else></f:if></p>
+				<p class="newPrice">{newsItem.angebot2}</p>
+				<p class="greyDescription"><f:if condition="{newsItem.angebot3}"><f:then>{newsItem.angebot3}</f:then><f:else>&nbsp;</f:else></f:if></p>
+			</div>
+			<div class="col-xs-6 linksBox">
+				<f:if condition="{newsItem.linkExtern}"><p><f:link.external uri="{newsItem.linkExtern}" target="_blank"><i class="bb-arrow-right-large"></i><span class="textLink">mehr</span></f:link.external></p></f:if>
+				<f:comment><p><a href="#"><i class="bb-arrow-right-large"></i><span class="textLink">Jetzt anfragen</span></a></p></f:comment>
+			</div>
+		</div>
+	</div>
+	
+</div>

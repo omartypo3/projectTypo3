@@ -1,0 +1,125 @@
+<html data-namespace-typo3-fluid="true"
+    xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/Stratis/StratisElements/ViewHelpers/"
+>
+    <f:layout name="Content"/>
+    <f:section name="Configuration">
+        <flux:form id="cartowidg" options="{group: 'carto', icon: 'EXT:stratis_elements/Resources/Public/Icons/Content/map.jpeg'}" label="Cartographie" description="Affiche une cartographie">            
+            <flux:field.input name="title" label="Titre du module" />
+            <flux:field.inline.fal name="image" label="Image de fond" size="1" maxItems="1" showThumbs="1" collapseAll="0"
+                                   expandSingle="0" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" required="true"
+                                   requestUpdate="1"
+            />
+            <flux:form.sheet name="tab1" label="POI">
+                <flux:form.section name="panels" label="POI" >
+                    <flux:form.object name="panel" label="Ajouter un POI" >
+                        <flux:field.input name="colorpoi" label="Couleur de fond" config="{renderType: 'colorpicker'}" default="#00004d"/>
+                        <flux:field.input name="imagepoi" 
+                             label="Image (File UID)"
+                             placeholder="Enter file UID from Filelist module"
+                             config="{
+                                 renderType: 'inputLink',
+                                 fieldControl: {
+                                     linkPopup: {
+                                         options: {
+                                             allowedExtensions: 'png,gif,svg,jpg,jpeg',
+                                             blindLinkOptions: 'url,mail,telephone,folder',
+                                             blindLinkFields: 'target,title,class,params'
+                                         }
+                                     }
+                                 }
+                             }" />
+                        <flux:field.input name="titlepoi" label="Titre de la fiche" />
+                        <flux:field.text
+                          name="descriptionpoi"
+                          label="Description"
+                          config="{
+                            type: 'text',
+                            rows: 3,
+                            enableRichtext: 0
+                         }"
+                        />
+                        <flux:field.input
+                          name="linkpoi"
+                          label="En savoir plus – Redirection"
+                          config="{
+                            type: 'input',
+                            renderType: 'inputLink',
+                            eval: 'trim'
+                        }"
+                        />
+                        <flux:field.custom name="map" label="POI" config="{type: 'user', renderType: 'imageMapElement'}" />
+                    </flux:form.object>
+                </flux:form.section>
+            </flux:form.sheet>
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <br/><b>Cartographie</b>
+    </f:section>
+    <f:section name="Main">      
+    {v:content.resources.fal(field: 'image', record: record) -> v:iterator.first() -> v:variable.set(name: 'imageMap')}  
+        <f:if condition="{image}">
+            <f:if condition="{panels}">
+                <f:if condition="{panels -> f:count()}">
+                    <section class="map-section">
+                        <f:if condition="{title}">
+                            <div class="frame frame-titre_anime frame-type-header frame-layout-0 anim_active">
+                                <div class="case_title_anim_Page hidden-print">
+                                    <div class="icon_title_anim_Page"></div>
+                                </div>
+                                <header>
+                                    <h2>{title}</h2>
+                                </header>
+                            </div>
+                        </f:if>                                                
+                                    
+                        <div id="map" class="map" data-image="{imageMap.url}"></div>
+
+                        <div id="markers" class="map__markers" style="display:none;">
+                            <f:for each="{panels}" as="panel" iteration="iteration">
+                                <f:if condition="{panel.panel.map}">
+                                    {v:resource.file(identifier:panel.panel.imagepoi, treatIdAsUid: 1) -> v:variable.set(name: 'file')}                                
+                                    <div data-coords="[{panel.panel.map}]" data-color="{panel.panel.colorpoi}" data-tooltip="{panel.panel.titlepoi}" data-popup-id="popup-{iteration.index}" data-label="{panel.panel.titlepoi}"></div>                                
+                                </f:if>                                
+                            </f:for>                                            
+                        </div>
+
+                        <div id="popups" class="map__popups">
+                            <f:for each="{panels}" as="panel" iteration="iteration">
+                                <f:if condition="{panel.panel.map}">                                   
+                                    <div id="popup-{iteration.index}" class="map__popup" style="display: none;">
+                                        <article class="map-popup">
+                                            <f:if condition="{panel.panel.imagepoi}">
+                                                {v:resource.file(identifier:panel.panel.imagepoi, treatIdAsUid: 1) -> v:variable.set(name: 'poiImage')}
+                                                <f:if condition="{poiImage}">
+                                                    <picture class="map-popup__image">
+                                                    <f:image src="{panel.panel.imagepoi}" alt="" width="330" height="150" />
+                                                    </picture>
+                                                </f:if>
+                                            </f:if>                                            
+                                            <div class="map-popup__content">
+                                                <h3 class="map-popup__title">{panel.panel.titlepoi}</h3>
+                                                <f:if condition="{panel.panel.descriptionpoi}">
+                                                    <p class="map-popup__teaser">{panel.panel.descriptionpoi -> f:format.nl2br()}</p>
+                                                </f:if>
+                                                <f:if condition="{panel.panel.linkpoi}">
+                                                    <f:link.typolink parameter="{panel.panel.linkpoi}" target="_blank" class="map-popup__action">
+                                                        En savoir plus
+                                                    </f:link.typolink>                                                    
+                                                </f:if>                                                                                                
+                                            </div>
+                                        </article>
+                                    </div>                
+                                </f:if>                                
+                            </f:for>                             
+                        </div>
+                    </section>
+                </f:if>
+            </f:if>
+        </f:if>        
+    </f:section>
+</html>

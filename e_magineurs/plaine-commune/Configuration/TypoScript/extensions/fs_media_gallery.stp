@@ -1,0 +1,29 @@
+# Pour afficher toutes les images dans une vue détail de news
+/*
+<f:if condition="{newsItem.relatedFsmediaalbums}">
+   <div class="fs-media-gallery">
+       <f:for each="{newsItem.relatedFsmediaalbums}" as="mediaAlbum">
+           <f:cObject typoscriptObjectPath="lib.fsMediaGalleryNews" data="{sourceUid: mediaAlbum.uid}" />
+       </f:for>
+   </div>
+</f:if>
+lib.fsMediaGalleryNews = FILES
+lib.fsMediaGalleryNews {
+    collections.field = sourceUid
+    renderObj = COA
+    renderObj.5 = TEXT
+    renderObj.5 {
+        stdWrap.data = file:current:publicUrl
+        stdWrap.wrap = <a href="|" data-fancybox="galerie">   
+    }
+    renderObj.15 = IMAGE 
+    renderObj.15 {
+        file.import.data = file:current:uid
+        file.width = 250c
+        file.height = 250c
+        #stdWrap.wrap = |
+    }
+    renderObj.20 = TEXT
+    renderObj.20.value = </a>
+}
+*/

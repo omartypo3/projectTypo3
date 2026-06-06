@@ -1,0 +1,58 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Main">
+	<nav role="navigation" aria-label="Menu principal">
+		<div class="block_agglo_contact">
+			<ul id="agglo_contact">
+				<li>
+					<a href="/services/allo-agglo-espace-public/" title="BienVU/ENTENDU">
+						BienVU/ENTENDU
+					</a>			
+				</li>
+
+				<li>
+					<a href="/index.php?id=38" title="Contact">
+						<i class="icon-Mail"></i>
+						Contact 
+					</a>			
+				</li>
+			</ul>
+		</div>
+		<f:if condition="{menu}">
+			<ul id="menuSite">
+				<f:for each="{menu}" as="page" iteration="iterator">
+					<li class="niveau1 {f:if(condition: page.active, then: 'active')}">
+							{page.title}
+						<f:if condition="{page.children}">
+							<f:render section="MenuNiveau2" arguments="{menu: page.children}" />
+						</f:if>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+		<div class="socialNetwork">
+		  <ul>
+			<li><a href="https://www.facebook.com/plainecommune.fr" title="Page Facebook de Plaine commune" target="blank"><span class="sr-only">Facebook</span><i class="icon-Facebook" aria-hidden="true"></i></a></li>
+			<li><a href="https://twitter.com/plainecommune/" title="Page Twitter de Plaine commune" target="blank"><span class="sr-only">Twitter</span><i class="icon-Twitter" aria-hidden="true"></i></a></li>
+			<li><a href="https://www.instagram.com/plainecommune/" title="Page Instagram de Plaine commune" target="blank"><span class="sr-only">Instagram</span><i class="icon-Instagram" aria-hidden="true"></i></a></li>
+			<li><a href="https://www.flickr.com/photos/plainecommune/" title="Page Flickr de Plaine commune" target="blank"><span class="sr-only">Flickr</span><i class="icon-FlickR" aria-hidden="true"></i></a></li>
+			<li><a href="https://www.linkedin.com/company/plaine-commune/?originalSubdomain=fr" title="Page LinkedIn de Plaine commune" target="blank"><span class="sr-only">LinkedIn</span><i class="icon-Linkedin" aria-hidden="true"></i></a></li>
+			<li><a href="https://www.youtube.com/user/PlaineCommune" title="Page Youtube de Plaine commune" target="blank"><span class="sr-only">Youtube</span><i class="icon-Youtube" aria-hidden="true"></i></a></li>
+		  </ul>
+		</div>
+	</nav>
+</f:section>
+
+<f:section name="MenuNiveau2">
+	<ul class="sousMenu">
+		<f:for each="{menu}" as="page" iteration="iterator">
+			<li class="niveau2 {f:if(condition: page.active, then: 'active')}">
+				<f:link.page pageUid="{page.data.uid}" title="{f:if(condition: page.current, then: '{page.title} - Page active')}" target="{page.data.target}">
+					{page.title}
+				</f:link.page>
+			</li>
+		</f:for>
+	</ul>
+</f:section>
+
+</html>

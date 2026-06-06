@@ -1,0 +1,76 @@
+# Add configuration for the editor
+# TYPO3 v13 RTE Configuration
+imports:
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+  - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+  - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
+
+editor:
+  config:
+    contentsCss:
+      - "EXT:e_magineurs/Resources/Public/Plaine/Css/rte.css"
+
+    format_tags: "p;h2;h3;h4;h5;h6"
+
+    stylesSet:
+      # block level styles
+      - { name: "Chapo", element: "p", attributes: { class: "chapo"} }
+      # Inline styles
+      - { name: "Lien Vert Bouton", element: "a", attributes: { class: "btn btn-animate btn-vert"} }
+      - { name: "Lien Rose Bouton", element: "a", attributes: { class: "btn btn-animate btn-rose"} }
+      - { name: "Lien page interne", element: "a", attributes: { class: "icon icon-LinkText-interne"} }
+      - { name: "Lien page externe", element: "a", attributes: { class: "icon icon-LinkText-externe"} }
+      - { name: "Lien telechargement", element: "a", attributes: { class: "icon icon-LinkText-telechargement"} }
+
+    # TYPO3 v13 uses toolbar.items instead of toolbarGroups
+    toolbar:
+      items:
+        - sourceEditing
+        - '|'
+        - undo
+        - redo
+        - '|'
+        - findAndReplace
+        - '|'
+        - removeFormat
+        - '-'
+        - heading
+        - style
+        - '|'
+        - bold
+        - italic
+        - underline
+        - strikethrough
+        - subscript
+        - superscript
+        - '|'
+        - fontColor
+        - fontBackgroundColor
+        - '|'
+        - alignment
+        - '|'
+        - bulletedList
+        - numberedList
+        - '|'
+        - indent
+        - outdent
+        - '|'
+        - blockQuote
+        - '|'
+        - link
+        - insertImage
+        - '|'
+        - insertTable
+        - tableColumn
+        - tableRow
+        - mergeTableCells
+        - '|'
+        - specialCharacters
+        - horizontalLine
+# Allow s and u tag
+processing:
+  allowTags:
+    - s
+    - u
+    - dl

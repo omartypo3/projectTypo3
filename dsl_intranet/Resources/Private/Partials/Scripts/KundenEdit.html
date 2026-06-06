@@ -1,0 +1,19 @@
+<script type="text/javascript">
+
+
+
+$('.checkboxBtn').click(function(e) {
+
+	if($(this).children('.btn').hasClass('active')){
+		
+		$(this).prev('.disableCheckbox').prop( "checked", false );
+
+	} else {
+		$(this).prev('.disableCheckbox').prop( "checked", true );
+	}
+
+});
+	
+	
+	
+</script>

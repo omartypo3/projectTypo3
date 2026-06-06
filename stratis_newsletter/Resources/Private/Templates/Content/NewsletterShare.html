@@ -1,0 +1,44 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:vh="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+  <f:layout name="Content"/>
+  <f:section name="Configuration">
+    <flux:form id="newslettershare" options="{icon: 'EXT:stratis_newsletter/Resources/Public/Icons/Example.gif', group: 'stratisnewsletters'}" label="[Newsletter] Partager la newsletter" description="Affiche partager la newsletter">
+      <flux:field.input name="title" label="Titre du bloc" required="true" default="Partager la newsletter"/>    
+      <flux:field.inline.fal name="picto" label="Image titre " size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />        <flux:field.text name="text" label="Texte simple" />      
+      <flux:field.input name="btnTitle" label="Titre bouton" default="Je partage" />    
+    </flux:form>
+  </f:section>
+  <f:section name="Preview">      
+    <b>Partager la newsletter</b> 
+  </f:section>
+  <f:section name="Main">
+    <v:variable.set name="domain" value="{v:site.url() -> v:format.replace(substring:'/',replacement:'') -> v:format.replace(substring:':',replacement:'://')}"/>              
+    <v:variable.set name="pathImages" value="EXT:stratis_newsletter/Resources/Public/Images/" />    
+    <f:if condition="{picto}">
+      <f:then>
+        {v:content.resources.fal(field:'picto',record:record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement')}
+        <v:variable.set name="picto" value="{f:uri.image(src:mediaElement.url)}"/>        
+      </f:then>          
+      <f:else>
+        <v:variable.set name="picto" value="{f:uri.image(src:'{pathImages}newsletter/Share-the-newsletter.png')}" />
+      </f:else>
+    </f:if> 
+    <v:variable.set name="pictotwo" value="{f:uri.image(src:'{pathImages}newsletter/like.png')}"/>  
+
+    <v:variable.set name="linkOnPage" value="{f:uri.page(absolute:'TRUE')}" />      
+    <v:variable.set name="emailBody" value="Bonjour. %0DCette lettre d’information devrait t’intéresser : {linkOnPage}" />
+    <v:variable.set name="emailSubject" value="Cette lettre d’information devrait t’intéresser !" />
+
+    <v:variable.set name="shareLink" value="mailto:votre_courriel@domain?subject={emailSubject}&body={emailBody -> f:format.raw()}" />
+
+    <f:render partial="NewsletterShareTheNewsletter.html" arguments="{picto:picto, pictotwo:pictotwo, text:text, domain:domain,  btnTitle:btnTitle, shareLink:shareLink}"/>                      
+    <v:variable.unset name="picto"/>
+    <v:variable.unset name="pictotwo"/>
+    <v:variable.unset name="shareLink"/>
+  </f:section>
+</html>
+  

@@ -1,0 +1,19 @@
+
+
+<div class="content_container_header"><span><i class="bb-pen-write bb-md" aria-hidden="true"></i>Beschreibung</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+<div class="content_container">
+	
+   <f:if condition="{auftraege.texte}">
+   		<f:then>
+			<f:for each="{auftraege.texte}" key="keyText" as="text">
+				<f:render partial="KundenAuftraege/PropertiesBeschreibungText" arguments="{text: text}" />
+			</f:for>
+	   	</f:then>
+	   	<f:else>
+	   		Keine Beschreibung
+	   	</f:else>
+	</f:if>
+		
+   
+    
+</div>

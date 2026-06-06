@@ -1,0 +1,135 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<v:asset.style name="cssKanban">
+	.kanbanWrapper{
+		background-color:#FFFFFF;
+		position: absolute;
+		width: calc(100% - 35px);
+		height: calc(100% - 52px);
+		z-index: 1;
+		margin-left: 35px;
+		display:none;
+	}
+	.kanbanContent{
+	
+		background-color:#ffffff;
+		transition: all 0.5s ease-out;
+		height:100%;
+	
+	}
+	.kanbanWrapper.kanbanActive{
+		display:inherit;
+	}
+	.contentReloads{
+		opacity:0.6;	
+		pointer-events: none;
+		transition: all 0.5s ease-out;
+	}
+	#myKanban{
+		margin-left:-10px;
+	}
+
+
+	main.kanban-drag{
+		max-height:500px;
+		overflow-y:auto;
+	}
+
+	.success{background: #32cb94; color:#fff}
+	.info{background: #363636; color:#fff}
+	.warning{background: #F4CE46; color:#fff}
+	.error{background: #FB7D44; color:#fff}
+
+	.kanban-item,.kanban-board-header{
+		cursor:move;
+	}
+
+	.kanban-item-kunde{
+		font-style:italic;
+		color:#b2b2b2;
+	}
+	.kanban-board-footer:hover .kanban-board-footer-content{
+		color:#000;
+	}
+	.kanban-board-footer-content{
+		text-align:center;
+		color:#262626;
+	}
+	body:not(.gu-unselectable) .kanban-board-footer-content i{
+		display:none;
+	}
+
+</v:asset.style>
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/kanban/jkanban.css" name="jKS"></v:asset.style>		
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/kanban/jkanban.js" name="jKC"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/kanban/dslkanban.js" name="jKDsl"></v:asset.script>		
+<v:asset.script name="jKU" dependencies="">
+	
+	var splitpaneAjaxUrl = '<f:uri.action action="ajax" pluginName="splitpaneprojekte" controller="Splitpane" pageType="89657007"/>';
+	var dataKanbanJson = false;
+	var kanbanDsl = false;
+
+	
+</v:asset.script>
+
+<div class="kanbanWrapper">
+	<div class="kanbanContent">
+		
+		<div hidden>
+			<div id="debugcontent"></div>
+			<p>jKanban allow you to create and manage Kanban Board in your project! Try It!</p>
+						<a class="btn-xl btn btn-default" href="https://github.com/riktar/jkanban" target="_blank">Fork on GitHub</a>
+			<ul><li><a href="#" onClick="refreshKanban();return false">refreshKanban()</a></li><li><a href="#" onClick="initKanban();return false">initKanban()</a></li></ul>
+			
+
+
+			<button class="btn btn-success" id="addDefault">Add "Default" board</button>
+			<button class="btn btn-success" id="addToDo">Add element in "Projekte"</button>
+			<button class="btn btn-danger" id="removeBoard">Remove "Done" Board</button>
+
+		</div>
+		
+		
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					
+					<br>
+					
+				
+					<button class="btn" style="background:#32cb94;color:#fff;" onclick="newKanbanBoard();return false;"><i class="bb-plus bb-lg"></i>&nbsp;&nbsp;neue Liste</button>
+
+					<button class="btn btn-abort" onclick="refreshKanban();return false;"><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i>&nbsp;&nbsp;Neu laden</button>
+
+					<button class="btn btn-abort" onclick="$('.kanbanWrapper').removeClass('kanbanActive');return false;"><i class="bb-times bb-lg"></i>&nbsp;&nbsp;schließen</button>
+
+					<br><br>
+					
+				
+					<div id="myKanban"></div>
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+	
+
+<f:if condition="{mitarbeiter.settingsAllgemein.projekteSplit}=='horizontal'">
+	<f:then>
+		<f:render partial="Splitpane/ProjekteVertikal" arguments="{_all}" />
+	</f:then>
+	<f:else>
+		<f:render partial="Splitpane/ProjekteHorizontal" arguments="{_all}" />
+		
+	</f:else>
+</f:if>
+
+
+
+	
+<div hidden>
+	<a href="#" class="pageToolbarButton pageToolbarButtonSecondGroup" onclick="toggleKanban();return false;"><i class="bb-point-bars bb-lg"></i><span>Aufgabenliste / Kanban</span></a>
+</div>
+

@@ -1,0 +1,69 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Nachricht zu einem Auftrag</f:section>
+
+<f:section name="bodyHtml">
+	
+	<div style="font-family: Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);"><p>Information zu einem Auftrag.</p></div>
+	<div style="font-family: Helvetica,Arial,sans-serif; font-size: 12px; line-height: 20px; margin-top: 15px; margin-bottom: 15px;">Sehr geehrte Damen und Herren,<br>soeben wurden die Informationen in Ihrem Auftrag aktualisiert.</div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+            		<td colspan="2"><b style="font-family: Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);">Auftragsübersicht</b></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap;">Auftrag:</td>
+					<td>{notification.auftragTitel}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap;">Kunde:</td>
+					<td>{notification.kundeName}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap;">Status:</td>
+					<td>{notification.body}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	Es handelt sich hierbei um eine automatische Systemnachricht. Sollte es Probleme/Fragen zum Auftrag oder dieser Nachricht geben, kontaktieren Sie uns über die untenstehenden Kontaktdaten oder antworten einfach auf diese E-Mail.<br><br>
+
+	<f:render partial="Mail/FragenKundenkontoHtml" arguments="{_all}" />
+	
+	
+</f:section>
+
+<f:section name="bodyText">	Information zu einem Auftrag.
+	
+Sehr geehrte Damen und Herren,
+soeben wurden die Informationen in Ihrem Auftrag aktualisiert.
+
+Auftrag: {notification.auftragTitel}
+Kunde: {notification.kundeName}
+Status: notification.body}
+
+Es handelt sich hierbei um eine automatische Systemnachricht. Sollte es Probleme/Fragen zum Auftrag oder dieser Nachricht geben, kontaktieren Sie uns über die untenstehenden Kontaktdaten oder antworten einfach auf diese E-Mail.
+	
+<f:render partial="Mail/FragenKundenkontoText" arguments="{_all}" /></f:section>

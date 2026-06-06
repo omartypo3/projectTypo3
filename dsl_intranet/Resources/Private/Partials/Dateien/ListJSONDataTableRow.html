@@ -1,0 +1,187 @@
+
+<span data-table-callback-id="{dateien.uid}"></span>
+<span class="refreshDateienList{dateien.uid}"></span>
+
+<f:if condition="{dateien.auftraege}">
+	<f:then>
+		<f:link.page pageUid="12"  class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'setOpenAuftrag', data-ajax-id: '{dateien.auftraege.uid}'}">
+			
+			<f:if condition="{dateien.kunden}"><div class="auftraegeListKunde"><strong>{dateien.kunden.name}</strong> [{dateien.kunden.nummer}]</div></f:if>
+			<div>{dateien.auftraege.nr}: {dateien.auftraege.titel}</div>
+		
+		</f:link.page>
+	</f:then>
+	<f:else>
+		<f:if condition="{dateien.type}==35">
+			<f:then>
+				<f:if condition="{dateien.kunden}"><div class="auftraegeListKunde"><strong>{dateien.kunden.name}</strong> [{dateien.kunden.nummer}]</div></f:if>
+				<div>{dateien.agenturvertraege.nr}: seit {dateien.agenturvertraege.vertragsbegin->f:format.date(format: 'd.m.Y')}<f:if condition="{dateien.agenturvertraege.vertragsende}"> bis {dateien.agenturvertraege.vertragsende->f:format.date(format: 'd.m.Y')}</f:if></div>
+			</f:then>
+			<f:else>
+				<f:if condition="{dateien.kunden}"><div class="auftraegeListKunde"><strong>{dateien.kunden.name}</strong> [{dateien.kunden.nummer}]</div></f:if>
+			</f:else>
+		</f:if>
+	</f:else>
+</f:if>
+
+<--break-->
+	<f:translate key="tx_dslintranet_domain_model_dateien.kundentype.{dateien.type}" languageKey="de"/>
+<--break-->
+
+	<a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}"><f:if condition="{dateien.type}==30"><f:then><span class="bb-pdf-download" aria-hidden="true"></span></f:then><f:else><f:if condition="{dateien.type}==35"><f:then><span class="bb-pdf-download" aria-hidden="true"></span></f:then><f:else><span class="bb-download" aria-hidden="true"></span></f:else></f:if></f:else></f:if> {fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a>	
+<--break-->
+<f:if condition="{dateien.rights.editTitle}">
+	<f:then>
+		<div class="editableWrapper" data-uid="{dateien.uid}">
+
+
+			<div class="editableText {f:if(condition: '{dateien.titel}', else: ' editableTextEmpty')}">
+
+				<div class="input-group margin-bottom-sm" style="width:100%;">
+					<span class="input-group editableBtnDoubleClick">		<span class="editableTextNoneContent">Titel</span>
+						<span class="editableTextContent">{dateien.titel}</span>
+					</span>
+
+					<span class="input-group-addon editableBtn" style="width:30px"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></span>
+				</div>
+
+			</div>
+			<div class="editableEdit"><div class="input-group margin-bottom-sm" style="width:100%;">
+					<input class="form-control input-sm editableEditInput" type="text" value="{dateien.titel}" placeholder="Titel"><span class="input-group-addon editableSave" style="width:30px"><i class="bb-tick" aria-hidden="true"></i></span><span class="input-group-addon editableAbort" style="width:30px"><i class="bb-times" aria-hidden="true"></i></span>
+			</div></div>
+
+		</div>
+	</f:then>
+	<f:else>
+		<f:if condition="{dateien.titel}">
+			<f:then>{dateien.titel}</f:then>
+			<f:else>{fileoutput.name}</f:else>
+		</f:if>
+	</f:else>
+</f:if>
+
+
+<--break-->
+
+
+{fileoutput.ctime->f:format.date(format: 'd.m.y - H:i')} Uhr / {dateien.initialien}
+<--break-->
+<f:if condition="{dateien.lastDownloadLog}">
+	<f:then>{dateien.lastDownloadLog.zeitpunkt->f:format.date(format: 'd.m.y - H:i')} Uhr</f:then>
+	<f:else>-</f:else>
+</f:if>
+<--break-->
+
+
+<div class="btn-group">
+	
+   <f:if condition="{dateien.showBtnToggleSichtbarkeit}">
+		<f:then>
+			<f:link.action controller="Dateien" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien, switch : 'toggleSichtbarkeitDateien'}" class="btn tableBtn doAjax {f:if(condition: dateien.sichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'toggleSichtbarkeitDateien', data-ajax-selector: '#dateienListDatei_{dateien.uid}', data-ajax-id: '{dateien.uid}', data-table: '#dateienList'}" >
+				<i class="bb-eye-open bb-lg"></i>
+				<i class="bb-eye-closed bb-lg"></i>
+				<f:comment><f:if condition="{dateien.sichtbarkeit}">
+					<f:then>
+						<i class="bb-eye-open bb-lg"></i>
+
+					</f:then>
+					<f:else>
+						<i class="bb-eye-closed bb-lg"></i>
+					</f:else>
+					</f:if></f:comment>
+			</f:link.action>
+		</f:then>
+		<f:else>
+			<f:if condition="{dateien.sichtbarkeit}">
+				<f:then>
+					<a class="btn tableBtn inaktiv btnGruen"><i class="bb-eye-open bb-lg"></i></a>
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-eye-closed bb-lg"></i></a>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>	
+   
+   
+   
+   <f:if condition="{dateien.kunden.disable}">
+	   <f:then>
+			<a class="btn tableBtn inaktiv kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}" title="Kunde ist inaktiv"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+	   </f:then>
+	   <f:else>
+			<f:if condition="{dateien.rights.mail}">
+				<f:then>
+					
+					<f:if condition="{dateien.sichtbarkeit}">
+						<f:then>
+							<f:link.action  pageType="89657208" controller="Dateien" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien, switch : 'sendKundeninfoMailDatei'}" class="btn tableBtn doAjax kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMailDatei', data-ajax-selector: '#dateienListDatei_{dateien.uid}', data-ajax-id: '{dateien.uid}', data-table: '#dateienList'}" title="Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+						</f:then>
+						<f:else>
+							<f:link.action  pageType="89657208" controller="Dateien" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien, switch : 'sendKundeninfoMailDatei'}" class="btn tableBtn doConfirmUserAjax kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMailDatei', data-ajax-selector: '#dateienListDatei_{dateien.uid}', data-ajax-id: '{dateien.uid}', data-table: '#dateienList', data-text: 'Die Datei wird dem Kunden vor dem Versand der E-Mail freigeschalten?', data-warning-button: 'Ja (fortfahren)'}" title="Veröffentlichen und Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+						</f:else>
+					</f:if>
+
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv kundeninfoTime {f:if(condition: dateien.protokoll.kundeninfoTime, then: ' aktiv')}"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+				</f:else>
+
+			</f:if>
+	   </f:else>
+   </f:if>
+
+			
+
+	<f:comment><!--
+	<f:if condition="{dateien.kundenVersandEmail}">
+		<f:then>
+		</f:then>
+		<f:else>
+			<a href="#" class="btn tableBtn mailRequired kundeninfoTime inaktiv {f:if(condition: datei.protokoll, then: ' aktiv')}" title="Kein E-Mail Versand möglich, Mail Adresse fehlt beim Kunde." onClick="return false;"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+		</f:else>
+	</f:if>
+	--></f:comment>
+   
+   
+    <f:if condition="{dateien.rights.edit}">
+		<f:then>
+			<f:if condition="{dateien.auftraege}">
+				<f:else>
+					<f:link.action controller="Dateien" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{dateien : dateien, switch : 'edit'}" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '600px' }" class="doAjaxEdit btn tableBtn"><i class="bb-pen-write bb-lg"></i></f:link.action>
+				</f:else>
+				<f:then>
+					<a class="btn tableBtn inaktiv" style=""><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+				</f:then>
+			</f:if>
+		</f:then>
+        <f:else>
+		   <a class="btn tableBtn inaktiv" style=""><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+		</f:else>
+    </f:if>
+    
+                
+  
+    
+    
+    <f:if condition="{dateien.rights.delete}">
+		<f:then>  
+			<f:if condition="{dateien.auftraege}">
+				<f:then>
+					
+					<f:comment><a class="btn tableBtn inaktiv" style=""><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a></f:comment>
+					<f:link.action controller="Auftraege" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien.uid, switch : 'deleteDatei'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorDatatableAjaxSource', data-ajax-selector: '#dateienListDatei_{dateien.uid}', data-ajax-id: '{dateien.auftraege.uid}', data-table: '#dateienList'}" ><i class="bb-trashcan bb-lg"></i></f:link.action>		
+				</f:then>
+				<f:else>
+					
+    				<f:link.action controller="Dateien" pluginName="downloadcenter" extensionName="dslintranet" action="ajax" arguments="{uid : dateien.uid, switch : 'deleteDatei'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorDatatableAjaxSource', data-ajax-selector: '#dateienListDatei_{dateien.uid}', data-ajax-id: '{dateien.uid}', data-table: '#dateienList'}" ><i class="bb-trashcan bb-lg"></i></f:link.action>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv" style=""><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+		</f:else>
+	</f:if>
+		
+
+</div>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_rssaggregator/Resources/Private/Language/locallang_db.xlf" date="2024-01-01T00:00:00Z" product-name="e_rssaggregator">
+		<header/>
+		<body>
+			<trans-unit id="tx_erssaggregator_flux">
+				<source>Flux</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.sDEF">
+				<source>Générale</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.sDEF.action">
+				<source>Affichage</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.sDEF.listFeed">
+				<source>Liste des flux (un par ligne, dans l'ordre souhaité)</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration">
+				<source>Configuration</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.limit">
+				<source>Nombre d'item par flux</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.limit2">
+				<source>Nombre d'item pour l'agrégation de flux</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.formatDate">
+				<source>Format souhaité pour la date</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.formatDate.defaut">
+				<source>Format par défaut</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.stripHTML">
+				<source>Enlever les balises HTML du contenu?</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cropAdd">
+				<source>Couper les textes avec le texte suivant:</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cropTitle">
+				<source>Couper le titre au dela du nombre de caractères suivants:</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cropDesc">
+				<source>Couper la description au dela du nombre de caractères suivants:</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cropContent">
+				<source>Couper le content au dela du nombre de caractères suivants:</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cropContenu">
+				<source>Couper le contenu au dela du nombre de caractères suivants: (contenu = content, et si vide = description)</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.target">
+				<source>Target des liens</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.image">
+				<source>Afficher l'image</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.imageWidth">
+				<source>Largeur de l'image</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.imageHeight">
+				<source>Hauteur de l'image</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cache">
+				<source>Fréquence des mises en cache</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cache.no">
+				<source>Aucune mis en cache</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cache.quatre">
+				<source>4 heures</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cache.huit">
+				<source>8 heures</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cache.douze">
+				<source>12 heures</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.cache.vingtquatre">
+				<source>24 heures</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.orderDirection">
+				<source>Sens du tri</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.orderDirection.asc">
+				<source>Croissant</source>
+			</trans-unit>
+			<trans-unit id="flexform_aggregator.configuration.orderDirection.desc">
+				<source>Decroissant</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

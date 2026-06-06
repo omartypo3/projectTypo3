@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<f:if condition="{settings.cssFile}">
+	<f:asset.css identifier="ext-news" href="{settings.cssFile}" />
+</f:if>
+<v:variable.set name="siteConfigs" value="{v:variable.typoscript(path:'e_magineurs.conf')}"/>
+<f:if condition="{siteConfigs.publicationDetailPage} == {pageData.uid}">
+	<f:then>
+		<f:render section="content" />
+	</f:then>
+	<f:else>
+		<div class="news news-single">
+			<div class="article" itemscope="itemscope" itemtype="http://schema.org/Article">
+				<f:render section="content" />
+			</div>
+		</div>
+	</f:else>
+</f:if>
+
+</html>

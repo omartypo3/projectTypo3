@@ -1,0 +1,72 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<!--
+	=====================
+		Partials/List/Item.html
+-->
+
+<li class="liste_actu_home">
+	<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+		<div class="actuPart1">		
+			<span class="voile"></span>
+
+			<div class="block_text_master">
+				<div class="case_text_master">
+					<v:tag name="p" hideIfEmpty="true" class="cat_projet">
+						<f:for each="{newsItem.categories}" as="category" key="key" iteration="ite">
+				            <f:if condition="{category.parentcategory.uid} != 19">
+					            <f:if condition="{category.parentcategory.uid} != 256">	
+					            	<f:if condition="{category.parentcategory.uid} != 368">
+					                   <f:if condition="{ite.isLast}">
+						                    <f:then>
+						                        <span class="cat">{category.title}</span>
+						                    </f:then>
+						                    <f:else>
+						                        <span class="cat">{category.title} | </span>
+						                    </f:else>
+					                	</f:if>
+					                </f:if>
+					            </f:if>
+				            </f:if>
+				        </f:for>
+					</v:tag>
+					<h3>{newsItem.title}</h3>
+				</div>
+
+				<div class="case_description_master">
+					<f:if condition="{newsItem.teaser}">
+						<f:then>
+							<p>{newsItem.teaser ->f:format.crop(maxCharacters: 80, respectWordBoundaries:'1', append:'[...]') -> f:format.raw()}</p>
+						</f:then>
+						<f:else>
+							<p>{newsItem.bodytext -> f:format.crop(maxCharacters: 80, respectWordBoundaries:'1', append:'[...]') -> f:format.raw()}</p>
+						</f:else>
+					</f:if>
+				</div>
+			</div>
+		
+			<div class="losange_hover_master">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<div class="actuPart2">
+			<f:alias map="{mediaElement: '{newsItem.falMediaPreviews.0}'}">
+				<div class="case_img_master img-container">
+					<f:if condition="{newsItem.falMediaPreviews}">
+						<f:then>
+							<f:image image="{mediaElement}" width="675c" height="346c" class="img_master" alt="" />
+						</f:then>
+						<f:else>
+							<f:if condition="{settings.list.media.dummyImage}">
+								<f:image src="{settings.list.media.dummyImage}" width="675c" height="346c" class="img_master" alt="" />
+							</f:if>
+						</f:else>
+					</f:if>
+				</div>
+			</f:alias>
+		</div>
+	</n:link>
+</li>
+</html>

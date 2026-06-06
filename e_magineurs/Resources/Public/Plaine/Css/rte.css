@@ -1,0 +1,327 @@
+/****************************************************************************************
+# Default css file for content edited with CKEditor
+#
+# Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+# For licensing, see LICENSE.md or http://ckeditor.com/license
+#
+# Defines a few class selectors that can be simply taken as examples by anyone who needs to configure the RTE.
+# This css file is referenced by property RTE.default.contentCSS in TSconfig.
+# ***************************************************************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,500i,600,700');
+
+/*html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.42857143;
+    color: #363636;
+    font-size: 1.6rem;
+    font-weight:500;
+}
+
+h1,h2,h3,h4,h5,h6,.chapo{
+  font-weight:600; 
+}
+
+.cke_editable h2{
+  font-size:3rem;
+  margin:5rem 0 2rem 0;
+}
+.cke_editable h3{
+    font-size:2.2rem;
+    margin:2rem 0 2rem 0;
+}
+.cke_editable h4{
+  font-size:2rem;
+  margin:2.5rem 0;
+ }
+.cke_editable h5{
+  font-size:2rem;
+  margin:1.5rem 0;
+}
+.cke_editable h6{
+  font-size:1.8rem;
+  margin:1.3rem 0;
+}
+
+.cke_editable strong{
+    font-weight:700;
+}
+.cke_editable em{
+    font-style: italic;
+}
+.cke_editable p.chapo {
+    font-size: 20px;
+    font-weight: bold;
+}
+.cke_editable p.text_high {
+    background: #f0f0f0;
+    font-weight: bold;
+}
+  .cke_editable a:link,
+  .cke_editable a:visited {
+      color:#D51B5C;
+      text-decoration: none;
+  }
+ .cke_editable  a:focus,
+  .cke_editable a:hover {
+      color:#AF002A;
+  }
+
+.cke_editable ul {
+  list-style: none;
+  padding: 0;
+  font-weight:400;
+  margin-bottom:1rem;
+}
+.cke_editable li {
+margin: 0;
+padding-left: 2rem;
+position: relative;
+}
+.cke_editable li:after {
+  content: '';
+  height: .4em;
+  width: .4em;
+  background: #7DB900;
+  display: block;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  top: .8rem;
+  left: 0.6rem;
+}
+
+.cke_editable blockquote {
+    padding: 20px;
+    margin: 50px 0;
+    border: 1px solid #f0f0f0;
+}
+.cke_editable hr{
+    border: 0px;
+    border-top: 1px solid #ccc;
+}
+.cke_editable {
+    font-size: 13px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+.cke_editable p{
+margin-top: 0;
+margin-bottom: 1rem;
+}
+
+img.right{
+    border: 1px solid #ccc;
+    float: right;
+    margin-left: 15px;
+    padding: 5px;
+}
+img.left{
+    border: 1px solid #ccc;
+    float: left;
+    margin-right: 15px;
+    padding: 5px;
+}
+pre{
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+       tab-size: 4;
+}
+.chapo{
+  font-size:1.8rem;
+  margin-bottom:3rem;
+}*/
+
+.btn{
+    display: inline-block;
+    /*margin: 0 0 2rem 0;
+    text-transform: uppercase;
+    padding: 1.7rem 3rem;
+    position: relative;
+    transition:color 0.4s ease;
+    z-index:1;
+    border-radius:0;
+    /*font-size:1.2rem;
+    font-weight:700;*/
+    color:$font !important;
+    transition: all ease-out 0.3s;
+    cursor:pointer;
+    color:#fff !important;
+}
+
+.btn-rose{
+    border:1px solid #d51b5c!important;
+    background-color: #d51b5c!important;
+}
+
+.btn-vert{
+    border:1px solid #7DB900;
+    background-color: #7DB900;
+}
+ .btn-vert i{
+      font-size:2rem;
+      position:relative;
+      top:.4rem;
+      padding-right:1rem;
+  }
+
+/*Lien interne*/
+.icon-LinkText-interne, .news-related.carto a{
+  font-size:1.2rem;
+  text-transform:uppercase;
+  font-weight:700;
+}
+ .icon-LinkText-interne:after{
+    content:'';
+    display:inline-block;
+    background:url('../../Resources/Public/Images/lien-interne.png') no-repeat;
+    width:10px;
+    height:15px;
+    position:relative;
+    top:2px;
+    margin-left:10px;
+  }
+/*Lien externe*/
+.icon-LinkText-externe{
+  font-size:1.2rem;
+  text-transform:uppercase;
+  font-weight:700;
+}
+.icon-LinkText-externe:before{
+    content:'';
+    display:inline-block;
+    background:url('../../Resources/Public/Images/lien-externe.png') no-repeat;
+    width:15px;
+    height:13px;
+    position:relative;
+    top:2px;
+    margin-right:10px;
+  }
+
+/*Lien téléchargement*/
+.icon-LinkText-telechargement{
+  font-size:1.2rem;
+  text-transform:uppercase;
+  font-weight:700;
+}  
+.icon-LinkText-telechargement:before{
+    content:'';
+    display:inline-block;
+    background:url('../../Resources/Public/Images/lien-telechargement.png') no-repeat;
+    width:15px;
+    height:15px;
+    position:relative;
+    top:2px;
+    margin-right:10px;
+  }
+
+table {
+    background:white;
+    border-collapse: collapse;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    font-size: 1.4rem;
+    width:100%;
+}
+
+th,
+td {
+    padding: 15px;
+}
+th {
+    font-weight: 700;
+    background-color: #262626;
+    color: #7DB900;
+    text-transform:uppercase;
+}
+td {
+    border-bottom: 1px solid #262626;
+    font-weight:400;
+}
+
+.marker{
+    background-color: Yellow;
+}
+span[lang]{
+    font-style: italic;
+}
+figure{
+    text-align: center;
+    border: solid 1px #ccc;
+    border-radius: 2px;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    margin: 10px 20px;
+    display: inline-block;
+}
+figure > figcaption{
+    text-align: center;
+    display: block; /* For IE8 */
+}
+a > img {
+    padding: 1px;
+    margin: 1px;
+    border: none;
+    outline: 1px solid #0782C1;
+}
+/* Widget Styles */
+.code-featured{
+    border: 5px solid red;
+}
+.math-featured{
+    padding: 20px;
+    box-shadow: 0 0 2px rgba(200, 0, 0, 1);
+    background-color: rgba(255, 0, 0, 0.05);
+    margin: 10px;
+}
+.image-clean{
+    border: 0;
+    background: none;
+    padding: 0;
+}
+.image-clean > figcaption{
+    font-size: .9em;
+    text-align: right;
+}
+.image-grayscale{
+    background-color: white;
+    color: #666;
+}
+.image-grayscale img, img.image-grayscale{
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+}
+.embed-240p{
+    max-width: 426px;
+    max-height: 240px;
+    margin:0 auto;
+}
+.embed-360p{
+    max-width: 640px;
+    max-height: 360px;
+    margin:0 auto;
+}
+.embed-480p{
+    max-width: 854px;
+    max-height: 480px;
+    margin:0 auto;
+}
+.embed-720p{
+    max-width: 1280px;
+    max-height: 720px;
+    margin:0 auto;
+}
+.embed-1080p{
+    max-width: 1920px;
+    max-height: 1080px;
+    margin:0 auto;
+}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+.text-right {text-align: right;}
+.text-justify {text-align: justify;}

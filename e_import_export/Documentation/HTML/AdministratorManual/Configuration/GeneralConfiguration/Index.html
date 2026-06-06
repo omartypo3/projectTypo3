@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General configuration &#8212; E Import Export 0.1.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="top" title="E Import Export 0.1.1 documentation" href="../../../index.html" />
+    <link rel="up" title="Configuration" href="../Index.html" />
+    <link rel="next" title="Tables And Fields" href="../TablesAndFields/Index.html" />
+    <link rel="prev" title="Configuration" href="../Index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="general-configuration">
+<span id="tsconfig"></span><h1>General configuration<a class="headerlink" href="#general-configuration" title="Permalink to this headline">¶</a></h1>
+<p>For every import/export routines, you will have to configure your general settings</p>
+<p>First create a routine, go on list view and choose the page where you intend to record your configuration.</p>
+<p>Create a new record and choose Conf into the E-import-Export section.</p>
+<p>You are now able to configure your routine.</p>
+<p>You will have various options</p>
+<div class="section" id="simple-options">
+<h2>Simple options<a class="headerlink" href="#simple-options" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Title : is simply a title to help you identify the export/import, just try to give a comprehensive name/</li>
+<li>Tags : <strong>need to be done</strong></li>
+<li>Hide : If you want to hide the conf entry among your others list entries</li>
+<li>Type : The file type of the file you will handle, you have the choice between :</li>
+<li><ul class="first">
+<li>Csv</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Json
+The format differents filr types file is detailled in the format section</li>
+</ul>
+</li>
+<li>Intended for : Choose between import and export</li>
+<li>Reachable from : The way the informations are transmited
+Every accessing procedure will be more explained in user administration section</li>
+<li><ul class="first">
+<li>Module : For importation. In the backend module &#8220;Import-Export&#8221;, you will have a &#8220;import/export&#8221; button</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Scheduler : For importation. You will be able to register a scheduler task from the typo 3 scheduler module</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Ajax : You will allow an ajax flow for exportation/importation</li>
+</ul>
+</li>
+<li>Stream URl : For importation, this is where the file to import is located, you can choose a stream or a hosted static file</li>
+</ul>
+</div>
+<div class="section" id="tables">
+<h2>Tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h2>
+<p>Here you can choose wich table you want to import/export. For now, you can only choose one table but we will add the possibility yo process multiple tables in the future.</p>
+<p>You can add your table by clicking on create new into the Tables section.</p>
+<p>A select box allow you to choose your table.</p>
+<p>You can add a where condition. For exemple if you want only the rows where color is set to red, just type :
+&#8220;color = &#8216;red&#8217;&#8221;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">General configuration</a><ul>
+<li><a class="reference internal" href="#simple-options">Simple options</a></li>
+<li><a class="reference internal" href="#tables">Tables</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../Index.html">For administrators</a><ul>
+  <li><a href="../Index.html">Configuration</a><ul>
+      <li>Previous: <a href="../Index.html" title="previous chapter">Configuration</a></li>
+      <li>Next: <a href="../TablesAndFields/Index.html" title="next chapter">Tables And Fields</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/AdministratorManual/Configuration/GeneralConfiguration/Index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Ian SEBBAGH.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../../../_sources/AdministratorManual/Configuration/GeneralConfiguration/Index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

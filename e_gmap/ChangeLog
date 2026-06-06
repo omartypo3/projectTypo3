@@ -1,0 +1,71 @@
+31-01-19 Xavier LEY <xley@e-magineurs.com>
+
+	* v2.1.1
+
+	* Implements caching for the results of some huge queries (getPois, getKmls, getAllCats) 
+	
+15-02-18 Mickael CHAPUSOT  <mchapusot@e-magineurs.com>
+	* v2.1.0 Maj template poi
+	
+22-12-17 Léo Le Sommer <leo-robin.le-sommer@openmailbox.org>
+    * v2.0.0
+    * A lot of change, see http://redmine.e-magineurs.fr/issues/22733 for more informations
+    * Breaking change into the templates
+    * TSConf TCEMAIN.linkHandler.egmap.configuration.pageId changed to plugin.tx_egmap.settings.detailPid
+    * If you didn't, you will now be responsible of jquery inclusion
+    A lot of things changed so you should have some problem with the version change, i was forced to change some things to implement multiple maps per page
+
+24-11-17 Xavier LEY <xley@e-magineurs.com>
+
+	* v1.2.6
+
+	* Fix some calls to classes that still used "categories" instead of "category"
+	
+10-09-07 Tristan Beaurin <tbeaurin@e-magineurs.com>
+
+	* v1.2.5
+
+	* BugFix Conflits entre modules Localize et Geoloc
+	
+10-09-07 Tristan Beaurin <tbeaurin@e-magineurs.com>
+
+	* v1.2.4
+
+	* BugFix Map.js pour IE
+	
+06-07-07 Tristan Beaurin <tbeaurin@e-magineurs.com>
+
+	* v1.2.3
+
+	* Correction de la fonction Emagineurs\EGmap\Lib\LinkRecordList::listURL()
+
+04-05-07 Tristan Beaurin <tbeaurin@e-magineurs.com>
+
+	* v1.2.2
+	
+	* English traduction for labels, parameters and variables
+
+03-05-17 Tristan Beaurin <tbeaurin@e-magineurs.com>
+
+	* Passage en version 1.2.1
+	
+	* Fix constantes lat et lng become string
+	
+	* Fix remove markercluster when remove poi (without set poi.liste to 1)
+	
+03-05-17 Tristan Beaurin <tbeaurin@e-magineurs.com>
+
+	* Passage en version 1.2.0
+	
+	* Ajustements pour la compatibilité V8
+	
+	* Module de placement de point dans le backend
+	
+
+01-03-17 Xavier Ley <xley@e-magineurs.com>
+	
+	* Passage en version 1.1.5
+	
+	* Ajustement pour la compatibilité avec TYPO3 v8
+	
+	* Création du changelog

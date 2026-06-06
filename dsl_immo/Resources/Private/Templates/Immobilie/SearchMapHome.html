@@ -1,0 +1,137 @@
+
+
+	
+	
+<f:section name="immobilienPins">
+	<div class="property-search-home-map-immobilien" style="display: none;" data-preis-from="{preis.from}" data-preis-to="{preis.to}" data-flaeche-from="{flaeche.from}" data-flaeche-to="{flaeche.to}" data-max-results-for-sliders="{maxResultsForSliders}">
+		 <f:for each="{immobilien}" as="immobilie" iteration="iterator">
+			 
+			 <div id="search-home-hermes-{immobilie.objektNrextern}" data-address="{immobilie.adresseFuerMaps}" data-lat="{f:if(condition: '{immobilie.objektadressefreigeben}', then: '{immobilie.geoKoordinatenBreitengrad}', else: '{immobilie.geoAdresseGesperrtKoordinatenBreitengrad}')}" data-lng="{f:if(condition: '{immobilie.objektadressefreigeben}', then: '{immobilie.geoKoordinatenLaengengrad}', else: '{immobilie.geoAdresseGesperrtKoordinatenLaengengrad}')}" data-title="{immobilie.objekttitel}" data-objektNrextern="{immobilie.objektNrextern}" data-uri-detail="{f:uri.action(action: 'show', pageUid: '{settings.detailPid}', arguments: '{immobilie: immobilie}')}" data-nutzungs-art="{immobilie.nutzungsArt}" data-nutzungs-art-title="{f:translate(key: 'tx_dslimmo_domain_model_immobilie.nutzungs_art.{immobilie.nutzungsArt}')}" data-vermarktungs-art="{immobilie.vermarktungsArt}" data-vermarktungs-art-title="{f:translate(key: 'tx_dslimmo_domain_model_immobilie.vermarktungs_art.{immobilie.vermarktungsArt}')}" data-objekt-typ="{immobilie.objektTyp}" data-search-objekt-typ="{immobilie.searchObjektTyp}">{immobilie.objektNrextern}</div>
+			 
+			<f:if condition="{immobilie.objektadressefreigeben}"></f:if></f:for>
+	</div>
+</f:section> 
+
+
+<f:switch expression="{switch}">
+	<f:case value="requestResultCounts"><div id="immobilienAnzahl">{f:count(subject: immobilien)}</div></f:case>
+	<f:case value="requestPreview"><div><f:render section="immobilienPins" arguments="{_all}" /></div></f:case>
+
+	<f:defaultCase><!--TYPO3SEARCH_end-->
+		
+
+		<f:comment><!--<v:asset.style path="fileadmin/zoner/assets/css/MarkerCluster.css" name="mapClusterCss"  />--></f:comment>
+		<f:comment><!--<v:asset.script path="fileadmin/zoner/assets/js/leaflet.js" name="leaflet"  />--></f:comment>
+		<f:comment><!--<v:asset.script path="fileadmin/zoner/assets/js/leaflet.markercluster.js" name="mapCluster"  />--></f:comment>
+		<v:asset.script path="fileadmin/zoner/assets/js/markerclusterer_packed.js" name="mapCluster"  />
+		<v:asset.script path="EXT:dsl_immo/Resources/Private/Templates/Immobilie/markerwithlabel.js" name="mapMarker"  />
+		
+		
+		<v:asset.script path="EXT:dsl_immo/Resources/Private/Templates/Immobilie/SearchMapHome.js" fluid="1" name="dslImmoSearch" variables="{settings: settings, ajaxUrl: '{f:uri.action(action: \'search\', pageType: 89658001, pluginName:\'immosearch\', extensionName:\'dslimmo\',  controller: \'Immobilie\')}' }" />
+
+
+
+
+		<div style="height:550px;" class="property-search-home-map" id="property-search-home-map" data-lat="51.331213" data-lng="12.396043" data-address="Prager Str. 34, 04317 Leipzig"></div>
+		
+		<f:render section="immobilienPins" arguments="{_all}" />
+		
+
+		<div class="container">
+			<div class="horizontal-search-float">
+
+
+
+
+					<div class="search-box-inner">
+
+                        <div class="row">
+						    <div class="col-md-8 col-sm-8">
+                                <h1><span class="texticon-size-small ion ion-dsl-detailview-house"></span> Immobilien<strong>Suche</strong></h1>
+                            </div>
+                            <div class="col-md-4 col-sm-4 alignRight">
+								<span class="texticon-size-small ion ion-dsl-plus"></span> <f:link.page pageUid="72">Detailsuche</f:link.page>
+                            </div>
+                        </div>
+                        
+							<div class="search-box map">
+								<f:form method="post" action="search"  id="form-map-sale" class="form-map form-search clearfix" >
+									<f:form.hidden name="requestPreview" id="requestPreview" value="" />
+									<f:form.hidden name="keller" value="" />
+									<div class="row">
+										<div class="col-md-2 col-sm-4">
+											<div class="form-group">
+												<v:form.select class="previewOnChange" name="vermarktung"  multiple="0" value="{session.search.vermarktung}">
+													<v:form.select.option value="s1010">Mieten</v:form.select.option>
+													<v:form.select.option value="s1020">Kaufen</v:form.select.option>
+												</v:form.select>
+											</div><!-- /.form-group -->
+										</div>
+										<div class="col-md-2 col-sm-4">
+											<div class="form-group">
+												<v:form.select class="previewOnChange" name="objektTyp"  multiple="0" value="{session.search.objektTyp}">
+													<v:form.select.option value="">Objekttyp</v:form.select.option>
+													<v:form.select.option value="s1010">Wohnung</v:form.select.option>
+													<v:form.select.option value="s1020">Haus</v:form.select.option>
+													<v:form.select.option value="s1030">Grundstück</v:form.select.option>
+													<v:form.select.option value="s1040">Gewerbe/Büro</v:form.select.option>
+													<v:form.select.option value="s1050">Garage/Stellplatz</v:form.select.option>
+													<v:form.select.option value="s1060">Wertanlage</v:form.select.option>
+												</v:form.select>
+											</div><!-- /.form-group -->
+										</div>
+										<div class="col-md-2 col-sm-4">       
+											<div class="form-group">
+												<v:form.select class="previewOnChange" name="geoLageGebiet"  multiple="0" value="{session.search.geoLageGebiet}">
+													<v:form.select.option value="">Lage/Gebiet</v:form.select.option>
+													<v:form.select.option value="Leipzig">Leipzig</v:form.select.option>
+													<v:form.select.option value="Zwenkau">Zwenkau</v:form.select.option>
+												</v:form.select>
+											</div><!-- /.form-group -->
+										</div>
+
+										<div class="col-md-2 col-sm-4">
+												<f:if condition="{flaeche}">
+													<div class="form-group">
+														<div class="price-range">
+															<f:form.hidden id="flaecheFromTo" name="flaecheFromTo"  value="{flaeche.from};{flaeche.to}" />
+															<f:form.textfield name="flaeche"  id="flaeche-input-home" value="{session.search.flaeche.from};{session.search.flaeche.to}" data="{from:flaeche.from,to:flaeche.to}" />
+														</div>
+													</div>
+												</f:if>
+										</div>
+										<div class="col-md-2 col-sm-4">
+											<f:if condition="{preis}">
+												<div class="form-group">
+													<div class="price-range">
+														<f:form.hidden id="preisFromTo" name="preisFromTo"  value="{preis.from};{preis.to}" />
+														<f:form.textfield name="preis"  id="price-input-home" value="{session.search.preis.from};{session.search.preis.to}" data="{from:preis.from,to:preis.to}" />
+													</div>
+												</div>
+											</f:if>
+										</div>
+										<div class="col-md-2 col-sm-4">
+												<div class="form-group">
+													<f:comment><f:form.submit value="Suchen" class="btn btn-default" id="search-map-submit-button" additionalAttributes="{data-value: 'Suchen'}" /></f:comment>
+                                                    <button class="submit-button btn btn-default" id="search-map-submit-button" data-value="Suchen">Suchen</button>
+
+												</div><!-- /.form-group -->
+										</div>
+									</div>  
+								</f:form>
+							</div>
+						</div>
+					</div>
+
+
+		</div>
+
+
+		<f:comment>
+		<f:debug title="Such Umgebung">{zimmer}</f:debug>
+		<f:debug title="Such Umgebung">{search}</f:debug>
+		<f:debug title="gefunden">{immobilien}</f:debug>
+		</f:comment>
+
+	<!--TYPO3SEARCH_begin--></f:defaultCase>
+</f:switch>

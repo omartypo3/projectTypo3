@@ -1,0 +1,168 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+
+
+<f:layout name="Default" />
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+
+
+
+<f:section name="main">
+
+	
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/moment-with-locales.min.js" name="jsMoment" dependencies="jquery"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/fullcalendar-3.5.1/lib/jquery-ui.min.js" name="jsJqueryUi" dependencies="jsMoment"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>
+	
+	
+<div id="dsl_wartungsliste_list">
+
+<script type="text/javascript">
+	var wartungsvertraegeAjaxUrl = '<f:uri.action action="ajax" pluginName="wartungsliste" controller="Wartungsvertraege" pageType="89657206"/>';
+		
+</script>
+<script>
+	$(document).ready(function() {
+		initAccordionPanel("#wartungsvertraegeAccordion a.panel-heading")
+		
+	});
+	function initAccordionPanel(selector){
+		$( selector).click(function() {
+		  
+		  var tabPanel = $(this).parent().parent().next();
+		
+		  var wvUid = tabPanel.data('wv-uid');
+		
+		  var tabPanelContent = $("#wartungsvertrag-show-"+wvUid);
+		  
+		  
+		  if(!tabPanelContent.html())  loadWartungsvertragContent(wvUid);
+			  
+		
+		  
+		});
+	}
+	function loadWartungsvertragContent(id){
+		var activeTab = $( "#wartungsvertraegetabs_"+id ).tabs( "option", "active");
+		$('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').addClass('tabReloads');
+		var showAjaxJson = {"tx_dslintranet_wartungsliste[switch]":'show',"tx_dslintranet_wartungsliste[uid]":id};
+		dslIntranetAjaxCall(wartungsvertraegeAjaxUrl,showAjaxJson).done(function (data /* , textStatus, jqXHR */ ) {
+			changeWartungsvertragContent(id,data);
+			$("#wartungsvertraegetabs_"+id).tabs({ active: activeTab }); 
+		});
+	}
+	
+	function changeWartungsvertragContent(id,content){
+		
+		var selector = "wartungsvertrag-show-"+id;
+		var tabPanelContent = $("#"+selector);
+		
+		
+		
+		tabPanelContent.html(content);
+		
+
+		
+		
+		$('#wartungsvertraegeList tr[data-wv-uid="'+id+'"] .removeAfterLoadsContent').remove();
+		
+		$('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').first().replaceWith(tabPanelContent.find('#'+selector+'-headline-content tr'));
+		wartungsvertraegeToggleContentLoad(id);
+		
+		
+		tabPanelContent.find('#'+selector+'-headline-content').remove();
+
+		$('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').removeClass('tabReloads');
+		
+		
+		reInitAjaxCalls();
+	}
+
+	
+	function wartungsvertraegeToggle(id){
+		if($('#wartungsvertraegeList tr[data-wv-uid="'+id+'"].collapse').hasClass('in'))
+			$('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').first().removeClass('opened'); 
+				else $('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').first().addClass('opened'); 
+	}
+	function wartungsvertraegeToggleContentLoad(id){
+		if($('#wartungsvertraegeList tr[data-wv-uid="'+id+'"].collapse').hasClass('in'))
+			$('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').first().addClass('opened'); 
+				else $('#wartungsvertraegeList tr[data-wv-uid="'+id+'"]').first().removeClass('opened'); 
+	}
+	
+
+</script>
+
+	
+<f:link.action action="new" pageType="89657206" class="doAjaxEdit pageToolbarButton pageToolbarButtonFirstGroup pageToolbarButtonPrimary" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '800px'}"><i class="bb-plus bb-lg"></i><span>neuer Wartungsvertrag</span></f:link.action>
+	
+ 
+  
+  
+  
+  
+  
+
+ 
+  
+  
+  
+<div id="wartungsvertraegeAccordion" class="gridelement ge_collapsible_container">
+	<div aria-multiselectable="true" role="tablist" id="wartungsvertraegeList" class="panel-group">
+	 
+    
+    	<div class="dataTables_wrapper">
+		<table class="table table-striped table-bordered table-condensed table-hover dataTable no-footer" role="grid" aria-describedby="auftraegeList_info" style="width: 100%; opacity: 1; pointer-events: auto;" width="100%" cellspacing="0">
+			<thead>
+
+				<tr>
+				   <th width="12">&nbsp;</th>
+				   <th width="100">von - bis</th>
+				   <th>Kunde / Auftragsbezeichnung</th>
+					<th width="100"><center>Kontingent</center></th>
+				   <th width="130">Status</th>
+				   <th width="30">Optionen</th>
+			   </tr>
+			</thead>
+
+
+			<tbody>
+			
+				<v:iterator.sort as="wartungsvertraegesSorted" subject="{wartungsvertraeges}" sortBy="kunde.name" order="ASC" sortFlags="SORT_STRING,SORT_FLAG_CASE">
+					<f:for each="{wartungsvertraegesSorted}" as="wartungsvertraege">
+						<f:render partial="Wartungsvertraege/ListRow" arguments="{_all}" />
+					</f:for>
+				</v:iterator.sort>
+			
+				
+			</tbody>
+		</table>
+		</div>
+      
+    </div>
+    
+  </div>
+
+	
+	
+<f:comment>	
+<a class="doAjaxEdit pageToolbarButton pageToolbarButtonThirdGroup" href="http://intranet.dsl-factory.de/index.php?id=190&export=true" target="_blank"><i class="fa fa-download fa-lg"></i><span>1. Export Generieren</span></a>
+<f:link.action action="import" pageType="89657206" class="doAjaxEdit pageToolbarButton pageToolbarButtonThirdGroup"><i class="fa fa-upload fa-lg"></i><span>2. Import Starten</span></f:link.action>	
+	
+ </f:comment>	 
+    
+  
+  </div>
+</f:section>
+	
+</html>

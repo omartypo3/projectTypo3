@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\ERssaggregator\:
+    resource: '../Classes/*'
+
+  Emagineurs\ERssaggregator\Controller\AggregatorController:
+    public: true
+

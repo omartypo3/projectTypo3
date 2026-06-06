@@ -1,0 +1,111 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+    <f:form controller="Protokolle" action="kundenajax" name="protokolle"  pluginName="kundenlogin" extensionName="dslintranet" id="protokolleCreateForm" >
+   
+        <f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Kommentar Hinzufügen / {auftraege.titel}'}" />
+        
+     	
+        
+        <script>
+            $(document).ready(function() {
+				
+				
+//                $('#zeiteintraegeCreateForm').submit(function() {
+
+				$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+				$.validator.messages.min = '<i class="fa fa-exclamation-circle"></i>';
+				
+			
+				$('#protokolleCreateForm').validate({
+					invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+					/*rules: {
+						'tx_dslintranet_auftragsliste[kontingent]': { required: true, min: 1 }
+					},*/
+					
+					ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+					errorClass: 'invalid',
+					submitHandler: function(form) {	
+	
+						validateFormInvalidHandlerReset();
+						
+						if($('#protokolleCreateForm').hasClass('formSaves'))	return false;
+						$('#protokolleCreateForm').addClass('formSaves');
+        			
+                    
+						$.ajax({
+							url: $('#protokolleCreateForm').attr('action'),
+							type: 'POST',
+							data: $('#protokolleCreateForm').serialize(),
+							success: function(data) {
+								
+								
+								
+								dataJson = JSON.parse(data);
+								
+								//reloadAuftragId('list',id);
+								if(!dataJson["auftraegeUid"]) {
+									
+									return true;
+								} else {
+									
+
+									if($('#statusmeldungenList'+dataJson["auftraegeUid"]).length){
+										dataTableRowAdd('#statusmeldungenList'+dataJson["auftraegeUid"],dataJson["contentShow"]);
+										$('#auftraegetabs_'+dataJson["auftraegeUid"]+'_statusmeldungen_anzahl').text($('#statusmeldungenList'+dataJson["auftraegeUid"]+'>tbody>tr').length).attr('data-anzahl',$('#statusmeldungenList'+dataJson["auftraegeUid"]+'>tbody>tr').length);
+									}
+									//refreshProjektTabContent(dataJson["auftraegeUid"]);
+									
+									
+									$.colorbox.close();
+								}
+								
+								//$.colorbox.close();
+		
+				
+							}
+						});
+							
+							
+					}
+				});
+				
+				/* Validator Ende */
+		
+            });
+        
+        </script>
+                
+        
+        
+		        <f:form.hidden name="auftraege" value="{auftraege.uid}" />
+                
+                <f:form.hidden name="aktion" value="{aktion}" />
+
+                <f:form.hidden name="switch" value="create" />
+                <f:render partial="KundenAuftraege/ProtokolleNew" arguments="{_all}" />
+
+        
+        <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Statusmeldung Speichern'}" />    
+       
+    </f:form>
+
+	
+</f:section>

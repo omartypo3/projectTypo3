@@ -1,0 +1,46 @@
+<f:spaceless><span class="hostingUid invisible">{hosting.uid}</span>
+&nbsp;
+<--break-->
+&nbsp;
+<--break-->
+&nbsp;
+<--break-->
+<f:if condition="{zusatzDomain.domainname}"><f:link.external uri="{zusatzDomain.domainname}" target="_blank" class="hostingDomainPreview">{zusatzDomain.domainname}</f:link.external></f:if>
+<f:if condition="{zusatzDomain.gekuendigt}">&nbsp;&nbsp;<span class="label label-danger" style="font-weight:normal;">Gekündigt<f:if condition="{zusatzDomain.gekuendigtZum}"> zum {zusatzDomain.gekuendigtZum -> f:format.date(format: 'm/y')}</f:if></span></f:if>
+<--break-->
+{zusatzDomain.tarif.titel}
+<--break-->
+<f:format.date date="{zusatzDomain.vertragsbegin}" format="d.m.y" />
+<--break-->{zusatzDomain.preisMonatlich}<--break-->
+<f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{zusatzDomain.preisMonatlich}</f:format.currency>
+<--break-->
+<f:translate key="tx_dslintranet_domain_model_tarife.laufzeit.{zusatzDomain.laufzeit}" />
+<--break-->
+
+
+<div class="statusHosting {f:if(condition: '{0:zusatzDomain.faellig, 1:zusatzDomain.Ueberfaellig}=={0:1, 1:0}', then: 'statusFaellig')}{f:if(condition: zusatzDomain.ueberfaellig, then: 'statusUeberFaellig')}">
+
+
+
+<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : zusatzDomain, switch : 'prevRechnung', produkt: 'domains'}" class="doAjax" additionalAttributes="{data-ajax-action: 'hostingNextRechnung', data-ajax-selector: '#hostingList'}" ><i class="fa fa-arrow-left" aria-hidden="true"></i></f:link.action>
+
+
+<span title="{f:format.date(date: zusatzDomain.bezahltbis, format: 'd.m.Y')}"><f:translate key="tx_dslintranet_domain_model_hosting.monatkurz.{f:format.date(date: zusatzDomain.bezahltbis,format: 'm')}" />&nbsp;<f:format.date date="{zusatzDomain.bezahltbis}" format="y" /></span>
+
+
+<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : zusatzDomain, switch : 'nextRechnung', produkt: 'domains'}" class="doAjax" additionalAttributes="{data-ajax-action: 'hostingNextRechnung', data-ajax-selector: '#hostingList'}" ><i class="fa fa-arrow-right" aria-hidden="true"></i>
+</f:link.action>
+
+</div>
+
+
+<--break-->
+
+<div class="btn-group">
+<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="editDomain" arguments="{hostingDomain : zusatzDomain}" class="btn tableBtn doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '510px'}"><i class="fa fa-edit"></i></f:link.action>
+<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : zusatzDomain, switch : 'deleteDomain'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorHosting', data-ajax-selector: '', data-ajax-id: '{zusatzDomain.uid}'}" ><i class="fa fa-trash-o"></i>
+</f:link.action>
+</div>
+
+
+</f:spaceless>

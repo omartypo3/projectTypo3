@@ -1,0 +1,29 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+<f:layout name="General" />
+<f:section name="content">
+    <f:if condition="{news}">
+        <f:then>
+            <div class="news-list-view">
+                <f:if condition="{settings.hidePagination}">
+                    <f:then>
+                        <f:for each="{news}" as="newsItem">
+                                <f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem, settings:settings}" />
+                        </f:for>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedNews">
+                            <f:for each="{paginatedNews}" as="newsItem">
+                                    <f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem, settings:settings}" />
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                    </f:else>
+                </f:if>
+            </div>
+	   </f:then>
+	   <f:else>
+            <div class="no-news-found">
+                <f:translate key="list_nonewsfound" />
+            </div>
+	   </f:else>
+    </f:if>
+</f:section>

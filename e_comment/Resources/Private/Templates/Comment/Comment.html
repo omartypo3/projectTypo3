@@ -1,0 +1,126 @@
+<f:layout name="Empty" />
+
+<f:section name="content">
+    <div>
+        <f:form object="{demand}" class="clear" name="demand" method="post" addQueryString="1" >
+            <div class="grid3366"> 
+                <div class="bloc66"> 
+                    <label for="orderDirection" >Sort messages by :</label>
+                    <f:form.select id="orderDirection" property="orderDirection" options="{desc: 'Descending', asc: 'Ascending'}" />
+                </div>
+                <div class="bloc33">
+                    <f:form.submit class="btn btn-search" value="OK" />
+                </div>
+            </div>  
+
+        </f:form>
+        
+        <f:if condition="{settings.pagination}" >
+            <f:then>
+                <f:widget.paginate objects="{messages}" as="paginatedMessages" configuration="{itemsPerPage: settings.itemsPerPage, insertAbove: 0, insertBelow: 1, addQueryStringMethod: 'POST,GET'}">
+                    <ul class="message">
+                        <f:for each="{paginatedMessages}" as="messageitem" >
+                            <li>
+                                <f:render partial="MessageItem" arguments="{currentmessage: messageitem, demand: demand, settings: settings, formMessage: formMessage}"/>
+                            </li>
+                        </f:for>
+                    </ul>
+                </f:widget.paginate>
+            </f:then>
+            <f:else>
+                <ul class="message">
+                    <f:for each="{messages}" as="messageitem" >
+                        <li>
+                            <f:render partial="MessageItem" arguments="{currentmessage: messageitem, demand: demand, settings: settings, formMessage: formMessage}"/>
+                        </li>
+                    </f:for>
+                </ul>
+            </f:else>
+        </f:if> 
+    </div>
+    
+    <f:if condition="{success}" >
+        <f:then>
+            Your message has been correctly sent
+        </f:then>
+        <f:else>
+            <f:flashMessages />
+
+            <div class="full-page border-blue">
+                <f:form object="{message}" name="message" method="post" addQueryString="1" enctype="multipart/form-data" >
+                    <f:if condition="{settings.filterByValue}" >
+                        <f:form.hidden property="paramfilter" value="{settings.filterByParam}" />
+                        <f:form.hidden property="paramvalue" value="{settings.filterByValue}" />
+                    </f:if>
+
+                    <f:if condition="{settings.formFieldDisplay.title}" >
+                        <div>
+                            <label for="name-title" >Title :</label> <f:form.textfield id="name-title" property="title" required="1" />
+                        </div>
+                    </f:if>
+
+                    <f:if condition="{feuser}" >
+                        <f:else>
+                            <f:if condition="{settings.formFieldDisplay.name}" >
+                                <div>
+                                    <label for="name-field" >Name :</label> <f:form.textfield id="name-field" property="name" required="1" />
+                                </div>
+                            </f:if>
+
+                            <f:if condition="{settings.formFieldDisplay.firstname}" >
+                                <div>
+                                    <label for="firstname-field" >First Name :</label> <f:form.textfield id="firstname-field" property="firstname" required="1" />
+                                </div>
+                            </f:if>
+
+                            <f:if condition="{settings.formFieldDisplay.email}" >
+                                <div>
+                                    <label for="email-field" >Email :</label> <f:form.textfield id="email-field" property="email" required="1" />
+                                </div>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+
+                    <f:if condition="{settings.formFieldDisplay.category}" >
+                        <div>
+                            <label for="category" >Category :</label> <f:form.select id="category" property="category" options="{categories}" optionLabelField="title" />
+                        </div>
+                    </f:if>
+
+                    <div>
+                        <label for="reply-field">Message :</label>
+                        <f:form.textarea id="reply-field" rows="7" cols="20" property="bodytext" additionalAttributes="{required: 1}" />
+                    </div>
+
+                    <f:if condition="{settings.formFieldDisplay.file}" >
+                        <div>
+                            <div>
+                                <label>Files</label> :
+                            </div>
+
+                            <div class="col-ting">
+                                <f:for each="{message.file}" as="currentFile" >
+                                    <div>
+                                        <f:media file="{currentFile.originalResource}" width="256" height="256" />
+                                    </div>
+                                </f:for>
+                                <div>
+                                    <div class="controls">
+                                        <f:form.upload property="fileinstancier" multiple="1" class="ecomment_fileuploader" />
+                                        <span class="upload-file">Browse</span>
+                                        <button type="button" onclick="removeUploadField(this)" class="ecomment-remove-button" >Remove</button>
+                                        <p class="file-return"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:if>
+
+                    <div class="wrap-btn">
+                        <f:form.submit class="btn" value="Send" />
+                    </div>
+                </f:form>
+            </div>
+        </f:else>
+    </f:if>
+</f:section>

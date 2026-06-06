@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_poll/Resources/Private/Language/locallang.xlf" date="2024-01-01T00:00:00Z" product-name="e_poll">
+		<header/>
+		<body>
+			<trans-unit id="wrong_captcha">
+				<source>Your vote was not registered. You must insert the right captcha.</source>
+			</trans-unit>
+			<trans-unit id="error_no_vote_selected">
+				<source>Your must select one of the answers.</source>
+			</trans-unit>
+			<trans-unit id="no_poll_found">
+				<source>No poll records found on this page. Please put a poll record on this page or point to a page in the field "startingpoint"</source>
+			</trans-unit>
+			<trans-unit id="poll_not_visible">
+				<source>This poll is not available!</source>
+			</trans-unit>
+			<trans-unit id="votes_total">
+				<source>votes total</source>
+			</trans-unit>
+			<trans-unit id="novote_label">
+				<source>No votes yet</source>
+			</trans-unit>
+			<trans-unit id="onevote_label">
+				<source>One vote</source>
+			</trans-unit>
+			<trans-unit id="votes_label">
+				<source>votes</source>
+			</trans-unit>
+			<trans-unit id="amount_novote_label">
+				<source>No votes</source>
+			</trans-unit>
+			<trans-unit id="amount_onevote_label">
+				<source>1 vote</source>
+			</trans-unit>
+			<trans-unit id="amount_votes_label">
+				<source>votes</source>
+			</trans-unit>
+			<trans-unit id="submit_button">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="submit_js_linktext">
+				<source>Submit</source>
+			</trans-unit>
+			<trans-unit id="linklist">
+				<source>old polls</source>
+			</trans-unit>
+			<trans-unit id="link_to_poll">
+				<source>vote on this poll</source>
+			</trans-unit>
+			<trans-unit id="link_to_result">
+				<source>switch to result of poll</source>
+			</trans-unit>
+			<trans-unit id="linkview">
+				<source>back</source>
+			</trans-unit>
+			<trans-unit id="has_voted">
+				<source>Only one vote allowed per person.</source>
+			</trans-unit>
+			<trans-unit id="no_login">
+				<source>You can only vote if you log in.</source>
+			</trans-unit>
+			<trans-unit id="error_no_vote">
+				<source>Your vote was not registered. You must enable cookies in your browser to vote.</source>
+			</trans-unit>
+			<trans-unit id="listFieldHeader_title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="listFieldHeader_question">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="listFieldHeader_answers">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="limit_other">
+				<source>Other</source>
+			</trans-unit>
+			<trans-unit id="errorlink">
+				<source>back to poll</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

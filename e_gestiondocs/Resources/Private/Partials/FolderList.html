@@ -1,0 +1,21 @@
+<ul>
+    <f:for each="{folders}" as="folder" >
+        <li>
+            <f:link.action arguments="{folder: folder.combinedIdentifier, category: category, keywords: keywords}" >{folder.name}</f:link.action>
+
+            <f:if condition="{folder.subfolders}" >
+                <f:render partial="FolderList" arguments="{folders: folder.subfolders, settings: settings, category: category, keywords: keywords}"/>
+            </f:if>
+
+            <f:if condition="{settings.displayFiles}" >
+                <f:if condition="{folder.files}" >
+                    <ul>
+                        <f:for each="{folder.files}" as="file" >
+                            <li><f:link.typolink parameter="{file.publicUrl}" >{file.name}</f:link.typolink></li>
+                        </f:for>
+                    </ul>
+                </f:if>
+            </f:if>
+        </li>
+    </f:for>
+</ul>

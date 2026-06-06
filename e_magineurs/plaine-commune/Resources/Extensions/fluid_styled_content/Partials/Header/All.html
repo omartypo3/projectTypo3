@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:if condition="{data.toggle_content}">
+		<f:then>
+			<f:if condition="{data.header}">
+				<f:else>
+					<div class="alert alert-warning" role="alert">Merci d'ajouter un titre pour pouvoir plier/déplier le contenu.</div>
+				</f:else>
+			</f:if>
+			<f:if condition="{data.header_layout}==100">
+				<div class="alert alert-warning" role="alert">Le titre est de type "caché". Choisissez un autre type de titre pour pouvoir plier/déplier le contenu.</div>
+			</f:if>
+		</f:then>
+		<f:else>
+			<f:if condition="{data.toggle_position}">
+				<div class="alert alert-warning" role="alert">Vous avez coché la case "Contenu déplié (plié par defaut)". Merci de cocher la case "Contenu plié / déplié" pour que ça fonctionne</div>
+			</f:if>
+		</f:else>
+	</f:if>
+	<f:if condition="{data.header_layout} != 100">
+		<f:if condition="{data.header} || {data.subheader} || {data.date}">
+			<v:tag name="{f:if(condition:'{data.header} == \'Nos sites\' || {data.header} == \'Restons Connectés\'',then:'div',else:'header')}" class="{f:if(condition: data.toggle_content, then: 'openCloseTitle')}{f:if(condition: data.toggle_position, then: ' open openTitle')}">
+				<f:render partial="Header/Header" arguments="{
+					header: data.header,
+					layout: data.header_layout,
+					positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}',
+					link: data.header_link,
+					default: settings.defaultHeaderType,
+					toggleContent: data.toggle_content}" />
+				<f:render partial="Header/SubHeader" arguments="{
+					subheader: data.subheader,
+					layout: data.header_layout,
+					positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}',
+					default: settings.defaultHeaderType}" />
+				<f:render partial="Header/Date" arguments="{
+					date: data.date,
+					positionClass: '{f:if(condition: data.header_position, then: \'ce-headline-{data.header_position}\')}'}" />
+			</v:tag>
+		</f:if>
+	</f:if>
+</html>

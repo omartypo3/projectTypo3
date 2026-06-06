@@ -1,0 +1,66 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+
+    <div class="bootstrap">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Lu ?</th>
+                        <th>Date</th>
+                        <th>Offre</th>
+                        <th>Chargé de recrutement</th>
+                        <th>Postulant</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <f:for each="{offres}" as="currentOffre">
+                        <f:if condition="{currentOffre.firstCdps}">
+                            <tr>
+                                <td>
+                                    <f:if condition="{currentOffre.cedex}">
+                                        <f:then>
+                                            Oui
+                                        </f:then>
+                                        <f:else>
+                                            Non
+                                        </f:else>
+                                    </f:if>
+                                </td>
+                                <td><f:format.date format="%d/%m/%y %H:%M">{currentOffre.crdate}</f:format.date></td>
+                                <td>{currentOffre.firstCdps.title}</td>
+                                <td>{currentOffre.firstCdps.firstCommission.titre}</td>
+                                <td>{currentOffre.firstname} {currentOffre.title} ({currentOffre.bp})</td>
+                                <td>
+                                    <a href="../index.php?type=19880928&tx_eannuaires_annuaireoffre[candidature]={currentOffre.uid}&tx_eannuaires_annuaireoffre[token]={token}"
+                                       class="lien"
+                                       onclick="window.open(this.href,'_blank','status=1,width=600,height=600');return false;">
+                                        Voir le détail de la candidature
+                                    </a>
+                                </td>
+                                <td>
+                                    <span class="lettre">
+                                        <a href="../index.php?type=198809281&tx_eannuaires_annuaireoffre[candidature]={currentOffre.uid}&no_cache=1&tx_web2pdf_pi1%5Bargument%5D=printPage&tx_web2pdf_pi1%5Baction%5D=&tx_web2pdf_pi1%5Bcontroller%5D=Pdf"
+                                           class="lettre_spontane"
+                                           target="_blank">
+                                                &nbsp;Go
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </f:if>
+                    </f:for>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Lu ?</th>
+                        <th>Date</th>
+                        <th>Offre</th>
+                        <th>Chargé de recrutement</th>
+                        <th>Postulant</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+    </div>

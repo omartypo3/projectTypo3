@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-21T15:09:48Z" product-name="e_gmap">
+		<header/>
+		<body>
+			<trans-unit id="tx_egmap_domain_model_poi">
+				<source>Poi</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.name">
+				<source>Nom</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.title">
+				<source>Titre</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.society">
+				<source>Societe</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.link">
+				<source>Lien</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.zip">
+				<source>Code postal</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.city">
+				<source>Ville</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.country">
+				<source>Pays</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.phone">
+				<source>Tél</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.cellphone">
+				<source>Portable</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.fax">
+				<source>Fax</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.website">
+				<source>Site Web</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.mail">
+				<source>Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.file">
+				<source>Fichier</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.html">
+				<source>Intégrer du code HTML</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.lat">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_poi.lng">
+				<source>Longitude</source>
+			</trans-unit>x
+			<trans-unit id="tx_egmap_domain_model_poi.category">
+				<source>Catégorie</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category">
+				<source>Catégorie</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.name">
+				<source>Nom</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_category.category">
+				<source>Catégorie</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml">
+				<source>Kml</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.name">
+				<source>Nom</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.file">
+				<source>Fichier</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.url">
+				<source>Url du fichier en ligne</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_egmap_domain_model_kml.category">
+				<source>Catégorie</source>
+			</trans-unit>
+			<trans-unit id="tab.conf">
+				<source>Informations</source>
+			</trans-unit>
+			<trans-unit id="tab.loc">
+				<source>Localisation</source>
+			</trans-unit>
+			<trans-unit id="tab.media">
+				<source>Médias</source>
+			</trans-unit>
+			<trans-unit id="tab.serv">
+				<source>Services</source>
+			</trans-unit>
+			
+			<trans-unit id="settings">
+				<source>Général</source>
+			</trans-unit>
+			<trans-unit id="settings.pois">
+				<source>POIs à afficher: (précis, dossiers, catégories)</source>
+			</trans-unit>
+			
+			<trans-unit id="base">
+				<source>Configuration</source>
+			</trans-unit>
+			<trans-unit id="settings.width">
+				<source>Taille de la carte : Largeur</source>
+			</trans-unit>
+			<trans-unit id="settings.height">
+				<source>Taille de la carte : Hauteur</source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.type">
+				<source>Position de la carte : automatique (en fonction des POIs affichés), fixe (en indiquant des coordonnées), en fonction d'un POI précis, ou via la localisation du client</source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.lat">
+				<source>Centre : Latitude </source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.lng">
+				<source>Centre : Longitude </source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.poi">
+				<source>Centre : POI précis</source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.select.auto">
+				<source>Automatique</source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.select.fix">
+				<source>Fixe</source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.select.poi">
+				<source>Poi</source>
+			</trans-unit>
+			<trans-unit id="settings.map.center.select.client">
+				<source>Position du client - si autorisation</source>
+			</trans-unit>
+			<trans-unit id="settings.map.zoom.value">
+				<source>Zoom ( Etat au chargement, entier entre 0 et 14.) </source>
+			</trans-unit>
+			<trans-unit id="settings.map.zoom.min">
+				<source>Valeur minimum du zoom (entier entre 0 et 14.)</source>
+			</trans-unit>
+			<trans-unit id="settings.map.zoom.max">
+				<source>Valeur maximum du zoom (entier entre 0 et 14.) </source>
+			</trans-unit>
+			<trans-unit id="settings.map.zoom.molette">
+				<source>Activer le zoom sur molette</source>
+			</trans-unit>
+			<trans-unit id="settings.map.draggable">
+				<source>Possibilité de décentrer la carte</source>
+			</trans-unit>
+			<trans-unit id="avance">
+				<source>Avancée</source>
+			</trans-unit>
+			<trans-unit id="settings.cat.liste">
+				<source>Afficher la liste des catégories</source>
+			</trans-unit>
+			<trans-unit id="settings.cat.label">
+				<source>Intitulé du bloc des catégories</source>
+			</trans-unit>
+			<trans-unit id="settings.cat.cats">
+				<source>Liste des catégories parents, à afficher dans la légende</source>
+			</trans-unit>
+			<trans-unit id="settings.cat.check">
+				<source>Cocher les catégories au chargement</source>
+			</trans-unit>
+			<trans-unit id="settings.choseandor">
+				<source>Mettre la condition AND (au lieu de OR)</source>
+			</trans-unit>
+			<trans-unit id="settings.cat.depli">
+				<source>Déplier les catégories au chargement</source>
+			</trans-unit>
+			<trans-unit id="settings.poi.liste">
+				<source>Afficher la liste des POIs</source>
+			</trans-unit>
+			<trans-unit id="settings.map.zoom.actif">
+				<source>Aficher le controle du zoom</source>
+			</trans-unit>
+			<trans-unit id="settings.map.zoom.position">
+				<source>Position du controle de zoom</source>
+			</trans-unit>
+			<trans-unit id="settings.map.streetview.actif">
+				<source>Autoriser le mode street-view</source>
+			</trans-unit>
+			<trans-unit id="settings.map.streetview.position">
+				<source>Position du controle streetview</source>
+			</trans-unit>
+			<trans-unit id="settings.map.deplacement.actif">
+				<source>Afficher le controle de déplacement</source>
+			</trans-unit>
+			<trans-unit id="settings.map.deplacement.position">
+				<source>Position du controle de déplacement</source>
+			</trans-unit>
+			<trans-unit id="settings.map.type.actif">
+				<source>Afficher le choix de type de carte</source>
+			</trans-unit>
+			<trans-unit id="settings.map.type.position">
+				<source>Position du type de carte</source>
+			</trans-unit>
+			<trans-unit id="settings.map.type.defaut">
+				<source>Type d'affichage au chargement</source>
+			</trans-unit>
+						
+			<trans-unit id="fonctionalite">
+				<source>Fonctionnalités</source>
+			</trans-unit>
+			<trans-unit id="settings.map.recherche.actif">
+				<source>Afficher la recherche sur la carte</source>
+			</trans-unit>
+			<trans-unit id="settings.map.recherche.label">
+				<source>Intitulé du bloc de recherche</source>
+			</trans-unit>
+			<trans-unit id="settings.map.itineraire.actif">
+				<source>Afficher le calcul d'itinéraire sur la carte</source>
+			</trans-unit>
+			<trans-unit id="settings.map.itineraire.label">
+				<source>Intitulé du bloc d’itinéraire</source>
+			</trans-unit>
+			<trans-unit id="settings.map.itineraire.type">
+				<source>Type d'itinéraire par défaut</source>
+			</trans-unit>
+			<trans-unit id="settings.map.itineraire.show">
+				<source>Afficher les choix de types d'itinéraire</source>
+			</trans-unit>
+			<trans-unit id="settings.map.itineraire.panel">
+				<source>Afficher les instructions détaillées d'itinéraire</source>
+			</trans-unit>
+			<trans-unit id="settings.map.trafic">
+				<source>Afficher le trafic</source>
+			</trans-unit>
+			
+			<trans-unit id="favance">
+				<source>Fonctionnalités Avancées</source>
+			</trans-unit>
+			<trans-unit id="settings.styles">
+				<source>Spécifier un jeu de style pour l'ensemble de la carte( Voir http://www.mapstylr.com/ ou https://developers.google.com/maps/documentation/javascript/reference?hl=fr#MapTypeStyle )</source>
+			</trans-unit>
+			<trans-unit id="settings.map.cluster.actif">
+				<source>Activer marker cluster (agglomérat de point pour une meilleur visibilité)</source>
+			</trans-unit>
+			<trans-unit id="settings.cluster.styles">
+				<source>Spécifier un jeu de style pour marker cluster (voir exemples dans readme)</source>
+			</trans-unit>
+			
+			<trans-unit id="default">
+				<source>Défaut</source>
+			</trans-unit>
+			<trans-unit id="oui">
+				<source>Oui</source>
+			</trans-unit>
+			<trans-unit id="non">
+				<source>Non</source>
+			</trans-unit>
+			<trans-unit id="position.BOTTOM_CENTER">
+				<source>En bas, centré</source>
+			</trans-unit>
+			<trans-unit id="position.BOTTOM_LEFT">
+				<source>En bas, à gauche</source>
+			</trans-unit>
+			<trans-unit id="position.BOTTOM_RIGHT">
+				<source>En bas, à droite</source>
+			</trans-unit>
+			<trans-unit id="position.LEFT_BOTTOM">
+				<source>A gauche, en bas (au dessus de l'élément "En bas, a gauche")</source>
+			</trans-unit>
+			<trans-unit id="position.LEFT_CENTER">
+				<source>A gauche, centré</source>
+			</trans-unit>
+			<trans-unit id="position.LEFT_TOP">
+				<source>A gauche, en haut (au dessous de l'élément "En haut, a gauche")</source>
+			</trans-unit>
+			<trans-unit id="position.RIGHT_BOTTOM">
+				<source>A droite, en bas (au dessus de l'élément "En bas, a droite")</source>
+			</trans-unit>
+			<trans-unit id="position.RIGHT_CENTER">
+				<source>A droite, au centre</source>
+			</trans-unit>
+			<trans-unit id="position.RIGHT_TOP">
+				<source>A droite, en haut (au dessous de l'élément "En haut, a droite")</source>
+			</trans-unit>
+			<trans-unit id="position.TOP_CENTER">
+				<source>En haut, au centre</source>
+			</trans-unit>
+			<trans-unit id="position.TOP_LEFT">
+				<source>En haut, à gauche</source>
+			</trans-unit>
+			<trans-unit id="position.TOP_RIGHT">
+				<source>En haut, à droite</source>
+			</trans-unit>
+			<trans-unit id="type.HYBRID">
+				<source>Mixte</source>
+			</trans-unit>
+			<trans-unit id="type.ROADMAP">
+				<source>Plan</source>
+			</trans-unit>
+			<trans-unit id="type.SATELLITE">
+				<source>Satellite</source>
+			</trans-unit>
+			<trans-unit id="type.TERRAIN">
+				<source>Plan avec reliefs</source>
+			</trans-unit>
+			<trans-unit id="travel.BICYCLING">
+				<source>Vélo</source>
+			</trans-unit>
+			<trans-unit id="travel.DRIVING">
+				<source>Voiture</source>
+			</trans-unit>
+			<trans-unit id="travel.TRANSIT">
+				<source>Transport en commun</source>
+			</trans-unit>
+			<trans-unit id="travel.WALKING">
+				<source>Piéton</source>
+			</trans-unit>
+			
+			<trans-unit id="surcharge.poi">
+				<source>Point d'intéret lié</source>
+			</trans-unit>
+			<trans-unit id="surcharge.lat">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="surcharge.lng">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="surcharge.picto">
+				<source>Picto</source>
+			</trans-unit>
+			<trans-unit id="surcharge.tab">
+				<source>Géo-Localisation</source>
+			</trans-unit>
+			
+			<trans-unit id="linkHandler.tab">
+				<source>Géolocalisation</source>
+			</trans-unit>
+			<trans-unit id="linkHandler.tree">
+				<source>Arborescence : </source>
+			</trans-unit>
+			<trans-unit id="linkHandler.list">
+				<source>Enregistrements sélectionnables : </source>
+			</trans-unit>
+			<trans-unit id="linkHandler.noconf">
+				<source>Erreur de configuration: Page de cartographie non-définie ou non-valide. (Constant: plugin.tx_egmap.settings.detailPid )</source>
+			</trans-unit>
+
+			<trans-unit id="poi.choose">
+				<source>Choisir ce point de retrait : </source>
+			</trans-unit>
+
+			<trans-unit id="cat.checkAll">
+				<source>Cocher tout</source>
+			</trans-unit>
+			<trans-unit id="cat.uncheckAll">
+				<source>Décocher tout</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

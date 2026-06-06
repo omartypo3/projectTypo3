@@ -1,0 +1,78 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:vh="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+<f:layout name="Content"/>
+<f:section name="Configuration">
+  <flux:form id="newsletterfooter" options="{icon: 'EXT:stratis_newsletter/Resources/Public/Icons/Example.gif', group: 'stratisnewsletters'}" label="[Newsletter] Informations en bas de page" description="Affiche le pied de page de la newsletter">
+    <flux:field.inline.fal name="picto" label="Logo" size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" required="true" />
+    <flux:field.input label="Titre" name="name"/>
+    <flux:field.text label="Adresse" name="address"/>
+    <flux:field.input label="Nous contacter" name="contactLien" />
+    <flux:field.input label="Titre suivre" name="titleFollow" default="Suivez-nous !"/>
+    <flux:field.text label="Texte suivre" name="textFollow" default="On est déjà 50K abonnés"/>
+    <flux:field.text label="Mentions légales zone" name="textBig"/>    
+    <flux:field.input label="Désinscription" name="linknSinscrire" />
+    <flux:form.sheet name="tab2" label="Réseau social">      
+      <flux:form.section name="panels" label="Réseaux sociaux">
+        <flux:form.object name="panel" label="Ajouter un réseau social">
+          <flux:field.select name="socialIcon" label="Réseau social" items="{0:'Facebook',1:'X',2:'YouTube',3:'Instagram',4:'Linkedin',5:'TikTok'}"/>          
+          <flux:field.input name="link" />
+        </flux:form.object>
+      </flux:form.section>
+    </flux:form.sheet>
+  </flux:form>
+</f:section>
+<f:section name="Preview">
+  <b> Informations en bas de page</b>  
+</f:section>
+<f:section name="Main">
+
+  <v:variable.set name="pathImages" value="EXT:stratis_newsletter/Resources/Public/Images/" />
+  
+  <v:variable.set name="archiveLink" value="{f:cObject(typoscriptObjectPath:'lib.absoluteUri', data:'{parameter:link}')}" />
+  <v:variable.set name="archiveLinkTitle" value="{v:l(key:'newsletter.consultArchives')}"/>  
+
+  <f:comment>
+    <v:variable.set name="unsubscribeLink" value="{f:cObject(typoscriptObjectPath:'lib.absoluteUri', data:'{parameter:linknSinscrire}')}" />
+  </f:comment>  
+  <v:variable.set name="unsubscribeLink" value="[[UNSUB_LINK_FR]]" />
+  <v:variable.set name="unsubscribeLinkTitle" value="{v:l(key:'newsletter.unsubscribe')}" />
+
+  {f:cObject(typoscriptObjectPath:'lib.absoluteUri', data:'{parameter:contactLien}') -> v:variable.set(name:'email')}
+
+  <v:variable.set name="email" value="{f:uri.typolink(parameter:email)}" />
+  <v:variable.set name="emailIcon" value="{f:uri.image(src:'{pathImages}newsletter/icons/envelope.png')}" />
+  <v:variable.set name="emailTitle" value="{v:l(key:'newsletter.email')}" />
+    
+  <f:if condition="{picto}">  
+  {v:content.resources.fal(field: 'picto', record: record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement')}    
+    <f:if condition="{mediaElement}">
+      <v:variable.set name="picto" value="{f:uri.image(src:mediaElement.url,width:'306c',absolute:1)}"/>
+    </f:if>
+  </f:if>   
+
+  <v:variable.set name="logoLink" value="{v:site.url()}" />  
+
+  <f:render partial="NewsletterFooter.html"
+            arguments="{
+                  titleFollow:titleFollow,
+                  textFollow:textFollow,
+                  textBig:textBig,
+                  logoLink:logoLink,                  
+                  archiveLink:archiveLink,
+                  archiveLinkTitle:archiveLinkTitle,                  
+                  unsubscribeLink:unsubscribeLink,
+                  unsubscribeLinkTitle:unsubscribeLinkTitle,
+                  picto:picto,           
+                  name:name,
+                  address:address,      
+                  email:email,
+                  emailIcon:emailIcon,
+                  emailTitle:emailTitle,            
+                  panels:panels
+                  }"/>
+</f:section>
+</html>

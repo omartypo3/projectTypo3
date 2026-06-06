@@ -1,0 +1,41 @@
+# customsubcategory=tx_dpnglossary_Template= Templates
+# customsubcategory=tx_dpnglossary_Settings= Settings
+# customsubcategory=tx_dpnglossary_Pagination= Pagination
+e_magineurs.tx_dpnglossary {
+	view {
+		# cat=Configuration du Glossaire/tx_dpnglossary_Template; type=string; label= Chemin du dossier Templates
+		templateRootPath = 	dpnglossary/Templates/
+		# cat=Configuration du Glossaire/tx_dpnglossary_Template; type=string; label= Chemin du dossier Partials
+		partialRootPath = 	dpnglossary/Partials/
+		# cat=Configuration du Glossaire/tx_dpnglossary_Template; type=string; label= Chemin du dossier Layouts
+		layoutRootPath = dpnglossary/Layouts/
+	}
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=string; label= Id du dossier de stockage des enregistrements
+	storagePid = 10
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=int+; label= Id page liste
+	detailPage = 78
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=int+; label= Id page détail
+	listPage = 67
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=string; label= Pages à inclure dans la recherche (0 = toutes)
+	parsingPids = 0
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=string; label= Pages à exclure de la recherche
+	parsingExcludePidList =
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=int; label= Nombre de mot à rechercher par page (-1 = tous)
+	maxReplacementPerPage = -1
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=string; label= Tags HTML à inclure dans la recherche
+	parsingTags = p
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=string; label= Tags HTML à exlure de la recherche
+	forbiddenParentTags = a,script
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=string; label= Class à exlure de la recherche
+	forbiddenParsingTagClasses = 
+	# cat=Configuration du Glossaire/tx_dpnglossary_Settings; type=options[normal,character,pagination]; label=Liste mode: normal, character ou pagination
+	listmode = pagination
+	pagination {
+		# cat=Configuration du Glossaire/tx_dpnglossary_Pagination; type=string; label= Lettres de l'abécédaire
+		characters = A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+		# cat=Configuration du Glossaire/tx_dpnglossary_Pagination; type=boolean; label= Afficher la pagination avant la liste
+		insertAbove = 1
+		# cat=Configuration du Glossaire/tx_dpnglossary_Pagination; type=boolean; label= Afficher la pagination après la liste
+		insertBelow = 0
+	}
+}

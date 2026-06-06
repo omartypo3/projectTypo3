@@ -1,0 +1,183 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+<f:section name="content">
+	<f:switch expression="{settings.templateLayout}">
+		<f:case value="55">
+			<div class="news-search-form search-form-actu">
+				<h3 role="heading" aria-level="2">Recherche</h3>
+				<div class="news-filter">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}">
+						<div class="row justify-content-center">
+							<div class="col-xl-auto col-lg-12 d-flex">
+								<div class="form-group">
+									<label for="news-subject">Par mot(s) clé(s)</label>
+									<f:form.textfield id="news-subject" property="subject" class="form-control"/>
+								</div>
+								<div class="form-group">
+									<label for="news-cat">Par Thématique</label>
+									<f:form.select property="catEvent" class="custom-select" options="{categories.1 -> v:iterator.slice(start: '1', length: '{categories.1 -> f:count()}')}" id="news-cat" prependOptionLabel="Thématique" prependOptionValue="0" />
+								</div>
+							</div>
+							<div class="col-xl-auto col-lg-12 d-flex justify-content-center">
+								<div class="form-submit-agenda">
+									<button value="Rechercher" class="btn btn-animate btn-vert" title="Rechercher des résultats sur la page {v:page.info(field:'title',pageUid:contentObjectData.pid)}">Rechercher</button>
+								</div>
+							</div>
+						</div>
+						<f:form.hidden property="section" class="custom-select" />
+					</f:form>
+					<div class="row filter-buttons">
+						<f:link.page pageUid="{settings.listPid}" additionalParams="{tx_news_pi1: {'search': '{section: 1}'}}" class="filter-button btn btn-animate btn-rose">
+							Actualités
+						</f:link.page>
+						<f:link.page pageUid="{settings.listPid}" additionalParams="{tx_news_pi1: {'search': '{section: 2}'}}" class="filter-button btn btn-animate btn-rose">
+							Communiqués de presse
+						</f:link.page>
+					</div>
+				</div>				
+			</div>
+		</f:case>
+		<f:case value="56">
+			<div class="news-search-form search-form-actu">
+				<h3>Recherche</h3>
+				<f:form object="{search}" name="search" pageUid="{settings.listPid}">
+					<fieldset>
+						<div class="row justify-content-center">
+							<div class="col-xl-auto col-lg-12 d-flex">
+								<div class="form-group">
+									<label for="news-cat">Par Thématique</label>
+									<f:form.select property="catEvent" class="custom-select" options="{categories.4}" id="news-cat" prependOptionLabel="Thématique" prependOptionValue="0" />
+								</div>
+							</div>
+							<div class="col-xl-auto col-lg-12 d-flex justify-content-center">
+								<div class="form-submit-agenda">			
+									<button value="Rechercher" class="btn btn-animate btn-vert">Rechercher</button>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</f:form>
+			</div>
+		</f:case>
+		<f:case value="57">
+			<div class="news-search-form search-form-actu">
+				<h3>Recherche</h3>
+				<f:form object="{search}" name="search" pageUid="{settings.listPid}">
+					<fieldset>
+						<div class="row justify-content-center">
+							<div class="col-xl-auto col-lg-12 d-flex">
+								<div class="form-group">
+									<label for="news-cat">Par Ville</label>
+									<f:form.select property="catEvent" class="custom-select" options="{categories.5}" id="news-cat" prependOptionLabel="Toutes les villes" prependOptionValue="0" />
+								</div>
+							</div>
+							<div class="col-xl-auto col-lg-12 d-flex justify-content-center">
+								<div class="form-submit-agenda">			
+									<button value="Rechercher" class="btn btn-animate btn-vert">Rechercher</button>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</f:form>
+			</div>
+		</f:case>
+		<f:case value="60">
+			<div class="news-search-form">
+				<h3>Recherche</h3>
+				<f:form object="{search}" name="search" pageUid="{settings.listPid}">
+					<fieldset>
+						<div class="recherche-agenda-fields row">
+							<div class="col-xl-auto col-lg-12 d-flex">
+								<div class="form-group">
+									<label for="news-subject">Par mot(s) clé(s)</label>
+									<f:form.textfield id="news-subject" property="subject" class="form-control"/>
+								</div>						
+								<!--<div class="form-group">
+									<label for="news-minimumDate">Date Début <span>(JJ/MM/AAAA)</span></label>
+									<f:form.textfield id="news-minimumDate" value="À partir du" property="minimumDate" type="text" class="form-control"/>
+								</div>-->
+								<div class="form-group">
+									<label for="news-sameDate">Par date <span>(JJ/MM/AAAA)</span></label>
+									<f:form.textfield id="news-maximumDate" property="sameDate" type="text" class="form-control"/>
+								</div>
+							</div>
+							<div class="col-xl-auto col-lg-12 d-flex">
+								<div class="form-group">
+									<label for="news-catEvent">Par Thématique</label>
+									<f:form.select property="catEvent" class="custom-select" options="{categories.2}" id="news-catEvent" prependOptionLabel="Toutes les thématiques" prependOptionValue="0" />
+								</div>
+								<div class="form-group">
+									<label for="news-cat">Par Ville</label>
+									<f:form.select property="catEvent2" class="custom-select" options="{categories.3}" id="news-cat" prependOptionLabel="Toutes les villes" prependOptionValue="0" />
+								</div>
+							</div>
+							<div class="col-xl-auto col-lg-12 d-flex justify-content-center">
+								<div class="form-submit-agenda">
+									<input type="reset" class="btn btn-gris-fonce" value="Effacer">
+									<button value="Rechercher" class="btn btn-animate btn-vert">Rechercher</button>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</f:form>
+			</div>
+		</f:case>
+
+		<f:case value="92">
+			<div class="publications-search-form">				
+				<h3>FILTRES	</h3>
+				<div class="publications-filter">
+					<f:form object="{search}" name="search" pageUid="{settings.listPid}">
+						<fieldset>
+							<div class="row">
+								<div class="col-lg-10 d-flex">
+									<div class="form-group">
+										<label for="publication-subject">Par mot(s) clé(s)</label>
+										<f:form.textfield id="publication-subject" property="subject" class="form-control"/>
+									</div>
+									<div class="form-group">
+										<label for="publications-cat">Par Thématique</label>										
+										<f:form.select property="catEvent" class="custom-select" options="{categories.6 -> v:iterator.slice(start: '1', length: '{categories.6 -> f:count()}')}" id="publications-cat" prependOptionLabel="Thématique" prependOptionValue="0" />
+									</div>
+								</div>
+								<div class="col-lg-2 d-flex justify-content-end">
+									<div class="form-submit-publication">
+										<button value="Rechercher" class="btn btn-animate btn-vert" title="Rechercher des résultats sur la page {v:page.info(field:'title',pageUid:contentObjectData.pid)}">Rechercher</button>
+									</div>
+								</div>
+							</div>
+						</fieldset>						
+						<f:form.hidden property="section" class="custom-select" />
+					</f:form>					
+				</div>				
+			</div>
+		</f:case>
+
+		<f:defaultCase>			
+			<div class="news-search-form">
+				<f:form object="{search}" name="search" pageUid="{settings.listPid}">
+					<fieldset>
+						<div class="form-group">
+							<label for="news-subject"><f:translate key="search-subject" /></label>
+							<f:form.textfield id="news-subject" property="subject" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label for="news-cat">Catégorie</label>
+							<f:form.select property="catEvent" options="{categories.0}" id="news-cat" prependOptionLabel="Thématique" prependOptionValue="0" />
+						</div>
+						<div class="form-group">
+							<label for="news-minimumDate"><f:translate key="search-minimumDate" /></label>
+							<f:form.textfield id="news-minimumDate" property="minimumDate" type="date" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label for="news-maximumDate"><f:translate key="search-maximumDate" /></label>
+							<f:form.textfield id="news-maximumDate" property="maximumDate" type="date" class="form-control"/>
+						</div>
+						<button value="Rechercher" class="btn btn-default">Rechercher</button>
+					</fieldset>
+				</f:form>
+			</div>			
+		</f:defaultCase>
+	</f:switch>
+</f:section>
+</html>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file  source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-02-06T10:35:09Z" product-name="dsl_produkte">
+		<header/>
+		<body>
+			<trans-unit id="tx_dslprodukte_domain_model_kategorien">
+				<source>Marktsegment</source>
+				<target state="translated">Marktsegment</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_anwendungsbereiche">
+				<source>Werkstoffe</source>
+				<target state="translated">Werkstoffe</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_eigenschaften">
+				<source>Eigenschaften</source>
+				<target state="translated">Eigenschaften</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.sortierung">
+				<source>Sortierung</source>
+				<target state="translated">Sortierung</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.absteigend">
+				<source>Absteigend</source>
+				<target state="translated">Absteigend</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.aufsteigend">
+				<source>Aufsteigend</source>
+				<target state="translated">Aufsteigend</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.datum">
+				<source>Datum</source>
+				<target state="translated">Datum</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.pro">
+				<source>pro</source>
+				<target state="translated">pro</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.alle">
+				<source>Alle</source>
+				<target state="translated">Alle</target>
+			</trans-unit>	
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.seite">
+				<source>Seite</source>
+				<target state="translated">Seite</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.seiten">
+				<source>Seiten</source>
+				<target state="translated">Seiten</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.eintraege">
+				<source>Einträge</source>
+				<target state="translated">Einträge</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.auswahl">
+				<source>Auswahl</source>
+				<target state="translated">Auswahl</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.loading_please_wait">
+				<source>Daten werden geladen, bitte warten...</source>
+				<target state="translated">Daten werden geladen, bitte warten...</target>
+			</trans-unit>	
+					
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.highlight_more">
+				<source>Alle Produktbeispiele</source>
+				<target state="translated">Alle Produktbeispiele</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.browser.weiter">
+				<source>Nächstes Produkt</source>
+				<target state="translated">Nächstes Produkt</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.browser.zurueck">
+				<source>Vorheriges Produkt</source>
+				<target state="translated">Vorheriges Produkt</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.browser.uebersicht">
+				<source>Zurück zur Übersicht</source>
+				<target state="translated">Zurück zur Übersicht</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_filter.filter-loeschen">
+				<source>Alle Filter zurücksetzen</source>
+				<target state="translated">Alle Filter zurücksetzen</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.filter.keine_ergebnisse.ueberschrift">
+				<source>Keine passenden Referenzen gefunden</source>
+				<target state="translated">Keine passenden Referenzen gefunden</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.filter.keine_ergebnisse.text">
+				<source>Bitte erweitern Sie Ihre Auswahl oder setzen Sie den Filter zurück. </source>
+				<target state="translated">Bitte erweitern Sie Ihre Auswahl oder setzen Sie den Filter zurück.</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_produkte.filter.keine_ergebnisse.button">
+				<source>Alle Filter zurücksetzen</source>
+				<target state="translated">Alle Filter zurücksetzen</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_highlights_list.heading">
+				<source>Produktbeispiele</source>
+				<target state="translated">Produktbeispiele</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model.more">
+				<source>Mehr Infos</source>
+				<target state="translated">Mehr Infos</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_dslprodukte_domain_model_detail.description">
+				<source>Beschreibung</source>
+				<target state="translated">Beschreibung</target>
+			</trans-unit>
+			
+			
+			
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.fahrzeugempfehlung">
+				<source>Fahrzeugempfehlung</source>
+				<target state="translated">Fahrzeugempfehlung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.produktempfehlung">
+				<source>Produktempfehlung</source>
+				<target state="translated">Produktempfehlung</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.guten_tag">
+				<source>Guten Tag</source>
+				<target state="translated">Guten Tag</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.text1">
+				<source>Text1</source>
+				<target state="translated">ich habe bei</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.text2">
+				<source>Text2</source>
+				<target state="translated">ein Produkt gesehen, das Ihnen gefallen könnte.</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.text3">
+				<source>Text3</source>
+				<target state="translated">Produktdaten:</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.text4">
+				<source>Text4</source>
+				<target state="translated">Durch Klick auf den Link gelangen Sie direkt zum Produkt:</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.text5">
+				<source>Text5</source>
+				<target state="translated">Weitere interessante Produkte finden Sie bei</target>
+			</trans-unit>
+			<trans-unit id="tx_dslprodukte_domain_model_detail_empfehlung.text6">
+				<source>Text6</source>
+				<target state="translated">Viele Grüße und viel Spaß beim Stöbern!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

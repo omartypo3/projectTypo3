@@ -1,0 +1,139 @@
+{namespace core=TYPO3\CMS\Core\ViewHelpers}
+<f:layout name="Localize" />
+
+<f:section name="main">
+	<f:if condition="{confok}">
+		<f:then>
+		<f:if condition="{tables}">
+			<f:then>
+				<div id="egmap_finish" style="display:none">
+					<div class="typo3-messages alert alert-info">
+						<div class="message-body">
+							<f:translate key="be.localize.finish" />
+						</div>
+					</div>
+					<br>
+					<br>
+				</div>
+				<div class="typo3-message message-ok">
+					<div class="message-body">
+						<f:translate key="be.localize.header" />
+						<br>
+						<br>
+						<f:form style="display:flex;flex-flow: row wrap;justify-content: flex-start;margin:10px 100px 5px 10px;color:black;" action="index" id="EGmapForm">
+							<span style="padding: 0 20px;">
+								<select id="table" name="tx_egmap_web_egmapgmap[table]">
+									<option value="" ><f:translate key="be.localize.chooseTable" /></option>
+									<f:for each="{tables}" as="table">
+										<f:if condition="{request}=={table.table}">
+											<f:then>
+												<option value="{table.table}" selected="selected">
+													{table.label} [{table.table}]
+												</option>
+											</f:then>
+											<f:else>
+												<option value="{table.table}">
+													{table.label} [{table.table}]
+												</option>
+											</f:else>
+										</f:if>
+									</f:for>
+								</select>
+							</span>
+						</f:form>
+						<f:if condition="{rows}">
+							<br>
+							<br>
+							<div style="display:flex;flex-flow: column wrap;justify-content: flex-start;margin:10px 100px 5px 10px;">
+								<span>
+									<span><f:translate key="be.localize.pattern" /></span>
+									<strong>{rows.pattern}</strong>
+								</span>
+								<span>
+									<span><f:translate key="be.localize.lat" /></span>
+									<strong>{rows.lat}</strong>
+								</span>
+								<span>
+									<span><f:translate key="be.localize.lng" /></span>
+									<strong>{rows.lng}</strong>
+								</span>
+								<span>
+									<span><f:translate key="be.localize.total" /></span>
+									<strong>{rows.total}</strong>
+								</span>
+								<span>
+									<span><f:translate key="be.localize.toLocalize" /></span>
+									<strong>{rows.toLocalize}</strong>
+								</span>
+							</div>
+							<f:if condition="{rows.toLocalize}">							
+								<span style="display:flex;flex-flow: row wrap;justify-content: flex-end;padding: 0 30px;">	
+									<strong style="margin: 0 10px;"><f:translate key="be.localize.start" /></strong>
+                                    <a href="#" onClick="EGmapLocalize();"><core:Icon identifier="actions-view-paging-next" /></a>
+								</span>
+								<div style="display:none;">
+									<span id="egmap_bouton_ok">
+										<f:render partial="Localize/Icon" arguments="{ok: 1}" />
+									</span>
+									<span id="egmap_bouton_error">
+										<f:render partial="Localize/Icon" arguments="{error: 1}" />
+									</span>
+								</div>
+							</f:if>
+							<br>
+							<br>
+							<table cellpadding="0" cellmargin="0" cellspacing="0" class="typo3-dblist"  style="text-align: center;">
+								<thead>
+								<tr class="t3-row-header">
+									<td><span><f:translate key="be.localize.row.title" /></span></td>
+									<td><span><f:translate key="be.localize.row.coord" /></span></td>
+									<td><span><f:translate key="be.localize.row.lat" /></span></td>
+									<td><span><f:translate key="be.localize.row.lng" /></span></td>
+									<td><span><f:translate key="be.localize.row.status" /></span></td>
+								</tr>
+								</thead>
+								<tbody>
+								<f:for each="{rows.rows}" as="row">
+									<tr class="egmap_localize db_list_normal {f:if(condition: row.status, then: 'egmap_ok', else: 'egmap_todo')}" id="{row.key}">
+										<td>
+											<a href="#" class="t3-js-clickmenutrigger" data-table="{row.table}" data-uid="{row.uid}" data-listframe="1" data-iteminfo="%2Bedit">
+												{row.title}
+											</a>
+										</td>
+										<td><span id="coord_{row.key}">{row.coord}</span></td>
+										<td><span id="lat_{row.key}">{row.lat}</span></td>
+										<td><span id="lng_{row.key}">{row.lng}</span></td>
+										<td><span id="status_{row.key}"><f:render partial="Localize/Icon" arguments="{ok: row.status}" /></span></td>
+									</tr>
+								</f:for>
+								</tbody>
+							</table>
+							
+							<f:if condition="{debug}">
+								<br>
+								<br>
+								<br>
+								<f:debug inline="true">{settings}</f:debug>
+							</f:if>
+						</f:if>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="typo3-message message-notice">
+					<div class="message-body">
+						<f:translate key="be.localize.noTable" />
+					</div>
+				</div>
+			</f:else>
+		</f:if>
+		</f:then>
+		<f:else>
+			<div class="typo3-message message-error">
+				<div class="message-body">
+					<f:translate key="be.localize.noConf" />
+				</div>
+			</div>
+		</f:else>
+	</f:if>
+</f:section>

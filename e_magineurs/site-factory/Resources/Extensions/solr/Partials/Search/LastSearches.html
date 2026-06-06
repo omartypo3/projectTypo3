@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers">
+
+<f:section name="LastSearches">
+	<s:lastSearches>
+		<div id="tx-solr-lastsearches" class="secondaryContentSection">
+			<div class="csc-header">
+				<h3 class="csc-firstHeader"><f:translate key="lastSearches" extensionName="e_magineurs">Last searches</f:translate></h3>
+			</div>
+			<ul>
+				<f:for each="{lastSearches}" as="searchedFor">
+					<li>
+						<a href="{s:uri.search.startNewSearch(queryString: searchedFor)}" class="solr-ajaxified">{searchedFor}</a>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</s:lastSearches>
+</f:section>
+
+</html>

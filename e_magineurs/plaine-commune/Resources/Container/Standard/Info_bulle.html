@@ -1,0 +1,30 @@
+<div class="block_bulle_info">
+	
+	<f:if condition="{data.flexform_cookie} == 1">
+		<input type="hidden" class="cookieTime" value="{data.flexform_timecookie}">
+	</f:if>
+
+	<a href="javascript:void(0)" class="close_info_bulle">
+		<span></span>
+		<span></span>
+	</a>
+
+	<f:if condition="{data.flexform_cadre} == 1">
+		<f:then>
+			<div class="case_bulle_info" style="border: {data.flexform_large}px solid {data.flexform_color}">
+		</f:then>
+		<f:else>
+			<div class="case_bulle_info">
+		</f:else>
+	</f:if>
+		
+		<div class="contenu_info_bulle">
+			<f:cObject typoscriptObjectPath="lib.imageGridInfoBulle" data="{sourceUid: data.uid}" />
+			<f:for each="{children_85}" as="record">
+				<f:format.html>
+					{record.renderedContent}
+				</f:format.html>
+			</f:for>
+		</div>
+	</div>
+</div>

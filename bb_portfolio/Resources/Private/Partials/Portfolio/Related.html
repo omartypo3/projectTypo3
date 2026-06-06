@@ -1,0 +1,31 @@
+ <f:if condition="{portfolio.related}">
+	<!--TYPO3SEARCH_end-->
+
+	<div class="whiteContainer pBottomReset">
+		<div class="container aligncenter">
+			<h2 class="h1-soloTitle">Ähnliche Projekte</h2>
+		</div>
+		<div class="row aehnlicheProjekte">
+			<f:for each="{portfolio.related}" as="related" iteration="iterator"><f:if condition="{iterator.cycle}<3">
+				<div class="col-md-6 projektContainer">
+					<f:render partial="Portfolio/RelatedTeaser" arguments="{portfolio:related}" />
+				</div>
+				
+				
+				<f:if condition="{iterator.isLast}"><f:if condition="{iterator.cycle}%2">			
+					<div class="col-md-6 projektContainer hidden-sm hidden-xs">
+						<f:render partial="Portfolio/EmptyTeaser" />
+					</div>
+				</f:if></f:if>
+				
+			</f:if>
+			
+			
+			</f:for>
+			
+		</div>
+	</div>
+
+	
+	<!--TYPO3SEARCH_begin-->
+</f:if>

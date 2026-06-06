@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers">
+
+<f:section name="FrequentlySearched">
+	<s:frequentlySearched>
+		<f:if condition="{frequentSearches}">
+			<div id="tx-solr-frequent-searches" class="secondaryContentSection">
+				<div class="csc-header">
+					<h2><f:translate key="frequentSearches" extensionName="e_magineurs">Frequently searched</f:translate></h2>
+				</div>
+				<ul>
+					<f:for each="{frequentSearches}" as="searchedForInfo" iteration="iterator">
+						<f:if condition="{iterator.cycle} <= 12">
+							<li class="col-sm-6 {searchedForInfo.class}">
+								<a href="{s:uri.search.startNewSearch(queryString: searchedForInfo.q)}" class="solr-ajaxified">{searchedForInfo.q}</a>
+							</li>
+						</f:if>
+					</f:for>
+				</ul>
+			</div>
+		</f:if>
+	</s:frequentlySearched>
+</f:section>
+
+</html>

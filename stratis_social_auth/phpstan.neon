@@ -1,0 +1,24 @@
+includes:
+    - vendor/jangregor/phpstan-prophecy/extension.neon
+    - vendor/saschaegerer/phpstan-typo3/extension.neon
+
+parameters:
+  level: 5
+
+  paths:
+    - ext_emconf.php
+    - ext_localconf.php
+    - Classes
+    - Tests
+    - Configuration
+
+  ignoreErrors:
+    - message: '#Variable \$_EXTKEY might not be defined#'
+      path: '*/ext_emconf.php'
+    - message: '#fetch(All)?Associative\(\) on Doctrine\\DBAL\\Driver\\Statement#'
+      path: '*/Classes/*'
+    - message: '#ObjectStorage\) does not accept TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage#'
+      path: '*/Classes/*'
+    - message: '#AbstractUserAuthentication::(g|s)(etKey|toreSessionData)\(\)#'
+      path: '*/Classes/*'
+  reportUnmatchedIgnoredErrors: false

@@ -1,0 +1,112 @@
+<f:layout name="Default" />
+This Template is responsible for creating a table of domain objects.
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:section name="content">
+<f:flashMessages />
+<f:comment>minZimmer: {zMin}</f:comment>
+<div class="panel panel-space panel-default recordlist">
+<div class="panel-heading">
+					Immobilien (<span class="t3js-table-total-items">{f:count(subject: immobilies)}</span>) 
+					</div>
+<div id="recordlist-tx_dslimmo_domain_model_immobilie" class="collapse in" data-state="expanded">
+<div class="table-fit">
+<table  class="immolisting table table-striped table-hover"  data-table="tx_dslimmo_domain_model_immobilie" >
+	<thead>
+	<tr>
+		
+		<th class="col-clipboard nowrap" title="Highlight">HL</th>
+		<th>Nummer</th>
+		<th>Bild</th>
+		<th>3D-Rundgang</th>
+		<th>Titel</th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.dreizeiler" /></th>
+		<th>Lage</th>
+		<th>Ausstattung</th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.objektbeschreibung" /></th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.sonstigeangaben" /></th>
+		<f:comment><th>Anhänge</th></f:comment>
+		<th>Vermarktung</th>
+		<th>Fläche</th>
+		<th>Preis</th>
+		<th>Erstellt</th>
+		<th>letztes Update</th>
+		<f:comment><th>in x importen</th></f:comment>
+	</tr>
+	</thead>
+	<tbody>
+	<f:for each="{immobilies}" as="immobilie">
+		<tr>
+			
+			<td class="col-control nowrap">
+				<div class="btn-group" role="group">
+					
+					<f:link.action action="togglehighlight" arguments="{immobilieUid : immobilie.uid}" class="btn btn-default t3js-record-hide"><span class="t3js-icon icon icon-size-small icon-state-default icon-actions-edit-hide" >
+				<span class="icon-markup"><img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-system-shortcut-{f:if(condition: immobilie.highlight, then: 'active', else: 'new')}.svg" width="16" height="16"></span>
+				</span></f:link.action>
+					
+					
+				
+				</div>
+			</td>
+			
+			<td><f:link.action action="beshow" arguments="{immobilie : immobilie}">{immobilie.openimmoobid}</f:link.action><br>(Intern: {immobilie.uid} / Extern: {immobilie.objektNrextern})</td>
+			<td><f:if condition="{immobilie.titelBild}">
+				
+					<f:image src="{immobilie.titelBild.datei.originalResource.originalFile.uid}" maxHeight="50" maxWidth="50" />
+						
+				</f:if></td>
+			<td class="col-control nowrap editBtnWidthText">
+				<div class="btn-group" role="group">
+					
+					
+					
+					<f:link.action action="edit" arguments="{immobilie : immobilie}" class="btn btn-default t3js-record-hide"><span class="t3js-icon icon icon-size-small icon-state-default icon-actions-open" data-identifier="actions-open">
+	<span class="icon-markup">
+<img src="/typo3/sysext/core/Resources/Public/Icons/T3Icons/actions/actions-open.svg" width="16" height="16">
+	</span></span><f:if condition="{immobilie.additionalHtmlField}"><f:then>Ja</f:then><f:else>Nein</f:else></f:if></f:link.action>
+					
+				
+				</div>
+			</td>
+			<td><div title="{immobilie.objekttitel}"><f:format.crop maxCharacters="30">{immobilie.objekttitel}</f:format.crop></div></td>
+			<td><div title="{immobilie.dreizeiler}"><f:format.crop maxCharacters="30">{immobilie.dreizeiler}</f:format.crop></div></td>
+			<td><div title="{immobilie.lage}"><f:format.crop maxCharacters="30">{immobilie.lage}</f:format.crop></div></td>
+			<td><div title="{immobilie.ausstattbeschr}"><f:format.crop maxCharacters="30">{immobilie.ausstattbeschr}</f:format.crop></div></td>
+			<td><div title="{immobilie.objektbeschreibung}"><f:format.crop maxCharacters="30">{immobilie.objektbeschreibung}</f:format.crop></div></td>
+			<td><div title="{immobilie.sonstigeangaben}"><f:format.crop maxCharacters="30">{immobilie.sonstigeangaben}</f:format.crop></div></td>
+			<f:comment><td><strong>{f:count(subject: immobilie.anhaenge)}</strong>:
+				<f:for each="{immobilie.anhaenge}" as="anhang">
+					<div>{anhang.datei.uid}:{anhang.datei.originalResource.originalFile.uid}:{anhang.datei.originalResource.title}:{anhang.datei.originalResource.identifier}</div><f:comment><f:debug title="anhang">{anhang.datei.uid}</f:debug></f:comment>
+				</f:for>
+			</td></f:comment>
+			<td>{f:translate(key: 'tx_dslimmo_domain_model_immobilie.search_vermarktung.{immobilie.searchVermarktung}')}<br><f:translate key="tx_dslimmo_domain_model_immobilie.search_objekt_typ.{immobilie.searchObjektTyp}" /></td>
+			<td>
+				<f:if condition="{immobilie.flaechenWohnflaeche}">
+					<div>Wohnfläche: <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.flaechenWohnflaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></div>
+				</f:if>
+				<f:if condition="{immobilie.flaechenGrundstuecksflaeche}">
+					<div>Grundstücksfläche: <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.flaechenGrundstuecksflaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></div>
+				</f:if>
+				<f:if condition="{immobilie.flaechenNutzflaeche}">
+					<div>Nutzfläche: <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.flaechenNutzflaeche,currencySign:'',prependCurrency:'false',thousandsSeparator:'.'}" />m<sup>2</sup></div>
+				</f:if>
+			</td>
+			<td><f:if condition="{immobilie.searchVermarktung} == 's1020'"><f:then>Kaufpreis</f:then><f:else>Mietpreis</f:else></f:if>:<br> <f:render partial="Allgemein/ZahlKuerzung" arguments="{zahl:immobilie.searchPreis,currencySign:'€',prependCurrency:'false',thousandsSeparator:'.'}" /></td>
+			
+			<td><f:format.date format="d.m.Y">{immobilie.crdate}</f:format.date><br><f:format.date format="H:i:s">{immobilie.crdate}</f:format.date> Uhr</td>
+			<td><f:format.date format="d.m.Y">{immobilie.tstamp}</f:format.date><br><f:format.date format="H:i:s">{immobilie.tstamp}</f:format.date> Uhr</td>
+			<f:comment><td>{f:count(subject: immobilie.importe)}<f:for each="{immobilie.importe}" as="import">/{import.uid}</f:for></td></f:comment>
+		</tr>
+		</tbody>
+	</f:for>
+</table>
+</div>
+</div>
+	</div>
+</f:section>

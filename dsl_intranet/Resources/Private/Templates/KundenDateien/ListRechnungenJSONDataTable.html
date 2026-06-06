@@ -1,0 +1,32 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+
+<f:if condition="{sortField}">
+	<f:then>
+
+		<v:iterator.sort as="dateiensSorted" subject="{dateiens}" sortBy="{sortField}" order="{sortDir}" sortFlags="SORT_STRING,SORT_FLAG_CASE">
+
+			<f:for each="{dateiensSorted}" as="dateien" iteration="iterator">
+
+				{f:if(condition: '{iterator.isFirst}', else: '<--line-->')}
+				<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{dateien.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+					<f:render partial="KundenDateien/ListRechnungenJSONDataTableRow" arguments="{_all}" />
+				</v:resource.file>
+
+			</f:for>
+
+		</v:iterator.sort>
+		
+	</f:then>
+	<f:else>
+		
+		
+		
+		<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{dateien.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+			<f:render partial="KundenDateien/ListRechnungenJSONDataTableRow" arguments="{_all}" />
+		</v:resource.file>
+
+		
+		
+	</f:else>
+</f:if>

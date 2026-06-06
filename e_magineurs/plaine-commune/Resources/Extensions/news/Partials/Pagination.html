@@ -1,0 +1,39 @@
+<f:if condition="{pagination}">
+    <f:if condition="{pagination.pagination.numberOfPages} > 1">
+        <nav aria-label="pagination">
+            <ul class="pagination">
+                <f:if condition="{pagination.pagination.previousPageNumber}">
+                    <li class="page-item">
+                        <f:link.action arguments="{currentPage: pagination.pagination.previousPageNumber}" class="page-link" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </f:link.action>
+                    </li>
+                </f:if>
+
+                <f:for each="{pagination.pagination.pages}" as="page">
+                    <f:if condition="{page.isCurrent}">
+                        <f:then>
+                            <li class="page-item active">
+                                <span class="page-link">{page.number}</span>
+                            </li>
+                        </f:then>
+                        <f:else>
+                            <li class="page-item">
+                                <f:link.action arguments="{currentPage: page.number}" class="page-link">{page.number}</f:link.action>
+                            </li>
+                        </f:else>
+                    </f:if>
+                </f:for>
+
+                <f:if condition="{pagination.pagination.nextPageNumber}">
+                    <li class="page-item">
+                        <f:link.action arguments="{currentPage: pagination.pagination.nextPageNumber}" class="page-link" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </f:link.action>
+                    </li>
+                </f:if>
+            </ul>
+        </nav>
+    </f:if>
+</f:if>
+

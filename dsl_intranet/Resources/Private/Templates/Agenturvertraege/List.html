@@ -1,0 +1,160 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	
+<f:render partial="Allgemein/UploadOverlay"  />	
+	
+<v:asset.style name="cssFileDrag">
+	.filedrag
+	{
+		font-weight: bold;
+		text-align: center;
+		padding: 10px;
+		color: #555;
+		border: 2px dashed #555;
+		border-radius: 7px;
+		cursor: pointer;
+		/*float:right;*/
+	}
+
+	.filedrag.hover,.filedrag:hover
+	{
+		border-color: #f00;
+		border-style: solid;
+		box-shadow: inset 0 3px 4px #888;
+	}
+	
+	.filedragWrapper.hover
+	{
+		/*border-color: #f00;
+		border-style: solid;
+		box-shadow: inset 0 3px 4px #888;*/
+		box-shadow: inset 0 0px 4px #f00;
+	}
+	
+	
+</v:asset.style>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/jquery.md5.js" name="jsMd5" dependencies="jquery"></v:asset.script>	
+
+	
+	
+<f:link.action action="new" pageType="89657210" controller="Agenturvertraege" class="doAjaxEdit pageToolbarButton pageToolbarButtonFirstGroup pageToolbarButtonPrimary" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '910px'}"><i class="bb-plus bb-lg"></i><span>neuer Agenturvertrag</span></f:link.action>	
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/moment-with-locales.min.js" name="jsMoment" dependencies="jquery"></v:asset.script>
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-daterangepicker-master/daterangepicker.js" name="jsDaterangepicker" dependencies="jsMoment"></v:asset.script>
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-daterangepicker-master/daterangepicker.css" name="cssDaterangepicker" dependencies="jquery"></v:asset.style>
+
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/Chart.min.js" name="jsChart"></v:asset.script>
+	
+	
+	<v:asset.style name="cssAgenturvertraege" dependencies="dslintranet">
+		.filterAgenturvertraege{padding-left:0px;padding-right:0px;padding-top:0px;width:180px;}
+		.layout-table-col-chart{width:140px;}
+		
+		#agenturvertragListEmpty{display:none;}
+		#agenturvertragListEmpty[data-agenturvertraege-counter="0"]{display:table-row-group;}
+		
+		.detailLabel{color:#b2b2b2;}
+		.detailLabelDark{color:#8c8c8c;}
+		
+
+		.chartLabel{margin-top: -90px;line-height: 14px;font-size: 12px;margin-left: 45px;width: 50px;text-align: center;height:79px;}
+		.chartLabel strong{
+		font-weight:normal;
+		}
+	</v:asset.style>
+	
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/Agenturvertraege/List.js" name="dslagenturvertraegejs" dependencies="jsDaterangepicker" />
+	<section id="agenturvertraege" data-range-min-date="{agenturvertraegeRange.minDate -> f:format.date(format: 'd.m.Y')}" data-range-max-date="{agenturvertraegeRange.maxDate -> f:format.date(format: 'd.m.Y')}" data-ajax-url="{f:uri.action(action: 'ajax', pageType: 89657210, controller: 'Agenturvertraege')}" data-show-url="{f:uri.action(action: 'show', pageType: 89657210, controller: 'Agenturvertraege')}" data-agenturvertraege-check-file-ajax-url="{f:uri.action(action: 'checkFile', pageType: 89657208, controller: 'Dateien')}">
+		<div class="input-group colorbox_form_content filterAgenturvertraege">
+			<span class="input-group-addon daterangeToggle" style="cursor: pointer;"><span class="glyphicon glyphicon-calendar"></span></span>
+			<input type="text" name="daterange" class="form-control input-sm" value="{start -> f:format.date(format: 'd.m.Y')} - {end -> f:format.date(format: 'd.m.Y')}" />
+		</div>
+		
+		
+		<div id="agenturvertraegeAccordion" class="gridelement ge_collapsible_container">
+			<div aria-multiselectable="true" role="tablist" id="agenturvertraegeList" class="panel-group">
+				<div class="dataTables_wrapper">
+					<table class="table table-striped table-bordered table-condensed table-hover dataTable no-footer" role="grid" aria-describedby="agenturvertraegeList_info" cellspacing="0">
+						
+
+						<thead>
+							<tr>
+								<th width="15">&nbsp;</th>
+								<th>Kunde</th>
+								<th width="300">Kontingent</th>
+								<th width="80">Optionen</th>
+						</tr>
+						</thead>
+						<f:if condition="{agenturvertraeges}">
+							<v:iterator.sort as="agenturvertraegesSorted" subject="{agenturvertraeges}" sortBy="kunde.name" order="ASC" sortFlags="SORT_STRING,SORT_FLAG_CASE">
+								<f:for each="{agenturvertraegesSorted}" as="agenturvertrag">
+									<f:render partial="Agenturvertraege/ListRow" arguments="{_all}" />
+								</f:for>
+							</v:iterator.sort>
+						</f:if>
+						<tbody id="agenturvertragListEmpty" data-agenturvertraege-counter="{f:count(subject: agenturvertraeges)}"><tr><td colspan="4"><center>keine Agenturverträge gefunden</center></td></tr></tbody>
+
+
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		<f:comment><f:debug title="avOhneZuordnung">{avOhneZuordnung}</f:debug></f:comment>
+		
+		
+		<f:if condition="{avOhneZuordnung}">
+			
+			<div class="text-danger"><strong>Achtung folgende Aufträge vom Typ Agenturvertrag konnten nicht zugeordnet werden.</strong></div>
+			
+			<table id="agenturvertragAuftraegeOhneZuordnungList" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+					<tr>
+						<th>von</th>
+						<th>Kunde / Auftragsnummer / Bezeichnung</th>
+						<th>Status</th>
+						
+					</tr>
+					</thead>
+					<tbody>
+						<f:for each="{avOhneZuordnung}" as="auftrag">
+							<tr id="agenturvertragListAuftraegeAuftrag_{auftrag.uid}">
+								<td data-sort="{f:format.date(date: auftrag.datumAbschluss, format: 'YmdHi')}">
+									{auftrag.datumAbschluss->f:format.date(format: 'd.m.Y')}
+								</td>
+								<td><f:link.page pageUid="12"  class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'setOpenAuftrag', data-ajax-id: '{auftrag.uid}'}"><f:if condition="{auftrag.kunde}"><div class="auftraegeListKunde"><strong>{auftrag.kunde.name}</strong> [{auftrag.kunde.nummer}]</div></f:if>{auftrag.nr}: {auftrag.titel}</f:link.page></td>
+								<td>{auftrag.statusText}</td>
+								
+							</tr>
+						</f:for>
+						
+					</tbody>
+					
+				</table>
+		</f:if>
+		
+		
+		<f:comment>
+			<div>anzahl agenturvertraege: {f:count(subject: agenturvertraeges)}</div>
+			<f:debug title="agenturvertraegeByKunde">{agenturvertraegeByKunde}</f:debug>
+			<f:debug title="agenturvertraegeRange">{agenturvertraegeRange}</f:debug>
+		</f:comment>
+	</section>
+</f:section>
+</html>

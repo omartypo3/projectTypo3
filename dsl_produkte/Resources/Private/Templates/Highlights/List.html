@@ -1,0 +1,101 @@
+{namespace product=DslFactory\DslProdukte\ViewHelpers}
+
+<f:layout name="Highlights" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+
+
+
+
+<f:if condition="{highlight.produkte -> f:count()}>0">
+	<f:else> 
+		<div class="tx-dsl-produkte container page-container" style="margin-top:-20px;"></div> 
+    </f:else>
+    <f:then>
+	        
+        <div class="tx-dsl-produkte container page-container"><div class="row content-row p-top-60 wow fadeInUp">
+        
+        	<h2 class="center folgender_inhalt">
+            <f:translate key="tx_dslprodukte_domain_model_highlights_list.heading" />
+            </h2>
+      <div class="divider-small-grey"></div>
+<div class="highlight_outer p-top-20">
+        <f:for each="{highlight.produkte}" as="produkt" iteration="objIterator">
+          <f:if condition="{objIterator.cycle}<5">
+            
+            <div class="col-xs-12 col-sm-6 col-md-3 ref">
+            	
+                <div class="referenz-eintrag relative">
+           
+                    <div class="pic center">
+                    <f:if condition="{produkt.bilder.0}">
+                        <f:then>
+	                         <f:image src="{produkt.bilder.0.originalResource.originalFile.uid}" height="250"  />
+
+                        </f:then>
+                        <f:else>
+                        <f:image src="fileadmin/template/public/images/layout/allgemein/kategorie_keinbild.png" height="250" />
+                        </f:else>
+                        
+                    </f:if>
+                    </div>
+
+                    <f:if condition="{product:getlang()} == 0">
+                        <f:then>
+                            <h5 class="center p-top-20 p-bottom-20">{produkt.titel}</h5>
+                        </f:then>
+                        <f:else>
+                            <v:variable.set name="getTitleEN" value="{product:gettitle(uid:'{produkt.uid}')}"/>
+                            <h5 class="center p-top-20 p-bottom-20">{getTitleEN}</h5>
+                        </f:else>
+                    </f:if>
+                    
+                            <f:link.action controller="Produkte" action="show" pageUid="{settings.listPid}" arguments="{produkte:produkt}" class="special_hover">
+                    
+                    <span class="image_hoverBefore"></span>
+                    <span class="image_hoverAfter"></span>
+                    <span class="button"><f:translate key="tx_dslprodukte_domain_model.more" /></span>
+                    <span class="hover_hintergrund"></span>
+                             
+                             </f:link.action> 
+                    
+               </div>
+                
+                
+          	</div>
+            
+          </f:if>
+        </f:for>
+        <div class="clear"></div>
+       </div>
+      
+         </div>
+         <div class="page-container background_none center p-bottom-60  p-top-40">
+         
+         <f:link.page pageUid="80" class="button small center">
+	<span class="text"><f:translate key="tx_dslprodukte_domain_model_produkte.highlight_more" /></span>
+    <span class="btnBefore"></span>
+    <span class="btnAfter"></span>
+ </f:link.page>
+			</div></div>
+    </f:then>
+   
+	
+</f:if>
+
+
+</div>
+</f:section>

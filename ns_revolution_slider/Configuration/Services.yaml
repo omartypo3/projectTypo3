@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  NITSAN\NsRevolutionSlider\:
+    resource: '../Classes/*'
+    exclude: '../Classes/Domain/Model/*'
+
+  Nitsan\NsRevolutionSlider\EventListener\AfterExtensionInstallListener:
+    tags:
+    - name: event.listener
+      identifier: 'nsrevolutionslider-after-extension-install'
+      event: TYPO3\CMS\Extensionmanager\Event\AfterExtensionInstallEvent

@@ -1,0 +1,44 @@
+<f:layout name="{layout}" />
+
+<f:section name="betreff">Nachricht vom Kunde</f:section>
+
+<f:section name="bodyHtml">
+	
+	<div style="font-family: Helvetica,Arial,sans-serif; font-size: 16px; color: rgb(74, 74, 74);"><p>Anfrage zur Änderung von Stammdaten.</p></div>
+	
+	<div style="width: 100%; background-color: rgb(236, 236, 236); margin-bottom: 20px;">
+		<table style="width: 100%; background-color: rgb(236, 236, 236); font-family: Helvetica,Arial,sans-serif; font-size: 12px;" width="100%">
+			<tbody>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px; white-space: nowrap;">Kunde:</td>
+					<td>{kundenname}</td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="vertical-align: top; width: 100px; white-space: nowrap;">Nachricht:</td>
+					<td><f:format.nl2br>{protokolle.notiz}</f:format.nl2br></td>
+				</tr>
+				<tr>
+					<td style="width: 15px;">&nbsp;</td>
+					<td style="width: 100px;">&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	
+	
+</f:section>
+
+<f:section name="bodyText">Anfrage zur Änderung von Stammdaten.
+	
+Kunde: {kundenname}
+	Nachricht: <f:format.nl2br>{protokolle.notiz}</f:format.nl2br>
+</f:section>

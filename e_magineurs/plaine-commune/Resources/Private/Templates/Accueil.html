@@ -1,0 +1,129 @@
+<f:layout name="Default"/>
+<f:section name="Main">
+	<!--TYPO3SEARCH_begin-->
+	<f:alias map="{contenuDroite: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'2\'})}', col0: '{colPos: \'0\'}', col1: '{colPos: \'1\'}', col2: '{colPos: \'2\'}', col3: '{colPos: \'3\'}', col4: '{colPos: \'4\'}', col5: '{colPos: \'5\'}', col6: '{colPos: \'6\'}', col10: '{colPos: \'10\'}', col11: '{colPos: \'11\'}', col12: '{colPos: \'12\'}', col31: '{colPos: \'31\'}', col32: '{colPos: \'32\'}'}">
+    <!--ECRAN 1-->
+        <div class="screen-section panel1 d-flex align-items-center justify-content-center">
+
+            <f:if condition="{<f:cObject typoscriptObjectPath='lib.extensionFormat' data='{sourceUid: data.uid}' />} == 'mp4'">
+                <f:then>
+                    <span class="poster_video"></span>
+                    <video loop muted autoplay class="backgroundHome">
+                        <f:cObject typoscriptObjectPath='lib.videoPage' data='{sourceUid: data.uid}'/>
+                    </video>
+
+                </f:then>
+
+                <f:else>
+                    <f:cObject typoscriptObjectPath='lib.imageHome' data='{sourceUid: data.uid}' />
+                </f:else>
+            </f:if>
+
+            <span class="voile_home"></span>
+
+        		<div class="HomePart1 row justify-content-center flex-column align-items-center">
+        			<div id="logo-top"><f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col0}" /></div>
+            		<div id="recherche-panel-1" class="move_scroll">
+                        {f:cObject(typoscriptObjectPath:'lib.searchMini') -> v:format.replace(substring: 'id="tx-solr-search-form-pi-results"', replacement: 'id="tx-solr-search-form-pi-results" role="search"') -> f:format.htmlentitiesDecode() -> f:format.raw()}
+                    </div>
+
+                    <div id="block_bouton_menu_home">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col10}" />
+                    </div>
+                </div>
+
+            <div id="block_bouton_scroll" class="move_scroll">
+                <div class="case_souris">
+                    <div class="top_souris">
+
+                    </div>
+                    <div class="bottom_souris">
+
+                    </div>
+                    <div class="case_scroll_souris">
+                        <span class="line_scroll_souris"></span>
+                        <span class="arrow_scroll_souris"></span>
+                    </div>
+                </div>
+
+                <div class="line_scroll">
+
+                </div>
+            </div>
+        </div>
+        <!--Reste de la page-->
+        <div id="Next_Part" class="screen-section">
+            <!--ACTUALITES-->
+            <div id="contentPage" class="home_part2 container container_home_actu line_green">
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col1}" />
+                <div class="block_twitter move_scroll">
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col11}" />
+                </div>
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col12}" />
+            </div>
+            <!--FIN ACTUALITES-->
+            <!--AGENDA-->
+            <div class="home_part3 container-fluid line_green">
+                <div id="agenda-home">
+                    <div class="container">
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col2}" />
+                    </div>
+                </div>                
+            </div>                                    
+            <!--FIN AGENDA-->
+            <!--Map-->
+            <div class="home_part4 container container_home_map line_green">
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col3}" />
+                <div class="block_map move_scroll">
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col31}" />
+                </div>
+                <div class="bouton_tout_map">
+                    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col32}" />
+                </div>
+            </div>
+            <!--FIN ACTUALITES-->
+            <!--Part 5 : Zoom sur-->
+            <div class="home_part5 container-fluid part5 line_green">
+                <v:tag name="div" hideIfEmpty="true" class="home_part5-content container-fluid">                
+                    <f:if condition="{<f:cObject typoscriptObjectPath='lib.extensionFormatColPos4'/>} == 'mp4'">
+                        <f:then>
+                            <video loop muted autoplay poster="" class="img_bg_home5">
+                                <f:cObject typoscriptObjectPath='lib.videoColPos4'/>
+                            </video>
+                        </f:then>
+                        <f:else>
+                            <f:cObject typoscriptObjectPath='lib.imageColPos4'/>
+                        </f:else>
+                    </f:if>                
+                    <v:tag name="div" hideIfEmpty="true" class="block_content_part5" tabindex="0">                                                            
+                        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col5}" />
+                        <f:if condition="{<f:cObject typoscriptObjectPath='lib.extensionFormatColPos4'/>} == 'mp4'">
+                            <div class="bouton_play_part5">
+                                <i class="icon-Player"></i>
+                            </div>
+                        </f:if>
+                    </v:tag>
+                </v:tag>              
+                <div class="home_part5-decor"></div>
+            </div>                                        
+            <!--FIN Part 5 : Zoom sur-->
+            <!-- Part 6 : A lire EVO TICKET #271335 -->
+            <f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col6}" />
+            <!-- FIN Part 6 : A lire EVO TICKET #271335 -->
+        </div>
+        <div id="full_screen">
+            <div class="close_full_screen">
+                <span></span>
+                <span></span>
+            </div>
+            <div class="content_full_screen">
+                <f:if condition="{<f:cObject typoscriptObjectPath='lib.extensionFormatColPos4'/>} == 'mp4'">
+                    <video controls>
+                        <f:cObject typoscriptObjectPath='lib.videoColPos4'/>
+                    </video>
+                </f:if>
+            </div>
+        </div>
+    </f:alias>
+    <!--TYPO3SEARCH_end-->
+</f:section>

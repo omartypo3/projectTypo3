@@ -1,0 +1,165 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<textarea id="auftraegeSettingsPhasenJson{auftraege.uid}" style="display:none"><f:format.raw>{kontingentPhasenChartJson}</f:format.raw></textarea>
+<input type="hidden" class="auftraegeUid" value="{auftraege.uid}">
+<input type="hidden" id="auftraegeSettingsStatusPercent{auftraege.uid}" value="{auftraege.statusPercent}">
+<script>
+
+    var auftraegeUid = $("input.auftraegeUid").val();
+    console.log("uid:",auftraegeUid);
+		if($('#aufgaben_tabs>ul>li.ui-tabs-active>a').attr('href')=='#auftrag-show-'+auftraegeUid){
+            console.log("ABIR HERE");
+			initAuftragsTab(auftraegeUid);
+		} else {
+			$('#aufgaben_tabs>ul>li>a[href$="#auftrag-show-'+auftraegeUid+'"]').parent().data('init',auftraegeUid);
+		}
+		
+	$(".toggleAblage").each(function(){
+		if($(this).data("ablage") == '1'){
+			$(this).addClass('removeEmpty');
+		}else{
+			$(this).removeClass("addEmpty");
+		}	
+	});
+</script>
+
+
+
+<div class="layout-box">
+<div class="layout-table table-toolbar table-auftrag-detail">
+    <div class="layout-table-row">
+        <div class="layout-table-col">
+
+
+            <div class="table-toolbar-container">
+            
+            
+                <f:if condition="{auftraege.kunde}"><h3 class="dslHeadline">[{auftraege.kunde.nummer}] <strong>{auftraege.kunde.name}</strong> <f:link.action controller="Kunden" title="Interne Notizen zum Kunde Bearbeiten" pageUid="13" pageType="89657207" pluginName="kundenliste" extensionName="dslintranet" action="ajax" arguments="{kunden : auftraege.kunde, switch : 'editNotizen'}" additionalAttributes="{ data-colorbox-width: '800px', data-colorbox-height: '800px' }" class="doAjaxEdit btn tableBtn"><i class="bb-key bb-lg" aria-hidden="true"></i></f:link.action></h3></f:if>
+                <f:if condition="{auftraege.kunde.nummer}"><h2>[{auftraege.nr}] <strong>{auftraege.titel}</strong></h2></f:if>
+            
+            </div>
+                
+            
+                
+            
+            
+            
+		</div>
+        <div class="layout-table-col table-toolbar-btn-list">
+	        <f:render partial="Auftraege/PropertiesToolbarBtnList" arguments="{_all}" />
+        </div>
+        <f:if condition="{auftraege.status}<50"><f:if condition="{auftraege.rights.edit}">
+           <f:then>
+            <div class="layout-table-col table-toolbar-col-counter">
+                <f:render partial="Auftraege/PropertiesToolbarCounter" arguments="{_all}" />
+          	</div>
+			</f:then>
+			<f:else>
+				<div id="stoppuhr_{auftraege.uid}_clock"  data-kontingent="{tracker.trackerSeconds}" data-zeitnahme="{f:if(condition: '{tracker.lastTrackerSegmente.opened}', then: '1', else: '0')}"></div>
+			</f:else>
+			</f:if></f:if>
+	</div>
+</div>
+</div>
+<div class="layout-table layout-table-medium-full">
+    <div class="layout-table-row">
+        <div class="layout-table-col">
+            <div class="layout-box">
+          
+            
+            	<f:render partial="Auftraege/PropertiesBeschreibung" arguments="{_all}" />
+           </div> 
+        </div>
+        <div class="layout-table-col layout-table-col-700-px">
+            <div class="layout-table layout-table-small-full">
+                <div class="layout-table-row">
+                    <div class="layout-table-col layout-table-col-50-percent">
+                        <div class="layout-box">
+                        	<f:render partial="Auftraege/PropertiesAuftragdetails" arguments="{_all}" />
+                            <f:render partial="Auftraege/PropertiesMitarbeiterKontingent" arguments="{_all}" />
+							<f:render partial="Auftraege/PropertiesTeam" arguments="{_all}" />
+                        </div>
+                    </div>
+                    <div class="layout-table-col layout-table-col-50-percent">
+                        <div class="layout-box">
+                        	<f:render partial="Auftraege/PropertiesProjektuebersicht" arguments="{_all}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+
+
+<div id="auftraegetabs_{auftraege.uid}">
+  <ul class="auftrag_tabs_navigation">
+
+	<li><a href="#auftraegetabs_{auftraege.uid}_zeitkonto"><i class="bb-clock bb-lg"></i> Zeitkonto</a></li>
+    <f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+    <li class="{f:if(condition: auftraege.finanzen, then: ' tabWithContent')}"><a href="#auftraegetabs_{auftraege.uid}_finanzen"><i class="bb-finance bb-lg"></i> Finanzen<f:if condition="{auftraege.finanzen}"> <span class="label label-danger">{f:count(subject: auftraege.finanzen)}</span></f:if></a></li>
+    </f:else></f:if>
+	<li><a href="#auftraegetabs_{auftraege.uid}_statusmeldungen"><i class="bb-point-bars bb-lg"></i> Protokoll / Kommentare</a></li>
+	<li><a href="#auftraegetabs_{auftraege.uid}_downloads"><i class="bb-download bb-lg"></i> Download<f:if condition="{auftraege.downloads}"> <span class="label label-danger">{f:count(subject: auftraege.downloads)}</span></f:if></a></li>
+
+    <f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+	<li class="auftraegetabs_{auftraege.uid}_aktivitaet_tab"><a href="#auftraegetabs_{auftraege.uid}_aktivitaet"><span class="reloadIndicator"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;</span><i class="bb-activity bb-lg"></i> Aktivität - <span id="auftraegetabs_{auftraege.uid}_aktivitaet_datum">
+	{f:format.date(format: 'd.m.Y',date:aktivitaetDefaultDate)}</span></a></li>
+    </f:else></f:if>
+
+  </ul>
+
+
+    <div id="auftraegetabs_{auftraege.uid}_zeitkonto"><f:render partial="Auftraege/PropertiesZeiteintraege" arguments="{_all}" /></div>
+  <f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+  <div id="auftraegetabs_{auftraege.uid}_finanzen"><f:render partial="Auftraege/PropertiesAngeboteRechnungen" arguments="{_all}" /></div>
+  </f:else></f:if>
+  <div id="auftraegetabs_{auftraege.uid}_statusmeldungen"><f:render partial="Protokolle/List" arguments="{_all}" /></div>
+  
+  
+
+  <div id="auftraegetabs_{auftraege.uid}_downloads"><f:render partial="Auftraege/PropertiesDownloads" arguments="{_all}" /></div>
+  <f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+  <div id="auftraegetabs_{auftraege.uid}_aktivitaet" class="auftraegetabs_{auftraege.uid}_aktivitaet_tab"><div class="layout-box">
+  <f:render partial="Aktivitaet/List" arguments="{_all}" />
+  </div></div>
+  </f:else></f:if>
+        
+
+</div>
+
+
+<f:render partial="Auftraege/PropertiesDateiUpload" arguments="{_all}" />
+
+<script>
+    // var auftraegeTabs = "#auftraegetabs_"+$("input.auftraegeUid").val();
+    // console.log("auftraegeTabs",auftraegeTabs);
+	// $(document).ready(function() {
+    //
+	// 	$( auftraegeTabs ).tabs({
+	// 		collapsible: false,
+    //
+	// 		activate: function( event, ui ) {
+	// 			/*platzhalter wegen fluid Javascript Problem*/
+	// 		}
+    //
+	// 	});
+	// });
+
+
+    $(document).ready(function () {
+        $('[id^="auftraegetabs_"]').each(function () {
+            $(this).tabs({
+                collapsible: false,
+                activate: function (event, ui) {
+                    // Your custom logic here
+                    console.log('Activated tab in:', this.id);
+                }
+            });
+        });
+    });
+</script>

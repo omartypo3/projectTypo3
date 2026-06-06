@@ -1,0 +1,20 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<f:alias map="{fiche: fiches.0}">
+
+	<f:if condition="<f:cObject typoscriptObjectPath='lib.displayStreet' />">
+		<f:then>
+		</f:then>
+		<f:else>
+			<f:if condition="<f:cObject typoscriptObjectPath='lib.detailStreet' />">
+				<f:if condition="{fiche.address2}">
+					<div class="text-center" id="obtenir-mon-calendrier-de-collecte">
+						<a href="fileadmin/user_upload/Portail_Plaine_Commune/documents_collecte/{fiche.address2}.pdf" target="_blank" class="btn btn-animate btn-rose underline" >
+							Obtenir mon calendrier de collecte au format PDF.
+						</a>
+					</div>
+		        </f:if>
+			</f:if>
+		</f:else>
+	</f:if>
+	
+</f:alias>

@@ -1,0 +1,11 @@
+
+
+
+<f:if condition="{benutzer.avatar}">
+	<f:then>
+		<div class="avatarImg"><img src="{f:uri.image(src:benutzer.avatar.originalResource.originalFile.uid)}"></div>
+	</f:then>
+	<f:else>
+		
+	</f:else>
+</f:if>

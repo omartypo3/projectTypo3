@@ -1,0 +1,176 @@
+page.includeCSS {
+	bootstrap = EXT:e_package/Resources/Public/Css/bootstrap.css
+#	bootstrap = https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css
+#	bootstrap.external = 1
+	fontawesome = https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+	fontawesome.external = 1
+	leafletCss = EXT:stratis_elements/Resources/Public/Leaflet/leaflet.css
+#	bootstrap.outputdir = {$e_magineurs.conf.dossierPackagePublic}/Css
+#	emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/page.scss
+    emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/page.css
+#	emagineursStyles.outputdir = {$e_magineurs.conf.dossierPublic}/Css/
+#	emagineursStyles.outputdir = {$e_magineurs.conf.dossierPublic}/Css/css/
+#	solr-ui = EXT:solr/Resources/Css/JQueryUi/jquery-ui.custom.css
+	tarteaucitron = EXT:stratis_common/Resources/Public/JavaScript/Library/Tarteaucitron/css/tarteaucitron.css
+	bugsStyles = {$e_magineurs.conf.dossierPublic}/Css/enhancement.css
+}
+
+e_magineurs.conf {
+    showLoginIcon = {$e_magineurs.conf.showLoginIcon}
+	siteTitle = {$e_magineurs.conf.siteTitle}
+	idPageSiteConfigFolder = {$e_magineurs.conf.idPageSiteConfigFolder}
+	publicationPage = {$e_magineurs.conf.publicationPage}
+	publicationSysfolder = {$e_magineurs.conf.publicationSysfolder}
+	publicationDetailPage = {$e_magineurs.conf.publicationDetailPage}
+}
+
+[page["uid"] == {$e_magineurs.conf.homePage}]
+	page.includeCSS.bootstrap = EXT:e_package/Resources/Public/Css/bootstrap.css
+	page.includeCSS.fontawesome = https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+	page.includeCSS.fontawesome.external = 1
+#	page.includeCSS.emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/home.scss
+    page.includeCSS.emagineursStyles = {$e_magineurs.conf.dossierPublic}/Css/home.css
+	page.includeCSS.sliderStyles = https://unpkg.com/swiper/swiper-bundle.min.css
+	page.includeCSS.sliderStyles.external = 1
+	page.includeJSFooter.sliderJs = https://unpkg.com/swiper/swiper-bundle.min.js	
+	page.includeCSS.sliderJs.external = 1	
+[end]
+
+#Social Share Privacy
+page.includeJSFooter {	
+	socialshareprivacy = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/socialshareprivacy.min.js
+	facebook = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/facebook.js
+	twitter = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/twitter.js
+	mail = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/fbshare.js
+	fbshare = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/modules/mail.js
+	socialshareprivacyLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/socialshareprivacy.js
+	facebookLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/facebook.js
+	twitterLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/twitter.js
+	mailLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/fr/modules/mail.js
+	solr-suggest = EXT:solrfluid/Resources/Public/JavaScript/suggest_controller.js
+}
+/*
+	Pour le multilangue de socialshare : 
+	[(request.getQueryParams()['L'] ?? 0) == 2]
+		page.includeJSFooter {
+			socialshareprivacyLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/de/socialshareprivacy.js
+			facebookLocale = {$e_magineurs.conf.dossierPackagePublic}/JavaScript/locale/de/modules/facebook.js
+		}
+	[end]
+*/
+
+[page["uid"] == {$e_magineurs.conf.homePage}]
+	page.includeJSFooter {
+	Scrollify = {$e_magineurs.conf.dossierPublic}/JavaScript/jquery.scrollify.js
+	scriptHome = {$e_magineurs.conf.dossierPublic}/JavaScript/scriptHome.js
+}
+[end]
+
+[page["uid"] != {$e_magineurs.conf.homePage}]
+	page.includeJSFooter {
+	scriptPage = {$e_magineurs.conf.dossierPublic}/JavaScript/scriptPage.js
+}
+[end]
+
+page.includeJSFooter {
+	leafletJs = EXT:stratis_elements/Resources/Public/Leaflet/leaflet.js
+	mapResponsive = {$e_magineurs.conf.dossierPublic}/JavaScript/jquery.rwdImageMaps.min.js
+	fredScripts = {$e_magineurs.conf.dossierPublic}/JavaScript/fredScripts.js
+	scripts = {$e_magineurs.conf.dossierPublic}/JavaScript/scripts.js
+	scripts_e-annuauires = {$e_magineurs.conf.dossierPublic}/JavaScript/eannuairesFrontend.js
+	imagesloaded = {$e_magineurs.conf.dossierPublic}/JavaScript/imagesloaded.pkgd.min.js
+	# Exemple chargement external
+	#file2 = //api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.js
+	#file2.external = 1
+
+}
+
+page.includeJSFooter.basePackage = {$e_magineurs.conf.dossierPublic}/JavaScript/basePackage.js
+
+# page.jsInline {
+#     60 = TEXT
+#     60.value(
+# 		<script type="text/javascript">
+#         	(tarteaucitron.job = tarteaucitron.job || []).push('twitterwidgetsapi');
+#         </script>
+#     )
+# }
+
+
+
+page.includeJS {
+	solrSearchQuery = {$e_magineurs.conf.dossierPublic}/JavaScript/solrSearchQuery.js
+	solrSearchQuery {
+		forceOnTop = 1
+		async = 1
+	}
+	Twitter = {$e_magineurs.conf.dossierPublic}/JavaScript/Twitter.js
+	Twitter {
+		forceOnTop = 1
+	}
+}
+
+
+page.includeJS {
+	initialScroll = {$e_magineurs.conf.dossierPublic}/JavaScript/initialScroll.js
+	initialScroll {
+		forceOnTop = 1
+	}
+	tarteaucitron = EXT:stratis_common/Resources/Public/JavaScript/Library/Tarteaucitron/tarteaucitron.js
+    tarteaucitron_services = EXT:stratis_common/Resources/Public/JavaScript/Library/Tarteaucitron/tarteaucitron.services.js
+	stratis_tarteaucitron = /stratis_tarteaucitron.js
+	stratis_tarteaucitron.external = 1
+	tarteaucitron_servicesstratis = EXT:stratis_common/Resources/Public/JavaScript/Library/Tarteaucitron/stratis.tarteaucitron.services.js
+    stratis_tarteaucitron_bundle = EXT:stratis_common/Resources/Public/JavaScript/Library/Tarteaucitron/stratis-tarteaucitron.bundle.js
+    advertising = EXT:stratis_common/Resources/Public/JavaScript/Library/Tarteaucitron/advertising.js
+}
+
+[page["uid"] == {$e_magineurs.conf.homePage}]
+page.headerData.57 = TEXT
+page.headerData.57 {
+	value (
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	)
+}
+[end]
+#page.headerData.56 = TEXT
+#page.headerData.56 {
+#	#insertData = 1
+#	value (
+#		<link rel="dns-prefetch" href="//fonts.googleapis.com">
+#		<link rel="dns-prefetch" href="//ajax.googleapis.com">
+#		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,500i,600,600i,700" rel="stylesheet">
+#		<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+#	)
+#}
+
+[1 in tree.rootLineIds]
+	page.headerData.100 = TEXT
+	page.headerData.100 {
+		value (
+			<!-- Matomo -->
+			<script type="text/javascript">
+				var _paq = window._paq || [];
+				/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+				_paq.push(['trackPageView']);
+				_paq.push(['enableLinkTracking']);
+				(function() {
+					var u="//plainecommune.fr/matomo/";
+					_paq.push(['setTrackerUrl', u+'matomo.php']);
+					_paq.push(['setSiteId', '1']);
+					var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+					g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+				})();
+			</script>
+			<!-- End Matomo Code -->
+		)
+	}
+[end]
+
+temp.AlloAggloText = TEXT
+temp.AlloAggloText.value = {$e_magineurs.conf.AlloAggloText}
+lib.AlloAggloText < temp.AlloAggloText
+
+temp.AlloAggloPage = TEXT
+temp.AlloAggloPage.value = {$e_magineurs.conf.AlloAggloPage}
+lib.AlloAggloPage < temp.AlloAggloPage

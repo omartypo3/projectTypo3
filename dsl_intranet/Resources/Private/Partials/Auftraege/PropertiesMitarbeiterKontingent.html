@@ -1,0 +1,89 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<div class="content_container_header"><span><i class="bb-team bb-md" aria-hidden="true"></i>Mitarbeiter Kontingent</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+<div class="content_container team_content">
+    
+    
+    
+	
+    
+     
+         <div>
+			 
+			 <table class="table table-striped table-bordered table-condensed table-hover dataTable dataTableMitarbeiterKontingent">
+				 <thead>
+					 <tr>
+						 <th>&nbsp;</th><th title="im Auftrag als Kontingent definiert"><center>verfügbar</center></th><th title="vom Mitarbeiter bereits verbraucht"><center>verbraucht</center></th>
+					 </tr>
+				 </thead>
+				 <tbody>
+             <f:for each="{mitarbeiters}" as="mitarbeiter">
+				 
+				 
+				 <f:alias map="{kontingentMinuten: '{dsl:getFromArray(obj: auftraege.mitarbeiterKontingentArray, prop:mitarbeiter.uid)}'}">
+					<f:alias map="{verbrauchtMinuten: '{dsl:getFromArray(obj: auftraege.kontingentUsedByMitarbeiter, prop:mitarbeiter.uid)}'}">
+				 
+						
+						<f:if condition="{0:'{dsl:getFromArray(obj: mitarbeiterSet, prop:mitarbeiter.uid)}',1:'{verbrauchtMinuten}'}!={0:'',1:''}">
+						
+						
+						
+						
+				 <tr>
+					 <td align="center" title="{mitarbeiter.name}"> 
+ 					<strong>{mitarbeiter.initialien}</strong>
+					 </td>
+					 
+						 
+					
+					<td align="center">
+							
+						<f:if condition="{kontingentMinuten}">
+							<f:then>
+					
+								<f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: kontingentMinuten)}' }" />
+								
+							</f:then>
+							<f:else>
+								-
+							</f:else>
+						</f:if>
+						
+					
+					
+					 </td>
+					 <td align="center">
+					
+					
+						<f:if condition="{verbrauchtMinuten}">
+							<f:then>
+					
+							<f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: verbrauchtMinuten)}' }" />
+							</f:then>
+							<f:else>
+								-
+							</f:else>
+						</f:if>
+						  </td>
+						
+					
+				 </tr>
+					
+					 </f:if>
+				 </f:alias>
+						 
+					</f:alias>
+				 
+             </f:for>
+				 </tbody>
+				 <tbody>
+					 <tr><td><center><strong>Summe</strong>:</td><td align="center"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: auftraege.mitarbeiterKontingentSumme)}' }" /></td><td align="center"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: auftraege.kontingentUsedByMitarbeiterSumme)}' }" /></td></tr>
+				 </tbody>
+				 </table>
+             
+          
+         </div>
+   
+</div>

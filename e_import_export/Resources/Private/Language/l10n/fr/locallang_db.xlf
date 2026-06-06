@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-03-31T14:09:17Z" product-name="e_import_export">
+		<header/>
+		<body>
+			<trans-unit id="tx_eimportexport_domain_model_conf" approved="yes">
+				<source>Conf</source> <target state="translated">Conf</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.title" approved="yes">
+				<source>Title</source> <target state="translated">Titre</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.tag" approved="yes">
+				<source>Tag</source> <target state="translated">Balise</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.url" approved="yes">
+				<source>Stream URL</source> <target state="translated">URL du flux</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.type" approved="yes">
+				<source>Type</source> <target state="translated">Type</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.type.json" approved="yes">
+				<source>Json</source> <target state="translated">Json</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.type.csv" approved="yes">
+				<source>Csv</source> <target state="translated">Csv</target></trans-unit>
+            <trans-unit id="tx_eimportexport_domain_model_conf.type.xlsx" approved="yes">
+				<source>Xlsx</source> <target state="translated">Xlsx</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.type.xml" approved="yes">
+				<source>Xml</source> <target state="translated">Xml</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.interaction" approved="yes">
+				<source>Intended for :</source> <target state="translated">Destiné pour :</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.interface" approved="yes">
+				<source>Reachable from :</source> <target state="translated">Accessible via :</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.export" approved="yes">
+				<source>Export</source> <target state="translated">Export</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.import" approved="yes">
+				<source>Import</source> <target state="translated">Import</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.module" approved="yes">
+				<source>Module</source> <target state="translated">Module</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.scheduler" approved="yes">
+				<source>Scheduler</source> <target state="translated">Planificateur</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.ajax" approved="yes">
+				<source>Ajax</source> <target state="translated">Ajax</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.tables" approved="yes">
+				<source>Tables</source> <target state="translated">Tables</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.fields" approved="yes">
+				<source>Fields</source> <target state="translated">Champs</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.uniqfield" approved="yes">
+				<source>Unique fields for create/update durint the import.</source> <target state="translated">Champs uniques, pour creation/mise a jour à l'import.</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.forceadd" approved="yes">
+				<source>Force the insertion of entries (can cause duplicated entries).</source> <target state="translated">Forcer l'ajout des données (doublons possible).</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.forceadd0" approved="yes">
+				<source>Yes</source> <target state="translated">Oui</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.forceadd1" approved="yes">
+				<source>No</source> <target state="translated">Non</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table" approved="yes">
+				<source>Table</source> <target state="translated">Table</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.name" approved="yes">
+				<source>Name</source> <target state="translated">Nom</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.wheretext" approved="yes">
+				<source>Where</source> <target state="translated">Where</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field" approved="yes">
+				<source>Field</source> <target state="translated">Champ</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.type" approved="yes">
+				<source>Type</source> <target state="translated">Type</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.name" approved="yes">
+				<source>Name</source> <target state="translated">Nom</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.champ" approved="yes">
+				<source>Field</source> <target state="translated">Champ</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.format" approved="yes">
+				<source>Details: (format if it's a Time, Folder if it's a File, ...)</source> <target state="translated">Précisions: (format si c'est un Time, Folder si c'est un File, etc...)</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.stdwrap" approved="yes">
+				<source>Stdwrap</source> <target state="translated">Stdwrap</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.choose_a_field" approved="yes">
+				<source>Choose a field</source> <target state="translated">Choisissez un champ</target></trans-unit>
+            <trans-unit id="tx_eimportexport_domain_model_field.userpost" approved="yes">
+				<source>Relation post-processing</source> <target state="translated">Post-traitement de la relation</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.arrcheck" approved="yes">
+				<source>Display as a table ?</source> <target state="translated">Apparait comme un tableau ?</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.multiple" approved="yes">
+				<source>Multiple</source> <target state="translated">Multiple</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.relation" approved="yes">
+				<source>Relation</source> <target state="translated">Relation</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.ifempty" approved="yes">
+				<source>Behaviour if empty</source> <target state="translated">Comportement si vide</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.forcefield" approved="yes">
+				<source>Force relation labels presence</source> <target state="translated">Forcer la présence des labels de la relation</target></trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,62 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Inhaltstyp</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Standardaktion des Plugins</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Standort Liste</numIndex>
+                                        <numIndex index="1">Map->list;Map->show</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Confirm</numIndex>
+                                        <numIndex index="1">Map->confirm</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+
+                    <mapCenter>
+                        <TCEforms>
+                            <label>Google Maps Center (lat,lng)</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </mapCenter>
+
+                    <mapStyle>
+                        <TCEforms>
+                            <label>Google Maps Style (JSON Array) 01</label>
+                            <config>
+                                <type>text</type>
+                                <default>[{"featureType":"landscape","stylers":[{"hue":"#F1FF00"},{"saturation":-27.4},{"lightness":9.4},{"gamma":1}]},{"featureType":"landscape.natural","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","stylers":[{"hue":"#9FFF00"},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#00FF4F"},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#0069b4"},{"saturation":-20},{"lightness":36.4},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FFB300"},{"saturation":-38},{"lightness":11.2},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0069b4"},{"saturation":4.2},{"lightness":-63.4},{"gamma":1}]}]</default>
+                            </config>
+                        </TCEforms>
+                    </mapStyle>
+
+                    <mapAngebote>
+                        <TCEforms>
+                            <label>Angebote</label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </mapAngebote>
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

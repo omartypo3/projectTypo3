@@ -1,0 +1,49 @@
+/*.innerRow {padding: 20px;}*/
+
+.outerRow .greyDescription {color:#8c8c8c;}
+.outerRow .textSmall {font-size: 14px !important;}
+.outerRow .textGestrichen {text-decoration:line-through;}
+.outerRow .oldPrice {}
+.outerRow .newPrice {color:#14cb96; font-size: 18px; font-weight: bold;}
+
+.outerRow .priceList p, .outerRow .linksBox p {margin-bottom: 0;}
+.outerRow .priceList {text-align: left;}
+.outerRow .linksBox {text-align: right;}
+
+.outerRow .innerBoxcontainer .imgBox {
+	width: 100%;
+	height:280px;
+	overflow: hidden;
+}
+
+.outerRow .innerBoxcontainer .imgBox img {width: 100%;}
+
+
+.outerRow h2.mainTitle {text-transform: uppercase; color:#333333;font-weight: bold; margin: 0;}
+.outerRow h2.subTitle {color:#333333; margin-top: 0;}
+
+.outerRow .textBlock {margin-top: 20px; margin-bottom: 20px;}
+
+.outerRow .linksBox a .textLink {text-transform: uppercase; font-weight:bold; font-size: 16px;}
+
+.angebotCounter {color:#14cb96 !important; font-style: italic;}
+.angebotAbgelaufen {color:#fa5858 !important; font-style: italic; font-weight: bold;}
+.angebotVorbereitet {color:#fe9a2e !important; font-style: italic; font-weight: bold;}
+
+.row .headlines hr {border-top:solid 2px #cccccc;}
+.row .headlines h3 {text-align:center; color:#cccccc; margin:10px 0; font-weight:bold; text-transform:uppercase;}
+
+.angebotControls {
+	background-color: rgba(255,255,255,0.8);
+	float: right;
+	position: absolute;
+	right: 35px;
+	padding:5px;
+	-webkit-transition: all .1s ease;
+	transition: all .1s ease;
+}
+.angebotControls:hover {
+	background-color: rgba(255,255,255,1);
+	-webkit-transition: all .1s ease;
+	transition: all .1s ease;
+}

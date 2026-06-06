@@ -1,0 +1,73 @@
+
+##  LIEN AFFICHAGE   ##########################################
+lib.tempLienAffichage = TEXT
+lib.tempLienAffichage{
+    value = cliquez ici.
+    typolink.parameter.data=global:TSFE|id
+    typolink.ATagParams = style="color:#fff;"
+    typolink.forceAbsoluteUrl = 1
+    typolink.forceAbsoluteUrl.scheme = https
+}
+newsletter.lien_affichage = COA
+newsletter.lien_affichage {
+    10 = TEXT
+    10.value = Si cette page ne s'affiche pas correctement, vous pouvez lire cette newsletter en &nbsp;
+    20 < lib.tempLienAffichage
+}
+
+lib.logo = TEXT
+lib.logo{
+    value = <f:image src="{$e_magineurs.conf.dossierPublic}/Images/logo_newsletter.png" title="Aisccuf" width="262px"/> 
+}
+
+lib.bordure_bottom = TEXT
+lib.bordure_bottom{
+    value = <f:image src="{$e_magineurs.conf.dossierPublic}/Images/newsletter_fond_border.png" title="Aisccuf" width="400px" height="15px"/> 
+}
+
+lib.titreNewsletter = TEXT
+lib.titreNewsletter{
+    data= page:title
+    stdWrap.htmlSpecialChars = 1
+    #after.cObject < lib.subtitle
+    wrap = <h1 style="margin:0;color:#fff;font-size:20px;font-weight:400;text-transform:uppercase">|</h1>
+}
+lib.subtitleNewsletter = TEXT
+lib.subtitleNewsletter{
+    data= page:subtitle
+    stdWrap.htmlSpecialChars = 1
+    #after.cObject < lib.subtitle
+    wrap = <span style="color:#7db900;font-size:60px;font-weight:700;">#&nbsp;|</span>
+}
+
+lib.ImagePrincipale < lib.imagePage
+lib.ImagePrincipale.renderObj.file {
+    width = 600px
+    height = 
+}
+
+lib.footerInscriptionNewsletter = TEXT
+lib.footerInscriptionNewsletter{
+    value = cliquant ici.
+    typolink{
+        parameter= 179
+        ATagParams = style="color:#fff;"
+        additionalParams = &mail=###email###
+    }
+}
+
+lib.touteActualite = TEXT
+lib.touteActualite{
+    value = TOUTE L'ACTUALITÉ
+    typolink{
+        parameter= 16
+        ATagParams = style="color:#ed018b;text-decoration:none;font-size:14px"
+    }
+}
+
+[471 in tree.rootLineIds]
+    page.headerData{
+        1 = FILE
+        1.file = {$e_magineurs.conf.dossierPublic}/Css/newsletter.css
+    }
+[end]

@@ -1,0 +1,22 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+<f:format.stripTags><f:format.nl2br>
+
+<f:alias map="{prop: phase.uid, forKey:'max' }">
+<f:alias map="{minuten: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:prop, forKey:forKey)}' }">
+    <f:if condition="{minuten}">Zeit geplant: <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: minuten)}' }" /></f:if>
+</f:alias>
+</f:alias>
+
+<f:alias map="{prop: phase.uid, forKey:'used' }">
+<f:alias map="{minuten: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:prop, forKey:forKey)}' }">
+    <f:if condition="{minuten}">Zeit verbraucht: <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: minuten)}' }" /></f:if>
+</f:alias>
+</f:alias>
+
+<f:alias map="{prop: phase.uid, forKey:'free' }">
+<f:alias map="{minuten: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:prop, forKey:forKey)}' }">
+    <f:if condition="{minuten}"><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: minuten)}' }" /></f:if>
+</f:alias>
+</f:alias>
+
+</f:format.nl2br></f:format.stripTags>

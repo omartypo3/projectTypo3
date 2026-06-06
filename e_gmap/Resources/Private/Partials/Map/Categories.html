@@ -1,0 +1,41 @@
+
+<f:comment>
+	/!\ Ne pas enlever les classes et les ids, pour le fonctionnement js! /!\
+</f:comment>
+
+
+<f:if condition="{cats}">
+		<f:if condition="{child}"><f:then></f:then><f:else>
+			<input id="eGmapCheckAll__{settings.map.mapUniqId}" type="button" class="allchecked" value="{f:translate(key: 'cat.uncheckAll')}" />
+		</f:else></f:if>
+		<ul class="cats">
+			<f:for each="{cats}" as="cat">
+				<li>
+					<div class="cat" id="egmapcat_{cat.uid}" >
+						<f:if condition="{cat.iconmarker}">
+							<span class="icone_cat_map"><img src="{cat.iconmarker.originalResource.publicUrl}"/></span>
+						</f:if>
+						<div class="check_map">
+							<input type="checkbox" name="egmapcat_{cat.uid}_input" id="egmapcat_{cat.uid}_input"  class="egmap_cat" autocomplete="off" checked />
+							<f:if condition="{child}"><f:then>
+							<label id="egmapcat_{cat.uid}_label"  class="egmap_cat egmap_child_{child}" >{cat.title}</label>
+							</f:then><f:else>
+							<label id="egmapcat_{cat.uid}_label"  class="egmap_cat egmap_cat_racine" >{cat.title}</label>
+							</f:else></f:if>
+							</div>
+						<div class="clear"></div>
+					</div>
+					<f:render partial="Map/Categories" arguments="{cats: cat.children, settings: settings, child: cat.uid}" />
+				</li>
+			</f:for>
+			<f:if condition="{child}"><f:then></f:then><f:else><f:if condition="{settings.isKmls}">
+				<li>
+					<div class="cat" id="egmapcat_kmls" >
+						<input type="checkbox" name="egmapcat_kmls_input__{settings.map.mapUniqId}" id="egmapcat_kmls_input__{settings.map.mapUniqId}"  class="egmapcat_kmls" autocomplete="off" checked />
+						<label id="egmapcat_kmls_label"  class="egmapcat_kmls" >KMLs</label>
+						<div class="clear"></div>
+					</div>
+				</li>
+			</f:if></f:else></f:if>
+		</ul>
+</f:if>

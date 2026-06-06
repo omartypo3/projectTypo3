@@ -1,0 +1,220 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+
+
+
+<!-- main banner -->
+			<div class="banner banner-home">
+				<!-- revolution slider starts -->
+				<div id="rev_slider_home_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="restaurant-header" style="margin:0px auto;background-color:#474d4b;padding:0px;margin-top:0px;margin-bottom:0px;">
+					<div id="rev_slider_home_1" class="rev_slider fullscreenabanner" style="display:none;" data-version="5.1.4">
+						<ul>
+						
+						
+							<f:for each="{slides}" as="slide" iteration="iterator">
+						
+							<li class="slider-color-schema-dark" data-index="rs-{iterator.cycle}" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+								<!-- main image for revolution slider -->
+								
+								<img data-lazyload="{f:uri.image(src:slide.bild.originalResource.originalFile.uid, width:1920c, height:1080c)}" src="{f:uri.image(src:slide.bild.originalResource.originalFile.uid, width:1920c, height:1080c)}" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+								
+								<div class="sliderOverlayContainer">
+									
+									<div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" 
+									id="slide-{slide.uid}-layer-1" 
+									data-x="['left','left','left','left']" data-hoffset="['-3300']" 
+									data-y="['top','top','top','top']" data-voffset="['0']" 
+									data-width="5000"
+									data-height="5000"
+									data-whitespace="normal"
+									data-transform_idle="o:1;rZ:314;"
+
+									data-transform_in="x:left;s:1500;e:Power4.easeOut;" 
+									data-transform_out="opacity:0;s:300;" 
+									data-start="500" 
+									data-responsive_offset="on" 
+
+									style="background-color:rgba({f:render(partial: 'CSS/rgb', arguments: {rgb: slide.farbeRgb})}, 0.9);"> </div>
+	
+									<div class="sliderOverlayText">
+										<div class="tp-caption tp-resizeme"
+										data-x="['left']"
+										data-hoffset="['0','0','0','0']" 
+										data-y="['bottom']" 
+										data-voffset="['180','120','-120','-70']" 
+										data-width="none" 
+										data-height="none" 
+										data-whitespace="nowrap" 
+										data-transform_idle="o:1;" 
+										data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:2000;e:Power2.easeInOut;" 
+										data-transform_out="opacity:0;s:300;s:300;" 
+										data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" 
+										data-start="1500" 
+										data-splitin="none" 
+										data-splitout="none" 
+										data-responsive_offset="on"><h1><f:format.nl2br>{slide.titel}</f:format.nl2br></h1></div>
+										
+										<div class="tp-caption tp-resizeme"
+										data-x="['left']" 
+										data-hoffset="['0','0','0','0']" 
+										data-y="['bottom']" 
+										data-voffset="['130','240','10','20']" 
+										data-width="['1200','1000','750','480']" 
+										data-height="none" 
+										data-whitespace="normal" 
+										data-transform_idle="o:1;" 
+										data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;" 
+										data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+										data-mask_in="x:0px;y:0px;" 
+										data-mask_out="x:inherit;y:inherit;" 
+										data-start="1000" 
+										data-splitin="none" 
+										data-splitout="none" 
+											 data-responsive_offset="on"><h2><f:format.nl2br>{slide.untertitel}</f:format.nl2br></h2></div>
+										
+										<div class="tp-caption tp-resizeme"
+										data-x="['left']" 
+										data-hoffset="['0','0','0','0']" 
+										data-y="['bottom']" 
+										data-voffset="['60','290','70','70']" 
+										data-width="none"
+										data-height="none"
+										data-whitespace="nowrap"
+										data-transform_idle="o:1;" 
+										data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;" 
+										data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+										data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
+										data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
+										data-start="1000" 
+										data-splitin="none" 
+										data-splitout="none" 
+										data-responsive_offset="on"><p><f:format.nl2br>{slide.text}</f:format.nl2br></p></div>
+										
+										<f:if condition="{slide.link}">
+											<div class="tp-caption" id="slide-{slide.uid}-layer-2" 
+											data-x="['left']" 
+											data-hoffset="['0','0','0','0']" 
+											data-y="['bottom']" 
+											data-voffset="['0','160','180','150']" 
+											data-width="none"
+											data-height="none"
+											data-whitespace="nowrap"
+											data-transform_idle="o:1;"
+											data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;"
+											data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
+											data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
+											data-mask_out="x:inherit;y:inherit;" 
+											data-start="1250" 
+											data-splitin="none" 
+											data-splitout="none" 
+											data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]'
+											data-responsive_offset="on"> 
+												<f:link.typolink parameter="{slide.link}" class="btnBig btnWhite"><f:if condition="{slide.linkTitel}"><f:then>{slide.linkTitel}</f:then><f:else>Details</f:else></f:if></f:link.typolink>
+											</div>
+										</f:if>
+									</div>
+								</div>
+
+								
+							</li>
+							</f:for>
+							
+						</ul>
+					</div>
+				</div>
+				
+				
+				
+				
+				<div class="feature-block">
+					<div class="holder">
+						<ul>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-bungee"></span>
+									</span>
+									<span class="info">Corporate Design</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-hiking"></span>
+									</span>
+									<span class="info">Grafik & Illustration</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-wildlife"></span>
+									</span>
+									<span class="info">Fotografie</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-peak-climbing"></span>
+									</span>
+									<span class="info">Webentwicklung</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-mountain-biking"></span>
+									</span>
+									<span class="info">SEO & Hosting</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-scuba-diving"></span>
+									</span>
+									<span class="info">Markenentwicklung</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-hunting"></span>
+									</span>
+									<span class="info">Employer Branding</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico">
+										<span class="icon-boating"></span>
+									</span>
+									<span class="info">Motion Design</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+
+
+
+
+</f:section>

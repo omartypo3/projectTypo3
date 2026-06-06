@@ -1,0 +1,23 @@
+<f:comment>
+	<f:debug>{contentFromFb}</f:debug>
+</f:comment>
+
+<div class="titre">
+	<a href="{lienFacebook}" target="_blank">
+		<img src="{pictoFacebook}" alt="">
+	</a>
+	<p>Facebook</p>
+</div>
+<div class="contenu">
+	<a title="Accéder au contenu" href="{contentFromFb.link}">
+		<img src="{contentFromFb.full_picture}" alt="" />
+	</a>
+	<p class="nom texte">{contentFromFb.from.name}</p>
+	<p class="texte">
+		<f:format.html>{contentFromFb.message}</f:format.html>
+	</p>
+</div>
+<div class="contact">
+	<span class="date texte">Posté le  <f:format.date format="%d %B %Y">{contentFromFb.created_time}</f:format.date></span>
+</div>
+							

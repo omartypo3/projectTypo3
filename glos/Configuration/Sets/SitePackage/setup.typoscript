@@ -1,0 +1,123 @@
+page.includeCSS.theme >
+page.includeJSFooterlibs >
+
+page {
+    10{
+       dataProcessing{
+            40 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            40 {
+                languages = 0,1
+                as = languageMenu
+            }
+            60 = TYPO3\CMS\Frontend\DataProcessing\MenuProcessor
+            60 {
+                special = directory
+                special.value = 10
+                levels = 1
+                includeSpacer = 0
+                as = menuquicklinks
+                titleField = nav_title // title
+            }
+       } 
+       settings {
+            email = {$glos.config.contact.email}
+            tel = {$glos.config.contact.phone.default}
+            cel = {$glos.config.contact.cellphone.default}
+            address = {$glos.config.contact.address}
+            twitter = {$glos.config.socials.twitter}
+            instagram = {$glos.config.socials.instagram}
+            youtube = {$glos.config.socials.twitter}
+            facebook = {$glos.config.socials.facebook}
+            linkedin = {$glos.config.socials.linkedin}
+
+            description = {$glos.config.general.abstract.default}
+            copyright = {$glos.config.general.copyright.default}
+        }
+    }
+    includeCSS {
+        fonts = https://fonts.cdnfonts.com/css/euclid-circular-a
+        plugin = EXT:glos/Resources/Public/Css/plugins.css
+        dflipcss = EXT:glos/Resources/Public/JavaScript/dflip/css/dflip.min.css
+        themify = EXT:glos/Resources/Public/JavaScript/dflip/css/themify-icons.min.css
+        style = EXT:glos/Resources/Public/Css/style.css
+
+    }
+
+    includeJSLibs {
+
+    }
+
+    includeJS {
+
+    }
+
+    includeJSFooterlibs {
+
+    }
+
+    includeJSFooter {
+        jquery = EXT:glos/Resources/Public/JavaScript/jquery-3.6.3.min.js
+        jquery_migrate = EXT:glos/Resources/Public/JavaScript/jquery-migrate-3.0.0.min.js
+        modernizr = EXT:glos/Resources/Public/JavaScript/modernizr-2.6.2.min.js
+        imagesloaded = EXT:glos/Resources/Public/JavaScript/imagesloaded.pkgd.min.js
+        isotope = EXT:glos/Resources/Public/JavaScript/jquery.isotope.v3.0.2.js
+        bootstrap = EXT:glos/Resources/Public/JavaScript/bootstrap.min.js
+        popper = EXT:glos/Resources/Public/JavaScript/popper.min.js
+        scrollIt = EXT:glos/Resources/Public/JavaScript/scrollIt.min.js
+        waypoints = EXT:glos/Resources/Public/JavaScript/jquery.waypoints.min.js
+        carousel = EXT:glos/Resources/Public/JavaScript/owl.carousel.min.js
+        stellar = EXT:glos/Resources/Public/JavaScript/jquery.stellar.min.js
+        magnific = EXT:glos/Resources/Public/JavaScript/jquery.magnific-popup.js
+        YouTubePopUp = EXT:glos/Resources/Public/JavaScript/YouTubePopUp.js
+        select2 = EXT:glos/Resources/Public/JavaScript/select2.js
+        datepicker = EXT:glos/Resources/Public/JavaScript/datepicker.js
+        counterup = EXT:glos/Resources/Public/JavaScript/jquery.counterup.min.js
+        scroll = EXT:glos/Resources/Public/JavaScript/smooth-scroll.min.js
+        dflip = EXT:glos/Resources/Public/JavaScript/dflip/js/dflip.min.js
+        glos_scripts = EXT:glos/Resources/Public/JavaScript/main.js
+    }
+}
+
+[siteLanguage("languageId") == 1]
+	page.10.settings.description = {$glos.config.general.abstract.english}
+	page.10.settings.copyright = {$glos.config.general.copyright.english}
+[siteLanguage("languageId") == 2]
+	page.10.settings.description = {$glos.config.general.abstract.spanisch}
+	page.10.settings.copyright = {$glos.config.general.copyright.spanisch}
+[global]
+
+config {
+    concatenateJs = 0
+    concatenateCss = 0
+    compressJs = 0
+    compressCss = 0
+    
+    no_cache = 1
+    admPanel = 0
+}
+
+
+tt_content.menu_subpages =< lib.contentElement
+tt_content.menu_subpages {
+    templateName = MenuSubpages
+    templateRootPaths.10 = EXT:glos/Resources/Private/Templates/ContentElements/
+    partialRootPaths.10 = EXT:glos/Resources/Private/Partials/ContentElements/
+    layoutRootPaths.10 = EXT:glos/Resources/Private/Layouts/ContentElements/
+
+    dataProcessing {
+        10 = menu
+        10 {
+            special = directory
+            special.value.field = pages
+            dataProcessing {
+                10 = files
+                10 {
+                    references.fieldName = media
+                }
+            }
+        }
+    }
+}
+
+lib.currentPageId = TEXT
+lib.currentPageId.data = TSFE:id

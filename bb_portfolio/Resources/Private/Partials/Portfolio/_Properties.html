@@ -1,0 +1,39 @@
+
+<h1>{portfolio.titel}</h1>
+
+<h2>{portfolio.untertitel}</h2>
+<p>{portfolio.beschreibung}</p>
+
+Kategorie:{portfolio.kategorie.name}
+
+<h2>Kunde</h2>
+<p>{portfolio.kunde.name}</p>
+
+<f:if condition="{portfolio.zeitraum}">
+	<h2>Zeitraum</h2>
+	<p>{portfolio.zeitraum}</p>
+</f:if>
+
+<f:if condition="{portfolio.system}">
+	<h2>System</h2>
+	<p>{portfolio.system}</p>
+</f:if>
+
+<h2>Hashtags</h2>
+<f:for each="{portfolio.hashtags}" as="hashtag">
+	<div>{hashtag.name}</div>
+</f:for>
+
+
+<f:if condition="{portfolio.youtube}">
+	<h2>Youtube</h2>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/{portfolio.youtube}" frameborder="0" allowfullscreen></iframe>
+</f:if>
+
+
+<f:if condition="{portfolio.bilder}">
+	<h2>Bilder</h2>
+	<f:for each="{portfolio.bilder}" as="bild">
+		<f:image src="{bild.originalResource.originalFile.uid}" title="{bild.originalResource.properties.title}" alt="{bild.originalResource.properties.alternative}" width="1230" />
+	</f:for>
+</f:if>

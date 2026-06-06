@@ -1,0 +1,2 @@
+include:
+  - component: $CI_SERVER_FQDN/devops/gitlab-pipelines/fe/tmr@~latest

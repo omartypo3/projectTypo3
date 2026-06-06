@@ -1,0 +1,29 @@
+<script>
+	{f:format.htmlentitiesDecode(value: script)}
+</script>
+
+<style>
+	{f:format.htmlentitiesDecode(value: style)}
+</style>
+
+<div class="listeDocuments" >
+	<input type="hidden"  value="{f:format.htmlspecialchars(value: itemFormElValue)}" name="{f:format.htmlspecialchars(value: itemFormElName)}" onchange="{f:format.htmlspecialchars(value: fieldChangeFunc)}" />
+	
+	<f:for each="{pdfList}" as="pdf" >
+		<div class="itemDocument">
+			<div class="itemDocument_radio" >
+				<input type="checkbox" value="{pdf.id}" name="pdfs2display[]" onchange="javascript:changeValue(this.value, this.checked);"
+					<f:if condition="{pdf.selected}" >
+						checked="checked"
+					</f:if>
+				/>
+			</div>
+			<div class="itemDocument_image" >
+				<img src="{pdf.thumbUrl}" width="100px" height="140px">
+			</div>
+			<div class="itemDocument_nom" >
+				{pdf.name}
+			</div>
+		</div>
+	</f:for>
+</div>

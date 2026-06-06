@@ -1,0 +1,68 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EAnnuaires\:
+    resource: '../Classes/*'
+    exclude: 
+      - '../Classes/Domain/Model/*'
+      - '../Classes/Domain/Repository/*'
+      - '../Classes/Utility/FrontendRte.php'
+      - '../Classes/ViewHelpers/Widget/*'
+
+  # Make repositories public (required for Extbase)
+  Emagineurs\EAnnuaires\Domain\Repository\:
+    resource: '../Classes/Domain/Repository/*'
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  # Make controllers public (required for Extbase)
+  Emagineurs\EAnnuaires\Controller\:
+    resource: '../Classes/Controller/*'
+    public: true
+    autowire: true
+    autoconfigure: true
+    tags: ['backend.controller']
+
+  # Ajax routes
+  Emagineurs\EAnnuaires\Ajax\:
+    resource: '../Classes/Ajax/*'
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  # Service classes
+  Emagineurs\EAnnuaires\Service\:
+    resource: '../Classes/Service/*'
+    autowire: true
+    autoconfigure: true
+
+  # Hook classes
+  Emagineurs\EAnnuaires\Hooks\:
+    resource: '../Classes/Hooks/*'
+    public: true
+
+  # ViewHelpers
+  Emagineurs\EAnnuaires\ViewHelpers\:
+    resource: '../Classes/ViewHelpers/*'
+    public: true
+
+  # Scheduler tasks
+  Emagineurs\EAnnuaires\SchedulerTask\:
+    resource: '../Classes/SchedulerTask/*'
+    public: true
+
+  # Utilities
+  Emagineurs\EAnnuaires\Utility\:
+    resource: '../Classes/Utility/*'
+    public: true
+
+  Emagineurs\EAnnuaires\Updates\EAnnuairesPluginMigrationUpdate:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'eAnnuairesPluginMigration'
+

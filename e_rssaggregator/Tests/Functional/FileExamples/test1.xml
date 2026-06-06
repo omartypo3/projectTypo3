@@ -1,0 +1,53 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>
+			My RSS Stream
+		</title>
+		<link>http://www.url.com/</link>
+		<description>My RSS Stream Description</description>
+		<language>fr</language>
+		<pubDate>Thu, 13 Apr 2017 12:55:19 +0200</pubDate>
+		<lastBuildDate>Thu, 13 Apr 2017 12:55:19 +0200</lastBuildDate>
+		<image>
+			<url>
+				http://www.url.com/test.png
+			</url>
+			<title>
+				General Title
+			</title>
+			<link>http://www.url.com</link>
+		</image>
+		<item>
+			<title>
+				Title1
+			</title>
+			<link>
+				http://www.url1.com/
+			</link>
+			<description>
+				<![CDATA[<img alt="image" src="http://www.url1.com/test.png" />Description1]]>
+			</description>
+			<pubDate>Thu, 13 Apr 2017 12:35:00 +0200</pubDate>
+			<guid>
+				http://www.url1.com
+			</guid>
+			<dc:creator/>
+		</item>
+		<item>
+			<title>
+				Title2
+			</title>
+			<link>
+				http://www.url2.com/
+			</link>
+			<description>
+				Description2
+			</description>
+			<pubDate>Thu, 13 Apr 2017 12:34:00 +0200</pubDate>
+			<guid>
+				http://www.url2.com/
+			</guid>
+			<dc:creator/>
+		</item>
+	</channel>
+</rss>

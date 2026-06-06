@@ -1,0 +1,116 @@
+/* Hamburger*/
+/* ==================================================*/
+.hamburger {
+  padding: $hamburger-padding-y $hamburger-padding-x;
+  display: inline-block;
+  cursor: pointer;
+
+  transition-property: opacity, -webkit-filter;
+
+  transition-property: opacity, filter;
+
+  transition-property: opacity, filter, -webkit-filter;
+  transition-duration: $hamburger-hover-transition-duration;
+  transition-timing-function: $hamburger-hover-transition-timing-function;
+
+  /* Normalize (<button>)*/
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+
+  &:hover {
+    outline:0px important;
+    @if $hamburger-hover-use-filter == true {
+      -webkit-filter: $hamburger-hover-filter;
+              filter: $hamburger-hover-filter;
+    }
+    @else {
+      opacity: $hamburger-hover-opacity;
+    }
+  }
+}
+
+.hamburger-box {
+  width: $hamburger-layer-width;
+  height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: $hamburger-layer-height / -2;
+
+  &,
+  &::before,
+  &::after {
+    width: $hamburger-layer-width;
+    height: $hamburger-layer-height;
+    background-color: $hamburger-layer-color;
+    border-radius: $hamburger-layer-border-radius;
+    position: absolute;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+  }
+
+  &::before {
+    top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+background: #ffffff; 
+  }
+
+  &::after {
+    bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+  }
+}
+.menu-expanded .hamburger-inner {
+    &::before {
+        -webkit-animation-duration: 1s;
+                animation-duration: 1s;
+        -webkit-animation-name: hamburgerOmbre;
+                animation-name: hamburgerOmbre;
+        -webkit-animation-fill-mode: forwards;
+                animation-fill-mode: forwards; 
+    }
+  }
+
+@-webkit-keyframes hamburgerOmbre {
+  from {
+      background:#fff;
+  }
+
+  to {
+      background:#fff;
+      background: linear-gradient(to right, #ffffff 0%,#ffffff 34%,#000000 35%,#111111 46%,#ffffff 47%,#ffffff 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 );
+      -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+  }
+}
+
+@keyframes hamburgerOmbre {
+  from {
+      background:#fff;
+  }
+
+  to {
+      background:#fff;
+      background: linear-gradient(to right, #ffffff 0%,#ffffff 34%,#000000 35%,#111111 46%,#ffffff 47%,#ffffff 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 );
+      -webkit-animation-play-state: paused;
+              animation-play-state: paused;
+  }
+}

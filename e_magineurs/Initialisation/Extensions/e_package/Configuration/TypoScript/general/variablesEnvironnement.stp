@@ -1,0 +1,15 @@
+[backend.user.isLoggedIn && (request.getQueryParams()['debug'] ?? '') == '1'] || [getenv("SITE_ENV") == "LOCAL"] || [getenv("REDIRECT_SITE_ENV") == "LOCAL"]
+	config {
+		linkVars := addToList(debug(1))
+		compressCss = 0
+		concatenateCss = 0
+		compressJs = 0
+		concatenateJs = 0
+	}
+	plugin.tx_min.tinysource.enable = 0
+[end]
+
+[getenv("SITE_ENV") == "PREPROD"] || [getenv("REDIRECT_SITE_ENV") == "PREPROD"] || [getenv("SITE_ENV") == "DEV"] || [getenv("REDIRECT_SITE_ENV") == "DEV"]
+	page.meta.robots = noindex,nofollow
+	page.meta.robots.override >
+[end]

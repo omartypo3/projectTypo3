@@ -1,0 +1,19 @@
+<f:layout name="Empty" />
+
+<f:section name="content">
+    <f:if condition="{success}" >
+        <f:then>
+            <f:if condition="{confirm}" >
+                <f:then>
+                    The message has been correctly validated.
+                </f:then>
+                <f:else>
+                    The message has been correctly removed.
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            The message wasn't validated, maybe have you already validated the message.
+        </f:else>
+    </f:if>
+</f:section>

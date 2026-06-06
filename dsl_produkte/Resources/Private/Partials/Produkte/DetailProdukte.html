@@ -1,0 +1,45 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+
+<div class="col-xs-12 col-sm-6 col-md-3">
+  <div class="entry prod">
+    <f:link.action action="show" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,produkte:produkt)}">
+      <f:if condition="{produkt.bilder.0}">
+        <f:then>
+          <f:image src="{produkt.bilder.0.originalResource.originalFile.uid}" width="165c" height="115c"  />
+        </f:then>
+        <f:else><img src="fileadmin/template/public/images/allg/kategorie_keinbild.png" alt="kein Bild vorhanden" width="165" height="115"></f:else>
+      </f:if>
+    </f:link.action>
+    
+    <div class="teaser-headline">
+      <h3 class="center">
+        <f:format.crop maxCharacters="70" append="&nbsp;...">
+          {produkt.titel}
+        </f:format.crop>
+      </h3>
+    </div>
+<div class="table divider">
+      <div class="table-cell">
+        <div></div>
+      </div>
+      <div class="table-cell min_width">
+        <f:image src="fileadmin/template/public/images/layout/allgemein/linie_ende_gepunktet_orange.png" alt="Schmuckelement Linie" width="49" height="6"/>
+      </div>
+    </div>
+
+    <div class="teaser-text center">
+      <f:if condition="{produkt.teaser}">
+        <f:then>
+          <p><f:format.crop maxCharacters="80" append="&nbsp;...">{produkt.teaser}</f:format.crop></p>
+        </f:then>
+        <f:else>
+          <p><f:format.crop maxCharacters="80" append="&nbsp;..."><f:format.stripTags>{produkt.text}</f:format.stripTags></f:format.crop></p>
+        </f:else>
+      </f:if>
+    </div>
+    <f:link.action action="show" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,produkte:produkt)}" class="article_hover">
+  	<span class="article_hoverBefore"></span> <span class="article_hoverAfter"></span>
+    <span class="button">Mehr Infos</span>
+  </f:link.action>
+  </div>
+</div>

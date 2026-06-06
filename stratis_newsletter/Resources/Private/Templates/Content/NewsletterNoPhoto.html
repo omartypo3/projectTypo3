@@ -1,0 +1,74 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:vh="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+  <f:layout name="Content"/>
+  <f:section name="Configuration">
+    <flux:form id="newsletternophoto" options="{icon: 'EXT:stratis_newsletter/Resources/Public/Icons/Example.gif', group: 'stratisnewsletters'}" label="[Newsletter] Ya pas photo" description="Affiche Ya pas photo de la newsletter">
+      <flux:field.input name="title" label="Titre du bloc" required="true" default="Ya pas photo"/>    
+      <flux:field.inline.fal name="picto" label="Image titre " size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />
+      <flux:field.inline.fal name="pictoMain" label="Image" size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />
+      <flux:field.text name="text" label="Texte" enableRichText="true" />
+      <flux:field.inline.fal name="btnPicto" label="Bouton - Pictogramme" size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />
+      <flux:field.input name="btnLink" label="Bouton - Redirection" config="{renderType: 'link'}">
+      </flux:field.input>
+    </flux:form>
+  </f:section>
+  <f:section name="Preview">    
+    <b>Ya pas photo</b> 
+  </f:section>
+  <f:section name="Main">
+        <v:variable.set name="domain" value="{v:site.url() -> v:format.replace(substring:'/',replacement:'') -> v:format.replace(substring:':',replacement:'://')}"/>              
+        <v:variable.set name="pathImages" value="EXT:stratis_newsletter/Resources/Public/Images/" />
+        <f:if condition="{btnLink}">            
+          {f:cObject(typoscriptObjectPath:'lib.absoluteUri', data:'{parameter:btnLink}') -> v:variable.set(name:'btnLink')}            
+        </f:if>        
+
+        <f:if condition="{picto}">
+          <f:then>
+            {v:content.resources.fal(field:'picto',record:record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement')}
+            
+            <f:if condition="{mediaElement}">
+              <v:variable.set name="picto" value="{f:uri.image(src:mediaElement.url,width:'360c',height:'470c')}"/>
+            </f:if>
+          </f:then>
+          <f:else>            
+            <v:variable.set name="picto" value="{f:uri.image(src:'{pathImages}newsletter/ya-pas-photo.png')}" />
+          </f:else>
+        </f:if>        
+
+        <f:if condition="{pictoMain}">
+          {v:content.resources.fal(field:'pictoMain',record:record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement2')}
+          <f:if condition="{mediaElement2}">
+            <v:variable.set name="pictoMain" value="{f:uri.image(src:mediaElement2.url,width:'700c',height:'468c')}"/>
+          </f:if>
+        </f:if>
+
+        <f:if condition="{btnPicto}">
+          <f:then>
+            {v:content.resources.fal(field:'btnPicto',record:record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement3')}
+            <f:if condition="{mediaElement3}">
+              <v:variable.set name="btnPicto" value="{f:uri.image(src:mediaElement3.url)}"/>
+            </f:if>
+          </f:then>
+          <f:else>
+            <v:variable.set name="btnPicto" value="{f:uri.image(src:'{pathImages}newsletter/button-edito.png')}" />
+          </f:else>          
+        </f:if>
+        
+        <f:render partial="NewsletterEdito.html" arguments="{
+              domain:domain,
+              btnLink:btnLink,
+              btnPicto:btnPicto,                  
+              text:text,                  
+              picto:picto,
+              pictoMain:pictoMain}"/>      
+        
+        <v:variable.unset name="btnLink"/>
+        <v:variable.unset name="picto"/>
+        <v:variable.unset name="pictoMain"/>    
+        <v:variable.unset name="btnPicto"/>  
+  </f:section>
+</html>

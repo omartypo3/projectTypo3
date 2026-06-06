@@ -1,0 +1,162 @@
+<html xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:comment><!--
+<f:section name="kategorieIcon">
+    <f:switch expression="{kategorie.uid}">
+       <f:case value="1"><f:image src="fileadmin/template_web/Public/Images/icons/kategorien/icon_grafik.png" alt="Icon Corporate Design" class="categoryIconDetail" /></f:case>
+       <f:case value="2"><f:image src="fileadmin/template_web/Public/Images/icons/kategorien/icon_text.png" alt="Icon Grafik & Illustration" class="categoryIconDetail" /></f:case>
+       <f:case value="3"><f:image src="fileadmin/template_web/Public/Images/icons/kategorien/icon_foto.png" alt="Icon Fotografie" class="categoryIconDetail" /></f:case>
+       <f:case value="4"><f:image src="fileadmin/template_web/Public/Images/icons/kategorien/icon_web.png" alt="Icon Website" class="categoryIconDetail" /></f:case>
+    </f:switch>
+    </f:section>
+--></f:comment>
+    
+<f:section name="main">
+
+
+<v:asset.style name="cssPortfolioDetailInline">
+	.portfolioBeschreibungWrapper p{
+		margin-bottom:15px !important;
+	}
+</v:asset.style>	
+	
+<n:titleTag><f:if condition="{portfolio.untertitel}"><f:then>{portfolio.untertitel -> f:format.stripTags()}</f:then><f:else>{portfolio.titel -> f:format.stripTags()}</f:else></f:if></n:titleTag>
+
+<f:render partial="Portfolio/Opengraph" arguments="{portfolio: portfolio}" />
+
+<n:headerData>													
+	<meta name="keywords" content="{portfolio.seoKeywords}" />		
+	<meta name="description" content="{portfolio.seoDescription}" />		
+</n:headerData>
+
+
+
+
+<f:cObject typoscriptObjectPath="lib.bbportfolio.pagebrowserportfolio" />
+
+
+<div class="detailpageInfo whiteContainer">
+	<div class="container">
+		<div class="row">
+			<div class="col col-md-8">
+                
+				<h1><f:if condition="{portfolio.untertitel}"><f:then>{portfolio.untertitel}</f:then><f:else>{portfolio.titel}</f:else></f:if></h1>
+				
+				<f:comment><!--<f:if condition="{portfolio.untertitel}"><p><strong>{portfolio.untertitel}</strong></p></f:if>--></f:comment>
+				
+				<f:if condition="{portfolio.beschreibung}"><div class="portfolioBeschreibungWrapper"><f:format.html>{portfolio.beschreibung}</f:format.html></div></f:if>
+				<f:if condition="{portfolio.hashtags}"><p class="hashtags"><f:for each="{portfolio.hashtags}" as="hashtag" iteration="iterator"><f:if condition="{hashtag.name}">
+					<f:if condition="{iterator.cycle}>1"> </f:if>#{hashtag.name}
+					</f:if></f:for></p></f:if>
+				
+ 				
+  				
+
+			</div>
+			<div class="col col-md-4 detailInfo">
+				
+				
+				<f:if condition="{portfolio.kundennamecheck}">
+					<f:then>
+						<hr>
+						<h4>Kunde</h4>
+						<p>{portfolio.kundenname}</p>
+					</f:then>
+					<f:else>
+						<f:if condition="{portfolio.kunde}">
+							<hr>
+							<h4>Kunde</h4>
+							<p><f:link.action rel="nofollow" pageUid="43" action="detailkunden" arguments="{kunden:portfolio.kunde}" class="linkPfeil">{portfolio.kunde.name}</f:link.action></p>
+						</f:if>
+					</f:else>
+				</f:if>
+				
+				
+				
+				
+				<f:if condition="{portfolio.zeitraum}">
+					<hr>
+					<h4>Jahr</h4>
+					<p>{portfolio.zeitraum}</p>
+				</f:if>
+				<f:if condition="{portfolio.system}">
+					<hr>
+					<h4>Websystem</h4>
+					<p>{portfolio.system}</p>
+				</f:if>
+				
+				<f:if condition="{portfolio.link}">
+					<hr>
+					<h4>Webseite</h4> 
+					<p><f:link.typolink parameter="{portfolio.link}" class="linkPfeil"><f:if condition="{portfolio.linkTitel}"><f:then>{portfolio.linkTitel}</f:then></f:if></f:link.typolink></p>
+				</f:if>
+                
+               
+                <f:if condition="{portfolio.kategorie}">
+                    <hr>
+					<h4><strong>Leistung</strong>en</h4>
+                    <p><f:for each="{portfolio.kategorie}" as="kat" iteration="iterator"><f:if condition="{iterator.cycle}>1">, </f:if><f:link.action rel="nofollow" action="list" controller="Portfolio"  pluginName="portfolioausgabe" arguments="{kategorien : kat}">{kat.name}</f:link.action></f:for></p>
+                </f:if>
+				
+			
+			</div>
+		</div>
+	</div>
+</div>
+<f:if condition="{portfolio.bilder}">
+	<div class="darkgreyContainer pReset">
+		<div class="container whiteContainer pReset">
+			
+			<f:if condition="{portfolio.youtube}"><div class="responsive-video"><iframe src="https://www.youtube.com/embed/{portfolio.youtube}"
+				width="1440" height="810" frameborder="0" webkitAllowFullScreen
+				mozallowfullscreen allowFullScreen></iframe></div></f:if><f:for each="{portfolio.bilder}" as="bild"><f:image src="{bild.originalResource.originalFile.uid}" title="{bild.originalResource.properties.title}" alt="{f:if(condition: '{bild.originalResource.properties.alternative}', then: '{bild.originalResource.properties.alternative}', else: 'projektbild')}" width="1440" /></f:for>
+
+		</div>
+	</div>
+</f:if>
+<!--TYPO3SEARCH_end-->
+<div class="detailpageInfo whiteContainer">
+	<div class="container">
+		<div class="row socialbuttons">
+			<div class="col-sm-6 col-xs-12 detailBackBtn">
+				
+				
+				<f:cObject typoscriptObjectPath="lib.bbportfolio.pagebrowserportfolioback" />
+				
+				
+				
+				
+				
+			</div>
+			<div class="col-sm-6 col-xs-12 socialRight detailSocialBtn">
+				<div class="hidden-sm hidden-md hidden-lg"><br><p class="socialtitle">Projekt teilen</p></div>
+				<f:alias map="{canonicalaction: 'detail' }"><f:alias map="{canonicalurl: '{f:uri.action( action: canonicalaction, arguments: {portfolio: portfolio}, absolute: 1)}' }"><rx:shariff data="{url: canonicalurl }" services="facebook,twitter" enableBackend="true" /></f:alias></f:alias>
+				
+				<p class="socialtitle hidden-xs">Projekt teilen</p>
+					
+			</div>
+		</div>
+	</div>
+</div>
+<!--TYPO3SEARCH_begin-->
+	
+<f:cObject typoscriptObjectPath="lib.bbportfolio.portfoliodetailrelated" /><f:comment><f:render partial="Portfolio/Related" arguments="{portfolio:portfolio}" /></f:comment>
+
+
+
+</f:section>
+</html>

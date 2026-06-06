@@ -1,0 +1,10 @@
+2017-04-14 L.Le Sommer <llesommer@e-magineurs.com> (v1.1.0)
+
+	* Nettoyage du code, le franglais a été changé en anglais, donc quelques variables ont changées de nom pour les templates, ajout de tests fonctionnels
+	* "flux" devient "items"
+	* "nbFlux" devient "rssStreamCount"
+	* "article_contenu" devient "article_bodytext"
+
+2016-04-27 C.Costa  <ccosta@e-magineurs.com> (v 1.0.0)
+
+	* initial version code compatible typo3 v7.x.x

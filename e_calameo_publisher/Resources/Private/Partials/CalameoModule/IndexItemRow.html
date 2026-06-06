@@ -1,0 +1,41 @@
+<tr>
+    <td>
+        <f:if condition="{item.id} != -1" >
+            <f:then>
+                <input class="pdfs2import" name="pdfs2import[]" type="checkbox" value="{item.path}/{item.baseName}" disabled />
+            </f:then>
+            <f:else>
+                <input class="pdfs2import" name="pdfs2import[]" type="checkbox" value="{item.path}/{item.baseName}" />
+            </f:else>
+        </f:if>
+    </td>
+    <td>
+        <f:format.HtmlentitiesDecode>
+            <img src="{item.thumbnail}" title="{item.baseName}" />
+        </f:format.HtmlentitiesDecode>
+    </td>
+    <td>
+        {item.baseName}
+    </td>
+    <td class="status" >
+        <f:if condition="{item.id} != -1" >
+            <f:then>
+                <img src="{f:uri.resource(path: 'Img/actions-check.svg', extensionName: 'e_calameo_publisher')}" width="48" height="48">
+            </f:then>
+            <f:else>
+                <img src="{f:uri.resource(path: 'Img/actions-edit-upload.svg', extensionName: 'e_calameo_publisher')}" width="48" height="48">
+            </f:else>
+        </f:if>
+    </td>
+    <td>
+        <f:if condition="{item.id} != -1" >
+            <textarea id="reponseECPublish_{itemIterator.index}" rows="3" cols="25" readonly="readonly" onclick="this.select();">
+                <f:format.htmlentitiesDecode>
+                    <div style="text-align:center;">
+                        <f:render partial="Viewer/Classic" arguments="{item: item, settings: {height: 'auto', width: 'auto'}}" />
+                    </div>
+                </f:format.htmlentitiesDecode>
+            </textarea>
+        </f:if>
+    </td>
+</tr>

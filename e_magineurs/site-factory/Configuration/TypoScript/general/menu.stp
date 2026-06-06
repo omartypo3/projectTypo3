@@ -1,0 +1,356 @@
+
+
+[(request.getQueryParams()['tx_news_pi1'] ?? [])['news'] ?? 0 > 0]
+lib.filAriane.20 = RECORDS
+lib.filAriane.20 {
+    dontCheckPid = 1
+    tables = tx_news_domain_model_news
+    source.data = GP:tx_news_pi1|news
+    source.intval = 1
+    conf.tx_news_domain_model_news = TEXT
+    conf.tx_news_domain_model_news {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <li>|</li>
+}
+[end]
+
+# gestion titre multilangue
+#[(request.getQueryParams()['tx_news_pi1'] ?? [])['news'] ?? 0 > 0] && [request.getQueryParams()['L'] ?? 0 > 0]
+#     lib.filAriane.20 = CONTENT
+#     lib.filAriane.20 {
+#         table =  tx_news_domain_model_news
+#         select {
+#             pidInList = {$e_magineurs.conf.homePage}
+#             recursive = 9999            
+#             where.data = GP:tx_news_pi1|news
+#             where.wrap = (l10n_parent = |)
+#         }
+#         renderObj = TEXT
+#         renderObj {
+#             field = title
+#         }
+#     }
+# [end]
+[(request.getQueryParams()['tx_fsmediagallery_mediagallery'] ?? [])['mediaAlbum'] ?? 0 > 0]
+lib.filAriane.20 = RECORDS
+lib.filAriane.20 {
+    dontCheckPid = 1
+    tables = sys_file_collection
+    source.data = GP:tx_fsmediagallery_mediagallery|mediaAlbum
+    source.intval = 1
+    conf.sys_file_collection = TEXT
+    conf.sys_file_collection {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <li>|</li>
+}
+[end]
+[(request.getQueryParams()['tx_eannuaires_pi1'] ?? [])['fiche'] ?? 0 > 0]
+lib.filAriane.20 = RECORDS
+lib.filAriane.20 {
+    dontCheckPid = 1
+    tables = tx_eannuaires_domain_model_fiche
+    source.data = GP:tx_eannuaires_pi1|fiche
+    source.intval = 1
+    conf.tx_eannuaires_domain_model_fiche = TEXT
+    conf.tx_eannuaires_domain_model_fiche {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <li>|</li>
+}
+[end]
+[(request.getQueryParams()['tx_dpnglossary_glossary'] ?? [])['term'] ?? 0 > 0]
+lib.filAriane.20 = RECORDS
+lib.filAriane.20 {
+    dontCheckPid = 1
+    tables = tx_dpnglossary_domain_model_term
+    source.data = GP:tx_dpnglossary_glossary|term
+    source.intval = 1
+    conf.tx_dpnglossary_domain_model_term = TEXT
+    conf.tx_dpnglossary_domain_model_term {
+        field = name
+        htmlSpecialChars = 1
+    }
+    wrap = <li>|</li>
+}
+[end]
+
+#surchage le title du lien raccourci par celui de la page de destination
+tt_content.menu.20.default.1{
+    NO.ATagTitle >
+    NO.ATagTitle.stdWrap.cObject = CASE
+    NO.ATagTitle.stdWrap.cObject {
+        key.field = doktype
+        4 = RECORDS
+        4 {
+            dontCheckPid = 1
+            tables = pages
+            source.field = shortcut
+            source.intval = 1
+            conf.pages = TEXT
+            conf.pages {
+                field = title
+                htmlSpecialChars = 1
+            }
+            stdWrap.noTrimWrap = |aller sur la page ||
+        }
+    }
+}
+
+#old fashion way : menu en typoscript - à afficher dans un musée
+/*
+lib.menuPrincipal = HMENU
+lib.menuPrincipal {
+    wrap = <nav><ul>|</ul></nav>
+    special = list
+    special.value = {$e_magineurs.conf.menuPrincipal.list}
+    1 = TMENU
+    1 {
+        NO = 1
+        NO.wrapItemAndSub = <li class="niveau1">|</li>
+        NO.stdWrap.field = nav_title // title
+        #NO.doNotLinkIt = 1
+        ACT < .NO
+        ACT.wrapItemAndSub = <li class="niveau1 active">|</li>
+        CUR < .ACT
+        CUR.ATagParams = title="Page active"
+        expAll = 1
+    }
+    2 < .1
+    2 {
+        wrap = <ul class="sousMenu">|</ul>
+        NO.wrapItemAndSub = <li>|</li>
+        ACT.doNotLinkIt = 0
+        ACT.wrapItemAndSub = <li class="active">|</li>
+        CUR < .ACT
+        CUR.ATagParams = title="Page active"
+    }
+    3 < .2
+}
+*/
+#ex menu avec special = directory
+/*
+lib.menuPid = HMENU
+lib.menuPid {
+    special = directory
+    special.value = PID
+    1 = TMENU
+    1 {
+        ...
+    }
+    ...
+}
+*/
+
+
+tt_content.menu_miniHead =< tt_content.menu_pages
+tt_content.menu_miniHead.templateName = MenuHead
+
+tt_content {
+    menu_secondaire =< tt_content.menu_pages
+    menu_secondaire {
+        templateName = MenuSecondaire
+        dataProcessing{
+            10 {
+                special = list
+                special.value.field = pages
+                levels = {$e_magineurs.conf.MenuSecondaire.levels}
+                expandAll = 1
+                includeSpacer = 1
+            }
+        }
+    }   
+}
+
+
+
+#Menu gauche
+# lib.menuGauche = HMENU
+# lib.menuGauche {
+#    special = list
+#    special.value.data = field:pid
+
+#    1 = TMENU
+#    1 {
+#        NO = 1
+#        NO.linkWrap = <ul class="ul_niveau1">|</ul>
+#        #wrap = <ul class="niveau1">|</ul>
+#        NO.doNotLinkIt = 0
+#        NO.wrapItemAndSub = <li class="li_niveau1">|</li>
+#        NO.linkWrap >
+#        ACT = 1
+#        ACT.doNotLinkIt = 1
+#        ACT.wrapItemAndSub = <li class="li_niveau1 active">|</li>
+#        CUR < .ACT
+#        CUR.ATagParams = title="Page active"
+#        expAll = 1
+#    }
+#    2 < .1
+#    2 {
+#        wrap = <ul class="ul_niveau2">|</ul>
+#        NO.doNotLinkIt = 0
+#        NO.wrapItemAndSub = <li class="li_niveau2">|</li>
+#        NO.linkWrap >
+#        ACT = 1
+#        ACT.doNotLinkIt = 1
+#        ACT.wrapItemAndSub = <li class="li_niveau2 active">|</li>
+#        CUR < .ACT
+#        CUR.ATagParams = title="Page active"
+#        expAll = 1
+#    }
+# }
+
+lib.menuGauche = HMENU
+ lib.menuGauche {
+
+    # We define the first level as text menu.
+    1 = TMENU
+
+    1{
+        # We define the normal state ("NO").
+        
+        wrap = <ul class="ul_niveau1">|</ul>
+        NO.doNotLinkIt = 0
+        NO.wrapItemAndSub = <li class="li_niveau1">|</li>
+        # Wrap the whole first level.
+        #wrap = <ul class="ul_niveau1">|</ul>
+        ACT = 1
+        ACT.wrapItemAndSub = <li class="li_niveau1 current">|</li>
+    }
+    # The second and third level should be configured exactly
+    # the same way.
+    # In between the curly brackets, objects can be copied.
+    # With the dot "." we define that the object can be found
+    # in the brackets.
+    # With 2.wrap and 3.wrap we overwrite the wrap, which was
+    # copied from 1.wrap.
+    2 < .1
+    2{
+        wrap = <ul class="ul_niveau2">|</ul>
+        NO.doNotLinkIt = 0
+        NO.wrapItemAndSub = <li class="li_niveau2">|</li>
+        ACT = 1
+        ACT.wrapItemAndSub = <li class="li_niveau2 current">|</li>
+    }
+
+    3 < .1
+    3{
+        wrap = <ul class="ul_niveau3">|</ul>
+        NO.doNotLinkIt = 0
+        NO.wrapItemAndSub = <li class="li_niveau3">|</li>
+        ACT = 1
+        ACT.wrapItemAndSub = <li class="li_niveau3 current">|</li>
+    }
+
+    4 < .1
+    4{
+        wrap = <ul class="ul_niveau4">|</ul>
+        NO.doNotLinkIt = 0
+        NO.wrapItemAndSub = <li class="li_niveau4">|</li>
+        ACT = 1
+        ACT.wrapItemAndSub = <li class="li_niveau4 current">|</li>
+    }
+}
+
+lib.base_menu_gauche = HMENU
+lib.base_menu_gauche {
+
+    # We define the first level as text menu.
+    1 = TMENU
+
+    1{
+        # We define the normal state ("NO").
+        wrap = |
+        NO.wrapItemAndSub = <span style="display: none;">|</span>
+        ACT = 1
+        ACT.doNotLinkIt = 1
+        ACT.wrapItemAndSub = <p class="titre_rubrique">|</p>
+    }
+}
+
+
+
+# tt_content.menu_miniicon =< tt_content.menu_pages
+# tt_content.menu_miniicon.templateName = MenuMiniicon
+
+tt_content.menu_miniicon =< tt_content.menu_sitemap_pages
+tt_content.menu_miniicon {
+    templateName = MenuMiniicon
+    dataProcessing {
+        10 {
+            special = directory
+            special.value.field = pages
+            levels = 2
+            expandAll = 1
+            includeSpacer = 1
+        }
+    }
+}
+
+lib.filArianeNavigation = COA
+lib.filArianeNavigation {
+    wrap = <nav class="ariane"><ul>|</ul></nav>
+    5 = TEXT
+    5 {
+        value = Accueil
+        typolink {
+            parameter = {$e_magineurs.conf.homePage}
+        }
+        wrap = <li class="ir filHome" >|</li>
+    }
+    25 = HMENU
+    25 {
+        special = rootline
+        special.range = 1|-1
+        1 = TMENU
+        1{
+            NO = 1
+            NO.stdWrap.field = nav_title // title
+            NO.allWrap = <li class="item">|</li>
+            NO.ATagParams = class="openFil"
+            NO.stdWrap.wrap = <span>|</span>
+            NO.stdWrap2.append = HMENU
+            NO.stdWrap2.append {
+                special = directory
+                special.value = {field:pid}
+                special.value.stdWrap.insertData = 1
+                wrap = <ul class="menuFil">|</ul>
+                1 = TMENU
+                1 {
+                    NO = 1
+                    NO.stdWrap.field = nav_title // title
+                    NO.allWrap = <li>|</li>
+                    CUR < .NO
+                    CUR.ATagParams = class="active"
+                    ACT < .CUR
+                }
+            }
+            CUR < .NO
+            ACT < .NO
+        }
+    }
+}
+
+
+lib.filAriane = COA
+lib.filAriane.wrap = <nav class="ariane"><ul>|</ul></nav>
+lib.filAriane.10 = HMENU
+lib.filAriane.10 {
+    special = rootline
+    #commenter la ligne suivante pour afficher un lien vers la page d'accueil
+    special.range = 1|-1
+    1 = TMENU
+    1{ 
+        NO = 1
+        NO.allWrap = <li>|</li>
+        NO.stdWrap.field = nav_title // title
+        CUR < .NO
+        CUR.doNotLinkIt = 1
+        ACT < .NO
+    }
+}
+

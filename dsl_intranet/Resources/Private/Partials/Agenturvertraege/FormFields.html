@@ -1,0 +1,183 @@
+<html xmlns:h="http://typo3.org/ns/DslFactory/DslIntranet/ViewHelpers" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+	
+	
+	
+		
+	
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kunde<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	
+        	<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false', data-live-search:'true'}" name="kunde"  class="validator_required selectpicker selectpickerFormular" id="editKunde"  >
+				<option value="">Bitte wählen</option>
+				<f:for each="{kundens}" as="kunde">
+					<f:form.select.option value="{kunde.uid}" selected="{f:if(condition:'{agenturvertraege.kunde} == {kunde}',then:'true')}" >{kunde.kundenNameForFilter}</f:form.select.option>
+				</f:for>
+			</f:form.select>
+        
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding" id="formFieldsAktivitaet">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Vertragsbegin<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+        
+        
+        	<div class='input-group date fullDatePicker' >
+       
+                
+                <f:form.textfield class="form-control input-sm" name="vertragsbegin" required="true"  value="{agenturvertraege.vertragsbegin->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+            </div>
+       
+        
+        </div>
+        <div class="layout-table-col">&nbsp;</div>
+        <div class="layout-table-col table-formular-label">&nbsp;immer 1. des Monats</div>
+        
+	</div>
+</div>
+	
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Vertragsende
+        </div>
+        <div class="layout-table-col table-formular-large">
+        
+        	<div class='input-group date fullDatePicker' >
+                
+                <f:form.textfield class="form-control input-sm" name="vertragsende"   value="{agenturvertraege.vertragsende->f:format.date(format: 'd.m.Y')}" additionalAttributes="{autocomplete: 'off'}"  />
+                <span class="input-group-addon border-left-none">
+                    <i class="bb-calendar-date bb-lg"></i>
+                </span>
+                
+            </div>
+
+        </div>
+        <div class="layout-table-col">&nbsp;</div>
+		<div class="layout-table-col table-formular-label">&nbsp;immer letzter des Monats</div>
+	</div>
+</div>
+	
+	
+<div class="form_headline">
+	<strong>Umfang / Kosten</strong>
+    <hr>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kontingent<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+        	<f:form.textfield name="stundenMonatlich" value="{agenturvertraege.stundenMonatlich->f:format.number(decimals: 2, decimalSeparator: '.', thousandsSeparator: '')}" class="form-control stundenMonatlich input-sm" required="true"  />
+		</div>
+		<div class="layout-table-col">&nbsp;</div>
+        <div class="layout-table-col table-formular-label">&nbsp;Stunden pro Monat</div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Preis (Netto)<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+        	<f:form.textfield name="preisMonatlich" value="{agenturvertraege.preisMonatlich->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}" class="form-control preisMonatlich input-sm" required="true"  />
+		</div>
+		<div class="layout-table-col">&nbsp;</div>
+        <div class="layout-table-col table-formular-label">&nbsp;Euro pro Monat</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	berechn. Stundensatz
+        </div>
+        
+		<div class="layout-table-col table-formular-label"><span id="agenturvertraegeFormularStundensatz">xxx</span>&nbsp;Euro (Netto)</div>
+	</div>
+</div>	
+	
+	
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Mehraufwand (Netto)<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+        	<f:form.textfield name="preisMehraufwandStunde" value="{agenturvertraege.preisMehraufwandStunde->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}" class="form-control preisMehraufwandStunde input-sm" required="true"  />
+		</div>
+		<div class="layout-table-col">&nbsp;</div>
+        <div class="layout-table-col table-formular-label">&nbsp;Euro pro Stunde</div>
+	</div>
+</div>
+
+	
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Notizen
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textarea name="beschreibung" value="{agenturvertraege.beschreibung}" class="form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+	
+	
+<br>
+<div class="form_headline">
+	<strong>agenturvertraege als Download (PDF)</strong>
+	<hr>
+</div>
+	
+<f:if condition="{agenturvertraege.vertrag}">	
+	<div class="layout-table table-formular-padding">
+		<div class="layout-table-row table-formular-row">
+			<div class="layout-table-col table-formular-label table-formular-medium">
+				Derzeitiger Download
+			</div>
+
+			<div class="layout-table-col table-formular-label">
+				<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{agenturvertraege.vertrag.uid}"  treatIdAsReference="1" as="fileoutput">
+							<span class="bb-pdf-download" aria-hidden="true"></span> <a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}">{fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a>
+						</v:resource.file>
+			</div>
+		</div>
+	</div>	
+</f:if>
+	
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+
+		<div class="layout-table-col table-formular-label table-formular-medium">
+			<f:if condition="{agenturvertraege.uid}"><f:if condition="{agenturvertraege.vertrag}">	neuer </f:if></f:if>Download
+        </div>
+		
+		<div class="layout-table-col">
+	
+			<f:form.upload id="fileUploadDateien" property="vertrag"></f:form.upload>
+
+
+			<div class="fileUploadTypen"><span class="required hidden"><i class="fa fa-info-circle" aria-hidden="true"></i> Ihr Dateityp wird leider nicht unterstützt.</span></div>
+		</div>
+	</div>
+</div>	
+	
+</html>

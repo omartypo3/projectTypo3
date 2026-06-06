@@ -1,0 +1,83 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">
+    <li class="lazyLoadItem move_scroll article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')} " itemscope="itemscope" itemtype="http://schema.org/Article">
+        <n:excludeDisplayedNews newsItem="{newsItem}" />
+        <article class="d-lg-flex">
+            <div class="news-img-wrap">
+                <f:if condition="{newsItem.falMediaPreviews}">
+                    <f:then>
+                        <n:link configuration="{additionalParams:'&cat={newsItem.categories.0.uid}&cat2={newsItem.categories.1.uid}&cat3={newsItem.categories.2.uid}'}" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                            <f:alias map="{mediaElement: '{newsItem.falMediaPreviews.0}'}">
+                                <f:if condition="{mediaElement.originalResource.type} == 2">
+                                    <f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" width="690c" height="386c" />
+                                </f:if>
+																	<f:if condition="{mediaElement.originalResource.type} == 4">
+																		<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" width="690c" height="386c" />
+																	</f:if>
+                                <f:if condition="{mediaElement.originalResource.type} == 5">
+                                    <f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" maxWidth="{settings.list.media.image.maxWidth}" maxHeight="{settings.list.media.image.maxHeight}" />
+                                </f:if>
+                            </f:alias>
+                        </n:link>
+                    </f:then>
+                    <f:else>
+                        <span class="no-media-element">
+                            <n:link configuration="{additionalParams:'&cat={newsItem.categories.0.uid}&cat2={newsItem.categories.1.uid}&cat3={newsItem.categories.2.uid}'}" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                                <f:image src="{settings.list.media.dummyImage}" title="" alt="" width="690c" height="386c" />
+                            </n:link>
+                        </span>
+                    </f:else>
+                </f:if>
+            </div>
+
+					<div class="content-liste-actu d-flex flex-column">
+                <f:if condition="{newsItem.categories}">
+                    <p class="wrap_cat">
+                        <f:for each="{newsItem.categories}" as="category" key="key" iteration="ite">
+                            <f:if condition="{category.parentcategory.uid} != 19">
+                                <f:if condition="{category.parentcategory.uid} != 256">
+                                    <f:if condition="{category.parentcategory.uid} != 368">
+                                        <f:if condition="{ite.isLast}">
+                                            <f:then>
+                                                <span class="cat">{category.title}</span>
+                                            </f:then>
+                                            <f:else>
+                                                <span class="cat">{category.title} | </span>
+                                            </f:else>
+                                        </f:if>
+                                    </f:if>
+                                </f:if>
+                            </f:if>
+                        </f:for>
+                    </p>
+                </f:if>
+                <h3>
+                    <n:link configuration="{additionalParams:'&cat={newsItem.categories.0.uid}&cat2={newsItem.categories.1.uid}&cat3={newsItem.categories.2.uid}'}" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                        <span itemprop="headline">{newsItem.title}</span>
+                    </n:link>
+                </h3>
+                <p>
+                    <span class="news-list-date">
+                        Publié le
+                        <time datetime="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}">
+                            <f:format.date format="{f:translate(key:'dateFormat')}">{newsItem.datetime}</f:format.date>
+                            <meta itemprop="datePublished" content="{f:format.date(date:newsItem.datetime, format:'Y-m-d')}" />
+                        </time>
+                    </span>
+                </p>
+                <div class="teaser-text">
+                    <f:if condition="{newsItem.teaser}">
+                        <f:then>
+                            <p itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.raw()}</p>
+                        </f:then>
+                        <f:else>
+                            <p itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters: '{settings.cropMaxCharacters}', respectWordBoundaries:'1') -> f:format.raw()}</p>
+                        </f:else>
+                    </f:if>
+                </div>
+                <n:link configuration="{additionalParams:'&cat={newsItem.categories.0.uid}&cat2={newsItem.categories.1.uid}&cat3={newsItem.categories.2.uid}'}" newsItem="{newsItem}" settings="{settings}" class="icon icon-LinkText-interne" title="{f:translate(key:'more-link')} : {newsItem.title}">
+                    {f:translate(key:'more-link')}
+                </n:link>
+            </div>
+        </article>
+    </li>
+</html>

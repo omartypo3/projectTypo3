@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="stratis_social_auth">
+		<header/>
+		<body>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration">
+				<source>Authentication configuration</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.hidden">
+				<source>Hide</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.storagePid">
+				<source>Users' sysfolder</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.defaultGroups">
+				<source>Default group for new users</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.providers">
+				<source>Available providers</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.tab.mail">
+				<source>Mail settings</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailBody">
+				<source>Mail body</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailSenderName">
+				<source>Sender name</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailSenderEmail">
+				<source>Sender email</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_configuration.mailSubject">
+				<source>Subject</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stratissocialauth_domain_model_provider">
+				<source>Social network authentication provider</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.hidden">
+				<source>Hide</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type.I.Facebook">
+				<source>Facebook</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type.I.Google">
+				<source>Google</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type.I.Publik">
+				<source>Publik</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.type.I.FranceConnect">
+				<source>FranceConnect</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.keyId">
+				<source>ID</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.keySecret">
+				<source>Secret</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.openIdUrl">
+				<source>OpenID URL / OpenID identifier</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.scope">
+				<source>Scope</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values">
+				<source>Authentication Context Class Values</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values">
+				<source>Authentication Context Class Values</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values.eidas1">
+				<source>Standard level (example: authentication by username / password)</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values.eidas2">
+				<source>Substantial level (example: authentication «two factor»)</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.acr_values.eidas3">
+				<source>Strong level (example: use of certificates, card readers, etc.)</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.display">
+				<source>Display</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.display.page">
+				<source>Page</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_provider.display.popup">
+				<source>Popup</source>
+			</trans-unit>
+
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account">
+				<source>Social network account</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account.hidden">
+				<source>Hide</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_stratissocialauth_domain_model_social_account.provider">
+				<source>Provider</source>
+			</trans-unit>
+
+			<trans-unit id="fe_users.social_accounts">
+				<source>Social networks accounts</source>
+			</trans-unit>
+			<trans-unit id="fe_users.tab.social">
+				<source>Bound social accounts</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

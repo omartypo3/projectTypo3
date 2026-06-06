@@ -1,0 +1,24 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:mf="http://typo3.org/ns/MiniFranske/FsMediaGallery/ViewHelpers">
+
+	<f:section name="ThumbNested">
+		<f:variable name="description" value="{mediaAlbum.webdescription}" />
+		<f:variable name="count_photo" value="{mediaAlbum.assetsCount}" />
+		<f:if condition="{random}">
+			<f:then>
+				<f:render partial="MediaAsset/Detail" section="Detail" arguments="{alt:mediaAlbum.title,title:mediaAlbum.title,mediaAsset:mediaAlbum.randomAsset,width:width,height:height,resizeMode:resizeMode, count_photo:count_photo, description:description}" />
+			</f:then>
+			<f:else>
+				<f:render partial="MediaAsset/Detail" section="Detail" arguments="{alt:mediaAlbum.title,title:mediaAlbum.title,mediaAsset:mediaAlbum.mainAsset,width:width,height:height,resizeMode:resizeMode, count_photo:count_photo, description:mediaAlbum.webdescription}" />
+			</f:else>
+		</f:if>
+		<ul class="assets #01">
+			<f:for each="{mediaAlbum.assets}" as="assets">
+				<li>
+					<a href="/fileadmin{assets.identifier}" rel="{settings.album.lightbox.relPrefix}{mediaAlbum.uid}" data-fancybox="albumUid-{mediaAlbum.uid}"{f:if(condition: '{assets.properties.alternative} != \'\'', then: ' data-alt="{assets.properties.alternative}"')} data-caption="{mf:fileDescription(file:assets)} - {mediaAlbum.title}">{assets.name}</a>
+				</li>
+			</f:for>
+		</ul>
+	</f:section>
+</div>

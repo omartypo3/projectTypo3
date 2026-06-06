@@ -1,0 +1,34 @@
+{
+	"name": "emagineurs/e-magineurs",
+	"description": "Configuration du site par E-magineurs",
+	"type": "typo3-cms-extension",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"typo3",
+		"extension",
+		"configuration"
+	],
+	"authors": [
+		{
+			"name": "Thomas Beck, Sophie Dambreville, Mickael Chapusot",
+			"email": "tbeck@e-magineurs.com",
+			"homepage": "https://www.e-magineurs.com",
+			"role": "Developer"
+		}
+	],
+	"require": {
+        "php": ">=8.1",
+		"typo3/cms-core": "^13.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Emagineurs\\EMagineurs\\": "Classes/"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "e_magineurs"
+		}
+	}
+}
+

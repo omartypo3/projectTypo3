@@ -1,0 +1,427 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<f:layout name="General" />
+
+<f:section name="content">
+	<!--TYPO3SEARCH_end-->
+	<f:if condition="{news}">
+		<f:then>
+			<f:switch expression="{settings.templateLayout}">
+			    <f:case value="5">
+					<h2 class="sr-only">Liste des résultats</h2>
+			    	<ul class="news-list-view-actu lazyLoadContainer">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<f:for each="{news}" as="newsItem" iteration="iterator">
+									<f:render partial="List/ListeActu" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+						</f:then>
+						<f:else>
+							<f:if condition="{settings.list.paginate.insertAbove}">
+                           		 <f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+                        	</f:if>
+							<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+								<f:render partial="List/ListeActu" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+							</f:for>
+							<f:if condition="{settings.list.paginate.insertBelow}">
+								<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+							</f:if>
+						</f:else>
+						</f:if>
+					</ul>
+			    </f:case>
+
+			    <f:case value="6">
+					<div class="Actu_home move_scroll">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<ul>
+									<f:for each="{news}" as="newsItem" iteration="iterator">
+										<f:render partial="List/ListeHomeActu" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+									</f:for>
+								</ul>
+							</f:then>
+						<f:else>
+							<ul>
+								<f:if condition="{settings.list.paginate.insertAbove}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+									<f:render partial="List/ListeHomeActu" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+								<f:if condition="{settings.list.paginate.insertBelow}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+							</ul>
+						</f:else>
+						</f:if>
+					</div>
+			    </f:case>
+
+			   <f:case value="7">
+			    	<div class="news-list-view liste-agenda lazyLoadContainer">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<div class="row">
+									<f:for each="{news}" as="newsItem" iteration="iterator">
+										<f:render partial="List/ListeHomeAgenda" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+									</f:for>
+								</div>
+							</f:then>
+						<f:else>
+							<div class="row">
+								<f:if condition="{settings.list.paginate.insertAbove}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+									<f:render partial="List/ListeHomeAgenda" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+								<f:if condition="{settings.list.paginate.insertBelow}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+							</div>
+						</f:else>
+						</f:if>
+					</div>
+			    </f:case>
+
+				<f:comment> Template liste des agendas dans mon compte</f:comment>
+				<f:case value="8">
+					<div class="news-list-view-EditAgenda news-list-view-actu">
+							<f:if condition="{settings.hidePagination}">
+								<f:then>
+									<f:for each="{news}" as="newsItem" iteration="iterator">
+										<f:render partial="List/AgendaListMoncompte" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+									</f:for>
+								</f:then>
+							<f:else>
+								<f:if condition="{settings.list.paginate.insertAbove}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+									<f:render partial="List/AgendaListMoncompte" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+								<f:if condition="{settings.list.paginate.insertBelow}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+							</f:else>
+							</f:if>
+					</div>
+				</f:case>
+				<f:case value="9">
+					<div class="news_last_2">
+						<div class="block_titre_page_anim">
+							<div class="case_title_anim_Page hidden-print">
+								<div class="icon_title_anim_Page">
+								
+								</div>
+							</div>
+
+							<div class="case_titre_Page">
+								<h2>
+									Vous aimerez aussi
+								</h2>
+							</div>
+						</div>
+
+						<ul class="news-related news-related-news row">
+							<f:for each="{news}" as="newsItem" iteration="iterator">
+								<f:render partial="List/ListeActuLast2" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+							</f:for>
+						</ul>
+					</div>
+				</f:case>
+
+				<f:case value="10">
+					<f:for each="{news}" as="newsItem" iteration="iterator">
+                        <f:comment>
+                            Vérification que la news de la liste a au moins une même catégorie que la page détail actuel :
+                        </f:comment>
+
+                        <f:variable name="verif_cat_display" value="0" />
+
+                        <f:for each="{newsItem.categories}" as="category" iteration="itemIteration" key="itemkey">
+                            <f:if condition="{<f:cObject typoscriptObjectPath='lib.cat0'/>} == {category.uid} || {<f:cObject typoscriptObjectPath='lib.cat1'/>} == {category.uid} || {<f:cObject typoscriptObjectPath='lib.cat2'/>} == {category.uid}">
+                                <f:variable name="verif_cat_display" value="1" />
+                            </f:if>
+                        </f:for>
+                    </f:for>
+
+                    <f:if condition="{verif_cat_display}== 1">   
+			            <div class="news_last_2">
+			                <div class="block_titre_page_anim">
+								<div class="case_title_anim_Page hidden-print">
+									<div class="icon_title_anim_Page">
+									
+									</div>
+								</div>
+
+								<div class="case_titre_Page">
+									<h2>
+										Vous aimerez aussi
+									</h2>
+								</div>
+							</div>
+			                
+			                <div class="news-related news-related-news row 03#">
+			                	<f:variable name="nb_for" value="1" />
+			                	<f:variable name="verif_cat1" value="0" />
+			                	<f:variable name="verif_cat2" value="0" />
+			                	<f:variable name="verif_cat3" value="0" />
+			                    <f:for each="{news}" as="newsItem" iteration="iterator">
+			                    	<f:variable name="verif_cat" value="1" />
+
+
+			                    	<f:variable name="thecat0" value="<f:cObject typoscriptObjectPath='lib.cat0'/>" />
+			                    	<f:variable name="thecat1" value="<f:cObject typoscriptObjectPath='lib.cat1'/>" />
+			                    	<f:variable name="thecat2" value="<f:cObject typoscriptObjectPath='lib.cat2'/>" />
+			                    	<f:variable name="cat0" value="{newsItem.categories.0.uid}" />
+			                    	<f:variable name="cat1" value="{newsItem.categories.1.uid}" />
+			                    	<f:variable name="cat2" value="{newsItem.categories.2.uid}" />
+			                    	
+				                    <f:if condition="{cat0}">
+				                    	<f:then>
+				                    		<f:if condition="{thecat0} == {cat0} || {thecat1} == {cat0} || {thecat2} == {cat0}">
+					                        	<f:then>
+				                                	<f:variable name="verif_cat1" value="1" />
+				                            	</f:then>
+				                            	<f:else if="{cat0}==' '">
+											        <f:variable name="verif_cat1" value="0" />
+											    </f:else>
+				                            	<f:else>
+				                            		<f:variable name="verif_cat1" value="0" />
+				                            	</f:else>
+				                            </f:if>
+				                    	</f:then>
+				                    	<f:else>
+				                            <f:variable name="verif_cat1" value="0" />
+				                    	</f:else>
+				                    </f:if>
+
+				                    <f:if condition="{cat1}">
+				                    	<f:then>
+				                    		<f:if condition="{thecat0} == {cat1} || {thecat1} == {cat1} || {thecat2} == {cat1}">
+					                        	<f:then>
+				                                	<f:variable name="verif_cat2" value="1" />
+				                            	</f:then>
+				                            	<f:else if="{cat1}==' '">
+											        <f:variable name="verif_cat2" value="0" />
+											    </f:else>
+				                            	<f:else>
+				                            		<f:variable name="verif_cat2" value="0" />
+				                            	</f:else>
+				                            </f:if>
+				                    	</f:then>
+				                    	<f:else>
+				                            <f:variable name="verif_cat2" value="0" />
+				                    	</f:else>
+				                    </f:if>
+
+				                    <f:if condition="{cat2}">
+				                    	<f:then>
+				                    		<f:if condition="{thecat0} == {cat2} || {thecat1} == {cat2} || {thecat2} == {cat2}">
+					                        	<f:then>
+				                                	<f:variable name="verif_cat3" value="1" />
+				                            	</f:then>
+				                            	<f:else if="{cat2}==' '">
+											        <f:variable name="verif_cat3" value="0" />
+											    </f:else>
+				                            	<f:else>
+				                            		<f:variable name="verif_cat3" value="0" />
+				                            	</f:else>
+				                            </f:if>
+				                    	</f:then>
+				                    	<f:else>
+				                            <f:variable name="verif_cat3" value="0" />
+				                    	</f:else>
+				                    </f:if>
+
+
+		                        	<f:comment>
+			                            Vérification que la news de la liste n'est pas la même que la page détail actuel :
+			                        </f:comment>
+
+		                            <f:if condition="{newsItem.uid} == {<f:cObject typoscriptObjectPath='lib.uidPage'/>}">
+			                            <f:variable name="verif_cat" value="0" />
+			                        </f:if>
+			                        
+			                        <f:comment>
+			                            afficher deux news maximum
+			                        </f:comment>
+			                        <f:if condition="{nb_for} > 2">
+			                            <f:variable name="verif_cat" value="0" />
+			                        </f:if>
+			                        
+			                        <f:comment>
+			                            Si tout est respecter affiche la news dans la liste :
+			                        </f:comment>   
+
+			                         
+			                        <f:if condition="{verif_cat1}==1 || {verif_cat2}==1 || {verif_cat3}==1">
+			                        	<f:if condition="{verif_cat}==1">
+				                            <f:render partial="List/VousAimerezAussi" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+				                            <f:variable name="nb_for" value="<f:cObject typoscriptObjectPath='lib.math' data='{nb_for}+1' />" />
+				                        </f:if>
+			                        </f:if>
+			                        
+			                        
+			                    </f:for>
+			                </div>
+			            </div>
+			        </f:if>
+		        </f:case>
+
+		       <f:case value="11">
+					<f:if condition="{settings.hidePagination}">
+						<f:then>
+							<f:for each="{news}" as="newsItem" iteration="iterator">
+								<f:render partial="List/ListeActuNewsletter" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+							</f:for>
+						</f:then>
+					<f:else>
+						<f:if condition="{settings.list.paginate.insertAbove}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>
+						<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+							<f:render partial="List/ListeActuNewsletter" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+						</f:for>
+						<f:if condition="{settings.list.paginate.insertBelow}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>	
+					</f:else>
+					</f:if>
+			    </f:case>
+				
+			    <f:case value="20">
+			    	<div class="news-list-view liste-agenda lazyLoadContainer">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<div class="row">
+									<f:for each="{news}" as="newsItem" iteration="iterator">
+										<f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+									</f:for>
+								</div>
+							</f:then>
+						<f:else>
+							<div class="row">
+								<f:if condition="{settings.list.paginate.insertAbove}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+									<f:render partial="List/ListeAgenda" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+								<f:if condition="{settings.list.paginate.insertBelow}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+							</div>
+						</f:else>
+						</f:if>
+					</div>
+			    </f:case>
+			    <f:case value="21">
+			    	<div class="news-list-view liste-agenda lazyLoadContainer">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<div class="row">
+									<f:for each="{news}" as="newsItem" iteration="iterator">
+										<f:render partial="List/ListeAgendaNewsletter" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+									</f:for>
+								</div>
+							</f:then>
+						<f:else>
+							<div class="row">
+								<f:if condition="{settings.list.paginate.insertAbove}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+								<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+									<f:render partial="List/ListeAgendaNewsletter" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+								<f:if condition="{settings.list.paginate.insertBelow}">
+									<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+								</f:if>
+							</div>
+						</f:else>
+						</f:if>
+					</div>
+			    </f:case>
+			    <f:case value="90">
+			    	<div class="news-list-view lazyLoadContainer">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<f:for each="{news}" as="newsItem" iteration="iterator">
+									<f:render partial="List/FAQ" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+							</f:then>
+					<f:else>
+							<f:if condition="{settings.list.paginate.insertAbove}">
+								<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+							</f:if>
+							<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+								<f:render partial="List/FAQ" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+							</f:for>
+							<f:if condition="{settings.list.paginate.insertBelow}">
+								<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+							</f:if>						
+					</f:else>
+						</f:if>
+					</div>
+			    </f:case>
+				<f:case value="91">
+					<h2 class="sr-only">Liste des résultats</h2>
+			    	<ul class="publications-list is-columns-4 is-columns-md-1 lazyLoadContainer">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<f:for each="{news}" as="newsItem" iteration="iterator">
+									<f:render partial="List/ListePublications" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+							</f:then>
+					<f:else>
+						<f:if condition="{settings.list.paginate.insertAbove}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>
+						<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+							<f:render partial="List/ListePublications" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+						</f:for>
+						<f:if condition="{settings.list.paginate.insertBelow}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>	
+					</f:else>
+						</f:if>
+					</ul>
+			    </f:case>
+			    <f:defaultCase>
+					<div class="news-list-view">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<f:for each="{news}" as="newsItem" iteration="iterator">
+									<f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+								</f:for>
+							</f:then>
+					<f:else>
+						<f:if condition="{settings.list.paginate.insertAbove}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>
+						<f:for each="{pagination.paginator.paginatedItems}" as="newsItem" iteration="iterator">
+							<f:render partial="List/Item" arguments="{newsItem: newsItem,settings:settings,iterator:iterator}" />
+						</f:for>
+						<f:if condition="{settings.list.paginate.insertBelow}">
+							<f:render partial="List/Pagination" arguments="{pagination: pagination.pagination, paginator: pagination.paginator}" />
+						</f:if>
+					</f:else>
+						</f:if>
+					</div>
+				</f:defaultCase>
+			</f:switch>
+		</f:then>
+		<f:else>
+			<f:comment>
+				<div class="no-news-found">
+				    <f:translate key="list_nonewsfound" />
+				</div>
+			</f:comment>
+		</f:else>
+	</f:if>
+	<!--TYPO3SEARCH_begin-->
+</f:section>
+</html>

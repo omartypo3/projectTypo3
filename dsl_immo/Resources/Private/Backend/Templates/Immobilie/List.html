@@ -1,0 +1,50 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+<h1>Listing for Immobilie</h1>
+
+<f:flashMessages />
+
+<table  class="tx_dslimmo" border="1" >
+	<tr>
+		<th>uid</th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.objekttitel" /></th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.dreizeiler" /></th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.lage" /></th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.ausstattbeschr" /></th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.objektbeschreibung" /></th>
+		<th><f:translate key="tx_dslimmo_domain_model_immobilie.sonstigeangaben" /></th>
+		<th>in x importen</th>
+		
+		<th> </th>
+	</tr>
+
+	<f:for each="{immobilies}" as="immobilie">
+		<tr>
+			<td><f:link.action action="show" arguments="{immobilie : immobilie}">{immobilie.uid}</f:link.action></td>
+			<td>{immobilie.objekttitel}</td>
+			<td>{immobilie.dreizeiler}</td>
+			<td>{immobilie.lage}</td>
+			<td>{immobilie.ausstattbeschr}</td>
+			<td>{immobilie.objektbeschreibung}</td>
+			<td>{immobilie.sonstigeangaben}</td>
+			<td>{f:count(subject: immobilie.importe)}<f:for each="{immobilie.importe}" as="import">/{import.uid}</f:for></td>
+			
+			<td><f:link.action action="delete" arguments="{immobilie : immobilie}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+</f:section>

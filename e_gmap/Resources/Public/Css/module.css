@@ -1,0 +1,194 @@
+table {
+    width: 100%;
+}
+tr.table_header{
+    background-color:#9b9b9b;
+}
+tr.item{
+    display:none;
+}
+
+tr.item:nth-child(-n+11){
+    display:table-row;
+}
+tr.even{
+    background-color:#f6f2e6;
+}
+tr.odd{
+    background-color:#f1f1f1;
+}
+th, td{
+    text-align:center;
+    border:1px solid #fff;
+}
+
+th.title{
+    width:30%;
+}
+th.datatable{
+    width:25%;
+}
+th.picto{
+    width:5%;
+}
+th.cat{
+    width:25%;
+}
+th.map{
+    width:15%;
+}
+#createPoi, #poiAttributes{
+    margin-top:10px;
+}
+label{
+    margin-right:5px;
+}
+
+/*** MAP ***/
+.eGmapMap {
+    width:100% !important;
+    height:400px;
+}
+
+
+/*** TABLE ***/
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 6px;
+      line-height: 1.5;
+      border-top: 1px solid #ccc;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.alert {
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.alert-info {
+  background-color: #6daae0;
+  color: #fff;
+}
+
+.alert-success {
+  background-color: #79a548;
+  color: #fff;
+}
+
+.alert-danger {
+  background-color: #c83c3c;
+  color: #fff;
+}
+
+/* .btn {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #f3f4f6;
+  color: #111827;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-default {
+  border-color: #ccc;
+} */
+
+.t3-row-header {
+    background-color: #ededed;
+    border: 1px solid #ccc;
+    padding: 5px;
+
+}
+
+.push-send{
+  display: block;
+  position: absolute;
+  height: auto;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+}
+/*** Icon ***/
+.status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+  
+.status-icon img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  /* makes the icon white */
+}
+  
+.status-icon.ok {
+  background-color: #4caf50;
+  /* green background */
+}
+  
+.status-icon.error {
+  background-color: #f44336;
+  /* red background */
+}
+
+#typo3-docheader {
+    background: #eee;
+}
+#typo3-docheader .typo3-docheader-buttons, #typo3-docheader .typo3-docheader-functions {
+    color: #2d2d2d;
+    overflow: hidden;
+    padding: 5px 24px;
+    line-height: 27px;
+}
+
+#typo3-docheader .left {
+    float: left;
+}
+#typo3-docheader .right {
+    float: right;
+}
+
+div#typo3-docbody {
+    position: absolute;
+    top: 49px;
+    bottom: 0;
+    overflow: auto;
+    width: 100%;
+    z-index: 2;
+}
+#typo3-inner-docbody {
+    display: block;
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+}
+#typo3-docheader .typo3-docheader-functions {
+    line-height: 27px;
+}

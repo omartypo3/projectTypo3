@@ -1,0 +1,18 @@
+<p>
+    Someone sent a new message, please validate it or not<br/>
+    <br/>
+
+    <f:if condition="{message.title}" >
+        <h3>{message.title}</h3>
+    </f:if>
+
+    {message.bodytext}
+    <br/>
+    <f:if condition="{confirmUri}">
+        <f:link.external uri="{confirmUri}">Confirm</f:link.external>
+    </f:if>
+    <br/>
+    <f:if condition="{declineUri}">
+        <f:link.external uri="{declineUri}">Decline</f:link.external>
+    </f:if>
+</p>

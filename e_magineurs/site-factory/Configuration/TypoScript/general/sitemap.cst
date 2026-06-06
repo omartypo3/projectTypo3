@@ -1,0 +1,28 @@
+e_magineurs.sitemap {
+	# cat = Configuration du sitemap; type=int+; label= Limit pour le sitemap
+	limit = 1000
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des actus (à configurer par site)
+	news.startingPoint = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les actus (à configurer par site)
+	news.detailPid = 0
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des agenda (à configurer par site)
+	agenda.startingPoint = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les agenda (à configurer par site)
+	agenda.detailPid = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les galeries photos (à configurer par site)
+	tx_fsmediagallery.detailPid = 0
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des personnes (à configurer par site)
+	tx_e_annuairesPersonnes.startingPoint = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les personnes (à configurer par site)
+	tx_e_annuairesPersonnes.detailPid = 0
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des lieux (à configurer par site)
+	tx_e_annuairesLieux.startingPoint = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les lieux (à configurer par site)
+	tx_e_annuairesLieux.detailPid = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les vidéos (à configurer par site)
+	tx_e_annuaires.videos.detailPid = 0
+	# cat = Configuration du sitemap; type=int+; label= ID du dossier des annuaires (à configurer par site)
+	tx_e_annuaires.startingPoint = 0
+	# cat = Configuration du sitemap; type=int+; label= ID de la page détail pour les annuaires (à configurer par site)
+	tx_e_annuaires.detailPid = 0
+}

@@ -1,0 +1,42 @@
+{namespace epoll=Emagineurs\EPoll\ViewHelpers}
+
+<f:if condition="{epoll:hasAlreadyVoted(poll: poll, settings: settings)}" >
+    <f:then>
+        <f:render partial="Poll/Result" arguments="{poll: poll, settings: settings, vote: vote}" />
+    </f:then>
+    <f:else>
+        <div>
+            <div>
+                <h1>{poll.title}</h1>
+                <f:if condition="{poll.image}">
+                    <f:image src="{poll.image}" alt="{poll.title}" />
+                </f:if>
+                <p>{poll.question}</p>
+            </div>
+
+            <div>
+                <f:form action="vote" object="{vote}" name="vote" arguments="{poll: poll}" >
+                    <ul>
+                        <f:for each="{poll.options}" as="option" >
+                            <li>
+                                <f:if condition="{poll.multiplechoice}" >
+                                    <f:then>
+                                        <f:form.checkbox id="epoll_option_{option.uid}" property="options" value="{option.uid}" multiple="1" />
+                                    </f:then>
+                                    <f:else>
+                                        <f:form.radio id="epoll_option_{option.uid}" property="options][" value="{option.uid}" />
+                                    </f:else>
+                                </f:if>
+                                <label for="epoll_option_{option.uid}" >{option.description}</label>
+                            </li>
+                        </f:for>
+                    </ul>
+
+                    <f:link.action action="result" arguments="{poll: poll}" >See results</f:link.action>
+
+                    <f:form.submit value="Submit" />
+                </f:form>
+            </div>
+        </div>
+    </f:else>
+</f:if>

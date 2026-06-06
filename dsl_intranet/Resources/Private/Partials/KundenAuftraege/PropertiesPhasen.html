@@ -1,0 +1,245 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+<f:if condition="{auftraege.festpreis}"><f:else>
+
+<f:if condition="{0:auftraege.kontingent,1:auftraege.kontingentUsed,2:auftraege.phasenUsed,3:auftraege.phasenSonstigesUsed.used}!={0:false,1:false,2:false,3:false}">
+
+    <br>
+    <div><strong>Auftragsphasen und Zeitplan</strong></div>
+    <hr style="margin-top:0px;">
+    
+    <div class="layout-table table-auftrag-phasen">
+    	<div class="layout-table-row">
+	    	<div class="layout-table-col table-auftrag-phasen-diagramm">
+                <div>
+                    <canvas id="chart-area-phasen-{auftraege.uid}" width="110" height="110" />
+                
+                </div>
+            </div>
+        	<div class="layout-table-col table-auftrag-phasen-zeiten">
+					
+                    
+                                        
+                    <f:if condition="{auftraege.kontingent}">
+                    	<f:then>
+                            <div>Zeit geplant: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentSet}" /></div>
+                            
+                            <div>Zeit verbraucht: <span class="{dsl:percent(percent:auftraege.kontingentUsedPercent, type:'hightlightClass')}"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedSet}" /></span></div>
+                            
+							<f:if condition="{auftraege.kontingentMehraufwandUsed}"><div><span title="Mehraufwand in der verbrauchten Zeit.">davon Mehraufw.</span>: <span class="text-time-over"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentMehraufwandUsedSet}" /></span></div></f:if>
+							
+                            <br>
+            <f:comment><!--
+                            <f:if condition="{auftraege.kontingentFree}"><div><span class="{dsl:percent(percent:auftraege.kontingentUsedPercent, type:'hightlightClass')}">- <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentFreeSet}" /></span></div></f:if>
+                            <f:if condition="{auftraege.kontingentUsedMore}"><div><span class="{dsl:percent(percent:auftraege.kontingentUsedPercent, type:'hightlightClass')}">+ <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedMoreSet}" /></span></div></f:if>
+                            <div>Zeit verbraucht: <span class="{dsl:percent(percent:auftraege.kontingentUsedPercent, type:'hightlightClass')}"><strong>{auftraege.kontingentUsedPercent}</strong> %</span></div>
+
+                        --></f:comment>                            
+                            
+                           
+                            
+                            
+                        </f:then>
+                        <f:else>
+                            
+                            <div>Zeit verbraucht: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedSet}" /></div>
+                            
+                        </f:else>
+                    
+                    </f:if>
+ 
+                    
+<f:if condition="{auftraege.auftragsart.uid}==6">
+	<f:if condition="{auftraege.festpreisGrundlageAgenturvertrag}">
+
+<f:comment><!--     {auftraege.endpreisPhasen->f:debug(title: '', inline: '1')}
+<div>fixedPrice: {auftraege.festpreisGrundlageAgenturvertrag}, hourlyFee: {auftraege.defaultStundensatzAgenturvertrag}</div>--></f:comment>
+
+        <f:alias map="{kontingentUsed: '{dsl:getMinutesByFixedPriceAndHourlyFee(fixedPrice: auftraege.festpreisGrundlageAgenturvertrag, hourlyFee: auftraege.defaultStundensatzAgenturvertrag)}'}">
+            <f:if condition="{kontingentUsed}">
+
+
+
+                
+                <v:variable.set name="hinweisFremdkosten" value="0" />
+                <v:variable.set name="hinweisNutzungsrechte" value="0" />
+                <v:variable.set name="andererStundensatzGenutzt" value="0" />
+                
+                
+                <f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nutzungsFaktor}"><v:variable.set name="hinweisNutzungsrechte" value="1" /></f:if>
+                <f:if condition="{auftraege.endpreisPhasen.endpreisArray.gesamt.nettoFremdkosten}"><f:if condition="{auftraege.verechnungAgenturvertragFremdkostenInklusive}==10"><v:variable.set name="hinweisFremdkosten" value="1" /></f:if></f:if>
+
+                
+
+               
+               <f:alias map="{forKeyUsed:'used'}">
+                <f:for each="{auftraege.endpreisPhasen.phasenStundensatzArray}" as="stundensatz" key="phaseUid">
+                    <f:if condition="{stundensatz}">
+                        <f:if condition="{dsl:getFromArray(obj: auftraege.endpreisPhasen.kontingentPhasenUsed, prop:phaseUid, forKey:'used')}">
+                            <v:variable.set name="andererStundensatzGenutzt" value="1" />
+                        </f:if>
+                    </f:if>
+                </f:for>
+                </f:alias>
+
+
+                
+                <f:if condition="{andererStundensatzGenutzt}"><div class="text-time-over">+ Zusatzkosten durch abw. Stundensatz</div></f:if>
+                <f:if condition="{hinweisNutzungsrechte}"><div class="text-time-over">+ Nutzungsrechte</div></f:if>
+                <f:if condition="{hinweisFremdkosten}"><div class="text-time-over">+ Fremdkosten</div></f:if>
+
+              
+                <div>Zeit verechnet: <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: kontingentUsed)}' }" /></div>
+
+
+            </f:if>
+        </f:alias>
+	</f:if>
+</f:if>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    
+    
+	<hr>
+
+
+
+
+
+<div class="gridelement ge_collapsible_container auftraegePhasenAccordion"> 
+    <div class="panel-group" id="accordion-auftraege-{auftraege.uid}" role="tablist" aria-multiselectable="true"> 
+    	<f:if condition="{auftraege.phasenSonstigesUsed.used}">
+            <div class="panel gridelement ge_collapsible_accordion"> 
+                <div style="border-left-color:#c5c6c8 !important;" role="button" data-toggle="collapse" data-parent="#accordion-auftraege-{auftraege.uid}" href="#collapse-auftraege-{auftraege.uid}-ohne" aria-expanded="false" aria-controls="collapse-auftraege-{auftraege.uid}-ohne" data-original-title="" title="" class="btn-default collapsed panel-heading" id="header-auftraege-{auftraege.uid}-ohne"> 
+                
+                
+                	<div class="layout-table">
+		    			<div class="layout-table-row">
+                        	<div class="layout-table-col table-panel-heading-icon">
+                            
+                            	<i class="fa fa-fw fa-exclamation-circle" aria-hidden="true"></i>
+                                
+                             </div>
+                             <div class="layout-table-col table-panel-heading-sm">
+                                Sonstige Arbeiten
+                             </div>
+                             <div class="layout-table-col table-panel-heading-icon-right table-panel-heading-sm">
+                    
+                	
+                        <f:if condition="{percent}>0"><span class="{dsl:percent(percent:percent, type:'hightlightClass')}"><f:format.number decimals="0">{percent}</f:format.number>%</span>&nbsp;&nbsp;</f:if>
+                        <i class="bb-arrow-up" aria-hidden="true"></i><i class="bb-arrow-down" aria-hidden="true"></i>
+                    	</div>
+                        
+                   </div>
+                  </div>
+                
+                    
+                </div>
+                
+                <div id="collapse-auftraege-{auftraege.uid}-ohne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="header-auftraege-{auftraege.uid}-ohne" aria-expanded="false"> 
+                    <div class="panel-body"> 
+                        <div class="fsc-default textmedia"> 
+	                        <div>Zeit verbraucht: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: auftraege.phasenSonstigesUsed.used)}' }" /></div>
+ 
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </f:if>
+        
+        
+      
+        
+    	<f:for each="{auftraege.phasenUsed}" as="phase">
+        	<f:alias map="{phaseUid: phase.uid, forKeyPercent:'percent', forKeyUsed:'used', forKeyMax:'max'}">
+            <f:alias map="{used: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:phaseUid, forKey:forKeyUsed)}' }">
+            <f:alias map="{max: '{dsl:getFromArray(obj: auftraege.phasenKontingentArray, prop:phaseUid)}' }">
+		    <f:alias map="{percent: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:phaseUid, forKey:forKeyPercent)}' }">
+            
+                <div class=" panel gridelement ge_collapsible_accordion"> 
+                    <div class="btn-default panel-heading collapsed" id="header-auftraege-{auftraege.uid}-{phase.uid}" style="border-left-color:{phase.color} !important;" role="button" data-toggle="collapse" data-parent="#accordion-auftraege-{auftraege.uid}" href="#collapse-auftraege-{auftraege.uid}-{phase.uid}" aria-expanded="false" aria-controls="collapse-auftraege-{auftraege.uid}-{phase.uid}" data-original-title="" title=""> 
+                        	
+                            
+                            
+                            <div class="layout-table">
+			    			<div class="layout-table-row">
+        					
+                                <div class="layout-table-col table-panel-heading-icon">
+                                
+                                    <i class="{phase.icon}" aria-hidden="true"></i>
+                                    
+                                </div>
+                                <div class="layout-table-col table-panel-heading-sm"><f:format.crop maxCharacters="45">{phase.titel}</f:format.crop></div>
+                                
+                            	
+                            	<div class="layout-table-col table-panel-heading-icon-right table-panel-heading-sm">
+                                    <f:if condition="{0:max,1:used} != {0:0,1:0}">
+                                    
+                                            <f:if condition="{percent}>0"><span class="{dsl:percent(percent:percent, type:'hightlightClassOverload')}"><f:format.number decimals="0">{percent}</f:format.number>%</span>&nbsp;&nbsp;</f:if>
+                                            <i class="bb-arrow-up" aria-hidden="true"></i><i class="bb-arrow-down" aria-hidden="true"></i>
+    
+                                    </f:if>
+                                </div> 
+                                                       
+                           	</div>
+                            </div> 
+                            
+                       	
+                      
+                    </div>
+                    <f:if condition="{0:max,1:used} != {0:0,1:0}">
+                        <div id="collapse-auftraege-{auftraege.uid}-{phase.uid}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="header-auftraege-{auftraege.uid}-{phase.uid}" aria-expanded="false"> 
+                            <div class="panel-body"> 
+                                <div  class="fsc-default"> 
+                                    
+                                    
+                                    
+                                    
+                                    <f:if condition="{max}">
+                                        <div>Zeit geplant: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: max)}' }" /></div>                                </f:if>
+                                    <f:if condition="{used}">
+                                    
+                                    
+                                    
+                                        <f:if condition="{percent}>0">
+                                            <f:then>
+                                                <div>Zeit verbraucht: <span class="{dsl:percent(percent:percent, type:'hightlightClass')}"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: used)}' }" /></span></div>
+                                            </f:then>
+                                            <f:else>
+                                                <div>Zeit verbraucht: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: '{dsl:getSetArrayFromTime(time: used)}' }" /></div>
+                                            </f:else>
+                                        </f:if>
+                                        
+                                        
+    
+                                        
+                                    </f:if>
+                                </div>
+                            </div>
+                        </div>
+                    </f:if>
+                </div>
+
+            </f:alias>
+            </f:alias>
+            </f:alias>
+            </f:alias>
+        </f:for>
+        
+	</div>
+</div>
+ 
+ 
+</f:if>
+
+
+</f:else></f:if>
+      

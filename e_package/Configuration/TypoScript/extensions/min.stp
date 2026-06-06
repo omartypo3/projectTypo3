@@ -1,0 +1,18 @@
+plugin.tx_min.tinysource {
+    enable = {$e_magineurs.tx_min.tinysource.enable}
+    head {
+        stripTabs = {$e_magineurs.tx_min.tinysource.head.stripTabs}
+        stripNewLines = {$e_magineurs.tx_min.tinysource.head.stripNewLines}
+        stripDoubleSpaces = {$e_magineurs.tx_min.tinysource.head.stripDoubleSpaces}
+        stripTwoLinesToOne = {$e_magineurs.tx_min.tinysource.head.stripTwoLinesToOne}
+    }
+    body {
+        stripComments = {$e_magineurs.tx_min.tinysource.body.stripComments}
+        stripTabs = {$e_magineurs.tx_min.tinysource.body.stripTabs}
+        stripNewLines = {$e_magineurs.tx_min.tinysource.body.stripNewLines}
+        stripDoubleSpaces = {$e_magineurs.tx_min.tinysource.body.stripDoubleSpaces}
+        stripTwoLinesToOne = {$e_magineurs.tx_min.tinysource.body.stripTwoLinesToOne}
+        preventStripOfSearchComment = {$e_magineurs.tx_min.tinysource.body.preventStripOfSearchComment}
+    }
+    oneLineMode = {$e_magineurs.tx_min.tinysource.oneLineMode}
+}

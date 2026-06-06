@@ -1,0 +1,33 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<f:comment><f:render partial="Scripts/DateTimePicker" /></f:comment>
+
+<script>var protokolleUid = '{protokolle.uid}';</script>
+<script>var auftraegeUid = '{protokolle.auftrag.uid}';</script>
+<script>
+	//initMultipleSelect('#zeiteintragEditPhase'+zeiteintraegeUid);
+	//initDateTimePicker();
+		
+	//initKontingentSpinner(auftraegeUid+'_'+zeiteintraegeUid);
+	$('.validator_required').attr('required','required');
+	$('.animated').autosize({append: "\n"});
+</script>
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+			Kommentar<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	
+            
+            <f:form.textarea name="notiz" value="{protokolle.notiz}"   class="validator_required form-control animated" />
+            
+        </div>
+        
+	</div>
+</div>
+

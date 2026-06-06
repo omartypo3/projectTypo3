@@ -1,0 +1,43 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:mf="http://typo3.org/ns/MiniFranske/FsMediaGallery/ViewHelpers">
+
+	<f:section name="Detail">
+		<f:if condition="{mediaAsset}">
+			<f:then>
+				<div class="case_img_master">
+					<f:image image="{mediaAsset}" width="{width}{resizeMode}" height="{height}{resizeMode}" alt=""/>
+				</div>
+				<span class="voile"></span>
+				<div class="block_text_master">
+					<div class="case_text_master">
+						<f:if condition="{count_photo}>1">
+						    <f:then>
+						    	<f:variable name="s_photo" value="photos" />
+							</f:then>
+						    <f:else>
+						        <f:variable name="s_photo" value="photo" />
+						    </f:else>
+						</f:if>
+						<v:tag name="p" hideIfEmpty="true" class="cat_projet">{count_photo} {s_photo}</v:tag>
+						<h3>{title}</h3>
+					</div>
+					<div class="case_description_master">
+						<f:format.html>
+							<f:format.crop maxCharacters="200" append="&nbsp;...">
+								{description}
+							</f:format.crop>
+						</f:format.html>
+						<div class="losange_hover_master">
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<i class="no-asset" style="width:{width}px;"><f:translate key="no_assets_found">No assets found</f:translate></i>
+			</f:else>
+		</f:if>
+	</f:section>
+</div>

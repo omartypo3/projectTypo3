@@ -1,0 +1,114 @@
+# customsubcategory=tx_fsmediagallery_Template= Templates
+# customsubcategory=tx_fsmediagallery_Settings= Settings
+# customsubcategory=tx_fsmediagallery_List= Vue liste
+# customsubcategory=tx_fsmediagallery_Album= Vue album
+# customsubcategory=tx_fsmediagallery_Detail= Vue détail
+# customsubcategory=tx_fsmediagallery_Aleatoire= Vue aléatoire
+e_magineurs.tx_fsmediagallery {
+    view {
+        # cat=Configuration de la galerie photos/tx_fsmediagallery_Template; type=string; label= Chemin du dossier Templates
+        templateRootPath = fs_media_gallery/Templates/
+        # cat=Configuration de la galerie photos/tx_fsmediagallery_Template; type=string; label= Chemin du dossier Partials
+        partialRootPath =  fs_media_gallery/Partials/
+        # cat=Configuration de la galerie photos/tx_fsmediagallery_Template; type=string; label= Chemin du dossier Layouts
+        layoutRootPath = fs_media_gallery/Layouts/
+    }
+    persistence {
+        # cat=Configuration de la galerie photos/tx_fsmediagallery_Settings; type=string; label= Id du dossier de stockage (séparés par des virbules si plusieurs)
+        storagePid = 9
+        # cat=Configuration de la galerie photos/tx_fsmediagallery_Settings; type=options[0 levels (page sélectionnée)=0,1 level=1,2 levels=2,3 levels=3,4levels=4,Infinite=250]; label=Recursion
+        recursive = 250
+    }
+    settings {
+        # cat=Configuration de la galerie photos/tx_fsmediagallery_Settings; type=string; label=MimeTypes autorisés (si vide, tous les types sont autorisés)
+        allowedAssetMimeTypes = image/jpeg, image/png, image/gif
+        list {
+            thumb {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_List; type=int+; label=Largeur des miniatures
+                width = 180
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_List; type=int+; label=Hauteur des miniatures
+                height = 180
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_List; type=options[Proportionnel=m,Crop=c,Ajustement exact (mais déformé)=s]; label=Redimensionner les images
+                resizeMode = c
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_List; type=boolean; label=Image aléatoire
+                random = 1
+            }
+            # cat=Configuration de la galerie photos/tx_fsmediagallery_List; type=options[datetime,crdate,sorting]; label= Trier par
+            orderBy = datetime
+            # cat=Configuration de la galerie photos/tx_fsmediagallery_List; type=options[desc,asc]; label= Direction du tri
+            orderDirection = desc
+        }
+        album {
+            # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=boolean; label= Afficher le titre
+            displayTitle = 1
+            thumb {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label=Largeur des miniatures
+                width = 120
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label=Hauteur des miniatures
+                height = 70
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=options[Proportionnel=m,Crop=c,Ajustement exact (mais déformé)=s]; label=Redimensionner les images
+                resizeMode = c
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=boolean; label=Image aléatoire
+                random = 1
+            }
+            lightbox {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=boolean; label= Activer la lightbox
+                enable = 1
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=string; label= Préfixe rel
+                relPrefix = albm_
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=string; label= Code javascript pur la lightbox
+                jsPlugin =
+                asset {
+                    # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label= Lightbox - Largeur des images lightbox
+                    width = 1000
+                    # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label= Lightbox - Hauteur des images lightbox
+                    height = 800
+                    # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=options[Proportionnel=m,Crop=c,Ajustement exact (mais déformé)=s]; label= Lightbox - Redimensionner les images
+                    resizeMode = m
+                }
+            }
+            pagination {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label= Pagination - Nombre d'éléments par page
+                itemsPerPage = 32
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=boolean; label= Pagination - Insérer la pagination avant la liste
+                insertAbove = 0
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=boolean; label= Pagination - Insérer la pagination après la liste
+                insertBelow = 1
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label= Pagination - Pages avant
+                pagesBefore = 4
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label= Pagination - Pages après
+                pagesAfter = 4
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Album; type=int+; label= Pagination - Nombre maximum de liens
+                maximumNumberOfLinks = 9
+            }
+        }
+        detail {
+            asset {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Detail; type=int+; label=Largeur des images
+                width = 1920
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Detail; type=int+; label=Hauteur des images
+                height = 1080
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Detail; type=options[Proportionnel=m,Crop=c,Ajustement exact (mais déformé)=s]; label=Redimensionner les images
+                resizeMode = m
+            }
+            lightbox {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Detail; type=int+; label=Largeur max des images lightbox
+                maxWidth = 1400
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Detail; type=int+; label=Hauteur max des images lightbox
+                maxHeight = 1400
+            }
+        }
+        random {
+            # cat=Configuration de la galerie photos/tx_fsmediagallery_Aleatoire; type=int+; label=Id de la page détail
+            targetPid = 50
+            thumb {
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Aleatoire; type=int+; label=Largeur des images
+                width = 250
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Aleatoire; type=int+; label=Hauteur des images
+                height = 140
+                # cat=Configuration de la galerie photos/tx_fsmediagallery_Aleatoire; type=options[Proportionnel=m,Crop=c,Ajustement exact (mais déformé)=s]; label=Redimensionner les images
+                resizeMode = m
+            }
+        }
+    }
+}

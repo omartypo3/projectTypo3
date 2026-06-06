@@ -1,0 +1,64 @@
+plugin.tx_epoll_pollsingle {
+    view {
+        templateRootPaths {
+            0 = EXT:e_poll/Resources/Private/Templates/
+            1 = {$plugin.tx_epoll.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:e_poll/Resources/Private/Partials/
+            1 = {$plugin.tx_epoll.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:e_poll/Resources/Private/Layouts/
+            1 = {$plugin.tx_epoll.view.layoutRootPath}
+        }
+    }
+
+    settings {
+        pid = {$plugin.tx_epoll.settings.pid}
+        css_file = {$plugin.tx_epoll.settings.css_file}
+        checkbox = {$plugin.tx_epoll.settings.checkbox}
+        list = {$plugin.tx_epoll.settings.list}
+        list_limit = {$plugin.tx_epoll.settings.list_limit}
+        list_first = {$plugin.tx_epoll.settings.list_first}
+        show_results_in_list = {$plugin.tx_epoll.settings.show_results_in_list}
+        check_language_specific = {$plugin.tx_epoll.settings.check_language_specific}
+        vote_language_specific = {$plugin.tx_epoll.settings.vote_language_specific}
+        cookie = {$plugin.tx_epoll.settings.cookie}
+        cookie_domainpath = {$plugin.tx_epoll.settings.cookie_domainpath}
+        check_ip = {$plugin.tx_epoll.settings.check_ip}
+        check_ip_time = {$plugin.tx_epoll.settings.check_ip_time}
+        check_user = {$plugin.tx_epoll.settings.check_user}
+        captcha = {$plugin.tx_epoll.settings.captcha}
+        first_answer_selected = {$plugin.tx_epoll.settings.first_answer_selected}
+        submitbutton_params = {$plugin.tx_epoll.settings.submitbutton_params}
+        submit_js_fallback = {$plugin.tx_epoll.settings.submit_js_fallback}
+        errorlink = {$plugin.tx_epoll.settings.errorlink}
+        PIDforward = {$plugin.tx_epoll.settings.PIDforward}
+        type = {$plugin.tx_epoll.settings.type}
+        factor = {$plugin.tx_epoll.settings.factor}
+        path_to_images = {$plugin.tx_epoll.settings.path_to_images}
+        image_type = {$plugin.tx_epoll.settings.image_type}
+        color = {$plugin.tx_epoll.settings.color}
+        show_zero_percent = {$plugin.tx_epoll.settings.show_zero_percent}
+        show_css_bars = {$plugin.tx_epoll.settings.show_css_bars}
+        
+        rtefield_stdWrap {
+            parseFunc < lib.parseFunc_RTE
+        }
+
+        cssColors {
+            braun = brown
+            rot = red
+            gelb = yellow
+            blau = blue
+            gruen = green
+        }
+    }
+}
+
+plugin.tx_epoll_polllist < plugin.tx_epoll_pollsingle
+
+plugin.tx_epoll_pollresult < plugin.tx_epoll_pollsingle
+
+plugin.tx_epoll < plugin.tx_epoll_pollsingle

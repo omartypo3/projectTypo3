@@ -1,0 +1,13 @@
+plugin.tx_stratisnewsletter {
+  view {
+    # cat=stratis_newsletter/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:stratis_newsletter/Resources/Private/Templates/
+    # cat=stratis_newsletter/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:stratis_newsletter/Resources/Private/Partials/
+    # cat=stratis_newsletter/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:stratis_newsletter/Resources/Private/Layouts/
+  }
+  settings {
+    pathToImages = EXT:stratis_newsletter/Resources/Public/Images/
+  }
+}

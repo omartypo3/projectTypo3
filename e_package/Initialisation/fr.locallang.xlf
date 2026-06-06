@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2016-10-18T18:20:51Z" product-name="e_package" target-language="fr">
+		<header/>
+		<body>
+			<trans-unit id="fold" xml:space="preserve">
+				<source>Fold</source>
+				<target state="translated">Tout plier</target>
+			</trans-unit>
+			<trans-unit id="unfold" xml:space="preserve">
+				<source>Unfold</source>
+				<target state="translated">Tout déplier</target>
+			</trans-unit>
+			<trans-unit id="linkHandlerNewsEvent" xml:space="preserve">
+				<source>News / Events</source>
+				<target state="translated">Actualités / Agendas</target>
+			</trans-unit>
+			<trans-unit id="linkHandlerPhotoGallery" xml:space="preserve">
+				<source>Photos Gallery</source>
+				<target state="translated">Galerie photos</target>
+			</trans-unit>
+			<trans-unit id="linkHandlerDirectory" xml:space="preserve">
+				<source>Directory</source>
+				<target state="translated">Annuaire</target>
+			</trans-unit>
+			<trans-unit id="linkHandlerVideosGallery" xml:space="preserve">
+				<source>Movies</source>
+				<target state="translated">Gallerie Videos</target>
+			</trans-unit>
+			<trans-unit id="cookie.showBanner" xml:space="preserve">
+				<source>We are using cookies to provide statistics that help us give you the best experience of our site. You can find out more or switch them off if you prefer. By continuing to use the site, you are agreeing to our use of cookies</source>
+				<target state="translated">Ce site utilise des cookies. En continuant à naviguer, vous nous autorisez à déposer un cookie à des fins de mesure d'audience.</target>
+			</trans-unit>
+			<trans-unit id="cookie.readMore" xml:space="preserve">
+				<source>Read more</source>
+				<target state="translated">En savoir plus</target>
+			</trans-unit>
+			<trans-unit id="cookie.acceptOrNot" xml:space="preserve">
+				<source>Allow or disallow</source>
+				<target state="translated">Accepter ou s'opposer</target>
+			</trans-unit>
+			<trans-unit id="cookie.createInformAndAsk" xml:space="preserve">
+				<source>These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. We use Google Analytics to provide this service, which uses first party cookies. The data collected is not shared with any other party.</source>
+				<target state="translated">Les cookies nous aident à identifier le contenu qui vous interesse le plus ainsi qu'à repérer certains dysfonctionnements. Vos données de navigations sur ce site sont envoyées à Google Inc.</target>
+			</trans-unit>
+			<trans-unit id="cookie.allowCookie" xml:space="preserve">
+				<source>Allow</source>
+				<target state="translated">Accepter</target>
+			</trans-unit>
+			<trans-unit id="cookie.disallowCookie" xml:space="preserve">
+				<source>Disallow</source>
+				<target state="translated">S'opposer</target>
+			</trans-unit>
+			<trans-unit id="cookie.disallowMessage" xml:space="preserve">
+				<source>You have disallowed the deposit of cookies for audience measure in your browser</source>
+				<target state="translated">Vous vous êtes opposé au dépôt de cookies de mesures d'audience dans votre navigateur.</target>
+			</trans-unit>
+			<trans-unit id="cookie.doNotTrack" xml:space="preserve">
+				<source>You use a Do Not Track browser setting. Cookies will be blocked</source>
+				<target state="translated">Le signal DoNotTrack de votre navigateur est activé. Les cookies sont bloqués</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

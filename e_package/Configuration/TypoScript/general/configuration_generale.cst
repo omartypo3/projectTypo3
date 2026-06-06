@@ -1,0 +1,5 @@
+e_package.conf {
+	dossierPublic = EXT:e_package/Resources/Public
+	dossierLangue = EXT:e_package/Resources/Private/Language
+	dossierTemplate = EXT:e_package/Resources/Private/Templates
+}

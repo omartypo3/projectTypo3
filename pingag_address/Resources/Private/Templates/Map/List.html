@@ -1,0 +1,1349 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+{namespace p=Pingag\PingagAddress\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default"/>
+This template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Map:
+List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="content">
+    <div class="map-wrap">
+
+
+        <div id="mapSettings" class="hidden" data-map-center="{mapCenter}" data-map-style="{mapStyle}"></div>
+        <!-- <div id="mapSettings" class="hidden" data-map-center="{mapCenter}" data-map-style="{mapStyle}"></div> -->
+        <f:if condition="{mapAngebote} != '1'">
+            <div id="gmap" style="height: 700px;"></div>
+        </f:if>
+
+        <div class="container">
+            <div class="row map-filtertext">
+                <div class="col-sm-12">
+                    <f:if condition="{mapAngebote} != '1'">
+                        <f:then>
+                            <div class="filtertext">
+                                <f:cObject typoscriptObjectPath="lib.filtertext"/>
+                            </div>
+                        </f:then>
+                        <f:else>
+                            <div class="filtertext">
+                                <f:cObject typoscriptObjectPath="lib.filtertextAngebote"/>
+                            </div>
+                        </f:else>
+                    </f:if>
+                    <div class="filtertextid3">
+                        <f:cObject typoscriptObjectPath="lib.filtertextid3"/>
+                    </div>
+                    <h2 class="sr-only">Filter</h2>
+                </div>
+            </div>
+            <div class="map-filters row">
+                <div class="col-sm-8">
+                    <div class="wrapper_filter">
+
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <f:if condition="{mapAngebote} != '1'">
+                                    <div class="formfield">
+                                        <label for="category">
+                                            <f:translate key="tx_pingagaddress_domain_model_map.contacts.category"/>
+                                        </label>
+                                        <select id="category" class="selectpicker" data-dropup-auto="false"
+                                                data-live-search="true">
+                                            <option value="0" data-lat="{defaultLat}" data-lng="{defaultLng}">
+                                                <f:translate key="tx_pingagaddress_domain_model_map.contacts.all"/>
+                                            </option>
+                                            <f:for each="{dienstleistungens}" as="dienstleistungen">
+                                                <f:if condition="{v:page.info(field:'sys_language_uid')} != 0">
+                                                    <f:then>
+                                                        <v:variable.set name="getOrginalUid"
+                                                                        value="{p:getLang(uid:'{dienstleistungen.uid}',table:'tx_pingagaddress_domain_model_dienstleistungen')}"/>
+                                                        <option value="{getOrginalUid}">
+                                                            {dienstleistungen.title}
+                                                        </option>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <option value="{dienstleistungen.uid}">
+                                                            {dienstleistungen.title}
+                                                        </option>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:for>
+                                        </select>
+                                    </div>
+                                </f:if>
+
+                                <f:if condition="{mapAngebote} == '1'">
+                                    <div class="formfield">
+                                        <!-- Kantone Box -->
+                                        <label for="lebensalter">
+                                            <f:translate key="tx_pingagaddress_domain_model_map.contacts.lebensalter"/>
+                                        </label>
+                                        <select id="lebensalter" class="selectpicker" data-dropup-auto="false"
+                                                data-live-search="true">
+                                            <option value="0" data-lat="{defaultLat}" data-lng="{defaultLng}">
+                                                <f:translate key="tx_pingagaddress_domain_model_map.contacts.all-dd1"/>
+                                            </option>
+                                            <f:for each="{lebensalters}" as="lebensalter">
+                                                <f:if condition="{v:page.info(field:'sys_language_uid')} != 0">
+                                                    <f:then>
+                                                        <v:variable.set name="getOrginalUid"
+                                                                        value="{p:getLang(uid:'{lebensalter.uid}',table:'tx_pingagaddress_domain_model_lebensalter')}"/>
+                                                        <option value="{getOrginalUid}">
+                                                            {lebensalter.name}
+                                                        </option>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <option value="{lebensalter.uid}">
+                                                            {lebensalter.name}
+                                                        </option>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:for>
+                                        </select>
+                                    </div>
+                                    <div class="formfield">
+                                        <!-- Kantone Box -->
+                                        <label for="angebote">
+                                            <f:translate key="tx_pingagaddress_domain_model_map.contacts.angebote"/>
+                                        </label>
+                                        <select id="angebote" class="selectpicker" data-dropup-auto="false"
+                                                data-live-search="true">
+                                            <option value="0" data-lat="{defaultLat}" data-lng="{defaultLng}">
+                                                <f:translate key="tx_pingagaddress_domain_model_map.contacts.all-dd2"/>
+                                            </option>
+                                            <f:for each="{angebotes}" as="angebote">
+                                                <f:if condition="{v:page.info(field:'sys_language_uid')} != 0">
+                                                    <f:then>
+                                                        <v:variable.set name="getOrginalUid"
+                                                                        value="{p:getLang(uid:'{angebote.uid}',table:'tx_pingagaddress_domain_model_angebote')}"/>
+                                                        <option value="{getOrginalUid}">
+                                                            {angebote.name}
+                                                        </option>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <option value="{angebote.uid}">
+                                                            {angebote.name}
+                                                        </option>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:for>
+                                        </select>
+                                    </div>
+
+                                </f:if>
+                                <div class="formfield">
+                                    <!-- Kantone Box -->
+                                    <label for="kantonecategory">
+                                        <f:translate key="tx_pingagaddress_domain_model_map.contacts.canton"/>
+                                    </label>
+                                    <select id="kantonecategory" class="selectpicker" data-dropup-auto="false"
+                                            data-live-search="true">
+                                        <option value="0" data-lat="{defaultLat}" data-lng="{defaultLng}">
+                                            <f:translate key="tx_pingagaddress_domain_model_map.contacts.all-dd3"/>
+                                        </option>
+                                        <f:for each="{kantones}" as="kantone">
+                                            <f:if condition="{v:page.info(field:'sys_language_uid')} != 0">
+                                                <f:then>
+                                                    <v:variable.set name="getOrginalUid"
+                                                                    value="{p:getLang(uid:'{kantone.uid}',table:'tx_pingagaddress_domain_model_kantone')}"/>
+                                                    <option value="{getOrginalUid}" data-title="{kantone.title}">
+                                                        {kantone.title}
+                                                    </option>
+                                                </f:then>
+                                                <f:else>
+                                                    <option value="{kantone.uid}" data-title="{kantone.title}">
+                                                        {kantone.title}
+                                                    </option>
+                                                </f:else>
+                                            </f:if>
+                                        </f:for>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+
+                        <f:if condition="{mapAngebote} == '1'">
+                            <div class="form-group w-100 zone_search">
+                                <i class="search_icon"></i>
+                                <label for="zip_form_new">
+                                    <f:translate key="tx_pingagaddress_domain_model_map.contacts.zip"/>
+                                </label>
+
+                                <input type="number" class="form-control form-icon-search" id="zip_form_new">
+                            </div>
+                            <div class="form-group w-100 zone_search">
+                                <i class="search_icon"></i>
+                                <label for="umkreis_form_new">
+                                    <f:translate key="tx_pingagaddress_domain_model_map.contacts.umkreis"/>
+                                </label>
+                                <div style="font-size: 22px; margin-top: -11px; margin-bottom: 7px;">
+                                    <f:translate key="tx_pingagaddress_domain_model_map.contacts.umkreisHint"/>
+                                </div>
+
+                                <input type="number" class="form-control form-icon-search" id="umkreis_form_new"
+                                       placeholder="0" min="0" oninput="this.value = Math.abs(this.value)">
+                            </div>
+                        </f:if>
+                        <!-- START: new code Google search field -->
+                        <div class="form-group w-100 zone_search">
+                            <i class="search_icon"></i>
+                            <label for="location_form_new">
+                                <f:translate key="tx_pingagaddress_domain_model_map.contacts.searchFor"/>
+                            </label>
+
+                            <input type="text" class="form-control form-icon-search" id="location_form_new"
+                                   placeholder="{f:translate(key:'tx_pingagaddress_domain_model_map.contacts.searchPlaceholder')}">
+                        </div>
+                        <!-- END: new code Google search field -->
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <f:comment><f:cObject typoscriptObjectPath="lib.kontaktbox"/></f:comment>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- START: new code Google search field -->
+    <input type="text" hidden="true" class="url_for_list_ajax_loaction"
+           value="{f:uri.action(action: 'list',pageType: '1995')}">
+
+    <div id="locations" class="location-list {f:if(condition: '{mapAngebote} == \'1\'', then: 'digitalmap', else: '')}">
+        <div class="container">
+            <f:if condition="{maps -> f:count()} == 0">
+                <f:then>
+                    <div class="notFound" aria-live="polite">
+                        <f:switch expression="{v:page.info(field:'sys_language_uid')}">
+                            <f:case value="0">
+                                <v:variable.set name="lang" value="de.locallang.xlf"/>
+                            </f:case>
+                            <f:case value="1">
+                                <v:variable.set name="lang" value="locallang.xlf"/>
+                            </f:case>
+                            <f:case value="2">
+                                <v:variable.set name="lang" value="fr.locallang.xlf"/>
+                            </f:case>
+                            <f:case value="3">
+                                <v:variable.set name="lang" value="it.locallang.xlf"/>
+                            </f:case>
+                            <f:defaultCase>
+                                <v:variable.set name="lang" value="de.locallang.xlf"/>
+                            </f:defaultCase>
+                        </f:switch>
+                        <f:translate
+                                key='LLL:EXT:pingag_address/Resources/Private/Language/{lang}:tx_pingagaddress_domain_model_map.locationnotFound'/>
+                    </div>
+                </f:then>
+                <f:else>
+                    <h2 class="counter" data-format="" aria-live="polite">
+                        <f:if condition="{mapAngebote} == '1'">
+                            <f:then>
+                                <f:translate key="tx_pingagaddress_domain_model_map.contacts.angebote"/>
+                            </f:then>
+                            <f:else>
+                                <f:translate key="tx_pingagaddress_domain_model_map.contacts.title"/>
+                            </f:else>
+                        </f:if>
+                        (<span class="counter-only-number">{count}</span>)
+                    </h2>
+                    <div class="table table-hover">
+
+
+                        <f:for each="{maps}" as="map">
+                            <f:if condition="{mapAngebote} == '1'">
+                                <f:then>
+                                    <f:if condition="{map.latitude} && {map.longitude}">
+                                        <f:then>
+                                            <v:variable.set name="lat" value="{map.latitude}"/>
+                                            <v:variable.set name="lng" value="{map.longitude}"/>
+                                        </f:then>
+                                        <f:else>
+                                            <f:if condition="{map.zip}">
+                                                <v:variable.set name="zipcode" value="{p:getzip(zip:'{map.zip}')}"/>
+                                                <v:variable.set name="lat" value="{zipcode.0}"/>
+                                                <v:variable.set name="lng" value="{zipcode.1}"/>
+                                            </f:if>
+                                        </f:else>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    <v:variable.set name="lat" value="{map.latitude}"/>
+                                    <v:variable.set name="lng" value="{map.longitude}"/>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{weiteresAjax} == 0">
+                                <f:then>
+                                    <div class="location" id="adr{map.uid}"
+                                         data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                         data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{map.region}"
+                                         data-uid="{map.uid}"
+                                         data-lat="{lat}"
+                                         data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                         data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                         data-lng="{lng}"
+                                         data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                        <div class="info-window-prototype" style="display:none;">
+                                            <div class="infowindow-wrap ">
+                                                <h4 class="title ">{map.name}</h4>
+                                                <div class="left">
+                                                    <f:format.raw>{map.address}</f:format.raw>
+
+                                                        <p class="phone">
+                                                            {map.zip} {map.city}
+                                                        </p>
+                                                    <f:if condition="{map.phone}">
+                                                        <p class="phone">
+                                                            <f:translate
+                                                                    key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                            {map.phone}
+                                                        </p>
+                                                    </f:if>
+                                                    <f:if condition="{map.email}">
+                                                        <p class="email-infowindow"><a href="mailto:{map.email}">{map.email}</a>
+                                                        </p>
+
+                                                    </f:if>
+                                                    <f:if condition="{map.www}">
+                                                        <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                        target="_blank">{map.www}</a>
+                                                        </p>
+                                                        </f:format.raw>
+                                                    </f:if>
+
+                                                    <f:if condition="{map.description}">
+                                                        <br><f:format.raw><p class="desc">{map.description}</p></f:format.raw>
+                                                    </f:if>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 class="title likeh4">{map.name}</h3>
+                                            <div class="left">
+                                                <f:format.html>{map.address}</f:format.html>
+                                                <f:if condition="{mapAngebote} == '1'">
+                                                    <p>{map.zip} {map.city}</p>
+                                                </f:if>
+                                                <f:if condition="{map.phone}">
+                                                    <p class="phone">
+                                                        <f:translate
+                                                                key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                        {map.phone}
+                                                    </p>
+                                                </f:if>
+                                                <f:if condition="{map.email}">
+                                                    <f:comment>
+                                                        <f:format.raw>
+                                                            <p class="email">
+                                                                <f:link.email email="{map.email}">{map.email}
+                                                                </f:link.email>
+                                                            </p>
+                                                        </f:format.raw>
+                                                    </f:comment>
+                                                    <p class="email-infowindow"><a
+                                                            href="mailto:{map.email}">{map.email}</a></p>
+                                                </f:if>
+                                                <f:if condition="{map.www}">
+                                                    <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                    target="_blank">{map.www}</a>
+                                                    </p></f:format.raw>
+                                                </f:if>
+
+                                            </div>
+                                            <f:if condition="{map.description}">
+                                                <div class="accordion">
+                                                    <div class="accodionWrapper">
+                                                        <div class="accordion-list-item">
+                                                            <h3 class="accordion-title-wrapper">
+                                                                <button type="button" aria-expanded="false"
+                                                                        class="accordion-trigger"
+                                                                        aria-controls="sect{map.uid}"
+                                                                        id="accordion{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                </button>
+                                                            </h3>
+                                                            <div id="sect{map.uid}" role="region"
+                                                                 aria-labelledby="accordion{map.uid}id"
+                                                                 class="accordion-panel"
+                                                                 hidden="">
+                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                    <f:format.html>{map.description}</f:format.html>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </f:if>
+                                        </div>
+                                    </div>
+                                    <f:if condition="{map.weiterestandorte}">
+                                        
+                                        <f:for each="{map.weiterestandorte}" as="weiterestandorte" iteration="w">
+                                             <v:variable.set name="kantone"
+                                                                    value="{p:getKanton(uid:'{weiterestandorte.kantone}')}"/>
+                                            <div class="location" id="adrw{w.cycle}{map.uid}"
+                                                 data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                 data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{kantone.title}"
+                                                 data-uid="adrw{w.cycle}{map.uid}"
+                                                 data-lat="{weiterestandorte.breitengrad}"
+                                                 data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                 data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                 data-lng="{weiterestandorte.laungengrad}"
+                                                 data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                <div class="info-window-prototype" style="display:none;">
+                                                    <div class="infowindow-wrap ">
+                                                        <h4 class="title ">{map.name}</h4>
+                                                        <div class="left">
+                                                            <f:format.raw>{weiterestandorte.strasse}</f:format.raw>
+
+                                                                <p class="phone">
+                                                                    {weiterestandorte.plz} {weiterestandorte.ort}
+                                                                </p>
+                                                            <f:if condition="{weiterestandorte.telefon}">
+                                                                <p class="phone">
+                                                                    <f:translate
+                                                                            key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                    {weiterestandorte.telefon}
+                                                                </p>
+                                                            </f:if>
+                                                            <f:if condition="{weiterestandorte.email}">
+                                                                <p class="email-infowindow"><a
+                                                                        href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                </p>
+
+                                                            </f:if>
+                                                            <f:if condition="{weiterestandorte.url}">
+                                                                <f:format.raw><p class="www"><a
+                                                                        href="{weiterestandorte.url}"
+                                                                        target="_blank">{weiterestandorte.url}</a></p>
+                                                                </f:format.raw>
+                                                            </f:if>
+
+                                                            <f:if condition="{weiterestandorte.beschreibung}">
+                                                                <f:then>
+                                                                    <br><f:format.raw><p class="desc">{weiterestandorte.beschreibung}</p></f:format.raw>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <br><f:format.raw><p class="desc">{map.description}</p></f:format.raw>
+                                                                </f:else>
+                                                            </f:if>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h3 class="title likeh4">{map.name}</h3>
+                                                    <div class="left">
+                                                        <f:format.html>{weiterestandorte.strasse}</f:format.html>
+                                                        <f:if condition="{mapAngebote} == '1'">
+                                                            <p>{weiterestandorte.plz} {weiterestandorte.ort}</p>
+                                                        </f:if>
+                                                        <f:if condition="{weiterestandorte.telefon}">
+                                                            <p class="phone">
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                {weiterestandorte.telefon}
+                                                            </p>
+                                                        </f:if>
+                                                        <f:if condition="{weiterestandorte.email}">
+                                                            <p class="email-infowindow"><a
+                                                                    href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                            </p>
+                                                        </f:if>
+                                                        <f:if condition="{weiterestandorte.url}">
+                                                            <f:format.raw><p class="www"><a
+                                                                    href="{weiterestandorte.url}"
+                                                                    target="_blank">{weiterestandorte.url}</a>
+                                                            </p></f:format.raw>
+                                                        </f:if>
+
+                                                    </div>
+                                                    <f:if condition="{map.description}">
+                                                        <div class="accordion">
+                                                            <div class="accodionWrapper">
+                                                                <div class="accordion-list-item">
+                                                                    <h3 class="accordion-title-wrapper">
+                                                                        <button type="button" aria-expanded="false"
+                                                                                class="accordion-trigger"
+                                                                                aria-controls="sectw{w.cycle}{map.uid}"
+                                                                                id="accordionw{w.cycle}{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                        </button>
+                                                                    </h3>
+                                                                    <div id="sectw{w.cycle}{map.uid}" role="region"
+                                                                         aria-labelledby="accordionw{w.cycle}{map.uid}id"
+                                                                         class="accordion-panel"
+                                                                         hidden="">
+                                                                        <f:if condition="{weiterestandorte.beschreibung}">
+                                                                            <f:then>
+                                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                    <f:format.html>{weiterestandorte.beschreibung}
+                                                                                    </f:format.html>
+                                                                                </div>
+                                                                            </f:then>
+                                                                            <f:else>
+                                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                    <f:format.html>{map.description}
+                                                                                    </f:format.html>
+                                                                                </div>
+                                                                            </f:else>  
+                                                                        </f:if>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </f:if>
+                                                </div>
+                                            </div>
+                                        </f:for>
+                                    </f:if>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{weiteresAjaxzip} == 1">
+                                        <f:then>
+                                            <f:if condition="{map.zip} == {weiterestandortezip}">
+                                                <div class="location" id="adr{map.uid}"
+                                                     data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                     data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{map.region}"
+                                                     data-uid="{map.uid}"
+                                                     data-lat="{lat}"
+                                                     data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                     data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                     data-lng="{lng}"
+                                                     data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                    <div class="info-window-prototype" style="display:none;">
+                                                        <div class="infowindow-wrap ">
+                                                            <h4 class="title ">{map.name}</h4>
+                                                            <div class="left">
+                                                                <f:format.raw>{map.address}</f:format.raw>
+                                                                    <p class="phone">
+                                                                        {map.zip} {map.city}
+                                                                    </p>
+                                                                <f:if condition="{map.phone}">
+                                                                    <p class="phone">
+                                                                        <f:translate
+                                                                                key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                        {map.phone}
+                                                                    </p>
+                                                                </f:if>
+                                                                <f:if condition="{map.email}">
+                                                                    <f:comment>
+                                                                        <f:format.raw>
+                                                                            <p class="email">
+                                                                                <f:link.email email="{map.email}">{map.email}
+                                                                                </f:link.email>
+                                                                            </p>
+                                                                        </f:format.raw>
+                                                                    </f:comment>
+                                                                    <p class="email-infowindow"><a href="mailto:{map.email}">{map.email}</a>
+                                                                    </p>
+
+                                                                </f:if>
+                                                                <f:if condition="{map.www}">
+                                                                    <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                                    target="_blank">{map.www}</a>
+                                                                    </p>
+                                                                    </f:format.raw>
+                                                                </f:if>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="title likeh4">{map.name}</h3>
+                                                        <div class="left">
+                                                            <f:format.html>{map.address}</f:format.html>
+                                                            <f:if condition="{mapAngebote} == '1'">
+                                                                <p>{map.zip} {map.city}</p>
+                                                            </f:if>
+                                                            <f:if condition="{map.phone}">
+                                                                <p class="phone">
+                                                                    <f:translate
+                                                                            key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                    {map.phone}
+                                                                </p>
+                                                            </f:if>
+                                                            <f:if condition="{map.email}">
+                                                                <f:comment>
+                                                                    <f:format.raw>
+                                                                        <p class="email">
+                                                                            <f:link.email email="{map.email}">{map.email}
+                                                                            </f:link.email>
+                                                                        </p>
+                                                                    </f:format.raw>
+                                                                </f:comment>
+                                                                <p class="email-infowindow"><a href="mailto:{map.email}">{map.email}</a>
+                                                                </p>
+                                                            </f:if>
+                                                            <f:if condition="{map.www}">
+                                                                <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                                target="_blank">{map.www}</a>
+                                                                </p></f:format.raw>
+                                                            </f:if>
+
+                                                        </div>
+                                                        <f:if condition="{map.description}">
+                                                            <div class="accordion">
+                                                                <div class="accodionWrapper">
+                                                                    <div class="accordion-list-item">
+                                                                        <h3 class="accordion-title-wrapper">
+                                                                            <button type="button" aria-expanded="false"
+                                                                                    class="accordion-trigger"
+                                                                                    aria-controls="sect{map.uid}"
+                                                                                    id="accordion{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                            </button>
+                                                                        </h3>
+                                                                        <div id="sect{map.uid}" role="region"
+                                                                             aria-labelledby="accordion{map.uid}id"
+                                                                             class="accordion-panel"
+                                                                             hidden="">
+                                                                            <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                <f:format.html>{map.description}</f:format.html>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </f:if>
+                                                    </div>
+                                                </div>
+                                            </f:if>
+                                            <f:if condition="{map.weiterestandorte}">
+
+                                                <f:for each="{map.weiterestandorte}" as="weiterestandorte" iteration="w">
+                                                     <v:variable.set name="kantone"
+                                                                    value="{p:getKanton(uid:'{weiterestandorte.kantone}')}"/>
+                                                    <f:if condition="{weiterestandorte.plz} == {weiterestandortezip}">
+                                                        <div class="location" id="adrw{w.cycle}{map.uid}"
+                                                             data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                             data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{kantone.title}"
+                                                             data-uid="adrw{w.cycle}{map.uid}"
+                                                             data-lat="{weiterestandorte.breitengrad}"
+                                                             data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                             data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                             data-lng="{weiterestandorte.laungengrad}"
+                                                             data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                            <div class="info-window-prototype" style="display:none;">
+                                                                <div class="infowindow-wrap ">
+                                                                    <h4 class="title ">{map.name}</h4>
+                                                                    <div class="left">
+                                                                        <f:format.raw>{weiterestandorte.strasse}</f:format.raw>
+
+
+                                                                            <p class="phone">
+                                                                                {weiterestandorte.plz} {weiterestandorte.ort}
+                                                                            </p>
+                                                                        <f:if condition="{weiterestandorte.telefon}">
+                                                                            <p class="phone">
+                                                                                <f:translate
+                                                                                        key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                                {weiterestandorte.telefon}
+                                                                            </p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.email}">
+                                                                            <p class="email-infowindow"><a
+                                                                                    href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                            </p>
+
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.url}">
+                                                                            <f:format.raw><p class="www"><a
+                                                                                    href="{weiterestandorte.url}"
+                                                                                    target="_blank">{weiterestandorte.url}</a>
+                                                                            </p>
+                                                                            </f:format.raw>
+                                                                        </f:if>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <h3 class="title likeh4">{map.name}</h3>
+                                                                <div class="left">
+                                                                    <f:format.html>{weiterestandorte.strasse}</f:format.html>
+                                                                    <f:if condition="{mapAngebote} == '1'">
+                                                                        <p>{weiterestandorte.plz} {weiterestandorte.ort}</p>
+                                                                    </f:if>
+                                                                    <f:if condition="{weiterestandorte.telefon}">
+                                                                        <p class="phone">
+                                                                            <f:translate
+                                                                                    key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                            {weiterestandorte.telefon}
+                                                                        </p>
+                                                                    </f:if>
+                                                                    <f:if condition="{weiterestandorte.email}">
+                                                                        <p class="email-infowindow"><a
+                                                                                href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                        </p>
+                                                                    </f:if>
+                                                                    <f:if condition="{weiterestandorte.url}">
+                                                                        <f:format.raw><p class="www"><a
+                                                                                href="{weiterestandorte.url}"
+                                                                                target="_blank">{weiterestandorte.url}</a>
+                                                                        </p></f:format.raw>
+                                                                    </f:if>
+
+                                                                </div>
+                                                                <f:if condition="{map.description}">
+                                                                    <div class="accordion">
+                                                                        <div class="accodionWrapper">
+                                                                            <div class="accordion-list-item">
+                                                                                <h3 class="accordion-title-wrapper">
+                                                                                    <button type="button" aria-expanded="false"
+                                                                                            class="accordion-trigger"
+                                                                                            aria-controls="sectw{w.cycle}{map.uid}"
+                                                                                            id="accordionw{w.cycle}{map.uid}id">
+                                                                                            <span class="accordion-title">
+                                                                                                <f:if condition="{mapAngebote} == '1'">
+                                                                                                    <f:then>
+                                                                                                            <f:translate
+                                                                                                                    key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                                                                    </f:then>
+                                                                                                    <f:else>
+                                                                                                            <f:translate
+                                                                                                                    key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                                                                    </f:else>
+                                                                                                </f:if>
+                                                                                                <span class="accordion-icon"></span>
+                                                                                            </span>
+                                                                                    </button>
+                                                                                </h3>
+                                                                                <div id="sectw{w.cycle}{map.uid}" role="region"
+                                                                                     aria-labelledby="accordionw{w.cycle}{map.uid}id"
+                                                                                     class="accordion-panel"
+                                                                                     hidden="">
+                                                                                     <f:if condition="{weiterestandorte.beschreibung}">
+                                                                                        <f:then>
+                                                                                             <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                                <f:format.html>{weiterestandorte.beschreibung}
+                                                                                                </f:format.html>
+                                                                                            </div>
+                                                                                        </f:then>
+                                                                                        <f:else>
+                                                                                            <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                                <f:format.html>{map.description}
+                                                                                                </f:format.html>
+                                                                                            </div>
+                                                                                        </f:else>
+                                                                                     </f:if>
+                                                                                   
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </f:if>
+                                                            </div>
+                                                        </div>
+                                                    </f:if>
+                                                </f:for>
+                                            </f:if>
+                                        </f:then>
+                                        <f:else>
+
+                                            <f:if condition="({lat} >= {lowerLatitude} && {lat} <= {upperLatitude}) &&
+                                                             ({lng} >= {lowerLongitude} && {lng} <= {upperLongitude})">
+                                                <f:then>
+                                                    <v:variable.set name="existAngebote" value="true"/>
+                                                </f:then>
+                                                <f:else>
+                                                    <v:variable.set name="existAngebote" value="false"/>
+                                                </f:else>
+                                            </f:if>
+                                            <f:if condition="{lowerLongitude}">
+                                                <f:then>
+                                                    <f:if condition="{existAngebote} == 'true'">
+                                                        <div class="location" id="adr{map.uid}"
+                                                         data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                         data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{map.region}"
+                                                         data-uid="{map.uid}"
+                                                         data-lat="{lat}"
+                                                         data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                         data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                         data-lng="{lng}"
+                                                         data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                        <div class="info-window-prototype" style="display:none;">
+                                                            <div class="infowindow-wrap ">
+                                                                <h4 class="title ">{map.name}</h4>
+                                                                <div class="left">
+                                                                    <f:format.raw>{map.address}</f:format.raw>
+
+                                                                    <p class="phone">
+                                                                        {map.zip} {map.city}
+                                                                    </p>
+                                                                    <f:if condition="{map.phone}">
+                                                                        <p class="phone">
+                                                                            <f:translate
+                                                                                    key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                            {map.phone}
+                                                                        </p>
+                                                                    </f:if>
+                                                                    <f:if condition="{map.email}">
+
+                                                                        <p class="email-infowindow"><a href="mailto:{map.email}">{map.email}</a>
+                                                                        </p>
+
+                                                                    </f:if>
+                                                                    <f:if condition="{map.www}">
+                                                                        <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                                        target="_blank">{map.www}</a>
+                                                                        </p>
+                                                                        </f:format.raw>
+                                                                    </f:if>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h3 class="title likeh4">{map.name}</h3>
+                                                            <div class="left">
+                                                                <f:format.html>{map.address}</f:format.html>
+                                                                <f:if condition="{mapAngebote} == '1'">
+                                                                    <p>{map.zip} {map.city}</p>
+                                                                </f:if>
+                                                                <f:if condition="{map.phone}">
+                                                                    <p class="phone">
+                                                                        <f:translate
+                                                                                key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                        {map.phone}
+                                                                    </p>
+                                                                </f:if>
+                                                                <f:if condition="{map.email}">
+                                                                    <f:comment>
+                                                                        <f:format.raw>
+                                                                            <p class="email">
+                                                                                <f:link.email email="{map.email}">{map.email}
+                                                                                </f:link.email>
+                                                                            </p>
+                                                                        </f:format.raw>
+                                                                    </f:comment>
+                                                                    <p class="email-infowindow"><a
+                                                                            href="mailto:{map.email}">{map.email}</a></p>
+                                                                </f:if>
+                                                                <f:if condition="{map.www}">
+                                                                    <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                                    target="_blank">{map.www}</a>
+                                                                    </p></f:format.raw>
+                                                                </f:if>
+
+                                                            </div>
+                                                            <f:if condition="{map.description}">
+                                                                <div class="accordion">
+                                                                    <div class="accodionWrapper">
+                                                                        <div class="accordion-list-item">
+                                                                            <h3 class="accordion-title-wrapper">
+                                                                                <button type="button" aria-expanded="false"
+                                                                                        class="accordion-trigger"
+                                                                                        aria-controls="sect{map.uid}"
+                                                                                        id="accordion{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                                </button>
+                                                                            </h3>
+                                                                            <div id="sect{map.uid}" role="region"
+                                                                                 aria-labelledby="accordion{map.uid}id"
+                                                                                 class="accordion-panel"
+                                                                                 hidden="">
+                                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                    <f:format.html>{map.description}</f:format.html>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </f:if>
+                                                        </div>
+                                                    </div>
+                                                    </f:if>
+                                                    <f:if condition="{map.weiterestandorte}">
+
+                                                        <f:for each="{map.weiterestandorte}" as="weiterestandorte" iteration="w">
+                                                             <v:variable.set name="kantone"
+                                                                    value="{p:getKanton(uid:'{weiterestandorte.kantone}')}"/>
+                                                            <f:if condition="({weiterestandorte.breitengrad} >= {lowerLatitude} && {weiterestandorte.breitengrad} <= {upperLatitude}) &&
+                                                                             ({weiterestandorte.laungengrad} >= {lowerLongitude} && {weiterestandorte.laungengrad} <= {upperLongitude})   ">
+                                                                <f:then>
+                                                                    <v:variable.set name="existAngebote" value="true"/>
+                                                                </f:then>
+                                                                <f:else>
+                                                                    <v:variable.set name="existAngebote" value="false"/>
+                                                                </f:else>
+                                                            </f:if>
+                                                            <f:if condition="{existAngebote} == 'true'">
+                                                                <div class="location" id="adrw{w.cycle}{map.uid}"
+                                                                 data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                                 data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{kantone.title}"
+                                                                 data-uid="adrw{w.cycle}{map.uid}"
+                                                                 data-lat="{weiterestandorte.breitengrad}"
+                                                                 data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                                 data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                                 data-lng="{weiterestandorte.laungengrad}"
+                                                                 data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                                <div class="info-window-prototype" style="display:none;">
+                                                                    <div class="infowindow-wrap ">
+                                                                        <h4 class="title ">{map.name}</h4>
+                                                                        <div class="left">
+                                                                            <f:format.raw>{weiterestandorte.strasse}</f:format.raw>
+
+                                                                            <p class="phone">
+                                                                                {weiterestandorte.plz} {weiterestandorte.ort}
+                                                                            </p>
+
+                                                                            <f:if condition="{weiterestandorte.telefon}">
+                                                                                <p class="phone">
+                                                                                    <f:translate
+                                                                                            key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                                    {weiterestandorte.telefon}
+                                                                                </p>
+                                                                            </f:if>
+                                                                            <f:if condition="{weiterestandorte.email}">
+                                                                                <p class="email-infowindow"><a
+                                                                                        href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                                </p>
+
+                                                                            </f:if>
+                                                                            <f:if condition="{weiterestandorte.url}">
+                                                                                <f:format.raw><p class="www"><a
+                                                                                        href="{weiterestandorte.url}"
+                                                                                        target="_blank">{weiterestandorte.url}</a></p>
+                                                                                </f:format.raw>
+                                                                            </f:if>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h3 class="title likeh4">{map.name}</h3>
+                                                                    <div class="left">
+                                                                        <f:format.html>{weiterestandorte.strasse}</f:format.html>
+                                                                        <f:if condition="{mapAngebote} == '1'">
+                                                                            <p>{weiterestandorte.plz} {weiterestandorte.ort}</p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.telefon}">
+                                                                            <p class="phone">
+                                                                                <f:translate
+                                                                                        key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                                {weiterestandorte.telefon}
+                                                                            </p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.email}">
+                                                                            <p class="email-infowindow"><a
+                                                                                    href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                            </p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.url}">
+                                                                            <f:format.raw><p class="www"><a
+                                                                                    href="{weiterestandorte.url}"
+                                                                                    target="_blank">{weiterestandorte.url}</a>
+                                                                            </p></f:format.raw>
+                                                                        </f:if>
+
+                                                                    </div>
+                                                                    <f:if condition="{map.description}">
+                                                                        <div class="accordion">
+                                                                            <div class="accodionWrapper">
+                                                                                <div class="accordion-list-item">
+                                                                                    <h3 class="accordion-title-wrapper">
+                                                                                        <button type="button" aria-expanded="false"
+                                                                                                class="accordion-trigger"
+                                                                                                aria-controls="sectw{w.cycle}{map.uid}"
+                                                                                                id="accordionw{w.cycle}{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                                        </button>
+                                                                                    </h3>
+                                                                                    <div id="sectw{w.cycle}{map.uid}" role="region"
+                                                                                         aria-labelledby="accordionw{w.cycle}{map.uid}id"
+                                                                                         class="accordion-panel"
+                                                                                         hidden="">
+                                                                                        <f:if condition="{weiterestandorte.beschreibung}">
+                                                                                            <f:then>
+                                                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                                    <f:format.html>{weiterestandorte.beschreibung}
+                                                                                                    </f:format.html>
+                                                                                                </div>
+                                                                                            </f:then>
+                                                                                            <f:else>
+                                                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                                    <f:format.html>{map.description}
+                                                                                                    </f:format.html>
+                                                                                                </div>
+                                                                                            </f:else>
+                                                                                        </f:if>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                </div>
+                                                            </div>
+                                                            </f:if>
+                                                        </f:for>
+                                                    </f:if>
+                                                </f:then>
+                                                <f:else>
+                                                    <div class="location" id="adr{map.uid}"
+                                                         data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                         data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{map.region}"
+                                                         data-uid="{map.uid}"
+                                                         data-lat="{lat}"
+                                                         data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                         data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                         data-lng="{lng}"
+                                                         data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                        <div class="info-window-prototype" style="display:none;">
+                                                            <div class="infowindow-wrap ">
+                                                                <h4 class="title ">{map.name}</h4>
+                                                                <div class="left">
+                                                                    <f:format.raw>{map.address}</f:format.raw>
+
+                                                                    <p class="phone">
+                                                                        {map.zip} {map.city}
+                                                                    </p>
+                                                                    <f:if condition="{map.phone}">
+                                                                        <p class="phone">
+                                                                            <f:translate
+                                                                                    key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                            {map.phone}
+                                                                        </p>
+                                                                    </f:if>
+                                                                    <f:if condition="{map.email}">
+
+                                                                        <p class="email-infowindow"><a href="mailto:{map.email}">{map.email}</a>
+                                                                        </p>
+
+                                                                    </f:if>
+                                                                    <f:if condition="{map.www}">
+                                                                        <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                                        target="_blank">{map.www}</a>
+                                                                        </p>
+                                                                        </f:format.raw>
+                                                                    </f:if>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h3 class="title likeh4">{map.name}</h3>
+                                                            <div class="left">
+                                                                <f:format.html>{map.address}</f:format.html>
+                                                                <f:if condition="{mapAngebote} == '1'">
+                                                                    <p>{map.zip} {map.city}</p>
+                                                                </f:if>
+                                                                <f:if condition="{map.phone}">
+                                                                    <p class="phone">
+                                                                        <f:translate
+                                                                                key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                        {map.phone}
+                                                                    </p>
+                                                                </f:if>
+                                                                <f:if condition="{map.email}">
+                                                                    <f:comment>
+                                                                        <f:format.raw>
+                                                                            <p class="email">
+                                                                                <f:link.email email="{map.email}">{map.email}
+                                                                                </f:link.email>
+                                                                            </p>
+                                                                        </f:format.raw>
+                                                                    </f:comment>
+                                                                    <p class="email-infowindow"><a
+                                                                            href="mailto:{map.email}">{map.email}</a></p>
+                                                                </f:if>
+                                                                <f:if condition="{map.www}">
+                                                                    <f:format.raw><p class="www"><a href="https://{map.www}"
+                                                                                                    target="_blank">{map.www}</a>
+                                                                    </p></f:format.raw>
+                                                                </f:if>
+
+                                                            </div>
+                                                            <f:if condition="{map.description}">
+                                                                <div class="accordion">
+                                                                    <div class="accodionWrapper">
+                                                                        <div class="accordion-list-item">
+                                                                            <h3 class="accordion-title-wrapper">
+                                                                                <button type="button" aria-expanded="false"
+                                                                                        class="accordion-trigger"
+                                                                                        aria-controls="sect{map.uid}"
+                                                                                        id="accordion{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                                </button>
+                                                                            </h3>
+                                                                            <div id="sect{map.uid}" role="region"
+                                                                                 aria-labelledby="accordion{map.uid}id"
+                                                                                 class="accordion-panel"
+                                                                                 hidden="">
+                                                                                <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                    <f:format.html>{map.description}</f:format.html>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </f:if>
+                                                        </div>
+                                                    </div>
+
+                                                    <f:if condition="{map.weiterestandorte}">
+
+                                                        <f:for each="{map.weiterestandorte}" as="weiterestandorte" iteration="w">
+                                                             <v:variable.set name="kantone"
+                                                                    value="{p:getKanton(uid:'{weiterestandorte.kantone}')}"/>
+                                                            <div class="location" id="adrw{w.cycle}{map.uid}"
+                                                                 data-services="{addressWithIdDienstleistungens.{map.uid}}"
+                                                                 data-kantones="{addressWithIdKantones.{map.uid}}" data-regions="{kantone.title}"
+                                                                 data-uid="adrw{w.cycle}{map.uid}"
+                                                                 data-lat="{weiterestandorte.breitengrad}"
+                                                                 data-angebote="{addressWithIdAngebote.{map.uid}}"
+                                                                 data-lebensalter="{addressWithIdLebensalter.{map.uid}}"
+                                                                 data-lng="{weiterestandorte.laungengrad}"
+                                                                 data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                                                <div class="info-window-prototype" style="display:none;">
+                                                                    <div class="infowindow-wrap ">
+                                                                        <h4 class="title ">{map.name}</h4>
+                                                                        <div class="left">
+                                                                            <f:format.raw>{weiterestandorte.strasse}</f:format.raw>
+
+                                                                            <p class="phone">
+                                                                                {weiterestandorte.plz} {weiterestandorte.ort}
+                                                                            </p>
+
+                                                                            <f:if condition="{weiterestandorte.telefon}">
+                                                                                <p class="phone">
+                                                                                    <f:translate
+                                                                                            key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                                    {weiterestandorte.telefon}
+                                                                                </p>
+                                                                            </f:if>
+                                                                            <f:if condition="{weiterestandorte.email}">
+                                                                                <p class="email-infowindow"><a
+                                                                                        href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                                </p>
+
+                                                                            </f:if>
+                                                                            <f:if condition="{weiterestandorte.url}">
+                                                                                <f:format.raw><p class="www"><a
+                                                                                        href="{weiterestandorte.url}"
+                                                                                        target="_blank">{weiterestandorte.url}</a></p>
+                                                                                </f:format.raw>
+                                                                            </f:if>
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h3 class="title likeh4">{map.name}</h3>
+                                                                    <div class="left">
+                                                                        <f:format.html>{weiterestandorte.strasse}</f:format.html>
+                                                                        <f:if condition="{mapAngebote} == '1'">
+                                                                            <p>{weiterestandorte.plz} {weiterestandorte.ort}</p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.telefon}">
+                                                                            <p class="phone">
+                                                                                <f:translate
+                                                                                        key="tx_pingagaddress_domain_model_communication.label.phone"/>
+                                                                                {weiterestandorte.telefon}
+                                                                            </p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.email}">
+                                                                            <p class="email-infowindow"><a
+                                                                                    href="mailto:{weiterestandorte.email}">{weiterestandorte.email}</a>
+                                                                            </p>
+                                                                        </f:if>
+                                                                        <f:if condition="{weiterestandorte.url}">
+                                                                            <f:format.raw><p class="www"><a
+                                                                                    href="{weiterestandorte.url}"
+                                                                                    target="_blank">{weiterestandorte.url}</a>
+                                                                            </p></f:format.raw>
+                                                                        </f:if>
+
+                                                                    </div>
+                                                                    <f:if condition="{map.description}">
+                                                                        <div class="accordion">
+                                                                            <div class="accodionWrapper">
+                                                                                <div class="accordion-list-item">
+                                                                                    <h3 class="accordion-title-wrapper">
+                                                                                        <button type="button" aria-expanded="false"
+                                                                                                class="accordion-trigger"
+                                                                                                aria-controls="sectw{w.cycle}{map.uid}"
+                                                                                                id="accordionw{w.cycle}{map.uid}id">
+                                                <span class="accordion-title">
+                                                     <f:if condition="{mapAngebote} == '1'">
+                                                        <f:then>
+                                                                <f:translate
+                                                                        key="tx_pingagaddress_domain_model_map.contacts.beschreibung"/>
+                                                        </f:then>
+                                                        <f:else>
+                                                                 <f:translate
+                                                                         key="tx_pingagaddress_domain_model_map.contacts.accordionTitle"/>
+                                                        </f:else>
+                                                    </f:if>
+                                                    <span class="accordion-icon"></span>
+                                                </span>
+                                                                                        </button>
+                                                                                    </h3>
+                                                                                    <div id="sectw{w.cycle}{map.uid}" role="region"
+                                                                                         aria-labelledby="accordionw{w.cycle}{map.uid}id"
+                                                                                         class="accordion-panel"
+                                                                                         hidden="">
+                                                                                        <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                           <f:if condition="{weiterestandorte.beschreibung}">
+                                                                                                <f:then>
+                                                                                                    <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                                        <f:format.html>{weiterestandorte.beschreibung}
+                                                                                                        </f:format.html>
+                                                                                                    </div>
+                                                                                                </f:then>
+                                                                                                <f:else>
+                                                                                                    <div class="frame frame-default frame-type-text frame-layout-0">
+                                                                                                        <f:format.html>{map.description}
+                                                                                                        </f:format.html>
+                                                                                                    </div>
+                                                                                                </f:else>
+                                                                                            </f:if>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </f:if>
+                                                                </div>
+                                                            </div>
+                                                        </f:for>
+                                                    </f:if>
+                                                </f:else>
+                                            </f:if>
+
+                                        </f:else>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+
+
+                            <!-- Kantone result -->
+                            <f:comment>
+                                <!-- <tr class="location" data-services="{addressWithIdKantones.{map.uid}}" data-regions="" data-uid="{map.uid}"
+                                    data-lat="{map.latitude}"
+                                    data-lng="{map.longitude}" data-marker-icon="{map.markerIcon.0.originalResource.publicUrl}">
+                                    <td class="info-window-prototype" style="display:none;">
+                                        <div class="infowindow-wrap ">
+                                            <h4 class="title">{map.name}</h4>
+                                            <div class="left">
+                                                <f:format.raw>{map.address}</f:format.raw>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h4 class="title">{map.name}</h4>
+                                        <div class="left">
+                                            <f:format.raw>{map.address}</f:format.raw>
+                                        </div>
+                                    </td>
+                                </tr> -->
+                            </f:comment>
+
+                        </f:for>
+                    </div>
+
+                </f:else>
+            </f:if>
+
+
+        </div>
+    </div>
+
+    <f:if condition="{mapAngebote} == '1'">
+        <div id="gmap" style="height: 700px;"></div>
+    </f:if>
+
+
+    <!-- END: new code Google search field -->
+</f:section>
+</html>

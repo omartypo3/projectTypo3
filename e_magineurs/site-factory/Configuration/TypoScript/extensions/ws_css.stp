@@ -1,0 +1,4 @@
+plugin.tx_wsscss.variables {
+  colorPrincipal = {$module.tx_sitefactory.config.couleurPrincipal}
+  colorSecondaire =  {$module.tx_sitefactory.config.couleurSecondaire}
+}

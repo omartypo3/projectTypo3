@@ -1,0 +1,99 @@
+
+<f:layout name="Default" />
+
+This template displays a New form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+
+
+
+<f:form controller="Hosting" action="ajax"  name="hosting" pluginName="hostingliste" extensionName="dslintranet" id="hostingCreateForm" additionalAttributes="{data-insert-selector: '#hostingList tbody'}">
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Hostingpaket Anlegen'}" />
+
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+	
+
+
+$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#hostingCreateForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#hostingCreateForm').hasClass('formSaves'))	return false;
+				$('#hostingCreateForm').addClass('formSaves');
+			
+				$.ajax({
+					url: $('#hostingCreateForm').attr('action'),
+					type: 'POST',
+					data: $('#hostingCreateForm').serialize(),
+					success: function(data) {
+						
+						dataJson = JSON.parse(data);
+						if(dataJson['newUid']) {
+							
+							$.colorbox.close();
+							dataTableReload();
+						} else {
+							return true;
+						}
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		
+	});
+
+</script>
+
+
+
+
+
+
+    <f:form.hidden name="switch" value="create" />
+    
+    <f:render partial="Hosting/FormFields" arguments="{_all}" />
+	
+    
+
+   
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Paket Speichern'}" />    
+    
+    
+</f:form>
+
+
+</f:section>

@@ -1,0 +1,29 @@
+plugin.tx_ecomment {
+  view {
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template root (FE)
+    templateRootPath = EXT:e_comment/Resources/Private/Templates/
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template partials (FE)
+    partialRootPath = EXT:e_comment/Resources/Private/Partials/
+    # cat=plugin.tx_egestiondocs/file; type=string; label=Path to template layouts (FE)
+    layoutRootPath = EXT:e_comment/Resources/Private/Layouts/
+  }
+
+  settings {
+    validation {
+      # cat=comment; type=text; label=Validation page id
+      validationPage =
+      # cat=comment; type=boolean; label=If checked, the messages need to be validated by a moderator
+      needValidation = 0
+      # cat=comment; type=text; label=Moderator email address
+      moderatorEmail =
+      # cat=comment; type=text; label=Moderator email address associated name
+      moderatorName = Moderator
+      # cat=comment; type=text; label=Subject message of the validation mail
+      emailSubject = Message needs to be moderated
+      # cat=comment; type=text; label=Sender address of the validation mail
+      senderEmail = noreply@validation.com
+      # cat=comment; type=text; label=Sender name of the validation mail
+      senderName = Validation Robot
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+
+
+<f:section name="main">
+
+
+	
+	
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/fullcalendar-3.5.1/lib/jquery-ui.min.js" name="jsJqueryUi" dependencies="jsMoment"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/fullcalendar-3.5.1/fullcalendar.min.js" name="jsFullcalendar" dependencies="jsMoment,jsJqueryUi"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/fullcalendar-3.5.1/locale/de.js" name="jsFullcalendarLocale" dependencies="jsFullcalendar"></v:asset.script>
+
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/Chart.min.js" name="jsChart"></v:asset.script>
+
+<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/Aufgaben/List.js" name="dslagenturaufgabenjs"/>
+
+<v:variable.set name="mitarbeiterKalenderBtn" value=""/>
+<f:for each="{mitarbeitersExtern}" as="mitarbeiter">
+	<v:variable.set name="mitarbeiterKalenderBtn" value="{mitarbeiterKalenderBtn}{f:if(condition: mitarbeiterKalenderBtn, then: ',')}mitarbeiter{mitarbeiter.uid}"/>
+</f:for>
+
+<v:variable.set name="mitarbeiterExternCustomButtons" value=""/>
+<f:for each="{mitarbeitersExtern}" as="mitarbeiter">
+	<v:variable.set name="mitarbeiterExternCustomButtons" value="{mitarbeiterExternCustomButtons}{f:if(condition: mitarbeiterExternCustomButtons, then: ',')}mitarbeiter{mitarbeiter.uid}"/>
+</f:for>
+
+<v:variable.set name="mitarbeiterButtons" value=""/>
+<f:for each="{mitarbeiters}" as="mitarbeiter">
+	<v:variable.set name="mitarbeiterButtons" value="{mitarbeiterButtons}{f:if(condition: mitarbeiterButtons, then: ',')}{mitarbeiter.uid};{mitarbeiter.name};{mitarbeiter.email};{mitarbeiter.initialien}"/>
+</f:for>
+
+<v:variable.set name="aufgabenmitarbeiters" value=""/>
+<f:for each="{settings.aufgabenmitarbeiters}" as="activeMitarbeiter">
+	<f:if condition="{activeMitarbeiter}">
+		<v:variable.set name="aufgabenmitarbeiters" value="{aufgabenmitarbeiters}{f:if(condition: aufgabenmitarbeiters, then: ',')}{activeMitarbeiter}"/>
+	</f:if>
+</f:for>
+<f:if condition="{settings.aufgabenmitarbeiters}">
+	<f:else>
+		<v:variable.set name="aufgabenmitarbeiters" value="{feuser.uid}"/>
+	</f:else>
+</f:if>
+<section id="aufgaben" data-aufgaben-ajax-url="{f:uri.action(action: 'ajax', controller: 'Aufgaben', pageType: 89657201)}" data-auftraege-ajax-url="{f:uri.action(action: 'ajax', pluginName: 'auftragsliste', controller: 'Auftraege', pageType: 89657202)}" data-events-ajax-url="{f:uri.action(action: 'listjson', controller: 'Aufgaben')}" data-mitarbeiter-kalender-btn="{mitarbeiterKalenderBtn}" data-mitarbeiter-extern-custom-buttons="{mitarbeiterExternCustomButtons}" data-mitarbeiter-buttons="{mitarbeiterButtons}" data-aufgabenmitarbeiters="{aufgabenmitarbeiters}">
+
+	<div class="hidden"><f:link.action id="iCalNewBtn" action="iCalUpdateSettings" pageType="89657201" class="doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '910px'}"></f:link.action></div>
+		
+		
+	<div id="aufgaben_tabs" data-active-tab="{aktiverTab}">
+	<ul class="aufgaben_tabs_navigation">
+		<li data-refresh-events="true" id="wochenplanungTabElement"><a href="#wochenplanung"><i class="bb-calendar-date bb-lg fa_fa-calendar"></i><strong><span>&nbsp;Wochenplanung</span></strong></a></li>
+		<f:for each="{auftraegesOffen}" as="auftraege"><li data-load-id="{auftraege.uid}"><a href="#auftrag-show-{auftraege.uid}" class="{auftraege.counterClass}"><f:render partial="Auftraege/TabTitel" arguments="{auftrag:auftraege}" /></a> <i class="bb-times"></i></li></f:for>
+	</ul>
+	<div id="wochenplanung">
+	
+		<div id="wochenplanung_kalender" style="_margin-top:10px;">
+			
+			<f:render partial="Styles/Mitarbeiter" arguments="{mitarbeiters:mitarbeiters}" />
+			<div class="wochenplanungKalenderLegende">
+				<f:for each="{mitarbeiters}" as="mitarbeiter">
+					<span class="mitarbeiterTextColor mitarbeiterKreisMedium" data-uid="{mitarbeiter.uid}" >{mitarbeiter.initialien}</span>
+				</f:for>
+			</div>
+		</div>
+	</div>
+
+
+	<f:for each="{auftraegesOffen}" as="auftraege"><div id="auftrag-show-{auftraege.uid}"><p><span class="ajaxLoading dark"><i class="fa fa-cog fa-spin"></i></span></p></div></f:for>
+
+	
+	</div>
+
+
+
+	<div id="eventContent" title="Event Details" style="display:none;">
+		Start: <span id="startTime"></span><br>
+		End: <span id="endTime"></span><br><br>
+		<p id="eventInfo"></p>
+		<p><strong><a id="eventLink" href="" target="_blank">Read More</a></strong></p>
+	</div>
+
+</section>
+</f:section>
+	
+</html>

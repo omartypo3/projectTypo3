@@ -1,0 +1,57 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+    <f:flashMessages />
+    <f:comment>
+        Abécédaire en attente de Xavier (voir pour récupérer le viewhelper de dpn_glossary)
+    </f:comment>
+    <f:switch expression="{settings.templateLayoutListe}">
+        <f:case value="YOURVALUE">
+            VOTRE CODE FLUID ICI
+        </f:case>
+        <f:comment>GALERIE VIDEO</f:comment>
+        <f:case value="40">
+            <div class="video-list-view">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                    
+                            <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/Video" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                            </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                        
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/Video" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:case>
+        <f:comment>CODE PAR DEFAUT</f:comment>
+        <f:defaultCase>
+            <div class="annuaire-list-view">
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+
+                        <f:for each="{pagination.paginator.paginatedItems}" as="paginatedFiches">
+                                <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                    <f:render partial="List/Item" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                                </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                        
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <f:render partial="List/Item" arguments="{fiche: fiche,settings:settings,iterator:iterator}" />
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </div>
+        </f:defaultCase>
+    </f:switch>
+
+
+</f:section>

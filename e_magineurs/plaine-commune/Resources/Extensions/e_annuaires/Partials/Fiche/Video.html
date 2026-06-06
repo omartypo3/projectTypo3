@@ -1,0 +1,43 @@
+{namespace webtv=Emagineurs\EAnnuaires\ViewHelpers}
+
+
+<div class="block_détail_vidéo">
+    <div class="lecteur_video">
+        <f:if condition="{fiche.documents.0.fichier.0.originalResource.publicUrl -> f:format.htmlspecialchars()}">
+            <f:then>
+            <video controls>
+                <source src="{fiche.documents.0.fichier.0.originalResource.publicUrl -> f:format.htmlspecialchars()}" type="video/mp4">
+            </video>
+            </f:then>
+
+            <f:else if="{fiche.production}">
+                <f:format.raw>{fiche.production}</f:format.raw>
+            </f:else>
+            <f:else>
+                [VIDEO NON ACCESSIBLE]
+            </f:else>
+        </f:if>
+    </div>
+
+    <p class="categorie_video">
+        <f:if condition="{fiche.categories}">
+            <f:for each="{fiche.categories}" as="category" iteration="itemIteration">
+                <f:if condition="{itemIteration.isLast}">
+                    <f:then>{category.title}</f:then>
+                    <f:else>{category.title}, </f:else>
+                </f:if>
+            </f:for>
+        </f:if>
+    </p>
+
+    <p class="date_video">
+        Publiée le {fiche.datefiche}
+    </p>
+    <p class="date_video">
+        durée {fiche.cell}
+    </p>
+    <p class="description_video">
+        <f:format.html>{fiche.description}</f:format.html>           
+    </p>
+
+</div>

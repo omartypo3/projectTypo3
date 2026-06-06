@@ -1,0 +1,155 @@
+{namespace egmap=Emagineurs\EGmap\ViewHelpers}
+
+
+
+<div id="block_detail_offre">
+    <f:if condition="{fiche.bp}">
+        <p class="offres_ref">
+            Référence de l’offre : {fiche.bp}
+        </p>
+    </f:if>
+
+    <f:if condition="{fiche.datefiche}">
+        <p class="offres_date no-margin">
+            Publiée le {fiche.datefiche}
+        </p>
+    </f:if>
+
+    <f:if condition="{fiche.endtime}">
+        <p class="offres_date">
+            Date fin de candidature : {fiche.endtime}
+        </p>
+    </f:if>
+
+    
+
+    <f:if condition="{fiche.description}">
+        <f:format.htmlentitiesDecode>
+            {fiche.description}
+        </f:format.htmlentitiesDecode>
+    </f:if>
+    <ul>
+        <f:if condition="{fiche.objet.0.titre}">
+            <li class="offres_domaine">
+                <strong>Domaine d’activité :</strong>
+
+                <f:for each="{fiche.objet}" as="domaine" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{domaine.titre}</f:then>
+                        <f:else>{domaine.titre}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.actions.0.titre}">
+            <li class="offres_grade">
+                <strong>Categories :</strong>
+
+                <f:for each="{fiche.actions}" as="actions" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{actions.titre}</f:then>
+                        <f:else>{actions.titre}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+           
+        <f:if condition="{fiche.city.0.titre}">  
+            <li class="offres_grade">
+                <strong>Ville de plaine commune :</strong>
+
+                <f:for each="{fiche.city}" as="city" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{city.titre}</f:then>
+                        <f:else>{city.titre}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.cantonstexte}">
+            <li class="offres_grade">
+                <strong>Ville hors de plaine commune :</strong> {fiche.cantonstexte}
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.office}">        
+            <li class="offres_grade">
+                <strong>Service / ut :</strong> {fiche.office}
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.metier.0.title}">
+            <li class="offres_grade">
+                <strong>Métier :</strong>
+
+                <f:for each="{fiche.metier}" as="metier" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{metier.title}</f:then>
+                        <f:else>{metier.title}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.direction.0.title}">    
+            <li class="offres_grade">
+                <strong>Direction :</strong>
+
+                <f:for each="{fiche.direction}" as="direction" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{direction.title}</f:then>
+                        <f:else>{direction.title}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.cadreemploi.0.title}">
+            <li class="offres_grade">
+                <strong>Cadre Emploi :</strong>
+
+                <f:for each="{fiche.cadreemploi}" as="cadreemploi" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{cadreemploi.title}</f:then>
+                        <f:else>{cadreemploi.title}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+        
+        <f:if condition="{fiche.grade.0.title}">
+            <li class="offres_grade">
+                <strong>Grade :</strong>
+
+                <f:for each="{fiche.grade}" as="grade" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{grade.title}</f:then>
+                        <f:else>{grade.title}, </f:else>
+                    </f:if>
+                </f:for>
+            </li>
+        </f:if>
+
+         <f:if condition="{fiche.documents.0.fichier.0.originalResource.publicUrl -> f:format.htmlspecialchars()}">
+            <li class="offres_grade">
+                <a href="{fiche.documents.0.fichier.0.originalResource.publicUrl -> f:format.htmlspecialchars()}" target="_blank">
+                    <strong>Télécharger l'offre au format PDF</strong>
+                </a>
+            </li>
+        </f:if>
+
+        <f:link.action  pageUid="{settings.detailPid}" action="edit" controller="Editfe" arguments="{offre: fiche}" class="btn btn-vert btn-animate btn-retour btn-postuler" >
+            POSTULER
+        </f:link.action>
+
+        <f:link.page pageUid="{settings.listPid}" class="btn btn-vert btn-animate btn-retour" >Retour aux offres</f:link.page>
+
+    </ul>
+
+</div>
+
+
+
+

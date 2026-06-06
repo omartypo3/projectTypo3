@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{settings.navigation.navbar.enable}">
+	<f:if condition="{settings.styles.navbar.style.fixed.top}">
+		<f:then>
+			<f:render partial="NavBar/NavBarFixTop" arguments="{_all}" />
+		</f:then>
+		<f:else>
+			<f:render partial="NavBar/NavBarDefault" arguments="{_all}" />
+		</f:else>
+	</f:if>
+</f:if>
+</html>

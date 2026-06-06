@@ -1,0 +1,54 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<div class="content_container_header"><span><i class="bb-pen-write bb-md" aria-hidden="true"></i>Beschreibung</span><a href="#" class="content_container_toggle"><i class="bb-arrow-up bb-md" aria-hidden="true"></i><i class="bb-arrow-down bb-md" aria-hidden="true"></i></a></div>
+<div class="content_container">
+	
+    <f:for each="{auftraege.texte}" key="keyText" as="text">
+    	<f:render partial="Auftraege/PropertiesBeschreibungText" arguments="{text: text}" />
+	</f:for>
+	
+	<f:if condition="{auftraege.rights.edit}">
+		<f:form controller="Auftraege" action="ajax"  name="auftraege" pluginName="auftragsliste" extensionName="dslintranet">
+			<div id="auftragTexteEditBeschreibung_neu_{auftraege.uid}_panel" class="panel panel-default inlineEditing" data-uid="{auftraege.uid}">
+
+				<div class="panel-heading" >
+					<h3 class="panel-title " onclick="$('#auftragTexteEditBeschreibung_neu_{auftraege.uid}_panel_body').collapse('show');initTinyMceEditorInline(this);return false;">
+						<i class="bb-plus bb-lg" aria-hidden="true"></i>&nbsp;&nbsp;Neuen Beschreibungsbereich Hinzufügen
+					</h3>
+				</div>
+				<div class="panel-collapse collapse" id="auftragTexteEditBeschreibung_neu_{auftraege.uid}_panel_body">
+					<div class="panel-body">
+
+						<f:form.textfield name="titel" value="{text.titel}" class="form-control input-sm titelInput" required="true"  data="{default:''}"  additionalAttributes="{placeholder: 'Titel'}"   />
+
+						<div class="textBeschreibungWrapper">
+							<f:form.textarea name="beschreibung" id="auftragTexteEditBeschreibung_neu_{auftraege.uid}" value="" />
+
+						</div>
+
+						<f:form.textarea id="auftragTexteEditBeschreibung_neu_{auftraege.uid}_temp" value="" />
+
+
+
+
+
+						<button class="confirm btn btn-primary" onClick="saveAuftragTexteNewBeschreibung('auftragTexteEditBeschreibung_neu_{auftraege.uid}');$('#auftragTexteEditBeschreibung_neu_{auftraege.uid}_panel_body').collapse('hide');return false;"><i class="bb-tick bb-lg"></i>&nbsp;&nbsp;Speichern</button>
+
+						<button class="btn btn-abort" onclick="closeAuftragTexteEditBeschreibung('auftragTexteEditBeschreibung_neu_{auftraege.uid}');$('#auftragTexteEditBeschreibung_neu_{auftraege.uid}_panel_body').collapse('hide');return false;"><i class="bb-times bb-lg"></i>&nbsp;&nbsp;Abbrechen</button>
+
+						<div class="float_right textSichtbarkeitWrapper"><a href="#" onClick="$(this).toggleClass('btnGruen'); return false;" class="textSichtbarkeit textSichtbarkeitInput" data-default=""><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i> Sichtbarkeit</a></div>
+
+					</div>
+				</div>
+
+			</div>   
+		</f:form>
+		
+		<f:render partial="Auftraege/PropertiesBeschreibungNotizenIntern" arguments="{auftraege: auftraege}" />
+		
+	</f:if>
+   
+    
+</div>

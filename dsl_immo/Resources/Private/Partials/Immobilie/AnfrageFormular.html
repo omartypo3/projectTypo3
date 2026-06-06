@@ -1,0 +1,151 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+
+  
+
+
+
+<div id="fieldsetAnfrageformular_wrapper">
+<div class="agent-form">
+   <f:form action="ajax"  id="form-contact-agent" class="clearfix"  >
+   		<f:form.hidden name="immobilie"  value="{immobilie.uid}"  />
+   		<f:form.hidden name="switch"  value="anfrage"  />
+		<div class="form-group">
+			<label for="form-contact-agent-name">Ihr Name<em>*</em></label>
+			<f:form.textfield name="name"  id="form-contact-agent-name" value=""  class="form-control" required="required" />
+		</div><!-- /.form-group -->
+		<div class="form-group">
+			<label for="form-contact-agent-email">Ihre Email<em>*</em></label>
+			<f:form.textfield type="email" name="email"  id="form-contact-agent-email" value=""  class="form-control" required="required" />
+		</div><!-- /.form-group -->
+		<div class="form-group">
+			<label for="form-contact-agent-message">Ihre Nachricht<em>*</em></label>
+			<f:form.textarea name="nachricht" class="form-control" id="form-contact-agent-message" rows="2" additionalAttributes="{required: 'required'}"  />
+
+		</div><!-- /.form-group -->
+		<div class="form-group">
+			<f:form.submit value="Nachricht senden" class="btn pull-right btn-default" id="form-contact-agent-submit" />
+
+		</div><!-- /.form-group -->
+		<div id="form-contact-agent-status"></div>
+	</f:form>
+</div>
+
+</div>                                                
+
+                                                
+
+
+
+
+
+
+
+<div id="fieldsetAnfrageformular_success">
+
+<p>Vielen Dank für Ihr Interesse, das Formular wurde erfolgreich übermittelt. Wir werden uns schnellstmöglich bei Ihnen melden. Wir haben eine Kopie Ihrer Anfrage an von Ihnen angegebene E-Mail Adresse gesendet.</p>
+
+</div>
+
+<div id="fieldsetAnfrageformular_error">
+
+<p>Vielen Dank für Ihr Interesse, es ist leider ein interner Fehler aufgetreten. Bitte versuchen Sie es noch einmal oder rufen uns unter <strong>03765 55 33-0</strong> an.</p>
+
+</div>
+
+
+
+
+
+<v:asset.script name="inlinejs" dependencies="jquery">
+
+   
+
+    var requestAnfrageformular = false;
+
+    
+
+    $(function(){
+
+
+
+			$( "#form-contact-agent" ).submit(function( event ) {
+
+				console.log('submit');
+
+				$('#form-contact-agent_wrapper').addClass('loading');
+
+				if(requestAnfrageformular) return false;
+
+				
+
+				//requestAnfrageformular.abort();
+
+				var formData = $('#form-contact-agent').serialize();
+
+	console.log(formData);
+
+				requestAnfrageformular = $.ajax({
+
+				   type: "POST",
+
+				   url: $('#form-contact-agent').attr('action'),
+
+				   cache: false,
+
+				   data: formData, // serializes the form's elements.
+
+				   success: function(data){
+
+					   console.log(data);
+
+					   if(data == "false"){
+
+						   $('#fieldsetAnfrageformular_error').show();
+
+						   $('#fieldsetAnfrageformular_wrapper').hide();
+
+					   } else {
+
+						   $('#fieldsetAnfrageformular_success').show();
+
+						   $('#fieldsetAnfrageformular_wrapper').hide();
+
+					   }
+
+					   $('#form-contact-agent_wrapper').removeClass('loading');
+
+					   requestAnfrageformular = false;
+
+
+
+				   }
+
+				});
+
+
+
+
+
+
+
+
+
+				return false;
+
+				//return formFahrzeugSucheSubmit;
+
+			});
+
+			//alert(marke_modelltypArr['VW']);
+
+			//initSearchForm();
+
+		
+
+    });
+
+</v:asset.script>
+
+
+
+</html>

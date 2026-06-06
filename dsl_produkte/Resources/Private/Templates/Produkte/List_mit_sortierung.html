@@ -1,0 +1,160 @@
+ {namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+<f:layout name="Default" />
+<f:form.checkbox name="anwendungsbereiche" value="{anwendungsbereich}" />
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+<f:section name="main">
+  <div class="container page-container">
+  
+  
+    <div class="row content-row">
+      <div class="ajax_loading" style="display:none;"></div>
+      <div class="row">
+      
+      <div class="col-md-12">
+                <div class="table gestaltungselement_ueberschrift einzeilig p-bottom-10 p-top-20">
+                	<div class="table-cell min_width"><f:image src="fileadmin/template/public/images/layout/allgemein/schmuckelement_ueberschrift.png" alt="Schmuckelement Überschrift"/></div>
+               		 <div class="table-cell">
+                   		 <h1>ProduktBeispiele</h1>
+                   	 </div>
+                    </div>
+                </div>
+      
+        <div class="col-xs-12 col-md-3">
+          <f:render partial="Produkte/Filter" arguments="{_all}" />
+        </div>
+        
+        <div class="col-xs-12 col-md-9 produkte_content ajaxFillPaginator">
+          <input class="pushUri" type="hidden" value="{pushUri}" />
+          <f:flashMessages  />
+          
+         
+  
+         <div class="browsebox idealFormSelect" <f:if condition="{produktes -> f:count()} < 1"> style="display:none;"</f:if>> <span class="sortierung"> 
+          <form class="idealforms" onSubmit="return false;">
+          <span class="idealforms_text"><f:translate key="tx_dslprodukte_domain_model_produkte.sortierung" />:</span>
+          <f:form.select name="sortierung" class="filter_sortierung_selector filter_selector" options="{sortArr}"  value="{sortierung}" /></form>
+          </span> <span class="paginate">
+          <dsl:Paginate objects="{produktes}" as="paginatedProduktes" itemsPerPage="{itemsPerPage}">
+         <f:alias map="{pagination:paginatedProduktes.pagination, paginator:paginatedProduktes.paginator,name:paginatedProduktes.name}">
+                                <f:render partial="Pagination" arguments="{_all}" />
+                          </f:alias>
+          </span> <span class="eintraege"> <span><f:translate key="tx_dslprodukte_domain_model_produkte.eintraege" />:</span>
+          <f:form.select name="perpage" class="filter_perpage_selector filter_selector" options="{perpageArr}"  value="{perpage}" />
+          </span>
+        </div>
+          <f:if condition="{produkteGefunden}">
+            <f:then>
+              <div id="productList">
+                <div class="row">
+                  <f:for each="{paginatedProduktes.paginator.paginatedItems}" as="produkte">
+                    <div class="col-xs-12 col-md-4">
+                      <div class="entry prod">
+                        <div class="entry_prod_inner">
+                        
+                          <div class="pic">
+                            <f:if condition="{produkte.bilder.0}">
+                              <f:then>
+                                <f:image src="{produkte.bilder.0.originalResource.originalFile.uid}" maxWidth="1100" maxHeight="600" />
+                              </f:then>
+                              <f:else><img src="fileadmin/template/public/images/layout/allgemein/kategorie_keinbild.png" alt="kein Bild vorhanden" width="165" height="115"></f:else>
+                            </f:if>
+                            
+                            
+                            
+                          </div>
+                            <ul class="kat_uid">
+                            <f:for each="{produkte.kategorien}" as="kategorie">
+                              <li class="kat_uid_{kategorie.uid}"></li>
+                            </f:for>
+                          </ul>
+                          <div class="headline_text_box">
+                          <div class="teaser-headline hyphens-break">
+                            <h3 class="center">
+                              <f:format.crop maxCharacters="45" append="&nbsp;...">{produkte.titel}</f:format.crop>
+                            </h3>
+                          </div>
+                          
+                           <div class="table divider">
+      <div class="table-cell">
+        <div></div>
+      </div>
+      <div class="table-cell min_width">
+      
+        <f:image src="fileadmin/template/public/images/layout/allgemein/linie_ende_gepunktet_orange.png" alt="Schmuckelement Linie" width="49" height="6"/>
+      </div>
+    </div>
+                          
+                          <div class="teaser-text hyphens-break center">
+                            <f:if condition="{produkte.teaser}">
+                              <p>
+                                <f:then>
+                                  <f:format.crop maxCharacters="80" append="&nbsp;...">{produkte.teaser}</f:format.crop>
+                                </f:then>
+                                <f:else>
+                                  <f:format.crop maxCharacters="80" append="&nbsp;...">
+                                    <f:format.stripTags>{produkte.text}</f:format.stripTags>
+                                  </f:format.crop>
+                                </f:else>
+                                </p>
+                            </f:if>
+                            </p>
+                          </div>
+                          </div>
+                        </div>
+                         <f:link.action action="show" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,produkte:produkte)}" class="special_hover"> <span class="image_hoverBefore"></span> <span class="image_hoverAfter"></span> <span class="button">Mehr Infos</span>
+                         	 <span class="hover_hintergrund"></span>
+                          </f:link.action>
+                      </div>
+                    </div>
+                  </f:for>
+                </div>
+              </div>
+            </f:then>
+            <f:else>
+              <h3><f:translate key="tx_dslprodukte_domain_model_produkte.filter.keine_ergebnisse.ueberschrift" /></h3>
+              <p><f:translate key="tx_dslprodukte_domain_model_produkte.filter.keine_ergebnisse.text" /><br>
+                <br>
+                 <a href="#" onClick="$('.filter_reset').click();return false;" class="button">
+                            <span class="text">
+                            	<f:translate key="tx_dslprodukte_domain_model_produkte.filter.keine_ergebnisse.button" />
+                            </span>
+                            <span class="btnBefore"></span>
+                            <span class="btnAfter"></span>
+                        </a>
+              </p>
+            </f:else>
+          </f:if>
+          <f:if condition="{produktes -> f:count()} > 4">
+          <div class="browsebox browsebox-bottom"><span class="sortierung"> <span>Sortierung:</span>
+            <f:form.select class="filter_sortierung_selector_bottom filter_selector_bottom" options="{sortArr}"  value="{sortierung}" />
+            </span> <span class="paginate">
+            </f:if>
+          <f:alias map="{pagination:paginatedProduktes.pagination, paginator:paginatedProduktes.paginator,name:paginatedProduktes.name}">
+              <f:render partial="Pagination" arguments="{_all}" />
+          </f:alias>
+            </dsl:Paginate>
+            <f:if condition="{produktes -> f:count()} > 4">
+            </span> <span class="eintraege"> <span>Einträge:</span>
+            <f:form.select name="perpage" class="filter_perpage_selector_bottom filter_selector_bottom" options="{perpageArr}"  value="{perpage}" />
+            </span></div>
+          </f:if>
+        </div>
+      </div>
+    </div>
+    <!--<pre>:::<f:format.raw>{debugArr}</f:format.raw>
+	</pre>-->
+  </div>
+</f:section>
+<!--<f:section name="debug"> DEBUG:
+  <pre><f:format.raw>{debugArr}</f:format.raw>
+</pre>
+</f:section>-->

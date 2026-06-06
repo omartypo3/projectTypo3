@@ -1,0 +1,20 @@
+plugin.tx_ecalameopublisher_pi1 {
+	view {
+		# cat=plugin.tx_ecalameopublisher_pi1/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:e_calameo_publisher/Resources/Private/Templates/
+		# cat=plugin.tx_ecalameopublisher_pi1/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:e_calameo_publisher/Resources/Private/Partials/
+		# cat=plugin.tx_ecalameopublisher_pi1/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:e_calameo_publisher/Resources/Private/Layouts/
+	}
+}
+
+module.file_ECalameoPublisherMod1 {
+    view {
+        templateRootPath = EXT:e_calameo_publisher/Resources/Private/Backend/Templates/
+        partialRootPath = EXT:e_calameo_publisher/Resources/Private/Backend/Partials/
+        layoutRootPath = EXT:e_calameo_publisher/Resources/Private/Backend/Layouts/
+    }
+}
+
+#plugin.Tx_ECalameoPublisher < plugin.tx_ecalameopublisher_pi1

@@ -1,0 +1,27 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}<f:spaceless>
+
+<f:if condition="{sortField}">
+	<f:then>
+		
+		<v:iterator.sort as="auftraegesSorted" subject="{auftraeges}" sortBy="{sortField}" order="{sortDir}" sortFlags="{sortFlags}">
+			<f:for each="{auftraegesSorted}" as="auftraege" iteration="iterator">
+				{f:if(condition: '{iterator.isFirst}', else: '<--line-->')}
+				<f:render partial="Auftraege/ListJSONDataTableRow" arguments="{_all}" />
+			</f:for>
+		</v:iterator.sort>
+			
+		<f:comment>
+			<v:iterator.sort as="auftraegesSorted" subject="{auftraeges}" sortBy="{sortField}" order="{sortDir}" sortFlags="{sortFlags}">
+			<f:for each="{auftraegesSorted}" as="auftraege" iteration="iterator">
+				{f:if(condition: '{iterator.isFirst}', else: '<--line-->')}
+				<f:render partial="Auftraege/ListJSONDataTableRow" arguments="{_all}" />
+			</f:for>
+		</v:iterator.sort>
+		</f:comment>
+				
+	</f:then>
+	<f:else>
+		<f:render partial="Auftraege/ListJSONDataTableRow" arguments="{_all}" />
+	</f:else>
+</f:if>
+</f:spaceless>

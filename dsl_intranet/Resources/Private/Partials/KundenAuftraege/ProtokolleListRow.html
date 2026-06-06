@@ -1,0 +1,9 @@
+<tr id="auftraegeProtokolleListAuftrag_{protokolle.uid}" <f:if condition="{protokolle.hidden}">class="hidden-item"</f:if>>
+    <td width="150"  data-sort="{protokolle.zeitpunkt->f:format.date(format: 'YmdHis')}">{protokolle.zeitpunkt->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+    <td>{protokolle.notizSystem}<f:if condition="{protokolle.notiz}"><div>Kommentar: {protokolle.notiz}</div></f:if></td>
+    <td width="60">{protokolle.cruser.initialien}</td>
+    <td width="65" align="center"><ul class="buttonlist"><f:if condition="{protokolle.rights.edit}"><li><f:link.action controller="Protokolle" pluginName="auftragsliste" extensionName="dslintranet" action="edit" arguments="{protokolle : protokolle}" class="doAjaxEdit"><i class="fa fa-edit"></i></f:link.action></li></f:if><f:if condition="{protokolle.rights.delete}"><li><f:link.action controller="Protokolle" pluginName="kundenlogin" extensionName="dslintranet" action="kundenajax" arguments="{uid : protokolle, switch : 'delete'}" class="doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorProtokolle', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{protokolle.uid}', data-ajax-id: '{protokolle.auftrag.uid}'}" ><i class="fa fa-trash-o"></i>
+</f:link.action></li></f:if></ul></td>
+    
+    
+</tr>

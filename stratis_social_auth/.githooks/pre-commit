@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Pre-commit Git hook
+
+# Install all before tests
+echo "
+     -= INSTALL =-"
+composer install
+
+# Lint PHP Code Style
+echo "
+     -= CHECK lint:style =-"
+composer lint:style
+if [[ $? != 0 ]]; then
+ 	exit 1
+fi
+
+# Lint PHP Code
+echo "
+     -= CHECK lint:php =-"
+composer lint:php
+if [[ $? != 0 ]]; then
+    exit 1
+fi
+
+# Lint XML
+echo "
+     -= CHECK lint:xml =-"
+composer lint:xml
+if [[ $? != 0 ]]; then
+    exit 1
+fi
+
+# Lint TypoScript
+echo "
+     -= CHECK lint:typoscript =-"
+composer lint:typoscript
+if [[ $? != 0 ]]; then
+    exit 1
+fi
+
+# Lint YAML
+# echo "
+#      -= CHECK lint:yaml =-"
+# composer lint:yaml
+# if [[ $? != 0 ]]; then
+#     exit 1
+# fi
+
+# Run PHP Unit Tests
+echo "
+     -= CHECK test:unit =-"
+composer test:unit
+if [[ $? != 0 ]]; then
+    exit 1
+fi

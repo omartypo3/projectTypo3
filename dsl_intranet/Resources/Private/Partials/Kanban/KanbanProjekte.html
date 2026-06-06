@@ -1,0 +1,116 @@
+<f:section name="kanban-auftraege-headline">
+
+    <div class="layout-table">
+        <div class="layout-table-row layout-table-row-header">
+            <f:comment><!-- <div class="layout-table-col">&nbsp;</div>--></f:comment>
+            <div class="layout-table-col">Datum</div><f:comment><!--. sorting_desc für suchicon--></f:comment>
+            <div class="layout-table-col">Auftrag / Kunde</div>
+            <div class="layout-table-col">MA</div>
+            <div class="layout-table-col">Status</div>
+            <div class="layout-table-col">&nbsp;</div>
+        </div>
+    </div>
+    
+</f:section>
+
+<div class="dataTables_wrapper kanban-btn-left">
+    <div class="kanban-item-search-volltextsuche-wrapper dataTables_filter">
+        
+
+            <f:form.select title="Status" class="selectpicker kanbanFormFilterSelectpicker" id="kanban_filter_statuss" multiple="multiple" name="settings[statuss]" property="statuss" options="{statuss}"  data="{width:'auto', actions-box:'true', selected-text-format:'count > 1', dropup-auto:'false'}" />
+
+            <div class="kanban-item-search-volltextsuche-field-wrapper">
+                <button class="btn background-color-schwarz-80 color-weiss margin-right-0" aria-label="Suche" onclick="jQuery(this).next().focus();"><i class="bb-search bb-sm" aria-hidden="true"></i></button>
+                <input type="text" class="form-control input-sm" placeholder="Suche" onchange="kanbanItemSearch();"  onkeyup="kanbanItemSearch();"  id="kanban-item-search-volltextsuche" />
+                <a class="clearFilter" onclick="jQuery('#kanban-item-search-volltextsuche').val('').trigger('change');return false;"><i class="bb-times bb-lg"></i></a>
+            </div>
+
+            
+
+        
+    </div>
+</div>
+
+
+<div class="kanban-auftraege-table kanban-auftraege">
+
+
+    <f:render section="kanban-auftraege-headline" />
+
+    <f:for each="{auftraege}" as="auftrag" iteration="i">
+        <f:render partial="Kanban/KanbanItemAuftrag" arguments="{auftrag:auftrag,uidKanbanItem:'kanban-auftrag-{auftrag.uid}'}" />
+    </f:for>
+
+    <div class="layout-table layout-table-no-record">
+        <div class="layout-table-row">
+            <div class="layout-table-col-no-record">
+                <span>- kein Eintrag -</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="kanban-auftraege-ausgeblendet-wrapper" attr>
+    <div class="kanban-auftraege-ausgeblendet-headline"><div><strong>Ausgeblendete Aufträge</strong></div></div>
+    <div class="kanban-auftraege-table kanban-auftraege-ausgeblendet">
+        <f:for each="{kanban.itemsAusgeblendet}" as="item" iteration="i">
+            <f:if condition="{item.relationModel}">
+                <f:render partial="Kanban/AuftragItem" arguments="{_all}" />
+            </f:if>
+        </f:for>
+        <f:comment><!-- 
+        <f:for each="{auftraegeAusgeblendet}" as="auftrag" iteration="i">
+            <f:render partial="Kanban/KanbanItem" arguments="{auftrag:auftrag,uidKanbanItem:'kanban-auftrag-{auftrag.uid}'}" />
+        </f:for>
+        --></f:comment>
+    </div>
+</div>
+<br>
+
+<f:comment><!--
+<table id="kanban-auftraege-table" class="table table-striped table-bordered"  style="width:100%">
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>von / bis</th>
+            <th>Kunde / Auftragsnummer / Bezeichnung</th>
+            <th>MA</th>
+            <th>Status</th>
+            <th>&nbsp;</th>
+            <th>Statusausgeblendet</th>
+        </tr>
+    </thead>
+    <tbody>
+        <f:for each="{auftraege}" as="auftrag" iteration="i">
+            <tr>
+                <td><a href="#"><i class="bb-bars bb-lg"></i></a></td>
+                <td><span title="Auftrag vom: {f:format.date(date: auftrag.datum, format: 'd.m.Y - H:i')} Uhr">{f:format.date(date: auftrag.datum, format: 'd.m.Y')}</span>
+                    <f:if condition="{auftrag.datumfertigstellung}"><br>- <f:format.date date="{auftrag.datumfertigstellung}" format="d.m.Y" /></f:if>
+                </td>
+                <td><f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="show" arguments="{auftraege : auftrag}" class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{auftrag.uid}'}" onclick="$('#split-pane-middle').click();" >
+                    <f:if condition="{auftrag.kunde}"><div class="auftraegeListKunde"><strong>{auftrag.kunde.name}</strong> [{auftrag.kunde.nummer}]</div></f:if>
+                    <div>{auftrag.nr}: {auftrag.titel}</div>
+                </f:link.action></td>
+                <td><ul class="kommalist"><li title="{auftrag.ansprechpartner.name}"><strong>{auftrag.ansprechpartner.initialien}</strong></li><f:for each="{auftrag.mitarbeiter}" as="auftragMitarbeiter"><f:if condition="{auftrag.ansprechpartner}!={auftragMitarbeiter}"><li title="{auftragMitarbeiter.name}">{auftragMitarbeiter.initialien}</li></f:if></f:for></ul></td>
+                <td><f:for each="{auftrag.statuss}" as="status" key="number">{f:if(condition: '{number}=={auftrag.status}', then: '{status}')}</f:for></td>
+                <td>&nbsp;</td>
+                <td>Eingeblendete Aufträge</td>
+            </tr>
+        </f:for>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>von / bis</td>
+            <td>eingeblendet</td>
+            <td>MA</td>
+            <td>Status</td>
+            <td>&nbsp;</td>
+            <td>Eingeblendete Aufträge</td>
+        </tr>
+        
+        
+    </tbody>
+</table>
+--></f:comment>

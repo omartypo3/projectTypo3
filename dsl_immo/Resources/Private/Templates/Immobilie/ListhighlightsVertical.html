@@ -1,0 +1,79 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+
+<f:section name="immobilie">
+	
+	<div class="property small" data-uid="{immobilie.uid}">
+		<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}">
+
+
+			<div class="property-image">
+				<img alt="" src="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, maxWidth:600, maxHeight:400)}">
+
+			</div>
+		</f:link.action>
+		<div class="info">
+			<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}"><h4>{immobilie.objekttitel}</h4></f:link.action>
+
+			<figure>{immobilie.flaechenAnzahlZimmer}-Raum · <f:format.currency currencySign="" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.flaechenWohnflaeche}</f:format.currency> m<sup>2</sup></figure>
+			<div class="tag price"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaltmiete}</f:format.currency></div>
+		</div>
+	</div>
+	
+	
+	
+	
+</f:section>
+
+<f:section name="main"><!--TYPO3SEARCH_end-->
+	
+	
+		<header class="section-title">
+			<h2>Wohnungen der Woche</h2>
+		</header>
+
+	
+		
+		<f:render section="immobilien" arguments="{_all}"/>
+	
+
+
+
+<!--TYPO3SEARCH_begin--></f:section>
+
+
+<f:section name="immobilien">
+	<v:iterator.sort as="immobiliesSorted" subject="{immobilies}" order="SHUFFLE" >
+		<f:for each="{immobiliesSorted}" as="immobilie" iteration="iterator">
+			<f:if condition="{iterator.index}<{settings.limit}">
+				<f:render section="immobilie" arguments="{_all}"/>
+			</f:if>
+		</f:for>
+	</v:iterator.sort>
+
+
+	<f:if condition="{settings.limitAdditional}">
+		<v:iterator.sort as="immobiliesSorted" subject="{immobiliesAdditional}" order="SHUFFLE" >
+			<f:for each="{immobiliesSorted}" as="immobilie" iteration="iterator">
+				<f:if condition="{iterator.index}<{settings.limitAdditional}">
+					<f:render section="immobilie" arguments="{_all}"/>
+				</f:if>
+			</f:for>
+		</v:iterator.sort>
+	</f:if>
+</f:section>
+
+</html>

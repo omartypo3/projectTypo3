@@ -1,0 +1,86 @@
+<f:comment>Possible de mettre deux structures: 
+	soit data/content -> pour une infobulle simple
+	soit data/tab/content -> chaque tab sera un tab dans l'infobulle
+	
+		L'essentiel :
+		Nom   								{infos.name}
+		Titre   							{infos.title}
+		Société   							{infos.society}
+		Notes   							{infos.note}
+		Lien   								{infos.link}
+		Lien "y aller / en partir" pour accéder au moteur de recherche d'itinéraire pré-rempli
+											{infos.nom}
+	Coordonnées :
+		Adresse   							{infos.address}
+		Code postal   						{infos.zip}
+		Ville    							{infos.city}
+		Pays   								{infos.country}
+		Téléphone fixe   					{infos.phone}
+		Téléphone portable   				{infos.cellphone}
+		Téléphone fax   					{infos.fax}
+		Site web   							{infos.website}
+		Courriel   							{infos.mail}
+	Services :
+		Données internes   					{infos.data}
+	Médias :
+		Image (avec taille maximum définie) {infos.image}
+		Téléchargement   					{infos.file}
+		Bloc HTML   						{infos.html}
+</f:comment>
+<data>
+	<key>{key}</key>
+	<uid>{infos.uid}</uid>
+	<type>{type}</type>
+	<title>{infos.nom}</title>
+	<movePoint>{movePoint}</movePoint>
+	<editPoint>{editPoint}</editPoint>
+	<savePoint>{savePoint}</savePoint>
+	<tab>
+		<label><f:translate key="LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:poi.general" /></label>
+		<content>
+			<f:format.cdata>
+			<div class="essentiel_geoloc">
+				<p>{infos.name}</p>
+				<p>{infos.title}</p>
+				<p>{infos.society}</p>
+				<p><f:format.html>{infos.note}</f:format.html></p>
+				<p><f:cObject typoscriptObjectPath="lib.linkRenderer" data="{linkTarget:infos.lien, linkText: 'Plus d\'infos'}" /></p>
+				<p><a href="#" class="eGmapYAllerLink" data-pos-latitude="{infos.lat}" data-pos-longitude="{infos.lng}" data-pos-address="{infos.adresse}" ><f:translate key="LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:poi.go" /></a></p>
+			</div>
+			</f:format.cdata>
+		</content>
+	</tab>
+	<tab>
+		<label><f:translate key="LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:poi.coord" /></label>
+		<content>
+			<f:format.cdata>
+			<div class="essentiel_geoloc">
+				<p>{infos.address}</p>
+				<p>{infos.zip} {infos.city} {infos.country}</p>
+				<p>{f:translate(key: 'LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:map.bulle.phone')}{infos.phone}</p>
+				<p>{f:translate(key: 'LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:map.bulle.cellphone')}{infos.cellphone}</p>
+				<p>{f:translate(key: 'LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:map.bulle.fax')}{infos.fax}</p>
+				<p>{f:translate(key: 'LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:map.bulle.website')}<a href="{infos.website}" target="_blank">{infos.website}</a></p>
+				<p>{f:translate(key: 'LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:map.bulle.mail')}<a href="mailto:{infos.mail}">{infos.mail}</a></p>
+			</div>
+			</f:format.cdata>
+		</content>
+	</tab>
+	<tab>
+		<label><f:translate key="LLL:EXT:e_gmap/Resources/Private/Language/locallang.xlf:poi.media" /></label>
+		<content>
+			<f:format.cdata>
+			<div class="essentiel_geoloc">
+				<f:if condition="{infos.image}">
+					<f:image src="{infos.image.originalResource.publicUrl}" width="200"/>
+				</f:if>
+				<p><a href="{infos.file.originalResource.publicUrl}"><f:if condition="{infos.file.originalResource.name}">
+					<f:then>{infos.file.originalResource.name}</f:then>
+					<f:else>{infos.file.originalResource.originalFile.properties.name}</f:else>
+				</f:if></a></p>
+				<f:format.html>{infos.html}</f:format.html>
+			</div>
+			</f:format.cdata>
+		</content>
+	</tab>
+</data>

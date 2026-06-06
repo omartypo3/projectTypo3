@@ -1,0 +1,65 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace e=Emagineurs\ENews\ViewHelpers}
+
+<div class="agenda article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')}" itemscope="itemscope" itemtype="http://schema.org/Article">
+	<n:excludeDisplayedNews newsItem="{newsItem}"/>
+	<p class="date_agenda">
+		<f:if condition="{newsItem.begindate->f:format.date()}=={newsItem.finishdate->f:format.date()}">
+            <f:then>
+                Le <f:format.date format="%d %h %Y">{newsItem.begindate}</f:format.date>
+            </f:then>
+            <f:else>
+                <f:if condition="{newsItem.finishdate}==0">
+                    <f:then>
+                        A partir du <f:format.date format="%d %h %Y">{newsItem.begindate}</f:format.date>
+                    </f:then>
+                    <f:else>
+                        Du <f:format.date format="%d %h">{newsItem.begindate}</f:format.date> au <f:format.date format="%d %h %Y">{newsItem.finishdate}</f:format.date>
+                    </f:else>
+                </f:if>
+            </f:else>
+        </f:if>
+	</p>
+	<p class="categorie_agenda">
+			<f:render partial="Category/Items" arguments="{categories:newsItem.categories, settings:settings}" />
+	</p>
+	<div class="resume_agenda">
+		<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">{newsItem.title-> f:format.crop(maxCharacters: '60', respectWordBoundaries:'1') -> f:format.html()}</n:link>
+	</div>
+	<div class="nom_projet">
+		<f:if condition="<f:cObject typoscriptObjectPath='lib.annuairesNews' data='{sourceUid: newsItem.feuserid}'/>">
+			<p>Par : <a href="{f:cObject(typoscriptObjectPath:'lib.linkannuairesNews',data:'{sourceUid: newsItem.feuserid}')}"><f:cObject typoscriptObjectPath="lib.annuairesNews" data="{sourceUid: newsItem.feuserid}"/></a></p>
+		</f:if>
+	</div>
+	<div class="description_projet">
+		<div><strong>Description du projet</strong></div>
+		{newsItem.bodytext -> f:format.crop(maxCharacters: '100', respectWordBoundaries:'1') -> f:format.html()}
+
+		<p class="plus">
+			<n:link newsItem="{newsItem}" settings="{settings}" class="more">
+				En savoir +
+			</n:link>
+		</p>
+	</div>
+
+	<f:if condition="{e:isMyNews(news: newsItem)}" >
+		<f:link.action action="delete" arguments="{news: newsItem}" pageType="40742" class="delete_news" >Supprimer</f:link.action>
+	</f:if>
+
+	<script>
+        jQuery("a.delete_news").click(function(event) {
+            event.preventDefault();
+            var link = jQuery(this);
+
+            jQuery.ajax({
+                url: link.attr("href"),
+                type: "GET"
+            }).done(function (data) {
+                link.parent( ".article" ).replaceWith(data);
+            }).fail(function () {
+            }).always(function () {
+
+            });
+        });
+	</script>
+</div>

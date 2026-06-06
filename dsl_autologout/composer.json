@@ -1,0 +1,25 @@
+{
+    "name": "dsl-factory/dsl-autologout",
+    "type": "typo3-cms-extension",
+    "description": "Im- und Export Modul",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "dsl dev",
+            "email": "info@dsl-factory.de"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^9.5 || ^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "DslFactory\\DslAutologout\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "dsl_autologout"
+        }
+    }
+}

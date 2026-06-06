@@ -1,0 +1,482 @@
+/* CSS Document */
+.produkte_content{
+	overflow:hidden;	
+}
+
+.produkte_content .eintraege, .produkte_content .paginate, .produkte_content .browsebox-bottom{
+	display:none;	
+}
+ 
+#form_filter{
+	background-color: #ededed;
+	padding: 15px;	
+	margin-bottom: 15px;
+}
+ 
+.filterbox_ueberschrift{
+	color: #3c3c3b;
+	font-family: 'HelveticaNeueW01-67MdCn_692710', arial;
+	font-size:21px;
+	text-transform:uppercase;
+	margin-bottom: 10px;
+}
+ 
+#form_filter h5{
+	color: #EB6401;
+	margin-bottom: 10px;
+	margin-top: 15px;
+ 	border-top: 1px solid #b3b1b1;
+    padding-top: 22px;
+	text-transform: none; 
+ }
+ 
+ #form_filter h5.first{
+	border-top: none; 
+	margin-top: 0;
+	padding-top: 0;
+}
+ 
+ #form_filter .kat-title{
+ 	color: #3c3c3b;
+	font-family: 'HelveticaNeueW01-57Cn', arial;
+	font-size:14px;
+ }
+
+#form_filter .input-button-outer, #form_filter .kat-title {
+	display: table-cell;
+	vertical-align: top;
+}
+
+#form_filter .input-button-outer > span {
+	overflow: hidden;
+	width: 7px;
+	margin-top: 4px;
+	display: block;
+	margin-right: 12px;
+}
+
+.filter_label{
+	margin-bottom: 0;
+	font-weight:normal;
+	cursor:pointer;
+	padding-left: 0;
+}
+
+#form_filter input {
+	display: none;
+}
+
+#form_filter img {
+	margin-left: -8px;
+	display: block;
+	margin-top: 3px;
+}
+
+#form_filter > div > label.active img, #form_filter > div > label:hover img { margin-left: 0; }
+
+#form_filter > div > label.active:hover img { margin-left: 0; }
+
+#form_filter > div > label:hover { color: #EB6401; }
+
+/*form filter button reset*/
+
+.filter_reset_outer{margin-bottom: 15px;}
+
+.filter_reset:before{
+	content: "\e603"; 
+	font-family: 'icomoon';
+	color: #b3b1b1;
+	display: inline-block;	
+	margin-right: 5px;
+	font-size: 10px;
+	margin-top: -1px;
+}
+
+.filter_reset:hover:before{ color: #eb6401;	} 
+
+.filter_reset:hover{
+	cursor: pointer;
+	color: #3c3c3b;
+	text-decoration: none;	
+}
+
+.filter_reset{
+	color: #3c3c3b;
+    font-family: "HelveticaNeueW01-57Cn",arial;
+    font-size: 14px;
+	display: inline-block;
+}
+.filter_reset span{ display: inline-block; margin-top: -1px;}
+
+.filter_reset.button:hover .text{ color: #EB6401;}
+.filter_reset.button:hover { text-decoration: none;}
+.filter_reset.button .text:before {
+	background-position: -32px center;
+	right: 20px;
+}
+/*form filter button reset ende*/
+/*Ajax Loading*/
+.tx-dsl-produkte > .container{ position: relative;}
+.ajax_loading{
+	background-image: url("/fileadmin/template/public/images/layout/icons/ajax-loader-grey.gif");
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 125px auto;
+	position: fixed;
+	right: 0;
+    top: 150px;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(255,255,255,0.6);
+	z-index: 100;
+	transition: none;
+}
+
+/*.ajax_loading:before {
+    border-color: #0f0f0f transparent transparent;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 2px;
+    container: "";
+    display: block;
+    height: 100%;
+    left: -2px;
+    position: absolute;
+    top: -2px;
+    width: 100%;
+}
+
+#spinner {
+    animation: 0.75s linear 0s normal none infinite running rotation;
+    border-radius: 100%;
+    height: 95px;
+    margin: 0 auto -45px;
+    position: relative;
+    top: 45%;
+    width: 95px;
+}	*/
+
+/*Ajax loaduing ende*/
+/*Browsebox*/
+
+.browsebox{
+	margin-bottom: 4px;
+}
+
+/*Listenansicht produkte*/
+
+.page-80 .tx-dsl-produkte {  margin-bottom: 70px;}
+
+.entry.prod{
+	background: white none repeat scroll 0 0;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.33);
+    margin-bottom: 30px;
+	position: relative;
+}
+
+.entry_prod_inner{ border: 5px solid white; }
+
+.headline_text_box{
+	margin: 0 15px;	
+}
+
+.entry.prod .divider{
+	margin: -13px 0 0 0;	
+}
+
+.entry.prod .teaser-headline{
+	margin-top: 28px;	
+}
+
+@media (min-width: 992px){
+	.entry.prod .teaser-headline{
+		margin-top: 28px;	
+		height: 65px;
+		overflow: hidden;
+	}
+
+	.entry.prod .teaser-text{
+		height: 80px;
+		overflow: hidden;
+	}
+	.entry.prod .pic{
+		height: 190px;
+		overflow: hidden;
+	}
+	.entry.prod .pic img{
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+		overflow: hidden;
+	}
+}
+
+.entry.prod .pic{
+	position: relative;
+	border: 1px solid #d5d5d5;
+}
+
+.entry.prod .pic img{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	position: relative;
+}
+
+/*
+kat_uid_1 = Automobil Abgas
+kat_uid_2 = Automobil Karosserie
+kat_uid_3 = Automobil Fahrwerk
+kat_uid_4 = Motorrad
+kat_uid_5 = LKW
+kat_uid_6 = Wärme- & Energietechnik
+kat_uid_7 = Andere Anwendungen
+*/
+
+
+#productList .kat_uid{ 
+	position: relative;
+	margin-top: -12px;
+	margin-left:0;
+	padding: 0;
+	text-align: center;
+}
+
+#productList h3{ font-size: 23px;}
+#productList .kat_uid > span{
+	background: #EB6401;
+	width: 26px;
+	height: 26px;
+	border-radius: 100px;
+	text-align: center;
+	color: white;
+	margin-left: 3px;
+	position: relative;
+	line-height: 10px;
+	display: inline-block;
+}
+#productList .kat_uid > span:first-child{ margin-left: 0; }
+
+#productList .kat_uid span:before{
+	left: 21%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	position: absolute;
+}
+
+#productList .kat_uid *:before, #form_filter .kat-title:before, .marktsegment_list li:before,
+.eigenschaften_list li:before  { font-family: 'icomoon'; }
+
+#form_filter .kat-title:before, .tx-dsl-produkte.single .kat-title:before, .marktsegment_list li:before,
+.eigenschaften_list li:before{
+   font-size: 19px;
+    line-height: 19px;
+    vertical-align: middle;
+	padding-right: 10px;
+}
+
+.marktsegment_list li:before,
+.eigenschaften_list li:before{ padding-right: 15px;}
+
+#form_filter .kat_uid_7:before{ font-size: 14px;padding-left: 3px; padding-right: 12px;}
+
+.eigenschaften_list li:before{ font-size: 12px;}
+
+.kat_uid_1:before{  content: "\e600"; } 
+.kat_uid_2:before{ content: "\e607"; }
+.kat_uid_3:before{ content: "\e606"; }
+.kat_uid_4:before{ content: "\e60c"; }
+.kat_uid_5:before{ content: "\e609"; }
+.kat_uid_6:before{ content: "\e60b"; }
+.kat_uid_6:before{ content: "\e60b"; }
+.kat_uid_7:before{ content: "\e602";}
+.entry_prod_inner .kat_uid_7:before{ content: "\e601";}
+
+/*Produkte Detail*/
+
+.slides-container img { max-width: 100%; height: auto;}
+.tx-dsl-produkte.single .slides-pagination{
+	bottom: 10px;	
+}
+
+.tx-dsl-produkte.single .wide-container{
+	border: 5px solid white;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.33);	
+}
+
+.tx-dsl-produkte.single #intro{
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+
+#slides .slides-pagination.carousel{
+	position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 2;
+	width: auto;
+}
+
+#slides .carousel_entry{
+	background: white;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.33);
+	margin-bottom: 15px;
+	position: relative;
+	width: 120px;
+	height: 92px;
+}
+
+#slides .carousel_entry_inner{
+	border: 5px solid white;
+	overflow: hidden;
+    position: relative;
+	width: 120px;
+	height: 92px;
+	box-sizing: border-box;
+}
+
+#slides .slides-pagination.carousel a{
+	border: none;
+	width: 120px;
+	height: 92px;
+	text-indent: 0;
+	display: block;
+	position: relative;
+}
+
+#slides .slides-pagination.carousel .special_hover_inner{
+	
+    display: block;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#slides .slides-pagination.carousel img{
+	top: -7%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+    
+    position: absolute;
+    left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.headline-wrap h3{ text-transform: none; }
+.headline-wrap h1{ color: #373736; }
+.kat-titel{
+	font-family: 'HelveticaNeueW01-75Bold', arial; 
+	color: #EB6401;	
+	margin-top: 25px;
+	margin-bottom: 5px;
+	font-size: 16px;
+}
+
+.kat-titel:after, .teaser-text > div:first-child:after{
+	background: url("../../../../../public/fileadmin/template/public/images/layout/allgemein/linie_ende_gepunktet_orange.png") no-repeat;
+	background-size: 49px 6px;
+	width: 49px;
+	height: 8px;
+	content: "";
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.wide-container {
+      max-width: 770px;
+      height: 506px;
+      margin: 0 auto;
+}
+
+/**/
+
+.marktsegment_list, .eigenschaften_list{ margin: 0;	 }
+
+.marktsegment_list li{ list-style-type: none; line-height: 1.6em;}
+.marktsegment_list li:before{ color: #b2b1b1; }
+
+.eigenschaften_list{ margin-top: 13px; }
+
+.eigenschaften_list li{
+	font-size: 12px;
+	list-style-type: none;
+	border-top: 1px solid #dadada;
+	padding: 4px;
+}
+
+.eigenschaften_list li:last-child{
+	border-bottom: 1px solid #d5d5d5;
+}
+
+.eig_uid_1:before,
+.eig_uid_2:before,
+.eig_uid_3:before,
+.eig_uid_4:before,
+.eig_uid_5:before,
+.eig_uid_6:before{
+	color: #eee;
+}
+
+.icon-ok:before ,
+.eig_uid_1_aktiv .eig_uid_1:before,
+.eig_uid_2_aktiv .eig_uid_2:before,
+.eig_uid_3_aktiv .eig_uid_3:before,
+.eig_uid_4_aktiv .eig_uid_4:before,
+.eig_uid_5_aktiv .eig_uid_5:before,
+.eig_uid_6_aktiv .eig_uid_6:before,
+.filter_label .kat-title:before{
+	color:#878786;
+}
+
+.social_box{
+	vertical-align: top;
+	margin-top: 25px;	
+}
+
+.fb-share-button.fb_iframe_widget{ vertical-align: top;}
+
+a.icon-email{
+	color: #b2b1b1;
+	font-size: 28px;
+	vertical-align: top;
+	display: inline-block;
+	margin-top: -2px;
+	margin-left: 10px;
+}
+
+a.icon-email:hover{
+	color: #EB6401;
+	text-decoration: none !important;
+}
+
+
+/*Hightlights*/
+
+/*Hightlights*/
+
+.page-82 .tx-dsl-produkte.container.page-container,
+.page-75 .tx-dsl-produkte.container.page-container,
+.page-72 .tx-dsl-produkte.container.page-container,
+.page-83 .tx-dsl-produkte.container.page-container,
+.page-46 .tx-dsl-produkte.container.page-container,
+.page-74 .tx-dsl-produkte.container.page-container{ width: auto !important; }
+.ref img{
+	max-width: 99.5%;
+	height: auto;
+}
+
+.tx-dsl-produkte .background_none > a.btn{ width: auto;}
+.referenz-eintrag, #c79{ margin-left: -15px; margin-right: -15px;}
+.referenz-eintrag{ border: 1px solid #d5d5d5;}
+.tx-dsl-produkte .ref:nth-child(2) .referenz-eintrag,
+.tx-dsl-produkte .ref:nth-child(3) .referenz-eintrag,
+.tx-dsl-produkte .ref:nth-child(4) .referenz-eintrag{ border-left: none;}

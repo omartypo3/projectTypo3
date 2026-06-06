@@ -1,0 +1,20 @@
+<tr  id="wartungsvertraegeZeitenListWartungsvertrag_{zeiteintraege.uid}">
+                <td width="150" data-sort="{f:format.date(date: zeiteintraege.begin, format: 'YmdHi')}">
+                 <f:if condition="{zeiteintraege.begin->f:format.date(format: 'd.m.y')}=={zeiteintraege.end->f:format.date(format: 'd.m.y')}">
+                    <f:then>
+                    	{zeiteintraege.begin->f:format.date(format: 'd.m.y')}<br>
+                      	({zeiteintraege.begin->f:format.date(format: 'H:i')} - {zeiteintraege.end->f:format.date(format: 'H:i')} Uhr)
+                    </f:then>
+                    <f:else>
+                      {zeiteintraege.begin->f:format.date(format: 'd.m.y - H:i')} Uhr -<br>{zeiteintraege.end->f:format.date(format: 'd.m.y - H:i')} Uhr
+                    </f:else>
+                  </f:if>
+  				</td>
+                <td>{zeiteintraege.text}</td>
+	<td width="400" data-sort="{zeitraum.von->f:format.date(format: 'Ymd')}"><f:comment><f:format.padding padLength="10" padString="0" padType="left">{zeitraum.uid}</f:format.padding></f:comment>{zeitraum.titel}</td>
+                <td width="120" data-sort="{zeiteintraege.kontingent}"><f:render partial="Allgemein/DauerKurz" arguments="{set:zeiteintraege.kontingentSet}" /></td>
+                <td>{zeiteintraege.kontingent}</td>
+                <td width="60"><f:if condition="{zeiteintraege.cruser}">{zeiteintraege.cruser.initialien}</f:if></td>
+                <td width="60"><f:if condition="{zeiteintraege.cruser}"><ul class="buttonlist float_right"><f:if condition="{zeiteintraege.rights.edit}"><li><f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="editZeiteintrag" arguments="{zeiteintraege : zeiteintraege}" class="doAjaxEdit" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '510px' }"><i class="fa fa-edit"></i></f:link.action></li><li><f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="ajax" arguments="{uid : zeiteintraege, switch : 'deleteZeiteintraege'}" class="doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorWartungsvertraegeZeiteintraege', data-ajax-selector: '#wartungsvertraegeZeitenListWartungsvertrag_{zeiteintraege.uid}', data-ajax-id: '{wartungsvertraege.uid}'}" ><i class="fa fa-trash-o"></i>
+</f:link.action></li></f:if></ul></f:if></td>
+            </tr>

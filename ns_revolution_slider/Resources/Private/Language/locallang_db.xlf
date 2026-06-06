@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-30T06:22:47Z" product-name="ns_revolution_slider">
+		<header/>
+		<body>
+            <trans-unit id="tx_ns_revolution_slider_slider.pluginName">
+                <source>[NITSAN] Revolution Slider</source>
+            </trans-unit>
+			<trans-unit id="tx_nsrevolutionslider_domain_model_slideitem">
+				<source>Slide Item</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_revolution_slider_slider.name">
+				<source>[NITSAN] Revolution Slider</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_revolution_slider_slider.description">
+				<source>World's most famous revolution slider in TYPO3</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_revolution_slider_slider.no_slider">
+				<source>No slider available</source>
+			</trans-unit>
+			<trans-unit id="tx_ns_revolution_slider_slider.no_slider_selected">
+				<source>No slider selected</source>
+			</trans-unit>
+            <trans-unit id="tx_ns_revolution_slider_slider.storageConfiguration">
+                <source>Additional Configuration</source>
+            </trans-unit>
+            <trans-unit id="tx_ns_revolution_slider_slider.includeJquery">
+                <source>Include jQuery (jquery-3.5.1.min)</source>
+            </trans-unit>
+
+		</body>
+	</file>
+</xliff>

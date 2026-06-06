@@ -1,0 +1,149 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:fpdf="http://typo3.org/ns/CodingMs/FluidFpdf/ViewHelpers"
+      xmlns:fpdfdsl="http://typo3.org/ns/DslFactory/DslImmo/ViewHelpers"
+      xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      data-namespace-typo3-fluid="true"><f:spaceless>
+      
+
+
+<f:format.raw>
+    <fpdf:pdf destination="D" filename="bla.pdf">
+       	<fpdf:setMargins left="20" top="50" right="20" />
+       
+        <fpdf:addPage orientation="P" size="A4" />
+			
+        <fpdf:setSourceFile file="fileadmin/templateZoner/Extensions/Immo/Expose/woba_expose.pdf" />
+        <fpdf:useTemplate pageNo="1" x="0" y="0" />
+        
+        
+        
+          	<fpdf:setTextColor hex="0077ba" />
+          	<fpdf:setXY x="20" y="262" />
+            <fpdf:setFont family="Arial" style="" size="10" />
+            <fpdf:cell width="40" height="10" text="Alle Angaben freibleibend. Änderungen und Irrtümer vorbehalten." />
+            <fpdf:setXY x="20" y="15" />
+            <fpdf:setFont family="Arial" style="B" size="22" />
+            <fpdf:cell width="40" height="12" text="Mietexposé" />
+            <fpdf:ln />
+            <fpdf:setFont family="Arial" style="" size="14" />
+			<fpdf:setTextColor hex="000000" />
+            <fpdf:cell width="40" height="10" text="{immobilie.strasseHausnummer} ({immobilie.objektNrextern})" />
+            <fpdf:ln />
+            <fpdf:setDrawColor hex="0077ba" />
+            <fpdf:setLineWidth width="0.5" />
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:setXY x="20" y="50" />
+            
+
+            <f:if condition="{immobilie.titelBilder.0}">
+            	<fpdf:setXY x="20" y="50" />
+          		<f:alias map="{image: '{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, maxWidth:1400, maxHeight:1400)}'}">
+					<fpdfdsl:imageAlignRight filename="{v:format.trim(content: image, characters: '/')}" link="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, absolute:1)}" height="50" />
+					
+				</f:alias>
+				<fpdf:setXY x="20" y="50" />
+			</f:if>
+
+            
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="WOHNUNGSDATEN" />
+            <fpdf:ln />
+            
+            
+            
+            
+            
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="BESCHREIBUNG" />
+            <fpdf:ln />
+            
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="AUSSTATTUNG" />
+            <fpdf:ln />
+            
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="ENERGIEAUSWEIS" />
+            <fpdf:ln />
+            
+            
+            
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+            <fpdf:ln />
+            <fpdf:setTextColor hex="0077ba" />
+            <fpdf:setFont family="Arial" style="" size="14" />
+            <fpdf:cell width="40" height="10" text="KONTAKT" />
+            <fpdf:ln />
+            
+            <f:comment>
+            <fpdf:line x1="20" y1="{fpdf:getY()}" x2="170" y2="{fpdf:getY()}" />
+            	<fpdf:text x="10" y="10" text="Hello Pdf-World" />
+				<fpdf:setXY x="40" y="40" />
+         		<fpdf:setFont family="Arial" style="B" size="10.5" />
+          	</f:comment>
+            
+            <fpdf:cell width="40" height="10" text="Hello World!1" />
+            
+            <fpdf:ln />
+            
+			<f:for each="{immobilie.bilder}" as="bild" iteration="iterator">
+         		
+          		<f:if condition="{iterator.isOdd} || {iterator.isFirst}">
+					<fpdf:addPage orientation="P" size="A4" />
+					<fpdf:setTextColor hex="0077ba" />
+					<fpdf:setXY x="20" y="262" />
+					<fpdf:setFont family="Arial" style="" size="8" />
+					<fpdf:cell width="40" height="10" text="Alle Angaben freibleibend. Änderungen und Irrtümer vorbehalten." />
+					<fpdf:setXY x="20" y="15" />
+					<fpdf:setFont family="Arial" style="B" size="22" />
+					<fpdf:cell width="40" height="12" text="Mietexposé" />
+					<fpdf:ln />
+					<fpdf:setFont family="Arial" style="" size="14" />
+					<fpdf:setTextColor hex="000000" />
+					<fpdf:cell width="40" height="10" text="{immobilie.strasseHausnummer} ({immobilie.objektNrextern})" />
+					<fpdf:ln />
+					<fpdf:setDrawColor hex="0077ba" />
+					<fpdf:setLineWidth width="0.5" />
+					<fpdf:line x1="20" y1="{fpdf:getY()}" x2="190" y2="{fpdf:getY()}" />
+					<fpdf:setXY x="20" y="50" />
+				</f:if>
+          		
+          		<f:alias map="{image: '{f:uri.image(src:bild.datei.originalResource.originalFile.uid, maxWidth:1400, maxHeight:1400)}'}">
+   					<fpdf:image filename="{v:format.trim(content: image, characters: '/')}" link="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, absolute:1)}" width="140" />
+				</f:alias>
+          		
+          		
+           		<f:comment><fpdf:image filename="{f:uri.image(src:bild.datei.originalResource.originalFile.uid, maxWidth:'1400', maxHeight:'1400')}" link="{f:uri.image(src:bild.datei.originalResource.originalFile.uid)}" x="50" width="100" height="50" />
+				</f:comment>
+          	</f:for>
+            
+        
+        
+        
+        	
+			<fpdf:cell width="40" height="10" text="Hello World!51" />
+			<fpdf:ln height="100" />
+			<fpdf:cell width="40" height="10" text="Hello World!52" />
+			<fpdf:ln height="100" />
+			<fpdf:cell width="40" height="10" text="Hello World!53" />
+			<fpdf:ln />
+			<fpdf:cell width="40" height="10" text="Hello World!54" />
+			<fpdf:ln height="100" />
+			<fpdf:cell width="40" height="10" text="Hello World!55" />
+			<fpdf:ln height="100" />
+			<fpdf:cell width="40" height="10" text="Hello World!56" />
+		
+    </fpdf:pdf>
+</f:format.raw>
+	</f:spaceless></html>

@@ -1,0 +1,116 @@
+# customsubcategory=tx_femanager_Template= Templates
+# customsubcategory=tx_femanager_Settings= Settings
+
+e_magineurs.tx_femanager {
+    view {
+        # cat=Configuration de Femanager/tx_femanager_Template; type=string; label= Chemin du dossier Templates
+        templateRootPath = femanager/Templates/
+        # cat=Configuration de Femanager/tx_femanager_Template; type=string; label= Chemin du dossier Partials
+        partialRootPath =  femanager/Partials/
+        # cat=Configuration de Femanager/tx_femanager_Template; type=string; label= Chemin du dossier Layouts
+        layoutRootPath = femanager/Layouts/
+    }
+    
+    persistence.storagePid = 194
+    settings {
+
+        jQuery = 1
+        bootstrap = 1
+        bootstrapCSS = 1
+        # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Adresse mail de l'administrateur
+        adminEmail = 
+        # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Nom contact utilisé pour l'envoi
+        adminName = Administrateur de l'Agglo Plaine Commune
+        # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Nom contact utilisé pour l'envoi
+        senderEmail = noreply@plainecommune.fr
+        new {
+            # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Auto login après création. Ne fonctionne pas si une validation est requise)
+            login = 1
+            # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= L'utilisateur doit confirmer son inscription via un lien dans un email
+            confirmByUser = 1
+            # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= L'administrateur doit confirmer l'inscription (renseigner des adresses mails)
+            confirmByAdmin = 1
+            # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Uid des groupes à assigner à l'utilsateur à la validation par l'administrateur(séparés par des vigules) (penser à décommenter le SETUP)
+            forceValues.onAdminConfirmation.usergroup = 
+             prefill {
+                    username = TEXT
+                    username.value = ExampleUsername
+            }
+            validation {
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Validation du formulaire en Javascript
+                client = 1
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Validation du formulaire en Php
+                server = 1
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Nom d'utilisateur OBLIGATOIRE
+                username.required =  0
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Nom d'utilisateur UNIQUE
+                email.unique=  1
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Email OBLIGATOIRE
+                email.required =  1
+                lastName.required = 1
+                firstname.required = 1
+                company.required = 0
+                zip.required = 1
+                city.required = 1
+                address.required = 1
+                name.required = 1
+                terms.required = 1
+
+                password {
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Mot de passe OBLIGATOIRE
+                    required =  1
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=int+; label= Nombre min de caractère
+                    min = 8
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Doit avoir un nombre, lettre et caractère spécial
+                    #mustInclude = number,letter,special
+                }
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Confirmer le mot de passe OBLIGATOIRE
+                password_repeat.required = 0
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Uid des groupes que l'utilsateur peut choisir
+                usergroup.inList = 1
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=boolean; label= Utiliser un captcha (nécessite sr_freecap)
+                captcha.captcha = 0
+            }
+            email {
+                createUserConfirmation {
+                     # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                    subject = 'Demande d'inscription Agglo Plaine Commune'
+                }
+                createAdminConfirmation {
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                    subject = 'Demande d'inscription Agglo Plaine Commune'
+                     # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Contacts en copie (adresses mail séparées par des ,)
+                    cc = 'emmanuel.winckel@gmail.com'
+                }
+                createUserNotify {
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                    subject = LLL:EXT:femanager/Resources/Private/Language/locallang.xlf:emailCreateUserNotifySubject
+                }
+                createUserNotifyRefused {
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                    subject = LLL:EXT:femanager/Resources/Private/Language/locallang.xlf:emailCreateUserNotifyRefusedSubject
+                }
+                createAdminNotify {
+                    # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                    subject = LLL:EXT:femanager/Resources/Private/Language/locallang.xlf:emailCreateNotifySubject
+                }
+                required =  1
+            }
+        }
+        edit {
+            #CONF VALIDATION IDEM CONF INSCRIPTION
+            # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= L'administrateur doit confirmer l'édition (renseigner des adresses mails)
+            confirmByAdmin = 
+            # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= L'administrateur reçoit une notification de modification (renseigner des adresses mails)
+            notifyAdmin = 
+            email {
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                updateRequest.subject = LLL:EXT:femanager/Resources/Private/Language/locallang.xlf:emailUpdateRequestSubject
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                updateRequestRefused.subject = LLL:EXT:femanager/Resources/Private/Language/locallang.xlf:emailUpdateRequestRefusedSubject
+                # cat=Configuration de Femanager/tx_femanager_Settings; type=string; label= Sujet du mail
+                notifyAdmin.subject = LLL:EXT:femanager/Resources/Private/Language/locallang.xlf:emailUpdateNotifySubject
+            }
+        }
+    }
+}

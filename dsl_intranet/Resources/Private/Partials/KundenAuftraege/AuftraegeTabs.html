@@ -1,0 +1,241 @@
+<div id="auftraege_tabs_noitems"><br><strong>Derzeit haben Sie keinen Auftrag geöffnet.</strong></div>
+<div id="auftraege_tabs" data-active-tab="{aktiverTab}">
+      <ul>
+        
+        <f:for each="{auftraegesOffen}" as="auftraege"><li data-load-id="{auftraege.uid}"><a href="#auftrag-show-{auftraege.uid}" class="{auftraege.counterClass}"><span data-auftraege-uid="{auftraege.uid}" class="auftraegeUid">{auftraege.titel}</span></a> <span class="ui-icon ui-icon-close" role="presentation">Auftrag Schließen</span></li></f:for>
+        
+    
+        
+      </ul>
+     
+      <f:for each="{auftraegesOffen}" as="auftraege"><div id="auftrag-show-{auftraege.uid}"><span class="ajaxLoading dark"><i class="fa fa-cog fa-spin"></i></span></div></f:for>
+      
+    </div>
+
+	
+    <script type="text/javascript">
+	function changeProjektTab(id,content){
+		
+		var uid = $(content).find('.auftraegeUid').val();
+		
+		
+		
+		$('#'+id).html(content);
+		$( '#auftraege_tabs>ul>li>a[href="#'+id+'"]' ).html( $(content).find('.shortTabTitel').html() );
+		
+		
+		
+		
+		
+		reInitAjaxCalls();
+	}
+	function closeProjektTab(id){
+
+		if( $( '#auftraege_tabs>ul>li>a[href="#auftrag-show-'+id+'"]' ).length){
+			$( '#auftraege_tabs>ul>li>a[href="#auftrag-show-'+id+'"]' ).next().click();
+		}
+	}
+	
+	function addProjektTab(id){
+		
+					
+		var selector = '';
+		if(parseInt(id)){
+			selector = "auftrag-show-"+id;
+		} else {
+			selector = id;
+		}
+	
+
+
+
+		if(!$("#"+selector).length){
+			
+			
+			var tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Auftrag Schließen</span></li>";
+
+			
+		
+			var content='<p><span class="ajaxLoading dark"><i class="fa fa-cog fa-spin"></i></span></p>';
+			var titel = '<i class="fa fa-cog fa-spin"></i> ... wird geladen';
+			
+			
+			
+			var li = $( tabTemplate.replace( /#\{href\}/g, "#" + selector ).replace( /#\{label\}/g, titel ) );
+			
+			$( "#auftraege_tabs" ).find( ".ui-tabs-nav" ).append( li );
+			
+			$( "#auftraege_tabs" ).append( "<div id='" + selector + "'>" + content + "</div>" );
+			$( "#auftraege_tabs" ).tabs( "refresh" );
+			
+			
+			loadProjektTabContent(selector);
+			
+		}
+		aktiviereProjektTab(selector);
+		
+		//return true;
+	}
+	function aktiviereProjektTab(id){
+
+
+		//auftrag-show-9259
+		/*Tab herausfinden und aktivieren !!*/		
+		$( "#auftraege_tabs" ).tabs( "option", "active", $( '#auftraege_tabs>ul>li>a[href="#'+id+'"]' ).parent().index() );
+	}
+	
+	function checkProjektTabsVisibility(){
+		if(!$('#auftraege_tabs>ul>li').length){
+			$('#auftraege_tabs').hide();
+			$('#auftraege_tabs_noitems').show();
+			$('#split-pane-up').click();
+			
+			//hide	
+		} else {
+			if($('#auftraege_tabs>ul>li').length==1) $('#split-pane-middle').click();
+			$('#auftraege_tabs').show();
+			$('#auftraege_tabs_noitems').hide();
+			//show	
+		}
+//		$('#auftraege_tabs>ul>li')	
+	}
+	
+	
+	function loadProjektTabContent(id){
+		
+		checkProjektTabsVisibility();
+		
+		var selector = '';
+		if(parseInt(id)){
+			selector = "auftrag-show-"+id;
+		} else {
+			selector = id;
+
+		}
+	
+		
+		//auftraegeAjaxUrl
+		
+		var showAjaxJson = {"tx_dslintranet_kundenlogin[switch]":'show',"tx_dslintranet_kundenlogin[uid]":id};
+
+
+		dslIntranetAjaxCall(auftraegeAjaxUrl,showAjaxJson).done(function (data /* , textStatus, jqXHR */ ) {
+			changeProjektTab(selector,data);
+		});
+	}
+	
+	function refreshProjektTabContent(id){
+console.log('!!!refreshProjektTabContentinAuftraegeTab!!!');
+		var selector = "auftrag-show-"+id;
+		$('#'+selector).addClass('tabReloads');
+		var showAjaxJson = {"tx_dslintranet_kundenlogin[switch]":'show',"tx_dslintranet_kundenlogin[uid]":id};
+		
+		$( '#auftraege_tabs>ul>li>a[href="#'+selector+'"]' ).html(  '<i class="fa fa-cog fa-spin"></i> '+$.trim($( '#auftraege_tabs>ul>li>a[href="#'+selector+'"]' ).html()) );
+		 
+		
+//alert($( '#aufgaben_tabs>ul>li>a[href="#'+selector+'"]' ).text());
+		var activeTab = $( "#auftraegetabs_"+id ).tabs( "option", "active") ;
+		dslIntranetAjaxCall(auftraegeAjaxUrl,showAjaxJson).done(function (data /* , textStatus, jqXHR */ ) {
+			changeProjektTab(selector,data);
+			$( "#auftraegetabs_"+id ).tabs( "option", "active", activeTab);
+			$('#'+selector).removeClass('tabReloads');
+		});
+	}
+	
+    var tabsActive = false;
+	
+
+	$(document).ready(function() {
+		
+
+		
+		$( "#auftraege_tabs" ).tabs({
+/*			collapsible: true,*/
+			activate: function( event, ui ) {
+				
+		
+		
+			
+				
+				if(ui.newTab.data('load-id')){
+		
+					ui.newTab.children('a').html('<i class="fa fa-cog fa-spin"></i> '+ui.newTab.children('a').html());
+					loadProjektTabContent(ui.newTab.data('load-id'));
+					ui.newTab.data('load-id','');
+
+				} else {
+					if(ui.newTab.data('init')) {
+						initAuftragsTab(ui.newTab.data('init'));
+						ui.newTab.data('init','')
+					}
+					
+					//if($(ui.newTab.context).attr('id')!="ui-id-1"){ //wenn ein auftrag angeklickt wurde
+			
+						dslIntranetAjaxCall(
+							auftraegeAjaxUrl,
+							{"tx_dslintranet_kundenlogin[switch]":'setGeoeffneterAuftrag',"tx_dslintranet_kundenlogin[uid]":$(ui.newTab.context).children('.auftraegeUid').data('auftraege-uid')}
+						).done(function (data /* , textStatus, jqXHR */ ) {	
+							/*platzhalter wegen fluid Javascript Problem*/
+						});
+						
+									
+					//} 
+					
+					
+					
+						
+											
+				}
+				
+				
+				
+				
+				
+			
+			}
+			/*,active:false*/
+				
+		});
+		
+		$( "#auftraege_tabs" ).tabs( "option", "active", $( "#auftraege_tabs" ).data('active-tab') );
+		
+		if($( "#auftraege_tabs" ).data('active-tab')==0){
+			
+
+
+
+			checkProjektTabsVisibility();
+
+			if($('#auftraege_tabs>ul>li').length) refreshProjektTabContent($('#auftraege_tabs>ul>li').first().data('load-id'));	
+			
+		}
+		
+		
+		// close icon: removing the tab on click
+		$( "#auftraege_tabs" ).on( "click", "span.ui-icon-close", function() {
+			
+			
+			
+			
+		  var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+		  $( "#" + panelId ).remove();
+		  $( "#auftraege_tabs" ).tabs( "refresh" );
+
+
+		  checkProjektTabsVisibility();
+		  
+		  /*Auftrag per Ajax aus den geöffneten Entfernen*/
+		  var closeAjaxJson = {
+					"tx_dslintranet_kundenlogin[switch]":'closeAuftrag',
+					"tx_dslintranet_kundenlogin[auftragId]":panelId
+		  };
+		  dslIntranetAjaxCall(auftraegeAjaxUrl,closeAjaxJson);
+		  
+		 
+		  
+		  
+		});
+		
+	});
+</script>
+    

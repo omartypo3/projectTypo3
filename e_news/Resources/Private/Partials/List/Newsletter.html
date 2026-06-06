@@ -1,0 +1,29 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+<div style="font-weight:bold;">
+	{newsItem.title}
+</div>
+<div>
+	<f:if condition="{newsItem.begindate}=={newsItem.finishdate}">
+		<f:then>
+			Le <f:format.date format="d/m/Y">{newsItem.begindate}</f:format.date>
+		</f:then>
+		<f:else>
+			<f:if condition="{newsItem.finishdate}==0">
+				<f:then>
+					A partir du <f:format.date format="d/m/Y">{newsItem.begindate}</f:format.date>  
+				</f:then>
+				<f:else>
+					Du <f:format.date format="d/m/Y">{newsItem.begindate}</f:format.date> au <f:format.date format="d/m/Y">{newsItem.finishdate}</f:format.date>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+</div>
+<div>
+	{newsItem.teaser}<br/>
+</div>
+<div>
+	<n:link newsItem="{newsItem}" settings="{settings}" class="more">
+		Voir l'évenement
+	</n:link>
+</div>

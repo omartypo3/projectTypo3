@@ -1,0 +1,13 @@
+<f:if condition="{kmls}"><kmls>
+<f:for each="{kmls}" as="kml">
+	<f:if condition="{kml.kmlfile}">
+		<f:then>		
+			<kml>
+				<title>{kml.name}</title>
+				<uid>{kml.uid}</uid>
+				<data>{kml.kmlfile}</data>
+			</kml>
+		</f:then>
+	</f:if>
+</f:for>
+</kmls></f:if>

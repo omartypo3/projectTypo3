@@ -1,0 +1,9 @@
+<f:layout name="Empty" />
+
+<f:section name="content">
+    <f:render partial="Breadcrumb" arguments="{folder: folder, settings: settings}"/>
+
+    <f:if condition="{folder.subfolders}" >
+        <f:render partial="FolderList" arguments="{folders: folder.subfolders, settings: settings}"/>
+    </f:if>
+</f:section>

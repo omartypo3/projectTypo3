@@ -1,0 +1,11 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+<f:switch expression="{switch}">
+	<f:case value="setNewRange">
+		<div>
+		<f:if condition="{agenturvertraeges}"><f:for each="{agenturvertraeges}" as="agenturvertrag">
+			<div class="refreshContent" data-refresh-content="avRefreshContentListRowKontingent{agenturvertrag.uid}"><span class="detailLabel">Kontingent:</span> <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: agenturvertrag.kontingentUsed)}' }" /> <span class="detailLabel">von</span> <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: agenturvertrag.kontingent)}' }" /> <span class="detailLabel">verbraucht</span></div>
+		</f:for></f:if>
+		</div>
+	</f:case>
+</f:switch>	
+

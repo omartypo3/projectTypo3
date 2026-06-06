@@ -1,0 +1,34 @@
+<div class="poll" >
+    <div class="header">
+        <h2>{poll.title}</h2>
+        <f:if condition="{poll.image}">
+            <f:image src="{poll.image}" alt="{poll.title}" />
+        </f:if>
+        <f:if condition="{poll.question}">
+                <p><strong><f:format.raw>{poll.question}</f:format.raw></strong></p>
+            </f:if>
+            <f:if condition="{poll.explanation}">
+                <p><f:format.raw>{poll.explanation}</f:format.raw></p>
+        </f:if>
+    </div>
+
+    <div class="body">
+        <ul>
+            <f:for each="{poll.options}" as="option">
+                <li>
+                    {option.description} : 
+                    <f:if condition="{option.votesPercent}">
+                        <f:then>
+                            {option.votesPercent}
+                        </f:then>
+                        <f:else>
+                            0
+                        </f:else>
+                    </f:if>
+                    % ({f:count(subject: option.votes)} votes)
+                </li>
+            </f:for>
+        </ul>
+        <a href="javascript:history.go(-1)" class="poll-see-results">Retour</a>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div id="c{data.uid}" class="frame frame-default frame-type-gridelements_pi1 frame-layout-0">
+	<f:if condition="{data.header}">
+		<f:render partial="Header/All" arguments="{_all}" />
+	</f:if>
+	<div class="row grid">
+		<div class="col-lg-12">
+			<div class="inner">
+				<f:for each="{children_70}" as="record">
+					<f:format.raw>
+						{record.renderedContent}
+					</f:format.raw>
+				</f:for>
+			</div>
+		</div>
+	</div>
+</div>

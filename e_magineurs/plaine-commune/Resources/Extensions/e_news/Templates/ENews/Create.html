@@ -1,0 +1,100 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+
+<f:layout name="General" />
+
+<f:section name="content">
+	<f:flashMessages />
+
+
+	<f:form class="news-create-form" object="{news}" name="news" action="create" method="post" >
+		<div class="form-group">
+			<label for="news-header">Titre de l'évènement <span class="mandatory">*</span></label>
+			<f:form.textfield id="news-header" property="title" class="form-control" />
+			<f:comment><f:form.textfield id="news-header" property="title" class="form-control" required="1" /></f:comment>
+		</div>
+
+		<div class="form-group">
+			<label for="createNewsCategories">Champ d'action <span class="mandatory">*</span></label>
+			<f:form.select property="categories" options="{categories}" optionValueField="uid" optionLabelField="title" id="createNewsCategories" />
+		</div>
+		<div class="form-group">
+			<label for="news-authorname">Auteur article</label>
+			<p>{user.username}</p>
+		</div>
+
+		<div class="form-group">
+			<label for="news-bodytext">Texte d'accroche <span class="mandatory">*</span></label>
+
+			<f:form.textarea cols="20" rows="5" id="news-teaser" placeholder="Entrer un texte d'accroche" property="teaser" class="form-control" additionalAttributes="{required: 'required'}"/>
+
+			<f:comment><f:form.textarea cols="20" rows="5" id="news-teaser" placeholder="Entrer un texte d'accroche" property="teaser" class="form-control" /></f:comment>
+		</div>
+
+		<div class="form-group">
+			<label for="news-bodytext">Description de l'évènement <span class="mandatory">*</span></label>
+
+			<f:form.textarea cols="20" rows="5" id="news-bodytext" placeholder="Entrer un texte pour décrire l'événement" property="bodytext" class="form-control" />
+			<f:comment><f:form.textarea cols="20" rows="5" id="news-bodytext" placeholder="Entrer un texte pour décrire l'événement" property="bodytext" class="form-control" additionalAttributes="{required: 'required'}" /></f:comment>
+		</div>
+
+		<f:comment>
+			<h2>Dates</h2>
+			<div class="form-group date_agendacreate">
+				<div class="begindateAgenda">
+					<label for="news-dateDebut">Date Début <span class="mandatory">*</span></label>
+					<f:form.textfield name="news-dateDebut" property="begindate" type="date" id="begindate" class="dateEvent" required="1"/>
+				</div>
+				<div class="finishdateAgenda">
+					<label for="news-dateFin">Date Fin <span class="mandatory">*</span></label>
+					<f:form.textfield name="news-dateFin" property="finishdate" type="date" id="finishdate" class="dateEvent" required="1"/>
+				</div>
+			</div>
+		</f:comment>
+
+		<h2>Dates</h2>
+		<div class="form-group date_agendacreate">
+			<div class="begindateAgenda">
+				<label for="news-dateDebut">Date Début <span class="mandatory">*</span></label>
+				<f:form.textfield name="news-dateDebut" property="begindate" value="{f:format.date(date: news.begindate, format: 'd/m/Y')}" type="date" id="begindate" class="dateEvent" />
+			</div>
+			<div class="finishdateAgenda">
+				<label for="news-dateFin">Date Fin <span class="mandatory">*</span></label>
+	    		<f:form.textfield name="news-dateFin" property="finishdate" value="{f:format.date(date: news.finishdate, format: 'd/m/Y')}" type="date" id="finishdate" class="dateEvent" />
+			</div>
+		</div>
+
+		<h2>Infos pratiques</h2>
+		<div class="form-group">
+			<label for="news-placename">
+				Nom du Lieu
+			</label>
+			<f:form.textfield id="news-placename" property="placename" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="news-placeadress">
+				Adresse (code postal et ville)
+			</label>
+			<f:form.textarea id="news-placeadress" placeholder="Entrer l'adresse complete où se déroule l'événement" property="placeadress" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="news-eventphone">
+				Téléphone
+			</label>
+			<f:form.textfield id="news-eventphone" property="eventphone" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="news-eventmail">
+				Email
+			</label>
+			<f:form.textfield id="news-eventmail" property="eventmail" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="news-linklist">
+				Liste de liens
+			</label>
+			<f:form.textarea id="news-linklist" property="linklist" class="form-control" />
+		</div>
+
+		<f:form.submit value="Enregistrer" class="btn btn-default" />
+	</f:form>
+</f:section>

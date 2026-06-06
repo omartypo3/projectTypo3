@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2014-07-31T08:03:54Z" product-name="e_news">
+        <header/>
+        <body>
+            <trans-unit id="tx_enews_domain_model_enews">
+                <source>Enews</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.placename">
+                <source>Nom du lieu</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.zipcode">
+                <source>Code Postal</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.picto">
+                <source>Picto</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.is_event">
+                <source>La news est un évènement</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.begindate">
+                <source>Date de début</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.beginschedule">
+                <source>Horaire de début</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.finishdate">
+                <source>Date de fin</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.schedules">
+                <source>Les Horaires</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.finishschedule">
+                <source>Horaire de fin</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.placeadress">
+                <source>Adresse complete</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.eventphone">
+                <source>Numéro de téléphone</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.eventmail">
+                <source>Email de l'événement</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.mainpicture">
+                <source>L'image principale de l'événement</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.youngaudience">
+                <source>Accessible pour jeune audience?</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.freeentrance">
+                <source>Entrée libre?</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.linklist">
+                <source>Liens Divers</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.numberpage">
+                <source>Nombre de pages</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.price">
+                <source>Prix</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.iframe">
+                <source>Iframe</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.iframetitle">
+                <source>Titre de l'iframe</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.date_edition">
+                <source>Date d'édition</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.auteur_publication">
+                <source>Auteur de la publication</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.email_publication">
+                <source>Email de l auteur</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.type_document">
+                <source>Type de document</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.calameo_plugin">
+                <source>Plugin Calameo</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.calameo_html">
+                <source>Code HTML du calameo</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.bloctexte">
+                <source>Bloc de contenu texte</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.poi">
+                <source>Emplacement connu</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.commandable">
+                <source>Peut faire l'objet d'une commande papier</source>
+            </trans-unit>            
+            <trans-unit id="tx_enews_domain_model_enews.related_annuaire">
+                <source>Fiche annuaire associées</source>
+            </trans-unit>            
+            <trans-unit id="tx_enews_domain_model_enews.related_project">
+                <source>Projet  associé</source>
+            </trans-unit>            
+            <trans-unit id="tx_enews_domain_model_enews.related_tools">
+                <source>Outil associé</source>
+            </trans-unit>            
+            <trans-unit id="tx_enews_domain_model_enews.related_pages">
+                <source>Pages sur le même sujet</source>
+            </trans-unit>            
+            <trans-unit id="tx_enews_domain_model_enews.related_subject">
+                <source>Actualités sur le même sujet</source>
+            </trans-unit>  
+
+
+            <trans-unit id="tx_enews_domain_model_enews.contenttitle1">
+                <source>Titre Complément 1</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttext1">
+                <source>Texte du Complément 1</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttitle2">
+                <source>Titre Complément 2</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttext2">
+                <source>Texte du Complément 2</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttitle3">
+                <source>Titre Complément 3</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttext3">
+                <source>Texte du Complément 3</source>
+            </trans-unit>  
+             <trans-unit id="tx_enews_domain_model_enews.contenttitle4">
+                <source>Titre Complément 4</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttext4">
+                <source>Texte du Complément 4</source>
+            </trans-unit>  
+             <trans-unit id="tx_enews_domain_model_enews.contenttitle5">
+                <source>Titre Complément 5</source>
+            </trans-unit>  
+            <trans-unit id="tx_enews_domain_model_enews.contenttext5">
+                <source>Texte du Complément 5</source>
+            </trans-unit>  
+
+            <trans-unit id="tx_news_domain_model_news.tx_extbase_type.Tx_ENews_Enews">
+                <source>e_news Enews</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_bloctexte">
+                <source>Bloc de texte additionels (news)</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_bloctexte.title">
+                <source>Titre</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_bloctexte.content">
+                <source>Texte</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune">
+                <source>Commune</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.title">
+                <source>Nom</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.zipcode">
+                <source>Code Postal</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.zipcode">
+                <source>Code Postal</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.image">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.intercommunalite">
+                <source>Intercommunalité</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.cantons">
+                <source>Cantons</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.maire">
+                <source>Maire</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.population">
+                <source>Population</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.adresse_mairie">
+                <source>Adresse de la mairie</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.telephone">
+                <source>Téléphone</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.fax">
+                <source>Fax</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.courriel">
+                <source>Courriel</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.site_internet">
+                <source>Site Internet</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.facebook">
+                <source>Facebook</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.twitter">
+                <source>Twitter</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_commune.autreLien">
+                <source>Autre liens</source>
+            </trans-unit>            
+            <trans-unit id="tca.tab.geoloc">
+                <source>Lieu</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.date">
+                <source>Agendas</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.location">
+                <source>Lieu News</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.infosdivers">
+                <source>Info Divers</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.contentele">
+                <source>Contenus Elements</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.contentsup">
+                <source>Contenus Supplementaires</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.publication">
+                <source>Publications</source>
+            </trans-unit>
+            <trans-unit id="tca.tab.additionalContent">
+                <source>Contenus additionels</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_publication">
+                <source>Activer la gestion des publications</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_geolocalisation">
+                <source>Activer la gestion de la géolocalisation</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_typeAnnuaire">
+                <source>Id de l'annuaire à asocié à la table des communes</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_DossierNews">
+                <source>L'identifiant du dossier qui contient les news</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_Responsableemail">
+                <source>Le mail qui recevera les demandes de validation</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_Pagenewsvalidate">
+                <source>La page où fait les validations de News</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_filefolder">
+                <source>Le nom du dossier où seront stocké les fichiers liés</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_imagefolder">
+                <source>Le nom du dossier où seront stocké les images des news </source>
+            </trans-unit>
+
+            <trans-unit id="ext_conf_liensource">
+                <source>Le lien qui sera utilisé à la fin du formulaire</source>
+            </trans-unit>
+            <trans-unit id="ext_conf_commune_complete">
+                Activer les infos avancées des communes
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_efilereference.copyright">
+                <source>Copyright</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_efilereference.hauteur">
+                <source>Hauteur</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_efilereference.largeur">
+                <source>Largeur</source>
+            </trans-unit>
+            <trans-unit id="tx_enews_domain_model_enews.rightpicture">
+                <source>Les droits d'utilisation de l'image</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

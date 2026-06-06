@@ -1,0 +1,164 @@
+<T3DataStructure>
+	<sheets>
+		
+		<!--
+					################################
+					  SHEET Additional
+					################################
+				-->
+		<additional>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Einstellungen</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+
+
+					<!-- PID Single Page -->
+					<settings.detailPid>
+						<TCEforms>
+							<label>Seite für Einzelansicht</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+										<default>
+											<searchWholePhrase>1</searchWholePhrase>
+										</default>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.detailPid>
+
+					<!-- PID Single Page -->
+					<settings.listPid>
+						<TCEforms>
+							<label>Seite mit Listenansicht</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<wizards>
+									<suggest>
+										<type>suggest</type>
+										<default>
+											<searchWholePhrase>1</searchWholePhrase>
+										</default>
+									</suggest>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.listPid>
+					
+					
+					<!-- PID Single Page -->
+					<settings.disableAdditionalFilter>
+						<TCEforms>
+							<label>Erweitere Filter Deaktivieren</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.disableAdditionalFilter>
+					<settings.customTemplate>
+						<TCEforms>
+							<label>Benutzerdefiniertes Template abweichend vom Standard (z.B. ShowCustom.html)</label>
+							<config>
+								<type>input</type>
+								<size>30</size>
+								<max>100</max>
+								<eval>trim</eval>
+							</config>
+						</TCEforms>
+					</settings.customTemplate>
+
+					
+				</el>
+			</ROOT>
+		</additional>
+		<objektAnfrage>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Daten für Objektanfrage (Detailansicht)</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+
+
+					<settings.adminEmail>
+						<TCEforms>
+							<label>E-Mail Adresse an welche die Anfrage geschickt wird</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.adminEmail>
+					<settings.adminBetreff>
+						<TCEforms>
+							<label>Betreff der Anfrage an den Admin</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.adminBetreff>
+					
+					<settings.absenderEmail>
+						<TCEforms>
+							<label>Absender E-Mail Adresse</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.absenderEmail>
+					<settings.absenderName>
+						<TCEforms>
+							<label>Absender Name</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.absenderName>
+					<settings.anfrageBetreff>
+						<TCEforms>
+							<label>Betreff der Anfrage Bestätigungs E-Mail an den Kunden</label>
+							<config>
+								<checkbox>1</checkbox>
+								<default></default>
+								<type>input</type>
+								<size>30</size>
+							</config>
+						</TCEforms>
+					</settings.anfrageBetreff>
+
+					
+				</el>
+			</ROOT>
+		</objektAnfrage>
+		
+	</sheets>
+</T3DataStructure>

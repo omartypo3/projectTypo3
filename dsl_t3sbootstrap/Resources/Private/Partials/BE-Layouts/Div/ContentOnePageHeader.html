@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:if condition="{settings.styles.bsHeader.enable} == 2">
+		<div class="{f:if(condition: '{settings.styles.container-fluid}',then: 'container-fluid', else: 'container')}">
+			<header>
+				<div class="page-header">
+					<h1>
+						{f:if(condition: '{data.tx_t3sbootstrap_fontawesome_icon}', then: '<i class="fa {data.tx_t3sbootstrap_fontawesome_icon}"></i> ')}
+						{data.title}
+						{f:if(condition: '{data.subtitle}', then: '<br/><small>{data.subtitle}</small>')}
+					</h1>
+				</div>
+			</header>
+		</div>
+	</f:if>
+</html>

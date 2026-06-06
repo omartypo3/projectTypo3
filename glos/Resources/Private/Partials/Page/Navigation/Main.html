@@ -1,0 +1,122 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:bk2k="http://typo3.org/ns/BK2K/BootstrapPackage/ViewHelpers" data-namespace-typo3-fluid="true">
+
+
+
+<div class="navbar-top">
+    <div class="container">
+        <div class="top-outer clearfix">
+            <div class="top-left">
+                <ul class="links clearfix">
+                    <li>
+                    <a href="tel:{settings.tel}">
+                    <span class="icon flaticon-smartphone"></span>
+                    {settings.tel}
+                    </a>
+                    </li>
+                    <li><a href="mailto:{settings.email}"><span class="icon flaticon-mail"></span>{settings.email}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="top-right clearfix">
+                <ul class="social-icon-one">
+                    <li>
+                        <a href="{settings.facebook}" class="ti-facebook"></a>
+                    </li>
+                    <li>
+                        <a href="{settings.twitter}" class="ti-twitter"></a>
+                    </li>
+                    <li>
+                        <a href="{settings.linkedin}" class="ti-linkedin"></a>
+                    </li>
+                    <li>
+                        <a href="{settings.youtube}" class="ti-youtube"></a>
+                    </li>
+                    <f:comment>
+                    <li>
+                        <div class="language-toggle">
+                            <button class="btn dropdown-toggle" id="languageDropdown" onclick="toggleDropdown()">
+                                <span id="selectedLanguage">
+                                    <!-- Default flag icon will be displayed here -->
+                                    <img id="selectedFlag" src="/fileadmin/flags/flags-it.svg" alt="it" class="flag-icon">
+                                </span>
+                            </button>
+                            <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
+                                <f:if condition="{languageMenu}">
+                                    <f:for each="{languageMenu}" as="item">
+                                        <a href="{item.link}" hreflang="{item.flag}" title="{item.title}" class="dropdown-item {f:if(condition: item.active, then: 'language-active')} {f:if(condition: item.available, else: 'text-muted')}" onclick="setActiveLanguage(this, '{item.flag}', '{{item.navigationTitle}}')">
+                                            <!-- Add the flag icon -->
+                                            <img src="/fileadmin/flags/{item.flag}.svg" alt="{item.navigationTitle}" class="flag-icon">
+                                        </a>
+                                    </f:for>
+                                </f:if>
+                            </div>
+                        </div>
+                    </li>
+                    </f:comment>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Logo -->
+        
+        <div class="logo-wrapper">
+            <f:render partial="Header/Logo" arguments="{_all}" />
+            <!-- <a class="logo" href="index.html"> <h2>Harbour</h2> </a> -->
+        </div>
+        <!-- Button -->
+     <div class="top-menu d-flex">
+    <div class="icon-top-menu d-flex">
+    <div class="icon flaticon-mail" style="font-size: 20px;">
+      
+    </div>
+    <div class="icon flaticon-smartphone" style="font-size: 20px;">
+        <!-- You can add phone functionality here if needed -->
+    </div>
+</div>
+
+    
+    <div class="langauge-top-menu d-flex">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="ti-menu"></i></span>
+        </button>
+
+        <!-- Menu language -->
+        <div class="language-toggle">
+            <button class="btn dropdown-toggle" id="languageDropdown" onclick="toggleDropdown()">
+                <span id="selectedLanguage">
+                    <img id="selectedFlag" src="/fileadmin/flags/flags-it.svg" alt="it" class="flag-icon">
+                </span>
+            </button>
+            <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
+                <!-- Use TYPO3 Fluid for the language items -->
+                <f:if condition="{languageMenu}">
+                    <f:for each="{languageMenu}" as="item">
+                        <a href="{item.link}" hreflang="{item.flag}" title="{item.title}" class="dropdown-item {f:if(condition: item.active, then: 'language-active')} {f:if(condition: item.available, else: 'text-muted')}" onclick="setActiveLanguage(this, '{item.flag}', '{{item.navigationTitle}}')">
+                            <img src="/fileadmin/flags/{item.flag}.svg" alt="{item.navigationTitle}" class="flag-icon">
+                        </a>
+                    </f:for>
+                </f:if>
+            </div>
+        </div>
+        <!-- End Menu language -->
+    </div>
+</div>
+        <!-- Menu -->
+    
+        <div class="collapse navbar-collapse" id="navbar">
+
+            <f:render partial="Navigation/MainNavigation" arguments="{_all}" />
+        </div>
+
+
+
+    </div>
+</nav>
+
+</html>

@@ -1,0 +1,55 @@
+<f:link.action pageUid="{settings.detailPid}" action="show" class="liste_videos move_scroll" arguments="{fiche : fiche}">
+    <div class="case_img_video">
+        <div class="contain_img_video">
+            <f:image image="{fiche.image.0}"/>
+        </div>
+
+        <div class="case_description_video">
+            <span class="losange_hover_video">
+                <span></span>
+                <span></span>
+            </span>
+
+            <i class="icon-Player"></i>
+
+            <p class="description_video">
+                <f:if condition="{fiche.description}">
+                    <f:then>
+                        <f:format.crop maxCharacters="150" respectWordBoundaries="true">
+                            <f:format.stripTags>
+                                {fiche.description}
+                            </f:format.stripTags>
+                        </f:format.crop>
+                    </f:then>
+
+                     <f:else>
+                        Voir la vidéo
+                    </f:else>
+                </f:if>
+            </p>
+            <span class="voile"></span>
+        </div>
+    </div>
+
+    <div class="case_info">
+        <p class="categorie_video">
+            <f:if condition="{fiche.categories}">
+                <f:for each="{fiche.categories}" as="category" iteration="itemIteration">
+                    <f:if condition="{itemIteration.isLast}">
+                        <f:then>{category.title}</f:then>
+                        <f:else>{category.title}, </f:else>
+                    </f:if>
+                </f:for>
+            </f:if>
+        </p>
+        <h2>
+            {fiche.title}
+        </h2>
+        <p class="date_video">
+            Publiée le {fiche.datefiche}
+        </p>
+    </div>
+</f:link.action>
+
+
+<f:cObject typoscriptObjectPath='lib.imageColPos4'/>

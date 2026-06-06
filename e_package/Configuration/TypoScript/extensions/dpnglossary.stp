@@ -1,0 +1,90 @@
+plugin.tx_dpnglossary {
+    view {
+        templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_dpnglossary.view.templateRootPath}
+        partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_dpnglossary.view.partialRootPath}
+        layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_dpnglossary.view.layoutRootPath}
+        widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/paginate/
+    }
+    persistence {
+        storagePid = {$e_magineurs.tx_dpnglossary.storagePid}
+    }
+    settings {
+        detailPage = {$e_magineurs.tx_dpnglossary.detailPage}
+        listPage = {$e_magineurs.tx_dpnglossary.listPage}
+        parsingPids = {$e_magineurs.tx_dpnglossary.parsingPids}
+        parsingExcludePidList = {$e_magineurs.tx_dpnglossary.parsingExcludePidList}
+        maxReplacementPerPage = {$e_magineurs.tx_dpnglossary.maxReplacementPerPage}
+        parsingTags = {$e_magineurs.tx_dpnglossary.parsingTags}
+        forbiddenParentTags = {$e_magineurs.tx_dpnglossary.forbiddenParentTags}
+        forbiddenParsingTagClasses = {$e_magineurs.tx_dpnglossary.forbiddenParsingTagClasses}
+        listmode = {$e_magineurs.tx_dpnglossary.listmode}
+
+        pagination {
+            characters = {$e_magineurs.tx_dpnglossary.pagination.characters}
+            insertAbove = {$e_magineurs.tx_dpnglossary.pagination.insertAbove}
+            insertBelow = {$e_magineurs.tx_dpnglossary.pagination.insertBelow}
+        }
+        termWraps >
+        termWraps = CASE
+        termWraps {
+            key.field = term_type
+            default = TEXT
+            default {
+                field = name
+                dataWrap = |
+                typolink {
+                    parameter.cObject = COA
+                    parameter.cObject { 
+                        10 = TEXT
+                        10 {
+                            case = lower 
+                            field = name
+                            wrap = {$e_magineurs.tx_dpnglossary.listPage}#|
+                            insertData = 1
+                            split{
+                                token.char = 32
+                                returnKey = 0
+                            }
+                        }
+                    }
+                    
+                    additionalParams.field = name
+                    additionalParams.substring = 0,1
+                    additionalParams.case = upper
+                    additionalParams.wrap = &tx_dpnglossary_glossarylist[@widget_0][character]=|
+                    additionalParams.if >
+                    ATagParams.dataWrap = title="{field:tooltiptext}" class="dpnglossary link" data-toggle="tooltip" data-placement="top"
+                    ATagParams.dataWrap {
+                        override = title="{field:name}" class="dpnglossary link" data-toggle="tooltip" data-placement="top"
+                        override.if.isFalse.data = field:tooltiptext
+                    }
+                    useCacheHash = 1
+                }
+            }
+            abbreviation < .default
+            abbreviation {
+                dataWrap = <abbr title="{field:tooltiptext}" lang="{field:term_lang}">|</abbr>
+                dataWrap {
+                    override = <abbr title="{field:name}" lang="{field:term_lang}">|</abbr>
+                    override.if.isFalse.data = field:tooltiptext
+                }
+            }
+            acronym < .default
+            acronym {
+                dataWrap = <acronym title="{field:tooltiptext}" lang="{field:term_lang}">|</acronym>
+                dataWrap {
+                    override = <acronym title="{field:name}" lang="{field:term_lang}">|</acronym>
+                    override.if.isFalse.data = field:tooltiptext
+                }
+            }
+            definition < .default
+            definition {
+                dataWrap = <dfn title="{field:tooltiptext}" lang="{field:term_lang}">|</dfn>
+                dataWrap {
+                    override = <dfn title="{field:name}" lang="{field:term_lang}">|</dfn>
+                    override.if.isFalse.data = field:tooltiptext
+                }
+            }
+        }
+    }
+}

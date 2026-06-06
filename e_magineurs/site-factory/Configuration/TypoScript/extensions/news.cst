@@ -1,0 +1,65 @@
+# customsubcategory=tx_news_Template= Templates
+# customsubcategory=tx_news_Rss= RSS
+# customsubcategory=tx_news_List= Vue liste
+# customsubcategory=tx_news_Detail= Vue Détail
+# customsubcategory=tx_news_Settings= Settings
+e_magineurs.tx_news {
+	view {
+		# cat=Configuration de News/tx_news_Template; type=string; label= Chemin du dossier Templates
+		templateRootPath = 	news/Templates/
+		# cat=Configuration de News/tx_news_Template; type=string; label= Chemin du dossier Partials
+		partialRootPath = 	news/Partials/
+		# cat=Configuration de News/tx_news_Template; type=string; label= Chemin du dossier Layouts
+		layoutRootPath = news/Layouts/
+		# cat=Configuration de News/tx_news_Template; type=string; label= Chemin (complet) du dossier Templates pour la pagination
+		PaginateViewHelper = EXT:news/Resources/Private/Templates/
+	}
+	# cat=Configuration de News/tx_news_Settings; type=boolean; label= Afficher la navigation par mois (e_news, liste ce mois)
+	navMois = 1
+	filtreCatParent.multiple {
+		# cat=Configuration de News/tx_news_Settings; type=string; label= Id de la catégorie parente Générale
+		0.catGeneral = 9	
+		# cat=Configuration de News/tx_news_Settings; type=string; label= Id de la catégorie parente des actualités
+		1.catActus = 10
+		# cat=Configuration de News/tx_news_Settings; type=string; label= Id de la catégorie parente des agendas
+		2.catAgendas = 13
+	}
+	# cat=Configuration de News/tx_news_Template; type=string; label= Chemin vers le fichier css
+	cssFile = 
+	# cat=Configuration de News/tx_news_Settings; type=boolean; label= Afficher une image par défaut
+	afficheImageDefaut = 0
+	# cat=Configuration de News/tx_news_Settings; type=int+; label= Crop max
+	cropMaxCharacters = 250
+	# cat=Configuration de News/tx_news_Settings; type=options[tstamp,datetime,crdate,title]; label= Trier par
+	orderBy = datetime
+	# cat=Configuration de News/tx_news_Settings; type=options[desc,asc]; label= Direction du tri
+	orderDirection = desc
+	list {
+		# cat=Configuration de News/tx_news_List; type=int+; label= Largeur max des images (vue liste)
+		image.maxWidth = 280
+		# cat=Configuration de News/tx_news_List; type=int+; label= Hauteur max des images (vue liste)
+		image.maxHeight = 
+		# cat=Configuration de News/tx_news_List; type=string; label= Chemin vers l'image par défaut
+		dummyImage = EXT:news/Resources/Public/Images/dummy-preview-image.png
+	}
+	detail {
+		# cat=Configuration de News/tx_news_Detail; type=int+; label= Largeur max des images (vue détail)
+		image.maxWidth = 280
+		# cat=Configuration de News/tx_news_Detail; type=int+; label= Hauteur max des images (vue détail)
+		image.maxHeight = 
+		# cat=Configuration de News/tx_news_Detail; type=int+; label= Largeur des vidéos dans (vue détail)
+		video.width = 580
+		# cat=Configuration de News/tx_news_Detail; type=int+; label= Hauteur des vidéos dans (vue détail)
+		video.height = 300
+		# cat=Configuration de News/tx_news_Detail; type=boolean; label= Afficher les liens actus précédentes/suivantes
+		showPrevNext = 0
+	}
+	rss {
+		# cat=Configuration de News/tx_news_Rss; type=string; label= RSS description
+		description = Les actualités de mon site
+		# cat=Configuration de News/tx_news_Rss; type=string; label= RSS copyright
+		copyright = TYPO3 News
+		# cat=Configuration de News/tx_news_Rss; type=string; label= RSS generator
+		generator = TYPO3 EXT:news
+	}
+}

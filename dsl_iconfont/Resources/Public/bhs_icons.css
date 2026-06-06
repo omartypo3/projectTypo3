@@ -1,0 +1,32 @@
+/* CSS Document */
+
+@import url(bhs_iconfont/style.css);
+
+/*
+icons im format dsl-xxx.png in folgendes Verzeichnis legen:
+typo3conf/ext/bootstrap_package/Resources/Public/Images/Icons/Ionicons/
+z.B. dsl-disk.png
+*/
+[class^="ion-bhs-"], [class*=" ion-bhs-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dsl-bhs' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ion-bhs-xbox:before {
+  content: "\e900";
+}
+.ion-bhs-thumbs-up:before {
+  content: "\e900";
+}
+.ion-bhs-car-arrow:before {
+  content: "\e901";
+}

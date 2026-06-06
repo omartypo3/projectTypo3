@@ -1,0 +1,62 @@
+{namespace dsl = DslFactory\DslProdukte\ViewHelpers}
+
+<div class="col-xs-12 col-sm-6 col-md-3">
+  <div class="entry prod">
+    <f:link.action action="showzubehoer" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,zubehoer:zubehoer)}">
+      <f:if condition="{zubehoer.bilder.0}">
+        <f:then>
+          <f:image src="{zubehoer.bilder.0.originalResource.originalFile.uid}" width="165c" height="115c"  />
+        </f:then>
+        <f:else><img src="fileadmin/template/public/images/allg/kategorie_keinbild.png" alt="kein Bild vorhanden" width="165" height="115"></f:else>
+      </f:if>
+    </f:link.action>
+    
+    <div class="teaser-headline">
+      <h5><f:link.action action="showzubehoer" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,zubehoer:zubehoer)}">
+        <f:format.crop maxCharacters="70" append="&nbsp;...">
+          {zubehoer.titel}
+        </f:format.crop></f:link.action>
+      </h5>
+    </div>
+    
+    <div class="teaser-text">
+      <f:if condition="{zubehoer.teaser}">
+        <f:then>
+          <f:format.crop maxCharacters="80" append="&nbsp;...">{zubehoer.teaser}</f:format.crop>
+        </f:then>
+        <f:else>
+          <f:format.crop maxCharacters="80" append="&nbsp;..."><f:format.stripTags>{zubehoer.text}</f:format.stripTags></f:format.crop>
+        </f:else>
+      </f:if>
+    </div>
+    
+    
+    <div class="preis">
+      <f:if condition="{zubehoer.preis}">
+        <f:then><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{zubehoer.preis}</f:format.currency>
+          <div class="preiszusatz">zzgl. 19% MwSt.</div>
+        </f:then>
+        <f:else>Preis auf Anfrage</f:else>
+      </f:if>
+    </div>
+    
+    
+         <div class="anfrage-detail">
+                    <f:link.page pageUid="37" class="anfrage-detail-inner">
+                    <span class="anfrage-form"></span>
+                    <span class="text">Angebot</span>
+                    </f:link.page>
+                </div>
+                  
+                  
+                  <div class="buy-detail">
+                     <f:link.action action="showzubehoer" pageUid="{settings.listPid}" arguments="{dsl:linkDetail(arguments:linkArgumentsArr,zubehoer:zubehoer)}" class="detail">
+                        <span class="lupe"></span>
+                        <span class="text">Details</span>
+                      </f:link.action>
+                   </div>
+    
+
+    
+  </div>
+</div>

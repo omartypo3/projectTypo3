@@ -1,0 +1,30 @@
+{namespace s=ApacheSolrForTypo3\Solrfluid\ViewHelpers}
+<f:if condition="{pagination.allPageNumbers -> f:count()} > 1">
+    <div id="solr-pagination" style="display: none;">
+        <ul class="f3-widget-paginator">
+            <f:if condition="{pagination.previousPageNumber} && {pagination.previousPageNumber} >= {pagination.firstPageNumber}">
+                <li class="previous">
+                    <f:if condition="{pagination.previousPageNumber} > 1">
+                        <f:then>
+                            <a href="{s:uri.paginate.resultPage(page: pagination.previousPageNumber)}" class="solr-ajaxified" title="{f:translate(key:'pagination.previous')}">
+                                {f:translate(key:'widget.pagination.previous', extensionName: 'fluid')}
+                            </a>
+                        </f:then>
+                        <f:else>
+                            <a href="{s:uri.paginate.resultPage()}" class="solr-ajaxified" title="{f:translate(key:'pagination.previous')}">
+                                {f:translate(key:'widget.pagination.previous', extensionName: 'fluid')}
+                            </a>
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:if>
+            <f:if condition="{pagination.nextPageNumber} && {pagination.nextPageNumber} <= {pagination.lastPageNumber}">
+                <li class="next">
+                    <a href="{s:uri.paginate.resultPage(page: pagination.nextPageNumber)}" class="solr-ajaxified" title="{f:translate(key:'pagination.next')}">
+                        {f:translate(key:'widget.pagination.next', extensionName: 'fluid')}
+                    </a>
+                </li>
+            </f:if>
+        </ul>
+    </div>
+</f:if>

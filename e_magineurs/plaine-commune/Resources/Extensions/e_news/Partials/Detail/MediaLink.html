@@ -1,0 +1,24 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+
+<div class="mediaelement mediaelement-image">
+	<p>
+		Il y a <f:count>{media}</f:count> lien(s) pour cette news
+	</p>
+	<f:for each="{media}" as="mediaElement">
+		<f:if condition="{mediaElement.uri}">
+			<p>
+				<a href="{mediaElement.uri}" >
+					<f:if condition="{mediaElement.title} != ''">
+						<f:then>
+							{mediaElement.title}
+						</f:then>
+						<f:else>
+							{mediaElement.uri}
+						</f:else>
+					</f:if>
+					{mediaElement.description}
+				</a> 	
+			</p>
+		</f:if>
+	</f:for>
+</div>

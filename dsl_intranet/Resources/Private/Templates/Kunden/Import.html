@@ -1,0 +1,127 @@
+{namespace h=DslFactory\DslIntranet\ViewHelpers}
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+
+
+<div id="kundenImportFormWrapper">
+
+
+<script>
+
+	$(document).ready(function() {
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#kundenImportForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+		
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select 
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#kundenImportForm').hasClass('formSaves'))	return false;
+				$('#kundenImportForm').addClass('formSaves');
+				
+				
+				var formData = new FormData();
+				params  = $(form).serializeArray();
+				files    = $(form).find('#fileUploadKundenImport')[0].files;
+				if(files.length != 0) {
+               		$.each(files, function(i, file) {
+
+						
+						formData.append('tx_dslintranet_kundenliste[newDateien][datei]', file);
+
+						
+					});
+				}
+				$.each(params, function(i, val) {
+					
+					
+					formData.append(val.name, val.value);
+				});
+				//return true;
+				
+
+
+
+
+
+				$.ajax({
+					url: $('#kundenImportForm').attr('action'),
+					type: 'POST',
+				
+					data: formData,
+					contentType: false,
+			        processData: false,
+/*					data: $('#kundenImportForm').serialize(),*/
+					success: function(data) {
+						$.colorbox.close();
+						location.reload();
+						
+
+						return true;
+		
+					}
+				});
+				
+		  	}
+		});
+		
+		
+		
+	});
+
+</script>
+
+<f:render partial="FormErrors" arguments="{object:Kunden}" />
+
+<f:form action="import" object="{newDateien}" name="newDateien" enctype="multipart/form-data" id="kundenImportForm" additionalAttributes="{role:'form'}">
+
+	<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Kundenimport aus Quickbooks'}" />
+   
+    <hr>
+    <label>Datei:</label>
+    
+    <f:comment><f:form.upload id="fileUploadKundenImport" property="datei" ></f:form.upload></f:comment>
+
+	
+    <input id="fileUploadKundenImport" type="file" name="tx_dslintranet_kundenliste[datei]">
+
+    <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Kunden Importieren'}" />    
+    
+	
+</f:form>
+
+
+</div>
+
+</f:section>
+
+
+
+    <f:debug title="newDateien">{newDateien}</f:debug>
+<f:debug title="resultarray">{resultarray}</f:debug>

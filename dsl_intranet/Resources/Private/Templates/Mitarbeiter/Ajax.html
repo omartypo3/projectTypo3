@@ -1,0 +1,27 @@
+<f:spaceless>
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+	
+<f:switch expression="{switch}">
+	<f:case value="removeKanbanItem">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}{boards -> f:debug(title: 'boards', inline: '1')}{resArr -> f:debug(title: 'resArr', inline: '1')}</div></div>
+	</f:case>
+	<f:case value="refreshKanban">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}{boards -> f:debug(title: 'boards', inline: '1')}{resArr -> f:debug(title: 'resArr', inline: '1')}</div></div>
+	</f:case>
+	<f:case value="loadKanbanContent">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content"><div id="kanbanBoardsContent"><f:render partial="Kanban/KanbanBoards" arguments="{_all}" /></div><div id="kanbanProjekteContent"><f:render partial="Kanban/KanbanProjekte" arguments="{_all}" /></div></div></div>
+	</f:case>
+	<f:case value="toggleKanbanAuftragToAusgeblendet">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea></div>
+	</f:case>
+	<f:case value="toggleKanbanAuftragFromAusgeblendet"></f:case>
+	<f:case value="loadKanban">
+		<f:render partial="Kanban/Kanban" arguments="{_all}" />
+	</f:case>	
+	<f:case value="resizeKanban">resizestored</f:case>
+	<f:case value="saveKanbanItem"><div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">saveKanbanItem :: {info}</div></f:case>
+</f:switch>
+</f:spaceless>
+
+

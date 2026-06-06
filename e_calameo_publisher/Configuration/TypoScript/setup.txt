@@ -1,0 +1,34 @@
+# Module configuration
+module.tx_ecalameopublisher {
+	view {
+		templateRootPath = {$module.file_ECalameoPublisherMod1.view.templateRootPath}
+		partialRootPath = {$module.file_ECalameoPublisherMod1.view.partialRootPath}
+		layoutRootPath = {$module.file_ECalameoPublisherMod1.view.layoutRootPath}
+	}
+	features {
+		# if enabled, default controller and/or action is skipped when creating URIs through the URI Builder (see http://forge.typo3.org/projects/typo3v4-mvc/wiki/Skip_default_arguments_in_URIs)
+		skipDefaultArguments = 0
+	}
+}
+
+plugin.tx_ecalameopublisher {
+	view {
+		templateRootPath = {$plugin.tx_ecalameopublisher_pi1.view.templateRootPath}
+		partialRootPath = {$plugin.tx_ecalameopublisher_pi1.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_ecalameopublisher_pi1.view.layoutRootPath}
+	}
+
+	persistence {
+		storagePid = {$plugin.tx_ecalameopublisher.persistence.storagePid}
+	}
+
+	settings{
+		flexFormConfig = 1
+		size {
+			heigth = 147
+			width = 240
+		}
+		download = 2
+		print = 2
+	}
+}

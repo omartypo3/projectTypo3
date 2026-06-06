@@ -1,0 +1,173 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	
+<f:render partial="Allgemein/UploadOverlay"  />	
+	
+<v:asset.style name="cssFileDrag">
+	.filedrag
+	{
+		font-weight: bold;
+		text-align: center;
+		padding: 10px;
+		color: #555;
+		border: 2px dashed #555;
+		border-radius: 7px;
+		cursor: pointer;
+		/*float:right;*/
+	}
+
+	.filedrag.hover,.filedrag:hover
+	{
+		border-color: #f00;
+		border-style: solid;
+		box-shadow: inset 0 3px 4px #888;
+	}
+	
+	.filedragWrapper.hover
+	{
+		/*border-color: #f00;
+		border-style: solid;
+		box-shadow: inset 0 3px 4px #888;*/
+		box-shadow: inset 0 0px 4px #f00;
+	}
+	
+	
+</v:asset.style>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/jquery.md5.js" name="jsMd5" dependencies="jquery"></v:asset.script>	
+
+	
+	
+<f:link.action action="new" pageType="89657006" controller="Projekte" class="doAjaxEdit pageToolbarButton pageToolbarButtonFirstGroup pageToolbarButtonPrimary" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '750px'}"><i class="bb-plus bb-lg"></i><span>neues Projekt</span></f:link.action>	
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/moment-with-locales.min.js" name="jsMoment" dependencies="jquery"></v:asset.script>
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-daterangepicker-master/daterangepicker.js" name="jsDaterangepicker" dependencies="jsMoment"></v:asset.script>
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-daterangepicker-master/daterangepicker.css" name="cssDaterangepicker" dependencies="jquery"></v:asset.style>
+
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+	<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/Chart.min.js" name="jsChart"></v:asset.script>
+	
+	
+	<v:asset.style name="cssProjekte" dependencies="dslintranet">
+		
+		.layout-table-col-chart{width:140px;}
+		
+		#projektListEmpty{display:none;}
+		#projektListEmpty[data-projekte-counter="0"]{display:table-row-group;}
+
+		#projektAbgeschlossenListEmpty{display:none;}
+		#projektAbgeschlossenListEmpty[data-projekte-counter="0"]{display:table-row-group;}
+		
+		.detailLabel{color:#b2b2b2;}
+		.detailLabelDark{color:#8c8c8c;}
+		
+
+		.chartLabel{margin-top: -90px;line-height: 14px;font-size: 12px;margin-left: 45px;width: 50px;text-align: center;height:79px;}
+		.chartLabel strong{
+		font-weight:normal;
+		}
+
+		.container-grau{
+			background-color: #f5f5f5;
+			border: 1px solid #dddddd;
+			margin:0px;
+			margin-bottom:20px;
+		}
+	</v:asset.style>
+	
+	
+<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/Projekte/List.js" name="dslprojektejs" dependencies="jsDaterangepicker" standalone="TRUE"/>
+	
+	<section id="projekte" data-ajax-url="{f:uri.action(action: 'ajax', pageType: 89657006, controller: 'Projekte')}" data-show-url="{f:uri.action(action: 'show', pageType: 89657006, controller: 'Projekte')}" data-agenturvertraege-check-file-ajax-url="{f:uri.action(action: 'checkFile', pageType: 89657208, controller: 'Dateien')}">
+	
+		<div class="layout-box table-toolbar container-grau" >
+			<div class="table-toolbar-container"><h2>Aktive Projekte</h2></div>
+			<div class="table-toolbar-container">		
+				<div id="projekteAccordion" class="gridelement ge_collapsible_container projekteAccordionWrapper">
+					<div aria-multiselectable="true" role="tablist" id="projekteList" class="panel-group">
+						<div class="dataTables_wrapper">
+							<table class="table table-striped table-bordered table-condensed table-hover dataTable no-footer" role="grid" aria-describedby="projekteList_info" cellspacing="0">
+								
+
+								<thead>
+									<tr>
+										<th width="15">&nbsp;</th>
+										<th>Kunde</th>
+										<th width="300">Kontingent</th>
+										<th width="80">Optionen</th>
+								</tr>
+								</thead>
+								<f:if condition="{projekte}">
+									<v:iterator.sort as="projekteSorted" subject="{projekteOffen}" sortBy="kunde.name" order="ASC" sortFlags="SORT_STRING,SORT_FLAG_CASE">
+										<f:for each="{projekteSorted}" as="projekt">
+											<f:render partial="Projekte/ListRow" arguments="{_all}" />
+										</f:for>
+									</v:iterator.sort>
+								</f:if>
+								<tbody id="projektListEmpty" class="projekteBodyEmpty" data-projekte-counter="{f:count(subject: projekteOffen)}"><tr><td colspan="4"><center>keine Projekte gefunden</center></td></tr></tbody>
+
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="layout-box table-toolbar container-grau" >
+			<div class="table-toolbar-container"><h2>Abgeschlossene Projekte</h2></div>
+			<div class="table-toolbar-container">
+
+
+				<div id="projekteAbgeschlossenAccordion" class="gridelement ge_collapsible_container projekteAccordionWrapper">
+					<div aria-multiselectable="true" role="tablist" id="projekteAbgeschlossenList" class="panel-group">
+						<div class="dataTables_wrapper">
+							<table class="table table-striped table-bordered table-condensed table-hover dataTable no-footer" role="grid" aria-describedby="projekteAbgeschlossenList_info" cellspacing="0">
+								
+
+								<thead>
+									<tr>
+										<th width="15">&nbsp;</th>
+										<th>Kunde</th>
+										<th width="300">Kontingent</th>
+										<th width="80">Optionen</th>
+								</tr>
+								</thead>
+								<f:if condition="{projekte}">
+									<v:iterator.sort as="projekteAbgeschlossenSorted" subject="{projekteAbgeschlossen}" sortBy="kunde.name" order="ASC" sortFlags="SORT_STRING,SORT_FLAG_CASE">
+										<f:for each="{projekteAbgeschlossenSorted}" as="projekt">
+											<f:render partial="Projekte/ListRow" arguments="{_all}" />
+										</f:for>
+									</v:iterator.sort>
+								</f:if>
+								<tbody id="projektAbgeschlossenListEmpty" class="projekteBodyEmpty" data-projekte-counter="{f:count(subject: projekteAbgeschlossen)}"><tr><td colspan="4"><center>keine Abgeschlossenen Projekte gefunden</center></td></tr></tbody>
+
+
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+	</section>
+	
+	
+</f:section>
+</html>

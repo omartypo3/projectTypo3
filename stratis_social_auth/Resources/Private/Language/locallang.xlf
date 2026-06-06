@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="stratis_social_auth">
+		<header/>
+		<body>
+			<!-- Errors -->
+			<trans-unit id="hybridauth.error.0">
+				<source>Unspecified error.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.1">
+				<source>Hybriauth configuration error.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.2">
+				<source>Provider not properly configured.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.3">
+				<source>Unknown or disabled provider.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.4">
+				<source>Missing provider application credentials.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.5">
+				<source>User has cancelled the authentication or the provider refused the connection.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.6">
+				<source>User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error.7">
+				<source>User not connected to the provider</source>
+			</trans-unit>
+			<trans-unit id="hybridauth.error">
+				<source>Social network authentication : unknown error</source>
+			</trans-unit>
+
+			<!-- Bind user with social accounts -->
+			<trans-unit id="bind.success">
+				<source>New account was successfully binded to the user profile</source>
+			</trans-unit>
+			<trans-unit id="bind.alreadyExist">
+				<source>This social account was already binded to the user profile</source>
+			</trans-unit>
+			<trans-unit id="bind.noLocalAuth">
+				<source>Only authenticated users are allowed to bind accounts</source>
+			</trans-unit>
+			<trans-unit id="bind.noExternalAuth">
+				<source>You must be authenticated on the social service to bind</source>
+			</trans-unit>
+
+			<!-- Providers names for FE-->
+			<trans-unit id="provider.Facebook">
+				<source>Facebook</source>
+			</trans-unit>
+			<trans-unit id="provider.FranceConnect">
+				<source>FranceConnect</source>
+			</trans-unit>
+			<trans-unit id="provider.Google">
+				<source>Google</source>
+			</trans-unit>
+
+			<!-- Buttons-->
+			<trans-unit id="buttons.logout">
+				<source>Logout</source>
+			</trans-unit>
+			<trans-unit id="buttons.bind">
+				<source>Connect</source>
+			</trans-unit>
+
+			<!-- Notifications-->
+			<trans-unit id="notifications.passwordChangeRequired">
+				<source>Your email was not set during the authentication. As a result we were not able to send your password to you. Please set your email in order to be able to authenticate with other extrnal services. Please change your password to be able to use the login form.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

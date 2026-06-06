@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2024-11-05T00:00:00Z" product-name="e_news">
+		<header/>
+		<body>
+			<trans-unit id="plugin.group.advancedviews">
+				<source>E-News - Vue avancées</source>
+			</trans-unit>
+			<trans-unit id="plugin.filtertoday.title">
+				<source>E-News - Liste aujourd'hui</source>
+			</trans-unit>
+			<trans-unit id="plugin.filterweekend.title">
+				<source>E-News - Liste le week end prochain</source>
+			</trans-unit>
+			<trans-unit id="plugin.filterweek.title">
+				<source>E-News - Liste cette semaine</source>
+			</trans-unit>
+			<trans-unit id="plugin.filtermonth.title">
+				<source>E-News - Liste ce mois-ci</source>
+			</trans-unit>
+			<trans-unit id="plugin.createnews.title">
+				<source>E-News - Créer une news</source>
+			</trans-unit>
+			<trans-unit id="plugin.deletenews.title">
+				<source>E-News - Supprimer une news</source>
+			</trans-unit>
+			<trans-unit id="plugin.validatenews.title">
+				<source>E-News - Valider une news</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

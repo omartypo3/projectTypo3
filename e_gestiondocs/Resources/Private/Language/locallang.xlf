@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_gestiondocs/Resources/Private/Language/locallang.xlf" date="2024-01-01T00:00:00Z" product-name="e_gestiondocs">
+		<header/>
+		<body>
+			<trans-unit id="search">
+				<source>Chercher</source>
+			</trans-unit>
+			<trans-unit id="noresult">
+				<source>Pas de résultat</source>
+			</trans-unit>
+			<trans-unit id="nofilefound">
+				<source>Aucun fichier trouvé !</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.orderMenu.name">
+				<source>Document</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.orderMenu.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.orderMenu.fileext">
+				<source>Type de fichier</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.orderMenu.size">
+				<source>Taille</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.orderMenu.tstamp">
+				<source>Date de modification</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.folder.description">
+				<source>Description : </source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.folder.alternative">
+				<source>Alternative : </source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.folder.mimeType">
+				<source>Mime Type : </source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.folder.extension">
+				<source>Extension : </source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.folder.crdate">
+				<source>Date d'ajout : </source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.newsfiles.bloctitle">
+				<source>Nouveautés</source>
+			</trans-unit>
+			<trans-unit id="gestiondocs.newsfiles.crdate">
+				<source>Ajouté le : </source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

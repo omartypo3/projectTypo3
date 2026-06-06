@@ -1,0 +1,40 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+{namespace em=Emagineurs\ENews\ViewHelpers}
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/SearchForm.html
+-->
+
+<f:section name="content">
+    
+    <f:if condition="{noCategory}">
+        <f:then>
+            Vous n'avez pas encore selectionné de centre d'interet.
+        </f:then>
+        <f:else> 
+            <style>
+                .news-search-form ul{
+                    clear:both;
+                }
+                .news-search-form li{
+                    float:left;
+                }
+            </style>
+
+            <div class="news-search-form">
+                <h3>Mes centres d'interets :</h3>
+                <f:form object="{selectFav}" name="selectFav" method="post">
+                    <ul>
+                        <f:for each="{categoryTree}" as="category">
+                            <f:render partial="Favoris/Select" arguments="{category:category, settings:settings, userCategories:userCategories}" />
+                        </f:for>
+                    </ul>
+
+                    <f:form.submit name="submitFav" value="Enregistrer" />
+                </f:form>
+            </div>
+        </f:else>
+    </f:if>
+    
+</f:section>

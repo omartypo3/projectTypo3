@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" media="all" href=".EXT:e_annuaires/Resources/Public/Css/mod1_eoffresdemploi.css" title="system">
+
+<f:alias map="{offre: candidature.firstCdps, civility: '{f:render(partial: \'Offre/Civility\', arguments: {civility: candidature.civility})}'}">
+    <div class="pdfCandidature">
+        <!-- SWITCH QUI CONTIENDRA LES IMAGES CORRESPONDANT AUX ORIGINES -->
+        <f:switch expression="{offre.firstDistrict.titre}">
+            <f:case value="CCAS">
+                <img src="fileadmin\user_upload\versailles-pdf-header-ccas.jpg" alt="" />
+            </f:case>
+            <f:case value="VGP">
+                <img src="fileadmin\user_upload\versailles-pdf-header-vgp.jpg" alt="" />
+            </f:case>
+            <f:case default="1">
+                <img src="fileadmin\user_upload\versailles-pdf-header-ville.jpg" alt="" />
+            </f:case>
+        </f:switch>
+        <div class="contenu_lettre_pdf">
+            <div class="coin_sup_droit">
+                <p><strong>{civility} <f:format.case>{candidature.title}</f:format.case> {candidature.firstname}</strong></p>
+                <p>{candidature.address}</p>
+                <p>{candidature.zipcode} {candidature.bp}</p>
+                <br />
+                <br />
+                <p>Versailles, le <f:format.date format="%d.%m.%Y" date=""></f:format.date></p>
+            </div>
+            <br />
+            <div class="corps_lettre">
+                <p>
+                    {civility},
+                </p>
+                <p>
+                    Votre candidature au poste "<strong>{offre.title}</strong>" a retenu toute notre attention.<br />
+                    Bien que présentant des qualités certaines, votre curriculum vitae n'a pas pu être retenu, celui-ci ne répondant pas totalement aux exigences du poste.<br />
+                    Je ne doute pas néanmoins que votre recherche trouvera un aboutissement favorable.<br />
+                    Je tiens à vous renouveler mes remerciements pour notre collectivité et vous prie de croire, {civility}, à l'assurance de ma considération distinguée.
+                </p>
+                <br/>
+            </div>
+            <div class="signature">
+                <p>
+                    <strong>Sylvie SAMUEL</strong><br />
+                </p>
+                <p>
+                    Directeur des Ressources humaines<br />
+                </p>
+                <img src="fileadmin\user_upload\signature.png" alt="" />
+            </div>
+        </div>
+        <div class="infos_footer_pdf">
+            Mairie de Versailles - Direction des Ressources Humaines - Service Emploi et Prospective<br />
+            4 avenue de Paris - RP 1144 – 78011 Versailles cedex<br />
+            Site internet : http://www.versailles.fr<br />
+        </div>
+    </div>
+</f:alias>

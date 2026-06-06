@@ -1,0 +1,153 @@
+
+<f:layout name="Default" />
+
+This template displays a NEW form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        New.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Dateien" enctype="multipart/form-data" action="ajax" object="{dateien}" name="newDateien" pluginName="downloadcenter" extensionName="dslintranet" id="dateienCreateForm" additionalAttributes="{data-insert-selector: '#dateienList'}">
+
+
+
+	<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Datei Hochladen'}" />
+
+	<f:render partial="Dateien/FormFields"  arguments="{_all}"  />
+	<script>
+	/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+	
+		
+
+		
+		$('#dateienCreateForm').validate({
+			invalidHandler: function(event, validator) { console.log('invalidhandler'); validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+
+				error.appendTo(element.parent());
+			},
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select 
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				
+				
+
+				
+				var fileTypeError = false;
+				
+				var formData = new FormData();
+				params  = $('#dateienCreateForm').serializeArray();
+				files    = $('#dateienCreateForm').find('#fileUploadDateien')[0].files;
+				if(files.length != 0) {
+					
+               		$.each(files, function(i, file) {
+						
+						//iletype: application/postscript
+						if(file["type"] != 'application/pdf' 
+							&& file["type"] != 'image/png' 
+						    && file["type"] != 'image/jpeg'
+							&& file["type"] != 'application/vnd.ms-excel'
+							&& file["type"] != 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+							&& file["type"] != 'application/msword'
+							&& file["type"] != 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+						    && file["type"] != 'application/x-zip-compressed'
+						    && file["type"] != 'application/postscript'
+						  ) {
+							fileTypeError = true;
+						}
+						
+//						formData.append('files' + i, file);
+						formData.append('tx_dslintranet_downloadcenter[newDateien][datei]', file);
+//						formData.append('tx_dslintranet_kundenliste_1', file);
+						
+					});
+				} else {
+					
+					
+					return false;
+				}
+				
+				if(fileTypeError) {
+				
+					$('.fileUploadTypen .required').removeClass('hidden');
+					return false;
+				} else {
+					$('.fileUploadTypen .required').addClass('hidden');
+				}
+				
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#dateienCreateForm').hasClass('formSaves'))	return false;
+				$('#dateienCreateForm').addClass('formSaves');
+				
+				$.each(params, function(i, val) {
+				
+					formData.append(val.name, val.value);
+				});
+				//return true;
+				
+				
+				
+				$.ajax({
+					url: $('#dateienCreateForm').attr('action'),
+					type: 'POST',
+					data: formData,//$('#dateienCreateForm').serialize(),
+					contentType: false,
+			        processData: false,
+					success: function(data) {
+						//dataJson = JSON.parse(data);
+				
+						
+			
+			
+						if(data==1) {
+							
+						
+							
+							
+							$.colorbox.close();
+							//reInitAjaxCalls();
+							dataTableReload();
+						} else {
+							return true;
+						}
+					}
+				});
+				
+				
+				
+				
+				
+		  	}
+		});
+		
+		
+		
+	});
+	
+</script>
+	
+
+	
+	<f:form.hidden name="switch" value="create" />
+    
+	
+
+     
+    <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Datei Hochladen'}" />    
+    
+	
+</f:form>
+</f:section>

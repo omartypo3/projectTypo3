@@ -1,0 +1,7 @@
+plugin.tx_ecomment {
+	view {
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_ecomment.view.layoutRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_ecomment.view.partialRootPath}
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_ecomment.view.templateRootPath}
+	}
+}

@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{f:uri.resource(path: 'Css/eannuaires.css', extensionName: 'EAnnuaires')}" />
+<link rel="stylesheet" href="{f:uri.resource(path: 'Css/bootstrap.css', extensionName: 'EAnnuaires')}" />
+<link rel="stylesheet" href="{f:uri.resource(path: 'Css/table.css', extensionName: 'EAnnuaires')}" />
+
+<div class="typo3-fullDoc">
+	<div id="typo3-docheader">
+		<div class="typo3-docheader-functions">
+			<div class="left">
+				<f:be.menus.actionMenu>
+					<f:be.menus.actionMenuItem label="{f:translate(key: 'LLL:EXT:e_annuaires/Resources/Private/Language/locallang_annuaires_offre.xlf:module.candidatures')}" controller="Offre" action="candidatures" />
+				</f:be.menus.actionMenu>
+			</div>
+
+			<div class="right">
+			</div>
+		</div>
+	</div>
+	<div id="typo3-docbody">
+		<div id="typo3-inner-docbody" class="news-administration">
+			<f:render section="content" />
+		</div>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+<div class="row grid">
+	<div class="col-md-8">
+		<div class="inner first">
+			<f:for each="{children_50}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="inner last">
+			<f:for each="{children_51}" as="record">
+				<f:format.raw>
+					{record.renderedContent}
+				</f:format.raw>
+			</f:for>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,52 @@
+<f:layout name="Default"/>
+<f:section name="Main">
+
+	
+
+	<f:alias map="{contenuDroite: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'2\'})}', contenuGauche: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'1\'})}', col0: '{colPos: \'0\'}', col1: '{colPos: \'1\'}', col2: '{colPos: \'2\'}', col3: '{colPos: \'3\'}'}">
+
+		<div class="container-fluid">
+			<f:if condition="<f:cObject typoscriptObjectPath='lib.imagePageDefaut' data='{sourceUid: data.uid}' />">
+			    <f:then>
+			       <section id="banniere" class="banniere_ok">
+						<f:cObject typoscriptObjectPath='lib.imagePageDefaut' data='{sourceUid: data.uid}' />
+						<div class="container-ariane">
+							<div class="container">
+								<f:cObject typoscriptObjectPath="lib.filAriane" /> 
+							</div>
+						</div>
+					</section>
+			    </f:then>
+			    <f:else>
+			        <section id="banniere">
+						<div class="container-ariane">
+							<div class="container">
+								<f:cObject typoscriptObjectPath="lib.filAriane" /> 
+							</div>
+						</div>
+					</section>
+			    </f:else>
+			</f:if>
+		</div>
+
+		<div id="contentPage" class="container">
+			<div class="block_titre_page_anim">
+				<div class="case_title_anim_Page hidden-print">
+					<div class="icon_title_anim_Page">
+					
+					</div>
+				</div>
+
+				<div class="case_titre_Page">
+					<h1>
+						<f:cObject typoscriptObjectPath="lib.titrePage" />
+					</h1>
+				</div>
+			</div>
+			<!--TYPO3SEARCH_begin-->	
+			<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col0}" />
+			<!--TYPO3SEARCH_end-->
+		</div>
+	</f:alias>
+	
+</f:section>

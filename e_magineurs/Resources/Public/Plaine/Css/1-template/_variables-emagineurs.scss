@@ -1,0 +1,87 @@
+$max-width-container: 1360px;
+
+$font: #363636;/*Couleur du texte principal*/
+$font-secondaire: #262626;/*Titre,chapô,citation,mise en avant,tableau td*/
+$lien: #D51B5C;/*Couleur lien sans survol*/
+$lien-hover: #AF002A;/*Couleur lien avec survol*/
+$vert-clair: #d0edaa;/*Couleur vert clair*/
+$vert-fonce: #7DB900;/*Couleur vert foncé*/
+$vert-super-fonce: #607b00;
+$vert-fb: #7db831; /*vert sur fond blanc*/
+
+$gris-clair: #f2f2f2;/*Couleur gris clair*/
+$gris-moyen: #333;/*Couleur gris clair*/
+$gris-fonce: #262626;/*Couleur gris foncé*/
+$gris-border: #929292;
+$gris-voile: #191717;
+$gris-clair: #f0f0f0;
+$rose: #d51b5c;
+$rose-fonce: #bd144f;
+
+$icomoon-font-path: "../../fonts" !default;
+
+$icon-FAQ: "\e000";
+$icon-LoupeSearch: "\e920";
+$icon-Linkedin: "\e900";
+$icon-Youtube: "\e909";
+$icon-FlickR: "\e90b";
+$icon-Facebook: "\e90d";
+$icon-Twitter: "\e911";
+$icon-Instagram: "\e912";
+$icon-Archives: "\e901";
+$icon-ArrowLeftRight: "\e902";
+$icon-ArrowTopBottom: "\e903";
+$icon-Close: "\e904";
+$icon-Connexion: "\e905";
+$icon-EmptyDiamond: "\e906";
+$icon-EnglishPage: "\e907";
+$icon-ExternalLink: "\e908";
+$icon-Fichier-1: "\e90a";
+$icon-FullDiamond: "\e90c";
+$icon-Geoloc: "\e90e";
+$icon-Hand: "\e90f";
+$icon-Important: "\e910";
+$icon-LinkText: "\e913";
+$icon-Mail: "\e914";
+$icon-Menu: "\e915";
+$icon-Minus: "\e916";
+$icon-Mousse: "\e917";
+$icon-Mousse2: "\e918";
+$icon-Mousse2Arrow: "\e919";
+$icon-Newsletter: "\e91a";
+$icon-Phone: "\e91b";
+$icon-Plus: "\e91c";
+$icon-Print:"\e91d";
+$icon-Search: "\e91e";
+$icon-Share: "\e91f";
+$icon-Upload: "\e922";
+$icon-Player: "\e923";
+
+
+
+
+/* Média queries */
+
+@mixin MquerieW($screen) {
+   @media (max-width: $screen+'px') {
+       @content;
+   }
+}
+
+@mixin MquerieH($screen) {
+   @media (max-height: $screen+'px') {
+       @content;
+   }
+}
+
+@mixin MquerieWH($width, $height) {
+      @media (max-width: $width+'px') and (max-height: $height+'px') {
+          @content;
+        }
+}
+
+@mixin MquerieWW($MINwidth, $MAXwidth) {
+      @media (min-width: $MINwidth+'px') and (max-width: $MAXwidth+'px') {
+          @content;
+        }
+}

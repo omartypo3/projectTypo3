@@ -1,0 +1,168 @@
+{namespace map=Emagineurs\EGmap\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:if condition="{settings.map}">
+		<f:then>		
+			<f:if condition="{settings.cat.liste}">
+				<f:if condition="{settings.cat.label}">
+					<f:then>
+						<h2>{settings.cat.label}</h2>
+					</f:then>
+					<f:else>
+						<h2>{f:translate(key: 'map.filter')}</h2>
+					</f:else>
+				</f:if>
+
+				<div id="eGmapCategories__{settings.map.mapUniqId}" >
+					<f:render partial="Map/Categories" arguments="{cats: cats, settings: settings}" />
+				</div>
+			</f:if>
+
+			<map:displayMap settings="{settings}" eGmapPois="{eGmapPois}" eGmapKmls="{eGmapKmls}" />
+
+			<f:if condition="{settings.map.recherche.actif}">
+				<f:then>
+					<div class="eGmapPanel">
+				</f:then>
+				<f:else>
+					<f:if condition="{settings.map.itineraire.actif}">
+						<div class="eGmapPanel">
+					</f:if>
+				</f:else>
+			</f:if>
+
+			<f:if condition="{settings.map.recherche.actif}">
+				<div class="recherche_gmap">
+					<f:if condition="{settings.map.recherche.label}">
+						<f:then>
+							<h2>{settings.map.recherche.label}</h2>
+						</f:then>
+						<f:else>
+							<h2>{f:translate(key: 'map.recherche')}</h2>
+						</f:else>
+					</f:if>
+
+					<form id="eGmapRecherche__{settings.map.mapUniqId}" action="#">
+						<fieldset>
+							<legend>Recherche d'itinéraire</legend>
+							<div class="form-group single">
+								<label for="eGmapAdress__{settings.map.mapUniqId}">{f:translate(key: 'map.addresse')}</label>
+								<input id="eGmapAdress__{settings.map.mapUniqId}" type="text">
+							</div>
+							<input type="submit" value="Ok" >
+							<f:comment><input type="submit" value="{f:translate(key: 'map.reinit')}" onclick="eGmapSearchReset()"></f:comment>
+						</fieldset>
+					</form>
+				</div>
+			</f:if>
+
+			<f:if condition="{settings.map.itineraire.actif}">
+				<div class="recherche_gmap">
+					<f:if condition="{settings.map.itineraire.label}">
+						<f:then>
+							<h2>{settings.map.itineraire.label}</h2>
+						</f:then>
+						<f:else>
+							<h2>{f:translate(key: 'map.itineraire')}</h2>
+						</f:else>
+					</f:if>
+
+					<form id="eGmapItineraire__{settings.map.mapUniqId}" action="#">
+						<fieldset>
+							<legend>Recherche d'itinéraire</legend>
+							<div class="wrap">
+								<div class="form-group double">
+									<label for="eGmapAdress1__{settings.map.mapUniqId}">{f:translate(key: 'map.depart')}</label>
+									<input id="eGmapAdress1__{settings.map.mapUniqId}" type="textbox">
+								</div>
+								<div class="form-group double">
+									<label for="eGmapAdress2__{settings.map.mapUniqId}">{f:translate(key: 'map.arrivee')}</label>
+									<input id="eGmapAdress2__{settings.map.mapUniqId}" type="textbox">
+								</div>
+							</div>
+							<div class="select">
+								<f:if condition="{settings.map.itineraire.show}">
+									<div class="field">
+										<label for="eGmapType__{settings.map.mapUniqId}">Moyen de transport</label>
+										<select id="eGmapType__{settings.map.mapUniqId}">
+											<option value="DRIVING" <f:if condition="{settings.map.itineraire.type}=='DRIVING'">selected="selected"</f:if>>{f:translate(key: 'travel.DRIVING')}</option>
+											<option value="WALKING" <f:if condition="{settings.map.itineraire.type}=='WALKING'">selected="selected"</f:if>>{f:translate(key: 'travel.WALKING')}</option>
+											<option value="BICYCLING" <f:if condition="{settings.map.itineraire.type}=='BICYCLING'">selected="selected"</f:if>>{f:translate(key: 'travel.BICYCLING')}</option>
+											<option value="TRANSIT" <f:if condition="{settings.map.itineraire.type}=='TRANSIT'">selected="selected"</f:if>>{f:translate(key: 'travel.TRANSIT')}</option>
+										</select>
+									</div>
+								</f:if>
+							</div>
+							<input type="submit" value="Ok" >
+							<f:comment><input type="submit" value="{f:translate(key: 'map.reinit')}" onclick="eGmapItineraireReset()"></f:comment>
+						</fieldset>
+					</form>
+					<f:if condition="{settings.map.itineraire.panel}">
+					<div id="eGmapItinerairePanel__{settings.map.mapUniqId}" ></div>
+					</f:if>
+				</div>
+			</f:if>
+			
+			
+			<f:if condition="{settings.map.recherche.actif}">
+				<f:then>
+					</div>
+				</f:then>
+				<f:else>
+					<f:if condition="{settings.map.itineraire.actif}">
+						</div>
+					</f:if>
+				</f:else>
+			</f:if>
+
+			<f:if condition="{settings.poi.liste}">
+				<f:render partial="Map/Pois" arguments="{pois: pois, settings: settings}" />
+			</f:if>
+
+		</f:then>
+		<f:else>
+			<h1>No configuration found</h1>
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="wizard">
+	<f:if condition="{settings.map}">
+		<f:then>
+			<map:displayMap settings="{settings}" eGmapPois="{eGmapPois}" eGmapKmls="{eGmapKmls}" width="100%" height="100%" />
+
+			<div id="eGmapPanel" style="background-position: bottom center; position: fixed; bottom: 0px; width: 100%; padding: 0; margin: 0; background-color: white;" >
+				<form id="eGmapRecherche__{settings.map.mapUniqId}" action="#">
+					<input id="eGmapAdress__{settings.map.mapUniqId}" type="textbox" placeholder="Entrez votre adresse">
+					<input type="submit" value="Chercher!" >
+					<input id="eGmapSearchReset__{settings.map.mapUniqId}" type="button" value="Reset" >
+					<input id="eGmapSearchSave__{settings.map.mapUniqId}" type="button" value="Choisir" >
+				</form>
+			</div>
+		</f:then>
+		<f:else>
+			<h1>No configuration found</h1>
+		</f:else>
+	</f:if>
+
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+		}
+		.eGmapRecherche {
+			padding: 5px;
+		}
+		.eGmapPanel{
+			position: absolute;
+			top: 5px;
+			left: 50%;
+			margin-left: -180px;
+			z-index: 5;
+			background-color: #fff;
+			padding: 5px;
+			border: 1px solid #999;
+		}
+	</style>
+</f:section>

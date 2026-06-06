@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:pingag_address/Resources/Private/Language/locallang.xlf" date="2022-06-01T11:51:25Z" product-name="pingag_address">
+		<header/>
+		<body>
+			<trans-unit id="tx_pingagaddress_domain_model_map.verfasser" resname="tx_pingagaddress_domain_model_map.verfasser">
+				<source>Auteur:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.szblindnummer" resname="tx_pingagaddress_domain_model_map.szblindnummer">
+				<source>ISBN:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.verlag" resname="tx_pingagaddress_domain_model_map.verlag">
+				<source>Lieu/Édition:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.seitenanzahl" resname="tx_pingagaddress_domain_model_map.seitenanzahl">
+				<source>Nombre de pages:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.jahr" resname="tx_pingagaddress_domain_model_map.jahr">
+				<source>Année:</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.zusatzinfo" resname="tx_pingagaddress_domain_model_map.zusatzinfo">
+				<source>plus d'informations:</source>
+			</trans-unit>
+           <trans-unit id="tx_pingagaddress_domain_model_map.contacts.beschreibung" resname="tx_pingagaddress_domain_model_map.contacts.beschreibung">
+				<target>Description</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.category" resname="tx_pingagaddress_domain_model_map.contacts.category">
+				<target>Catégorie</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all" resname="tx_pingagaddress_domain_model_map.contacts.all">
+				<target>Toutes</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.canton" resname="tx_pingagaddress_domain_model_map.contacts.canton">
+				<target>Canton</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all2" resname="tx_pingagaddress_domain_model_map.contacts.all2">
+				<target>Tous</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all-dd1" resname="tx_pingagaddress_domain_model_map.contacts.all-dd1">
+				<target>Tous</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all-dd2" resname="tx_pingagaddress_domain_model_map.contacts.all-dd2">
+				<target>Toutes</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.all-dd3" resname="tx_pingagaddress_domain_model_map.contacts.all-dd3">
+				<target>Tous</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.contacts.searchFor" resname="tx_pingagaddress_domain_model_map.contacts.searchFor">
+				<target>Chercher</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.contacts.searchPlaceholder" resname="tx_pingagaddress_domain_model_map.contacts.searchPlaceholder">
+				<target>Entrez le terme cherché </target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.contacts.title" resname="tx_pingagaddress_domain_model_map.contacts.title">
+				<target>Contacts</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.contacts.accordionTitle" resname="tx_pingagaddress_domain_model_map.contacts.accordionTitle">
+				<target>Contact</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.stk" resname="tx_pingagaddress_domain_model_map.stk">
+				<source>stk. dans le panier</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.anzahl" resname="tx_pingagaddress_domain_model_map.anzahl">
+				<target>Quantité</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.downloadPDF" resname="tx_pingagaddress_domain_model_map.downloadPDF">
+				<source>Télécharger le PDF</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.downloadDOC" resname="tx_pingagaddress_domain_model_map.downloadDOC">
+				<source>Download Word grandes lettres</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.accordionDetail" resname="tx_pingagaddress_domain_model_map.accordionDetail">
+				<source>Détail</source>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.articleInfo" resname="tx_pingagaddress_domain_model_map.articleInfo">
+				<source>Disponible en PDF</source>
+			</trans-unit>
+             <trans-unit id="tx_pingagaddress_domain_model_map.notFound" resname="tx_pingagaddress_domain_model_map.notFound">
+				<source>Aucun produit trouvé.</source>
+			</trans-unit>
+             <trans-unit id="tx_pingagaddress_domain_model_map.notFoundKurse" resname="tx_pingagaddress_domain_model_map.notFoundKurse">
+				<source>Aucun cours trouvé.</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.locationnotFound" resname="tx_pingagaddress_domain_model_map.locationnotFound">
+				<source>Aucune adresse trouvée.</source>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.accept_privacy_policy_with_link">
+                <target>J'ai lu <![CDATA[<a href="%1$s" target="%2$s">la politique de confidentialité</a>]]> et je l'accepte.</target>
+            </trans-unit>
+             <trans-unit id="tx_pingagaddress_domain_model_map.accept_terms_and_conditions_with_link">
+                 <target>J'ai lu les <![CDATA[<a href="%1$s" target="%2$s">conditions générales</a>]]> et je les accepte.</target>
+             </trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.gratuit" resname="tx_pingagaddress_domain_model_map.gratuit">
+ 				<source>Gratuit</source>
+ 			</trans-unit>
+             <trans-unit id="tx_pingagaddress_domain_model_map.registrationDeadline" resname="tx_pingagaddress_domain_model_map.registrationDeadline">
+  				<source>Délai d’inscription</source>
+  			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.dropdownSpringe" resname="tx_pingagaddress_domain_model_map.dropdownSpringe">
+ 				<target>Aller au sujet</target>
+ 			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.update" resname="tx_pingagaddress_domain_model_map.update">
+				<target>Les résultats ont été mis à jour</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.search" resname="tx_pingagaddress_domain_model_map.contacts.search">
+				<target>Recherche</target>
+			</trans-unit>
+
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.mehrfach1" resname="tx_pingagaddress_domain_model_communication.label.mehrfach1">
+				<target>Pour sélectionner plusieurs options:</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.mehrfach2" resname="tx_pingagaddress_domain_model_communication.label.mehrfach2">
+				<target>Windows : touche Ctrl, Mac : touche Cmd</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.mehrfach3" resname="tx_pingagaddress_domain_model_communication.label.mehrfach3">
+				<target>Maintenir la touche enfoncée et cliquer sur les options souhaitées.</target>
+			</trans-unit>
+
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.geschlecht" resname="tx_pingagaddress_domain_model_communication.label.geschlecht">
+				<target>Sexe</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.alle" resname="tx_pingagaddress_domain_model_communication.label.alle">
+				<target>Tous</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.andere" resname="tx_pingagaddress_domain_model_communication.label.andere">
+				<target>Autres</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.muttersprache" resname="tx_pingagaddress_domain_model_communication.label.muttersprache">
+				<target>Langue maternelle</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.techniken" resname="tx_pingagaddress_domain_model_communication.label.techniken">
+				<target>Techniques</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.deletefilter" resname="tx_pingagaddress_domain_model_communication.label.deletefilter">
+				<target>réinitialiser tous les filtres</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.egal" resname="tx_pingagaddress_domain_model_communication.label.egal">
+				<target>Peu importe</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.hoerstatus" resname="tx_pingagaddress_domain_model_communication.label.hoerstatus">
+				<target>Statut auditif</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.hoerend" resname="tx_pingagaddress_domain_model_communication.label.hoerend">
+				<target>entendant</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.weiteresprachen" resname="tx_pingagaddress_domain_model_communication.label.weiteresprachen">
+				<target>Autres langues</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.einsatzort" resname="tx_pingagaddress_domain_model_communication.label.einsatzort">
+				<target>Lieu d'intervention</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.gehoerlos" resname="tx_pingagaddress_domain_model_communication.label.gehoerlos">
+				<target>Sourd</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.autonotwendig" resname="tx_pingagaddress_domain_model_communication.label.autonotwendig">
+				<target>Voiture nécessaire</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.kontakte" resname="tx_pingagaddress_domain_model_communication.label.kontakte">
+				<target>Contacts</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.neutral" resname="tx_pingagaddress_domain_model_communication.label.neutral">
+				<target>Neutre</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.nein" resname="tx_pingagaddress_domain_model_communication.label.nein">
+				<target>Non</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.ja" resname="tx_pingagaddress_domain_model_communication.label.ja">
+				<target>Oui</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.mann" resname="tx_pingagaddress_domain_model_communication.label.mann">
+				<target>Monsieur</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.frau" resname="tx_pingagaddress_domain_model_communication.label.frau">
+				<target>Madame</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.andere" resname="tx_pingagaddress_domain_model_communication.label.andere">
+				<target>Autres</target>
+			</trans-unit>
+			
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.dch" resname="tx_pingagaddress_domain_model_communication.label.dch">
+				<target>D-CH</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.romandie" resname="tx_pingagaddress_domain_model_communication.label.romandie">
+				<target>Suisse Romande</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.ti" resname="tx_pingagaddress_domain_model_communication.label.ti">
+				<target>TI</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.ganzeschweiz" resname="tx_pingagaddress_domain_model_communication.label.ganzeschweiz">
+				<target>Toute la Suisse</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.ausland" resname="tx_pingagaddress_domain_model_communication.label.ausland">
+				<target>Étranger</target>
+			</trans-unit>
+			
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.wohnort" resname="tx_pingagaddress_domain_model_communication.label.wohnort">
+				<target>Domicile</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.phone" resname="tx_pingagaddress_domain_model_communication.label.phone">
+				<target>Téléphone</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.mobile" resname="tx_pingagaddress_domain_model_communication.label.mobile">
+				<target>Mobile</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.mail" resname="tx_pingagaddress_domain_model_communication.label.mail">
+				<target>E-mail</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.geburtsjahr" resname="tx_pingagaddress_domain_model_communication.label.geburtsjahr">
+				<target>Année de naissance</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.hoerstatus" resname="tx_pingagaddress_domain_model_communication.label.hoerstatus">
+				<target>Statut auditif</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.hoerend" resname="tx_pingagaddress_domain_model_communication.label.hoerend">
+				<target>Entendu</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.kommunikationsformen" resname="tx_pingagaddress_domain_model_communication.label.kommunikationsformen">
+				<target>Formes de communication</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.verfuegbarkeit" resname="tx_pingagaddress_domain_model_communication.label.verfuegbarkeit">
+				<target>Disponibilité</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.einsatzgebiet" resname="tx_pingagaddress_domain_model_communication.label.einsatzgebiet">
+				<target>Région d’intervention</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.auto" resname="tx_pingagaddress_domain_model_communication.label.auto">
+				<target>Voiture</target>
+			</trans-unit>
+
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.oral" resname="tx_pingagaddress_domain_model_communication.label.oral">
+				<target>oral</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.written" resname="tx_pingagaddress_domain_model_communication.label.written">
+				<target>par écrit</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.und" resname="tx_pingagaddress_domain_model_communication.label.und">
+				<target>et</target>
+			</trans-unit>
+			
+			<trans-unit id="tx_pingagaddress_domain_model_communication.label.spezielle" resname="tx_pingagaddress_domain_model_communication.label.spezielle">
+				<target>Compétences spécifiques</target>
+			</trans-unit>
+            <trans-unit id="tx_cart_domain_model_order_item.entendu" resname="tx_cart_domain_model_order_item.entendu">
+				<target>Comment avez-vous entendu parler de nous ?</target>
+			</trans-unit>
+			<trans-unit id="tx_cart_domain_model_order_item.donation" resname="tx_cart_domain_model_order_item.donation">
+				<target>Grâce aux dons, nous pouvons distribuer gratuitement la plupart de notre matériel d'information. Souhaitez-vous également contribuer à notre travail en faveur des personnes en situation de de handicap visuel ou de surdicécité ?</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_communication.label.print" resname="tx_pingagaddress_domain_model_communication.label.print">
+				<target>Imprimer ou enregistrer la liste</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.angebote" resname="tx_pingagaddress_domain_model_map.contacts.angebote">
+				<target>Offres</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.lebensalter" resname="tx_pingagaddress_domain_model_map.contacts.lebensalter">
+				<target>Âge</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.zip" resname="tx_pingagaddress_domain_model_map.contacts.zip">
+				<target>Code Postal</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.umkreis" resname="tx_pingagaddress_domain_model_map.contacts.umkreis">
+				<target>Rayon (km) pour la recherche d’offres</target>
+			</trans-unit>
+			<trans-unit id="tx_pingagaddress_domain_model_map.contacts.umkreisHint" resname="tx_pingagaddress_domain_model_map.contacts.umkreisHint">
+				<target>(Les coordonnées doivent être fournies avec l’offre.)</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.benutzers" resname="tx_pingagaddress_domain_model_map.contacts.benutzers">
+				<target>Modifier les informations de l'utilisateur</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.dienstleistungen" resname="tx_pingagaddress_domain_model_map.contacts.dienstleistungen">
+				<target>Prestations de service</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.kantone" resname="tx_pingagaddress_domain_model_map.contacts.kantone">
+				<target>Canton</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.dienstleister" resname="tx_pingagaddress_domain_model_map.contacts.dienstleister">
+				<target>Fournisseur de services</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.stadt" resname="tx_pingagaddress_domain_model_map.contacts.stadt">
+				<target>Ville</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.land" resname="tx_pingagaddress_domain_model_map.contacts.land">
+				<target>Pays</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.telefon" resname="tx_pingagaddress_domain_model_map.contacts.telefon">
+				<target>Téléphone</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.email" resname="tx_pingagaddress_domain_model_map.contacts.email">
+				<target>E-Mail</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.angebotTitel" resname="tx_pingagaddress_domain_model_map.contacts.angebotTitel">
+				<target>Titre de l'offre</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.submit_edit" resname="tx_pingagaddress_domain_model_map.contacts.submit_edit">
+				<target>reprendre</target>
+			</trans-unit>
+            <trans-unit id="tx_pingagaddress_domain_model_map.contacts.submit_password" resname="tx_pingagaddress_domain_model_map.contacts.submit_password">
+				<target>Sauvegarder</target>
+			</trans-unit>
+             <trans-unit id="tx_cart_domain_model_order_item.donation" resname="tx_cart_domain_model_order_item.donation">
+				<target>Grâce aux dons, nous pouvons fournir gratuitement la plupart du matériel d'information. Souhaitez-vous également contribuer à notre travail en faveur des personnes ayant une déficience visuelle et auditive ?</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

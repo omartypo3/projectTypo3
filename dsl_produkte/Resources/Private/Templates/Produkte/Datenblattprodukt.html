@@ -1,0 +1,111 @@
+{namespace sp = DslFactory\DslProdukte\ViewHelpers}
+
+
+     
+    <sp:fpdf filename="fileadmin/datenblaetter/salzgitter_{produkt.alias}.pdf" tstamp="{produkt.tstamp}">
+       <sp:ppage>
+
+            <sp:ptext text="{produkt.titel}" width="120" height="15" rgb="{r:255,g:104,b:37}" size="22" font="colabthi" />
+            
+            <sp:ptext text="generiert am {datum}" width="59" height="20" rgb="{r:135,g:135,b:135}" size="6" font="opensans-regular" align="R" />
+            
+            <sp:pline rgb="{r:170,g:170,b:170}" width="179" lineWidth="0.08" spaceBefore="15" spaceAfter="2" />
+            
+            
+
+	<f:if condition="{produkt.bilder -> f:count()}">
+	    <sp:pspacer height="2" />
+        <f:for each="{produkt.bilder}" as="image"  iteration="katIterator">
+	        
+            <sp:pimage url="{image.originalResource.publicUrl}" pageWidth="179" heightMax="40" nr="{katIterator.index}" spacer="9" total="{katIterator.total}" />
+        
+        </f:for>
+
+        <sp:pline rgb="{r:170,g:170,b:170}" width="179" lineWidth="0.08" spaceBefore="4" spaceAfter="4" />
+      </f:if>
+
+
+
+
+<sp:ptext text="Artikelnummer:" width="40" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+<sp:ptext text="{produkt.artikelnummer}" width="75" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+
+<f:if condition="{produkt.preis}">
+    <f:then>
+        <sp:ptext text="Preis: {produkt.preis -> f:format.currency(currencySign:'EUR', decimalSeparator: ',', thousandsSeparator: '.')} *" width="64" height="10" rgb="{r:135,g:135,b:135}" size="14" font="opensans-regular" align="R" />
+    </f:then>
+    <f:else>
+        <sp:ptext text="Preis: auf Anfrage" width="64" height="10" rgb="{r:135,g:135,b:135}" size="14" font="opensans-regular" align="R" />
+    </f:else>
+
+</f:if> 
+<sp:pspacer height="6" />
+
+
+
+<sp:pline rgb="{r:200,g:200,b:200}" width="125" lineWidth="0.1" spaceAfter="1" spaceBefore="1" />
+<sp:ptext text="Produktname:" width="40" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+<sp:ptext text="{produkt.titel}" width="75" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" spaceAfter="6" />
+
+
+		          
+            <f:if condition="{produkt.kategorien}">
+	            <sp:pline rgb="{r:200,g:200,b:200}" width="125" lineWidth="0.1" spaceAfter="1" spaceBefore="1" />
+                <sp:ptext text="Kategorie:" width="40" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+            	<f:for each="{produkt.kategorien}" as="kategorie" iteration="katIterator">
+                	<f:if condition="{katIterator.cycle} > 1">
+                    	<sp:ptext text=" / " height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+                    </f:if>
+                    <sp:ptext text="{kategorie.titel}" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+                </f:for>
+               <sp:pspacer height="6" />
+            </f:if>
+            
+            <f:if condition="{produkt.anwendungsbereiche}">
+            	<sp:pline rgb="{r:200,g:200,b:200}" width="125" lineWidth="0.1" spaceAfter="1" spaceBefore="1" />
+                <sp:ptext text="Anwendungsbereich:" width="40" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+            	<f:for each="{produkt.anwendungsbereiche}" as="anwendungsbereich" iteration="katIterator">
+                	<f:if condition="{katIterator.cycle} > 1">
+                    	<sp:ptext text=" / " height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+                    </f:if>
+                    <sp:ptext text="{anwendungsbereich.titel}" height="6" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+                </f:for>
+                <sp:pspacer height="6" />
+            </f:if>
+            
+            
+            
+            <sp:pline rgb="{r:170,g:170,b:170}" width="179" lineWidth="0.08" spaceAfter="4" spaceBefore="4" />
+            
+             
+            
+            
+            <f:if condition="{produkt.technischedaten}">
+            	
+                
+            
+            	<sp:ptext text="Technische Daten:" width="120" height="10" rgb="{r:0,g:0,b:0}" size="12" font="colabmed" transform="{0:'upper'}" spaceAfter="10" />
+              	<f:for each="{produkt.technischedaten}" as="zeile" >
+    	          	<sp:ptext text="- {zeile}" height="5" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+                    <sp:pspacer height="5" />
+              	</f:for>
+              	<sp:ptext text=" " width="120" height="2" rgb="{r:0,g:0,b:0}" size="12" font="colabmed" transform="{0:'upper'}" />
+                
+            	 <sp:pspacer height="2" />
+                    
+            </f:if>
+            
+          
+            <sp:ptext text="Beschreibung:" width="120" height="10" rgb="{r:0,g:0,b:0}" size="12" font="colabmed" transform="{0:'upper'}" spaceAfter="1" />
+            
+            <sp:phtml text="{produkt.text -> f:format.html()}" rgb="{r:0,g:0,b:0}" size="10" font="opensans-regular" />
+            
+            <sp:pspacer height="5" />
+            <sp:ptext text="* Alle Preise verstehen sich zzgl. 19% MwSt. Das Angebot auf unserer Webseite richtet sich an gewerbliche Kundschaft."  height="10" rgb="{r:135,g:135,b:135}" size="8" font="opensans-regular" />
+            
+           
+            
+       </sp:ppage>
+    </sp:fpdf>
+    
+    

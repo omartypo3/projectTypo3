@@ -1,0 +1,50 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/Styles/allgemein.css" name="cssAllgemein" dependencies="bootstrap"></v:asset.style>		
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/Styles/news_angebote.css" name="cssNewsAngebote" dependencies="bootstrap"></v:asset.style>	
+	
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/moment-with-locales.min.js" name="jsMoment" dependencies="jquery"></v:asset.script>
+	
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>	
+	
+<v:asset.script path="EXT:dsl_intranet/Resources/Private/Templates/News/List.js" name="dslintranetnewslistjs" />
+	
+	<div class="row outerRow">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<f:link.action action="new" pageType="89657001" class="doAjaxEdit btn tableBtnAdd" additionalAttributes="{data-colorbox-width: '700px', data-colorbox-height: '700px'}"><i class="bb-plus bb-lg"></i><span>  Neue News / Neues Angebot</span></f:link.action>
+		</div>
+	</div>
+		
+	<f:comment><!-- class="listNewsEntryWrapper" --></f:comment>
+	<div id="newsListWrapper" class="row outerRow">
+		<f:for each="{news}" as="newsItem">
+			<f:render partial="News/ListRow" arguments="{_all}" />         
+		</f:for>
+	</div>
+
+	
+	
+	
+
+
+	
+</f:section>
+	
+	
+	
+</html>

@@ -1,0 +1,536 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    853,
+                    65
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+                        "search",
+                        "showzubehoer",
+                        "sort",
+                        "ajax"
+                    ]
+                },
+                "name": "Produkte",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "1272208638852"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Alias f\u00fcr Suchmaschinen",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "alias",
+                            "propertyType": "String",
+                            "uid": "1113867177559"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Artikelnummer",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "artikelnummer",
+                            "propertyType": "String",
+                            "uid": "1149412239365"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Produkttitel",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "titel",
+                            "propertyType": "String",
+                            "uid": "173878094122"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Produktpreis Netto in EUR \/ ohne Preis -> Preis auf Anfrage",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "preis",
+                            "propertyType": "Float",
+                            "uid": "902863267115"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Kurzbeschreibung",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "teaser",
+                            "propertyType": "Text",
+                            "uid": "1194473617242"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Produktbeschreibung \/ Ausstattung",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "text",
+                            "propertyType": "RichText",
+                            "uid": "537099906695"
+                        },
+                        {
+                            "allowedFileTypes": "pdf,doc,xls,docx,xlsx",
+                            "maxItems": "1",
+                            "propertyDescription": "Technische Daten",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "technischedaten",
+                            "propertyType": "Text",
+                            "uid": "722077888701"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Keywords f\u00fcr Suchmaschinen",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "keywords",
+                            "propertyType": "String",
+                            "uid": "576590752912"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "4",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "bilder",
+                            "propertyType": "Image",
+                            "uid": "147675585029"
+                        },
+                        {
+                            "allowedFileTypes": "pdf,doc,xls,docx,xlsx",
+                            "maxItems": "1",
+                            "propertyDescription": "Anlagen wie z.B. Datenbl\u00e4tter",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "anlage",
+                            "propertyType": "File",
+                            "uid": "761741587190"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "Auswahl der Anwendungsbereiche",
+                            "relationName": "anwendungsbereiche",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "389705050853"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "M\u00f6gliche Zubeh\u00f6rprodukte",
+                            "relationName": "zubehoer",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "363620095787"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "Auswahl der Kategorien",
+                            "relationName": "kategorien",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "184250912006"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    124,
+                    116
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+
+                    ]
+                },
+                "name": "Anwendungsbereiche",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": false,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "1112637184924"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Name des Anwendungsbereich",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "titel",
+                            "propertyType": "String",
+                            "uid": "1223122591195"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    1103,
+                    69
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+
+                    ]
+                },
+                "name": "Zubehoer",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "613810774835"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Alias f\u00fcr Suchmaschinen",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "alias",
+                            "propertyType": "String",
+                            "uid": "220834964294"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Artikelnummer",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "artikelnummer",
+                            "propertyType": "String",
+                            "uid": "1215987427984"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Produkttitel",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "titel",
+                            "propertyType": "String",
+                            "uid": "484867362178"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Produktpreis Netto in EUR \/ ohne Preis -> Preis auf Anfrage",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "preis",
+                            "propertyType": "Float",
+                            "uid": "1075531204473"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Kurzbeschreibung",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "teaser",
+                            "propertyType": "Text",
+                            "uid": "67658935632"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Produktbeschreibung \/ Ausstattung",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "text",
+                            "propertyType": "RichText",
+                            "uid": "1369143626026"
+                        },
+                        {
+                            "allowedFileTypes": "pdf,doc,xls,docx,xlsx",
+                            "maxItems": "1",
+                            "propertyDescription": "Technische Daten",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "technischedaten",
+                            "propertyType": "Text",
+                            "uid": "1108413231978"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Keywords f\u00fcr Suchmaschinen",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "keywords",
+                            "propertyType": "String",
+                            "uid": "1042527702914"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "4",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "bilder",
+                            "propertyType": "Image",
+                            "uid": "1151102856200"
+                        },
+                        {
+                            "allowedFileTypes": "pdf,doc,xls,docx,xlsx",
+                            "maxItems": "1",
+                            "propertyDescription": "Anlagen wie z.B. Datenbl\u00e4tter",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "anlage",
+                            "propertyType": "File",
+                            "uid": "1315912892333"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "Verkn\u00fcpfte Produkte f\u00fcr welche dieses Zubeh\u00f6r Teil geeignet ist",
+                            "relationName": "produkte",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "444075275802"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    411,
+                    273
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+
+                    ]
+                },
+                "name": "Kategorien",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": false,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "1076087473201"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Name der Kategorie",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "titel",
+                            "propertyType": "String",
+                            "uid": "367493610403"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+
+                    ]
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [
+
+        ],
+        "description": "Ausgabe von Produkten",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 6.2\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "6.2",
+            "version": ""
+        },
+        "extensionKey": "dsl_produkte",
+        "name": "Produkte",
+        "originalExtensionKey": "dsl_produkte",
+        "persons": [
+            {
+                "company": "dsl factory design GbR",
+                "email": "mz@dsl-factory.de",
+                "name": "Mike Zimmer",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Produkte => list,search,show,showzubehoer,sort",
+                    "noncacheableActions": "Produkte => list,search,show,showzubehoer,sort",
+                    "switchableActions": ""
+                },
+                "key": "Produktsuche",
+                "name": "Produktsuche"
+            }
+        ],
+        "vendorName": "DslFactory"
+    },
+    "wires": [
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_0",
+                "uid": "389705050853"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "1112637184924"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_1",
+                "uid": "363620095787"
+            },
+            "tgt": {
+                "moduleId": 2,
+                "terminal": "SOURCES",
+                "uid": "613810774835"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 2,
+                "terminal": "relationWire_0",
+                "uid": "444075275802"
+            },
+            "tgt": {
+                "moduleId": 0,
+                "terminal": "SOURCES",
+                "uid": "1272208638852"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_2",
+                "uid": "184250912006"
+            },
+            "tgt": {
+                "moduleId": 3,
+                "terminal": "SOURCES",
+                "uid": "1076087473201"
+            }
+        }
+    ],
+    "log": {
+        "last_modified": "2015-02-06 10:35",
+        "extension_builder_version": "6.2.0",
+        "be_user": " (1)"
+    }
+}

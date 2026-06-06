@@ -1,0 +1,21 @@
+<!--TYPO3SEARCH_end-->
+  
+<div class="bookmark-sidebar-entries{f:if(condition: immobilien, else: ' empty')}">
+
+	<div class="bookmark-sidebar-empty-wrapper">Merkliste ist leer.</div>
+	<f:for each="{immobilien}" as="immobilie" iteration="iterator">
+		<f:render partial="Immobilie/BookmarksItem" arguments="{_all}" />
+	</f:for>
+
+	<div><f:comment><f:link.action class="link-arrow" pageUid="{settings.listPid}" pluginName="immobookmark" action="bookmarksfull">zur Liste</f:link.action></f:comment><f:link.page class="link-arrow" pageUid="{settings.listPid}">zur Liste</f:link.page></div>
+
+</div>
+
+<v:asset.style name="dslimmocssinline" >
+	.bookmark-sidebar-entries:not(.empty) .bookmark-sidebar-empty-wrapper{
+		display:none;
+	}
+</v:asset.style>
+<v:asset.script path="EXT:dsl_immo/Resources/Public/js/bookmarks.js" name="dslimmobmjs" dependencies="jquery,script" />
+
+<!--TYPO3SEARCH_begin-->

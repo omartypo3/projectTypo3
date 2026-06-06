@@ -1,0 +1,98 @@
+/* CSS Document */
+
+@import url(dsl_iconfont/style.css);
+
+/*
+icons im format dsl-xxx.png in folgendes Verzeichnis legen:
+typo3conf/ext/bootstrap_package/Resources/Public/Images/Icons/Ionicons/
+z.B. dsl-disk.png
+*/
+[class^="ion-dsl-"], [class*=" ion-dsl-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'dsl-hermes' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ion-dsl-hermes-house:before {
+  content: "\e900";
+}
+.ion-dsl-arrow-down:before {
+  content: "\e901";
+}
+.ion-dsl-arrow-left:before {
+  content: "\e902";
+}
+.ion-dsl-arrow-right:before {
+  content: "\e903";
+}
+.ion-dsl-arrow-up:before {
+  content: "\e904";
+}
+.ion-dsl-minus:before {
+  content: "\e905";
+}
+.ion-dsl-plus:before {
+  content: "\e906";
+}
+.ion-dsl-tick:before {
+  content: "\e907";
+}
+.ion-dsl-envelope:before {
+  content: "\e908";
+}
+.ion-dsl-phone:before {
+  content: "\e909";
+}
+.ion-dsl-contract-house:before {
+  content: "\e90a";
+}
+.ion-dsl-detailview-apartement:before {
+  content: "\e90b";
+}
+.ion-dsl-detailview-house:before {
+  content: "\e90c";
+}
+.ion-dsl-document-certificate:before {
+  content: "\e90d";
+}
+.ion-dsl-document-download:before {
+  content: "\e90e";
+}
+.ion-dsl-hammer:before {
+  content: "\e90f";
+}
+.ion-dsl-handshake:before {
+  content: "\e910";
+}
+.ion-dsl-heart:before {
+  content: "\e911";
+}
+.ion-dsl-heart-add:before {
+  content: "\e912";
+}
+.ion-dsl-house-question:before {
+  content: "\e913";
+}
+.ion-dsl-houses:before {
+  content: "\e914";
+}
+.ion-dsl-sprechblasen:before {
+  content: "\e915";
+}
+.ion-dsl-angebot:before {
+  content: "\e916";
+}
+.ion-dsl-bewertung:before {
+  content: "\e917";
+}
+.ion-dsl-wertanlageico:before {
+  content: "\e918";
+}

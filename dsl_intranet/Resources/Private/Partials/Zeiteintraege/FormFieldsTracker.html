@@ -1,0 +1,76 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<div class="form_headline">
+	<strong>Trackingdaten</strong>
+    <hr>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Datum
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <strong>{zeiteintraege.begin->f:format.date(format: 'd.m.Y')}</strong>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">Sichtbarkeit</div>
+        <div class="layout-table-col table-formular-medium-2">
+        	
+            
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="sichtbarkeit" value="1"  checked="{auftraege.sichtbarkeit}" />
+                        
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm btnDisabled" style="width:60px;">
+					<f:comment><!--<<input value="1" class="" type="checkbox" checked="{auftraege.sichtbarkeit}">--></f:comment>
+                    
+					<i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+                </label>
+            </div>
+            
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Startzeit
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <strong>{zeiteintraege.begin->f:format.date(format: 'H:i')} Uhr</strong>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-small-2">
+        	Endzeit
+        </div>
+        <div class="layout-table-col table-formular-medium-2">
+        	<strong>{zeiteintraege.end->f:format.date(format: 'H:i')} Uhr</strong>
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	getrackte Zeit
+        </div>
+        <div class="layout-table-col table-formular-large">
+       		<strong><f:render partial="Allgemein/Dauer" arguments="{set: '{dsl:getSetArrayFromTime(time: zeiteintraege.trackerMinutes)}' }" /></strong>
+			
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        
+	</div>
+</div>
+
+<div><f:if condition="{zeiteintraege.zeitnahmeAutoStopped}">Achtung die Aktivität wurde automatisch zum Arbeitsende gestoppt.</f:if></div>
+
+<f:form.hidden class="form-control input-sm" id="minutenGesamt" value="{zeiteintraege.trackerMinutes}" />
+
+
+

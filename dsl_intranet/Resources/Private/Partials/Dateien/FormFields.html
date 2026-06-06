@@ -1,0 +1,140 @@
+{namespace h=DslFactory\DslIntranet\ViewHelpers}
+
+<f:render partial="Scripts/DateienEdit" />
+
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<!--f:render partial="Scripts/DateTimePicker" /-->
+
+<script>
+	 
+	$(function () {
+		
+		$.each( $('.sichtbarkeitCheckbox:checked'), function( key, value ) {
+		$(this).next().children().addClass('active');
+	});
+	$('.sichtbarkeitCheckboxBtn').click(function(e) {
+		
+		if($(this).children('.btn').hasClass('active')){
+
+			$(this).prev('.sichtbarkeitCheckbox').prop( "checked", false );
+
+		} else {
+			$(this).prev('.sichtbarkeitCheckbox').prop( "checked", true );
+		}
+
+	});
+		
+		$('.validator_required').attr('required','required');
+		
+		
+		
+		$('.selectpickerFormular').selectpicker();
+	});
+
+</script>
+
+<div class="form_headline">
+	<strong>Allgemeine Daten</strong>
+    <hr>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Kunde<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	
+        	<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false', data-live-search:'true'}" name="kunde"  class="validator_required selectpicker selectpickerFormular" id="editKunde"  >
+				<option value="">Bitte wählen</option>
+				<f:for each="{kundens}" as="kunde">
+					<f:form.select.option value="{kunde.uid}" selected="{f:if(condition:'{dateien.kunden} == {kunde}',then:'true')}" >{kunde.kundenNameForFilter}</f:form.select.option>
+				</f:for>
+			</f:form.select>
+        	<f:comment><!--
+        	<f:form.select class="validator_required selectpicker selectpickerFormular" name="kunde" options="{kundens}" optionLabelField="kundenNameForFilter" value="{auftraege.kunde}" id="editKunde"  data="{width:'100%', dropup-auto:'false', live-search:'true'}" />-->
+			</f:comment>
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Titel
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="titel" value="{dateien.titel}" class="form-control input-sm" />
+		</div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Typ<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+			<f:comment>	<f:form.select class="validator_required selectpicker selectpickerFormular" name="type" options="{types}"  value="{dateien.type}" id="editType"  data="{width:'100%', dropup-auto:'false'}"  /></f:comment>
+       
+       
+       		<f:form.select additionalAttributes="{data-width:'100%', data-dropup-auto:'false'}" name="type"  class="validator_required selectpicker selectpickerFormular" id="editType"  >
+				<option value="">Bitte wählen</option>
+				<f:for each="{types}" key="typekey" as="type">
+					<f:form.select.option value="{typekey}" selected="{f:if(condition:'{dateien.type} == {typekey}',then:'true')}" >{type}</f:form.select.option>
+				</f:for>
+			</f:form.select>
+       
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-medium">Sichtbar für Kunde</div>
+        <div class="layout-table-col table-formular-small">
+        	
+            
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="sichtbarkeit" value="1"  checked="{dateien.sichtbarkeit}" />
+                        
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm" style="width:60px;">
+                    <input value="1" class="" type="checkbox" checked="{dateien.sichtbarkeit}">
+                    
+					<i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+					
+                </label>
+            </div>
+            
+        </div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Datei<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:if condition="{editForm}">
+				<f:then>
+					<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{dateien.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+						<a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}">{fileoutput.name}</a> // <f:format.bytes>{fileoutput.size}</f:format.bytes>
+					</v:resource.file>
+				</f:then>
+				<f:else>
+					<f:form.upload id="fileUploadDateien" property="datei"></f:form.upload>
+				</f:else>
+			</f:if>
+			
+			<div class="fileUploadTypen">Unterstützte Dateitypen: PDF, JPG, PNG, EPS, CSV, XLS, DOC, ZIP<br><span class="required hidden"><i class="fa fa-info-circle" aria-hidden="true"></i> Ihr Dateityp wird leider nicht unterstützt.</span></div>
+		</div>
+	</div>
+</div>
+
+
+

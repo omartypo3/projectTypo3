@@ -1,0 +1,108 @@
+.tools {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	margin: 0 0 20px 0;
+}
+
+.itemMail a {
+	position: relative;
+	display: block;
+	width: 24px;
+	height: 15px;
+	overflow: hidden;
+	text-indent: -999em;
+	margin: 0 0 0 15px;
+	&:hover, &:focus {
+		opacity: 0.5;
+	}
+}
+
+.itemPrint a {
+	position: relative;
+	display: block;
+	width: 25px;
+	height: 26px;
+	overflow: hidden;
+	text-indent: -999em;
+	margin: 0 0 0 15px;
+	&:hover, &:focus {
+		opacity: 0.5;
+	}
+}
+
+.btnShare {
+	display: block;
+	position: relative;
+	width: 21px;
+	height: 21px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	border:none;
+	background: none;
+	text-indent: -999em;
+	cursor: pointer;
+	outline: none;
+	&:hover, &:focus {
+		opacity: 0.5;
+	}
+}
+
+.social {
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	flex-direction: row;
+    justify-content: space-around;
+	li {
+		list-style: none;
+		a {
+			i {
+				display: flex;
+				height: 35px;
+				width: 35px;
+				background: #000;
+				border-radius: 50%;
+				justify-content: center;
+				align-items: center;
+				&:before {
+					color: #fff;
+				}
+			}
+			&:hover {
+				text-decoration: none;
+				i {
+					opacity: 0.5;
+				}
+			}
+		}
+	}
+	&.visible {
+		display: flex;
+	}
+}
+
+@media (min-width: 768px) {
+	.wrapTools {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		margin: 0 0 20px 0;
+	}
+	.tools {
+		width: auto;
+		margin: 0;
+		padding: 5px 0;
+	}
+	.social {
+		width: auto;
+		margin: 0 30px 0 0;
+		li {
+			margin: 0 10px 0 0;
+		}
+	}
+}

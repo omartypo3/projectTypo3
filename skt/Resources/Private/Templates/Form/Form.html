@@ -1,0 +1,86 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:glos="http://typo3.org/ns/Freelance/Glos/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:variable name="settings">{glos:GetSettings()}</f:variable>
+
+<div class="container aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+    <div class="row gy-4">
+        <div class="col-lg-4">
+            <f:if condition="{f:cObject(typoscriptObjectPath:'lib.currentPageId')} == 6">
+                <f:then>
+                <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                  <a class="bi bi-geo-alt flex-shrink-0" href="https://maps.app.goo.gl/97Pqny6Gi6QtCasT8" target="_BLANK" title="vai a google maps"></a>
+                  <div>
+                    <h3><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:indirizzo" /></h3>
+                    <p>Via Basilicata, 16 42028 Poviglio (RE)</p>
+                  </div>
+                </div>
+                <!-- End Info Item -->
+                <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+                  <a class="bi bi-telephone flex-shrink-0" title="Chiamaci" href="tel:+41912256797"></a>
+                  <div>
+                    <h3><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:Chiamaci" /></h3>
+                    <p>+39 0522 967690</p>
+                  </div>
+                </div>
+                <!-- End Info Item -->
+                <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
+                  <a class="bi bi-envelope flex-shrink-0" title="Manda un Email" href="mailto:info@sktsagl.com"></a>
+                  <div>
+                    <h3><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:manda_email" /></h3>
+                    <p>info@glos.it</p>
+                  </div>
+                </div>
+                </f:then>
+                <f:else>
+                  <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                  <a class="bi bi-geo-alt flex-shrink-0" href="https://maps.app.goo.gl/97Pqny6Gi6QtCasT8" target="_BLANK" title="vai a google maps"></a>
+                  <div>
+                    <h3><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:indirizzo" /></h3>
+                    <p>Via Cancieliere Molo 11</p>
+                  </div>
+                </div>
+                <!-- End Info Item -->
+                <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+                  <a class="bi bi-telephone flex-shrink-0" title="Chiamaci" href="tel:+41912256797"></a>
+                  <div>
+                    <h3><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:Chiamaci" /></h3>
+                    <p>+41 91 225 67 97</p>
+                  </div>
+                </div>
+                <!-- End Info Item -->
+                <div class="info-item d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
+                  <a class="bi bi-envelope flex-shrink-0" title="Manda un Email" href="mailto:info@sktsagl.com"></a>
+                  <div>
+                    <h3><f:translate key="LLL:EXT:glos/Resources/Private/Language/locallang.xlf:manda_email" /></h3>
+                    <p>info@sktsagl.com</p>
+                  </div>
+                </div>
+                </f:else>
+              </f:if>
+              <!-- End Info Item -->
+        </div>
+       <div class="col-lg-8">
+                    <formvh:renderRenderable renderable="{form}">
+                        <formvh:form
+                            object="{form}"
+                            action="{form.renderingOptions.controllerAction}"
+                            method="{form.renderingOptions.httpMethod}"
+                            id="{form.identifier}"
+                            section="{form.identifier}"
+                            enctype="{form.renderingOptions.httpEnctype}"
+                            addQueryString="{form.renderingOptions.addQueryString}"
+                            argumentsToBeExcludedFromQueryString="{form.renderingOptions.argumentsToBeExcludedFromQueryString}"
+                            additionalParams="{form.renderingOptions.additionalParams}"
+                            novalidate="1"
+                        >
+                            <f:render partial="{form.currentPage.templateName}" arguments="{page: form.currentPage}" />
+                            <div class="form-actions">
+                                <f:render partial="Form/Navigation" arguments="{form: form}" />
+                            </div>
+                        </formvh:form>
+                    </formvh:renderRenderable>
+                </div>
+        </div>
+</div>
+</html>

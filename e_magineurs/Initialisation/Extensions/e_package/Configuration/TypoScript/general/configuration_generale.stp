@@ -1,0 +1,188 @@
+page.includeCSS {
+	fancybox = https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.css
+	fancybox.external = 1
+}
+page.javascriptLibs {
+   jQuery = 1
+   # (possible values: latest|1.7.2|…, default: latest)
+   # Note: jQuery.source has to be a CDN like "google" when jQuery.version is not "latest"
+   jQuery.version = latest
+   # (possible values: local|google|jquery|msn, default: local)
+   jQuery.source = google
+   # si noConflict = 1, il faut remplacer les $ par jQuery dans les fichiers js
+   jQuery.noConflict = 0
+}
+page.includeJSFooterlibs {
+	fancybox = https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.20/jquery.fancybox.min.js
+	fancybox {
+		external = 1
+		disableCompression = 1
+		excludeFromConcatenation = 1
+	}
+	jQueryUI < .fancybox
+	jQueryUI = https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js
+	tether < .fancybox
+	tether = https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js
+	bootstrap < .fancybox
+	bootstrap = https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js
+}
+#page.includeJSFooter.basePackage = {$e_package.conf.dossierPublic}/JavaScript/basePackage.js
+
+lib.canonical = TEXT
+lib.canonical {
+	typolink {
+		parameter = {page:uid}
+		parameter.insertData = 1
+		useCacheHash = 1
+		addQueryString = 1
+		addQueryString {
+			method = GET
+			exclude = id
+		}
+		returnLast = url
+	}
+	wrap = <link rel="canonical" href="|" />
+}
+page.headerData.930 < lib.canonical
+
+page.headerData.55 = TEXT
+page.headerData.55 {
+	insertData = 1
+	value (
+		<meta name="msapplication-config" content="none"/>
+	    <!--[if lt IE 9]>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+	    <![endif]-->
+	)
+}
+page.headerData.998 >
+page.meta {
+	description = {$page.meta.description}
+	description.override.field = description
+	author = {$page.meta.author}
+	author.override.field = author
+	keywords = {$page.meta.keywords}
+	keywords.override.field = keywords
+	robots = index,follow
+	robots {
+		override.if.isTrue.field = no_search
+		override = noindex,follow
+	}
+	viewport = width=device-width, initial-scale=1.0, user-scalable=1
+    og:title {
+        attribute = property
+        field = title
+    }
+    og:site_name {
+        attribute = property
+        data = {$e_magineurs.conf.siteTitle}
+    }
+    og:description = {$page.meta.description}
+    og:description {
+        attribute = property
+        field = description
+    }
+    og:image {
+        attribute = property
+        stdWrap.cObject = FILES
+        stdWrap.cObject {
+            references {
+                data = levelfield:-1, media, slide
+            }
+            maxItems = 1
+            renderObj = COA
+            renderObj {
+                10 = IMG_RESOURCE
+                10 {
+                    file {
+                        import.data = file:current:uid
+                        treatIdAsReference = 1
+                        width = 526c
+                        height = 275c
+                    }
+                    stdWrap {
+                        typolink {
+                            parameter.data = TSFE:lastImgResourceInfo|3
+                            returnLast = url
+                            forceAbsoluteUrl = 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+[(request.getQueryParams()['tx_news_pi1'] ?? [])['news'] ?? 0 > 0]
+	page.meta {
+		og:title >
+		og:image >
+		og:description >
+	}
+[end]
+#page.jsFooterInline.919 = FLUIDTEMPLATE
+#page.jsFooterInline.919 {
+#    file = {$e_package.conf.dossierTemplate}/Tracking.js
+#    variables {
+#        UA = TEXT
+#        UA.value = {$e_magineurs.tracking.UA}
+#        cookieTimeout = TEXT
+#        cookieTimeout.value = {$e_magineurs.tracking.cookieTimeout}
+#        showBanner = TEXT
+#        showBanner.value = {$e_magineurs.tracking.showBanner}
+#        lienInfo = TEXT
+#        lienInfo.value = {$e_magineurs.tracking.lienInfo}
+#        askDNTConfirmation = TEXT
+#        askDNTConfirmation.value = {$e_magineurs.tracking.askDNTConfirmation}
+#        createInformAndAskDiv = TEXT
+#        createInformAndAskDiv.value = {$e_magineurs.tracking.createInformAndAskDiv}
+#        opposition = TEXT
+#        opposition.value = {$e_magineurs.tracking.opposition}
+#		dossierLangue = TEXT
+#		dossierLangue.value = LLL:{$e_package.conf.dossierLangue}/locallang.xlf
+#    }
+#}
+page.jsFooterInline.919 >
+
+config {
+	absRefPrefix = auto
+	no_cache = {$config.no_cache}
+	prefixLocalAnchors = all
+	metaCharset = utf-8
+	doctype = html5
+	removeDefaultJS = external
+	inlineStyle2TempFile = 1
+	admPanel = {$config.admPanel}
+	debug = 0
+	cache_period = 86400
+	sendCacheHeaders = 1
+	intTarget =
+	extTarget = _blank
+	disablePrefixComment = 1
+	index_enable = 1
+	index_externals = 1
+	headerComment = {$config.headerComment}
+	tx_realurl_enable = {$config.tx_realurl_enable}
+	simulateStaticDocuments = 0
+	additionalHeaders {
+		10.header = X-Frame-Options: SAMEORIGIN
+		20.header = Cache-Control: max-age=3600, must-revalidate
+	}
+	linkVars = L
+	uniqueLinkVars = 1
+	sys_language_uid = 0
+	language = fr
+	locale_all = fr_FR.UTF-8
+	htmlTag_langKey = fr
+	htmlTag_setParams = lang="fr" itemscope itemtype="http://schema.org/WebPage"
+	spamProtectEmailAddresses = -3
+	spamProtectEmailAddresses_atSubst = @<span style="display:none;">remove-this.</span>
+	moveJsFromHeaderToFooter = {$config.moveJsFromHeaderToFooter}
+	compressCss = {$config.compressCss}
+	compressJs = {$config.compressJs}
+	concatenateJs = {$config.concatenateJs}
+	concatenateCss = {$config.concatenateCss}
+	tx_extbase.mvc.callDefaultActionIfActionCantBeResolved = 1
+	contentObjectExceptionHandler = 0
+	frontend_editing = 1
+}

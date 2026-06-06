@@ -1,0 +1,70 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Hostingpaket Details'}" />
+
+
+
+	<div>
+    	<h1>Details:</h1>
+        <f:if condition="{hosting.kunde}"><div>Kunde: {hosting.kunde.name}</div></f:if>
+        <f:if condition="{hosting.benutzername}"><div>Benutzername: {hosting.benutzername}</div></f:if>
+        <f:if condition="{hosting.kennwort}"><div>Kennwort: {hosting.kennwort}</div></f:if>
+        <f:if condition="{hosting.statistik}"><div>Statistik: {hosting.statistik}</div></f:if>
+    </div>
+
+
+
+<f:if condition="{hosting.notiz}">
+	<div>
+    	<h1>Notizen:</h1>
+    	<div><f:format.html>{hosting.notiz}</f:format.html></div>
+    </div>
+</f:if>
+
+<f:if condition="{hosting.hauptTarif}">
+	<div>
+    	<h1>Haupttarif:</h1>
+        <div>{hosting.hauptTarif.uid} // {hosting.hauptTarif.domainname} <f:if condition="{hosting.hauptTarif.gekuendigt}">&nbsp;&nbsp;<span class="label label-danger" style="font-weight:normal;">Gekündigt</span></f:if></div>
+    </div>
+</f:if>
+
+<f:if condition="{hosting.zusatzTarif}">
+	<div>
+    	<h1>Zusatztarife:</h1>
+        <f:for each="{hosting.zusatzTarif}" key="key" as="tarif">
+        	<div>{tarif.uid} // {tarif.domainname} <f:if condition="{tarif.gekuendigt}">&nbsp;&nbsp;<span class="label label-danger" style="font-weight:normal;">Gekündigt</span></f:if></div>
+        </f:for>
+    </div>
+</f:if>
+
+<f:if condition="{hosting.rechnungen}">
+    <div>
+        <h1>Rechnungen:</h1>
+            
+        
+        <f:for each="{hosting.rechnungen}" key="key" as="rechnung">
+            <div>{rechnung.uid} // {rechnung.tarif} // {rechnung.domainname} // <f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{rechnung.preis}</f:format.currency> // <f:format.date date="{rechnung.von}" format="m/Y" /> bis <f:format.date date="{rechnung.bis}" format="m/Y" /></div>
+        </f:for>
+    </div>
+</f:if>
+
+
+
+<f:render partial="Allgemein/ColorboxFooter" />    
+
+</f:section>
+

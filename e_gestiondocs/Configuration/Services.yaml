@@ -1,0 +1,41 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EGestiondocs\:
+    resource: '../Classes/*'
+    exclude: 
+      - '../Classes/Domain/Model/*'
+      - '../Classes/Domain/Repository/*'
+      - '../Classes/Updates/*'
+
+  Emagineurs\EGestiondocs\Domain\Repository\:
+    resource: '../Classes/Domain/Repository/*'
+    public: true
+    autowire: true
+    autoconfigure: true
+
+  Emagineurs\EGestiondocs\Controller\:
+    resource: '../Classes/Controller/*'
+    public: true
+    autowire: true
+    autoconfigure: true
+    tags: ['backend.controller']
+
+  Emagineurs\EGestiondocs\Hooks\:
+    resource: '../Classes/Hooks/*'
+    public: true
+
+  Emagineurs\EGestiondocs\ViewHelpers\:
+    resource: '../Classes/ViewHelpers/*'
+    public: true
+
+  Emagineurs\EGestiondocs\Updates\EGestiondocsPluginMigrationUpdate:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'eGestiondocsPluginMigration'
+
+

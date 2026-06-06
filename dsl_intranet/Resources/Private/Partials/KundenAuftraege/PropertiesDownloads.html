@@ -1,0 +1,154 @@
+{namespace h=DslFactory\DslIntranet\ViewHelpers}
+
+
+<div class="content_container">
+
+<div id="downloadsList{auftraege.uid}_addBtn">
+<f:form action="kundenupload" controller="Auftraege" pluginName="kundenlogin" object="{newDateien}" name="newDateien" enctype="multipart/form-data" id="auftraegeUploadFormDownloads{auftraege.uid}" class="auftraegeUploadForm" additionalAttributes="{role:'form'}" data="{auftraege-uid: '{auftraege.uid}'}">
+
+	<div class="hidden"><f:form.upload class="fileUploadAuftraege" property="datei" ></f:form.upload></div>
+    
+	<button data-dismiss="modal" data-type="50" type="submit" class="Download btnAuftraegeNewFinanzDatei confirm btn tableBtnAdd"><i class="fa fa-lg fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;<span>Datei hochladen (nur pdf)&nbsp;</span><span class="fileUploadFilename "></span>&nbsp;<span class="ajaxLoadingDateienBtn">&nbsp;&nbsp;<i class="fa fa-cog fa-spin"></i></span></button>
+ 
+   
+    <div class="hidden auftraegeNewUploadType"><f:form.hidden name="type" value="" /></div>
+    <f:form.hidden name="auftraege" value="{auftraege.uid}" />
+</f:form>
+</div>
+
+
+   
+   
+ 
+ 
+    <table id="downloadsList{auftraege.uid}" class="table table-striped table-bordered downloads table-condensed table-hover" cellspacing="0" width="100%"><thead>
+    <tr>
+       
+        <th>Datei</th>
+        <th>Titel</th>
+		
+        <th>hochgeladen</th>
+  		<th>Erstellt durch</th>
+		<th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+       
+      
+<f:if condition="{auftraege.downloads}"><f:for each="{auftraege.downloads}" as="datei">
+
+	<f:render partial="KundenAuftraege/PropertiesDownloadsListRow" arguments="{_all}" /> 
+ 
+</f:for></f:if>
+       
+       
+    </tbody></table>
+
+       
+<script>             
+	$('#downloadsList'+auftraegeUid).DataTable({
+		 "dom": '<"top"<"float_left addBtnContainer"><"float_left"i>f>rt<"bottom"><"clear">', /*http://datatables.net/examples/basic_init/dom.html*/
+			/*"orderFixed": {	"post": [ 0, 'asc' ]},*/
+			"order": [[ 2, "desc" ]],
+			"columnDefs": [
+				
+				
+				{
+					"targets": [ 0 ],
+					"width": "350px"
+				},
+				{
+					"targets": [ 1 ],
+				},
+				{
+					"targets": [ 2 ],
+					"width": "120px"
+				},
+				{
+					"targets": [ 3 ],
+					"width":'90px',
+					"orderable": false,
+				},	
+				{
+					"targets": [ 4 ],
+					"width": "20px",
+					"orderable": false,
+				},
+			],
+			paging: false,
+			"language": {
+				"decimal":        "",
+				"emptyTable":     "Keine Daten gefunden",
+				"info":           "Einträge: _TOTAL_ ",
+				"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+				"infoFiltered":   " von _MAX_ (gefiltert)",
+				"infoPostFix":    "",
+				"thousands":      ",",
+				"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+				"loadingRecords": "Lädt...",
+				"processing":     "Processing...",
+				"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a><a class="clearFilter"><i class="fa fa-lg fa-times"></i></a>',
+				"searchPlaceholder": "Suche",
+				"zeroRecords":    "Keine Ergebnisse gefunden",
+				"paginate": {
+					"first":      "Erste",
+					"last":       "Letzte",
+					"next":       "Nächste",
+					"previous":   "Vorhergehende"
+				},
+				"aria": {
+					"sortAscending":  ": activate to sort column ascending",
+					"sortDescending": ": activate to sort column descending"
+				}
+			},
+			drawCallback: function () {
+				/*var api = this.api();
+				//$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( api.column( 4,  {page:'current'} ).data().sum() );
+				$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( getZeitraumForMinutes(api.column( 4,  {page:'current'} ).data().sum() ) );
+				
+				*/
+				$( '#'+$(this).attr('id')+'_addBtn'  ).detach().appendTo( '#'+$(this).attr('id')+'_wrapper .addBtnContainer' );
+				
+				/*
+				//$('#'+$(this).attr('id')+' .addBtnContainer').html('abc!!');
+				//.html('bääh');
+			 */
+			 
+			}
+	});
+
+	
+	$('#downloadsList'+auftraegeUid+'_wrapper .clearFilter').on('click', function() {
+		
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		
+		setTimeout(function(){ 
+			$(tmpSelector+' input[type="search"]').val('');
+			$(tmpSelector+' .dataTable').DataTable().search( '' ).draw();
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}, 10);
+	}); 
+	$('#downloadsList'+auftraegeUid+'_wrapper input[type="search"]').keyup(function() {
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		if($(tmpSelector+' input[type="search"]').val()){
+			$(tmpSelector+' .clearFilter').css('opacity',1);
+		} else {
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}
+	});
+	$('#downloadsList'+auftraegeUid+'_wrapper .clearFilter').insertAfter('#downloadsList'+auftraegeUid+'_wrapper input[type="search"]');	
+
+	
+
+
+
+</script>
+    
+    
+    
+    
+    
+
+</div>
+
+

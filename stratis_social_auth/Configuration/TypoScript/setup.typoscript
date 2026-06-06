@@ -1,0 +1,8 @@
+# Templates
+plugin.tx_stratissocialauth {
+  view {
+    templateRootPaths.0 = {$plugin.tx_stratissocialauth.view.templateRootPath}
+    partialRootPaths.0 = {$plugin.tx_stratissocialauth.view.partialRootPath}
+    layoutRootPaths.0 = {$plugin.tx_stratissocialauth.view.layoutRootPath}
+  }
+}

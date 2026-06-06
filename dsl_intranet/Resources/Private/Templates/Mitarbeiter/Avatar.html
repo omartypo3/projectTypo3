@@ -1,0 +1,10 @@
+
+<a id="userAvatarIconReplace" href="#" title="{mitarbeiter.name}"
+   data-mitarbeiter-uid="{mitarbeiter.uid}" data-toggle="dropdown"
+   class="dropdown-toggle userIcon used userAvatarIcon"
+   onClick="toggleAuftraegeMitarbeiter(this);return false;"
+   style="<f:if condition='{mitarbeiter.avatar}'>
+             background-image: url({f:uri.image(image: mitarbeiter.avatar, width: 120, height: 120)});
+          </f:if> border-color: {mitarbeiter.farbe};">
+    <span class="label label-danger notification-counter" data-notification-ungelesen="0">0</span>
+</a>

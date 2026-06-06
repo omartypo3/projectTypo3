@@ -1,0 +1,77 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">	
+
+
+
+	<f:if condition="{settings.expandedContent}">
+		<f:cObject typoscriptObjectPath="lib.content.top" />
+	</f:if>
+	<f:if condition="{be_layout}">
+	<f:then>
+		<f:if condition="{be_layout} == 't3sbootstrap_1'">
+			<f:render partial="BE-Layouts/1col" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_2'">
+			<f:render partial="BE-Layouts/2col-9-3" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_3'">
+			<f:render partial="BE-Layouts/3col" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_4'">
+			<f:render partial="BE-Layouts/Special-slider" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_5'">
+			<f:render partial="BE-Layouts/2col-3-9" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_6'">
+			<f:render partial="BE-Layouts/1col-jumbotron" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_7'">
+			<f:render partial="BE-Layouts/2col-9-3-jumbotron" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_8'">
+			<f:render partial="BE-Layouts/3col-jumbotron" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_9'">
+			<f:render partial="BE-Layouts/2col-3-9-jumbotron" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 't3sbootstrap_10'">
+			<f:render partial="BE-Layouts/OnePageLayout" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 1">
+			<f:render partial="BE-Layouts/Template-1" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 2">
+			<f:render partial="BE-Layouts/Template-2" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 3">
+			<f:render partial="BE-Layouts/Template-3" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 4">
+			<f:render partial="BE-Layouts/Template-4" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 5">
+			<f:render partial="BE-Layouts/Template-5" arguments="{_all}" />
+		</f:if>
+		<f:if condition="{be_layout} == 'default'">
+			<f:render partial="BE-Layouts/2col-9-3-jumbotron" arguments="{_all}" />
+		</f:if>
+	</f:then>
+	<f:else>
+		<f:render partial="BE-Layouts/2col-9-3-jumbotron" arguments="{_all}" />
+	</f:else>
+	</f:if>
+	<f:if condition="{settings.expandedContent}">
+		<f:cObject typoscriptObjectPath="lib.content.bottom" />
+	</f:if>
+
+<f:if condition="{settings.styles.footer.enable}">
+	<f:render partial="Page/Footer" arguments="{_all}" />
+</f:if>
+<f:if condition="{data.tx_t3sbootstrap_linkToTop}">
+	<f:link.page class="back-to-top" 
+		style="display: none;" 
+		title="{f:translate(key: 'LLL:EXT:t3sbootstrap/Resources/Language/locallang_db.xlf:pages.tx_t3sbootstrap_linkToTop')}">
+		<span class="glyphicon glyphicon-chevron-up"></span>
+	</f:link.page>
+</f:if>	
+</html>

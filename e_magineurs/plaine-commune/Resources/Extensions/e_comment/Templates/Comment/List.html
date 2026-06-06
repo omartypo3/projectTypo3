@@ -1,0 +1,18 @@
+<f:layout name="Empty" />
+
+<f:section name="content">
+    <f:if condition="{settings.pagination}" >
+        <f:then>
+            <f:for each="{pagination.paginator.paginatedItems}" as="paginatedMessages">
+                <f:for each="{paginatedMessages}" as="message" >
+                    <f:render partial="MessageItem" arguments="{currentmessage: message, demand: demand, settings: settings, formMessage: formMessage}"/>
+                </f:for>
+            </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+        </f:then>
+        <f:else>
+            <f:for each="{messages}" as="message" >
+                <f:render partial="MessageItem" arguments="{currentmessage: message, demand: demand, settings: settings, formMessage: formMessage}"/>
+            </f:for>
+        </f:else>
+    </f:if>
+</f:section>

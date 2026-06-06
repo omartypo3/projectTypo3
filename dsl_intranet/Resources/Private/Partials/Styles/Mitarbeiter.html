@@ -1,0 +1,23 @@
+<style>
+
+    <f:for each="{mitarbeiters}" as="mitarbeiter">
+
+                                                 .mitarbeiterTextColor[data-uid="<f:render partial="Styles/Output" arguments="{output:mitarbeiter.uid}" />"]{
+        background-color:<f:render partial="Styles/Output" arguments="{output:mitarbeiter.farbe}" />;
+
+    }
+    .mitarbeiterBackgroundColor[data-mitarbeiter-uid="<f:render partial="Styles/Output" arguments="{output:mitarbeiter.uid}" />"]{
+        background-color:<f:render partial="Styles/Output" arguments="{output:mitarbeiter.farbe}" />;
+    }
+    .mitarbeiterBorderBottomColor[data-mitarbeiter-uid="<f:render partial="Styles/Output" arguments="{output:mitarbeiter.uid}" />"]{
+        border-bottom-color:<f:render partial="Styles/Output" arguments="{output:mitarbeiter.farbe}" />;
+    }
+
+    </f:for>
+
+      .externerTerminBackgroundColor{
+          background-color:#fff !important;
+          border-color:#363636 !important;
+      }
+
+</style>

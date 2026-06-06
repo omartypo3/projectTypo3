@@ -1,0 +1,27 @@
+<html data-namespace-typo3-fluid="true"
+    xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+    <f:section name="Configuration">
+        <flux:form id="plugindpnglossaryfiltering" options="{icon: 'EXT:e_package/Resources/Public/Icons/glossaire.png', group: 'Filtrage'}" label="[Filtrage] Formulaire de filtrage les glossaire" description="Affiche le formulaire de filtrage pour les modules type Glossaire...">
+            <flux:field
+                type="input"
+                label="Titre du menu"
+                name="title"
+                config="{default:'Filtrer le glossaire'}"
+            />
+            <flux:field
+                type="group"
+                label="Dossiers contenant les glossaire en backend"
+                name="startingpoint"
+                config="{allowed:'pages',maxitems:'99',minitems:'1',size:'4'}"
+            />
+        </flux:form>
+    </f:section>
+    <f:section name="Preview">
+        <br/><b>Formulaire de filtrage</b>
+    </f:section>
+</html>
+

@@ -1,0 +1,22 @@
+<phpunit
+	backupGlobals="false"
+	backupStaticAttributes="false"
+	bootstrap="../../../../../components/testing_framework/Resources/Core/Build/FunctionalTestsBootstrap.php"
+	colors="true"
+	convertErrorsToExceptions="true"
+	convertWarningsToExceptions="true"
+	forceCoversAnnotation="false"
+	processIsolation="true"
+	stopOnError="false"
+	stopOnFailure="false"
+	stopOnIncomplete="false"
+	stopOnSkipped="false"
+	strict="false"
+	verbose="false"
+>
+	<testsuites>
+		<testsuite name="EXT:e_import_export tests">
+			<directory>../Functional/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

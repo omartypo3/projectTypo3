@@ -1,0 +1,20 @@
+<f:layout name="Fe" />
+
+<f:section name="main" >
+	<f:flashMessages/>
+
+	<div class="e_calameo_publisher_liste" >
+		<f:for each="{documents}" as="item" >
+				<div class="e_calameo_publisher_item" >
+					<f:if condition="{settings.largeViewer}" >
+						<f:then>
+							<f:render partial="Viewer/Large" arguments="{item: item, settings: settings}" />
+						</f:then>
+						<f:else>
+							<f:render partial="Viewer/Classic" arguments="{item: item, settings: settings}" />
+						</f:else>
+					</f:if>
+				</div>
+		</f:for>
+	</div>
+</f:section>

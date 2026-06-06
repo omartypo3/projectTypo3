@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+	<f:section name="Main">
+		<f:if condition="{menu}">
+			<ul>
+				<f:for each="{menu}" as="page">
+					<li>
+						<a href="{page.link}"{f:if(condition: page.target, then: ' target="{page.target}"')} title="{page.title} - {f:cObject(typoscriptObjectPath:'lib.chapo',data:'{sourceUid: page.data.uid}') -> f:format.crop(maxCharacters:'80',respectWordBoundaries:'true')}">
+							<div class="case_img_master">
+								<f:if condition="{page.files.0}">
+									<f:then>
+										<f:media file="{page.files.0}" class="img_master" alt="" />
+									</f:then>
+									<f:else>
+										<f:image class="img_master" src="/fileadmin/user_upload/defaut_master.jpg" alt=""/>
+									</f:else>
+								</f:if>
+							</div>
+							<span class="voile"></span>
+							<div class="block_text_master">
+								<div class="case_text_master">
+									<v:tag name="p" hideIfEmpty="true" class="cat_projet">
+										<f:cObject typoscriptObjectPath='lib.categories' data='{recordUid: page.data.uid}' />
+									</v:tag>
+									<h3>{page.title}</h3>
+								</div>
+								<div class="case_description_master">
+									<p class="noglossaire">
+										<f:format.crop maxCharacters="80" respectWordBoundaries="true">
+											<f:cObject typoscriptObjectPath="lib.chapo" data="{sourceUid: page.data.uid}"/>
+										</f:format.crop>
+									</p>
+								</div>
+							</div>
+						</a>
+						<div class="losange_hover_master">
+							<span></span>
+							<span></span>
+						</div>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+	</f:section>
+</html>

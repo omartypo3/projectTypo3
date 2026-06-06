@@ -1,0 +1,340 @@
+@import "1-template/variables-bootstrap";
+@import "1-template/variables-emagineurs";
+@import '../../../../../e_package/Resources/Public/Css/Bootstrap/_mixins.scss';
+@import "1-template/fred";
+@import "1-template/header";
+@import "4-hamburger/hamburgers";
+@import "1-template/main";
+@import "1-template/footer";
+@import "1-template/print";
+@import "2-extensions/formulaire";
+@import "2-extensions/sitemap";
+@import "2-extensions/actualites"; 
+@import "2-extensions/solr";
+@import "2-extensions/galerie";
+@import "2-extensions/glossary";
+@import "2-extensions/comment";
+@import "2-extensions/gestion-doc";
+@import "2-extensions/annuaires";
+@import "2-extensions/flux";
+@import "1-template/fred";
+@import "1-template/master_page";
+@import "1-template/menu";
+@import "1-template/hack-navigateur";
+@import "1-template/_socialShare";
+@import "1-template/_ie11";
+
+/*Titres pliés/dépliés*/
+.openCloseTitle {
+    cursor: pointer;
+    &+div.row > div {
+        display: inline-block;
+        vertical-align: top;
+    }
+    &:not(.open) + div {
+        display: none;
+    }
+}
+/*Pagination au scroll*/
+.ias-loader, .ias-spinner, .ias-trigger {
+    text-align:center;
+    margin: 30px 0 40px;
+    width: 100%;
+}
+
+#mainContent{
+  padding-top:80px;
+}
+
+.content_left{
+    background-image: linear-gradient(to bottom, darken( $gris-clair, 5% ) 0%, $gris-clair 100px);
+    position:relative;
+    width:360px;
+    padding:0px 40px 40px 20px;
+    &:before{
+        background-image: linear-gradient(to bottom, darken( $gris-clair, 5% ) 0%, $gris-clair 100px);
+        bottom: 0;
+        content: "";
+        display: block;
+        position: absolute;
+        right: 100%;
+        top: 0;
+        width: 1000px;
+    }
+    @include media-breakpoint-down(md) {
+        padding-top:40px;
+        width:100%;
+         &:after{
+        background-image: linear-gradient(to bottom, darken( $gris-clair, 5% ) 0%, $gris-clair 100px);
+        bottom: 0;
+        content: "";
+        display: block;
+        position: absolute;
+        right: -20px;
+        top: 0;
+        width: 20px;
+    }
+    }
+    .ce-bodytext{
+        font-size: 1.3rem;
+        font-weight: 400;
+    }
+}
+    @include media-breakpoint-down(md) {
+    .background-smartphone{
+        width:100% !important;
+        padding: 0 20px;
+    }
+}
+
+.content-center{
+    padding:0 0 3rem 3rem;
+    @include media-breakpoint-down(md) {
+        padding: 0 0rem 0 0rem;
+    }
+}
+
+
+.print-sidebar{
+      @include media-breakpoint-down(md) {
+        display:none !important;
+      }  
+}
+
+#banniere{
+    position:relative;
+    min-height:60px;
+    display: block;
+    width: 100%;
+    height: auto;
+
+    &.banniere_ok{
+        height: 20.5vw;
+    }
+
+    .container-ariane{
+        background-color:rgba(242, 242, 242, 0.8);
+        min-height:60px;
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    img{
+        width:100%;
+        height:100%;
+        object-fit: cover;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .container-ariane{
+        position:static !important;
+        .filHome{
+            a{
+                padding-top: 6px !important;
+            }
+        }
+    }
+}
+
+.ariane{
+    @include media-breakpoint-down(sm) {
+        font-size:.8rem;
+    }
+    padding: 15px 0 15px 0;
+    text-transform:uppercase;
+    font-size:1rem;
+    position: relative;
+    z-index: 3;
+
+    > ul{
+        transition: opacity 350ms ease-in-out 0s;
+    }
+    > ul > li{
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+    }
+    .filHome a{
+        display: inline-block;
+        height: 17px;
+        overflow: hidden;
+        padding-top:4px;
+    }
+    i{
+        position:relative;
+        top:-2px;
+        padding:0 10px;
+    }
+    .item{
+        &:before{content: none !important;}
+        > a{
+            color:$font;
+            display: block;
+            background: #fff;
+            transition: background 350ms ease-in-out 0s;
+
+            &:hover, &:focus{background: #fff;}
+            span{
+                display: inline-block;
+                vertical-align: middle;
+                padding: 7px 36px 7px 25px;
+                min-width: 170px;
+                max-width: 260px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                    @include media-breakpoint-down(sm) {
+                        padding: 7px 30px 7px 20px;
+                    }
+            }
+            &:after{
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                margin-top: -4px;
+                right: 15px;
+                width: 8px;
+                height: 9px;
+                background: url(../../Images/fleche-ariane.png) no-repeat 0 0;
+                transition: all 350ms ease-in-out 0s;
+            }
+            &.active:after{
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        }
+    }
+    .menuFil{
+        list-style-type: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 2;
+        background: #fff;
+        padding: 10px;
+        display: none;
+        min-width: 100%;
+        white-space: normal;
+        > li {
+            &:before{content: none;}
+            a{
+                color:$font;
+                padding: 5px 15px;
+                display: block;
+                transition: background 350ms ease-in-out 0s;
+                &:hover, &:focus, &.active{color:$lien-hover;}
+            }
+        }
+    }
+    .crop{
+        white-space: nowrap;
+        margin: 0 5px;
+        span{
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 300px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        @include media-breakpoint-down(sm) {
+            margin: 5px 5px 0 0;
+        }
+    }
+}
+
+.ariane > ul > li.item{
+
+
+    @include MquerieW(500) {
+        display: block;
+    }
+}
+
+.ariane > ul > li:nth-child(2){
+    padding-right:0px;
+
+    @include MquerieW(500) {
+        display: inline-block;
+    }
+}
+
+
+
+/*@include media-breakpoint-down(sm) {
+    .ariane{
+            li{
+                margin:0 !important;
+                display:block !important;
+                width:50%;
+            }
+            li.filHome, li:nth-child(2){
+                display:inline-block !important; 
+                margin:0 5px !important;
+            }
+    }
+}*/
+
+
+/*page fils d'ariane*/
+
+
+@include MquerieW(500) {
+
+    #banniere{
+        height: auto!important;
+    }
+
+
+    .ariane{
+        ul{
+            text-align: center;
+            li{
+                text-align: center;
+            }
+        }
+    }
+}
+
+#tarteaucitronAlertBig {
+    box-sizing: border-box !important;
+    padding: 20px !important;
+}
+
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert {
+    margin-bottom: 15px !important;
+    text-align: center !important;
+}
+
+#tarteaucitronRoot [type="button"]::before {
+    content: none !important;
+}
+
+#tarteaucitronAlertBig #tarteaucitronDisclaimerAlert {
+    display: block !important;
+}
+
+#tarteaucitronRoot div#tarteaucitronInfo,
+#tarteaucitronRoot div#tarteaucitronInfo a {
+    font-size: 1.6rem !important;
+}
+
+#fancyboxLine {
+    display: none;
+}
+
+
+.tarteaucitronDetails.tarteaucitronInfoBox {
+    display:block !important;
+    position: relative !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}

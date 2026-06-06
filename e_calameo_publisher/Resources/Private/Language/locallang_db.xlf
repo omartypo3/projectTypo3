@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_calameo_publisher/Resources/Private/Language/locallang_db.xlf" date="2024-01-01T00:00:00Z" product-name="e_calameo_publisher">
+		<header/>
+		<body>
+			<trans-unit id="tt_content.list_type_pi1">
+				<source>Calameo Publisher extbase</source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.sDEF">
+				<source>Affichage</source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.sDEF.whatDisplay">
+				<source>Document à afficher</source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.sDEF.toutCocher">
+				<source>Tout cocher/décocher</source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.advancedConf.template">
+				<source>Template large (iframe)</source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.advancedConf.width">
+				<source>Largeur du document</source>
+			</trans-unit>
+			<trans-unit id="tt_content.flexform_pi1.advancedConf.heigth">
+				<source>Hauteur du document</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

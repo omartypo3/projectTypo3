@@ -1,0 +1,379 @@
+# RTE Configuration - Override stratis_common defaults
+RTE.default.preset = plaine-commune
+RTE.tt_content.types.textmedia.bodytext.preset = plaine-commune
+RTE.config.tx_news_domain_model_news.bodytext.preset = plaine-commune
+# Explicitly override any general bodytext preset (overrides stratis_common)
+RTE.config.tt_content.bodytext.preset = plaine-commune
+
+TCEFORM {
+    tt_content{
+        layout {
+            addItems {
+                4 = Bloc plein
+                5 = Citation
+                6 = Bloc fleche
+                7 = Bouton "Tout" [home]
+                8 = Dernières minute
+            }
+        }
+        frame_class {
+            addItems {
+                titre_anime = Titre anime
+            }
+        }
+        header_layout {
+            addItems {
+                #8 = Titre Colonne Gauche Noir sur Blanc
+            }
+        }
+        #Filtrer les gridelements spécifiques selon le site
+        #tx_gridelements_backend_layout.PAGE_TSCONFIG_ID = storageFolderId
+        tx_container_parent.disabled = 1
+        heritage.disabled = 1
+    }
+    //filtrer les cat dans un dossier
+    
+}
+
+//isolation des catégories
+
+    //isoler les catégories FAQ
+    [12 in tree.rootLineIds]
+        TCEFORM {
+            #tx_news_domain_model_news.categories.config.treeConfig.rootUid = 213
+        }
+    [end]
+
+    //isoler les catégories Actualité
+    [3 in tree.rootLineIds]
+        TCEFORM {
+            #tx_news_domain_model_news.categories.config.treeConfig.rootUid = 231
+        }
+    [end]
+
+    //isoler les catégories Agenda
+    [4 in tree.rootLineIds]
+        TCEFORM {
+            #tx_news_domain_model_news.categories.config.treeConfig.rootUid = 218
+        }
+    [end]
+
+    //isoler les catégories communiqués de presse
+    [294 in tree.rootLineIds]
+        TCEFORM {
+            #tx_news_domain_model_news.categories.config.treeConfig.rootUid = 120
+        }
+    [end]
+
+
+TCEMAIN {
+    table {
+        #pages.disableHideAtCopy = 1
+        #tt_content.disableHideAtCopy = 1
+        #tx_news_domain_model_news.disableHideAtCopy = 1
+    }
+    linkHandler {
+        tx_news.configuration.pageTreeMountPoints = 3,4
+        tx_eannuaires.pageTreeMountPoints  = 5
+        tx_fsmediagallery.configuration.storagePid = 9
+        tx_eannuairesVids < .tx_eannuaires
+        tx_eannuairesVids.configuration.storagePid = 24
+        egmap.configuration.pageId = 41
+    }
+}
+
+TCAdefaults.tt_content.sectionIndex = 0
+
+#Position et alignement par défaut de l'image mod.wizards.newContentElement.wizardItems.common.elements.textmedia.tt_content_defValues.imageorient = 0
+
+###  E_GMAP  ####
+tx_egmap_localize{
+  tx_egmap_domain_model_poi{
+    pattern = {adresse}, {code} {ville}
+    lat = lat
+    lng = lng
+  }
+    tx_news_domain_model_news{
+    pattern = {adressetout}, {record.ville.0.title}, {record.ville.0.codePostal}
+    lat = lat
+    lng = lng
+  }
+    tx_eannuaires_domain_model_fiche{
+    pattern = {address}, {record.city.0.title}, {record.city.0.codePostal}
+    lat = lat
+    lng = lng
+  }
+}
+
+###  NEWS  ####
+tx_news {
+    templateLayouts {
+        1 = --div--,Vue liste
+        5 = Liste complète des actualités
+        6 = Liste Des 3 dernières Actualité [HOME]
+        7 = Liste Des 3 derniers Agendas [HOME]
+        8 = Liste des agendas d'un compte utilisateur
+        9 = Liste des 2 dernières Actualité [FIN DE PAGE]
+        10 = Vous aimerez aussi
+        11 = Liste des actus newsletter
+        #10 = Carrousel des actualités
+        #15 = Mosaïque des actualités
+        20 = Liste complète des agendas
+        21 = Liste des agendas newsletter
+        #25 = Carrousel des agendas
+        #30 = Mosaïque des agendas
+        35 =  --div--,Vue détail
+        40 = Détail de l'actualité
+        41 = Détail de l'actualité colonne
+        45 = Détail de l'agenda
+        94 = Détail publication
+        46 = Détail de l'agenda colonne
+        50 =  --div--,Moteur de recherche
+        55 = Recherche Actualité
+        56 = Recherche FAQ
+        57 = Recherche InfosTravaux
+        60 = Recherche Agenda
+        70 = --div--,Vue résultat
+        75 = Résultat des actualités
+        76 = Résultat des FAQ
+        80 = Résultat des agendas
+        85 = --div--,Autre
+        90 = FAQ
+        91 = Liste complète des publications
+        92 = Recherche Publications
+        93 = Résultat des publications
+        94 = Détail de l'publication
+        #95 = Liens utiles
+    }
+}
+
+###  annuaires  ####
+tx_eannuaires.templateLayouts{
+    liste{
+        2 = Liste offres d'emploi
+		50 = Info dechets
+        51 = Info dechets (sidebare)
+    }
+    detail{
+        2 = Détail offres d'emploi
+        3 = Proposer une vidéo
+        4 = Détail (sidebare) offres d'emploi
+    }
+    search{
+        2 = Recherche offres d'emploi
+    }
+    result{
+        2 = Résultat offres d'emploi2
+    }
+    manage{
+        1 = Réponse à une offre
+        2 = Proposer une video
+    }
+}
+
+
+TCEFORM.tt_content {
+    toggle_content.label = Toggle
+    toggle_position.label = Déplié
+}
+
+
+TCEFORM.tx_news_domain_model_news {
+    feuserid.disabled = 1
+    titreune.disabled = 1
+    teaserune.disabled = 1
+    youngaudience.disabled = 1
+    freeentrance.disabled = 1
+    validation.disabled = 1
+    imagedroit.disabled = 1
+    telephoneevenement.disabled = 1
+    emailevenement.disabled = 1
+    linklist.disabled = 1    
+}
+
+
+//champs annuaires offre emploi obligatoire
+# Suprression des champs agenda pour les actualités
+[3 in tree.rootLineIds]
+    TCEFORM.tx_news_domain_model_news {     
+        is_event.disabled = 1
+        date_debut.disabled = 1
+        horaire_debut.disabled = 1
+        date_fin.disabled = 1
+        horaires.disabled = 1
+        zipcode.disabled =1
+        eventmail.disabled = 1
+        authorpublication.disabled = 1
+        liens.disabled = 1
+        begindate.disabled = 1
+        finishdate.disabled = 1
+        schedules.disabled = 1
+        feuser.disabled = 1
+        uservalidation.disabled = 1
+        uservalidationtoken.disabled = 1     
+        section.disabled = 0   
+    }
+[end]
+# Faq
+[12 in tree.rootLineIds]
+    TCEFORM.tx_news_domain_model_news {
+        title.label = Question
+        bodytext.label = Réponse
+    }
+    TCEFORM.tx_news_domain_model_news {
+        istopnews.disabled = 1
+        type.disabled = 1
+        teaser.disabled = 1
+        archive.disabled = 1
+        media.disabled = 1
+        related_links.disabled = 1
+        related_from.disabled = 1
+        fal_related_files.disabled = 1
+        related.disabled = 1
+        calameo_html.disabled = 1
+        titre_iframe.disabled = 1
+        iframe.disabled = 1
+        tags.disabled = 1
+        keywords.disabled = 1
+        description.disabled = 1
+        alternative_title.disabled = 1
+        path_segment.disabled = 1
+        nom_lieu.disabled = 1
+        adresse.disabled = 1
+        complement_adresse.disabled = 1
+        ville.disabled = 1
+        is_event.disabled = 1
+        date_debut.disabled = 1
+        horaire_debut.disabled = 1
+        date_fin.disabled = 1
+        horaire_fin.disabled = 1
+        related_fsmediaalbums.disabled = 1
+        datetime.disabled = 1
+        fal_media.disabled = 1  
+        begindate.disabled = 1
+        finishdate.disabled = 1
+        schedules.disabled = 1
+        adressetout.disabled = 1
+        poi.disabled = 1
+        lat.disabled = 1
+        lng.disabled = 1
+        picto.disabled = 1        
+        toptitle.disabled = 1
+        author.disabled = 1
+        author_email.disabled = 1
+        eventphone.disabled = 1
+        feuser.disabled = 1
+        uservalidation.disabled = 1
+        uservalidationtoken.disabled = 1
+        adminvalidation.disabled = 1
+        adminvalidationtoken.disabled = 1
+        placename.disabled = 1
+        placeadress.disabled = 1
+        eventmail.disabled = 1
+        zipcode.disabled = 1
+        authorpublication.disabled = 1
+        contenttitle1.disabled = 1
+        contenttext1.disabled = 1
+        contenttitle2.disabled = 1
+        contenttext2.disabled = 1
+        contenttitle3.disabled = 1
+        contenttext3.disabled = 1
+        contenttitle4.disabled = 1
+        contenttext4.disabled = 1
+        contenttitle5.disabled = 1
+        contenttext5.disabled = 1
+        content_elements.disabled = 1
+    }
+[end]
+# Liens utiles
+[21 in tree.rootLineIds]
+    TCAdefaults.tx_news_domain_model_news.type = 2
+    TCEFORM.tx_news_domain_model_news {
+        istopnews.disabled = 1
+        teaser.disabled = 1
+        archive.disabled = 1
+        media.disabled = 1
+        related_links.disabled = 1
+        related_from.disabled = 1
+        fal_related_files.disabled = 1
+        related.disabled = 1
+        calameo_html.disabled = 1
+        titre_iframe.disabled = 1
+        iframe.disabled = 1
+        tags.disabled = 1
+        keywords.disabled = 1
+        description.disabled = 1
+        alternative_title.disabled = 1
+        path_segment.disabled = 1
+        nom_lieu.disabled = 1
+        adresse.disabled = 1
+        complement_adresse.disabled = 1
+        ville.disabled = 1
+        is_event.disabled = 1
+        date_debut.disabled = 1
+        horaire_debut.disabled = 1
+        date_fin.disabled = 1
+        horaire_fin.disabled = 1
+        related_fsmediaalbums.disabled = 1
+        begindate.disabled = 1
+        finishdate.disabled = 1
+        schedules.disabled = 1
+        adressetout.disabled = 1  
+        poi.disabled = 1
+        lat.disabled = 1
+        lng.disabled = 1
+        picto.disabled = 1
+    }
+[end]
+
+[2663 in tree.rootLineIds]
+    TCEFORM.tx_news_domain_model_news {
+        related.disabled = 1
+        rightpicture.disabled = 1
+        toptitle.disabled = 0
+    }
+[end]
+
+tx_gridelements.setup {
+    # Deux colonnes 50%-50%
+    #101 >
+    # Deux colonnes 25%-75%
+    #102 >
+    # Deux colonnes 75%-25%
+    #103 >
+    #Deux colonnes 33%-66%
+    #104 >
+    #Deux colonnes 66%-33%
+    #105 >
+    #Trois colonnes 33%-33%-33%
+    #106 >
+}
+
+
+# Menu sites
+
+mod.wizards.newContentElement.wizardItems.menu {
+    elements.menu_Sites {
+        iconIdentifier = menu_Sites_icon
+        title = Menu des sites Plaine Commune
+        description = Menu listant les sites de Plaine Commune
+        tt_content_defValues.CType = menu_Sites
+    }
+    show := addToList(menu_Sites)
+}
+
+
+# Menu Home
+
+mod.wizards.newContentElement.wizardItems.menu {
+    elements.menu_Home {
+        iconIdentifier = menu_Home_icon
+        title = Menu page d'accueil
+        description = Menu en forme de bouton sur la page d'accueil
+        tt_content_defValues.CType = menu_Home
+    }
+    show := addToList(menu_Home)
+}
+
+
+options.pageTree.showPageIdWithTitle = 0

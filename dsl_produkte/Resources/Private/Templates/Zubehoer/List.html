@@ -1,0 +1,53 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Listing for Zubehoer</h1>
+
+<f:flashMessages />
+
+<table  class="tx_dslprodukte" >
+	<tr>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.alias" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.artikelnummer" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.titel" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.preis" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.teaser" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.text" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.keywords" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.bilder" /></th>
+		<th><f:translate key="tx_dslprodukte_domain_model_zubehoer.anlage" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{zubehoers}" as="zubehoer">
+		<tr>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.alias}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.artikelnummer}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.titel}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.preis}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.teaser}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.text}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.keywords}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.bilder}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{zubehoer : zubehoer}"> {zubehoer.anlage.originalResource.name}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{zubehoer : zubehoer}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{zubehoer : zubehoer}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New Zubehoer</f:link.action>
+</f:section>

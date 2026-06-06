@@ -1,0 +1,78 @@
+
+# customsubcategory=a-general=General Setup
+# customsubcategory=b-contact=Contact Setup
+# customsubcategory=c-socials=Social Setup
+
+glos.config {
+    general {
+        abstract {
+			# cat=glos/a-general/10; type=string; label=Footer Abstract Italian
+			default = Non aspettare oltre, scopri subito le nostre offerte e porta il tuo lavoro a un nuovo livello di efficienza con GLOS.
+			# cat=glos/a-general/11; type=string; label=Footer Abstract English.
+			english = Do not wait any longer, discover our offers now and take your work to a new level of efficiency with GLOS.
+			# cat=glos/a-general/11; type=string; label=Footer Abstract Spanisch.
+			spanisch = Do not wait any longer, discover our offers now and take your work to a new level of efficiency with GLOS.
+        }
+		copyright {
+			# cat=glos/a-general/20; type=string; label=Copyright Italian.
+			default = ©2025 GL.OS SRL. TUTTI I DIRITTI RISERVATI.
+			# cat=glos/a-general/21; type=string; label=Copyright English.
+			english = ©2025 GL.OS SRL. ALL RIGHTS RESERVED.
+			# cat=glos/a-general/22; type=string; label=Copyright Spanisch.
+			spanisch = ©2025 GL.OS SRL. ALL RIGHTS RESERVED.
+		}
+    }
+    contact {
+        phone {
+			# cat=glos/b-contact/10; type=string; label=Phone Number Italian.
+            default = +39 0522 967690
+			# cat=glos/b-contact/11; type=string; label=Phone Number English.
+            english =
+			# cat=glos/b-contact/12; type=string; label=Phone Number Spanisch.
+            spanisch =
+        }
+        cellphone {
+			# cat=glos/b-contact/20; type=string; label=Cellphone Number Italian.
+            default = +39 392 921 4872
+			# cat=glos/b-contact/21; type=string; label=Cellphone Number English.
+            english =
+			# cat=glos/b-contact/22; type=string; label=Cellphone Number Spanisch.
+            spanisch =
+        }
+		# cat=glos/b-contact/30; type=string; label=Email Address.
+		email = info@glos.it
+		# cat=glos/b-contact/40; type=string; label=Address.
+		address = Via Basilicata, 16 42028 Poviglio (RE)
+		map {
+			# cat=glos/b-contact/50; type=string; label=Map Link.
+			link = 
+			# cat=glos/b-contact/51; type=string; label=Map Latitude.
+			latitude =
+			# cat=glos/b-contact/52; type=string; label=Map Longitude.
+			longitude = 
+			zoom = 
+			script = 
+		}
+    }
+	socials {
+		# cat=glos/c-socials/05; type=string; label=Account Twitter:
+		twitter = twitter
+		# cat=glos/c-socials/10; type=string; label=Account Facebook:
+		facebook = facebook
+		# cat=glos/c-socials/15; type=string; label=Account Google Plus:
+		googleplus = googleplus
+		# cat=glos/c-socials/20; type=string; label=Account Instagram:
+		instagram = instagram
+		# cat=glos/c-socials/25; type=string; label=Account LinkedIn:
+		linkedin = linkedin
+		# cat=glos/c-socials/30; type=string; label=Account Pinterest:
+		pinterest =
+		# cat=glos/c-socials/35; type=string; label=Account Rss:
+		rss =
+		# cat=glos/c-socials/40; type=string; label=Account Vimeo:
+		vimeo =
+		# cat=glos/c-socials/45; type=string; label=Account Youtube:
+		youtube = youtube
+	}
+
+}

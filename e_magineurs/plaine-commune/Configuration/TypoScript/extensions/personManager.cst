@@ -1,0 +1,69 @@
+# customsubcategory=tx_personmanager_Template= Templates
+# customsubcategory=tx_personmanager_Options= Opetions
+# customsubcategory=tx_personmanager_Variables= Variables
+# customsubcategory=tx_personmanager_Settings= Settings
+
+e_magineurs.tx_personmanager {
+	view {
+		# cat=Configuration de Person Manager/tx_personmanager_Template; type=string; label= Chemin du dossier Templates
+		templateRootPath = personmanager/Templates/
+		# cat=Configuration de Person Manager/tx_personmanager_Template; type=string; label= Chemin du dossier Partials
+		partialRootPath = personmanager/Partials/
+		# cat=Configuration de Person Manager/tx_personmanager_Template; type=string; label= Chemin du dossier Layouts
+		layoutRootPath = personmanager/Layouts/
+	}
+	# cat=Configuration de Person Manager/tx_personmanager_Settings; type=int+; label= Pid stockage des inscrits
+	persistence.storagePid = 177
+	# cat=Configuration de Person Manager/tx_personmanager_Settings; type=string; label= Texte pour compléter (Merci pour votre inscription à...)
+	settings.flexsitename = la newsletter d'AISCCUF
+	options{
+		# cat=Configuration de Person Manager/tx_personmanager_Options; type=boolean; label= Confirmation inscription par mail
+		doubleOptIn = 1
+		# cat=Configuration de Person Manager/tx_personmanager_Options; type=boolean; label= Confirmation désinscription par mail
+		doubleOptOut = 1
+		# cat=Configuration de Person Manager/tx_personmanager_Options; type=string; label= Url de la page d'inscription (doit finir par ? ou &)
+		path = http://aisccuf.com?id=184&
+		# cat=Configuration de Person Manager/tx_personmanager_Options; type=string; label= Url de la page de désinscription (doit finir par ? ou &)
+		pathout = http://aisccuf.com/id=179&
+		# cat=Configuration de Person Manager/tx_personmanager_Options; type=string; label= Nom utilisé pour l'envoi des mails
+		site = AISCCUF
+		# cat=Configuration de Person Manager/tx_personmanager_Options; type=string; label= Email utilisé pour l'envoi des mails
+		mail = FHamdadou@ccomptes.fr
+	}
+	variables {
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Civilité'
+		salutation = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Titre'
+		titel = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Titre après'
+		nachgtitel = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Date de naissance'
+		geb = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Téléphone'
+		tel = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Entreprise'
+		company = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 'Categorie'
+		category = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt0 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt1 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt2 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt3 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt4 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt5 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt6 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt7 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt8 = 0
+		# cat=Configuration de Person Manager/tx_personmanager_Variables; type=boolean; label= Afficher le champ 
+		frtxt9 = 0
+	}
+}

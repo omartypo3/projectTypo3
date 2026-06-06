@@ -1,0 +1,232 @@
+<script>
+
+	$(document).ready(function() {
+	
+		
+		
+		$(".editableBtn,.editableAbort,.editableSave").unbind( "click" );
+		$('.editableBtn').click(function(){
+			$(this).closest('.editableWrapper').toggleClass('editableActive');
+			$(this).closest('.editableWrapper').find('.editableEditInput').focus();
+			return false;
+		});
+		$('.editableAbort').click(function(){
+			$(this).closest('.editableWrapper').toggleClass('editableActive');
+			
+			$(this).closest('.editableWrapper').find('.editableEditInput').val($(this).closest('.editableWrapper').find('.editableText .editableTextContent').html());
+
+			return false;
+		});
+		
+		
+		$('.editableSave').click(function(){
+			
+			$(this).closest('.editableWrapper').toggleClass('editableActive');
+			
+			$(this).closest('.editableWrapper').find('.editableText .editableTextContent').html($(this).closest('.editableWrapper').find('.editableEditInput').val());
+
+			
+			if($(this).closest('.editableWrapper').find('.editableText .editableTextContent').html()){
+				
+				$(this).closest('.editableWrapper').find('.editableText').removeClass('editableTextEmpty');
+			} else {
+				$(this).closest('.editableWrapper').find('.editableText').addClass('editableTextEmpty');
+			}
+		
+			setAuftraegeDateiTitel('selector',$(this).closest('.editableWrapper').data('uid'),$(this).closest('.editableWrapper').find('.editableEditInput').val());
+			
+			
+			
+			
+			return false;
+		});
+		
+		
+		
+		$( ".btnAuftraegeNewFinanzDatei").unbind( "click" );
+	
+		$( ".fileUploadAuftraege").unbind( "change" );
+		
+		
+		$('.fileUploadAuftraege').change(function() {
+		
+			var parentsForm = $(this).parents('form');
+			if(parentsForm.find('.fileUploadAuftraege')[0].files[0]) {
+				
+				parentsForm.find('.btnAuftraegeNewFinanzDatei[data-type='+parentsForm.find('.auftraegeNewUploadType input').val()+'] .fileUploadFilename').html('&nbsp;-&nbsp;&nbsp;'+parentsForm.find('.fileUploadAuftraege')[0].files[0]['name']+'&nbsp;');
+				parentsForm.find('.btnAuftraegeNewFinanzDatei[data-type!='+parentsForm.find('.auftraegeNewUploadType input').val()+']').hide();
+				parentsForm.submit();
+				
+			}
+		});
+	
+	
+		$('.btnAuftraegeNewFinanzDatei').click(function(){
+			var parentsForm = $(this).parents('form');
+			parentsForm.find('.auftraegeNewUploadType input').val($(this).data('type'));
+			parentsForm.find('.fileUploadAuftraege').trigger('click');
+			return false;
+		});
+		
+		
+		
+		
+		
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+
+		$('#auftraegeUploadFormDownloads'+auftraegeUid).validate({
+			
+			errorPlacement: function(error, element) { error.appendTo(element.parent()); },
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select 
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				var fileType = '';
+				var uid = $(form).data('auftraege-uid');
+				var formData = new FormData();
+				params  = $('#auftraegeUploadFormDownloads'+uid).serializeArray();
+				files    = $('#auftraegeUploadFormDownloads'+uid).find('.fileUploadAuftraege')[0].files;
+				if(files.length != 0) {	$.each(files, function(i, file) { 
+					formData.append('tx_dslintranet_auftragsliste[newDateien][datei]', file);	
+					
+					fileType = file["type"];
+					
+					
+				});	}
+				
+				if(
+					fileType != 'application/pdf' && 
+					fileType != 'image/jpeg' && 
+					fileType != 'image/gif' && 
+					fileType != 'image/svg+xml' && 
+					fileType != 'image/png' &&
+					fileType != 'application/vnd.ms-excel' && 
+					fileType != 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' && 
+					fileType != 'application/vnd.openxmlformats-officedocument.spreadsheetml.template' && 
+					fileType != 'application/msword' && 
+					fileType != 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' && 
+					fileType != 'application/vnd.openxmlformats-officedocument.wordprocessingml.template' 
+				
+				){
+					//console.log('falscher dateityp!!! Abbruch!!');
+					
+					$.alert({
+						title: 'Fehler beim Upload!',
+						content: 'Du hast versucht eine Datei vom Typ "'+fileType+'" hochzuladen, es sind aber nur *.pdf und Bild-Dateien erlaubt.',
+					});
+					
+					$('#auftraegeUploadFormDownloads'+uid).find('.ajaxLoadingDateienBtn').hide();
+					$('#auftraegeUploadFormDownloads'+uid).find('.fileUploadFilename').html('');
+					$('#auftraegeUploadFormDownloads'+uid).find('.btnAuftraegeNewFinanzDatei').show();
+					
+					return false;
+				}
+				//console.log('nach prüfung bevor formular abgeschickt wird!!');
+				$.each(params, function(i, val) { formData.append(val.name, val.value);	});
+				
+				$('#auftraegeUploadFormDownloads'+uid).find('.ajaxLoadingDateienBtn').show();
+				
+				$.ajax({
+					url: $('#auftraegeUploadFormDownloads'+uid).attr('action'),
+					type: 'POST',
+					data: formData,
+					contentType: false,
+			        processData: false,
+					success: function(data) {
+						$('#auftraegeUploadFormDownloads'+uid).find('.ajaxLoadingDateienBtn').hide();
+						
+//						console.log(data);
+						if(isJsonString(data)){
+							dataJson = JSON.parse(data);
+//							console.log(dataJson);
+							refreshProjektTabContent(dataJson["uid"]);
+							
+							if(dataJson["protokollePendingUid"]){
+								showMailFormProtokollePending(dataJson["protokollePendingUid"]);
+							}
+							
+						} else {
+							$('#auftraegeUploadFormDownloads'+uid).find('.fileUploadFilename').html('');
+							$('#auftraegeUploadFormDownloads'+uid).find('.btnAuftraegeNewFinanzDatei').show();
+							
+							$.alert({
+								title: 'Fehler beim Upload!',
+								content: 'Ein unbekannter Fehler ist aufgetreten.',
+							});
+							
+						}
+						
+						
+						
+						
+						return true;
+
+					}
+				});
+				
+		  	}
+		});
+		
+		$('#auftraegeUploadFormFinanzen'+auftraegeUid).validate({
+			
+			errorPlacement: function(error, element) { error.appendTo(element.parent()); },
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select 
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+			
+				var uid = $(form).data('auftraege-uid');
+				var formData = new FormData();
+				params  = $('#auftraegeUploadFormFinanzen'+uid).serializeArray();
+				files    = $('#auftraegeUploadFormFinanzen'+uid).find('.fileUploadAuftraege')[0].files;
+				if(files.length != 0) {	$.each(files, function(i, file) { formData.append('tx_dslintranet_auftragsliste[newDateien][datei]', file);	});	}
+				$.each(params, function(i, val) { formData.append(val.name, val.value);	});
+				
+				$('#auftraegeUploadFormFinanzen'+uid).find('.ajaxLoadingDateienBtn').show();
+				
+				$.ajax({
+					url: $('#auftraegeUploadFormFinanzen'+uid).attr('action'),
+					type: 'POST',
+					data: formData,
+					contentType: false,
+			        processData: false,
+					success: function(data) {
+				
+						$('#auftraegeUploadFormFinanzen'+uid).find('.ajaxLoadingDateienBtn').hide();
+						
+//						console.log(data);
+						if(isJsonString(data)){
+							dataJson = JSON.parse(data);
+//							console.log(dataJson);
+							refreshProjektTabContent(dataJson["uid"]);
+							
+							if(dataJson["protokollePendingUid"]){
+								showMailFormProtokollePending(dataJson["protokollePendingUid"]);
+							}
+							
+						} else {
+							$('#auftraegeUploadFormFinanzen'+uid).find('.fileUploadFilename').html('');
+							$('#auftraegeUploadFormFinanzen'+uid).find('.btnAuftraegeNewFinanzDatei').show();
+							
+							if(!data) data = 'Ein unbekannter Fehler ist aufgetreten.';
+							
+							$.alert({
+								title: 'Fehler beim Upload!',
+								content: data,
+							});
+							
+						}
+						
+						
+						
+						
+						
+						return true;
+
+					}
+				});
+				
+		  	}
+		});
+		
+	});
+</script>

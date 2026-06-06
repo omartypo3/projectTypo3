@@ -1,0 +1,22 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EComment\:
+    resource: '../Classes/*'
+      
+  Emagineurs\EComment\Controller\CommentController:
+    public: true
+    tags: ['controller.service_arguments']
+
+  Emagineurs\EComment\Updates\SplitPluginWizard:
+    tags:
+      - name: 'typo3.install.update.wizard'
+
+  Emagineurs\EComment\Updates\EcommentPluginMigrationUpdate:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'eCommentPluginMigration'

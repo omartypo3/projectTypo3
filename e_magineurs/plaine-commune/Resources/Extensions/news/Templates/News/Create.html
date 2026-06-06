@@ -1,0 +1,117 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+
+<f:layout name="General" />
+
+<f:section name="content">
+	<f:flashMessages />
+
+	<f:form class="news-create-form" object="{news}" name="news" action="create" method="post"  enctype="multipart/form-data">
+		
+		<h2>Évènement</h2>
+		<div class="form-group">
+			<label for="news-header" class="powermail_label">Titre de l'évènement <span class="mandatory">*</span></label>
+			<f:form.textfield id="news-header" property="title" class="form-control" />
+			<f:comment><f:form.textfield id="news-header" property="title" class="form-control" required="1" /></f:comment>
+		</div>
+
+		<!--<div class="form-group">
+			<label for="news-authorname" class="powermail_label">Auteur article</label>
+			<p>{user.username}</p>
+		</div>-->
+
+		<!--<div class="form-group">
+			<label for="news-eventphone" class="powermail_label">
+				Téléphone
+			</label>
+			<f:form.textfield id="news-eventphone" property="eventphone" class="form-control" />
+		</div>-->
+
+		<!--<div class="form-group">
+			<label for="news-toptitle" class="powermail_label">
+				Nom du lieu
+			</label>
+			<f:form.textfield id="news-toptitle" property="toptitle" class="form-control" />
+		</div>-->
+		
+		<div class="form-group">
+			<label for="news-bodytext">Texte d'accroche <span class="mandatory">*</span></label>
+			<f:form.textarea cols="20" rows="5" id="news-teaser" placeholder="Entrer un texte d'accroche" property="teaser" class="form-control" additionalAttributes="{required: 'required'}"/>
+			<f:comment><f:form.textarea cols="20" rows="5" id="news-teaser" placeholder="Entrer un texte d'accroche" property="teaser" class="form-control" /></f:comment>
+		</div>
+
+		<div class="form-group">
+			<label for="news-bodytext" class="powermail_label">Description de l'évènement </label>
+			<f:form.textarea cols="20" rows="5" id="news-bodytext" placeholder="Entrer un texte pour décrire l'événement" property="bodytext" class="form-control" />
+			<f:comment><f:form.textarea cols="20" rows="5" id="news-bodytext" placeholder="Entrer un texte pour décrire l'événement" property="bodytext" class="form-control" additionalAttributes="{required: 'required'}" /></f:comment>
+		</div>
+
+		<div class="form-group">
+			<label for="createNewsCategories" class="powermail_label">Choisir une catégorie</label>
+			<f:form.select property="adminvalidation" options="{categories}" optionValueField="uid" optionLabelField="title" id="createNewsCategories" class="form-control custom-select powermail_select" />
+		</div>
+
+		<div class="form-group">
+			<label for="news-img_name" class="powermail_label">Ajouter une image</label>
+			<f:form.upload name="file[media]" id="news-fal_media" />
+			<div><em>Pour un affichage optimal, l'image doit avoir le format 990*552px. Elle doit peser moins de 2 Mo.</em></div>
+		</div>
+
+		<div class="form-group">
+			<label for="news-img_name" class="powermail_label">Titre de l'image</label>
+			<f:form.textfield name="news-imgtitle" id="news-imgtitle" placeholder="Entrer le titre de l'image" property="uservalidationtoken" class="form-control" />
+		</div>
+		
+		<div class="form-group">
+			<label for="news-img_descr" class="powermail_label">Copyright</label>
+			<f:form.textfield name="news-img_descr" id="news-img_descr" placeholder="Entrer le copyright pour l'image" property="adminvalidationtoken" class="form-control" />
+		</div>
+
+		<div class="form-group date_agendacreate">
+			<div class="begindateAgenda">
+				<label for="news-dateDebut" class="powermail_label">Date de début de l'événement <span class="mandatory">*</span></label>
+
+				<f:form.textfield name="news-dateDebut" property="begindate" value="{f:format.date(date: news.begindate, format: 'd/m/Y')}" placeholder="jj / mm / aaaa" id="begindate" class="dateEvent form-control powermail_date powermailDatepicker inputDate" />
+			</div>
+			<div class="finishdateAgenda">
+				<label for="news-dateFin" class="powermail_label">Date de fin de l'événement <span class="mandatory">*</span></label>
+	    		<f:form.textfield name="news-dateFin"  property="finishdate" value="{f:format.date(date: news.finishdate, format: 'd/m/Y')}" id="finishdate" class="dateEvent form-control powermail_date powermailDatepicker inputDate" placeholder="jj / mm / aaaa" />
+			</div>
+		</div>
+
+		<h2>Infos Pratiques</h2>
+		<div class="form-group">
+			<label for="news-placeadress" class="powermail_label">Renseignements (date, horaire, tarifs, accès, liens)</label>
+			<f:form.textarea cols="20" rows="5" id="news-placeadress" placeholder="Entrer un texte pour décrire l'événement" property="placeadress" class="form-control" />
+			<f:comment><f:form.textarea cols="20" rows="5" id="news-placeadress" placeholder="Entrer un texte pour décrire l'événement" property="placeadress" class="form-control" additionalAttributes="{required: 'required'}" /></f:comment>
+		</div>
+
+		<div class="form-group">
+			<label for="news-placename" class="powermail_label">
+				Nom du lieu
+			</label>
+			<f:form.textfield id="news-placename" property="placename" class="form-control" />
+		</div>
+
+		<div class="form-group">
+			<label for="news-eventmail" class="powermail_label">
+				Adresse 
+			</label>
+			<f:form.textfield id="news-eventmail" placeholder="Entrer l'adresse complète du lieu de votre événement" property="eventmail" class="form-control" />
+		</div>
+		
+		<div class="form-group">
+			<label for="news-zipcode" class="powermail_label">
+				Code Postal 
+			</label>
+			<f:form.textfield id="news-zipcode" placeholder="Entrer le code postal" property="zipcode" class="form-control" />
+		</div>
+
+		<div class="form-group">
+			<label for="news-eventmail" class="powermail_label">
+				Ville 
+			</label>
+			<f:form.textfield id="news-authorpublication" placeholder="Entrer la ville" property="authorpublication" class="form-control" />
+		</div>
+		<button value="Envoyer" class="btn btn-animate btn-vert btn-font-dark">Enregistrer</button>
+	</f:form>
+</f:section>

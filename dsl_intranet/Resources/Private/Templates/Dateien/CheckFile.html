@@ -1,0 +1,22 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div class="vorhandeneDatei"><f:if condition="dateien">
+	
+	<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{dateien.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+	<p>
+		
+		<table>
+			
+			<f:if condition="{dateien.titel}"><tr><td><strong>Titel</strong>:</td><td>{dateien.titel}</td></tr></f:if>
+			<f:if condition="{dateien.auftraege}"><tr><td><strong>Auftrag</strong>:</td><td>{dateien.auftraege.titel} [{dateien.auftraege.nr}]</td></tr></f:if>
+			<f:if condition="{dateien.kunden}"><tr><td><strong>Kunde:</strong></td><td>{dateien.kunden.name} [{dateien.kunden.nummer}]</td></tr></f:if>
+			<tr><td><strong>Typ:</strong></td><td><f:translate key="tx_dslintranet_domain_model_dateien.kundentype.{dateien.type}" /></td></tr>
+			<tr><td width="80"><strong>Vom:</strong></td><td>{fileoutput.ctime->f:format.date(format: 'd.m.y - H:i')} Uhr</td></tr>
+			<tr><td width="80">&nbsp;</td><td><a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}"><f:if condition="{dateien.type}==30"><f:then><span class="bb-pdf-download" aria-hidden="true"></span></f:then><f:else><span class="bb-download" aria-hidden="true"></span></f:else></f:if> {fileoutput.name} (<f:format.bytes>{fileoutput.size}</f:format.bytes>)</a></td></tr>
+		</table>
+		
+	</p>
+	</v:resource.file>
+	
+</f:if></div></div>

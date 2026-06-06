@@ -1,0 +1,95 @@
+<div id="wrapperKundendatenAjax">
+	<div class="col-xs-12">
+
+		<h4 class="bgWeiss">Aktuelle Kundendaten</h4>
+		<br />
+		<h5 class="bgWeiss">Allgemein</h5>
+		<hr class="sub">
+		<p><f:if condition="{kunde.fullAddr}"><f:then><f:format.nl2br>{kunde.fullAddr}</f:format.nl2br></f:then><f:else><em>fehlt</em></f:else></f:if></p>
+
+	</div>
+	<div class="col-xs-12">
+
+		<br />
+		<h5 class="bgWeiss">Kontaktdaten</h5>
+		<hr class="sub">
+		<p>
+		<div class="layout-table">
+			<f:if condition="{kunde.telephone}"><div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>Telefon:</strong></div>
+				<div class="layout-table-col">{kunde.telephone}</div>
+			</div></f:if>
+			<f:if condition="{kunde.fax}"><div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>Fax:</strong></div>
+				<div class="layout-table-col">{kunde.fax}</div>
+			</div></f:if>
+			<f:if condition="{kunde.qbPhone2}"><div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>zus. Telefon:</strong></div>
+				<div class="layout-table-col">{kunde.qbPhone2}</div>
+			</div></f:if>
+			<f:if condition="{kunde.qbCont2}"><div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>zus. Ansprechpartner:</strong></div>
+				<div class="layout-table-col">{kunde.qbCont2}</div>
+			</div></f:if>
+			
+		</div>
+		</p>
+
+	</div>
+
+
+	<div class="col-xs-12">
+		<br />
+		<h5 class="bgWeiss">Bankverbindung</h5>
+		<hr class="sub">
+		<p>
+		<div class="layout-table">
+			<div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>Kontoinhaber:</strong></div>
+				<div class="layout-table-col"><f:if condition="{kunde.qbKtoInh}"><f:then>{kunde.qbKtoInh}</f:then><f:else><em>fehlt</em></f:else></f:if></div>
+			</div>
+			<div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>Bank:</strong></div>
+				<div class="layout-table-col"><f:if condition="{kunde.qbBank}"><f:then>{kunde.qbBank}</f:then><f:else><em>fehlt</em></f:else></f:if></div>
+			</div>
+			<div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>IBAN:</strong></div>
+				<div class="layout-table-col"><f:if condition="{kunde.qbIban}"><f:then>{kunde.qbIban}</f:then><f:else><em>fehlt</em></f:else></f:if></div>
+			</div>
+			<div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>BIC:</strong></div>
+				<div class="layout-table-col"><f:if condition="{kunde.qbBic}"><f:then>{kunde.qbBic}</f:then><f:else><em>fehlt</em></f:else></f:if></div>
+			</div>
+
+		</div>
+		</p>
+
+	</div>
+
+	<div class="col-xs-12">
+
+		<br />
+		<h5 class="bgWeiss">E-Mail Adressen</h5>
+		<hr class="sub">
+		<p>
+		<div class="layout-table">
+
+			
+			<div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>Kundenkonto:</strong></div>
+				<div class="layout-table-col"><f:if condition="{kunde.email}"><f:then>{kunde.email}</f:then><f:else><em>fehlt</em></f:else></f:if></div>
+			</div>
+			<f:if condition="{kunde.emailRechnungenAusgabe}"><div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>für Rechnungen:</strong></div>
+				<div class="layout-table-col">{kunde.emailRechnungenAusgabe}</div>
+			</div></f:if>
+			<f:if condition="{kunde.emailAngeboteAusgabe}"><div class="layout-table-row">
+				<div class="layout-table-col layout-table-width-200"><strong>für Angebote:</strong></div>
+				<div class="layout-table-col">{kunde.emailAngeboteAusgabe}</div>
+			</div></f:if>
+			
+		</div>
+	</div>
+
+	
+</div>

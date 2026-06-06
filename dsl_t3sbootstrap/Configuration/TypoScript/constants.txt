@@ -1,0 +1,55 @@
+
+#plugin.tx_t3sbootstrap {
+#	view {
+#		# cat=plugin.tx_t3sbootstrap/file; type=string; label=Path to template root (FE)
+#		templateRootPath = EXT:dsl_t3sbootstrap/Resources/Private/Templates/
+#		# cat=plugin.tx_t3sbootstrap/file; type=string; label=Path to template partials (FE)
+#		partialRootPath = EXT:dsl_t3sbootstrap/Resources/Private/Partials/
+#		# cat=plugin.tx_t3sbootstrap/file; type=string; label=Path to template layouts (FE)
+#		layoutRootPath = EXT:dsl_t3sbootstrap/Resources/Private/Layouts/
+#	}
+#}
+
+
+
+
+
+plugin.t3sbootstrap_configuration.general.externalBootstrapTheme = fileadmin/template/bootstrap/css/bootstrap-theme.css
+plugin.t3sbootstrap_configuration.general.internalBootstrapTheme = fileadmin/template/public/styles/t3sbootstrap.css
+
+
+plugin.t3sbootstrap_configuration.navigation.navbar.enable = 0
+plugin.t3sbootstrap_configuration.styles.navbar.style.height = 0
+plugin.t3sbootstrap_configuration.navigation.breadcrumb.enable = 1
+plugin.t3sbootstrap_configuration.pages.footer.content.pid = 0
+plugin.t3sbootstrap_configuration.styles.container-fluid = 1
+plugin.t3sbootstrap_configuration.styles.footer.enable = 0
+plugin.t3sbootstrap_configuration.styles.navbar.style.inverse = 1
+plugin.t3sbootstrap_configuration.extensions.indexed_search.page = 0
+plugin.t3sbootstrap_configuration.styles.bsHeader.enable = 0
+
+
+plugin.t3sbootstrap_configuration.styles.navbar.style.height = 45
+
+
+plugin.t3sbootstrap_configuration.navigation.navbar.enable = 4
+plugin.t3sbootstrap_configuration.navigation.navbar.entryLevel = 2
+
+plugin.t3sbootstrap_configuration.extensions.login.enable = 1
+plugin.t3sbootstrap_configuration.extensions.login.uid = 4
+
+plugin.t3sbootstrap_configuration.general.tooltip_placement = top
+
+plugin.t3sbootstrap_configuration.pages.homepage.uid = 4
+plugin.t3sbootstrap_configuration.extensions.powermail.formPid = 0
+
+plugin.t3sbootstrap_configuration.navigation.navbar.excludeUidList = 15
+plugin.t3sbootstrap_configuration.navigation.navbar-right.uidList = 15
+
+#plugin.t3sbootstrap_configuration.navigation.navbar-right.label = <span class="glyphicon glyphicon-user"></span>
+#plugin.t3sbootstrap_configuration.navigation.navbar-right.label =
+
+
+
+plugin.t3sbootstrap_configuration.styles.sticky.footer.body.padding.bottom = 0
+

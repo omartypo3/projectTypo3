@@ -1,0 +1,17 @@
+# cat=basic; type=boolean; label=LLL:EXT:e_news/Resources/Private/Language/locallang_db.xlf:ext_conf_publication
+publication = 
+
+# cat=basic; type=boolean; label=LLL:EXT:e_news/Resources/Private/Language/locallang_db.xlf:ext_conf_geolocalisation
+geolocalisation = 1 
+
+# cat=basic; type=int; label=LLL:EXT:e_news/Resources/Private/Language/locallang_db.xlf:ext_conf_typeAnnuaire
+type_annuaire = 8 
+
+# cat=basic; type=boolean; label=LLL:EXT:e_news/Resources/Private/Language/locallang_db.xlf:ext_conf_commune_complete
+activeCompleteCommune = 0 
+
+# cat=basic; type=boolean; label=LLL:EXT:e_news/Resources/Private/Language/locallang_db.xlf:useDateOcurrences
+useDateOcurrences = 0 
+
+# cat=others; type=string; label=LLL:EXT:e_news/Resources/Private/Language/locallang_db.xlf:ext_conf_liensource
+test = http://qcw5lq.axshare.com/#p=15__front_mes_evenements_2

@@ -1,0 +1,12 @@
+
+
+<li class="navbarRightIcon"><a href="{f:uri.page(pageUid:89)}" title="Hilfe / Kurzreferenz"><i class="bb-document-info bb-lg"></i><span class="hidden-lg hidden-md hidden-sm">&nbsp;Hilfe / Kurzreferenz</span></a></li>
+<li class="navbarRightIcon"><a href="{f:uri.page(pageUid:79,additionalParams:{logintype: 'logout'} )}" title="Ausloggen"><i class="bb-sign-out bb-lg"></i><span class="hidden-lg hidden-md hidden-sm">&nbsp;Logout</span></a></li>
+<f:comment><li class="hidden-xs hidden-md hidden-sm"><div id="clock"><div id="date"></div><div id="time"><span class="hour"></span>:<span class="minute"></span>:<span class="second"></span> Uhr</div></div></li></f:comment>
+<!-- beginli --><li class="dropdown"><f:cObject typoscriptObjectPath="lib.dslintranet.avatar" />
+    <div id="notificationcenterEdge"></div>
+    <!-- beginul --> <ul class="dropdown-menu notificationcenter">
+        <li class="stickyToolbar"><f:link.action controller="Notification" pluginName="notificationcenter" extensionName="dslintranet" action="readall" class="notificationBtnReadAll" pageType="89658999">Alle als gelesen markieren</f:link.action><a class="logoutBtn" href="{f:uri.page(pageUid:79,additionalParams:{logintype: 'logout'} )}">Logout  ({username})</a></li>
+        <div class="info-user"><f:cObject typoscriptObjectPath="lib.dslintranet.notificationcenter" /></div>
+    </ul><!-- endul -->
+</li><!-- endli -->

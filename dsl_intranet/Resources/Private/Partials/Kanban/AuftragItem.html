@@ -1,0 +1,2 @@
+<f:comment><!-- <div>{item.relation} - {item.titel} - <f:if condition="{item.relationModel}"> (mit relaton  //  {item.relationModel.uid} // {item.relationModel.titel})</f:if></div> --> </f:comment>
+<f:render partial="Kanban/KanbanItemAuftrag" arguments="{kanbanItem:item,auftrag:item.relationModel,uidKanbanItem:'kanban-auftrag-{item.relationModel.uid}'}" />

@@ -1,0 +1,29 @@
+<f:comment>Possible de mettre deux structures: 
+	soit data/content -> pour une infobulle simple
+	soit data/tab/content/ -> chaque tab sera un tab dans l'infobulle
+</f:comment>
+<data>
+	<key>{key}</key>
+	<uid>{infos.uid}</uid>
+	<type>{type}</type>
+	<title>{infos.title}</title>
+	<movePoint>{movePoint}</movePoint>
+	<savePoint>{savePoint}</savePoint>
+	<editPoint>{editPoint}</editPoint>
+	<content>
+		<f:format.cdata>
+			<h2 class="title">{infos.title}</h2>
+			<f:if condition="infos.note}" >
+				<p>{infos.note}</p>
+			</f:if>
+			<f:if condition="infos.teaser}" >
+				<p>{infos.teaser}</p>
+			</f:if>
+			<p><a href="mailto:{infos.author_email}" target="_blank">{infos.author}</a></p>
+			<f:if condition="{detailLink}" >
+				<p><a href="{detailLink} ">Plus d'infos</a></p>
+			</f:if>
+			<p><a href="#" class="eGmapYAllerLink" data-pos-latitude="{infos.lat}" data-pos-longitude="{infos.lng}" data-pos-address="{infos.adresse}" >M'y rendre</a></p>
+		</f:format.cdata>
+	</content>
+</data>

@@ -1,0 +1,32 @@
+<div class="card-body">
+    <p class="card-text"><f:format.raw>{currentmessage.bodytext}</f:format.raw></p>
+        <f:if condition="{currentmessage.feuser}" >
+            <f:then>
+              <f:if condition="{currentmessage.feuser.image}">
+                    
+                </f:if>
+                    <f:if condition="{currentmessage.crdate}">
+                    <h6 class="card-subtitle">
+                        {currentmessage.feuser.firstname} {currentmessage.feuser.lastname}
+                        <f:format.date format="d M Y à H:i:s">{currentmessage.crdate}</f:format.date>
+                    </h6>
+                    </f:if>
+            </f:then>
+            <f:else>
+
+                <f:if condition="{currentmessage.crdate}">
+                    <h6 class="card-subtitle">
+                    <f:if condition="{currentmessage.name} || {currentmessage.firstname}" >
+                    <f:then>
+                        {currentmessage.firstname} {currentmessage.name}
+                    </f:then>
+                    <f:else>
+                        Anonymous
+                    </f:else>
+                </f:if>
+                        <f:format.date format="d M Y à H:m:s">{currentmessage.crdate}</f:format.date>
+                    </h6>
+                </f:if>
+            </f:else>
+        </f:if>
+</div>

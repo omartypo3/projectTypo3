@@ -1,0 +1,44 @@
+<f:spaceless><span class="hostingUid invisible">{hosting.uid}</span>
+...
+<--break-->
+...
+<--break-->
+...
+<--break-->
+{zusatzLeistung.anzahl} x {zusatzLeistung.zusatzleistung.titel}
+<f:if condition="{zusatzLeistung.gekuendigt}">&nbsp;&nbsp;<span class="label label-danger" style="font-weight:normal;">Gekündigt</span></f:if>
+<--break-->
+	<span class="zusatzLeistungCounter"></span>
+Zusatzleistung
+<--break-->
+<f:format.date date="{zusatzLeistung.vertragsbegin}" format="d.m.y" />
+<--break-->{zusatzLeistung.preisMonatlich}<--break-->
+<f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator=".">{zusatzLeistung.preisMonatlich}</f:format.currency>
+
+<--break-->
+<f:translate key="tx_dslintranet_domain_model_tarife.laufzeit.{zusatzLeistung.laufzeit}" />
+<--break-->
+
+
+<div class="statusHosting {f:if(condition: '{0:zusatzLeistung.faellig, 1:zusatzLeistung.Ueberfaellig}=={0:1, 1:0}', then: 'statusFaellig')}{f:if(condition: zusatzLeistung.ueberfaellig, then: 'statusUeberFaellig')}">
+
+
+<f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : zusatzleistungen, switch : 'prevRechnung', produkt: 'zusatzleistungen'}" class="doConfirmUserAjax" additionalAttributes="{data-ajax-action: 'hostingNextRechnung', data-ajax-selector: '#hostingList', data-text: 'Wollen Sie den Intervall wirklich zurückschalten?', data-confirm-button: 'Ja (bestätigen)'}" ><i class="fa fa-arrow-left" aria-hidden="true"></i></f:link.action>
+
+    <span title="{f:format.date(date: zusatzLeistung.bezahltbis, format: 'd.m.Y')}"><f:format.date date="{zusatzLeistung.bezahltbis}" format="M y" /></span>
+
+    
+    
+    <f:link.action controller="Hosting" pluginName="hostingliste" extensionName="dslintranet" action="ajax" arguments="{uid : zusatzLeistung, switch : 'nextRechnung', produkt: 'zusatzleistungen'}" class="doConfirmUserAjax" additionalAttributes="{data-ajax-action: 'hostingNextRechnung', data-ajax-selector: '#hostingList', data-text: 'Wollen Sie den Intervall wirklich weiterschalten?', data-confirm-button: 'Ja (bestätigen)'}" ><i class="fa fa-arrow-right" aria-hidden="true"></i>
+</f:link.action>
+    
+</div>
+
+
+
+<--break-->
+
+
+<span title="Tarif Editieren">[E]</span><span title="Tarif Löschen">[D]</span>
+
+</f:spaceless>

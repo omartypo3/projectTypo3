@@ -1,0 +1,292 @@
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+{namespace h=DslFactory\DslIntranet\ViewHelpers}
+
+<br>
+<div class="content_container">
+
+<div id="downloadsList{auftraege.uid}_addBtn">
+<f:form action="upload" pageType="89657202" controller="Auftraege" pluginName="auftragsliste" object="{newDateien}" name="newDateien" enctype="multipart/form-data" id="auftraegeUploadFormDownloads{auftraege.uid}" class="auftraegeUploadForm" additionalAttributes="{role:'form'}" data="{auftraege-uid: '{auftraege.uid}'}">
+
+	<div class="hidden"><f:form.upload class="fileUploadAuftraege" property="datei" ></f:form.upload></div>
+    
+	<button data-dismiss="modal" data-type="50" type="submit" class="Download btnAuftraegeNewFinanzDatei confirm btn tableBtnAdd"><i class="bb-plus bb-lg" aria-hidden="true"></i>&nbsp;&nbsp;<span><f:translate key="tx_dslintranet_domain_model_dateien.type.50" />&nbsp;</span><span class="fileUploadFilename "></span>&nbsp;<span class="ajaxLoadingDateienBtn">&nbsp;&nbsp;<i class="fa fa-cog fa-spin"></i></span></button>
+ 
+   
+    <div class="hidden auftraegeNewUploadType"><f:form.hidden name="type" value="" /></div>
+    <f:form.hidden name="auftraege" value="{auftraege.uid}" />
+</f:form>
+</div>
+	
+<f:if condition="{auftraege.downloads}">
+
+
+ 
+    <table id="downloadsList{auftraege.uid}" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+    <tr>
+        
+        <th>Titel</th>
+        <th>Datei</th>
+        <th>Dateigröße</th>
+        <th>von</th>
+        <th>hochgeladen</th>
+        <th>letzter Download</th>
+		
+		<th>Optionen</th>
+    </tr>
+    </thead>
+    <tbody>
+       
+       
+<f:for each="{auftraege.downloads}" as="datei">
+	<v:resource.file additionalAttributes="{foo: 'bar'}" data="{foo: 'bar'}" identifier="{datei.datei.uid}"  treatIdAsReference="1" as="fileoutput">
+		<f:if condition="{fileoutput.ctime}">
+			<tr id="auftraegeDateien_{datei.uid}" class="dateiType{datei.type}">
+				
+				<td>
+					<f:if condition="{datei.rights.editTitle}">
+						<f:then>
+							<div class="editableWrapper" data-uid="{datei.uid}">
+						
+
+								<div class="editableText {f:if(condition: '{datei.titel}', else: ' editableTextEmpty')}">
+
+									<div class="input-group margin-bottom-sm" style="width:100%;">
+										<span class="input-group">		<span class="editableTextNoneContent">Titel</span>
+											<span class="editableTextContent">{datei.titel}</span>
+										</span>
+
+										<span class="input-group-addon editableBtn" style="width:30px"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></span>
+									</div>
+
+								</div>
+								<div class="editableEdit"><div class="input-group margin-bottom-sm" style="width:100%;">
+										<input class="form-control input-sm editableEditInput" type="text" value="{datei.titel}" placeholder="Titel"><span class="input-group-addon editableSave" style="width:30px"><i class="fa fa-check" aria-hidden="true"></i></span><span class="input-group-addon editableAbort" style="width:30px"><i class="fa fa-times" aria-hidden="true"></i></span>
+								</div></div>
+
+							</div>
+						</f:then>
+						<f:else>
+							<f:if condition="{datei.titel}">
+								<f:then>{datei.titel}</f:then>
+								<f:else>{fileoutput.name}</f:else>
+							</f:if>
+						</f:else>
+					</f:if>
+					
+					</td>
+						
+				<td><a href="{fileoutput.url}" target="_blank" download="{fileoutput.name}">{fileoutput.name}</a></td>
+				<td data-sort="{fileoutput.size}"><f:format.bytes>{fileoutput.size}</f:format.bytes></td>
+				
+				<td>{datei.initialien}</td>
+				<td data-sort="{fileoutput.ctime->f:format.date(format: 'YmdHis')}">{fileoutput.ctime->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+				
+				<f:if condition="{datei.lastDownloadLog}">
+					<f:then>
+						<td data-sort="{datei.lastDownloadLog.zeitpunkt->f:format.date(format: 'YmdHis')}">
+							{datei.lastDownloadLog.zeitpunkt->f:format.date(format: 'd.m.y - H:i')} Uhr
+						</td>
+					</f:then>
+					<f:else>
+						<td>-</td>
+					</f:else>
+				</f:if>
+				
+				
+				
+				
+				<td><div class="btn-group">
+
+					<f:if condition="{datei.showBtnToggleSichtbarkeit}">
+						<f:then>
+							<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : datei, switch : 'toggleSichtbarkeitDateien'}" class="btn tableBtn doAjax {f:if(condition: datei.sichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'toggleDateienSichtbarkeit', data-ajax-selector: '#auftraegeDateien_{datei.uid}', data-ajax-id: '{datei.auftraege.uid}'}" >
+								<f:comment><f:if condition="{datei.sichtbarkeit}">
+									<f:then>
+										<i class="bb-eye-open bb-lg"></i>
+
+									</f:then>
+									<f:else>
+										<i class="bb-eye-closed bb-lg"></i>
+									</f:else>
+									</f:if></f:comment><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i>
+							</f:link.action>
+						</f:then>
+						<f:else>
+							<f:if condition="{datei.sichtbarkeit}">
+								<f:then>
+									<a class="btn tableBtn inaktiv btnGruen"><i class="bb-eye-open bb-lg"></i></a>
+								</f:then>
+								<f:else>
+									<a class="btn tableBtn inaktiv"><i class="bb-eye-closed bb-lg"></i></a>
+								</f:else>
+							</f:if>
+						</f:else>
+					</f:if>							
+
+						
+						
+					
+							<f:if condition="{datei.rights.mail}">
+								<f:then>
+
+									<f:if condition="{datei.sichtbarkeit}">
+										<f:then>
+											<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : datei, switch : 'sendKundeninfoMailDatei'}" class="btn tableBtn doAjax kundeninfoTime {f:if(condition: datei.protokoll.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMailDatei', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{datei.uid}', data-ajax-id: '{datei.auftraege.uid}', data-text: 'Willst du eine Benachrichtigung über diese Datei per E-Mail jetzt an {datei.auftraege.kunde.email} senden?', data-warning-button: 'Ja (E-Mail Versenden)'}" title="Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+										</f:then>
+										<f:else>
+											<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : datei, switch : 'sendKundeninfoMailDatei'}" class="btn tableBtn doConfirmUserAjax kundeninfoTime {f:if(condition: datei.protokoll.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMailDatei', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{datei.uid}', data-ajax-id: '{datei.auftraege.uid}', data-text: 'Die Datei wird dem Kunden vor dem Versand der E-Mail freigeschalten?', data-warning-button: 'Ja (fortfahren)'}" title="Veröffentlichen und Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+										</f:else>
+									</f:if>
+
+								</f:then>
+								<f:else>
+									<a class="btn tableBtn inaktiv kundeninfoTime {f:if(condition: datei.protokoll.kundeninfoTime, then: ' aktiv')}"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+								</f:else>
+
+							</f:if>
+
+					<f:comment><!--
+					<f:if condition="{datei.auftraege.kunde.email}">
+						<f:then>
+
+						</f:then>
+						<f:else>
+							<a href="#" class="btn tableBtn mailRequired kundeninfoTime inaktiv {f:if(condition: datei.protokoll.kundeninfoTime, then: ' aktiv')}" title="Kein E-Mail Versand möglich, Mail Adresse fehlt beim Kunde." onClick="return false;"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+						</f:else>
+					</f:if>	
+--></f:comment>
+
+						
+							
+					<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : datei.uid, switch : 'deleteDatei'}" class="doConfirmAjax btn tableBtn" additionalAttributes="{data-ajax-action: 'removeSelectorDateien', data-ajax-selector: '#auftraegeDateien_{datei.uid}', data-ajax-id: '{auftraege.uid}'}" ><i class="bb-trashcan bb-lg"></i></f:link.action>																					
+							
+							
+				</div></td>
+			</tr>
+		</f:if>
+	</v:resource.file>
+</f:for>
+       
+       
+    </tbody></table>
+
+       
+<script>             
+	$('#downloadsList'+auftraegeUid).DataTable({
+		 "dom": '<"top"<"float_left addBtnContainer"><"float_left"i>f>rt<"bottom"><"clear">', /*http://datatables.net/examples/basic_init/dom.html*/
+			/*"orderFixed": {	"post": [ 0, 'asc' ]},*/
+			"order": [[ 4, "desc" ]],
+			"columnDefs": [
+				
+				{
+					"targets": [ 0 ],
+					"orderable": false
+				},
+				{
+					"targets": [ 1 ],
+					"width": "240px"
+				},
+				{
+					"targets": [ 2 ],
+					"width": "90px"
+				},
+				{
+					"targets": [ 3 ],
+
+					"width":'70px'
+				},
+				
+				{
+					"targets": [ 4 ],
+					"width": "140px"
+				},
+				{
+					"targets": [ 5 ],
+					"searchable": false,
+					"width": "140px"
+				},
+				
+				
+				{
+					"targets": [ 6 ],
+					"orderable": false,
+					"width":'90px'
+				}
+			],
+			paging: false,
+			"language": {
+				"decimal":        "",
+				"emptyTable":     "Keine Daten gefunden",
+				"info":           "Einträge: _TOTAL_ ",
+				"infoEmpty":      "Zeige 0 bis 0 von 0 Einträgen",
+				"infoFiltered":   " von _MAX_ (gefiltert)",
+				"infoPostFix":    "",
+				"thousands":      ",",
+				"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+				"loadingRecords": "Lädt...",
+				"processing":     "Processing...",
+				"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="bb-search bb-lg" aria-hidden="true"></i></a><a class="clearFilter"><i class="bb-times bb-lg"></i></a>',
+				"searchPlaceholder": "Suche",
+				"zeroRecords":    "Keine Ergebnisse gefunden",
+				"paginate": {
+					"first":      "Erste",
+					"last":       "Letzte",
+					"next":       "Nächste",
+					"previous":   "Vorhergehende"
+				},
+				"aria": {
+					"sortAscending":  ": activate to sort column ascending",
+					"sortDescending": ": activate to sort column descending"
+				}
+			},
+			drawCallback: function () {
+				/*var api = this.api();
+				//$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( api.column( 4,  {page:'current'} ).data().sum() );
+				$('#'+$(this).attr('id')+' .zeiteintraegeSum').text( getZeitraumForMinutes(api.column( 4,  {page:'current'} ).data().sum() ) );
+				
+				*/
+				$( '#'+$(this).attr('id')+'_addBtn'  ).detach().appendTo( '#'+$(this).attr('id')+'_wrapper .addBtnContainer' );
+				
+				/*
+				//$('#'+$(this).attr('id')+' .addBtnContainer').html('abc!!');
+				//.html('bääh');
+			 */
+			 
+			}
+	});
+
+	
+	$('#downloadsList'+auftraegeUid+'_wrapper .clearFilter').on('click', function() {
+		
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+
+		setTimeout(function(){ 
+			$(tmpSelector+' input[type="search"]').val('');
+			$(tmpSelector+' .dataTable').DataTable().search( '' ).draw();
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}, 10);
+	}); 
+	$('#downloadsList'+auftraegeUid+'_wrapper input[type="search"]').keyup(function() {
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		if($(tmpSelector+' input[type="search"]').val()){
+			$(tmpSelector+' .clearFilter').css('opacity',1);
+		} else {
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}
+	});
+	$('#downloadsList'+auftraegeUid+'_wrapper .clearFilter').insertAfter('#downloadsList'+auftraegeUid+'_wrapper input[type="search"]');	
+
+	
+
+
+</script>
+    
+    
+    
+    
+    
+</f:if>
+
+</div>
+
+

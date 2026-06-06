@@ -1,0 +1,10 @@
+<div class="tx-dsl-produkte container page-container"><f:render section="main" />
+
+  	   <script>
+            jQuery(document).ready(function($){
+                $('ol.breadcrumb').after($('#user_navigation'));
+                $('ol.breadcrumb li:nth-child(2) a').attr('href',$('#user_search_href').attr('href'));
+                $('#user_search_href').remove();
+            });
+        </script>
+</div>

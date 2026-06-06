@@ -1,0 +1,7 @@
+<f:layout name="Empty" />
+
+<f:section name="content">
+    <f:for each="{polls}" as="poll" >
+        <f:render partial="Poll/Poll" arguments="{poll: poll, settings: settings, vote: vote}" />
+    </f:for>
+</f:section>

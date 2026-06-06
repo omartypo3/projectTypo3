@@ -1,0 +1,80 @@
+2018-07-09 Aroche <aroche@e-magineurs.com> (v 3.1.5)
+
+  * Add folder list for ListAction
+  * Add choose folder by syscollectio
+  * Show the current folder name LIST
+  * Choice by folder > Choice by sys_collection
+  * Solve the bug for sorting folder
+  * Add variable folderstring for sorting
+
+2018-07-08 Aroche (v 2.0.12 ->3.1.0)
+
+  * Probably a lot of things
+
+2016-08-29 C.Costa  <ccosta@e-magineurs.com> (v 2.0.12)
+
+  * fix sorting by tstamp
+  * fix Hook "ItemsProcFunc"
+
+2016-07-06 C.Costa  <ccosta@e-magineurs.com> (v 2.0.11)
+
+  * modify "getListFileSearch" method to search by filename and title
+
+2016-07-05 C.Costa  <ccosta@e-magineurs.com> (v 2.0.10)
+
+  * fix Hook "ItemsProcFunc"
+
+2016-06-29 C.Costa  <ccosta@e-magineurs.com> (v 2.0.9)
+
+  * add sorting filters for compatibility with TYPO3 6.x.x
+
+2016-06-28 C.Costa  <ccosta@e-magineurs.com> (v 2.0.8)
+
+  * add TsConfig parameter "tx_gestiondocs.templateFolders" to limit search sys_file_collection in a specific folder (Thanks to Ian "Ianouf" Sebbagh)
+  * modify fluid templates examples
+
+2016-05-12 C.Costa  <ccosta@e-magineurs.com> (v 2.0.7)
+
+  * modify version of "extbase" and "fluid" from ext_emconf.php for TYPO3 6.2.x compatibility (Thanks to Hélène Heurtaux)
+  * fix "StringSplitterViewHelper" naming error
+
+2016-04-29 C.Costa  <ccosta@e-magineurs.com> (v 2.0.6)
+
+  * add fluid templates examples
+  * add "StringSplitterViewHelper"
+  * add TypoScript constants for thumbnail size
+
+2016-04-05 C.Costa  <ccosta@e-magineurs.com> (v 2.0.5)
+
+  * fix storage selector from "sys_file_collection" when "/" isn't "fileadmin/"
+
+2016-03-31 C.Costa  <ccosta@e-magineurs.com> (v 2.0.4)
+
+  * fix search by keywords
+  * add some translations in "locallang_db" file
+
+2016-03-30 C.Costa  <ccosta@e-magineurs.com> (v 2.0.3)
+
+  * add "curent path" links in Frontend
+	* add "order" selectors in Backend and Frontend
+
+2016-03-29 C.Costa  <ccosta@e-magineurs.com> (v 2.0.2)
+
+  * add block new files
+  * add "creation date" for list
+  * replace "initPageRenderer()" function (Thanks to Ian "Ianouf" Sebbagh)
+  * change TypoScript to add default templateRootPaths and partialRootPaths (Thanks to Thom. Beck)
+  * fix wizicon error
+	* fix to remove "use" from "ext_localconf.php" & "ext_tables.php" files, because generate conflicts with cache from another of my extension.
+	* add "Documentation" folder
+
+
+2016-03-14 C.Costa  <ccosta@e-magineurs.com> (v 2.0.1)
+
+  * add "ChangeLog" file
+	* fix to ignore "_processed_" directories created by a mount point.
+	* add a checkbox in the flexform to hide category list from search engine
+
+2016-03-02 C.Costa  <ccosta@e-magineurs.com> (v 2.0.0)
+
+	* initial version code compatible typo3 v7.x.x

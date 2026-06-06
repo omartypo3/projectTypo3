@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{settings.styles.navbar.onTop}">
+	<f:then>
+		<f:if condition="{settings.navigation.navbar.fullWidth}">
+			<f:then>
+				<div id="main-navbar" class="navbar navbar-static-top {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}">
+					<div class="{f:if(condition: '{settings.styles.container-fluid}', then: 'container-fluid', else: 'container')} navBar-container">
+						<f:render partial="NavBar/NavBarHeader" arguments="{_all}" />
+					</div>
+				</div>
+			</f:then>
+			<f:else>
+				<div class="{f:if(condition: '{settings.styles.container-fluid}', then: 'container-fluid', else: 'container')} navBar-container">
+					<div id="main-navbar" class="navbar {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}">
+						<f:render partial="NavBar/NavBarHeader" arguments="{_all}" />
+					</div>
+				</div>	
+			</f:else>
+		</f:if>
+	</f:then>
+	<f:else>
+		<div id="main-navbar" class="navbar {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}">
+			<div class="{f:if(condition: '{settings.styles.container-fluid}', then: 'container-fluid', else: 'container')}">
+				<f:render partial="NavBar/NavBarHeader" arguments="{_all}" />
+			</div>
+		</div>
+	</f:else>
+</f:if>
+</html>

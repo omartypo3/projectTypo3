@@ -1,0 +1,79 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+<f:if condition="{feuser.rechteExternerMitarbeiter}"><f:else>
+	<div class="table-toolbar-btn-list-item">
+	<f:if condition="{auftraege.kunde.disable}==0">
+		<f:then>
+			<f:if condition="{auftraege.kunde.login}">
+				<f:then>
+					<f:link.action controller="Kunden" pageUid="13" pluginName="kundenliste" extensionName="dslintranet" action="ajax" arguments="{uid : auftraege.kunde, switch : 'autologin'}" target="_blank" ><div><i class="bb-leave bb-lg" aria-hidden="true"></i></div><span class="btn-label">Kundenlogin</span></f:link.action>
+				</f:then>
+				<f:else>
+					<a class="btnDisabled inaktiv"><div><i class="bb-leave bb-lg" aria-hidden="true"></i></div><span class="btn-label">Kundenlogin</span></a>
+				</f:else>
+			</f:if>
+
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv"><div><i class="bb-leave bb-lg" aria-hidden="true"></i></div><span class="btn-label">Kundenlogin</span></a>
+		</f:else>
+	</f:if>
+	</div>
+</f:else></f:if>
+
+<div class="table-toolbar-btn-list-item"><a onclick="refreshProjektTabContent({auftraege.uid});return false;" href="#" aria-label="Refresh"><div><i class="fa fa-refresh fa-lg fa-spin tabReloadsActive" aria-hidden="true"></i><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i></div><span class="btn-label">neu laden</span></a></div>
+
+
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{auftraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Auftraege" pageType="89657202" pluginName="auftragsliste" extensionName="dslintranet" action="edit" arguments="{auftraege : auftraege}" class="doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '800px'}"><div><i class="bb-pen-write bb-lg" aria-hidden="true"></i></div><span class="btn-label">bearbeiten</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv"><div><i class="bb-pen-write bb-lg" aria-hidden="true"></i></div><span class="btn-label">bearbeiten</span></a>
+		</f:else>
+	</f:if>
+</div>
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{auftraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : auftraege, switch : 'toggleSichtbarkeit'}" class="doAjax auftraegeSichtbarkeit_{auftraege.uid} {f:if(condition: auftraege.sichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'toggleAuftraegeSichtbarkeitBtn', data-ajax-selector: '.auftraegeSichtbarkeit_{auftraege.uid}', data-ajax-id: '{auftraege.uid}'}" ><div><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i></div><span class="btn-label">sichtbarkeit</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv {f:if(condition: auftraege.sichtbarkeit, then: ' btnGruen')}"><div><f:comment><!--<i class="fa fa-eye fa-lg fa-fw" title="Auftrag für den Kunde Sichtbar machen"></i><i class="fa fa-eye-slash fa-lg fa-fw" title="Auftrag vor dem Kunde verstecken"></i><i class="fa fa-spinner fa-spin fa-lg fa-fw"></i>--></f:comment><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i></div><span class="btn-label">sichtbarkeit</span></a>
+		</f:else>
+	</f:if>
+</div>
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{auftraege.rights.delete}">
+		<f:then>
+			<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : auftraege, switch : 'delete'}" class="doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorAuftraege', data-ajax-selector: '#auftraegeListAuftrag_{auftraege.uid}', data-ajax-id: '{auftraege.uid}'}" ><div><i class="bb-trashcan bb-lg" aria-hidden="true"></i></div><span class="btn-label">löschen</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv"><div><i class="bb-trashcan bb-lg" aria-hidden="true"></i></div><span class="btn-label">löschen</span></a>
+		</f:else>
+	</f:if>
+	
+</div>
+
+
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{auftraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Aufgaben" pluginName="wochenlisteaufgabenplatzierung"  data="{id: auftraege.uid, title: auftraege.titelForAufgabe}" extensionName="dslintranet" action="new" arguments="{auftraege : auftraege}" class="doAjaxEdit" id="auftraegeSelector{auftraege.uid}" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '500px'}" ><div><i class="bb-calendar-add bb-lg" aria-hidden="true"></i></div><span class="btn-label">planen</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv"><div><i class="bb-calendar-add bb-lg" aria-hidden="true"></i></div><span class="btn-label">planen</span></a>
+		</f:else>
+	</f:if>
+</div>
+<div class="table-toolbar-btn-list-item">
+	<a href="#" class="toggleAblage useBtnGruen{f:if(condition: auftraege.inAblage, then: ' btnGruen')}" data-ablage="{auftraege.inAblage}" onClick="toggleAuftragAblage(this);return false;" data-auftrag="{auftraege.uid}"><div><i class="bb-star-empty bb-lg" aria-hidden="true"></i><i class="bb-star-filled bb-lg" aria-hidden="true"></i></div><span class="btn-label">Favorit</span></a>	
+	
+	
+</div>                                    

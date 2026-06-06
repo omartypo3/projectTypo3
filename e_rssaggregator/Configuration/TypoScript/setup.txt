@@ -1,0 +1,53 @@
+# ==============================================
+# FE-Plugin configuration for EXT:e_rssaggregator
+# ==============================================
+plugin.tx_erssaggregator {
+    view {
+        templateRootPaths{
+            0 = EXT:e_rssaggregator/Resources/Private/Templates/
+            1 = {$plugin.tx_erssaggregator.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:e_rssaggregator/Resources/Private/Partials/
+            1 = {$plugin.tx_erssaggregator.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:e_rssaggregator/Resources/Private/Layouts/
+            1 = {$plugin.tx_erssaggregator.view.layoutRootPath}
+        }
+    }
+
+    persistence {
+		    storagePid = {$plugin.tx_erssaggregator.persistence.storagePid}
+	  }
+
+
+    # ====================================
+    # Settings available inside Controller and View by accessing $this->settings or {settings.xyz}
+    # ====================================
+
+	  settings{
+        proxy =
+        proxyport =
+
+        cache = 1
+        cache_dir = uploads/tx_erssaggregator/
+
+        #limit par flux
+        limit = 10
+
+        #limit pour agregation
+        limit2 = 10
+
+        stripHTML = 0
+        formatDate = %d/%m/%Y, %H:%M
+
+        cropAdd = ...
+        cropTitle = 30
+        cropDesc = 50
+        cropContent =
+        cropContenu =
+
+        target = _blank
+    }
+}

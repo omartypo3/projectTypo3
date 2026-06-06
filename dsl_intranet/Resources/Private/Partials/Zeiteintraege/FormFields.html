@@ -1,0 +1,181 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+
+<f:render partial="Scripts/ZeitkontingentEdit" />
+<f:render partial="Zeiteintraege/FormFieldsScripts" arguments="{_all}" />
+
+
+
+<f:form.textfield class="form-control input-sm" id="kontingentFail" name="kontingentFail" value="1" style="visibility:hidden;position:absolute;" />
+<f:form.textfield class="form-control input-sm" id="minutenUnzugewiesen" name="minutenUnzugewiesen" value="0" style="visibility:hidden;position:absolute;" />
+
+<f:if condition="{zeiteintraege.tracker}">
+	<f:then>
+		<f:render partial="Zeiteintraege/FormFieldsTracker" arguments="{_all}" />
+	</f:then>
+	<f:else>
+		<f:render partial="Zeiteintraege/FormFieldsAktivitaet" arguments="{_all}" />
+		<script>
+	
+	
+	$(function () {
+		console.log('normaleaktivität!!');
+		getDiffMinutes();
+	});
+	
+			
+		</script>
+	</f:else>
+</f:if>
+
+
+<div class="form_headline">
+	<strong>Auftragsphasen</strong>
+    <hr>
+</div>
+
+<f:comment>{auftraege.phasenStundensatzArray->f:debug(title: 'auftraege', inline: '1')}</f:comment>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Zeitaufteilung
+        </div>
+        <div class="layout-table-col table-formular-padding-reset">
+        	
+            
+            <div class="zeitkontingentEdit">
+            
+            
+            <div class="layout-table table-formular-padding">
+            
+          
+           
+            <f:for each="{phasens}" as="phase" key="number">
+            	
+            	
+				
+
+					<div class="layout-table-row" data-id="{number}">
+						<div class="layout-table-col table-formular-very-small-icon">
+
+
+							<i class="{dsl:getFromArray(obj: phasenIcons, prop:'{number}')}"></i>
+
+						</div>
+						<div class="layout-table-col table-formular-label"><f:alias map="{phaseUid: number, forKeyPercent:'percent', forKeyUsed:'used', forKeyMax:'max', stundensatz: '{dsl:getFromArray(obj: auftraege.phasenStundensatzArray, prop:\'{number}\')}' }"><f:alias map="{used: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:phaseUid, forKey:forKeyUsed)}' }"><f:alias map="{max: '{dsl:getFromArray(obj: auftraege.phasenKontingentArray, prop:phaseUid)}' }"><f:alias map="{percent: '{dsl:getFromArray(obj: auftraege.kontingentPhasenUsed, prop:phaseUid, forKey:forKeyPercent)}' }">
+							
+							<f:form.hidden name="phasenKontingent[{number}]" class="zeitkontingent_minuten" id="zeitkontingent_{number}" value="{dsl:getFromArray(obj: phasenKontingent, prop:'{number}')}" />
+							
+							{phase}<f:if condition="{stundensatz}"> - <span class="warn_meldung" title="abweichender Stundensatz">{stundensatz->f:format.number(decimals: 2, decimalSeparator: ',', thousandsSeparator: '')}€/h</span></f:if>
+
+							<f:comment>
+							<f:if condition="{0:used, 1:max}!={0:0,1:0}">
+								<f:then>
+									<nobr>//
+										<f:if condition="{used}">
+											<f:then><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: used)}' }" /></f:then>
+											<f:else><strong> 0</strong></f:else>
+										</f:if>
+										<f:if condition="{max}"> von <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: max)}' }" /></f:if>
+									</nobr>
+								</f:then>
+								<f:comment>
+								<f:else>
+									<nobr>// <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: zeiteintraege.kontingent)}'}" />
+									</nobr>
+								</f:else>
+								</f:comment>
+							</f:if>
+							</f:comment>
+																	<f:if condition="{0:used, 1:max}!={0:0,1:0}"><nobr>// <f:if condition="{used}"><f:then><f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: used)}' }" /></f:then><f:else><strong> 0</strong></f:else></f:if><f:if condition="{max}"> von <f:render partial="Allgemein/DauerKurz" arguments="{set: '{dsl:getSetArrayFromTime(time: max)}' }" /></f:if></nobr></f:if>
+
+							
+							
+						</f:alias></f:alias></f:alias></f:alias></div>
+						<div class="layout-table-col table-formular-small">
+							<f:form.textfield maxlength="3" value="{dsl:getFromArray(obj: phasenStunden, prop:'{number}')}" class="spinner_stunden spinner_phase spinner_phase_{number} spinner_phase_stunden_{number}  touchspin_stunden input-sm" />
+						</div>
+						<div class="layout-table-col table-formular-spacer-5"></div>
+						<div class="layout-table-col table-formular-small">
+							<f:form.textfield maxlength="2" value="{dsl:getFromArray(obj: phasenMinuten, prop:'{number}')}" class="spinner_minuten spinner_phase spinner_phase_{number} spinner_phase_minuten_{number} touchspin_minuten  input-sm" />
+						</div>
+					</div>
+                
+            </f:for>
+            <div class="layout-table-row" data-id="gesamt">
+	            <div class="layout-table-col table-formular-very-small-icon">&nbsp;</div>
+	            <div class="layout-table-col  table-formular-label"><strong>Gesamt</strong>
+				<f:if condition="{auftraege.kontingent}">
+					<f:then>
+						// <f:render partial="Allgemein/DauerKurz" arguments="{set: auftraege.kontingentUsedSet}" /> von <f:render partial="Allgemein/DauerKurz" arguments="{set: auftraege.kontingentSet}" />
+
+
+					</f:then>
+					<f:else>
+
+						// <f:render partial="Allgemein/DauerKurz" arguments="{set: auftraege.kontingentUsedSet}" />
+
+					</f:else>
+
+				</f:if>	
+					
+				<f:form.textfield name="kontingent" id="zeitkontingent_gesamt" value="{zeiteintraege.kontingent}" style="visibility:hidden;position:absolute;" />
+				
+				</div>
+				
+                <div class="layout-table-col spinner-disabled"><f:form.textfield value="" class="spinner_phase_stunden_gesamt touchspin_stunden input-sm"  id="spinner_phase_stunden_gesamt" disabled="disabled" /></div>
+                <div class="layout-table-col table-formular-spacer-5"></div>
+                <div class="layout-table-col spinner-disabled"><f:form.textfield value="" class="spinner_phase_minuten_gesamt touchspin_minuten input-sm"  id="spinner_phase_minuten_gesamt" disabled="disabled" /></div>
+            </div>
+				
+				
+			<div class="layout-table-row" data-id="gesamt">
+	            <div class="layout-table-col table-formular-very-small-icon">&nbsp;</div>
+	            <div class="layout-table-col  table-formular-label"><strong>davon Mehraufwand</strong>
+					
+					
+					
+					
+					
+				<f:form.textfield name="kontingentMehraufwand" id="zeitkontingent_mehraufwand" value="{zeiteintraege.kontingentMehraufwand}" style="visibility:hidden;position:absolute;" />
+				
+				</div>
+				
+                <div class="layout-table-col"><f:form.textfield value="" class="spinner_phase_mehraufwand spinner_phase_stunden_mehraufwand touchspin_stunden input-sm"  id="spinner_phase_stunden_mehraufwand" /></div>
+                <div class="layout-table-col table-formular-spacer-5"></div>
+                <div class="layout-table-col"><f:form.textfield value="" class="spinner_phase_mehraufwand spinner_phase_minuten_mehraufwand touchspin_minuten input-sm"  id="spinner_phase_minuten_mehraufwand" /></div>
+            </div>
+                	
+            
+					
+            </div>
+            
+            </div>
+            
+			<div id="kontingent_verbleibend"></div>
+        </div>
+	</div>
+</div>
+
+
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Tätigkeit<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textarea name="text" value="{zeiteintraege.text}" class="validator_required form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+
+
+
+

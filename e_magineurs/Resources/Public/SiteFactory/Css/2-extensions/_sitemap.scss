@@ -1,0 +1,32 @@
+.unfold {
+    margin-bottom: 15px;
+    span{
+        display: none;
+        cursor: pointer;
+        &.active{display: inline-block;}
+    }
+}
+.frame-type-menu_sitemap > li:before{
+    background: none !important;
+}
+.frame-type-menu_sitemap li {
+    list-style: none;
+    margin-bottom: 8px;
+    li {
+        list-style: none;
+        margin: 5px 0;
+    }
+    &:before, .img_plansite {
+        background: url("../Images/spritesPlanSite.png") 0 0 no-repeat;
+        width: 16px;
+        height: 16px;
+        content: " ";
+        display: inline-block;
+        margin: 0 2px 0 -3px;
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    &.nivi:before {display: none;}
+    .img_plansite {background-position: -16px 0;}
+    .img_plansite.niviclosed {background-position: -34px 0;}
+}

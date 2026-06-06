@@ -1,0 +1,116 @@
+plugin.tx_egmap {
+	view {
+		templateRootPaths{
+			0 = EXT:e_gmap/Resources/Private/Templates/
+			1 = {$plugin.tx_egmap.view.templateRootPath}
+		}
+		partialRootPaths{
+			0 = EXT:e_gmap/Resources/Private/Partials/
+			1 = {$plugin.tx_egmap.view.partialRootPath}
+		}
+		layoutRootPaths{
+			0 = EXT:e_gmap/Resources/Private/Layouts/
+			1 = {$plugin.tx_egmap.view.layoutRootPath}
+		}
+	}
+	persistence {
+		storagePid = {$plugin.tx_egmap.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings{
+		view = plugin
+		apiKey = {$plugin.tx_egmap.settings.apiKey}
+		width = {$plugin.tx_egmap.settings.width}
+		height = {$plugin.tx_egmap.settings.height}
+		includeJs{
+			gmap = {$plugin.tx_egmap.settings.includeJs.gmap}
+			markerclusterer = {$plugin.tx_egmap.settings.includeJs.markerclusterer}
+		}
+
+		/*
+		You can set the detail page to allow the user to follow a link to the detail page
+		detail {
+			News {
+				page = [page uid]
+				param = [parameter containing record uid]
+			}
+		}
+		*/
+
+		map{
+			poiTemplate = Poi
+
+			center{
+				type = {$plugin.tx_egmap.settings.map.center.type}
+				lat = {$plugin.tx_egmap.settings.map.center.lat}
+				lng = {$plugin.tx_egmap.settings.map.center.lng}
+			}
+			zoom {
+				actif = {$plugin.tx_egmap.settings.map.zoom.actif}
+				value = {$plugin.tx_egmap.settings.map.zoom.value}
+				molette = {$plugin.tx_egmap.settings.map.zoom.molette}
+			}
+			streetview.actif = {$plugin.tx_egmap.settings.map.streetview.actif}
+			deplacement.actif = {$plugin.tx_egmap.settings.map.deplacement.actif}
+			type{
+				actif = {$plugin.tx_egmap.settings.map.type.actif}
+				defaut = {$plugin.tx_egmap.settings.map.type.defaut}
+			}
+			draggable = {$plugin.tx_egmap.settings.map.draggable}
+			recherche.actif = {$plugin.tx_egmap.settings.map.recherche.actif}
+			itineraire {
+				actif = {$plugin.tx_egmap.settings.map.itineraire.actif}
+				type = {$plugin.tx_egmap.settings.map.itineraire.type}
+				show = {$plugin.tx_egmap.settings.map.itineraire.show}
+				panel = {$plugin.tx_egmap.settings.map.itineraire.panel}
+			}
+			trafic = {$plugin.tx_egmap.settings.map.trafic}
+			cluster.actif = {$plugin.tx_egmap.settings.map.cluster.actif}
+			
+			loadingInfo (
+				<div style="padding: 20px;">
+					<img src="EXT:e_gmap/Resources/Public/Icons/big-f0f0f0.gif" alt="loading" />
+				</div>
+			)
+		}
+	}
+}
+
+module.tx_egmap < plugin.tx_egmap
+module.tx_egmap.settings {
+	view = module
+	width = 800px
+	height = 600px
+	map{
+		draggable = 1
+		streetview.actif = 0
+		recherche.actif = 1
+	}
+}
+
+module.tx_egmap_choosepoi < module.tx_egmap
+module.tx_egmap_choosepoi.settings{
+	view = wizard
+	map{
+		streetview.actif = 0
+		recherche.actif = 1
+	}
+}
+
+
+
+config.recordLinks.egmap {
+	typolink {
+		parameter = {$plugin.tx_egmap.settings.detailPid}
+		additionalParams.data = field:uid
+		additionalParams.wrap = &tx_egmap_gmap[pois]=|
+		useCacheHash = 1
+	}
+}
+
+lib.linkRenderer = TEXT
+lib.linkRenderer.field = linkText
+lib.linkRenderer.typolink.parameter.field = linkTarget

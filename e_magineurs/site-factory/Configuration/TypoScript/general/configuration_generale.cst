@@ -1,0 +1,68 @@
+e_magineurs.conf {
+	dossierPublic = EXT:e_magineurs/Resources/Public/SiteFactory
+	dossierPrivate = EXT:e_magineurs/site-factory/Resources/Private
+	dossierExtensions = EXT:e_magineurs/site-factory/Resources/Extensions
+	dossierContainer = EXT:e_magineurs/site-factory/Resources/Container
+	dossierPackagePublic =  EXT:e_package/Resources/Public
+	# cat=Configuration du site; type=string; label= Titre du site pour la balise <title> et pour le nom de l'expéditeur des mails
+	siteTitle = Site modèle
+	# cat=Mise en page; type=int+; label= Uid de la page d'accueil
+	homePage = 578
+	# cat=Configuration du site; type=string; label= Adresse mail utilisée pour l'envoi
+	sender.email = contact@eco.plaine-commune.fr
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée la recherche Solr
+	moteurRecherche = 596	
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée le menu pied de page
+	menuFooter = 598
+	# cat=Configuration du site; type=int+; label= Id de la page où sont stockées les informations pour le pied de page
+	infoFooter = 597
+	# cat=Configuration du site; type=int+; label= Id de la page de la géolocalisation
+	idPageMap = 610
+	menuPrincipal {
+		# cat=Configuration du site; type=int+; label= Profondeur du niveau principal
+		levels = 3
+		# cat=Configuration du site; type=int+; label= Id de la page contenant le menu principal
+		pid = 595
+	}
+
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée le menu mini head
+	menuMiniHead = 675
+
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée le header
+	headerPage = 658
+
+	MenuSecondaire {
+		# cat=Configuration du site; type=int+; label= Profondeur du menu secondaire
+		levels = 2
+		# cat=Configuration du site; type=int+; label= Id de la page où est stockée le menu secondaire
+		pid = 670
+	}
+
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée le plan de site
+	planSite = 676
+
+	# cat=Configuration du site/couleurs; type=color; label= Couleur principal
+	principal_color = #6666ff
+
+	
+	
+}
+
+#Meta
+page.meta {
+	description =
+	author =
+	keywords = 
+}
+
+config {
+	no_cache = 0
+	admPanel = 0
+	headerComment = Site réalisé par E-magineurs
+	linkVars = L
+	compressCss = 1
+	compressJs = 1
+	concatenateJs = 1
+	concatenateCss = 1
+	moveJsFromHeaderToFooter = 0
+}

@@ -1,0 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+    
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/moment-with-locales.min.js" name="jsMoment" dependencies="jquery"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/fullcalendar-3.5.1/lib/jquery-ui.min.js" name="jsJqueryUi" dependencies="jsMoment"></v:asset.script>
+<v:asset.script path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/js/bootstrap-datetimepicker.min.js" name="jsDatetimepicker" dependencies="jsMoment"></v:asset.script>
+<v:asset.style path="EXT:dsl_intranet/Resources/Public/bootstrap-datetimepicker-master/build/css/bootstrap-datetimepicker.css" name="cssDatetimepicker" dependencies="jquery"></v:asset.style>
+	
+	<v:asset.script path="EXT:dsl_intranet/Resources/Public/Chart.min.js" name="jsChart"></v:asset.script>
+	
+   <script type="text/javascript">
+	   var chartArr = new Object();
+	   var chartPhasenArr = new Object();
+	</script>
+
+	<f:render partial="KundenAuftraege/AuftraegeList" arguments="{_all}" />
+
+   
+
+</f:section>
+
+</html>
+

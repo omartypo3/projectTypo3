@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-05-14T16:06:01Z" product-name="dsl_immo">
+		<header/>
+		<body>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout">
+				<source>Immobilien Ausgabe</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch">
+				<source>Immobilien Suche</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark">
+				<source>Immobilien Merkliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights">
+				<source>Immobilien Highlights</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoselected">
+				<source>Immobilien Selektion</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoselected.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>			
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest">
+				<source>Immobilien Latest</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks">
+				<source>Immobilien Browselinks</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail">
+				<source>Immobilien Detail</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie">
+				<source>Immobilie</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekttitel">
+				<source>Objekttitel</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.dreizeiler">
+				<source>Dreizeiler</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.lage">
+				<source>Lage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattbeschr">
+				<source>Ausstattbeschr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektbeschreibung">
+				<source>Objektbeschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.sonstigeangaben">
+				<source>Sonstigeangaben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_nrintern">
+				<source>Objekt Nrintern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_nrextern">
+				<source>Objekt Nrextern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.openimmoobid">
+				<source>Openimmoobid</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.stand_vom">
+				<source>Stand Vom</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.nutzungs_art">
+				<source>Nutzungs Art</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.vermarktungs_art">
+				<source>Vermarktungs Art</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ">
+				<source>Objekt Art Wohnung Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_plz">
+				<source>Geo Plz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_ort">
+				<source>Geo Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_strasse">
+				<source>Geo Strasse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_hausnummer">
+				<source>Geo Hausnummer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_etage">
+				<source>Geo Etage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_anzahl_etagen">
+				<source>Geo Anzahl Etagen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_lage_im_bau">
+				<source>Geo Lage Im Bau</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_lage_gebiet">
+				<source>Geo Lage Gebiet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_land">
+				<source>Geo Land</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_koordinaten_breitengrad">
+				<source>Geo Koordinaten Breitengrad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_koordinaten_laengengrad">
+				<source>Geo Koordinaten Laengengrad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_regionaler_zusatz">
+				<source>Geo Regionaler Zusatz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_kaltmiete">
+				<source>Preise Kaltmiete</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_warmmiete">
+				<source>Preise Warmmiete</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_nebenkosten">
+				<source>Preise Nebenkosten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_kaution">
+				<source>Preise Kaution</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_wohnflaeche">
+				<source>Flaechen Wohnflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_zimmer">
+				<source>Flaechen Anzahl Zimmer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_balkone">
+				<source>Flaechen Anzahl Balkone</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_terassen">
+				<source>Flaechen Anzahl Terassen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_logia">
+				<source>Flaechen Anzahl Logia</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.zustand_baujahr">
+				<source>Zustand Baujahr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.zustand_art">
+				<source>Zustand Art</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_epart">
+				<source>Energiepass Epart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_energieverbrauchkennwert">
+				<source>Energiepass Energieverbrauchkennwert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_endenergiebedarf">
+				<source>Energiepass Endenergiebedarf</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_gebaeudeart">
+				<source>Energiepass Gebaeudeart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektadresse_freigeben">
+				<source>Objektadresse Freigeben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.verfuegbar_ab">
+				<source>Verfuegbar Ab</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.vermietet">
+				<source>Vermietet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.denkmalgeschuetzt">
+				<source>Denkmalgeschuetzt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_wggeeignet">
+				<source>Ausstattung Wggeeignet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_raeumeveraenderbar">
+				<source>Ausstattung Raeumeveraenderbar</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kamin">
+				<source>Ausstattung Kamin</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_klimatisiert">
+				<source>Ausstattung Klimatisiert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_gartennutzung">
+				<source>Ausstattung Gartennutzung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_rollstuhlgerecht">
+				<source>Ausstattung Rollstuhlgerecht</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kabelsattv">
+				<source>Ausstattung Kabelsattv</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_dvbt">
+				<source>Ausstattung Dvbt</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_barrierefrei">
+				<source>Ausstattung Barrierefrei</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_sauna">
+				<source>Ausstattung Sauna</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_swimmingpool">
+				<source>Ausstattung Swimmingpool</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_wasch_trockenraum">
+				<source>Ausstattung Wasch Trockenraum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_wintergarten">
+				<source>Ausstattung Wintergarten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_dvverkabelung">
+				<source>Ausstattung Dvverkabelung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_rampe">
+				<source>Ausstattung Rampe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_hebebuehne">
+				<source>Ausstattung Hebebuehne</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kran">
+				<source>Ausstattung Kran</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_gastterrasse">
+				<source>Ausstattung Gastterrasse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kantinecafeteria">
+				<source>Ausstattung Kantinecafeteria</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_teekueche">
+				<source>Ausstattung Teekueche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_brauereibindung">
+				<source>Ausstattung Brauereibindung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_sporteinrichtungen">
+				<source>Ausstattung Sporteinrichtungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_wellnessbereich">
+				<source>Ausstattung Wellnessbereich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_telefonferienimmobilie">
+				<source>Ausstattung Telefonferienimmobilie</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_umtsempfang">
+				<source>Ausstattung Umtsempfang</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_abstellraum">
+				<source>Ausstattung Abstellraum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_bibliothek">
+				<source>Ausstattung Bibliothek</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_dachboden">
+				<source>Ausstattung Dachboden</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_gaestewc">
+				<source>Ausstattung Gaestewc</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kabelkanaele">
+				<source>Ausstattung Kabelkanaele</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_seniorengerecht">
+				<source>Ausstattung Seniorengerecht</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_fahrradraum">
+				<source>Ausstattung Fahrradraum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_rolladen">
+				<source>Ausstattung Rolladen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_bad">
+				<source>Ausstattung Bad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kueche">
+				<source>Ausstattung Kueche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_boden">
+				<source>Ausstattung Boden</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_heizungsart">
+				<source>Ausstattung Heizungsart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_befeuerung">
+				<source>Ausstattung Befeuerung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_fahrstuhl">
+				<source>Ausstattung Fahrstuhl</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_stellplatzart">
+				<source>Ausstattung Stellplatzart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_ausricht_balkon_terasse">
+				<source>Ausstattung Ausricht Balkon Terasse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_angeschl_gastronomie">
+				<source>Ausstattung Angeschl Gastronomie</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_serviceleistungen">
+				<source>Ausstattung Serviceleistungen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_sicherheitstechnik">
+				<source>Ausstattung Sicherheitstechnik</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_moebliert">
+				<source>Ausstattung Moebliert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kategorie">
+				<source>Ausstattung Kategorie</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_dachform">
+				<source>Ausstattung Dachform</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_bauweise">
+				<source>Ausstattung Bauweise</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_ausbaustufe">
+				<source>Ausstattung Ausbaustufe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_energietyp">
+				<source>Ausstattung Energietyp</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_unterkellert">
+				<source>Ausstattung Unterkellert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_hallenhoehe">
+				<source>Ausstattung Hallenhoehe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_stromanschlusswert">
+				<source>Ausstattung Stromanschlusswert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_gueltig_bis">
+				<source>Energiepass Gueltig Bis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_mitwarmwasser">
+				<source>Energiepass Mitwarmwasser</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_primaerenergietraeger">
+				<source>Energiepass Primaerenergietraeger</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_stromwert">
+				<source>Energiepass Stromwert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_waermewert">
+				<source>Energiepass Waermewert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_wertklasse">
+				<source>Energiepass Wertklasse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_ausstelldatum">
+				<source>Energiepass Ausstelldatum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepass_jahrgang">
+				<source>Energiepass Jahrgang</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.highlight">
+				<source>Highlight</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_zimmer_typ">
+				<source>Objekt Art Zimmer Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_haus_typ">
+				<source>Objekt Art Haus Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_grundstueck_typ">
+				<source>Objekt Art Grundstueck Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_buero_praxen_typ">
+				<source>Objekt Art Buero Praxen Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_einzelhandel_typ">
+				<source>Objekt Art Einzelhandel Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_gastgewerbe_typ">
+				<source>Objekt Art Gastgewerbe Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_hallen_lager_produktion_typ">
+				<source>Objekt Art Hallen Lager Produktion Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_land_forstwirtschaft_typ">
+				<source>Objekt Art Land Forstwirtschaft Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_parken_typ">
+				<source>Objekt Art Parken Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_sonstige_typ">
+				<source>Objekt Art Sonstige Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_freizeitimmobilie_gewerblich_typ">
+				<source>Objekt Art Freizeitimmobilie Gewerblich Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_zinshaus_renditeobjekt_typ">
+				<source>Objekt Art Zinshaus Renditeobjekt Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_sonstflaeche">
+				<source>Flaechen Sonstflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_vermietbare_flaeche">
+				<source>Flaechen Vermietbare Flaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_gewerbeeinheiten">
+				<source>Flaechen Anzahl Gewerbeeinheiten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_nutzflaeche">
+				<source>Flaechen Nutzflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_gesamtflaeche">
+				<source>Flaechen Gesamtflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_bueroflaeche">
+				<source>Flaechen Bueroflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_grundstuecksflaeche">
+				<source>Flaechen Grundstuecksflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_badezimmer">
+				<source>Flaechen Anzahl Badezimmer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechen_anzahl_schlafzimmer">
+				<source>Flaechen Anzahl Schlafzimmer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_kaufpreis">
+				<source>Preise Kaufpreis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_provisionspflichtig">
+				<source>Preise Provisionspflichtig</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_aussen_courtage">
+				<source>Preise Aussen Courtage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_aussen_courtage_mit_mwst">
+				<source>Preise Aussen Courtage Mit Mwst</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_waehrung_iso_waehrung">
+				<source>Preise Waehrung Iso Waehrung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_mwst_satz">
+				<source>Preise Mwst Satz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_mieteinnahmen_ist">
+				<source>Preise Mieteinnahmen Ist</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_stp_freiplatz_anzahl">
+				<source>Preise Stp Freiplatz Anzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_stp_sonstige_anzahl">
+				<source>Preise Stp Sonstige Anzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preise_stp_sonstige_platzart">
+				<source>Preise Stp Sonstige Platzart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.search_vermarktung">
+				<source>Search Vermarktung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.search_objekt_typ">
+				<source>Search Objekt Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.search_zimmer">
+				<source>Search Zimmer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.search_flaeche">
+				<source>Search Flaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.search_preis">
+				<source>Search Preis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.search_wohngebiet">
+				<source>Search Wohngebiet</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_adresse_gesperrt_koordinaten_breitengrad">
+				<source>Geo Adresse Gesperrt Koordinaten Breitengrad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geo_adresse_gesperrt_koordinaten_laengengrad">
+				<source>Geo Adresse Gesperrt Koordinaten Laengengrad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.haustiere">
+				<source>Haustiere</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.additional_html_field">
+				<source>Additional Html Field</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.moderner_grundriss">
+				<source>Moderner Grundriss</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energie_ausweis_link_extern">
+				<source>Energie Ausweis Link Extern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.anhaenge">
+				<source>Anhaenge</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.importe">
+				<source>Importe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.kontaktperson">
+				<source>Kontaktperson</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.titel_bild">
+				<source>Titel Bild</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_import">
+				<source>Import</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_import.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_import.datei">
+				<source>Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_anhang">
+				<source>Anhang</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_anhang.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_anhang.datei">
+				<source>Datei</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson">
+				<source>Kontaktperson</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.emailzentrale">
+				<source>Emailzentrale</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.telzentrale">
+				<source>Telzentrale</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.telfax">
+				<source>Telfax</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.vorname">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.firma">
+				<source>Firma</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.strasse">
+				<source>Strasse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.plz">
+				<source>Plz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.ort">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_kontaktperson.url">
+				<source>Url</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout">
+				<source>Immobilien Ausgabe</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immoout.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch">
+				<source>Immobilien Suche</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immosearch.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark">
+				<source>Immobilien Merkliste</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobookmark.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights">
+				<source>Immobilien Highlights</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immohighlights.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest">
+				<source>Immobilien Latest</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immolatest.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks">
+				<source>Immobilien Browselinks</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immobrowselinks.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail">
+				<source>Immobilien Detail</source>
+			</trans-unit>
+			<trans-unit id="tx_dsl_immo_domain_model_immodetail.description">
+				<source>Immobilien Modul</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektart_haus_haustyp">
+				<source>Objektart Haus Haustyp</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preisekaufpreis">
+				<source>Preisekaufpreis</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaeche_anzahl_gewerbeeinheiten">
+				<source>Flaeche Anzahl Gewerbeeinheiten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_freizeitimmobilie_gewerblich_zimmer_typ">
+				<source>Objekt Art Freizeitimmobilie Gewerblich Zimmer Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattungwasch_trockenraum">
+				<source>Ausstattungwasch Trockenraum</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art">
+				<source>Objekt Art</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektnrintern">
+				<source>Objektnrintern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektnrextern">
+				<source>Objektnrextern</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.standvom">
+				<source>Standvom</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.nutzungsart">
+				<source>Nutzungsart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.vermarktungsart">
+				<source>Vermarktungsart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektart">
+				<source>Objektart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geoplz">
+				<source>Geoplz</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geoort">
+				<source>Geoort</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geostrasse">
+				<source>Geostrasse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geohausnummer">
+				<source>Geohausnummer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geoetage">
+				<source>Geoetage</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geoanzahletagen">
+				<source>Geoanzahletagen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geoland">
+				<source>Geoland</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geokoordinatenbreitengrad">
+				<source>Geokoordinatenbreitengrad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geokoordinatenlaengengrad">
+				<source>Geokoordinatenlaengengrad</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preisekaltmiete">
+				<source>Preisekaltmiete</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preisewarmmiete">
+				<source>Preisewarmmiete</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preisenebenkosten">
+				<source>Preisenebenkosten</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.preisekaution">
+				<source>Preisekaution</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechenwohnflaeche">
+				<source>Flaechenwohnflaeche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechenanzahlzimmer">
+				<source>Flaechenanzahlzimmer</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechenanzahlbalkone">
+				<source>Flaechenanzahlbalkone</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechenanzahlterassen">
+				<source>Flaechenanzahlterassen</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.flaechenanzahllogia">
+				<source>Flaechenanzahllogia</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.zustandbaujahr">
+				<source>Zustandbaujahr</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.zustandart">
+				<source>Zustandart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepassepart">
+				<source>Energiepassepart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepassenergieverbrauchkennwert">
+				<source>Energiepassenergieverbrauchkennwert</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepassendenergiebedarf">
+				<source>Energiepassendenergiebedarf</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.energiepassgebaeudeart">
+				<source>Energiepassgebaeudeart</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objektadressefreigeben">
+				<source>Objektadressefreigeben</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.verfuegbarab">
+				<source>Verfuegbarab</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.geokoordinatenbreitengraf">
+				<source>Geokoordinatenbreitengraf</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_import.immobilien">
+				<source>Immobilien</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_import.type.10">
+				<source>Teil Abgleich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_import.type.20">
+				<source>Voll Abgleich</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.10">
+				<source>keine Angabe</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.20">
+				<source>Dachgeschoss</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.30">
+				<source>Maisonette</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.40">
+				<source>Loft</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.50">
+				<source>Penthouse</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.60">
+				<source>Terrassenwohnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.70">
+				<source>Etagenwohnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.80">
+				<source>Erdgeschoss</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.90">
+				<source>Souterrain</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.100">
+				<source>APARTMENT</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.110">
+				<source>Ferienwohnung</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.120">
+				<source>Galerie</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.130">
+				<source>Rohdachboden</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.objekt_art_wohnung_typ.140">
+				<source>ATTIKAWOHNUNG</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kueche.10">
+				<source>Einbauküche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kueche.20">
+				<source>offene Küche</source>
+			</trans-unit>
+			<trans-unit id="tx_dslimmo_domain_model_immobilie.ausstattung_kueche.30">
+				<source>Miniküche</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

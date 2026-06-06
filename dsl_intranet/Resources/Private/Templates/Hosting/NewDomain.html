@@ -1,0 +1,127 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Hosting" action="ajax" name="hostingDomain"  pluginName="hostingliste" extensionName="dslintranet" id="hostingDomainEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Hostingpaket Bearbeiten'}" />
+
+
+
+
+
+
+<script>
+/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		/*alert('loaded:'+$('#auftraegeEditForm input').length);*/
+		
+		
+		//$('#auftraegeEditForm').submit(function() {
+
+
+
+$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#hostingDomainEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				validateFormInvalidHandlerReset();
+				
+				if($('#hostingDomainEditForm').hasClass('formSaves'))	return false;
+				$('#hostingDomainEditForm').addClass('formSaves');
+			
+				$.ajax({
+					url: $('#hostingDomainEditForm').attr('action'),
+					type: 'POST',
+					data: $('#hostingDomainEditForm').serialize(),
+					success: function(data) {
+						
+
+						
+						dataJson = JSON.parse(data);
+						
+						//reloadAuftragId('list',id);
+						if(!dataJson["newUid"]) {
+
+							return true;
+						} else {
+							
+							//changeProjektTab("auftrag-show-"+dataJson["uid"],dataJson["contentShow"]);
+							
+							dataTableReload();
+							
+					
+							
+			
+							
+				
+							//if(tinymce.EditorManager.editors[0]) tinymce.EditorManager.editors[0].destroy();
+							
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		/* Validator Ende */
+		
+		
+	});
+
+</script>
+
+
+
+	<f:if condition="{zusatzTarif}">
+    	<f:then>
+        	
+	    	<f:form.hidden name="switch" value="createZusatzTarif" />
+        </f:then>
+        <f:else>
+    		<f:form.hidden name="switch" value="createHauptTarif" />        
+        </f:else>
+    </f:if>
+    <f:form.hidden name="hostingUid" value="{hostingUid}" />
+    
+    
+    <f:render partial="HostingDomain/FormFields" arguments="{_all}" />
+	
+    
+
+   
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Änderungen Speichern'}" />    
+    
+    
+</f:form>
+
+
+</f:section>

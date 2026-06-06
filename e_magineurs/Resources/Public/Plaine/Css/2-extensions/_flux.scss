@@ -1,0 +1,142 @@
+/*LISTE flux*/
+.tx-rssaggregator{
+	& > .items{
+		.titre{
+			margin: 5rem 0 2rem 0;
+			a{
+				font-size: 3rem;
+    			color: $font;
+    			position: relative;
+
+    			&:before{
+					content: "";
+					display: block;
+					position: absolute;
+					width: 0;
+					height: 1px;
+					background: $rose;
+					bottom: 0;
+					left: 0;
+					transition: all ease 0.4s;
+
+				}
+			}
+
+			&:hover{
+				a{
+					&:before{
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		.description{
+			margin: 0 0 2rem 0;
+			font-size: 2rem;
+		}
+	}
+
+	&> ul >li{
+		margin-bottom:45px;
+		display: table;
+
+		.image{
+			margin-right:30px;
+			margin-bottom: 20px;
+			display: block;
+			overflow: hidden;
+			float: left;
+			width: 300px;
+
+			@include MquerieW(1050){
+				float: none;
+				width: 100%;
+			}
+				
+			img{
+				width:100%;
+				height:auto;
+				-o-object-fit:cover;
+				   object-fit:cover;
+				transition: all ease-out 0.4s;
+				transform: scale(1);
+
+				&.hover{
+					transform: scale(1.05);
+				}
+			}
+		}
+
+		.title{
+			font-size:1.6rem;
+			text-transform:uppercase;
+			margin:0 0 0 0;
+			
+			a{
+				color:$font;
+				position: relative;
+
+				&:before{
+					content: "";
+					display: block;
+					position: absolute;
+					width: 0;
+					height: 1px;
+					background: $rose;
+					bottom: 0;
+					left: 0;
+					transition: all ease 0.4s;
+
+				}
+			}
+
+			&:hover{
+				a{
+					&:before{
+						width: 100px;
+					}
+				}
+			}
+		}
+
+		.subtitle{
+			text-transform:uppercase;
+			font-size:1.2rem;
+			font-weight:400;
+			margin-bottom: 1rem;
+		}
+
+	}
+		
+	.wrap_cat, .more{
+		color:$lien;
+		font-size:1.3rem;
+		font-weight:600;
+		margin:0;
+	}
+	.content-liste-actu{
+		width:100%;
+	}
+	
+	
+	.teaser-text{
+		flex-grow:1;
+	}
+	@include media-breakpoint-down(md) {
+	.article{
+		margin-bottom:30px;
+	}
+	.news-img-wrap{
+		padding-right:0px;
+		margin-bottom:10px;
+		img{
+			width:100% !important;
+			height:auto;
+			}
+		}
+	}
+	.icon-LinkText-interne{
+		text-align: right;
+	}
+}

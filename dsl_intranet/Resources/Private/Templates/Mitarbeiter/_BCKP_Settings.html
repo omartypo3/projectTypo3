@@ -1,0 +1,64 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"  data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+
+
+<f:section name="main"><f:if condition="{mitarbeiter}">
+
+	<h1>Projekte</h1>
+	<h2>Splitscreen</h2>
+	  <div class="btn-group btn-toggle" data-settings-key="projekteSplit"> 
+		<button class="btn btn-lg {f:if(condition: '{mitarbeiter.settingsAllgemein.projekteSplit}==\'vertical\'', then: ' btn-primary active', else: ' btn-default')}" data-settings-value="vertical"><i class="fa fa-arrows-v"></i> &nbsp; Vertikal</button>
+		<button class="btn btn-lg {f:if(condition: '{mitarbeiter.settingsAllgemein.projekteSplit}==\'horizontal\'', then: ' btn-primary active', else: ' btn-default')}" data-settings-value="horizontal"><i class="fa fa-arrows-h"></i> &nbsp; Horizontal</button>
+	  </div>
+	
+	
+	
+	<v:asset.script name="jsMitarbeiterSettings" dependencies="">
+	    var settingsAjaxUrl = '<f:uri.action pageType="89657003" arguments="{key:'keyReplace', value:'valueReplace'}" />';
+		
+		$('.btn-toggle').click(function() {
+			$(this).find('.btn').toggleClass('active');  
+
+			if ($(this).find('.btn-primary').size()>0) {
+				$(this).find('.btn').toggleClass('btn-primary');
+			}
+			if ($(this).find('.btn-danger').size()>0) {
+				$(this).find('.btn').toggleClass('btn-danger');
+			}
+			if ($(this).find('.btn-success').size()>0) {
+				$(this).find('.btn').toggleClass('btn-success');
+			}
+			if ($(this).find('.btn-info').size()>0) {
+				$(this).find('.btn').toggleClass('btn-info');
+			}
+
+			$(this).find('.btn').toggleClass('btn-default');
+			console.log($(this).data('settings-key'));
+			console.log($(this).find('.btn.active').data('settings-value'));
+			console.log(settingsAjaxUrl);
+			
+			var updateAjaxJson = {
+				"tx_dslintranet_mitarbeiter[key]":$(this).data('settings-key'),
+				"tx_dslintranet_mitarbeiter[value]":$(this).find('.btn.active').data('settings-value')
+			};
+			console.log(updateAjaxJson);
+			dslIntranetAjaxCall(settingsAjaxUrl,updateAjaxJson).done(function (data) {
+				console.log('ajaxDone');
+			});
+		
+		});
+	</v:asset.script>
+</f:if></f:section>
+</html>

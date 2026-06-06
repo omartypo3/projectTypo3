@@ -1,0 +1,44 @@
+<link rel="stylesheet" type="text/css" media="all" href=".EXT:e_annuaires/Resources/Public/Css/mod1_eoffresdemploi.css" title="system">
+
+<f:alias map="{offre: candidature.firstCdps, civility: '{f:render(partial: \'Offre/Civility\', arguments: {civility: candidature.civility})}'}">
+    <div class="pdfCandidature">
+        
+        <h2 class="text-center">Plaine Commune</h2>
+        <h3 class="text-center">Grand Paris</h3>
+
+        <div class="contenu_lettre_pdf">
+            <div class="coin_sup_droit">
+                <p><strong>{civility} <f:format.case>{candidature.name}</f:format.case> {candidature.firstname}</strong></p>
+                <p>{candidature.beneficiaire}</p>
+                <p>{candidature.zipcode} {candidature.address}</p>
+                <br />
+                <p>le <f:format.date format="%d.%m.%Y" date=""></f:format.date></p>
+            </div>
+            <br />
+            <div class="corps_lettre">
+                <p>
+                    {civility},
+                </p>
+                <p>
+                    Votre candidature au poste "<strong>{offre.title}</strong>" a retenu toute notre attention.<br />
+                    Bien que présentant des qualités certaines, votre curriculum vitae n'a pas pu être retenu, celui-ci ne répondant pas totalement aux exigences du poste.<br />
+                    Je ne doute pas néanmoins que votre recherche trouvera un aboutissement favorable.<br />
+                    Je tiens à vous renouveler mes remerciements pour notre collectivité et vous prie de croire, {civility}, à l'assurance de ma considération distinguée.
+                </p>
+                <br/>
+            </div>
+            <div class="signature">
+                <p>
+                    Directeur des Ressources humaines<br />
+                </p>
+            </div>
+        </div>
+        <div class="infos_footer_pdf">
+            [Informations du lieu]<br />
+            [Adresse du lieu]<br />
+            [Url du site web]<br />
+            Sauf avis contraire de votre part, nous conservons votre dossier, conformément aux dispositions de la loi
+            "Informatique et Libertés" (loi n° 78-17 du 6 janvier 1978), susceptible de correspondre à un prochain recrutement.
+        </div>
+    </div>
+</f:alias>

@@ -1,0 +1,12 @@
+<ul class="spacerlist">
+    <f:if condition="{set.stunden}>0">
+        <li><strong>{set.stunden}</strong> h</li>
+    </f:if>
+    <f:if condition="{set.minuten}>0">
+        <li><strong>{set.minuten}</strong> m</li>
+    </f:if>
+    <f:if condition="{0:set.stunden, 1:set.minuten}=={0:0,1:0}">
+	    <li><strong>0</strong> h</li>
+        <li><strong>0</strong> m</li>
+    </f:if>
+</ul>

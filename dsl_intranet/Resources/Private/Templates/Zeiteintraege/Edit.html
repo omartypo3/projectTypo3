@@ -1,0 +1,126 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+    <f:form controller="Zeiteintraege" action="ajax" name="zeiteintraege"  pluginName="auftragsliste" extensionName="dslintranet" id="zeiteintraegeEditForm" >
+    
+        <f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Aktivität speichern / {zeiteintraege.auftraege.titel}'}" />
+
+        		
+        
+        <script>
+            $(document).ready(function() {
+               
+                
+               // $('#zeiteintraegeEditForm').submit(function() {
+        		
+				
+				
+				$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+				$.validator.messages.min = '<i class="fa fa-exclamation-circle"></i>';
+				
+			
+				$('#zeiteintraegeEditForm').validate({
+					invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+					errorPlacement: function(error, element) {
+						error.appendTo(element.parent());
+					},
+					rules: {
+						'tx_dslintranet_auftragsliste[kontingent]': { required: true, min: 1 },
+						'tx_dslintranet_auftragsliste[minutenUnzugewiesen]': { required: true,digits: true },
+						'tx_dslintranet_auftragsliste[kontingentFail]': { required: true }
+						
+					},
+					
+					ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+					errorClass: 'invalid',
+					submitHandler: function(form) {		
+					
+						if($('#zeiteintraegeEditForm').hasClass('formSaves'))	return false;
+                    	$('#zeiteintraegeEditForm').addClass('formSaves');
+				
+						validateFormInvalidHandlerReset();
+						
+						
+                    
+						$.ajax({
+							url: $('#zeiteintraegeEditForm').attr('action'),
+							type: 'POST',
+							data: $('#zeiteintraegeEditForm').serialize(),
+							success: function(data) {
+								
+							
+								
+								/*dataJson = JSON.parse(data);*/
+								
+								jsonString = data.replace(/&quot;/g, '"');
+		
+								dataJson = JSON.parse(jsonString);
+								
+								//reloadAuftragId('list',id);
+								if(!dataJson.auftraegeUid) {
+									console.log(dataJson);
+									return true;
+								} else {
+									
+									
+									refreshProjektTabContent(dataJson.auftraegeUid);
+									
+								/*if(!dataJson["uid"]) {
+								
+									return true;
+								} else {
+									
+									
+							
+									refreshProjektTabContent(dataJson["auftraegeUid"]);*/
+									
+
+									
+									$.colorbox.close();
+								}
+						
+								
+				
+							}
+						});
+                    
+                   	}
+				});
+				
+				/* Validator Ende */
+                
+                
+            });
+			
+        </script>
+                
+        
+        
+
+       		    <f:form.hidden name="zeiteintraege" value="{zeiteintraege.uid}" />
+                <f:form.hidden name="switch" value="update" />
+
+                <f:render partial="Zeiteintraege/FormFields" arguments="{_all}" />
+
+        
+        <f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Aktivität speichern'}" />    
+            
+        
+    </f:form>
+
+
+</f:section>

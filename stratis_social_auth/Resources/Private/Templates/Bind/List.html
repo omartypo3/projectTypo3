@@ -1,0 +1,66 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:s="http://typo3.org/ns/Stratis/StratisVhs/ViewHelpers/"
+>
+    <f:layout name="Default" />
+    <f:section name="Main">
+        <v:variable.set name="stratisVar" value="{v:variable.typoscript(path:'stratis.var')}"/>
+        <v:variable.set name="stratisPages" value="{v:variable.typoscript(path:'stratis.pages')}"/>
+        <v:variable.set name="stratisConfig" value="{v:variable.typoscript(path:'stratis.config')}"/>
+
+        <f:render partial="Common/Error" section="FlashMessages"/>
+        <f:security.ifAuthenticated>
+            <f:then>
+                <v:variable.set name="userInfo" value="{s:user.record()}"/>
+                <f:if condition="{userInfo.created_by_france_connect} == 0">
+                    <f:then>
+                        <section class='section account-box'>
+                            <div class="account-box-item ">
+                                <div class="account-box-item__text">
+                                    <h2 class="account-box-item__title">
+                                        {s:l(key:'user.loginFranceConnectMonCompte')}
+                                    </h2>
+                                    <p class="account-box-item__description">
+                                        {s:l(key:'user.franceConnectsolution')}
+                                    </p>
+                                </div>
+                                <div class="account-box-item__button-wrapper">
+                                    <f:if condition="{configuration.providers}">
+                                        <div class="account-box-item__info">
+                                            <f:for each="{configuration.providers}" as="provider">
+                                                <f:link.page pageType="1530794991"
+                                                             rel="noopener"
+                                                             additionalParams="{tx_stratissocialauth_pi1:{provider:provider, configuration:configuration, redirect:'{f:uri.page()}'}, logintype: 'login'}"
+                                                             class="account-box-item__btn fancybox {f:format.case(value: provider.type, mode: 'lower')}"
+                                                             target="_blank"
+                                                             title="{s:l(key:'user.whatFranceConnect')} (Lien externe)">
+                                                    <f:render partial="Common/SVGIcons" section="FranceconnectSVGIcon"/>
+                                                    <span class="ghost">{s:l(key:'user.franceConnect')}</span>
+                                                </f:link.page>
+                                            </f:for>
+                                        </div>
+                                    </f:if>
+                                    <a href="https://app.franceconnect.gouv.fr/en-savoir-plus"
+                                       class="account-box-item__link"
+                                       target="_blank"
+                                    >
+                                        {s:l(key:'user.whatFranceConnect')}
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    <f:comment>
+                        <f:if condition="{configuration.providers}">
+                            <f:for each="{configuration.providers}" as="provider">
+                                <f:link.action action="bind" controller="Bind" class="extranet-social__item -{f:format.case(value: provider.type, mode: 'lower')}" arguments="{configuration: configuration, provider: provider}">
+                                    <v:l key="buttons.bind"/> <v:l key="{provider.type}"/>
+                                </f:link.action>
+                            </f:for>
+                        </f:if>
+                    </f:comment>
+                    </f:then>
+                </f:if>
+            </f:then>
+        </f:security.ifAuthenticated>
+    </f:section>
+</html>

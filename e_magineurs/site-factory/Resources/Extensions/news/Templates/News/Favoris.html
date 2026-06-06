@@ -1,0 +1,166 @@
+{namespace n=GeorgRinger\News\ViewHelpers}
+<f:layout name="General" />
+<!--
+	=====================
+		Templates/News/List.html
+-->
+
+<f:section name="content">
+	<f:if condition="{news}">
+		<f:then>
+			<f:comment> Template Carrousel "une"</f:comment>
+            <f:if condition="{settings.templateLayout} == 1">
+				<f:render partial="Diapo/Diapo" arguments="{news:news, settings:settings}" />
+			</f:if>
+			
+			<f:comment> Template Carrousel "colonne"</f:comment>
+            <f:if condition="{settings.templateLayout} == 2">
+				<f:render partial="Diapo/DiapoDroite" arguments="{news:news, settings:settings}" />
+			</f:if>
+			
+			<f:comment> Template Dernières Actualités</f:comment>
+            <f:if condition="{settings.templateLayout} == 3">
+				<f:render partial="List/Last" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste d'actualité 1</f:comment>
+            <f:if condition="{settings.templateLayout} == 4">
+				<f:render partial="List/List1" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste d'actualité 2</f:comment>
+            <f:if condition="{settings.templateLayout} == 5">
+				<f:render partial="List/List2" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste d'actualité 3</f:comment>
+            <f:if condition="{settings.templateLayout} == 6">
+				<f:render partial="List/List3" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste d'actualité 4</f:comment>
+            <f:if condition="{settings.templateLayout} == 7">
+				<f:render partial="List/List4" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste d'actualité 5</f:comment>
+            <f:if condition="{settings.templateLayout} == 8">
+				<f:render partial="List/List5" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Carrousel "colonne type publication"</f:comment>
+            <f:if condition="{settings.templateLayout} == 9">
+				<f:render partial="Diapo/DiapoPublication" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste des publications"</f:comment>
+            <f:if condition="{settings.templateLayout} == 10">
+				<f:render partial="List/Listpublication" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste des publications une colonne"</f:comment>
+            <f:if condition="{settings.templateLayout} == 11">
+				<f:render partial="List/ListpublicationColonne" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste Agenda 1</f:comment>
+            <f:if condition="{settings.templateLayout} == 12">
+				<f:render partial="List/ListAgenda1" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste Agenda 2</f:comment>
+            <f:if condition="{settings.templateLayout} == 13">
+				<f:render partial="List/ListAgenda2" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste des événements par mois</f:comment>
+            <f:if condition="{settings.templateLayout} == 14">
+				<f:render partial="List/ListEvenementMois" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste des prochains événements</f:comment>
+            <f:if condition="{settings.templateLayout} == 15">
+				<f:render partial="List/ListProchainEvenement" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Lien utile</f:comment>
+            <f:if condition="{settings.templateLayout} == 16">
+				<f:render partial="List/LienUtile" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste lien utile</f:comment>
+            <f:if condition="{settings.templateLayout} == 17">
+				<f:render partial="List/ListLienUtile" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Liste Agenda carrousel</f:comment>
+            <f:if condition="{settings.templateLayout} == 23">
+				<f:render partial="Diapo/DiapoAgenda" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Publications</f:comment>
+            <f:if condition="{settings.templateLayout} == 24">
+				<f:render partial="List/Publication" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Publications Detail</f:comment>
+            <f:if condition="{settings.templateLayout} == 25">
+				<f:render partial="List/PublicationDetail" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Publications Menu List</f:comment>
+            <f:if condition="{settings.templateLayout} == 26">
+				<f:render partial="List/PublicationListMenu" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Outils Menu List</f:comment>
+            <f:if condition="{settings.templateLayout} == 27">
+				<f:render partial="List/PublicationListMenu2" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Last News List</f:comment>
+            <f:if condition="{settings.templateLayout} == 29">
+				<f:render partial="List/NewsLastMenu" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Last News List</f:comment>
+            <f:if condition="{settings.templateLayout} == 30">
+				<f:render partial="List/ListLastNews" arguments="{news:news, settings:settings}" />
+			</f:if>
+
+			<f:comment> Template Actualité List</f:comment>
+            <f:if condition="{settings.templateLayout} == 31">
+				<f:render partial="List/PublicationListActu" arguments="{news:news, settings:settings}" />
+			</f:if>			
+
+			<f:comment> Template Par défaut</f:comment>
+            <f:if condition="{settings.templateLayout}">
+				<f:then>
+				</f:then>
+				<f:else>
+					<div class="news-list-view">
+						<f:if condition="{settings.hidePagination}">
+							<f:then>
+								<f:for each="{news}" as="newsItem">
+									<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings}" />
+								</f:for>
+							</f:then>
+							<f:else>
+								<f:for each="{pagination.paginator.paginatedItems}" as="paginatedNews">
+									<f:for each="{paginatedNews}" as="newsItem">
+										<f:render partial="List/Item" arguments="{newsItem: newsItem, settings:settings}" />
+									</f:for>
+								</f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+							</f:else>
+						</f:if>
+					</div>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<div class="no-news-found">
+				<f:translate key="list_nonewsfound" />
+			</div>
+		</f:else>
+	</f:if>
+</f:section>

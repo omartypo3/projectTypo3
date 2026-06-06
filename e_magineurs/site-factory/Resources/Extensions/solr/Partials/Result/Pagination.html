@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+<f:section name="Pagination">
+	<f:if condition="{pagination.allPageNumbers -> f:count()} > 1">
+		<ul class="pagination pagination-loading">
+			<f:if condition="{pagination.previousPageNumber}">
+				<li class="previous">
+					<f:if condition="{pagination.previousPageNumber} > 1">
+						<f:then>
+							<a href="{s:uri.paginate.resultPage(page: pagination.previousPageNumber)}" class="solr-ajaxified">&laquo;</a>
+						</f:then>
+						<f:else>
+							<a href="{s:uri.paginate.resultPage()}" class="solr-ajaxified">&laquo;</a>
+						</f:else>
+					</f:if>
+				</li>
+			</f:if>
+			<li class="pagination-dots" style="display: none;"><a>....</a></li>
+			<f:for each="{pagination.allPageNumbers}" as="pageNumber">
+				<li data-page-number="{pageNumber}" class="pagination-item{f:if(condition: '{currentPage} == {pageNumber}', then: ' active')}" style="display: none;">
+					<f:if condition="{pageNumber} > 1">
+						<f:then>
+							<a href="{s:uri.paginate.resultPage(page: pageNumber)}" class="solr-ajaxified">{pageNumber}</a>
+						</f:then>
+						<f:else>
+							<a href="{s:uri.paginate.resultPage()}" class="solr-ajaxified">{pageNumber}</a>
+						</f:else>
+					</f:if>
+				</li>
+			</f:for>
+			<li class="pagination-dots" style="display: none;"><a>....</a></li>
+			<f:if condition="{pagination.nextPageNumber}">
+				<li class="last next">
+					<a href="{s:uri.paginate.resultPage(page: pagination.nextPageNumber)}" class="solr-ajaxified"> &raquo; </a>
+				</li>
+			</f:if>
+		</ul>
+	</f:if>
+</f:section>
+

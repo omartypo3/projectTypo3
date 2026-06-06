@@ -1,0 +1,123 @@
+{namespace v=Emagineurs\EGestiondocs\ViewHelpers}
+
+<f:if condition="{isSearch}" >
+    <f:if condition="{f:count(subject: documents)} > 0" >
+        <f:then>
+            <p><f:count subject="{documents}" /> {f:if(condition: '{f:count(subject: documents)} > 1', then: 'results', else: 'result')} for your search</p>
+        </f:then>
+        <f:else>
+            No results found for your search
+        </f:else>
+    </f:if>
+</f:if>
+
+<div>
+    <h2>Parcourir les fichiers disponibles</h2>
+</div>
+
+<div id="parcour_doc">
+    <ul>
+        <f:for each="{foldersList}" as="folder" >
+            <li>
+                <f:link.action arguments="{folder: folder.combinedIdentifier,category: filter.category,keywords: filter.keywords}" >{folder.name}</f:link.action>
+
+                <f:if condition="{folder.subfolders}" >
+                    <f:render partial="FolderList" arguments="{folders: folder.subfolders, settings: settings, category: filter.category,keywords: filter.keywords}"/>
+                </f:if>
+
+                <f:if condition="{settings.displayFiles}" >
+                    <f:if condition="{folder.files}" >
+                        <ul>
+                            <f:for each="{folder.files}" as="file" >
+                                <li><f:link.typolink parameter="{file.publicUrl}" >{file.name}</f:link.typolink></li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</div>
+<div>
+    <h2>Contenu du Dossier "{folderName}"</h2>
+</div>
+<div>
+    <b>Critères de recherche</b>
+    <ul>
+        <f:if condition="{filter.keywords}" >
+            <li>Mot-clés:{filter.keywords} </li>
+        </f:if>
+        <f:if condition="{filter.category}" >
+            <li>Catégorie:{filter.category.title}</li>
+        </f:if>
+    </ul>
+</div>
+<f:if condition="{f:count(subject: documents)}" >
+    <f:if condition="{settings.pagination}" >
+        <f:then>
+            <f:widget.paginate objects="{documents}" as="paginatedDocuments" configuration="{itemsPerPage: settings.itemsPerPage, maximumNumberOfLinks: 5, insertAbove: 0, insertBelow: 1, addQueryStringMethod: 'POST,GET'}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th><f:render partial="OrderButtons" arguments="{label: 'Titre', field: 'name', filter: filter}"/></th>
+                        <th><f:render partial="OrderButtons" arguments="{label: 'Description', field: 'description', filter: filter}"/></th>
+                        <th><f:render partial="OrderButtons" arguments="{label: 'Texte alternatif', field: 'alternative', filter: filter}"/></th>
+                        <th>Vignette</th>
+                        <th><f:render partial="OrderButtons" arguments="{label: 'Type', field: 'extension', filter: filter}"/></th>
+                        <th><f:render partial="OrderButtons" arguments="{label: 'Poids', field: 'size', filter: filter}"/></th>
+                        <th><f:render partial="OrderButtons" arguments="{label: 'Date', field: 'tstamp', filter: filter}"/></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <f:for each="{paginatedDocuments}" as="document" >
+                        <tr>
+                            <td>
+                                <f:link.typolink parameter="{document.publicUrl}" >
+                                    {f:if(condition: '{document.properties.title}', then: document.properties.title, else: document.name)}
+                                    <f:if condition="{v:isNewDocument(date: document.properties.creation_date, newPeriod: settings.newPeriod)}" >
+                                        <sup>Nouveau</sup>
+                                    </f:if>
+                                </f:link.typolink>
+                            </td>
+                            <td>{document.properties.description}</td>
+                            <td>{document.properties.alternative}</td>
+                            <td><f:media file="{document}" width="100px" height="100px" alt="{document.alternative}" /></td>
+                            <td>{document.extension}</td>
+                            <td><f:format.bytes>{document.size}</f:format.bytes></td>
+                            <td><f:format.date>{document.properties.creation_date}</f:format.date></td>
+                        </tr>
+                    </f:for>
+                    </tbody>
+                </table>
+            </f:widget.paginate>
+        </f:then>
+        <f:else>
+            <table>
+                <thead>
+                <tr>
+                    <th><f:render partial="OrderButtons" arguments="{label: 'Titre', field: 'name', filter: filter}"/></th>
+                    <th><f:render partial="OrderButtons" arguments="{label: 'Description', field: 'description', filter: filter}"/></th>
+                    <th><f:render partial="OrderButtons" arguments="{label: 'Texte alternatif', field: 'alternative', filter: filter}"/></th>
+                    <th>Vignette</th>
+                    <th><f:render partial="OrderButtons" arguments="{label: 'Type', field: 'extension', filter: filter}"/></th>
+                    <th><f:render partial="OrderButtons" arguments="{label: 'Poids', field: 'size', filter: filter}"/></th>
+                    <th><f:render partial="OrderButtons" arguments="{label: 'Date', field: 'tstamp', filter: filter}"/></th>
+                </tr>
+                </thead>
+                <tbody>
+                <f:for each="{documents}" as="document" >
+                    <tr>
+                        <td>{f:if(condition: '{document.properties.title}', then: document.properties.title, else: document.name)}</td>
+                        <td>{document.properties.description}</td>
+                        <td>{document.properties.alternative}</td>
+                        <td><f:media file="{document}" width="100px" height="100px" alt="{document.alternative}" /></td>
+                        <td>{document.extension}</td>
+                        <td><f:format.bytes>{document.size}</f:format.bytes></td>
+                        <td><f:format.date>{document.properties.creation_date}</f:format.date></td>
+                    </tr>
+                </f:for>
+                </tbody>
+            </table>
+        </f:else>
+    </f:if>
+</f:if>

@@ -1,0 +1,13 @@
+{namespace annuaire=Emagineurs\EAnnuaires\ViewHelpers}
+<div class="detail-view emploi spontanee">
+    <div class="main blocGris">
+        <div>
+            <h2>{fiche.title}</h2>
+        </div>    
+        <div>
+            <f:link.action class="btn btn-vert btn-animate btn-fond-clair"pageUid="{settings.detailPid}" action="edit" controller="Editfe" arguments="{offre: fiche}" additionalParams="{tx_eannuaires_pi1:{overwriteDemand:{fiche: fiche.uid}}}" >
+                Proposer une vidéo
+            </f:link.action> 
+        </div>
+    </div>
+</div>

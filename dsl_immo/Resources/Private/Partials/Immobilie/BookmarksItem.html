@@ -1,0 +1,16 @@
+<div class="property small bookmark-sidebar-entry" data-uid="{immobilie.uid}">
+	<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}">
+		
+
+		<div class="property-image">
+			<img alt="" src="{f:uri.image(src:immobilie.titelBilder.0.datei.originalResource.originalFile.uid, maxWidth:600, maxHeight:400)}">
+			
+		</div>
+	</f:link.action>
+	<div class="info">
+		<f:link.action pageUid="{settings.detailPid}" action="show" arguments="{immobilie:immobilie}"><h4>{immobilie.objekttitel}</h4></f:link.action>
+		
+		<figure>{immobilie.flaechenAnzahlZimmer}-Raum · <f:format.currency currencySign="" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.flaechenWohnflaeche}</f:format.currency> m<sup>2</sup></figure>
+		<div class="tag price"><f:format.currency currencySign="€" decimalSeparator="," thousandsSeparator="." prependCurrency="false">{immobilie.preiseKaltmiete}</f:format.currency></div>
+	</div>
+</div>

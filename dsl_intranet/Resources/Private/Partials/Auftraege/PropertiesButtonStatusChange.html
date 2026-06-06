@@ -1,0 +1,93 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+
+
+  <div class="layout-table table-auftrag-status">
+    <div class="layout-table-row">
+        
+        <f:for each="{auftraege.statusNr}" as="status" key="number">
+             <f:if condition="{number}!={auftraege.status}">
+                <f:then>
+					
+                   	<f:if condition="{auftraege.rights.edit}"> 
+     					<f:then>
+                    		<div class="layout-table-col "><f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : auftraege, switch : 'statusChange', status:number}" class="doAjax {f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}" additionalAttributes="{data-ajax-action: 'auftraegeStatusChange', data-ajax-selector: '#auftraegeList_wrapper', data-ajax-id: '{auftraege.uid}', data-text: 'Wollen Sie den Status für den Auftrag &quot;{auftraege.titel}&quot; wirklich auf &quot;{dsl:getFromArray(obj: auftraege.statuss, prop:number)}&quot; ändern?', data-confirm-button: 'Ja (bestätigen)', data-select: '#select_{uniqueSelector}', data-select-default: '#{uniqueSelector}_{auftraege.status}', data-original-title: '{dsl:getFromArray(obj: auftraege.statuss, prop:number)}', data-toggle: 'tooltip', data-status-new: '{number}'}" id="{uniqueSelector}_{number}" ><span>{status}</span></f:link.action></div>
+						</f:then>
+               			<f:else>
+               				<div class="layout-table-col"><a class="{f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}"><span>{status}</span></a></div>
+						</f:else>
+					</f:if>
+                </f:then>
+                <f:else>
+                    <div class="layout-table-col"><a class="aktiv"><span>{status}</span></a></div>
+                </f:else>
+            </f:if>
+        </f:for>
+		
+		
+		
+        
+      </div>
+  </div>
+
+
+<select class="selectpicker selectpickerInit" {f:if(condition: '{auftraege.rights.edit}', else: 'disabled="disabled"')} data-width="100%" data-show-tick="true"  id="select_{uniqueSelector}">
+	<f:for each="{auftraege.statuss}" as="status" key="number">
+		<option value="#{uniqueSelector}_{number}" {f:if(condition: '{number}=={auftraege.status}', then: ' selected')}>{status}</option>
+    </f:for>
+</select>
+
+<f:if condition="{auftraege.datumproduktion}">
+	<f:then>
+		<div class="datumproduktion" data-datumproduktion="1"></div>
+	</f:then>
+	<f:else>
+		<div class="datumproduktion" data-datumproduktion="0"></div>
+	</f:else>
+</f:if>
+
+<f:comment>
+<div hidden>
+<f:for each="{auftraege.statusNr}" as="status" key="number">
+	<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="editStatusChange" arguments="{auftraege : auftraege, statusAlt : auftraege.status, statusNeu:number, uniqueSelector:uniqueSelector }" class="doAjaxEdit" id="{uniqueSelector}_{number}_edit" pageType="89657202" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '740px'}"></f:link.action>
+</f:for>
+</div>
+</f:comment>
+
+<div hidden>
+<f:for each="{auftraege.statusNr}" as="status" key="number">
+	<f:if condition="{number} == 50">
+	<f:then>
+		<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" pageType="89657202" action="ajax" arguments="{uid : auftraege, switch : 'statusChange', status:number}" class="doAjax {f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}" additionalAttributes="{data-ajax-action: 'auftraegeStatusChange', data-ajax-selector: '#auftraegeList_wrapper', data-ajax-id: '{auftraege.uid}', data-status-new: '{number}', data-text: 'Wollen Sie den Status für den Auftrag &quot;{auftraege.titel}&quot; wirklich auf &quot;{dsl:getFromArray(obj: auftraege.statuss, prop:number)}&quot; ändern?', data-confirm-button: 'Ja (bestätigen)', data-select: '#select_{uniqueSelector}', data-select-default: '#{uniqueSelector}_{auftraege.status}'}" id="{uniqueSelector}_{number}_edit" ></f:link.action>
+	</f:then>
+	<f:else>
+     	<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" pageType="89657202" action="ajax" arguments="{uid : auftraege, switch : 'statusChange', status:number}" class="doAjax {f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}" additionalAttributes="{data-ajax-action: 'auftraegeStatusChange', data-ajax-selector: '#auftraegeList_wrapper', data-ajax-id: '{auftraege.uid}', data-status-new: '{number}', data-text: 'Wollen Sie den Status für den Auftrag &quot;{auftraege.titel}&quot; wirklich auf &quot;{dsl:getFromArray(obj: auftraege.statuss, prop:number)}&quot; ändern?', data-confirm-button: 'Ja (bestätigen)', data-select: '#select_{uniqueSelector}', data-select-default: '#{uniqueSelector}_{auftraege.status}'}" id="{uniqueSelector}_{number}" ></f:link.action>
+	</f:else>
+	</f:if>
+</f:for>
+</div>
+
+<script> 
+var uniqueSelector = '#select_{uniqueSelector}';
+	$(uniqueSelector).on('shown.bs.select', function(e) {
+       	status = $(this).val();
+		var result = status.split('_');
+		$(this).attr('data-shown-bs-select-val',result[result.length-1]);
+  	}).on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) { 
+		  status = $(this).val();
+		  var result = status.split('_');
+		  status_alt = $(this).attr('data-shown-bs-select-val');
+		  status_neu = result[result.length-1];
+		  produktionsdatum = $(".datumproduktion").data("datumproduktion");
+		  /*produktionsdatum = {f:if(condition: auftraege.datumproduktion, then: 1, else: 0)};*/
+		  $(this).removeAttr('data-shown-bs-select-val');
+		  //if(status_alt == 40 && status_neu == 50 && produktionsdatum == 0){
+		  if(status_neu == 50){
+			  $(e.currentTarget.value+'_edit').click(); 
+		  } else {
+			 $(e.currentTarget.value).click();  
+		  }
+	}); 
+</script>

@@ -1,0 +1,48 @@
+<tr id="auftraegeStatusmeldungenListAuftrag_{protokolle.uid}" class="{f:if(condition: protokolle.hidden, then: 'hidden-item')}">
+<td data-sort="{protokolle.zeitpunkt->f:format.date(format: 'YmdHis')}"><span data-table-callback-id="{protokolle.uid}"></span>{protokolle.zeitpunkt->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+<td>
+  <f:if condition="{protokolle.notiz}">
+   	<f:then>
+   		{protokolle.notiz}
+	</f:then>
+	<f:else>
+	  	{protokolle.notizSystemKunde}
+	</f:else>
+  </f:if>
+  
+</td> 
+<td>
+
+	<!-- !!Lazyload notwendig!!! {protokolle.cruser.mitarbeiter}-->
+	<f:if condition="{protokolle.cruser.mitarbeiter}">
+		<f:then>
+			{protokolle.cruser.initialien}
+		</f:then>
+		<f:else>
+			Kunde
+		</f:else>
+	</f:if>
+			
+	
+  
+</td>
+
+<td>
+   
+
+	
+  	
+ 
+    <f:if condition="{protokolle.rights.delete}">
+     	<f:then>
+        	<f:link.action controller="Protokolle" pluginName="kundenlogin" extensionName="dslintranet" action="kundenajax" arguments="{uid : protokolle, switch : 'delete'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorDatatable', data-ajax-selector: '#auftraegeStatusmeldungenListAuftrag_{protokolle.uid}', data-ajax-id: '{protokolle.auftrag.uid}', data-table: '#statusmeldungenList{protokolle.auftrag.uid}'}" ><i class="bb-trashcan bb-lg"></i> </f:link.action>
+      
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv" style=""><i class="bb-trashcan bb-lg"></i></a>
+		</f:else>
+    </f:if>
+    
+  
+</td>
+</tr>

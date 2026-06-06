@@ -1,0 +1,110 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<select class="selectpicker selectpickerInit" {f:if(condition: '{auftraege.rights.edit}', else: 'disabled="disabled"')} data-width="100%" data-show-tick="true"  id="select_{uniqueSelector}">
+	<f:for each="{auftraege.statuss}" as="status" key="number">
+
+
+		<option value="#{uniqueSelector}_{number}" {f:if(condition: '{number}=={auftraege.status}', then: ' selected')}>{status}</option>
+    </f:for>
+</select>
+
+
+<f:if condition="{auftraege.datumproduktion}">
+	<f:then>
+		<div class="datumproduktion" data-datumproduktion="1"></div>
+	</f:then>
+	<f:else>
+		<div class="datumproduktion" data-datumproduktion="0"></div>
+	</f:else>
+</f:if>
+
+<div hidden>
+<f:for each="{auftraege.statusNr}" as="status" key="number">
+	<f:if condition="{number} == 50">
+	<f:then>
+		<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" pageType="89657202" action="ajax" arguments="{uid : auftraege, switch : 'statusChange', status:number}" class="doAjax {f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}" additionalAttributes="{data-ajax-action: 'auftraegeStatusChange', data-ajax-selector: '#auftraegeList_wrapper', data-ajax-id: '{auftraege.uid}', data-status-new: '{number}', data-text: 'Wollen Sie den Status für den Auftrag &quot;{auftraege.titel}&quot; wirklich auf &quot;{dsl:getFromArray(obj: auftraege.statuss, prop:number)}&quot; ändern?', data-confirm-button: 'Ja (bestätigen)', data-select: '#select_{uniqueSelector}', data-select-default: '#{uniqueSelector}_{auftraege.status}'}" id="{uniqueSelector}_{number}_edit" ></f:link.action>
+	</f:then>
+	<f:else>
+     	<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" pageType="89657202" action="ajax" arguments="{uid : auftraege, switch : 'statusChange', status:number}" class="doAjax {f:if(condition: '{auftraege.status}>{number}', then: ' abgeschlossen')}" additionalAttributes="{data-ajax-action: 'auftraegeStatusChange', data-ajax-selector: '#auftraegeList_wrapper', data-ajax-id: '{auftraege.uid}', data-status-new: '{number}', data-text: 'Wollen Sie den Status für den Auftrag &quot;{auftraege.titel}&quot; wirklich auf &quot;{dsl:getFromArray(obj: auftraege.statuss, prop:number)}&quot; ändern?', data-confirm-button: 'Ja (bestätigen)', data-select: '#select_{uniqueSelector}', data-select-default: '#{uniqueSelector}_{auftraege.status}'}" id="{uniqueSelector}_{number}" ></f:link.action>
+	</f:else>
+	</f:if>
+</f:for>
+</div>
+<script> 
+var uniqueSelector = '#select_{uniqueSelector}';
+	$(uniqueSelector).on('shown.bs.select', function(e) {
+       	status = $(this).val();
+		var result = status.split('_');
+		$(this).attr('data-shown-bs-select-val',result[result.length-1]);
+  	}).on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) { 
+		  status = $(this).val();
+		  var result = status.split('_');
+		  status_alt = $(this).attr('data-shown-bs-select-val');
+		  status_neu = result[result.length-1];
+		  produktionsdatum = $(".datumproduktion").data("datumproduktion");
+		  $(this).removeAttr('data-shown-bs-select-val');
+		  //if(status_alt == 40 && status_neu == 50 && produktionsdatum == 0){
+		  if(status_neu == 50){
+			  $(e.currentTarget.value+'_edit').click(); 
+		  } else {
+			 $(e.currentTarget.value).click();  
+		  }
+	}); 
+</script>
+<f:comment>
+<script>
+	
+	/*$('#select_{uniqueSelector}').on('changed.bs.select', function (e) { 
+		console.log('ListButtonStatusChange: e.currentTaget.value: '+e.currentTarget.value);
+		  
+		//setzen der hintergründe
+		$('[data-auftrag-uid="'+$(e.currentTarget.value).data('ajax-id')+'"]').attr('data-auftrag-status',$(e.currentTarget.value).data('status-new'));
+		  
+		$('#select_listablage_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel').selectpicker('val', '#listablage_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel_'+$(e.currentTarget.value).data('status-new'));
+		$('#select_list_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel').selectpicker('val', '#list_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel_'+$(e.currentTarget.value).data('status-new'));
+		  
+		console.log('click ausführen: '+e.currentTarget.value+' .click()');
+		//$(e.currentTarget.value).click(); 
+		  
+	  });*/
+	
+
+	var uniqueSelector = '#select_{uniqueSelector}';
+	var uniqueSelector = '#'+$("#auftraegeList_wrapper select").attr("id");
+	$(uniqueSelector).on('shown.bs.select', function(e) {
+       	status = $(this).val();
+		var result = status.split('_');
+		$(this).attr('data-shown-bs-select-val',result[result.length-1]);
+  	}).on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) { 
+		  status = $(this).val();
+		  var result = status.split('_');
+		  status_alt = $(this).attr('data-shown-bs-select-val');
+		  status_neu = result[result.length-1];
+		  console.log(status_neu);
+		  produktionsdatum = $(".datumproduktion").data("datumproduktion");
+		  $(this).removeAttr('data-shown-bs-select-val');
+		  
+		
+		
+		  $('[data-auftrag-uid="'+$(e.currentTarget.value).data('ajax-id')+'"]').attr('data-auftrag-status',$(e.currentTarget.value).data('status-new'));
+		  //if(status_alt == 40 && status_neu == 50 && produktionsdatum == 0){
+		  if(status_neu == 50){
+			  //$(e.currentTarget.value+'_edit').click(); 
+			  $(e.currentTarget.value+'_edit').click(); 
+		  } else {
+			  
+			  
+			  
+			  
+		  
+		/*$('#select_listablage_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel').selectpicker('val', '#listablage_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel_'+$(e.currentTarget.value).data('status-new'));*/
+			  
+		$('#select_list_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel').selectpicker('val', '#list_auftrag_'+$(e.currentTarget.value).data('ajax-id')+'_statuswechsel_'+$(e.currentTarget.value).data('status-new'));
+			  
+			 
+			  
+			 $(e.currentTarget.value).click();  
+		  }
+	});	
+</script>
+</f:comment>

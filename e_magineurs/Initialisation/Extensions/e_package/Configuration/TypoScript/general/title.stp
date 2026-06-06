@@ -1,0 +1,69 @@
+config.noPageTitle = 2
+page = PAGE
+page {
+    headerData {
+        10 = TEXT
+        10 {
+            field = title
+            stdWrap.noTrimWrap = |<title>| &#124; {$e_magineurs.conf.siteTitle}</title>|
+        }
+    }
+}
+[page["uid"] == {$e_magineurs.conf.homePage}]
+    page.headerData.10.field >
+    page.headerData.10.stdWrap.noTrimWrap = |<title>{$e_magineurs.conf.siteTitle}</title>|
+[end]
+
+[(request.getQueryParams()['tx_fsmediagallery_mediagallery'] ?? [])['mediaAlbum'] ?? 0 > 0]
+    temp.newsTitle = RECORDS
+    temp.newsTitle {
+        dontCheckPid = 1
+        tables = sys_file_collection
+        source.data = GP:tx_fsmediagallery_mediagallery|mediaAlbum
+        source.intval = 1
+        conf.sys_file_collection = TEXT
+        conf.sys_file_collection {
+            field = title
+            htmlSpecialChars = 1
+        }
+        wrap = <title>| &#124; {$e_magineurs.conf.siteTitle}</title>
+    }
+    page.headerData.10 >
+    page.headerData.10 < temp.newsTitle
+[end]
+
+[(request.getQueryParams()['tx_news_pi1'] ?? [])['news'] ?? 0 > 0]
+    temp.newsTitle = RECORDS
+    temp.newsTitle {
+        dontCheckPid = 1
+        tables = tx_news_domain_model_news
+        source.data = GP:tx_news_pi1|news
+        source.intval = 1
+        conf.tx_news_domain_model_news = TEXT
+        conf.tx_news_domain_model_news {
+            field = title
+            htmlSpecialChars = 1
+        }
+        wrap = <title>| &#124; {$e_magineurs.conf.siteTitle}</title>
+    }
+    page.headerData.10 >
+    page.headerData.10 < temp.newsTitle
+[global]
+
+[globalVar = GP:tx_eannuaires_pi1|fiche > 0]
+temp.newsTitle = RECORDS
+temp.newsTitle {
+    dontCheckPid = 1
+    tables = tx_eannuaires_domain_model_fiche
+    source.data = GP:tx_eannuaires_pi1|fiche
+    source.intval = 1
+    conf.tx_eannuaires_domain_model_fiche = TEXT
+    conf.tx_eannuaires_domain_model_fiche {
+        field = title
+        htmlSpecialChars = 1
+    }
+    wrap = <title>| &#124; {$e_magineurs.conf.siteTitle}</title>
+}
+page.headerData.10 >
+page.headerData.10 < temp.newsTitle
+[end]

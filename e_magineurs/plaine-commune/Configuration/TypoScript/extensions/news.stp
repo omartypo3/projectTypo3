@@ -1,0 +1,119 @@
+plugin.tx_news {
+	view {
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_news.view.templateRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_news.view.partialRootPath}
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_news.view.layoutRootPath}
+		widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/paginate/
+	}
+	_LOCAL_LANG {
+		fr {
+			more-link = Voir la suite
+			search-noresult = Aucune actualité trouvée.
+			newsNotFound = 
+		}
+	}
+	settings {
+		cssFile = {$e_magineurs.tx_news.cssFile}
+		recursive = 250
+		previewHiddenRecords = 1
+		displayDummyIfNoMedia = {$e_magineurs.tx_news.afficheImageDefaut}
+		cropMaxCharacters = {$e_magineurs.tx_news.cropMaxCharacters}
+		orderBy = {$e_magineurs.tx_news.orderBy}
+		orderDirection = {$e_magineurs.tx_news.orderDirection}
+		detail {
+			showSocialShareButtons = 0
+			showPrevNext = {$e_magineurs.tx_news.detail.showPrevNext}
+			media {
+				image {
+					maxWidth = {$e_magineurs.tx_news.detail.image.maxWidth}
+					maxHeight = {$e_magineurs.tx_news.detail.image.maxHeight}
+				}
+				video {
+					width = {$e_magineurs.tx_news.detail.video.width}
+					height = {$e_magineurs.tx_news.detail.video.height}
+				}
+			}
+		}
+		list {
+			media {
+				image {
+					maxWidth = {$e_magineurs.tx_news.list.image.maxWidth}
+					maxHeight = {$e_magineurs.tx_news.list.image.maxHeight}
+				}
+				dummyImage = {$e_magineurs.tx_news.list.dummyImage}
+			}
+			paginate {
+				itemsPerPage = {$e_magineurs.paginate.itemsPerPage}
+				insertAbove = {$e_magineurs.paginate.insertAbove}
+				insertBelow = {$e_magineurs.paginate.insertBelow}
+				templatePath =
+				prevNextHeaderTags = {$e_magineurs.paginate.prevNextHeaderTags}
+				maximumNumberOfLinks = {$e_magineurs.paginate.maximumNumberOfLinks}
+			}
+			rss {
+				channel {
+					title = {$e_magineurs.conf.siteTitle}
+					description = {$e_magineurs.tx_news.rss.description}
+					language = fr
+					copyright = {$e_magineurs.tx_news.rss.copyright}
+					generator = {$e_magineurs.tx_news.rss.generator}
+					link = {$e_magineurs.tx_news.rss.link}
+				}
+			}
+		}
+		opengraph.site_name = {$e_magineurs.conf.siteTitle}
+		navMois = {$e_magineurs.tx_news.navMois}
+		filtreCatParent{
+            multiple{
+                0 = {$e_magineurs.tx_news.filtreCatParent.multiple.0.catGeneral}
+                1 = {$e_magineurs.tx_news.filtreCatParent.multiple.1.catActus}                
+                2 = {$e_magineurs.tx_news.filtreCatParent.multiple.2.catAgendas}
+                3 = {$e_magineurs.tx_news.filtreCatParent.multiple.3.catAgendasVille}
+                4 = {$e_magineurs.tx_news.filtreCatParent.multiple.4.catFAQ}
+                5 = {$e_magineurs.tx_news.filtreCatParent.multiple.5.catVille}
+				6 = {$e_magineurs.tx_news.filtreCatParent.multiple.6.catPublications}
+            }
+        }
+        validation{
+        	admin{
+        		userValidationTemplate = {$e_magineurs.tx_news.validation.admin.userValidationTemplate} 
+        		subjectValidate = {$e_magineurs.tx_news.validation.admin.subjectValidate} 
+        		subjectRefused = {$e_magineurs.tx_news.validation.admin.subjectRefused} 
+        	}
+        }
+	}
+}
+
+[(request.getQueryParams()['type'] ?? '') == '9818']
+	lib.contentElement.templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/fluid_styled_content/TemplatesXml
+    lib.stdheader >
+    tt_content.stdWrap.innerWrap >
+    tt_content.stdWrap.wrap >
+    styles.content.get.stdWrap >
+    pageNewsRSS = PAGE
+    pageNewsRSS {
+    	typeNum = 9818
+    	#5 = TEXT
+    	#5.value = <?xml version="1.0" encoding="utf-8"?>
+    	10 < styles.content.get
+    	10.select.where = colPos=0 AND list_type = "news_pi1"
+	    10.select {
+	        orderBy = sorting ASC
+	        max = 1
+	    }
+	}
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = none
+        admPanel = 0
+        metaCharset = utf-8
+        locale_all = fr_FR
+        additionalHeaders = Content-Type:application/rss+xml;charset=utf-8
+    	additionalHeaders.30.header = Content-Type:application/rss+xml;charset=utf-8
+        disablePrefixComment = 1
+    }
+    plugin.tx_news.settings.format = xml
+[end]
+
+lib.currentPageTitre = TEXT
+lib.currentPageTitre.data = page:title

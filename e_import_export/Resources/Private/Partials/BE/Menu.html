@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="{f:uri.resource(path: 'Css/import.css')}" />
+<f:comment>
+<script src="{f:uri.resource(path: 'Js/import.js')}"></script>
+
+<div class="simple-dropdown" id="geoDropdown">
+  <button type="button" id="geoDropdownBtn">
+    <f:if condition="{exportConf}">
+      {exportConf.title}
+      <f:else>Select Configuration</f:else>
+    </f:if>
+  </button>
+  <ul>
+    <f:if condition="{allConf}">
+      <f:then>
+        <f:for each="{allConf}" as="conf">
+          <f:variable name="isActive" value="{conf.uid} == {exportNum}" />
+          <f:if condition="{isActive}">
+            <f:then>
+              <li class="active">
+            </f:then>
+            <f:else>
+              <li>
+            </f:else>
+          </f:if>
+            <a href="{f:uri.action(action: 'index', controller: 'Module', arguments: {exportNum: conf.uid})}">
+              {conf.title}
+            </a>
+          </li>
+        </f:for>
+      </f:then>
+      <f:else>
+        <li>
+          <a href="{f:uri.action(action: 'index', controller: 'Module', arguments: {exportNum: 1})}">
+            Test
+          </a>
+        </li>
+      </f:else>
+    </f:if>
+    <li>
+      <a
+        href="{f:uri.action(action: 'index', controller: 'Module', arguments: {exportNum: 0})}">
+        {f:translate(key:
+        'LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:choose_your_config')}
+      </a>
+    </li>
+  </ul>
+</div>
+
+</f:comment>
+
+<f:if condition="{menusBE}">
+  <select class="t3-js-jumpMenuBox" name="moduleMenu" id="moduleMenu" data-menu-identifier="module-menu" data-global-event="change" data-action-navigate="$value">
+        <f:for each="{menusBE}" as="item">
+          <option value="{item.href}" {f:if(condition: item.active, then: 'selected')}>
+            {item.title}
+          </option>
+        </f:for>
+  </select>
+</f:if>

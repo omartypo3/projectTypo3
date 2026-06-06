@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2011-10-17T20:22:37Z" product-name="scheduler">
+		<header/>
+		<body>
+			<trans-unit id="ImportExportTask.name" xml:space="preserve" approved="yes">
+				<source>Import/Export task</source> <target state="translated">Tache d'import export</target></trans-unit>
+			<trans-unit id="ImportExportTask.description" xml:space="preserve" approved="yes">
+				<source>Allow to launch punctually or to planify an import/export task.</source> <target state="translated">Permet de lancer ponctuellement ou de programmer une tache d'import ou d'export.</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf" approved="yes">
+				<source>Conf</source> <target state="translated">Conf</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.type" approved="yes">
+				<source>Type</source> <target state="translated">Type</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.title" approved="yes">
+				<source>Title</source> <target state="translated">Titre</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.export" approved="yes">
+				<source>Export</source> <target state="translated">Export</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.import" approved="yes">
+				<source>Import</source> <target state="translated">Import</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.module" approved="yes">
+				<source>Module</source> <target state="translated">Module</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.scheduler" approved="yes">
+				<source>Scheduler</source> <target state="translated">Planificateur</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.ajax" approved="yes">
+				<source>Ajax</source> <target state="translated">Ajax</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.tables" approved="yes">
+				<source>Tables</source> <target state="translated">Tables</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_conf.fields" approved="yes">
+				<source>Fields</source> <target state="translated">Champs</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table" approved="yes">
+				<source>Table</source> <target state="translated">Table</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.principale" approved="yes">
+				<source>Main</source> <target state="translated">Principale</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.name" approved="yes">
+				<source>Name</source> <target state="translated">Nom</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.lien" approved="yes">
+				<source>Link</source> <target state="translated">Lien</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_table.wheres" approved="yes">
+				<source>Wheres</source> <target state="translated">Wheres</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where" approved="yes">
+				<source>Where</source> <target state="translated">Where</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where.champ" approved="yes">
+				<source>Field</source> <target state="translated">Champ</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where.operateur" approved="yes">
+				<source>Operator</source> <target state="translated">Operateur</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_where.operande" approved="yes">
+				<source>Operand</source> <target state="translated">Operande</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field" approved="yes">
+				<source>Field</source> <target state="translated">Champ</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.type" approved="yes">
+				<source>Type</source> <target state="translated">Type</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.name" approved="yes">
+				<source>Name</source> <target state="translated">Nom</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.champ" approved="yes">
+				<source>Field</source> <target state="translated">Champ</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.stdwrap" approved="yes">
+				<source>Stdwrap</source> <target state="translated">Stdwrap</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.choose_a_field" approved="yes">
+				<source>Choose a field</source> <target state="translated">Choisissez un champ</target></trans-unit>
+            <trans-unit id="tx_eimportexport_domain_model_field.userpost" approved="yes">
+				<source>Relation post-processing</source> <target state="translated">Post-traitement de la relation</target></trans-unit>
+            <trans-unit id="tx_eimportexport_domain_model_field.arrcheck" approved="yes">
+				<source>Display as a table ?</source> <target state="translated">Apparait comme un tableau ?</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.multiple" approved="yes">
+				<source>Multiple</source> <target state="translated">Multiple</target></trans-unit>
+			<trans-unit id="tx_eimportexport_domain_model_field.relation" approved="yes">
+				<source>Relation</source> <target state="translated">Relation</target></trans-unit>
+			<trans-unit id="ImportExportTask.uidRec" approved="yes">
+				<source>The ID of the import that should be processed</source> <target state="translated">Id de l'import a traiter</target></trans-unit>
+			<trans-unit id="ImportExportTask.uidRec.error" approved="yes">
+				<source>The id of the import that should be processed must concord with a valid import configuration record.</source> <target state="translated">L'Id de l'import a traiter doit correspondre a un enregistrement de configuration d'import valide.</target></trans-unit>
+			<trans-unit id="ImportExportTask.recap" approved="yes">
+				<source>Import was succesfull processed. %d entries imported. %d entries updated.</source> <target state="translated">Import effectué avec succès. Données importées: %d. Données mises à jour: %d.</target></trans-unit>
+		</body>
+	</file>
+</xliff>

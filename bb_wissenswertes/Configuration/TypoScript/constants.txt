@@ -1,0 +1,15 @@
+
+plugin.tx_bbwissenswertes_wissenswertes {
+	view {
+		# cat=plugin.tx_bbwissenswertes_wissenswertes/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:bb_wissenswertes/Resources/Private/Templates/
+		# cat=plugin.tx_bbwissenswertes_wissenswertes/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:bb_wissenswertes/Resources/Private/Partials/
+		# cat=plugin.tx_bbwissenswertes_wissenswertes/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:bb_wissenswertes/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_bbwissenswertes_wissenswertes//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

@@ -1,0 +1,54 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+<div class="table-toolbar-btn-list-item"><a onclick="loadWartungsvertragContent({wartungsvertraege.uid});return false;" href="#" aria-label="Refresh"><div><i class="fa fa-refresh fa-lg fa-spin tabReloadsActive" aria-hidden="true"></i><i class="fa fa-refresh fa-lg tabReloadsInactive" aria-hidden="true"></i></div><span class="btn-label">neu laden</span></a></div>
+
+
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{wartungsvertraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="edit" arguments="{uid : wartungsvertraege.uid}" class="doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '910px'}"><div><i class="fa fa-edit fa-fw fa-lg" aria-hidden="true"></i></div><span class="btn-label">bearbeiten</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv"><div><i class="fa fa-edit fa-fw fa-lg" aria-hidden="true"></i></div><span class="btn-label">bearbeiten</span></a>
+		</f:else>
+	</f:if>
+</div>
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{wartungsvertraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="ajax" arguments="{uid : wartungsvertraege, switch : 'toggleSichtbarkeit'}" class="doAjax wartungsvertraegeSichtbarkeit_{wartungsvertraege.uid} kundeninfoSichtbarkeitBtn{f:if(condition: wartungsvertraege.sichtbarkeit, then: ' sichtbar', else: ' ')}" additionalAttributes="{data-ajax-action: 'toggleAuftraegeSichtbarkeitBtn', data-ajax-selector: '.wartungsvertraegeSichtbarkeit_{wartungsvertraege.uid}', data-ajax-id: '{wartungsvertraege.uid}'}" ><div><i class="fa fa-eye fa-lg fa-fw" title="Wartungsvertrag für den Kunde Sichtbar machen"></i><i class="fa fa-eye-slash fa-lg fa-fw" title="Wartungsvertrag vor dem Kunde verstecken"></i><i class="fa fa-spinner fa-spin fa-lg fa-fw"></i></div><span class="btn-label">sichtbarkeit</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv kundeninfoSichtbarkeitBtn{f:if(condition: wartungsvertraege.sichtbarkeit, then: ' sichtbar', else: ' ')}"><div><i class="fa fa-eye fa-lg fa-fw" title="Wartungsvertrag für den Kunde Sichtbar machen"></i><i class="fa fa-eye-slash fa-lg fa-fw" title="Wartungsvertrag vor dem Kunde verstecken"></i><i class="fa fa-spinner fa-spin fa-lg fa-fw"></i></div><span class="btn-label">sichtbarkeit</span></a>
+		</f:else>
+	</f:if>
+	</div>
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{wartungsvertraege.rights.delete}">
+		<f:then>
+			<f:link.action controller="Wartungsvertraege" pluginName="wartungsliste" extensionName="dslintranet" action="ajax" arguments="{uid : wartungsvertraege, switch : 'delete'}" class="doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeWartungsvertraege', data-ajax-selector: '#dsl_wartungsliste_list', data-ajax-id: '{wartungsvertraege.uid}'}" ><div><i class="fa fa-trash-o fa-fw fa-lg" aria-hidden="true"></i></div><span class="btn-label">löschen</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv"><div><i class="fa fa-trash-o fa-fw fa-lg" aria-hidden="true"></i></div><span class="btn-label">löschen</span></a>
+		</f:else>
+	</f:if>
+	
+</div>
+
+
+<div class="table-toolbar-btn-list-item">
+	<f:if condition="{auftraege.rights.edit}">
+		<f:then>
+			<f:link.action controller="Aufgaben" pluginName="wochenlisteaufgabenplatzierung"  data="{id: auftraege.uid, title: auftraege.titelForAufgabe}" extensionName="dslintranet" action="new" arguments="{auftraege : auftraege}" class="doAjaxEdit" id="auftraegeSelector{auftraege.uid}" ><div><i class="bb-calendar-add bb-lg"></i></div><span class="btn-label">planen</span></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btnDisabled inaktiv" title="muss noch eingebaut werden"><div><i class="bb-calendar-add bb-lg"></i></div><span class="btn-label">planen</span></a>
+		</f:else>
+	</f:if>
+</div>
+                                    

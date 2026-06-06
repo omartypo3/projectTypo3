@@ -1,0 +1,10 @@
+
+
+[1 in tree.rootLineIds]
+    @import 'EXT:e_magineurs/plaine-commune/Configuration/TSConfig/tsconfig.txt'
+[END]
+
+[615 in tree.rootLineIds || 990 in tree.rootLineIds || 799 in tree.rootLineIds || 908 in tree.rootLineIds || 559 in tree.rootLineIds]
+    @import 'EXT:e_magineurs/site-factory/Configuration/TSConfig/tsconfig.txt'
+[END]
+

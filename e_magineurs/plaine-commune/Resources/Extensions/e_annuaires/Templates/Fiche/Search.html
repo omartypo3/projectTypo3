@@ -1,0 +1,60 @@
+{namespace enews=Emagineurs\ENews\ViewHelpers}
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <f:form object="{searchObjet}" name="search" pageUid="{settings.resultPid}" class="rechercheFiltre clearfix">
+        <fieldset>
+                <f:switch expression="{settings.templateLayoutSearch}">
+                    <f:case value="1">
+                        <enews:select property="categoryLieu" options="{categoryLieu}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                    <f:case value="2">
+                        <div class="news-search-form">
+                            <h3>Recherche</h3>
+                            <f:form object="{search}" name="search" pageUid="{settings.listPid}">
+                                <fieldset>
+                                    <div class="row justify-content-center">
+                                        <div class="col-xl-auto col-lg-12 d-flex">
+                                            <div class="form-group">
+                                                <label for="news-subject">Texte</label>
+                                                <f:form.textfield property="titre" id="news-subject" class="form-control"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="news-cat">Filière</label>
+                                                <enews:select property="objet" class="custom-select" options="{objet}" id="news-cat" prependOptionLabel="Filière" prependOptionValue="0" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="recherche-annua-categorie">Catégorie</label>
+                                                <enews:select property="actions" class="custom-select" options="{actions}" id="recherche-annua-categorie" prependOptionLabel="Catégorie" prependOptionValue="0" />
+                                            </div> 
+
+                                            <div class="form-group">
+                                                <label for="recherche-annua-metier">Métier</label>
+                                                <enews:select property="metier" class="custom-select" options="{metier}" id="recherche-annua-metier" prependOptionLabel="Métier" prependOptionValue="0" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-auto col-lg-12 d-flex justify-content-center">       
+                                            <div class="form-submit-agenda recherche-emploi-submit">            
+                                                <button value="Rechercher" class="btn btn-animate btn-vert">Rechercher</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </f:form>
+                        </div>
+                    </f:case>
+                    <f:case value="30">
+                        <enews:select property="categoryPersonne" options="{categoryPersonne}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                    <f:case value="40">
+                        <enews:select property="categoryVideo" options="{categoryVideo}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                    <f:case value="">
+                        <enews:select property="categoryGeneral" options="{categoryGeneral}" prependOptionLabel="Thématique"/>
+                    </f:case>
+                </f:switch>
+        </fieldset>
+    </f:form>                       
+</f:section> 

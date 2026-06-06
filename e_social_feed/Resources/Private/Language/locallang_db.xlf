@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-10-25T09:35:14Z" product-name="e_annuaires">
+        <header/>
+        <body>
+            <trans-unit id="flexforms_tab.settings">
+                <source>Paramètre</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.mode">
+                <source>Vue</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.mode.fb">
+                <source>Remontés facebook</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.mode.tw">
+                <source>Remontés twitter</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.mode.ins">
+                <source>Remontés Instagram</source>
+            </trans-unit>
+             <trans-unit id="flexforms_general.mode.vim">
+                <source>Remontés Vimeo</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.nbElement">
+                <source>Nombre d'éléments :</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.idFacebook">
+                <source>Identifiant pour l'API facebook (voir readme de l'extension)</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.idTwitter">
+                <source>Identifiant pour l'API twitter (voir readme de l'extension)</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.idInstagram">
+                <source>Identifiant pour l'API instagram (voir readme de l'extension, recommandé)</source>
+            </trans-unit>
+            
+
+             <trans-unit id="flexforms_general.vmLink">
+                <source>Identifiant de la vidéo TOP liste</source>
+            </trans-unit>
+             <trans-unit id="flexforms_general.vmId">
+                <source>Identifiant pour l'API Vimeo</source>
+            </trans-unit>
+             <trans-unit id="flexforms_general.vmSecret">
+                <source>Clé Secret pour l'API Vimeo</source>
+            </trans-unit>
+             <trans-unit id="flexforms_general.vmUser">
+                <source>Identifiant de l'utilisateur(Ex:user1234567)</source>
+            </trans-unit>
+
+            <trans-unit id="pi1_title">
+                <source>Remontées Réseaux sociaux</source>
+            </trans-unit>
+            <trans-unit id="pi1_plus_wiz_description">
+                <source>Dernières remontées des comptes facebook, twitter ou instagram configurés</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

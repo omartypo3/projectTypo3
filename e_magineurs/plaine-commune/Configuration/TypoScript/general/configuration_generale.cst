@@ -1,0 +1,61 @@
+e_magineurs.conf {
+	dossierPublic = EXT:e_magineurs/Resources/Public/Plaine
+	dossierPrivate = EXT:e_magineurs/plaine-commune/Resources/Private
+	dossierExtensions = EXT:e_magineurs/plaine-commune/Resources/Extensions
+	dossierContainer = EXT:e_magineurs/plaine-commune/Resources/Container
+	dossierPackagePublic =  EXT:e_package/Resources/Public
+	# cat=Configuration du site; type=string; label= Titre du site pour la balise <title> et pour le nom de l'expéditeur des mails
+	siteTitle = Plaine Commune
+	# cat=Mise en page; type=int+; label= Uid de la page d'accueil
+	homePage = 1
+	# cat=Mise en page; type=int+; label=Gdpr
+    gdprPage = 274
+	# cat=Configuration du site; type=string; label= Adresse mail utilisée pour l'envoi
+	sender.email = internet@plainecommune.fr
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée la recherche Solr
+	moteurRecherche = 71
+	# cat=Configuration du site; type=int+; label= Id de la page où est stockée le menu pied de page
+	menuFooter = 72
+	menuFooterContact.list = 108,214,216
+	# cat=Configuration du site; type=int+; label= Id de la page où sont stockées les informations pour le pied de page
+	infoFooter = 77
+	# cat=Configuration du site; type=int+; header connexion
+	infoHeaderConnexion = 199
+	# cat=Configuration du site; type=int+; label= Id de la page de la géolocalisation
+	idPageMap = 41
+	AlloAggloText = BienVU/ENTENDU
+	AlloAggloPage = 38
+	menuPrincipal {
+		# cat=Configuration du site; type=int+; label= Profondeur du niveau principal
+		levels = 3
+		# cat=Configuration du site; type=int+; label= Id de la page contenant le menu principal
+		pid = 83
+	}
+	showLoginIcon = 1
+	idPageNewsletterBlock = 2057
+	publicationPage = 488
+	publicationSysfolder = 464
+	publicationDetailPage = 2420
+	idPageSiteConfigFolder = 76
+}
+
+#Meta
+page.meta {
+	description =
+	author =
+	keywords =
+}
+
+config {
+	no_cache = 0
+	admPanel = 0
+	headerComment = Site réalisé par E-magineurs
+	tx_realurl_enable = 1
+	compressCss = 0
+	compressJs = 0
+	concatenateJs = 0
+	concatenateCss = 0
+	moveJsFromHeaderToFooter = 0
+}
+
+stratis.var.codeLang = fr

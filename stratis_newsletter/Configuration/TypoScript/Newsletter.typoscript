@@ -1,0 +1,27 @@
+[page["backend_layout"] == "pagets__StratisNewsletter"]
+    page >
+    page = PAGE
+    page {
+        typeNum = 0
+        
+        config {
+            disableAllHeaderCode = 0
+            removeDefaultJS = 1
+            removeDefaultCss = 1
+            removePageCss = 1
+            inlineStyle2TempFile = 0
+        }
+        
+        10 = CONTENT
+        10 {
+            table = tt_content
+            select {
+                orderBy = sorting
+                where = {#colPos}=0
+            }
+        }
+        
+        wrap = <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><style>*{margin:0;padding:0;}body{background:#fff;}</style></head><body>|</body></html>
+    }
+[end]
+

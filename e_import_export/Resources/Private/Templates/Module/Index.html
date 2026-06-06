@@ -1,0 +1,103 @@
+
+<f:layout name="Backend/Default" />
+
+<f:section name="content">
+	<f:if condition="{exportNum}>0">
+		<f:then>
+			<style>
+				.results table{
+					text-align:center;
+				}
+				.results td{
+					border:1px solid black;
+				}
+				.results tr:nth-child(even) {
+					background: #D0D0D0;
+				}
+			</style>
+			<h2>{exportConf.title}</h2>
+			<f:if condition="{import}">
+				<f:then>
+					<f:if condition="{import.status}=='ok'">
+						<f:then>
+							<div class="results">
+
+								<div class="typo3-message message-ok">
+									<div class="message-body">
+										<f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:import_log_sucess" arguments="{0: import.create, 1: import.update}" /><br>
+									</div>
+								</div>
+								<f:if condition="{import.debug}">
+									<f:debug inline="true">{import.debug}</f:debug>
+								</f:if>
+							</div>
+						</f:then>
+						<f:else>
+							<div class="typo3-message message-error">
+								<div class="message-body">
+									<f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:import_log_error" arguments="{0: import.error}" />
+								</div>
+							</div>
+						</f:else>
+					</f:if>
+				</f:then>
+				<f:else>
+					<f:form action="index" method="POST" >
+						<f:if condition="{exportConf.interaction}">
+							<f:then>
+								<input type="hidden" name="{prefix}[exportNum]" value="{exportNum}" />
+								
+								<f:if condition="{exportConf.interaction}=='export'">
+									<f:then>
+										<input type="submit" value="{f:translate(key: 'LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:export')}" name="{prefix}[submit]" />
+									</f:then>
+									<f:else>
+										<input type="submit" value="{f:translate(key: 'LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:import')}" name="{prefix}[submit]" />
+									</f:else>
+								</f:if>
+							</f:then>
+							<f:else>
+								<input type="hidden" name="{prefix}[exportNum]" value="{exportNum}" />
+							
+								<label for="tceforms-dateDebut"><f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:begin_date" /></label>
+								<input name="{prefix}[dateDebut]" type="text" id="tceforms-dateDebut" value="" class="formField tceforms-textfield tceforms-datefield hasDefaultValue" />
+								<span class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-pick-date" title="" id="picker-tceforms-dateDebut" style="cursor:pointer;" > </span>
+						
+								<br>
+								
+								<label for="tceforms-dateFin"><f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:end_date" /></label>
+								<input name="{prefix}[dateFin]" type="text" id="tceforms-dateFin" value="" class="formField tceforms-textfield tceforms-datefield hasDefaultValue" />
+								<span class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-pick-date" title="" id="picker-tceforms-dateFin" style="cursor:pointer;" > </span>
+					
+								<br>
+								<f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:import_type" />
+								<input type="radio" name="{prefix}[type]" value="csv" id="csvradio" />
+								<label for="csvradio" ><f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:csv"/></label>
+								<input type="radio" name="{prefix}[type]" value="table" checked="checked" id="tableradio" />
+								<label for="tableradio" ><f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:table"/></label>
+								
+								<br>
+								
+								<input type="submit" value="Exporter" name="{prefix}[submit]" />
+							</f:else>
+						</f:if>
+					</f:form>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<h2><f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:mlang_tabs_tab" /></h2>
+			
+			<div class="typo3-message message-notice">
+				<div class="message-body">
+					<f:translate key="LLL:EXT:e_import_export/Resources/Private/Language/locallang_modexport.xlf:please_choose_your_config" />
+				</div>
+			</div>
+		</f:else>
+	</f:if>
+</f:section>
+
+
+<f:section name="Menu">
+	<f:render partial="BE/Menu"  arguments="{allConf: allConf,menusBE:menus}" />
+</f:section>

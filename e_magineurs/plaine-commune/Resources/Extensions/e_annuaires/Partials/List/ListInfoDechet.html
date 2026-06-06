@@ -1,0 +1,101 @@
+<f:comment>On vérifie la présence du paramètre lib.displayStreet dans l'url</f:comment>
+
+<f:if condition="<f:cObject typoscriptObjectPath='lib.displayStreet' />">
+<!-- ICI Si on est dans le cadre d'une recherche par rue, on met displaystreet en champ caché pour la recherche formulaire-->
+    <f:then>
+        <f:comment>S'il est présent on affiche le choix des rues</f:comment>
+        <div class="news-search-form">
+            <h3 class="choississez-la-dans-la-liste-ci-dessous">Entrez votre rue dans le champ texte suivant</h3>
+            <f:form>
+                <div class="row justify-content-center">
+                    <div class="col-xl-auto col-lg-12 d-flex">
+                        <div class="form-group">
+                            <label for="street">Rue</label>
+                            <f:form.textfield name="displayStreet" value="{f:cObject(typoscriptObjectPath:'lib.displayStreet')}" type="hidden"/>
+                            <f:form.textfield name="street" id="street" class="form-control searchAuto"/>
+                        </div>
+                    </div>
+                    <div class="col-xl-auto col-lg-12 d-flex justify-content-center">
+                        <div class="form-submit-agenda">
+                            <button value="Rechercher" class="btn btn-animate btn-vert" title="Rechercher les jours de collecte dans cette rue">Rechercher</button>
+                        </div>
+                    </div>
+                </div>
+            </f:form>
+        </div>
+
+        <h3>Choisissez-la dans la liste ci-dessous :</h3>
+        <div class="frame-type-textmedia anim_active">
+            <ul>
+                <f:if condition="{settings.pageBrowser}">
+                    <f:then>
+                        <f:comment>
+                        <f:widget.paginate objects="{fiches}" as="paginatedFiches" configuration="{settings.list.paginate}" >
+                            <f:for each="{paginatedFiches}" as="fiche" iteration="iterator">
+                                <li>
+                                    <f:link.action action="list" class="list_street" arguments="{street: fiche.title, fiche: fiche.uid}">
+                                        {fiche.title} {fiche.address}
+                                    </f:link.action>
+                                </li>
+                            </f:for>
+                        </f:for>`n<f:render partial="Pagination" arguments="{pagination: pagination}" />
+                        </f:comment>
+
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                                <li>
+                                    <f:link.action action="list" class="list_street" arguments="{street: fiche.title, fiche: fiche.uid}">
+                                        {fiche.title} {fiche.address}
+                                    </f:link.action>
+                                </li>
+                            </f:for>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{fiches}" as="fiche" iteration="iterator">
+                            <li>
+                                <f:link.action action="list" class="list_street" arguments="{street: fiche.title, fiche: fiche.uid}">
+                                    {fiche.title} {fiche.address}
+                                </f:link.action>
+                            </li>
+                        </f:for>
+                    </f:else>
+                </f:if>
+            </ul>
+        </div>
+        <f:link.action action="list" class="btn btn-vert btn-animate btn-retour btn-fond-clair">Nouvelle recherche</f:link.action> 
+    </f:then>
+    <f:else>
+        <f:comment>On vérifie ensuite la présence du paramètre street dans l'url</f:comment>
+        <f:if condition="<f:cObject typoscriptObjectPath='lib.detailStreet' />">
+            <f:then>
+                <f:comment>S'il est présent on affiche le détail de la fiche</f:comment>
+                <f:render partial="Fiche/DetailCollecteDechets" arguments="{_all}" />
+            </f:then>
+            <f:else>
+                <f:comment>Sinon on affiche la liste des communes</f:comment>
+                <div class="news-search-form">
+                    <h3>Recherche</h3>
+                    <f:form>
+                        <div class="row justify-content-center">
+                            <div class="col-xl-auto col-lg-12 d-flex">
+                                <div class="form-group">
+                                    <label for="city">ville</label>
+                                    <select id="city" class="custom-select" name="tx_eannuaires_pi1[displayStreet]" >
+                                        <option value="">Sélectionnez votre ville</option>
+                                        <f:for each="{villes -> v:iterator.sort(sortBy: 'title', order: 'ASC')}" as="ville">
+                                            <option value="{ville.uid}">{ville.title}</option>
+                                        </f:for>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xl-auto col-lg-12 d-flex justify-content-center">
+                                <div class="form-submit-agenda">
+                                    <button value="Rechercher" class="btn btn-animate btn-vert" title="Rechercher les rues de cette ville">Rechercher</button>
+                                </div>
+                            </div>
+                        </div>
+                    </f:form>
+                </div>
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if>

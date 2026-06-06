@@ -1,0 +1,580 @@
+plugin.tx_solr {
+	solr {
+		host   = {$e_magineurs.tx_solr.solr.prod.host}
+		port   = {$e_magineurs.tx_solr.solr.prod.port}
+		path   = {$e_magineurs.tx_solr.solr.prod.path}
+	}
+}
+[getenv("SITE_ENV") == "DEV"] || [getenv("REDIRECT_SITE_ENV") == "DEV"] 
+	plugin.tx_solr {
+		solr {
+			host   = {$e_magineurs.tx_solr.solr.dev.host}
+			port   = {$e_magineurs.tx_solr.solr.dev.port}
+			path   = {$e_magineurs.tx_solr.solr.dev.path}
+		}
+	}
+[end]
+[getenv("SITE_ENV") == "PREPROD"] || [getenv("REDIRECT_SITE_ENV") == "PREPROD"] 
+	plugin.tx_solr {
+		solr {
+			host   = {$e_magineurs.tx_solr.solr.preprod.host}
+			port   = {$e_magineurs.tx_solr.solr.preprod.port}
+			path   = {$e_magineurs.tx_solr.solr.preprod.path}
+		}
+	}
+[end]
+[getenv("SITE_ENV") == "LOCAL"] || [getenv("REDIRECT_SITE_ENV") == "LOCAL"] 
+	plugin.tx_solr {
+		solr {
+			host   = {$e_magineurs.tx_solr.solr.local.host}
+			port   = {$e_magineurs.tx_solr.solr.local.port}
+			path   = {$e_magineurs.tx_solr.solr.local.path}
+		}
+	}
+[end]
+
+plugin.tx_solr {
+	view {
+		layoutRootPaths.20 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_solr.view.layoutRootPath}
+		partialRootPaths.20 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_solr.view.partialRootPath}
+		templateRootPaths.20 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_solr.view.templateRootPath}
+		widget.ApacheSolrForTypo3\Solrfluid\ViewHelpers\Widget\ResultPaginateViewHelper.templateRootPath = {$e_magineurs.conf.dossierExtensions}/paginate/
+	}
+}
+
+page {
+	includeJSFooterlibs {
+    	solr-jquery >
+    	solr-ui >
+	}
+	includeCSS {
+		search >
+		solr-ui >
+	}
+}
+
+plugin.tx_solr {
+	javascriptFiles.library >
+	general.dateFormat.date = {$e_magineurs.tx_solr.general.dateFormat.date}
+
+	templateFiles {
+		results= {$e_magineurs.conf.dossierExtensions}/solr/results.htm
+	}
+
+	index {
+		enableFileIndexing {
+			# pageContext - index files from tt_content, shown in indexed frontend pages
+			pageContext = 1
+			pageContext {
+				# restrict indexed files extensions to index
+				fileExtensions = xls,xlsx,doc,docx,ppt,pptx,odt,pdf,zip,ods,odp
+			}
+			# Storage Context is indexing the file-system for example creating a download area
+			storageContext = 0
+			storageContext {
+				2 {
+					# restrict indexed files extensions to index
+					fileExtensions = xls,xlsx,doc,docx,ppt,pptx,odt,pdf,zip,ods,odp
+					# FAL generally does not have enable fields, but metadata ships fields which can be used for that purpose
+					enableFields {
+						accessGroups >
+						endtime >
+					}
+				}
+			}
+			# Activates Indexing of Files attached to TCA records (like news), needs further configuration in queue
+			recordContext = 1
+			recordContext {
+				# restrict indexed files extensions to index
+				fileExtensions = xls,xlsx,doc,docx,ppt,pptx,odt,pdf,zip,ods,odp
+			}
+		}
+		queue {
+
+			pages = {$e_magineurs.tx_solr.index.queue.pages} 
+			pages {
+	            fields {
+					type_stringS = TEXT
+					type_stringS.value = Pages
+					url = TEXT
+					url {
+						typolink {
+							parameter = {field:uid}
+							parameter.insertData = 1
+							forceAbsoluteUrl = 1
+							returnLast = url
+						}
+					}
+	            }
+			}
+			actualite = {$e_magineurs.tx_solr.index.queue.actualite}
+			actualite {
+				table = tx_news_domain_model_news
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.actualite.pidActualites})
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Actualité
+					title = title
+					category_stringM = SOLR_RELATION
+					category_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 0
+					}
+					categoryfacets_stringM = SOLR_RELATION
+					categoryfacets_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 1
+					}
+					date_stringS = datetime
+					image_textS = FILES
+					image_textS {
+						references {
+							table= tx_news_domain_model_news
+							uid.data = field:uid
+							fieldName= fal_media
+						}
+						renderObj = TEXT
+						renderObj {
+							stdWrap.data = file:current:publicUrl
+							stdWrap.wrap = |
+						}
+					}
+					teaser_textS = teaser		
+					content = TEXT
+					content {
+						field = bodytext
+						stripHtml = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.actualite.pidActualitesDetail}
+							additionalParams = &tx_news_pi1%5Bnews%5D={field:uid}&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Baction%5D=detail
+							additionalParams.insertData = 1
+							useCacheHash = 1
+							returnLast = url
+						}
+					}
+				}
+				attachments = {$e_magineurs.tx_solr.index.queue.actualite.attachements}
+				attachments {
+				    fields = {$e_magineurs.tx_solr.index.queue.actualite.attachements.fields}
+				}
+			}
+			agenda = {$e_magineurs.tx_solr.index.queue.agenda}
+			agenda {
+				table = tx_news_domain_model_news
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.agenda.pidAgenda})
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Agenda
+					title = title
+					datedebut_stringS = begindate
+					datefin_stringS = finishdate
+					nomlieu_textS = nom_lieu
+					adresse_textS = adressetout
+					ville_textM = SOLR_RELATION 
+					ville_textM {
+						foreignTable = tx_enews_domain_model_commune 
+						foreignLabelField = title
+						localField = ville
+						multiValue = 1				
+					}
+					codePostal_textM = SOLR_RELATION 
+					codePostal_textM {
+						foreignTable = tx_enews_domain_model_commune 
+						foreignLabelField = code_postal
+						localField = ville
+						multiValue = 1				
+					}
+					image_textS = FILES
+					image_textS {
+						references {
+							table= tx_news_domain_model_news
+							uid.data = field:uid
+							fieldName= fal_media
+						}
+						renderObj = TEXT
+						renderObj {
+							stdWrap.data = file:current:publicUrl
+							stdWrap.wrap = |
+						}
+					}
+					teaser_textS = teaser		
+					content = TEXT
+					content {
+						field = bodytext
+						stripHtml = 1
+					}
+					category_stringM = SOLR_RELATION
+					category_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 0
+					}
+					categoryfacets_stringM = SOLR_RELATION
+					categoryfacets_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.agenda.pidAgendaDetail}
+							additionalParams = &tx_news_pi1%5Bnews%5D={field:uid}&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Baction%5D=detail
+							additionalParams.insertData = 1
+							useCacheHash = 1
+							returnLast = url
+						}
+					}
+				}
+				attachments = {$e_magineurs.tx_solr.index.queue.agenda.attachements}
+				attachments {
+				    fields = {$e_magineurs.tx_solr.index.queue.actualite.attachements.fields}
+				}
+			}
+			faq < .actualite
+			faq = {$e_magineurs.tx_solr.index.queue.faq}
+			faq {
+				additionalWhereClause =  pid IN ({$e_magineurs.tx_solr.index.queue.faq.pidFaq})
+				fields >
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Foire aux questions
+					title = title
+					content = TEXT
+					content {
+						field = bodytext
+						stripHtml = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.faq.pidFaqDetail}
+							additionalParams = &tx_news_pi1%5Bnews%5D={field:uid}&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Baction%5D=detail
+							additionalParams.insertData = 1
+							useCacheHash = 1
+							returnLast = url
+						}
+					}
+				}
+				attachments = {$e_magineurs.tx_solr.index.queue.faq.attachements}
+				attachments {
+				    fields = {$e_magineurs.tx_solr.index.queue.actualite.attachements.fields}
+				}
+			}
+			annuaire_des_personnes = {$e_magineurs.tx_solr.index.queue.annuairePersonnes}
+			annuaire_des_personnes {
+				table = tx_eannuaires_domain_model_fiche
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.annuaire_des_personnes.pidAnnuairePersonnes})
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Annuaire des personnes		
+					nom_textS = title
+					prenom_textS = firstname
+					cell_textS = cantonstexte
+					phone_textS = phone
+					mail_textS = email
+					image_textS = FILES
+					image_textS {
+						references {
+							table= tx_eannuaires_domain_model_fiche
+							uid.data = field:uid
+							fieldName = image
+						}
+						renderObj = TEXT
+						renderObj {
+							stdWrap.data = file:current:publicUrl
+							stdWrap.wrap = |
+						}
+					}
+					img_textS = image
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.annuaire_des_personnes.pidAnnuairePersonneDetail}
+							additionalParams = &tx_eannuaires_pi1%5Bfiche%5D={field:uid}&tx_eannuaires_pi1%5Baction%5D=show&tx_eannuaires_pi1%5Bcontroller%5D=Fiche
+							additionalParams.insertData = 1
+							returnLast = url
+							useCacheHash = 1
+						}
+					}
+				}
+				attachments = {$e_magineurs.tx_solr.index.queue.annuaire_des_personnes.attachements}
+				attachments {
+				    fields = {$e_magineurs.tx_solr.index.queue.annuaire_des_personnes.attachements.fields}
+				}
+			}
+			annuaires_des_lieux = {$e_magineurs.tx_solr.index.queue.annuaireLieux}
+			annuaires_des_lieux {
+				table = tx_eannuaires_domain_model_fiche
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.annuaires_des_lieux.pidAnnuaireLieux})
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Annuaire des lieux		
+					title = title
+					adresse_textS = address
+					codePostal_textM = zipcode
+					ville_textM = SOLR_RELATION
+					ville_textM {
+						localField = city
+						foreignLabelField = title
+						multiValue = 1
+					}					
+					phone_textS = phone
+					siteTitre_textM = SOLR_RELATION
+					siteTitre_textM {
+						localField = liens
+						foreignLabelField = titre
+						multiValue = 1
+					}
+					site_textM = SOLR_RELATION
+					site_textM {
+						localField = liens
+						foreignLabelField = url
+						multiValue = 1
+					}
+					mail_textS = email
+					category_stringM = SOLR_RELATION
+					category_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 0
+					}				
+					categoryfacets_stringM = SOLR_RELATION
+					categoryfacets_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.annuaires_des_lieux.pidAnnuaireLieuxDetail}
+							additionalParams = &tx_eannuaires_pi1%5Bfiche%5D={field:uid}&tx_eannuaires_pi1%5Baction%5D=show&tx_eannuaires_pi1%5Bcontroller%5D=Fiche
+							additionalParams.insertData = 1
+							returnLast = url
+							useCacheHash = 1
+						}
+					}
+				}
+				attachments = {$e_magineurs.tx_solr.index.queue.annuaires_des_lieux.attachements}
+				attachments {
+				    fields = {$e_magineurs.tx_solr.index.queue.annuaires_des_lieux.attachements.fields}
+				}
+			}
+			galerie_video = {$e_magineurs.tx_solr.index.queue.galerieVideo}
+			galerie_video {
+				table = tx_eannuaires_domain_model_fiche
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.galerie_video.pidGalerieVideo})
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Vidéo
+					title = title
+					content = TEXT
+					content {
+						field = description
+						stripHtml = 1
+					}
+					cell_textS = cell
+					category_stringM = SOLR_RELATION
+					category_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 0
+					}				
+					categoryfacets_stringM = SOLR_RELATION
+					categoryfacets_stringM {
+						localField = categories
+						foreignLabelField = title
+						multiValue = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.galerie_video.pidGalerieVideoDetail}
+							additionalParams = &tx_eannuaires_pi1%5Bfiche%5D={field:uid}&tx_eannuaires_pi1%5Baction%5D=show&tx_eannuaires_pi1%5Bcontroller%5D=Fiche
+							additionalParams.insertData = 1
+							returnLast = url
+							useCacheHash = 1
+						}
+					}
+				}
+			}
+			galerie_photo = {$e_magineurs.tx_solr.index.queue.galeriePhoto}
+			galerie_photo {
+				table = sys_file_collection		
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.galerie_photo.pidGaleriePhoto})
+				fields {
+					title = title
+					type_stringS = TEXT
+					type_stringS.value = Galerie photo
+					randomAsset_stringS = FILES
+	                randomAsset_stringS {
+	                    sorting = rand()
+	                    collections.field = uid
+	                    maxItems = 1
+	                    renderObj = TEXT
+	                    renderObj {
+	                        stdWrap.data = file:current:uid
+	                    }
+	                }
+					mainAsset_stringS = main_asset
+					content = TEXT
+					content {
+						field = webdescription
+						stripHtml = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.galerie_photo.pidGaleriePhotoDetail}
+							additionalParams = &tx_fsmediagallery_mediagallery%5BmediaAlbum%5D={field:uid}
+							additionalParams.insertData = 1
+							returnLast = url
+							useCacheHash = 1
+						}
+					}
+				}
+			}
+			glossaire = {$e_magineurs.tx_solr.index.queue.glossaire}
+			glossaire {
+				table = tx_dpnglossary_domain_model_term
+				additionalWhereClause = pid IN ({$e_magineurs.tx_solr.index.queue.glossaire.pidGlossaire})
+				fields {
+					type_stringS = TEXT
+					type_stringS.value = Glossaire
+					title = name
+					content = SOLR_RELATION
+					content {
+						localField = descriptions
+						foreignLabelField = text
+						multiValue = 1
+					}
+					url = TEXT
+					url {
+						typolink {
+							parameter = {$e_magineurs.tx_solr.index.queue.glossaire.pidGlossaireDetail}
+							additionalParams = &tx_dpnglossary_glossarydetail%5Bterm%5D={field:uid}&tx_dpnglossary_glossarydetail%5Baction%5D=show&tx_dpnglossary_glossarydetail%5Bcontroller%5D=Term
+							additionalParams.insertData = 1
+							returnLast = url
+							useCacheHash = 1
+						}
+					}
+				}
+			}
+
+
+			fileadmin = 0
+
+			dossier_fichier = 0
+			dossier_fichier {
+				table = sys_file_storage
+				storageUid = 2
+			}
+
+			_FILES {
+				# Basic configuration which applies to all files which are indexed, record: sys_file_metadata
+				default {
+					type_stringS = TEXT
+					type_stringS.value = Document
+					title = title		
+					thumbnail_stringM = CONTENT
+					thumbnail_stringM {
+						table = sys_file_metadata
+						select{		
+							pidInList = root
+							selectFields = sys_file_processedfile.identifier
+							join = sys_file_processedfile ON sys_file_metadata.file = sys_file_processedfile.original
+							where.data = field:file
+							where.wrap = sys_file_processedfile.original=|
+							max = 1
+						}
+						renderObj = TEXT
+						renderObj {
+							value.field = identifier
+							if.isTrue.field = identifier
+						}
+					}
+					extension_textS = SOLR_RELATION
+					extension_textS {
+						localField = file
+						foreignLabelField = extension
+					}
+					size_textS = COA
+					size_textS.10 = SOLR_RELATION
+					size_textS.10 {
+						localField = file
+						foreignLabelField = size
+					}
+					content = description
+				}
+			}
+		}
+	}
+	search {
+		targetPage = {$e_magineurs.tx_solr.search.targetPage}
+		initializeWithEmptyQuery = 1
+		showResultsOfInitialEmptyQuery = 1
+		query {
+			allowEmptyQuery = {$e_magineurs.tx_solr.search.query.allowEmptyQuery}
+			// qf parameter http://wiki.apache.org/solr/DisMaxQParserPlugin#qf_.28Query_Fields.29
+			queryFields = content^40.0, title^5.0, keywords^2.0, tagsH1^5.0, tagsH2H3^3.0, tagsH4H5H6^2.0, tagsInline^1.0
+			// see http://wiki.apache.org/solr/DisMaxRequestHandler#mm_.28Minimum_.27Should.27_Match.29
+			minimumMatch = 2<-15%			
+		}
+        results {
+			resultsHighlighting = 1
+			resultsHighlighting {
+				highlightFields = title, contentun_textS, content
+			}
+			resultsPerPage = {$e_magineurs.tx_solr.search.results.resultsPerPage}
+		}
+        sorting = 1
+        sorting {
+            options {
+                relevance.label = Pertinence
+                title.label = Titre
+                type >
+                author >
+                created.label = Date de création
+            }
+        }
+        faceting = 1
+        faceting {
+        	facets.type {
+		    field = type_stringS
+		    label = Type de contenu
+		   } 
+		   facets.category {
+		    field = categoryfacets_stringM
+		    label = Catégorie
+		   }
+        }
+		lastSearches = 1
+		lastSearches {
+			mode = user
+			limit = 10
+		}
+		frequentSearches = 1
+	}
+	statistics = 1
+	statistics {
+		anonymizeIP = 1
+		topHits {
+			days = 30
+			limit = 5
+		}
+		noHits {
+			days = 30
+			limit = 5
+		}
+		queries {
+			days = 30
+			limit = 100
+        }
+	}
+}

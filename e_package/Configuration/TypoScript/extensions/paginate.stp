@@ -1,0 +1,56 @@
+[{$e_magineurs.paginate.lazyLoad} > 0]
+    page.includeJSFooter {
+        infiniteScrolling_callback = {$e_package.conf.dossierPublic}/JavaScript/Ias/callback.js
+        infiniteScrolling_ias = {$e_package.conf.dossierPublic}/JavaScript/Ias/jquery-ias.js
+        infiniteScrolling_spinner = {$e_package.conf.dossierPublic}/JavaScript/Ias/Extension/Spinner.js
+        infiniteScrolling_paging = {$e_package.conf.dossierPublic}/JavaScript/Ias/Extension/Paging.js
+        infiniteScrolling_history = {$e_package.conf.dossierPublic}/JavaScript/Ias/Extension/History.js
+    }
+
+    page.jsFooterInline {
+        10 = LOAD_REGISTER
+        10.iasTriggerLinkText = {$e_magineurs.paginate.trigger}
+        10.iasTriggerLinkText.lang.en = Load more items
+
+        20 = TEXT
+        20.cObject = COA
+        20.cObject {
+            10 = TEXT
+            10.value = container: "{$e_magineurs.paginate.container}",
+            20 = TEXT
+            20.value = scrollContainer: {$e_magineurs.paginate.scrollContainer},
+            30 = TEXT
+            30.value = item: "{$e_magineurs.paginate.item}",
+            40 = TEXT
+            40.value = pagination: "{$e_magineurs.paginate.pagination}",
+            50 = TEXT
+            50.value = next: "{$e_magineurs.paginate.next}",
+            80 = TEXT
+            80.value = delay: {$e_magineurs.paginate.delay},
+            90 = TEXT
+            90.value = negativeMargin: {$e_magineurs.paginate.negativeMargin},
+        }
+        20.wrap (
+            $(function() {
+            var ias = $.ias({|});
+                ias.extension(new IASSpinnerExtension({
+                    html: '{$e_magineurs.paginate.loader}'
+                }));
+                ias.extension(new IASTriggerExtension({
+                    text: '{$e_magineurs.paginate.triggerNext}',
+                    textPrev: '{$e_magineurs.paginate.triggerPrev}',
+                    offset: 100
+                }));
+                ias.extension(new IASPagingExtension());
+                ias.extension(new IASHistoryExtension({
+                    prev: '{$e_magineurs.paginate.previous}',
+                }));
+                $.ias().on('pageChange', function(pageNum, scrollOffset, url) {
+                    $('{$e_magineurs.paginate.pagination}').find('li').removeClass('current');
+                    $('{$e_magineurs.paginate.pagination}').find('li.page'+pageNum).addClass('current');
+                });
+            });
+        )
+        30 = RESTORE_REGISTER
+    }
+[end]

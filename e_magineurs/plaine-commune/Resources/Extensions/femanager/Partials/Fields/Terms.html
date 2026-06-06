@@ -1,0 +1,25 @@
+{namespace femanager=In2code\Femanager\ViewHelpers}
+<div class="femanager_fieldset femanager_terms form-group powermail_fieldwrap">
+    <div class="powermail_field">
+        <div class="checkbox">
+                <f:form.checkbox
+                        id="femanager_field_terms"
+                        property="terms"
+                        value="Terms and conditions"
+                        checked="false"
+                        class="powermail_checkbox"
+                        additionalAttributes="{femanager:Validation.FormValidationData(settings:settings,fieldName:'terms')}" />
+                <label class="side-label" for="femanager_field_terms"> En soumettant ce formulaire, j’accepte que les informations saisies soient utilisées pour gérer mes abonnements aux alertes, aux newsletters.
+                <f:if condition="{femanager:Validation.IsRequiredField(fieldName:'terms')}">
+                    <span>*</span>
+                </label>
+                </f:if>
+                <f:if condition="{settings.misc.termsUrl}">
+                    <f:then>
+                        (<f:link.page pageUid="{settings.misc.termsUrl}"><f:translate key="tx_femanager_domain_model_user.termslinktext" /></f:link.page>)
+                    </f:then>
+                </f:if>
+        </div>
+    </div>
+        <!--<f:link.page pageUid="264" class="icon icon-LinkText-interne" title="Cliquez ici pour voir la charte éditoriale de Plainecommune.fr" target="blank">Cliquez ici pour voir la charte éditoriale de Plainecommune.fr</f:link.page>-->
+</div>

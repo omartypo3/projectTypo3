@@ -1,0 +1,14 @@
+plugin.tx_pingagaddress_mapshow {
+    view {
+        # cat=plugin.tx_pingagaddress_mapshow/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:pingag_address/Resources/Private/Templates/
+        # cat=plugin.tx_pingagaddress_mapshow/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:pingag_address/Resources/Private/Partials/
+        # cat=plugin.tx_pingagaddress_mapshow/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:pingag_address/Resources/Private/Layouts/
+    }
+    persistence {
+        # cat=plugin.tx_pingagaddress_mapshow//a; type=string; label=Default storage PID
+        storagePid =
+    }
+}

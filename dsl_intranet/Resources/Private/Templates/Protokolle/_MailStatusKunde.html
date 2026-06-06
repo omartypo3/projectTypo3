@@ -1,0 +1,11 @@
+Sehr geehrte Damen und Herren,
+
+es gibt neue Information zu Ihrem Auftrag.
+
+Auftrag: [{protokolle.auftrag.nr}] {protokolle.auftrag.titel -> f:format.raw()}
+
+{protokolle.notizSystem}
+
+<f:if condition="{protokolle.notiz}">Kommentar: {protokolle.notiz}</f:if>
+
+<f:render partial="Mail/Signatur" arguments="{_all}" />

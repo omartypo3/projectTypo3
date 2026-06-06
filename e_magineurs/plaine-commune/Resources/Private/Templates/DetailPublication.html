@@ -1,0 +1,89 @@
+
+<html data-namespace-typo3-fluid="true"
+    xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+    xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+    xmlns:s="http://typo3.org/ns/Stratis/StratisElements/ViewHelpers/"
+>
+<f:layout name="Default"/>
+<f:section name="Main">
+	<f:alias map="{contenuDroite: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'2\'})}', contenuGauche: '{f:cObject(typoscriptObjectPath: \'lib.countContent\', data: {colPos: \'1\'})}', col0: '{colPos: \'0\'}', col1: '{colPos: \'1\'}', col2: '{colPos: \'2\'}', col3: '{colPos: \'3\'}'}">
+		<div class="container-fluid">
+			<f:if condition="<f:cObject typoscriptObjectPath='lib.imagePageDefaut' data='{sourceUid: data.uid}' />">
+			    <f:then>
+			       <section id="banniere" class="banniere_ok hidden-print">
+						<f:cObject typoscriptObjectPath='lib.imagePageDefaut' data='{sourceUid: data.uid}' />
+						<div class="container-ariane hidden-print">
+							<div class="container">
+								<f:cObject typoscriptObjectPath="lib.filAriane" />
+							</div>
+						</div>
+					</section>
+			    </f:then>
+			    <f:else>
+			        <section id="banniere" class="hidden-print">
+						<div class="container-ariane hidden-print">
+							<div class="container">
+								<f:cObject typoscriptObjectPath="lib.filAriane" />
+							</div>
+						</div>
+					</section>
+			    </f:else>
+			</f:if>
+		</div>
+			<div class="container-max background-smartphone">
+				<div class="row">
+					<div class="content_left hidden-print col-xl-3">
+						<div class="block_content_left">
+							<div id="social_share_sidebar">
+								<a title="Partager la page sur les réseaux sociaux" class="icon_sidebar icon-Share_in_sidebar">
+									<i class="icon-Share" aria-hidden="true"></i>
+									<span class="sr-only">Partager la page sur les réseaux sociaux</span>
+								</a>
+								<div id="share_sidebar">
+									<a title="Partager sur Facebook" href="javascript:shareFacebook()" data-toggle="tooltip" data-placement="bottom" data-original-title="Facebook" class="share btn_facebook">
+										<i class="icon-Facebook" aria-hidden="true"></i>
+										<span class="sr-only">Partager sur Facebook</span>
+									</a>
+									<a title="Partager sur Twitter" href="javascript:shareTwitter()" data-toggle="tooltip" data-placement="bottom" data-original-title="Twitter" class="share btn_twitter">
+										<i class="icon-Twitter" aria-hidden="true"></i>
+										<span class="sr-only">Partager sur Twitter</span>
+									</a>
+									<a title="Partager sur Linkedin" href="javascript:shareLinkedin()" data-toggle="tooltip" data-placement="bottom" data-original-title="Linkedin" class="share btn_linkedin">
+										<i class="icon-Linkedin" aria-hidden="true"></i>
+										<span class="sr-only">Partager sur Linkedin</span>
+									</a>
+								</div>
+								<a title="Partage la page par e-mail" href="javascript:emailCurrentPage()" class="icon_sidebar">
+									<i class="icon-Mail" aria-hidden="true"></i>
+									<span class="sr-only">Partage la page par e-mail</span>
+								</a>
+								<a title="Imprimer la page" href="javascript:window.print();" class="icon_sidebar print-sidebar">
+									<i class="icon-Print" aria-hidden="true"></i>
+									<span class="sr-only">Imprimer la page</span>
+								</a>
+							</div>
+							<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col1}" />
+						</div>
+					</div>
+					<div id="contentPage" class="content-center col-xl-9 col-lg-7">
+						<div class="block_titre_page_anim">
+							<div class="case_title_anim_Page hidden-print">
+								<div class="icon_title_anim_Page"></div>
+							</div>
+							<v:variable.set name="newsGetParams" value="{s:uri.param(get:'tx_news_pi1')}"/>
+							<v:variable.set name="newsID" value="{newsGetParams.news}"/>
+							<f:if condition="{newsID}">
+								<v:variable.set name="newsItem" value="{s:resource.records(uidList:newsID, type:'Emagineurs\ENews\Domain\Model\Enews') -> v:iterator.first()}"/>
+							</f:if>
+						</div>
+						<!--TYPO3SEARCH_begin-->
+							<f:cObject typoscriptObjectPath="lib.dynamicContent" data="{col0}" />
+						<!--TYPO3SEARCH_end-->
+					</div>
+				</div>
+			</div>
+	</f:alias>
+</f:section>
+</html>

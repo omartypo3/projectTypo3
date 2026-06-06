@@ -1,0 +1,174 @@
+
+<f:layout name="Default" />
+
+This template displays a EDIT form for the current domain object.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Edit.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Auftraege"  pageType="89657202" action="ajax" name="auftraege"  pluginName="auftragsliste" extensionName="dslintranet" id="auftraegeUpdateForm" class="pressCancelBtnOnClose" >
+
+
+<div hidden class="auftraegeUpdateForm_auftraegeUid">{auftraege.uid}</div>
+<div hidden class="auftraegeUpdateForm_statusNeu">{statusNeu}</div>
+<div hidden class="auftraegeUpdateForm_statusAlt">{statusAlt}</div>
+<div hidden class="auftraegeUpdateForm_uniqueSelector">{uniqueSelector}</div>
+	
+	
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Statusänderung / {auftraege.titel}'}" />
+
+	
+
+    <f:form.hidden name="auftraege" value="{auftraege.uid}" />
+    <f:form.hidden name="switch" value="updateProduktionsdatum" />
+
+    <f:render partial="Auftraege/FormFieldsProduktionsdatum" arguments="{_all}" />
+	
+   
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Status ändern'}" />    
+    
+    
+</f:form>
+<script>
+
+
+			  
+		 
+	$(document).ready(function() {
+
+		
+		
+		//$('#auftraegeEditForm').submit(function() {
+
+		$( "#auftraegeUpdateForm button.confirm" ).click(function() {
+			console.log('speichern geklickt !!!');
+			//checkSelectPicker('editKunde');
+			//checkSelectPicker('editFegroups');
+			//checkSelectPicker('editMitarbeiter');
+		});
+		
+		$( "#auftraegeUpdateForm button.btn-abort" ).click(function() {
+			console.log('abbruch geklickt !!!');
+			//checkSelectPicker('editKunde');
+			//checkSelectPicker('editFegroups');
+			//checkSelectPicker('editMitarbeiter');
+			
+			
+			//detail_auftrag_6924_statuswechsel 
+			//$('.auftraegeUpdateForm_uniqueSelector').text()
+			$('#select_'+$('.auftraegeUpdateForm_uniqueSelector').text()).selectpicker('val','#'+$('.auftraegeUpdateForm_uniqueSelector').text()+'_'+$('.auftraegeUpdateForm_statusAlt').text());
+			
+			
+			//in listenansicht den hintergrund wieder zurück setzen!
+			$('[data-auftrag-uid="'+$('.auftraegeUpdateForm_auftraegeUid').text()+'"]').attr('data-auftrag-status',$('.auftraegeUpdateForm_statusAlt').text());
+			
+			$('.pressCancelBtnOnClose').removeClass('pressCancelBtnOnClose');	
+			
+		});
+		
+
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+	
+		$('#auftraegeUpdateForm').validate({
+			invalidHandler: function(event, validator) { 
+				validateFormInvalidHandler(validator);
+				
+				/*
+				setTimeout(function(){ 
+				
+					$('.fremdkosten-verechnung-wrapper').removeClass('invalid_child');
+					$('.fremdkosten-verechnung-wrapper .sonstigesRadio.invalid').closest('.fremdkosten-verechnung-wrapper').addClass('invalid_child');
+					
+					$('.nutzungskator-verechnung-wrapper').removeClass('invalid_child');
+					$('.nutzungskator-verechnung-wrapper .sonstigesRadio.invalid').closest('.nutzungskator-verechnung-wrapper').addClass('invalid_child');
+					
+				}, 500);
+		*/
+				
+			},
+			//invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+
+
+			ignore: ':hidden:not(".validator_required")', 
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+	
+				
+				var editor = tinyMCE.get('auftragEditNotizenIntern');
+				$('#auftragEditNotizenIntern_temp').val(editor.getContent());
+				
+				validateFormInvalidHandlerReset();
+				
+				
+				
+				if($('#auftraegeUpdateForm').hasClass('formSaves'))	return false;
+				$('#auftraegeUpdateForm').addClass('formSaves');
+				
+				
+				$.ajax({
+					url: $('#auftraegeUpdateForm').attr('action'),
+					type: 'POST',
+					data: $('#auftraegeUpdateForm').serialize(),
+					success: function(data) {
+						
+						
+						
+						console.log(data);
+						dataJson = JSON.parse(data);
+						
+						console.log(dataJson);
+						//reloadAuftragId('list',id);
+						if(!dataJson["uid"]) {
+							
+							editor.remove();
+							
+							return true;
+						} else {
+							$('.pressCancelBtnOnClose').removeClass('pressCancelBtnOnClose');	
+							
+						
+							
+							
+							$( 
+							  '#'+$('.auftraegeUpdateForm_uniqueSelector').text()
+							  +'_'+$('.auftraegeUpdateForm_statusNeu').text() 
+							 ).click();
+							
+						
+							
+							dataTableReload();
+	
+							editor.remove();
+				
+							//if(tinymce.EditorManager.editors[0]) tinymce.EditorManager.editors[0].destroy();
+							
+							$.colorbox.close();
+						}
+						
+		
+					}
+				});
+			
+		  	}
+		});
+		
+		
+		
+	});
+</script>
+
+</f:section>

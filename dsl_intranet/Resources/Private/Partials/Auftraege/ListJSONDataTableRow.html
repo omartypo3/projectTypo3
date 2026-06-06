@@ -1,0 +1,127 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+<span class="refreshAuftragList{auftraege.uid}"></span>
+<div style="display: flex; justify-content: center;">
+<f:if condition="{auftraege.rights.view}">
+	<f:then>
+		<f:link.action controller="Aufgaben" pluginName="wochenlisteaufgabenplatzierung" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '500px'}" data="{id: auftraege.uid, title: auftraege.titelForAufgabe}" extensionName="dslintranet" action="new" arguments="{auftraege : auftraege}" class="doAjaxEdit auftraegeDraggable" id="auftraegeSelector{auftraege.uid}" ><i class="bb-calendar-add bb-xxl" aria-hidden="true"></i></f:link.action>
+	</f:then>
+	<f:else>
+		<a class="btnDisabled inaktiv"><i class="bb-calendar-add bb-xxl" aria-hidden="true"></i></a>
+	</f:else>
+</f:if>
+<a href="#" class="toggleAblage" data-ablage="{auftraege.inAblage}" onClick="toggleAuftragAblage(this);return false;" data-auftrag="{auftraege.uid}"><i class="bb-star-empty bb-xxl" aria-hidden="true"></i><i class="bb-star-filled bb-xxl" aria-hidden="true"></i></a>	
+ 
+</div>
+
+
+<--break-->
+<span title="Auftrag vom: {f:format.date(date: auftraege.datum, format: 'd.m.Y - H:i')} Uhr">{f:format.date(date: auftraege.datum, format: 'd.m.y')}</span>
+	
+<--break-->
+	<div><f:translate key="tx_dslintranet_domain_model_auftraege.prioritaet.{auftraege.prioritaet}" /></div>
+
+<--break-->
+
+<f:if condition="{auftraege.rights.view}">
+	<f:then>
+		<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="show" arguments="{auftraege : auftraege}" class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{auftraege.uid}'}" onclick="$('#split-pane-middle').click();" >
+		<f:if condition="{auftraege.kunde}">
+			<div class="auftraegeListKunde">
+				<strong>{auftraege.kunde.name}</strong>
+				[{auftraege.kunde.nummer}]
+			</div>
+		</f:if>
+		<div>{auftraege.nr}: {auftraege.titel}</div>
+		</f:link.action>
+	</f:then>
+	<f:else>
+		<f:if condition="{auftraege.kunde}"><div class="auftraegeListKunde"><strong>{auftraege.kunde.name}</strong> [{auftraege.kunde.nummer}]</div></f:if>
+		<div>{auftraege.nr}: {auftraege.titel}</div>
+	</f:else>
+</f:if>
+<--break-->
+{auftraege.auftragsart.titel}
+
+<--break-->
+	<ul class="kommalist"><li title="{auftraege.ansprechpartner.name}"><strong>{auftraege.ansprechpartner.initialien}</strong></li><f:for each="{auftraege.mitarbeiter}" as="mitarbeiter"><f:if condition="{auftraege.ansprechpartner}!={mitarbeiter}"><li title="{mitarbeiter.name}">{mitarbeiter.initialien}</li></f:if></f:for></ul>
+<--break-->
+	<f:if condition="{auftraege.kontingent}">
+		<f:then>
+			
+			<div>Soll: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentSet}" /></div>
+
+			<div>Ist: <span class="{dsl:percent(percent:auftraege.kontingentUsedPercent, type:'hightlightClass')}"><f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedSet}" /></span></div>
+		</f:then>
+		<f:else>
+
+			<div>Ist: <f:render partial="Allgemein/DauerKurzFixed" arguments="{set: auftraege.kontingentUsedSet}" /></div>
+
+		</f:else>
+	</f:if>
+<--break-->
+
+	<div data-auftrag-uid="{auftraege.uid}" data-auftrag-status="{auftraege.status}"><f:render partial="Auftraege/ListButtonStatusChange" arguments="{auftraege: auftraege, uniqueSelector: 'list_auftrag_{auftraege.uid}_statuswechsel'}" /></div>
+
+<--break-->
+
+
+<div class="btn-group">
+
+    <f:if condition="{auftraege.rights.edit}">
+		<f:then>
+			
+			<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" pageType="89657202" action="ajax" arguments="{uid : auftraege, switch : 'toggleSichtbarkeit'}" class="btn tableBtn doAjax auftraegeSichtbarkeit_{auftraege.uid} {f:if(condition: auftraege.sichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'toggleAuftraegeSichtbarkeitBtn', data-ajax-selector: '.auftraegeSichtbarkeit_{auftraege.uid}', data-ajax-id: '{auftraege.uid}'}" ><i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i></f:link.action>
+			
+			
+		</f:then>
+        <f:else>
+			<f:if condition="{auftraege.sichtbarkeit}">
+				<f:then>
+					<a class="btn tableBtn inaktiv btnGruen"><i class="bb-eye-open bb-lg"></i></a>
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-eye-closed bb-lg"></i></a>
+				</f:else>
+			</f:if>
+		   
+		</f:else>
+    </f:if>
+    
+                
+    <f:if condition="{auftraege.rights.edit}">
+		<f:then>            
+    		
+			<f:link.action controller="Auftraege" pluginName="auftragsliste" pageType="89657202"  extensionName="dslintranet" action="edit" arguments="{auftraege : auftraege}" class="btn tableBtn doAjaxEdit" additionalAttributes="{data-colorbox-width: '650px', data-colorbox-height: '910px'}"><i class="bb-pen-write bb-lg" aria-hidden="true"></i></f:link.action>
+		</f:then>
+   		<f:else>
+			<a class="btn tableBtn inaktiv" style=""><i class="bb-pen-write bb-lg" aria-hidden="true"></i></a>
+			
+		</f:else>
+	</f:if>
+    
+    
+    <f:if condition="{auftraege.rights.delete}">
+		<f:then>  
+    		
+			<f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" pageType="89657202"  arguments="{uid : auftraege, switch : 'delete'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorAuftraege', data-ajax-selector: '#auftraegeListAuftrag_{auftraege.uid}', data-ajax-id: '{auftraege.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+		</f:then>
+		<f:else>
+			<a class="btn tableBtn inaktiv" style=""><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+			
+		</f:else>
+	</f:if>
+		
+
+</div>
+
+<--break-->
+
+<f:if condition="{auftraege.projekt}">
+	<f:then>
+		<strong>{auftraege.projekt.titel}</strong> [{auftraege.projekt.nr}]
+		
+	</f:then>
+	<f:else></f:else>
+</f:if>
+

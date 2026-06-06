@@ -1,0 +1,41 @@
+e_magineurs.paginate {
+	# cat=Configuration de la pagination; type=int+; label= Nombre d'éléments par page
+	itemsPerPage = 10
+	# cat=Configuration de la pagination; type=boolean; label= Insérer la pagination avant la liste
+	insertAbove = 0
+	# cat=Configuration de la pagination; type=boolean; label= Insérer la pagination après la liste
+	insertBelow = 1
+	# cat=Configuration de la pagination; type=boolean; label= Ajouter un tag dans le head <link rel="prev" href"" /> et <link rel="next" href"" /> pour google
+	prevNextHeaderTags = 1
+	# cat=Configuration de la pagination; type=int+; label= Pages avant
+	pagesBefore = 4
+	# cat=Configuration de la pagination; type=int+; label= Pages après
+	pagesAfter = 4
+	# cat=Configuration de la pagination; type=int+; label= Nombre maximum de liens
+	maximumNumberOfLinks = 5
+
+	# cat=Configuration de la pagination; type=boolean; label= Activer la pagination lazyload
+	lazyLoad = 1
+	# cat=Configuration de la pagination; type=string; label=Selector for container: Enter the identifier which selects only the items/entries you want to paginate. Sample: div.news-list-container
+	container = .lazyLoadContainer
+	# cat=Configuration de la pagination; type=string; label=Selector for Scroll Container: In which container the scrollbar is placed? Sample: $(window)
+	scrollContainer = $(window)
+	# cat=Configuration de la pagination; type=string; label=Selector for Item: Enter the identifier which selects one single item within the list container. Sample: div.news-list-item
+	item = .lazyLoadItem
+	# cat=IConfiguration de la pagination; type=string; label=Selector for Paginator: Enter the identifier for the paginator. This part will be set to display:none if infinite scrolling works. Sample: div.news-list-browse
+	pagination = .f3-widget-paginator, .paging_bootstrap.pagination
+	# cat=Configuration de la pagination; type=string; label=Selector for next link: Enter the identifier for the next link. InfiniteScrolling will read the href attribute to read the container of next page and append it to current container. Sample: div.browseLinksWrap a:eq(-2)
+	next = .f3-widget-paginator li.next a, .paging_bootstrap.pagination li.next a
+	# cat=Configuration de la pagination; type=string; label=Selector for previous link: Enter the identifier for the previous link. InfiniteScrolling will read the href attribute to read the container of previous page and append it to current container. Sample: div.browseLinksWrap a:eq(-2)
+	previous = .f3-widget-paginator li.previous a, .paging_bootstrap.pagination li.previous a
+	# cat=Configuration de la pagination; type=string; label=Loader icon: Enter your own loader icon if you want. Please enter a full img-tag including src, alt, width and height attributes
+	loader = <div class="ias-spinner" style="text-align: center;"><f:image src="EXT:e_package/Resources/Public/Images/loader.gif" /></div>
+	# cat=Configuration de la pagination; type=int+; label=Loader delay: If you want the user to see the loader icon working you should set this value to something higher than 0. Values in milliseconds. If you want to show the data directly it's better to set this value to 0
+	delay = 600
+	# cat=Configuration de la pagination; type=int; label=Request Margin: When should the request start? If 0 request starts if the user scrolls to bottom of page. If you enter -100 the request starts just 100 Pixel before bottom of page is reached. Positive values does not work!
+	negativeMargin = -0
+ 	# cat=Configuration de la pagination; type=string; label=Request Text: This is the text for the next link
+	triggerNext = Contenus suivants
+ 	# cat=Configuration de la pagination; type=string; label=Request Text: This is the text for the prev link
+	triggerPrev = Contenus précédents
+}

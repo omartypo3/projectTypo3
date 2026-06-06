@@ -1,0 +1,184 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+
+
+
+
+<div class="form_headline">
+	<strong>Sichtbarkeit</strong>
+    <hr>
+</div>
+
+
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Beginn des Angebotes<span>*</span>
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullDateTimePicker'>
+        
+        
+				<f:form.textfield class="form-control input-sm" name="gueltigAb" required="true"  value="{news.gueltigAb->f:format.date(format: 'd.m.Y H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+				<span class="input-group-addon border-left-none">
+					<i class="bb-calendar-date bb-lg"></i>
+				</span>
+
+			</div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-medium">Sichtbar für Kunde</div>
+        <div class="layout-table-col table-formular-small">
+        	
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="sichtbarkeit" value="1"  checked="{news.sichtbarkeit}" />
+                        
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm" style="width:60px;">
+                    <input value="1" class="" type="checkbox" checked="{news.sichtbarkeit}">
+                    
+					<i class="bb-eye-closed bb-lg"></i>
+					<i class="bb-eye-open bb-lg"></i>
+					
+                </label>
+            </div>
+			
+            
+        </div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Ende des Angebotes
+        </div>
+        <div class="layout-table-col table-formular-large">
+		    <div class='input-group date fullDateTimePicker'>
+        
+        
+				<f:form.textfield class="form-control input-sm" name="gueltigBis" value="{news.gueltigBis->f:format.date(format: 'd.m.Y H:i')}" additionalAttributes="{autocomplete: 'off'}"  />
+				
+				<span class="input-group-addon border-left-none">
+					<i class="bb-calendar-date bb-lg"></i>
+				</span>
+
+			</div>
+        </div>
+        <div class="layout-table-col table-formular-spacer">&nbsp;</div>
+        <div class="layout-table-col table-formular-label table-formular-medium">Countdown anzeigen</div>
+        <div class="layout-table-col table-formular-small">
+        	
+            
+            <f:form.checkbox class="sichtbarkeitCheckbox" name="countdown" value="1"  checked="{news.countdown}" />
+                        
+            <div class="btn-group sichtbarkeitCheckboxBtn" data-toggle="buttons">
+                <label class="btn btn-default input-sm" style="width:60px;">
+                    <input value="1" class="" type="checkbox" checked="{news.countdown}">
+					<i class="bb-count bb-lg"></i>
+                </label>
+            </div>
+            
+        </div>
+	</div>
+</div>
+
+<div class="form_headline">
+	<strong>Angebotsinhalt</strong>
+    <hr>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Hauptüberschrift<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="titel" value="{news.titel}" class="form-control input-sm" required="true"  />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Unterüberschrift<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="untertitel" value="{news.untertitel}" class="form-control input-sm" required="true"  />
+		</div>
+	</div>
+</div>
+
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Datei<span>*</span>
+        </div>
+        <div class="layout-table-col">
+			
+			<f:form.upload id="fileUploadDateien" property="datei"></f:form.upload>
+			
+
+			
+			<div class="fileUploadTypen">Unterstützte Dateitypen: JPG, PNG<br><span class="required hidden"><i class="fa fa-info-circle" aria-hidden="true"></i> Ihr Dateityp wird leider nicht unterstützt.</span></div>
+		</div>
+	</div>
+</div>
+
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Beschreibungstext<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textarea name="text" value="{news.text}" class="validator_required form-control input-sm animated" style="resize:none;min-height:80px;" />
+        </div>
+	</div>
+</div>
+
+<div class="form_headline">
+	<strong>Preise und Link</strong>
+    <hr>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Normaler Preis
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="angebot1" value="{news.angebot1}" class="form-control input-sm" placeholder="z.B. ab 47€" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Angebotspreis<span>*</span>
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="angebot2" value="{news.angebot2}" class="form-control input-sm" placeholder="z.B. 10% Rabatt / jetzt ab 37€ Netto" required="true"  />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Beschreibung
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="angebot3" value="{news.angebot3}" class="form-control input-sm" placeholder="z.B. auf alle Weihnachtskarten" />
+		</div>
+	</div>
+</div>
+<div class="layout-table table-formular-padding">
+	<div class="layout-table-row table-formular-row">
+    	<div class="layout-table-col table-formular-label table-formular-medium">
+        	Externer Link
+        </div>
+        <div class="layout-table-col">
+        	<f:form.textfield name="linkExtern" value="{news.linkExtern}" class="form-control input-sm" placeholder="inkl. http(s)://"  />
+		</div>
+	</div>
+</div>
+
+

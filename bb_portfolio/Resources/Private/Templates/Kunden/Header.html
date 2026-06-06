@@ -1,0 +1,2 @@
+<style type="text/css">
+<f:for each="{kundens}" as="kunden"><f:if condition="{kunden.primaerFarbeRgb}">.kundePrimaerFarbeBackground{kunden.uid}{ background-color:rgba(<f:render partial="Css/rgb" arguments="{rgb:kunden.primaerFarbeRgb}" />, 0.9) !important; } .kundePrimaerFarbe{kunden.uid}:hover{ color:rgba(<f:render partial="Css/rgb" arguments="{rgb:kunden.primaerFarbeRgb}" />, 1) !important; }</f:if></f:for></style> 

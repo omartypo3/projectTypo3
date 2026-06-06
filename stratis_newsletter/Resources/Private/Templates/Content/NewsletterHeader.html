@@ -1,0 +1,41 @@
+<html data-namespace-typo3-fluid="true"
+      xmlns="http://www.w3.org/1999/xhtml" lang="fr"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:vh="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+      xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+>
+<f:layout name="Content"/>
+<f:section name="Configuration">
+  <flux:form id="newsletterheader" options="{icon: 'EXT:stratis_newsletter/Resources/Public/Icons/Example.gif', group: 'stratisnewsletters'}" label="[Newsletter] Entête" description="Affiche l'entête de la newsletter">
+    <flux:field.input name="title" label="Titre" required="true" default=" L’instant Territoire – Plaine Commune"/>
+    <flux:field.input name="subtitle" label="Sur-titre"/>    
+    <flux:field.inline.fal name="picto" label="Image titre " size="1" maxItems="1" showThumbs="1" collapseAll="1" expandSingle="1" useSortable="1" allowedExtensions="gif,jpg,jpeg,png" />
+  </flux:form>
+</f:section>
+<f:section name="Preview">
+  <b>Entête</b>
+</f:section>
+<f:section name="Main">
+  <v:variable.set name="domain" value="{v:site.url() -> v:format.replace(substring:'/',replacement:'') -> v:format.replace(substring:':',replacement:'://')}"/>              
+  <v:variable.set name="headerText" value="{v:l(key:'newsletter.headerMessage',extensionName:'stratis_newsletter')}" />
+  <v:variable.set name="headerLink" value="{f:uri.page(absolute:'TRUE')}" />
+  <v:variable.set name="headerLinkText" value="{v:l(key:'newsletter.headerLink',extensionName:'stratis_newsletter')}" />  
+  <f:if condition="{picto}">
+    {v:content.resources.fal(field:'picto',record:record) -> v:iterator.first() -> v:variable.set(name: 'mediaElement')}
+    <f:if condition="{mediaElement}">
+      <v:variable.set name="picto" value="{f:uri.image(src:mediaElement.url,width:'620c')}"/>
+      <v:variable.set name="pictoAlt" value="{mediaElement.alternative}"/>
+    </f:if>
+  </f:if>
+  <f:render partial="NewsletterHeader.html"
+            arguments="{
+                  domain:domain,
+                  headerText:headerText,
+                  headerLink:headerLink,
+                  headerLinkText:headerLinkText,
+                  title:title,
+                  subtitle:subtitle,
+                  picto:picto,
+                  pictoAlt:pictoAlt}"/>
+</f:section>
+</html>config="{renderType: 'link'}"

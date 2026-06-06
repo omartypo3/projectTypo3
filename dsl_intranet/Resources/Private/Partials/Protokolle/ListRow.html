@@ -1,0 +1,156 @@
+<tr id="auftraegeProtokolleListAuftrag_{protokolle.uid}" class="{f:if(condition: protokolle.hidden, then: 'hidden-item')}">
+<td data-sort="{protokolle.zeitpunkt->f:format.date(format: 'YmdHis')}"><span data-table-callback-id="{protokolle.uid}"></span>{protokolle.zeitpunkt->f:format.date(format: 'd.m.y - H:i')} Uhr</td>
+<td>
+  <f:if condition="{protokolle.notiz}">
+   	<f:then>
+   		{f:if(condition: protokolle.kundeninfoSichtbarkeit, else: 'Intern: ')}{protokolle.notiz}
+	</f:then>
+	<f:else>
+	  	{protokolle.notizSystem}
+	</f:else>
+  </f:if>
+  
+</td>
+<td>
+
+	<f:if condition="{protokolle.notiz}">
+		<f:then>
+			<f:if condition="{protokolle.cruser.mitarbeiter}"><f:comment>muß drin bleiben um lazyload zu überlisten</f:comment></f:if>
+			<f:if condition="{protokolle.cruser.mitarbeiter}">
+				<f:then>
+					{protokolle.cruser.initialien}
+				</f:then>
+				<f:else>
+					Kunde
+				</f:else>
+			</f:if>
+			
+		</f:then>
+		<f:else>
+			System ({protokolle.cruser.initialien})
+		</f:else>
+	</f:if>
+  
+</td>
+<td width="160">
+   
+   
+   
+  
+  <span class="kundeninfoDateTime" title="{f:if(condition: protokolle.kundeninfoMail, then: 'gesendet an: {protokolle.kundeninfoMail}')}">
+  <f:if condition="{protokolle.kundeninfoTime}">
+    <f:then>{protokolle.kundeninfoTime->f:format.date(format: 'd.m.y - H:i')} Uhr</f:then>
+    <f:else>noch kein Versand</f:else>
+  </f:if>
+  </span>
+</td>
+<td>
+   
+	<div class="btn-group">
+		
+	<f:if condition="{protokolle.showBtnToggleKundeninfoSichtbarkeit}">
+   		<f:then>
+			
+			<f:if condition="{protokolle.hidden}">
+				<f:then>
+					<a class="btn tableBtn inaktiv"><i class="bb-eye-closed bb-lg"></i></a>
+				</f:then>
+				<f:else>
+					<f:link.action controller="Protokolle" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : protokolle, switch : 'toggleKundeninfoSichtbarkeit'}" class="btn tableBtn doAjax {f:if(condition: protokolle.kundeninfoSichtbarkeit, then: ' btnGruen')}" additionalAttributes="{data-ajax-action: 'toggleKundeninfoSichtbarkeit', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{protokolle.uid}', data-ajax-id: '{protokolle.auftrag.uid}'}" >
+						<i class="bb-eye-open bb-lg"></i><i class="bb-eye-closed bb-lg"></i><f:comment><f:if condition="{protokolle.kundeninfoSichtbarkeit}">
+							<f:then>
+								<i class="fa fa-eye"></i>
+							</f:then>
+							<f:else>
+								<i class="fa fa-eye-slash"></i>
+							</f:else>
+						</f:if></f:comment>
+					</f:link.action>
+				</f:else>
+			</f:if>
+				
+			
+      		
+		</f:then>
+		<f:else>
+			<f:if condition="{protokolle.kundeninfoSichtbarkeit}">
+				<f:then>
+									<a class="btn tableBtn inaktiv btnGruen"><i class="bb-eye-open bb-lg"></i></a>
+								</f:then>
+								<f:else>
+									<a class="btn tableBtn inaktiv"><i class="bb-eye-closed bb-lg"></i></a>
+								</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+		
+	<f:if condition="{protokolle.cruser.kunde}">
+		<f:then>
+			<a class="btn tableBtn inaktiv"><i class="bb-envelope bb-lg"></i></a>
+		</f:then>
+		<f:else>
+			
+				
+					<f:if condition="{protokolle.rights.mail}">
+     					<f:then>
+						
+
+								<f:if condition="{protokolle.kundeninfoSichtbarkeit}">
+									<f:then>
+										<f:link.action controller="Protokolle" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : protokolle, switch : 'sendKundeninfoMail'}" class="btn tableBtn doAjax kundeninfoTime {f:if(condition: protokolle.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMail', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{protokolle.uid}', data-ajax-id: '{protokolle.auftrag.uid}'}" title="Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+									</f:then>
+									<f:else>
+										<f:link.action controller="Protokolle" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : protokolle, switch : 'sendKundeninfoMail'}" class="btn tableBtn doConfirmUserAjax kundeninfoTime {f:if(condition: protokolle.kundeninfoTime, then: ' aktiv')}" additionalAttributes="{data-ajax-action: 'sendKundeninfoMail', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{protokolle.uid}', data-ajax-id: '{protokolle.auftrag.uid}', data-text: 'Der derzeit noch interne Kommentar wird für den Kunde veröffentlicht, Sicher?.', data-confirm-button: 'Ja (veröffentlichen & E-Mail Versenden)'}" title="Veröffentlichen und Fenster für die E-Mail Benachrichtigung öffnen." ><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></f:link.action>
+									</f:else>
+								</f:if>
+								
+							
+							
+						</f:then>
+						<f:else>
+							<a class="btn tableBtn inaktiv kundeninfoTime {f:if(condition: protokolle.kundeninfoTime, then: ' aktiv')}"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+						</f:else>
+						
+					</f:if>
+			
+			
+			<f:comment>		
+			<!--<f:if condition="{protokolle.auftrag.kunde.email}">
+				<f:then>
+					
+				</f:then>
+				<f:else>
+					<a href="#" class="btn tableBtn mailRequired kundeninfoTime {f:if(condition: protokolle.kundeninfoTime, then: ' aktiv')}" onClick="alert('Kein E-Mail Versand möglich, Mail Adresse fehlt beim Kunde.');return false;"><i class="bb-envelope-filled bb-lg"></i><i class="bb-envelope bb-lg"></i></a>
+				</f:else>
+					
+			</f:if>-->
+			</f:comment>
+		</f:else>
+	</f:if>
+		
+   	
+	<f:if condition="{protokolle.hidden}">
+			<f:then>
+				<a class="btn tableBtn inaktiv"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+			</f:then>
+			<f:else>
+
+
+
+				<f:if condition="{protokolle.rights.delete}">
+					<f:then>
+						<f:link.action controller="Protokolle" pluginName="auftragsliste" extensionName="dslintranet" action="ajax" arguments="{uid : protokolle, switch : 'delete'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorDatatable', data-ajax-selector: '#auftraegeProtokolleListAuftrag_{protokolle.uid}', data-ajax-id: '{protokolle.auftrag.uid}', data-table: '#protokolleList{protokolle.auftrag.uid}'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action>
+
+					</f:then>
+					<f:else>
+						<a class="btn tableBtn inaktiv"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a>
+					</f:else>
+				</f:if>
+					
+			</f:else>
+		</f:if>
+		
+	</div>
+  
+</td>
+</tr>

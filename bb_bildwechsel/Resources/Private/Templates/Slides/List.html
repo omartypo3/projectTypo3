@@ -1,0 +1,289 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+		
+
+<f:section name="main">
+
+
+
+<f:comment>
+{f:render(partial: 'Slide', arguments: {cycle: 11})}
+</f:comment>
+
+<!-- main banner -->
+			
+			<div class="banner banner-home">
+			
+			
+
+			<div id="rev_slider_home_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="restaurant-header" data-source="gallery" style="background-color:transparent;padding:0px;">
+<!-- START REVOLUTION SLIDER 5.3.1.6 fullscreen mode -->
+	<div id="rev_slider_home_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.3.1.6">
+									
+			
+				<!-- revolution slider starts -->
+				
+						<ul>
+						
+						
+							<f:for each="{slides}" as="slide" iteration="iterator"><f:if condition="{slide.bild}">
+							
+							
+						
+							<li class="slider-color-schema-dark" data-index="rs-{iterator.cycle}" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
+								<!-- main image for revolution slider -->
+								
+								<img data-lazyload="{f:uri.image(src:slide.bild.originalResource.originalFile.uid, width:1920c, height:1080c)}" src="{f:uri.image(src:slide.bild.originalResource.originalFile.uid, width:1920c, height:1080c)}" alt="image description" data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="110" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+								 
+								 <div id="rrzb_{slide.uid}" class="rev_row_zone rev_row_zone_bottom" style="z-index: 9;">
+									 <f:comment><!--<div class="sliderOverlayContainer">-->
+									
+									<div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" 
+									id="slide-{slide.uid}-layer-10" 
+									data-x="['left','left','left','left']" data-hoffset="['-3300']" 
+									data-y="['top','top','top','top']" data-voffset="['0']" 
+									data-width="5000"
+									data-height="5000"
+									data-whitespace="normal"
+									data-transform_idle="o:1;rZ:314;"
+
+									data-transform_in="x:left;s:1500;e:Power4.easeOut;" 
+									data-transform_out="opacity:0;s:300;" 
+									data-start="500" 
+									data-responsive_offset="on" 
+
+									style="background-color:rgba({f:render(partial: 'Css/rgb', arguments: {rgb: slide.farbeRgb})}, 0.9);"> </div></f:comment>
+									
+									
+		<!-- LAYER NR. 1 -->
+		<div class="tp-caption  " 
+			 id="slide-{slide.uid}-layer-20" 
+			 data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']" 
+			 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['337','337','337','337']" 
+						data-width="none"
+			data-height="none"
+			data-whitespace="normal"
+ 
+            data-type="row" 
+            data-columnbreak="1" 
+			data-responsive_offset="on" 
+			data-responsive="off"
+            data-frames='[{"delay":10,"speed":500,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+            data-margintop="[0,0,0,0]"
+            data-marginright="[0,0,0,0]"
+            data-marginbottom="[0,0,0,0]"
+            data-marginleft="[0,0,0,0]"
+            data-textAlign="['inherit','inherit','inherit','inherit']"
+            data-paddingtop="[0,0,0,0]"
+            data-paddingright="[0,0,0,0]"
+            data-paddingbottom="[0,0,0,0]"
+            data-paddingleft="[0,0,0,0]"
+
+            style="z-index: 10; white-space: normal; font-size: 20px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00);">							
+									<!-- LAYER NR. 2 -->
+		<div class="tp-caption  " 
+			 id="slide-{slide.uid}-layer-30" 
+			 data-x="['left','left','left','left']" data-hoffset="['100','100','100','100']" 
+			 data-y="['top','top','top','top']" data-voffset="['100','100','100','100']" 
+						data-width="none"
+			data-height="none"
+			data-whitespace="normal"
+ 
+            data-type="column" 
+			data-responsive_offset="on" 
+			data-responsive="off"
+            data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+ data-columnwidth="100%"
+            data-margintop="[0,0,0,0]"
+            data-marginright="[0,0,0,0]"
+            data-marginbottom="[0,0,0,0]"
+            data-marginleft="[0,0,0,0]"
+            data-textAlign="['inherit','inherit','inherit','inherit']"
+            data-paddingtop="[0,0,0,0]"
+            data-paddingright="[0,0,0,0]"
+            data-paddingbottom="[0,0,0,0]"
+            data-paddingleft="[0,0,0,0]"
+
+            style="z-index: 11; width: 100%;">
+						
+					<!-- LAYER NR. 3 -->
+					<div class="tp-caption   tp-resizeme" 
+						 id="slide-{slide.uid}-layer-35" 
+
+						 data-x="['left','left','left','left']" data-hoffset="['60','60','60','60']" 
+						 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','40','40','40']" 
+									data-width="70%"
+						data-height="none"
+						data-whitespace="normal"
+
+						data-type="text" 
+						data-responsive_offset="on" 
+
+						data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+						data-margintop="[0,0,0,0]"
+						data-marginright="[0,0,0,0]"
+						data-marginbottom="[5,5,5,5]"
+						data-marginleft="[0,0,0,0]"
+						data-textAlign="['inherit','inherit','inherit','inherit']"
+						data-paddingtop="[0,0,0,0]"
+						data-paddingright="[0,0,0,0]"
+						data-paddingbottom="[0,0,0,0]"
+						data-paddingleft="[60,60,60,60]"
+
+						style="z-index: 12; min-width: 70%px; max-width: 70%px; white-space: normal; font-size: 52px; line-height: 48px; font-weight: 700; text-transform: uppercase;color: rgba(255, 255, 255, 1.00);letter-spacing:1px; display: block;font-family:IntroCondBold;">
+			
+											<f:format.nl2br><f:format.raw value="{slide.titel}" /></f:format.nl2br>
+											
+								
+								</div>
+			<div class="tp-caption   tp-resizeme" 
+						 id="slide-{slide.uid}-layer-36" 
+
+						 data-x="['left','left','left','left']" data-hoffset="['60','60','60','60']" 
+						 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','40','40','40']" 
+									data-width="70%"
+						data-height="none"
+						data-whitespace="normal"
+
+						data-type="text" 
+						data-responsive_offset="on" 
+
+						data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+						data-margintop="[0,0,0,0]"
+						data-marginright="[0,0,0,0]"
+						data-marginbottom="[5,5,5,5]"
+						data-marginleft="[0,0,0,0]"
+						data-textAlign="['inherit','inherit','inherit','inherit']"
+						data-paddingtop="[0,0,0,0]"
+						data-paddingright="[0,0,0,0]"
+						data-paddingbottom="[10,0,0,0]"
+						data-paddingleft="[60,60,60,60]"
+
+						style="z-index: 12; min-width: 70%px; max-width: 70%px; white-space: normal; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(255, 255, 255, 1.00);letter-spacing:1px; display: block;font-family:IntroCondRegularItalic;">
+			
+											<f:format.nl2br><f:format.raw value="{slide.untertitel}" /></f:format.nl2br>
+											
+								
+								</div>
+								
+								
+								
+			<!-- LAYER NR. 3 -->
+					<div class="tp-caption  tp-resizeme" 
+						 id="slide-{slide.uid}-layer-40" 
+
+						 data-x="['left','left','left','left']" data-hoffset="['60','60','60','60']" 
+						 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','40','40','40']" 
+						data-width="['50%','80%','80%','90%']"
+						data-height="none"
+						data-whitespace="normal"
+
+						data-type="text" 
+						data-responsive_offset="on" 
+
+						data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+						data-margintop="[0,0,0,0]"
+						data-marginright="[0,0,0,0]"
+						data-marginbottom="[20,20,20,20]"
+						data-marginleft="[0,0,0,0]"
+						data-textAlign="['inherit','inherit','inherit','inherit']"
+						data-paddingtop="[0,0,0,0]"
+						data-paddingright="[0,0,0,0]"
+						data-paddingbottom="[0,0,0,0]"
+						data-paddingleft="[60,60,60,60]"
+
+						style="z-index: 12; min-width: 80%px; max-width: 80%px; white-space: normal; font-size: 18px; line-height: 24px; font-weight: 400; color: rgba(255, 255, 255, 1.00); display: block;font-family:IntroCondRegular;">
+			
+									<f:format.nl2br>{slide.text}</f:format.nl2br>
+								
+								</div>
+								
+								<f:if condition="{slide.link}">
+								
+							<div class="tp-caption   tp-resizeme" 
+						 id="slide-{slide.uid}-layer-45" 
+
+						 data-x="['left','left','left','left']" data-hoffset="['60','60','60','60']" 
+						 data-y="['bottom','bottom','bottom','bottom']" data-voffset="['40','40','40','40']" 
+									data-width="70%"
+						data-height="none"
+						data-whitespace="normal"
+
+						data-type="text" 
+						data-responsive_offset="on" 
+
+						data-frames='[{"delay":"+0","speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+						data-margintop="[0,0,0,0]"
+						data-marginright="[0,0,0,0]"
+						data-marginbottom="[20,20,20,20]"
+						data-marginleft="[0,0,0,0]"
+						data-textAlign="['inherit','inherit','inherit','inherit']"
+						data-paddingtop="[0,0,0,0]"
+						data-paddingright="[0,0,0,0]"
+						data-paddingbottom="[80,60,30,30]"
+						data-paddingleft="[60,60,60,60]"
+
+						style="z-index: 12; min-width: 70%px; max-width: 70%px; white-space: normal; font-size: 20px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00); display: block;font-family:Open Sans;">
+			
+											<f:link.typolink parameter="{slide.link}" class="btnBig btnWhite"><f:if condition="{slide.linkTitel}"><f:then>{slide.linkTitel}</f:then><f:else>Details</f:else></f:if></f:link.typolink>
+								
+								</div></f:if>
+									
+									</div>
+									
+									</div>
+									
+								</div>
+								
+								
+								<!-- LAYER NR. 4 -->
+		<div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" 
+			 id="slide-{slide.uid}-layer-50" 
+			 data-x="['left','left','left','left']" data-hoffset="['-2600','-2600','-2600','-3000']" 
+			 data-y="['top','top','top','top']" data-voffset="['-500','-500','-500','-500']" 
+						data-width="3400"
+			data-height="3000"
+			data-whitespace="normal"
+ 
+            data-type="shape" 
+			data-responsive_offset="on" 
+
+            data-frames='[{"delay":0,"speed":300,"frame":"0","from":"x:left;","to":"o:1;rZ:-41;","ease":"Power3.easeInOut"},{"delay":"8000","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+            data-textAlign="['inherit','inherit','inherit','inherit']"
+            data-paddingtop="[0,0,0,0]"
+            data-paddingright="[0,0,0,0]"
+            data-paddingbottom="[0,0,0,0]"
+            data-paddingleft="[0,0,0,0]"
+
+            style="z-index: 8;background-color:rgba({f:render(partial: 'Css/rgb', arguments: {rgb: slide.farbeRgb})}, 0.9);"> </div>
+								
+								
+							</li>
+							</f:if></f:for>
+							
+						</ul>
+					</div>
+				</div>
+				
+				
+				<div class="scrollPfeil"><a href="#c109" class="scrollDown"><i class="bb-arrow-down"></i></a></div>
+				
+				
+			</div>
+
+
+
+
+</f:section>

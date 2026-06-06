@@ -1,0 +1,7 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div id="main-navbar" class="navbar navbar-fixed-top Fixed {f:if(condition: '{settings.styles.navbar.style.inverse}', then: 'navbar-inverse', else: 'navbar-default')}">
+  <div class="{f:if(condition: '{settings.styles.container-fluid}', then: 'container-fluid', else: 'container')} navBar-container">
+	  <f:render partial="NavBar/NavBarHeader" arguments="{_all}" />
+  </div>
+</div>
+</html>

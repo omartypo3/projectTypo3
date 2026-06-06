@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+        <meta type="array">
+                <type>database</type>
+                <description>Language labels for personalisation of the TCA</description>
+        </meta>
+
+        <data type="array">
+                <languageKey index="default" type="array">  
+                        <label index="tx_enews_domain_model_enews.authorpublication">Ville</label>
+                        <label index="tx_enews_domain_model_enews.placeadress">Détails Lieu</label>
+                        <label index="tx_enews_domain_model_enews.eventmail">Adresse</label>
+						
+						<label index="dechet.commune">Commune</label>
+						<label index="dechet.voie">Voie</label>
+						<label index="dechet.observation">Observations</label>
+						<label index="dechet.horaire">Horaire de sortie des bacs</label>
+						<label index="dechet.zone">Zone communale</label>
+						<label index="dechet.onglet.menager">Infos ordures ménagères</label>
+						<label index="dechet.jour.menager">Jour des ordures ménagères</label>
+						<label index="dechet.onglet.tri">Infos tri sélectif</label>
+						<label index="dechet.jour.tri">Jour du tri sélectif</label>
+						<label index="dechet.periode.tri">Période du tri selectif</label>
+						<label index="dechet.onglet.verre">Infos verre</label>
+						<label index="dechet.jour.verre">Jour collecte verre</label>
+						<label index="dechet.onglet.encombrants">Infos encombrants</label>
+						<label index="dechet.jour.encombrants">Jour collecte encombrants</label>
+                </languageKey>
+        </data>
+</T3locallang>

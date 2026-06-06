@@ -1,0 +1,10 @@
+lib.contentElement {
+	templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/fluid_styled_content/Templates/
+	partialRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/fluid_styled_content/Partials/
+	layoutRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/fluid_styled_content/Layouts/
+	settings.media.popup.linkParams.ATagParams.dataWrap =  class="{$styles.content.textmedia.linkWrap.lightboxCssClass}" rel="{$styles.content.textmedia.linkWrap.lightboxRelAttribute}" title="{file:current:title} {file:current:description}"
+	variables{
+		dossierLangue = TEXT
+		dossierLangue.value = LLL:{$e_package.conf.dossierLangue}/locallang.xlf
+	}
+}

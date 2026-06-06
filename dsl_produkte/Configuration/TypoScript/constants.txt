@@ -1,0 +1,24 @@
+
+plugin.tx_dslprodukte {
+	view {
+		# cat=plugin.tx_dslprodukte/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:dsl_produkte/Resources/Private/Templates/
+		# cat=plugin.tx_dslprodukte/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:dsl_produkte/Resources/Private/Partials/
+		# cat=plugin.tx_dslprodukte/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:dsl_produkte/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_dslprodukte//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}
+
+## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
+
+page.includeCSS{
+	dsl_produkte_style = EXT:dsl_produkte/Resources/Public/Css/style.css
+}
+#page.includeJS{
+#	dsl_produkte_script = EXT:dsl_produkte/Resources/Public/Scripts/scripts.js
+#}

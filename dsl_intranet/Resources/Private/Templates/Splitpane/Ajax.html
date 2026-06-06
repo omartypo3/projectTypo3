@@ -1,0 +1,27 @@
+<f:spaceless>
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+{namespace v = FluidTYPO3\Vhs\ViewHelpers}
+
+<f:switch expression="{switch}">
+	<f:case value="reorderKanbanBoards">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}{boards -> f:debug(title: 'boards', inline: '1')}{resArr -> f:debug(title: 'resArr', inline: '1')}</div></div>
+	</f:case>
+	<f:case value="changeKanbanBoards">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}{arguments -> f:debug(title: 'arguments', inline: '1')}{newboards -> f:debug(title: 'newboards', inline: '1')}{boards -> f:debug(title: 'boards', inline: '1')}{existing -> f:debug(title: 'existing', inline: '1')}</div></div>
+	</f:case>
+	<f:case value="loadKanban">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}{resArr -> f:debug(title: 'resArr', inline: '1')}<f:comment><f:render partial="Kunden/ListTable" arguments="{_all}" /></f:comment></div></div>
+	</f:case>
+	<f:case value="newKanbanBoard">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}</div></div>
+	</f:case>
+	<f:case value="deleteKanbanBoard">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}</div></div>
+	</f:case>
+	<f:case value="renameKanbanBoard">
+		<div><textarea id="resultJson">{returnString -> f:format.raw()}</textarea><div id="content">{settingsBoards -> f:debug(title: 'settingsBoards', inline: '1')}</div></div>
+	</f:case>
+</f:switch>
+</f:spaceless>
+
+

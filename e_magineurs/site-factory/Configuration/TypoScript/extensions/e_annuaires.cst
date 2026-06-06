@@ -1,0 +1,27 @@
+# customsubcategory=tx_eannuaires_Template= Templates
+e_magineurs.tx_eannuaires {
+    view {
+        # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Chemin du dossier Templates
+        templateRootPath = e_annuaires/Templates/
+        # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Chemin du dossier Partials
+        partialRootPath =  e_annuaires/Partials/
+        # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Chemin du dossier Layouts
+        layoutRootPath = e_annuaires/Layouts/
+    }
+    settings {    	
+        search {
+            properties {
+                # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Id de la catégorie parentes des annuaires généraux
+                categoryGeneral = 9
+                # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Id de la catégorie parentes des annuaires des personnes
+                categoryPersonne = 6
+                # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Id de la catégorie parentes des annuaires des vidéos
+                categoryVideo = 16
+                # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Id de la catégorie parentes des annuaires des lieux
+                categoryLieu = 1
+                # cat=Configuration des annuaires/tx_eannuaires_Template; type=string; label= Id de la catégorie parentes des annuaires des Offres Emploi
+                categoryEmploi = 215
+            }
+        }
+    }
+}

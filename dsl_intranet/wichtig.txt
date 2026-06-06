@@ -1,0 +1,41 @@
+http://keinerweiss.de/525-die-extbase-extension-news-um-ein-feld-erweitern.html
+
+ext_tables.php
+/*
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users',$tmp_dsl_intranet_columns);
+
+$GLOBALS['TCA']['fe_users']['types']['Tx_DslIntranet_Benutzer']['showitem'] = $TCA['fe_users']['types']['0']['showitem'];
+$GLOBALS['TCA']['fe_users']['types']['Tx_DslIntranet_Benutzer']['showitem'] .= ',--div--;LLL:EXT:dsl_intranet/Resources/Private/Language/locallang_db.xlf:tx_dslintranet_domain_model_benutzer,';
+$GLOBALS['TCA']['fe_users']['types']['Tx_DslIntranet_Benutzer']['showitem'] .= 'notiz';
+
+$GLOBALS['TCA']['fe_users']['columns'][$TCA['fe_users']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:dsl_intranet/Resources/Private/Language/locallang_db.xlf:fe_users.tx_extbase_type.Tx_DslIntranet_Benutzer','Tx_DslIntranet_Benutzer');
+*/
+t3lib_div::loadTCA("fe_users");
+    t3lib_extMgm::addTCAcolumns("fe_users",$tmp_dsl_intranet_columns,1);
+    t3lib_extMgm::addToAllTCAtypes("fe_users","notiz;;;;1-1-1");
+	
+	
+Im Nachinein beim Model die elternklasse geändert / wird auch nicht mehr vom extbuilder überschrieben
+
+#ext_typoscript_setup.txt
+#dslmikeneu
+#DslFactory\DslIntranet\Domain\Model\Benutzer {
+#   subclasses {
+#       Tx_DslIntranet_Mitarbeiter = DslFactory\DslIntranet\Domain\Model\Mitarbeiter
+#		Tx_DslIntranet_Kunden = DslFactory\DslIntranet\Domain\Model\Kunden
+#		
+#	}
+#}
+#dslmikeneuende
+
+
+
+/*
+storage ordner
+http://www.koller-webprogramming.ch/tipps-tricks/typo3-extension-entwicklung-extbase/dateien-und-bilder-mit-extbase-61-uploaddownload-via-fal-file-abstraction-layer/
+*/
+
+
+
+
+achtung upload Stundensatz !!?!?!

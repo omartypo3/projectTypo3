@@ -1,0 +1,155 @@
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+Settings:
+	stripHTML => 1 : enlever les balises du items
+	formatDate => '%A %d %B %Y, %Hh%M' géré en PHP, éventuellement réutilisable
+	cropAdd => '...' 
+	cropTitle => 100 
+	cropDesc => '50' 
+	cropContent => '100' 
+	cropContenu => '100' 
+	target => '_blank' 
+	listFeed => tableau des liens des flux
+	imageWidth => '250' 
+	imageHeight => '250'
+rssStreamCount : nombre de flux
+flux : tableau du contenu des flux, triés et filtré comme souhaité.
+		channel_title : titre du flux
+        channel_link : lien du flux
+        channel_description : description du flux
+        channel_pubDate : date du flux au format RSS
+        channel_timestamp : date du flux au format tstamp
+        channel_generator : generateur du flux
+        channel_language: langage du flux
+		channel_image: image du flux
+		
+		article_title: titre de l'article
+		article_link: lien de l'article
+		article_comments: lien vers les commentaire de l'article
+		article_pubDate: date de l'article au format RSS
+        article_timestamp: date de l'article au format tstamp
+		article_strftime: date de l'article au format configuré
+        article_description: description de l'article
+        article_creator: créateur de l'article
+        article_author: auteur de l'article
+        article_category: categorie(s) de l'article
+		article_content: contenu de l'article
+		article_bodytext: contenu de l'article, ou si vide, description
+		article_enclosure: fichiers associés a l'article
+		article_image: image de l'article, éventuellement trouvée dans le contenu, ou enclosure si présent
+		
+<f:section name="main">
+	<f:if condition="{rssStreamCount}==1">
+		<div class="items">
+			<f:if condition="{items.0.channel_image}">
+				<div class="image">
+					<img src="{items.0.channel_image}"  width="{settings.imageWidth}" height="{settings.imageHeight}" />
+				</div>
+			</f:if>
+			<div class="titre">
+				<f:if condition="{items.0.channel_link}">
+					<f:then>
+						<f:link.external uri="{items.0.channel_link}" target="{settings.target}">
+							<f:format.crop maxCharacters="{settings.cropTitle}" append="&nbsp;{settings.cropAdd}">
+								{items.0.channel_title}
+							</f:format.crop>
+						</f:link.external>
+					</f:then>
+					<f:else>
+						<f:format.crop maxCharacters="{settings.cropTitle}" append="&nbsp;{settings.cropAdd}">
+							{items.0.channel_title}
+						</f:format.crop>
+					</f:else>
+				</f:if>
+			</div>
+			<div class="description">
+				<f:format.crop maxCharacters="{settings.cropDesc}" append="&nbsp;{settings.cropAdd}">
+					{items.0.channel_description}
+				</f:format.crop>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{items}">
+		<ul>
+		<f:for each="{items}" as="item">
+			<li>
+				<f:if condition="{settings.image}==1">
+				<div class="image">
+					<f:if condition="{item.article_image}">
+						<img src="{item.article_image}" width="{settings.imageWidth}" height="{settings.imageHeight}" />
+					</f:if>
+				</div>
+				</f:if>
+				<div class="title">
+					<f:if condition="{item.article_link}">
+						<f:then>
+							<f:link.external uri="{item.article_link}" target="{settings.target}">
+								<f:format.crop maxCharacters="{settings.cropTitle}" append="&nbsp;{settings.cropAdd}">
+									{item.article_title}
+								</f:format.crop>
+							</f:link.external>
+						</f:then>
+						<f:else>
+							<f:format.crop maxCharacters="{settings.cropTitle}" append="&nbsp;{settings.cropAdd}">
+								{item.article_title}
+							</f:format.crop>
+						</f:else>
+					</f:if>
+				</div>
+				<div class="subtitle">
+					<f:if condition="{item.article_timestamp}">
+						{item.article_strftime}
+					</f:if>
+					<f:if condition="{item.article_timestamp}">
+						<f:if condition="{rssStreamCount}>1">
+							, &nbsp;
+						</f:if>
+					</f:if>
+					<f:if condition="{rssStreamCount}>1">
+						source: {item.channel_title}
+					</f:if>
+				</div>
+				<div class="description">
+					<f:format.crop maxCharacters="{settings.cropDesc}" append="&nbsp;{settings.cropAdd}">
+						<f:if condition="{settings.stripHTML}==1">
+							<f:then>
+								{item.article_description->f:format.stripTags()}
+							</f:then>
+							<f:else>
+								{item.article_description}
+							</f:else>
+						</f:if>
+					</f:format.crop>
+				</div>
+				<f:if condition="{rssStreamCount}==1">
+					<f:if condition="{item.article_content}">
+						<div class="content">
+							<f:format.crop maxCharacters="{settings.cropContent}" append="&nbsp;{settings.cropAdd}">
+								<f:if condition="{settings.stripHTML}==1">
+									<f:then>
+										{item.article_content->f:format.stripTags()}
+									</f:then>
+									<f:else>
+										{item.article_content}
+									</f:else>
+								</f:if>
+							</f:format.crop>
+						</div>
+					</f:if>
+				</f:if>
+			</li>
+		</f:for>
+		</ul>
+	</f:if>
+</f:section>

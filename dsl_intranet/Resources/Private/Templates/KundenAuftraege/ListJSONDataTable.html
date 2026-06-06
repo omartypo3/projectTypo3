@@ -1,0 +1,11 @@
+<f:format.date date="{auftraege.datum}" format="d.m.Y" />
+<--break-->
+{auftraege.titel}
+<--break-->
+{auftraege.auftragsart.titel}
+<--break-->
+<span title="Auftrag vom: {f:format.date(date: auftraege.datum, format: 'd.m.Y - H:i')} Uhr">{auftraege.nr}</span>
+<--break-->
+<f:translate key="tx_dslintranet_domain_model_auftraege.status.{auftraege.status}" />
+<--break-->
+<ul class="buttonlist float_right"><li><f:link.action controller="Auftraege" pluginName="kundenlogin" extensionName="dslintranet" action="kundenshow" arguments="{auftraege : auftraege}" class="doAjax" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{auftraege.uid}'}" ><i class="fa fa-search"></i></f:link.action></li></ul>

@@ -1,0 +1,111 @@
+{namespace dsl = DslFactory\DslIntranet\ViewHelpers}
+<tr id="kundenListKunde_{kunden.uid}" >
+	<td><span data-table-callback-id="{kunden.uid}"></span><span class="hidden">{kunden.disable}</span><div class="btn-group checkboxBtnList doAjax" data-toggle="buttons" data-ajax-action="toggleKundeDisable"  data-ajax-id="{kunden.uid}">
+			
+			<label class="btn btn-default input-sm {f:if(condition: '{kunden.disable}', else: ' active')}">
+				<input class="phase_{phase.uid}" value="{kunden.uid}" type="checkbox">
+				<span class="glyphicon glyphicon-ok"></span>
+			</label>
+		
+		</div>
+    </td>
+    <td>{kunden.nummer}</td>
+	<td><strong>{kunden.name}</strong></td>
+	<td><f:if condition="{kunden.email}"><f:then>{kunden.email}</f:then><f:else>{kunden.qbEmail}</f:else></f:if></td>
+    <td>{kunden.telephone}</td>
+	<td><f:if condition="{dsl:getFromArray(obj: anzahlAuftraegeByKunde, prop:'{kunden.uid}')}"><f:then>{dsl:getFromArray(obj: anzahlAuftraegeByKunde, prop:'{kunden.uid}')}</f:then><f:else>-</f:else></f:if></td>
+	<td><span class="invisible"><f:format.padding padLength="10" padString="0" padType="left">{dsl:getFromArray(obj: anzahlAuftraegeAVByKunde, prop:'{kunden.uid}')}</f:format.padding></span><f:if condition="{dsl:getFromArray(obj: anzahlAuftraegeAVByKunde, prop:'{kunden.uid}')}">
+		<f:then><f:link.action class="doAjaxEdit"  controller="Auftraege" action="agenturauftraegelist" arguments="{kunde : kunden}" additionalAttributes="{ data-colorbox-width: '900px', data-colorbox-height: '800px' }">{dsl:getFromArray(obj: anzahlAuftraegeAVByKunde, prop:'{kunden.uid}')}</f:link.action></f:then>
+		<f:else>-</f:else>
+		</f:if></td>
+	<td><f:if condition="{dsl:getFromArray(obj: anzahlWartungsvertraegeByKunde, prop:'{kunden.uid}')}"><f:then>{dsl:getFromArray(obj: anzahlWartungsvertraegeByKunde, prop:'{kunden.uid}')}</f:then><f:else>-</f:else></f:if></td>
+	<td><f:if condition="{dsl:getFromArray(obj: anzahlHostingByKunde, prop:'{kunden.uid}')}"><f:then>{dsl:getFromArray(obj: anzahlHostingByKunde, prop:'{kunden.uid}')}</f:then><f:else>-</f:else></f:if></td>
+	<td><f:if condition="{kunden.qbrefnum}"><f:then><span title="importiert durch Quickbooks">i</span></f:then><f:else><span title="manuell angelegt">m</span></f:else></f:if></td>
+	
+	<td><center>
+        <f:if condition="{kunden.disable}==0">
+    		<f:then>
+            	
+            	
+        	   	<f:if condition="{kunden.login}">
+                	<f:then>
+						<a class="iconGruen"><span <f:if condition="{kunden.lastlogin}">title="letzter Login: {kunden.lastlogin->f:format.date(format: 'd.m.y - H:i')} Uhr"</f:if>><i class=" bb-person-add bb-lg" aria-hidden="true"></i><f:comment>&nbsp;&nbsp;{kunden.username}</f:comment></span></a>
+					</f:then>
+               		<f:else>
+						<i class="bb-person-remove bb-lg" aria-hidden="true"></i><f:comment>&nbsp;&nbsp;Login nicht aktiv</f:comment>
+					</f:else>
+               	</f:if>
+                
+            </f:then>
+        	<f:else>
+				<i class="fa fa-fw fa-ban" aria-hidden="true"></i><f:comment>&nbsp;&nbsp;Kunde nicht aktiv</f:comment>
+            </f:else>
+		</f:if>
+</center></td>
+	
+    <td>
+    	
+   		
+		<div class="btn-group">
+			
+			
+			<f:if condition="{kunden.disable}==0">
+				<f:then>
+
+
+					<f:if condition="{kunden.login}">
+						<f:then>
+							<f:link.action controller="Kunden" pluginName="kundenliste" extensionName="dslintranet" class="btn tableBtn" action="ajax" arguments="{uid : kunden, switch : 'autologin'}" target="_blank" additionalAttributes="{data-colorbox-height: '800px', data-colorbox-width: '800px'}" ><i class="bb-leave bb-lg"></i></f:link.action>
+						</f:then>
+						<f:else>
+							<a class="btn tableBtn inaktiv"><i class="bb-leave bb-lg"></i></a>
+						</f:else>
+					</f:if>
+
+				</f:then>
+				<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-leave bb-lg"></i></a>
+				</f:else>
+			</f:if>
+			
+			
+      
+       		
+       		<f:link.action controller="Kunden" pluginName="kundenliste" extensionName="dslintranet" action="ajax" arguments="{kunden : kunden.uid, switch: 'show'}" class="doAjaxEdit btn tableBtn" additionalAttributes="{data-ajax-action: 'showKunde', data-ajax-id: '{kunden.uid}', data-colorbox-width: '800px', data-colorbox-height: '800px'}" ><i class="bb-document-info bb-lg" title="Info"></i></f:link.action>
+			<f:comment><f:if condition="{kunden.rights.history}"></f:if></f:comment>
+       		
+       	
+        	<f:if condition="{kunden.readyForZugangsdatenMail}">
+        		<f:then>
+        			<f:link.action controller="Kunden" pageType="89657207" pluginName="kundenliste" extensionName="dslintranet" action="access" arguments="{kunden : kunden}" class="doAjaxEdit btn tableBtn" additionalAttributes="{data-ajax-action: 'showAccess', data-ajax-selector: '#kundenListKunde_{kunden.uid}', data-ajax-id: '{kunden.uid}', data-colorbox-width: '650px', data-colorbox-height: '800px' }" >
+        				<f:if condition="{kunden.history.accessMail.0}">
+        					<f:then>
+								<i class="bb-envelope-filled bb-lg" title="Zugangsdaten erneut senden"></i>
+							</f:then>
+							<f:else>
+								<i class="bb-envelope bb-lg" title="Zugangsdaten senden"></i>
+							</f:else>
+						</f:if>
+        			</f:link.action>
+				</f:then>
+       			<f:else>
+					<a class="btn tableBtn inaktiv"><i class="bb-envelope bb-lg" aria-hidden="true"></i></a>
+				</f:else>
+			</f:if>
+        	
+        	
+   
+			
+			<f:link.action controller="Kunden" title="Interne Notizen zum Kunde Bearbeiten" pageType="89657207" pluginName="kundenliste" extensionName="dslintranet" action="ajax" arguments="{kunden : kunden, switch : 'editNotizen'}" additionalAttributes="{ data-colorbox-width: '800px', data-colorbox-height: '800px' }" class="doAjaxEdit btn tableBtn"><i class="bb-key bb-lg" aria-hidden="false"></i></f:link.action>
+			<f:link.action controller="Kunden" title="Kunde Bearbeiten" pageType="89657207" pluginName="kundenliste" extensionName="dslintranet" action="ajax" arguments="{kunden : kunden, switch : 'edit'}" additionalAttributes="{ data-colorbox-width: '650px', data-colorbox-height: '800px' }" class="doAjaxEdit btn tableBtn"><i class="bb-pen-write bb-lg" aria-hidden="false"></i></f:link.action>
+
+	   	
+	   		<f:if condition="{dsl:getFromArray(obj: anzahlAuftraegeByKunde, prop:'{kunden.uid}')}{dsl:getFromArray(obj: anzahlHostingByKunde, prop:'{kunden.uid}')}{dsl:getFromArray(obj: anzahlWartungsvertraegeByKunde, prop:'{kunden.uid}')}">
+				<f:then><a class="btn tableBtn inaktiv" style="" onClick="alert('Löschen nicht möglich, Kunde wird noch verwendet.');return false;"><i class="bb-trashcan bb-lg" aria-hidden="true"></i></a></f:then>
+	   			<f:else><f:link.action controller="Kunden" pluginName="kundenliste" extensionName="dslintranet" action="ajax" arguments="{uid : kunden, switch : 'delete'}" class="btn tableBtn doConfirmAjax" additionalAttributes="{data-ajax-action: 'removeSelectorDatatable', data-ajax-selector: '#kundenListKunde_{kunden.uid}', data-ajax-id: '{kunden.uid}', data-table: '#kundenList'}" ><i class="bb-trashcan bb-lg" aria-hidden="true"></i></f:link.action></f:else>
+				</f:if>
+		
+		</div>
+      
+    </td>
+</tr>

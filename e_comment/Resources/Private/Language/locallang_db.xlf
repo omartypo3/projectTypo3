@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_comment/Resources/Private/Language/locallang_db.xlf" date="2024-01-01T00:00:00Z" product-name="e_comment">
+		<header/>
+		<body>
+			<trans-unit id="tx_ecomment_domain_model_message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.bodytext">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.feuser">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.firstname">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.children">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.parent">
+				<source>Parent Message</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.validationtoken">
+				<source>Validation token (keep it empty or the message will be hidden)</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.paramfilter">
+				<source>Filter using this parameter name</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment_domain_model_message.paramvalue">
+				<source>Filter using this parameter value</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.general">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.displayMode">
+				<source>Display mode</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.displayMode.comment">
+				<source>Comment interface</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.displayMode.list">
+				<source>List messages</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.displayMode.search">
+				<source>Search form</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.displayMode.add">
+				<source>Create form</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.displayMode.validate">
+				<source>Validation page</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.storagePid">
+				<source>Storage page</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.pagination">
+				<source>Display pagination</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.itemsPerPage">
+				<source>Item per page</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay">
+				<source>Form field display (if any checked, only frontend user can post message)</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.firstname">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.replyForm">
+				<source>Reply Form</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.formFieldDisplay.file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.maxFileSize">
+				<source>Maximum uploaded file size (as byte)</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.overwriteValidationModeratorEmail">
+				<source>Validation Email (if empty, the typoscript config is used)</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.filterByParam">
+				<source>Filter using a param</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.hideIfNoParam">
+				<source>Hide if the parameter is empty</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.orderBy">
+				<source>Order by</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.orderDirection">
+				<source>Order direction</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.orderDirection.asc">
+				<source>Ascending</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomment.orderDirection.desc">
+				<source>Descending</source>
+			</trans-unit>
+            <trans-unit id="plugin.group.comment">
+                <source>Comments</source>
+            </trans-unit>
+            <trans-unit id="plugin.comment">
+                <source>Comments - Interface</source>
+            </trans-unit>
+            <trans-unit id="plugin.list">
+                <source>Comments - List Messages</source>
+            </trans-unit>
+            <trans-unit id="plugin.search">
+                <source>Comments - Search form</source>
+            </trans-unit>
+            <trans-unit id="plugin.add">
+                <source>Comments - Create form</source>
+            </trans-unit>
+            <trans-unit id="plugin.validate">
+                <source>Comments - Validation page</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

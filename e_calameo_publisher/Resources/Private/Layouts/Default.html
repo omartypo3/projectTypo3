@@ -1,0 +1,91 @@
+<html
+	xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+	data-namespace-typo3-fluid="true"
+>
+	<f:asset.css
+		identifier="ecalameo-mod-style"
+		href="EXT:e_calameo_publisher/Resources/Public/Css/mod_style.css"
+	/>
+	<f:asset.script
+		identifier="jquery"
+		src="EXT:e_calameo_publisher/Resources/Public/JS/jquery-1.7.1.min.js"
+		priority="true"
+	/>
+	<f:asset.script
+		identifier="ecalameo-js"
+		src="EXT:e_calameo_publisher/Resources/Public/JS/ecalameo.js"
+	/>
+	<f:asset.script
+		identifier="ecalameo-index-init"
+		src="EXT:e_calameo_publisher/Resources/Public/JS/index-init.js"
+	/>
+
+	<div
+		class="module-docheader"
+		style="
+			margin-bottom: 20px;
+			display: flex;
+			align-items: center;
+			flex-direction: row-reverse;
+		"
+	>
+		<div class="right">
+			<f:be.pagePath />
+			<f:be.pageInfo />
+		</div>
+
+		<div class="btn-group btn-group-sm" role="group" style="margin-right: auto">
+			<button
+				type="button"
+				class="btn btn-default btn-sm dropdown-toggle"
+				data-bs-toggle="dropdown"
+				aria-expanded="false"
+				style="font-size: 12px; padding: 4px 10px"
+			>
+				<f:if condition="{currentAction} == 'list'">
+					<f:then>PDFs publiés</f:then>
+					<f:else>Liste des PDFs</f:else>
+				</f:if>
+			</button>
+
+			<ul class="dropdown-menu" style="min-width: 180px">
+				<li class="{f:if(condition: currentAction == 'index', then: 'active')}">
+					<a
+						href="{f:uri.action(action: 'index', controller: 'CalameoModule')}"
+						style="padding: 6px 12px; display: block"
+					>
+						<core:icon identifier="actions-document-view" size="small" />
+						<span style="margin-left: 8px">Liste des PDFs</span>
+					</a>
+				</li>
+				<li class="{f:if(condition: currentAction == 'list', then: 'active')}">
+					<a
+						href="{f:uri.action(action: 'list', controller: 'CalameoModule')}"
+						style="padding: 6px 12px; display: block"
+					>
+						<core:icon identifier="actions-document-open" size="small" />
+						<span style="margin-left: 8px">PDFs publiés</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<f:flashMessages />
+
+	<div id="typo3-inner-docbody">
+		<div class="attention">
+			<f:translate key="attention"
+				>Warning, the online pdfs is not instantaneous. You immediately get the
+				embed code, but it will not be usable immediately. Also the list of
+				pdfs, and the prevention of publication for pdfs already online will not
+				be updated during this period. Do not post several times the same pdf,
+				and thank you for waiting at least 10 minutes before concluding that it
+				did not worked.</f:translate
+			>
+		</div>
+
+		<f:render section="main" />
+	</div>
+</html>

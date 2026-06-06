@@ -1,0 +1,742 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    165,
+                    28
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+                        "listslider"
+                    ]
+                },
+                "name": "Kunden",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "234108013951"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "alias",
+                            "propertyType": "String",
+                            "uid": "1298382820370"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "814217077973"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Beschreibung",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "beschreibung",
+                            "propertyType": "Text",
+                            "uid": "1400121271887"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "logo",
+                            "propertyType": "Image",
+                            "uid": "164788045360"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "ort",
+                            "propertyType": "String",
+                            "uid": "238171521922"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "betreuung",
+                            "propertyType": "String",
+                            "uid": "1320277462572"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Unternehmensgr\u00f6\u00dfe",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "unternehmenGroesse",
+                            "propertyType": "Select",
+                            "uid": "591966294592"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Webseite Link",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "linkWebseite",
+                            "propertyType": "String",
+                            "uid": "41235895776"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Facebook Link",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "linkFacebook",
+                            "propertyType": "String",
+                            "uid": "171786669369"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Kundenspezifische Farbe f\u00fcr z.B. Hover Effekte",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "primaerFarbe",
+                            "propertyType": "Text",
+                            "uid": "1430283043880"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "seoKeywords",
+                            "propertyType": "Text",
+                            "uid": "817670635970"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "seoDescription",
+                            "propertyType": "Text",
+                            "uid": "1181717199880"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "branche",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "1217532878828"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    911,
+                    24
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": [
+                        "latest",
+                        "listkunden",
+                        "detailkunden",
+                        "detail",
+                        "megamenu",
+                        "detailnav",
+                        "detailkundennav",
+                        "detailback",
+                        "detailrelated"
+                    ]
+                },
+                "name": "Portfolio",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "981802168386"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "Projektdatum",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "datum",
+                            "propertyType": "NativeDateTime",
+                            "uid": "332665873913"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "alias",
+                            "propertyType": "String",
+                            "uid": "158177192863"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "titel",
+                            "propertyType": "String",
+                            "uid": "1479015791146"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "untertitel",
+                            "propertyType": "String",
+                            "uid": "1307007122054"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "beschreibung",
+                            "propertyType": "RichText",
+                            "uid": "851975310724"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "link",
+                            "propertyType": "String",
+                            "uid": "118291015732"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "zeitraum",
+                            "propertyType": "String",
+                            "uid": "1101109436768"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "system",
+                            "propertyType": "String",
+                            "uid": "221321597717"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "teaserBild",
+                            "propertyType": "Image",
+                            "uid": "422896359123"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "youtube",
+                            "propertyType": "String",
+                            "uid": "437823020826"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "bilder",
+                            "propertyType": "Image",
+                            "uid": "1324139811258"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "seoKeywords",
+                            "propertyType": "Text",
+                            "uid": "1325671303504"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "seoDescription",
+                            "propertyType": "Text",
+                            "uid": "1449549523036"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "kundenname",
+                            "propertyType": "String",
+                            "uid": "57773249653"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "999",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "kundennamecheck",
+                            "propertyType": "Integer",
+                            "uid": "737877513398"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "kunde",
+                            "relationType": "manyToOne",
+                            "relationWire": "[wired]",
+                            "uid": "1007320552723"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "kategorie",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "70532111700"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "hashtags",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "22214192200"
+                        },
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "\u00c4hnliche Projekte",
+                            "relationName": "related",
+                            "relationType": "manyToMany",
+                            "relationWire": "[wired]",
+                            "uid": "1192364264010"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    535,
+                    407
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Hashtags",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "596838259230"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "alias",
+                            "propertyType": "String",
+                            "uid": "241150652217"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "1403328148801"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    440,
+                    115
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Kategorien",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": true,
+                    "type": "Entity",
+                    "uid": "587299292621"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "alias",
+                            "propertyType": "String",
+                            "uid": "444568012338"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "701593751158"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        },
+        {
+            "config": {
+                "position": [
+                    162,
+                    502
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Branchen",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": false,
+                    "aggregateRoot": true,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "1072893698160"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "name",
+                            "propertyType": "String",
+                            "uid": "694572161657"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "Portfolio Modul",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": true,
+            "sourceLanguage": "en",
+            "state": "stable",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": "v1.0.0"
+        },
+        "extensionKey": "bb_portfolio",
+        "name": "portfolio",
+        "originalExtensionKey": "bb_portfolio",
+        "originalVendorName": "BravoBuero",
+        "persons": [],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "Kunden => listslider",
+                    "noncacheableActions": "Kunden => listslider",
+                    "switchableActions": ""
+                },
+                "key": "kundenslider",
+                "name": "kundenslider"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Portfolio => list,latest,listkunden,detailkunden,detail,megamenu",
+                    "noncacheableActions": "Portfolio => list,latest,megamenu",
+                    "switchableActions": "Liste mit Kategorien und Hashtags\nPortfolio->list;Portfolio->listkunden;Portfolio->detail;Portfolio->detailkunden;\nLatest Startseite Frische Projekte \nPortfolio->latest;\nListe mit Kunden\nPortfolio->listkunden;Portfolio->detailkunden;"
+                },
+                "key": "portfolioausgabe",
+                "name": "Portfolioausgabe"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Portfolio => megamenu",
+                    "noncacheableActions": "Portfolio => megamenu",
+                    "switchableActions": ""
+                },
+                "key": "megamenu",
+                "name": "Megamenu"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Portfolio => detailnav",
+                    "noncacheableActions": "Portfolio => detailnav",
+                    "switchableActions": ""
+                },
+                "key": "pagebrowser",
+                "name": "Pagebrowser"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Portfolio => detailback",
+                    "noncacheableActions": "Portfolio => detailback",
+                    "switchableActions": ""
+                },
+                "key": "pagebrowserback",
+                "name": "Pagebrowserback"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Portfolio => detailkundennav",
+                    "noncacheableActions": "Portfolio => detailkundennav",
+                    "switchableActions": ""
+                },
+                "key": "pagebrowserkunden",
+                "name": "Pagebrowserkunden"
+            },
+            {
+                "actions": {
+                    "controllerActionCombinations": "Portfolio => detailrelated",
+                    "noncacheableActions": "Portfolio => detailrelated",
+                    "switchableActions": ""
+                },
+                "key": "portfoliodetailrelated",
+                "name": "Portfoliodetailrelated"
+            }
+        ],
+        "vendorName": "BravoBuero"
+    },
+    "wires": [
+        {
+            "src": {
+                "moduleId": 1,
+                "terminal": "relationWire_0",
+                "uid": "1007320552723"
+            },
+            "tgt": {
+                "moduleId": 0,
+                "terminal": "SOURCES",
+                "uid": "234108013951"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 1,
+                "terminal": "relationWire_1",
+                "uid": "70532111700"
+            },
+            "tgt": {
+                "moduleId": 3,
+                "terminal": "SOURCES",
+                "uid": "587299292621"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 1,
+                "terminal": "relationWire_2",
+                "uid": "22214192200"
+            },
+            "tgt": {
+                "moduleId": 2,
+                "terminal": "SOURCES",
+                "uid": "596838259230"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 1,
+                "terminal": "relationWire_3",
+                "uid": "1192364264010"
+            },
+            "tgt": {
+                "moduleId": 1,
+                "terminal": "SOURCES",
+                "uid": "981802168386"
+            }
+        },
+        {
+            "src": {
+                "moduleId": 0,
+                "terminal": "relationWire_0",
+                "uid": "1217532878828"
+            },
+            "tgt": {
+                "moduleId": 4,
+                "terminal": "SOURCES",
+                "uid": "1072893698160"
+            }
+        }
+    ],
+    "log": {
+        "last_modified": "2018-02-27 03:14",
+        "extension_builder_version": "7.6.0",
+        "be_user": " (1)"
+    }
+}

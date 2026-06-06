@@ -1,0 +1,248 @@
+//Définition des options (ordre d'apparition et préfixe pour aller chercher les images)
+/*$.fn.socialSharePrivacy.settings.order = ['facebook', 'twitter', 'mail'];
+$.fn.socialSharePrivacy.settings.path_prefix = document.location.origin+'../';*/
+
+jQuery(document).ready(function($){
+
+  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover();
+
+
+$(".socialNetwork ul li").hover(function() { // Mouse over
+  $(this).siblings('li').find('a').stop().fadeTo(300, 0.2);
+  $(this).parent().siblings('li').find('a').stop().fadeTo(300, 0.3);
+}, function() { // Mouse out
+  $(this).siblings('li').find('a').stop().fadeTo(300, 1);
+  $(this).parent().siblings('li').find('a').stop().fadeTo(300, 1);
+});
+
+$(".downloadApplication ul li").hover(function() { // Mouse over
+  $(this).siblings('li').stop().fadeTo(300, 0.2);
+  $(this).parent().siblings('li').stop().fadeTo(300, 0.3);
+}, function() { // Mouse out
+  $(this).siblings('li').stop().fadeTo(300, 1);
+  $(this).parent().siblings('li').stop().fadeTo(300, 1);
+});
+
+$("#footer .socialNetwork ul li").hover(function() { // Mouse over
+  $(this).siblings('li').stop().fadeTo(300, 0.2);
+  $(this).parent().siblings('li').stop().fadeTo(300, 0.3);
+}, function() { // Mouse out
+  $(this).siblings('li').stop().fadeTo(300, 1);
+  $(this).parent().siblings('li').stop().fadeTo(300, 1);
+});
+
+$("#hautDePage").click(function(){
+    $("html, body").animate({scrollTop: 0},"slow");
+});
+
+/**********RECHERCHE***********/
+$("#search-icon").click(function() {
+     $(this).toggleClass("active");
+    $('#recherche-header').toggleClass("active");
+    if ($('#recherche-header').hasClass('active')) {
+        $(this).find('i').removeClass('icon-Search').addClass('icon-Close');
+        $('#overlay-header').fadeIn(250);
+        $('#recherche-header').slideDown(250);
+        $('.menu-header-right li').css('opacity','0.1');
+        $('.menu-header-right li:last').css('opacity','1');
+        $('#searchform').focus();
+    } else {
+        $(this).find('i').removeClass('icon-Close').addClass('icon-Search');
+        $('#overlay-header').fadeOut(250);
+        $('#recherche-header').slideUp(250);
+        $('.menu-header-right li').css('opacity','1');
+    }
+});
+
+$('.frame-default a[href*="#"]').click(function(){
+    var the_id = $(this).attr("href");
+    var the_id = the_id.substring(the_id.indexOf('#')+1);
+    var coordonnees = $('#' + the_id).offset().top;
+    coordonnees = coordonnees - 100;
+    $('html, body').animate({
+        scrollTop:coordonnees
+    }, 'slow');
+    return false;
+  });
+
+
+
+$('.powermail_fieldwrap_votresignalementconcernemontrerchamps .radio:nth-last-child(2) .powermail_radio').on('change', function(){
+    $('.powermail_fieldwrap_siautreprecisezchampacacher ').show();
+  });
+});
+
+$(".btnShare").click(function(e){
+  $(this).parent(".tools").next().toggleClass("visible");
+});
+
+//Email webPage
+function emailCurrentPage(){
+    window.location.href="mailto:?subject="+document.title+"&body="+escape(window.location.href);
+}
+
+//Partage social
+var titre = $('title').text();
+var description = $('meta[name=description]').attr("content");
+var keywords = $('meta[name=keywords]').attr("content");
+
+function shareFacebook(){
+  window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href), '',
+    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+}
+function shareTwitter(){
+  window.open("https://twitter.com/intent/tweet?&url="+escape(window.location.href)+"&text="+titre, '',
+    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+}
+function shareGoogle(){
+    window.open("https://plus.google.com/share?url="+window.location.href, '', 
+    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+}
+function shareLinkedin(){
+  var link = "https://www.linkedin.com/shareArticle?mini=true&url="+window.location.href+"&title="+document.title+"&summary="+description;
+  link = encodeURI(link);
+    window.open(link, '',
+    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+}
+function sharePinterest(){
+    window.open("https://www.pinterest.com/pin/create/button/?url="+window.location.href+"&description="+description, '', 
+    'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+}
+
+
+//Konami Code ! Have Fun ! 
+function activateCheats() {
+  //$('*').css({"color": "#ffa1c2"});
+  $( '#header' ).css({"backgroundColor": "#ffa1c2"});
+
+  $( "img" ).each(function() {
+      $( this ).css({"opacity": "0"});
+      $( this ).parent().css({"background": "url('https://img00.deviantart.net/bf96/i/2017/111/f/c/crazy_unicorn_wallpaper_by_sophingers-d80p09f.jpg') no-repeat center"});
+      $( this ).parent().css({"background-size": "cover"});
+   });
+
+  $( "video" ).each(function() {
+    $( this ).find('source').attr("src","https://media.tenor.com/videos/790f796c7ad835b081ae1ae2c84f5de4/mp4");
+  });
+
+  gris_fonce = "rgb(38, 38, 38)";
+  gris_clair = "rgb(51, 51, 51)";
+  color_gris_font= "rgb(54, 54, 54)";
+  color_vert= "rgb(125, 185, 0)";
+  test2= $('#header').css('backgroundColor');
+
+
+  $( "*" ).each(function() {
+      color= $(this).css('color');
+      bg= $(this).css('backgroundColor');
+      if(color == color_gris_font){
+        $(this).css({"color": "#ffa1c2"});
+      }
+      if(color == color_vert){
+        $(this).css({"color": "#ffa1c2"});
+      }
+      if(bg == gris_fonce){
+        $(this).css({"backgroundColor": "#ffa1c2"});
+      }
+      if(bg == gris_clair){
+        $(this).css({"backgroundColor": "#ffa1c2"});
+      }
+  });
+}
+
+$('.searchAuto').keyup(function(){
+  var searchedText = removeAccents($('.searchAuto').val().toLowerCase());
+  //Pour chaque élément de la liste
+  $(".list_street").each(function(){
+    //Si le text entré est contenu dans l'élément on l'affiche, sinon on le masque
+    if(removeAccents($(this).html().toLowerCase()).includes(searchedText)){
+      $(this).removeAttr('hidden');
+    }else{
+      $(this).attr('hidden','true');
+    }
+  });
+});
+//https://gist.github.com/alisterlf/3490957
+function removeAccents(strAccents) {
+    var strAccents = strAccents.split('');
+    var strAccentsOut = new Array();
+    var strAccentsLen = strAccents.length;
+    var accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+    var accentsOut = "AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz";
+    for (var y = 0; y < strAccentsLen; y++) {
+            if (accents.indexOf(strAccents[y]) != -1) {
+                    strAccentsOut[y] = accentsOut.substr(accents.indexOf(strAccents[y]), 1);
+            } else
+                    strAccentsOut[y] = strAccents[y];
+    }
+    strAccentsOut = strAccentsOut.join('');
+    return strAccentsOut;
+}
+
+
+
+// datepicker
+      $.datepicker.setDefaults(
+          {
+              altField: "#datepicker",
+              closeText: 'Fermer',
+              prevText: 'Précédent',
+              nextText: 'Suivant',
+              currentText: 'Aujourd\'hui',
+              monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+              monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+              dayNames: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+              dayNamesShort: ['Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.'],
+              dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+              weekHeader: 'Sem.',
+              dateFormat: 'dd/mm/yy',
+              firstDay: 1
+          }
+      );
+if (document.getElementById("powermail_field_jourduconstat")) {
+        $( "#powermail_field_jourduconstat").datepicker({
+          changeMonth: true,//this option for allowing user to select month
+          changeYear: true, //this option for allowing user to select from year range
+          yearRange: "c-110:c+10",
+          maxDate: 0
+      });
+  }else{
+      $( ".powermail_date" ).datepicker({
+          changeMonth: true,//this option for allowing user to select month
+          changeYear: true, //this option for allowing user to select from year range
+          yearRange: "c-110:c+10",
+      });
+}
+
+
+
+//MAP carte du territoire
+
+if($('#Map').length >0 ){ 
+
+  function change_image(c) {
+    var a=document.getElementById("Map");
+    a.style.backgroundImage="url(../Images/carto/"+c+".png)";
+    return true;
+  }
+
+  function hide_image(){
+    var a=document.getElementById("Map");
+    a.style.backgroundImage="url(../Images/carto/carto.png)";
+    return true;
+  }
+
+  jQuery(document).ready(function($){
+    $('img[usemap]').rwdImageMaps();
+  });
+
+}
+
+
+//tarte au citron
+//(tarteaucitron.job = tarteaucitron.job || []).push('twitterwidgetsapi');
+
+//tarteaucitron.user.gajsUa = 'UA-38956201-1';
+//tarteaucitron.user.gajsMore = function () { /* add here your optionnal _ga.push() */ };
+//(tarteaucitron.job = tarteaucitron.job || []).push('gajs');

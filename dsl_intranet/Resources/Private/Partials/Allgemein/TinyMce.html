@@ -1,0 +1,59 @@
+<script>
+function initTinyMceEditor(){
+	
+	/*var editor = tinyMCE.get('tx_dslintranet_auftragsliste[beschreibung]');
+	if (editor!=null) {
+		editor.destroy();
+	}*/
+/*	var editors = tinymce.EditorManager.editors;
+	if(editors[0]) editors[0].destroy();
+*/
+	checkResetTinyMCS('auftragEditNotizenIntern');
+	checkResetTinyMCS('agenturvertragEditBeschreibung');
+	checkResetTinyMCS('auftragEditBeschreibung');
+	checkResetTinyMCS('hostingEditNotiz');
+	checkResetTinyMCS('kundenEditNotizen');
+	
+	// Notice: The simple theme does not use all options some of them are limited to the advanced theme
+	tinymce.init({
+		mode : "exact",
+		selector: "#auftragEditBeschreibung,#hostingEditNotiz,#agenturvertragEditBeschreibung,#auftragEditNotizenIntern,#kundenEditNotizen",
+		language : "de",
+		width : '100%',
+		height : '250',
+		subfolder:"",
+		menubar: '',
+		plugins: [
+				"advlist autolink link image lists charmap print preview hr anchor pagebreak",
+				"searchreplace wordcount visualblocks visualchars code insertdatetime media nonbreaking",
+				"table contextmenu directionality emoticons paste textcolor paste"
+			],
+		paste_as_text: true,
+		
+		toolbar: " undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link removeformat",
+		/*code*/
+		/* - See more at: http://test.albertoperipolli.com/filemanager4tinymce/#sthash.11Dy60t1.dpuf*/
+		content_css : "typo3conf/ext/dsl_intranet/Resources/Public/Styles/tinymce.css",
+		browser_spellcheck: true,
+		
+
+		force_br_newlines : false,
+		force_p_newlines : false,
+		setup: function (editor) {
+			editor.on('change', function () {
+				tinymce.triggerSave();
+			});
+		}
+
+
+		
+	});
+
+
+	
+	
+	
+	
+}
+
+</script>	

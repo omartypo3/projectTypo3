@@ -1,0 +1,38 @@
+{namespace vh=In2code\Powermail\ViewHelpers}
+<f:layout name="Default" />
+<f:section name="main">
+	<f:alias map="{flashMessageClass:'powermail_message_error'}">
+		<f:render partial="Misc/FlashMessages" arguments="{_all}" />
+	</f:alias>
+	<f:if condition="{form}">
+		<f:then>
+			<v:variable.set name="additionalAttributes" value="{vh:Validation.enableJavascriptValidationAndAjax(form:form)}"/>
+			<v:variable.set name="additionalAttributes.autocomplete" value="on"/>
+			<div class="tx-powermail">
+				<f:form
+						action="{action}"
+						section="c{ttContentData.uid}"
+						name="field"
+						enctype="multipart/form-data"
+						additionalAttributes="{additionalAttributes}"
+						addQueryString="{settings.misc.addQueryString}"
+						class="powermail_form powermail_form_{form.uid} {form.css} {vh:Misc.MorestepClass(activate:settings.main.moresteps)}">
+					<f:if condition="{form.css} != 'nolabel'">
+						<h3>{form.title}</h3>
+					</f:if>
+					<f:render partial="Misc/FormError" arguments="{_all}" />
+					<f:for each="{form.pages}" as="page">
+						<f:render partial="Form/Page" arguments="{_all}" />
+					</f:for>
+					<f:form.hidden name="mail[form]" value="{form.uid}" class="powermail_form_uid" respectSubmittedDataValue="false" />
+
+					<f:render partial="Misc/HoneyPod" arguments="{form:form}" />
+				</f:form>
+			</div>
+		</f:then>
+		<f:else>
+			<f:translate key="error_no_form" />
+		</f:else>
+	</f:if>
+</f:section>
+

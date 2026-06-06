@@ -1,0 +1,99 @@
+<v:variable.set name="siteConfigs" value="{v:variable.typoscript(path:'e_magineurs.conf')}"/>
+<ul id="menu_accessible" class="hidden-print">
+	<li><a href="#contentPage">Aller au contenu</a></li>
+	<li><a id="go_menu" href="#menuSite">Aller au menu</a></li>
+	<li><a id="go_recherche" href="#recherche">Aller à la recherche</a></li>
+	<li><button type="button" id="animation">Désactiver les animation</button></li>
+</ul>
+<f:if condition="{0:data.uid} == {0:homePage}">
+	<f:then>
+		<div id="header" class="menuSection1 hidden-print">
+	</f:then>
+	<f:else>
+		<div id="header" class="hidden-print">
+	</f:else>
+</f:if>
+	<div id="overlay-header"></div>
+	<div id="top_navigation">
+		<div class="menu-collapsed">
+			<f:link.page class="link_home_in_menu" title="Accéder à la page d'accueil" pageUid="{homePage}">
+				<f:image src="{dossierPublic}/Images/logo.png" alt="Accueil du site"/>
+			</f:link.page>
+			<span class="fond_degrad"></span>
+			<button class="hamburger hamburger--collapse" type="button" aria-label="Menu" aria-controls="navigation">
+			  <span class="hamburger-box">
+			    <span class="hamburger-inner"></span>
+			  </span>
+			  <span class="hamburger-label">Menu</span>
+			</button>
+			<f:cObject typoscriptObjectPath="lib.menuPrincipal" />
+		</div>
+	</div>
+	<div class="logo">
+		<f:if condition="{0:data.uid} == {0:homePage}">
+			<f:then>
+				<h1>
+					<f:image src="{dossierPublic}/Images/logo.png" alt="Accueil du site" />
+				</h1>
+			</f:then>
+			<f:else>
+				<f:link.page pageUid="{homePage}">
+					<f:image src="{dossierPublic}/Images/logo.png" alt="Accueil du site" />
+				</f:link.page>
+			</f:else>
+		</f:if>
+	</div>
+	<div class="menu-header-right">
+		<nav>
+			<ul>
+				<li><f:link.page pageUid='<f:cObject typoscriptObjectPath="lib.AlloAggloPage" />'><f:cObject typoscriptObjectPath="lib.AlloAggloText" /></f:link.page></li>
+				<li class="mail-button"><f:link.page pageUid="38"><i class="icon-Mail"></i><span class="btn_contact">Contact<span></f:link.page></li>
+				<f:if condition="{siteConfigs.showLoginIcon}">
+					<f:security.ifAuthenticated>
+						<f:then>
+							<li data-toggle="modal" data-target="#connexion" class="active"><i class="icon-Connexion"></i><span></span></li>
+						</f:then>
+						<f:else>
+							<li data-toggle="modal" data-target="#connexion"><i class="icon-Connexion"></i><span></span></li>
+						</f:else>
+					</f:security.ifAuthenticated>
+				</f:if>
+				<li id="search-icon" role="search"><i class="icon-Search"></i></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="recherche-header" class="container-fluid hidden-print">
+	    <div class="inner">
+	        <f:cObject typoscriptObjectPath="lib.searchMini" />
+	    </div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="connexionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="connexionModalLabel">Identification de l'utilisateur</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<div id="c861" class="frame frame-default frame-type-login frame-layout-0">
+			<f:cObject typoscriptObjectPath="lib.connexionTop" />
+		</div>
+        <f:cObject typoscriptObjectPath="lib.infoHeaderConnexion" />
+        <f:security.ifAuthenticated>
+			<f:then>
+				<p><f:link.page pageUid="233">Accéder à mon compte</f:link.page></p>
+			</f:then>
+			<f:else>
+				<p><f:link.page pageUid="201">Créer un compte</f:link.page></p>
+			</f:else>
+		</f:security.ifAuthenticated>
+      </div>
+    </div>
+  </div>
+</div>
+<v:variable.unset name="siteConfigs"/>

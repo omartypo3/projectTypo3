@@ -1,0 +1,316 @@
+button{
+    background:transparent;
+}
+
+/*Reset style par défaut */
+form {
+    fieldset {
+        border: none; 
+    }
+}
+
+#powermail_tabmenu.btn-group{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+#powermail_tabmenu{
+    width:100%;
+    padding-top:10px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    .btn-primary{
+        color:$rose !important;
+    }
+    hr{
+        display:none;
+    }
+    .btn-default{
+        cursor:pointer;
+        font-weight:600;
+        font-size:1.3rem;
+            &:after{
+        content: '';
+        display: inline-block;
+        background: url('../../Images/lien-interne.png') no-repeat;
+        width: 10px;
+        height: 15px;
+        position: relative;
+        top: 2px;
+        margin-left: 20px;
+        margin-right: 10px;
+        }
+    }
+    .btn-default:last-child{
+        &:after{
+            display:none;
+        }
+    }
+    .btn-primary.pull-right{
+        float:right;
+    }
+
+    .item_inscription p{
+        padding: 0 10px;
+        &:after{
+            content:'.';
+        }
+    }
+    .item_inscription, p{
+        display:inline-block;
+        padding: 0 0px;
+    }
+    .item_inscription{
+         font-weight:600;
+    }
+
+    .btn-primary, .btn-primary:hover, .btn-primary:focus{
+        background-color:#fff;
+        border:none;
+        box-shadow:none;
+        color:$font;
+    }
+    .btn-warning:hover, .powermail_tab_navigation .btn-primary{
+        border: 1px solid #7db900;
+    }
+    .powermail_tab_navigation{
+
+    }
+    .powermail_legend{
+        font-size:2.6rem;
+        font-weight:600;
+        margin: 3rem 0 2.5rem 0;
+    }
+    @include media-breakpoint-down(md) {
+        .btn-default{
+           /* padding-top:10px;*/
+           /* border-top: 1px solid rgba(0, 0, 0, .1);*/
+           /* cursor:pointer;*/
+          /*  font-weight:600;*/
+          /*  font-size:1.3rem;*/
+        }
+    }
+}
+/*-------------------------Style radio et checkbox-----------------------*/
+form{
+    input[type="checkbox"],
+    input[type="radio"] {
+        position: absolute;
+        position: absolute;
+        left: 5px;
+        top: 10px;
+        opacity: 0;
+    }
+}
+
+.form-control {
+    padding: 1.3rem 0.75rem;
+    border-radius: 0;
+    font-weight: 300;
+    font-size: 1.4rem;
+    border: 1px solid $gris-border;
+}
+
+.parsley-errors-list{
+    color:$lien;
+}
+
+.custom-select {
+    background: #fff url("../../Images/fleche-select.png") no-repeat;
+    background-position: right 15px center;
+    border-radius: 0;
+    width: 100%;
+    font-size:1.4rem;
+    height:46px !important;
+}
+.submit-powermail{
+    margin-bottom:1rem !important;
+}
+
+.custom-select:focus {
+    border-color: $font;
+    outline: none;
+}
+
+.side-label {
+    display: inline-block;
+    position: relative;
+    margin: 10px 0;
+    padding: 0 45px 0 35px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight:600;
+}
+
+.side-label::before,
+.side-label::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*RADIO*/
+
+input[type="radio"]+.side-label::before,
+input[type="radio"]+.side-label::after {
+    border-radius: 50%;
+}
+
+.side-label::before {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #95acba;
+}
+
+input:focus+.side-label::before {
+    border-color: #95acba;
+}
+
+.side-label::after {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background-color: $lien;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+input[type="radio"]:checked+.side-label::after {
+    opacity: 1;
+}
+
+/*CKECKBOX*/
+
+input[type="checkbox"]+.side-label::after {
+    transition: all 0.3s ease 0s;
+    display: block;
+    content: '';
+    font-size: 14px;
+    background: $lien;
+    margin: 5px;
+    color: #000;
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked+.side-label::after {
+    opacity: 1;
+}
+
+.powermail_label{
+    font-size:1.3rem;
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.powermail_fieldwrap{
+    margin: 1.8rem;
+    &.col-md-10,&.col-md-9,&.col-md-8,&.col-md-7,&.col-md-6,&.col-md-5,&.col-md-4,&.col-md-3,&.col-md-2{
+        display: inline-block;
+    }
+}
+
+
+.powermail-width-button{
+    width:216px;
+}
+.powermail_reset{
+    border:0 !important;
+    background:none !important;
+    text-transform: capitalize !important;
+    text-decoration:underline;
+}
+#powermail_field_date{
+    &:before{
+        display:inline-block;
+        background:url('../../Images/agenda-ville.png');
+        content:'';
+        width:10px;
+        height:14px;
+        margin-right:1rem;
+    }
+}
+
+/*-------------------------Style input file -----------------------*/
+
+.powermail_fieldwrap_type_file {
+    position: relative;
+    .powermail_label {
+        display: block;
+        padding: 1.5rem 0.75rem 1.5rem 4rem;
+        width: 230px;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        transition: all .4s;
+        cursor: pointer;
+        background: url('../../Images/togglePlus.png') $vert-fonce no-repeat 10px center;
+    }
+    .powermail_file {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom:0;
+        width: 200px;
+        opacity: 0;
+        padding: 1.3rem 0.75rem;
+        cursor: pointer;
+    }
+
+    .file-return {
+        margin: 0;
+    }
+    .file-return:not(:empty) {
+        margin: 1rem 0;
+    }
+    .file-return {
+        font-style: italic;
+        font-size: .9rem;
+        font-weight: bold;
+    }
+    .file-return:not(:empty):before {
+        content: "Pièce jointe : ";
+        font-style: normal;
+        font-weight: normal;
+    }
+}
+
+/*Connexion utilisateur*/
+#connexion{
+    h3{
+        display:none;
+    }
+}
+
+/*CREATION D'AGENDA*/
+#news-fal_media{
+    display:block;
+}
+
+/*SONDAGE*/
+.poll-see-results{
+    display:block;
+    margin:2rem 0;
+}
+
+/*-------------------------date-----------------------*/
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left:0;
+  top:0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity:0;
+  cursor: pointer;
+}
+input[type="date"] {
+  position: relative;
+}
+
+//cacher un champ de facon un peu honteuse !
+.powermail_fieldwrap_siautreprecisezchampacacher{
+    display:none;
+}

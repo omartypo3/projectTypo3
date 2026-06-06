@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:s="http://typo3.org/ns/ApacheSolrForTypo3/Solr/ViewHelpers"
+	  xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+<f:section name="Document">
+
+	<li class="lazyLoadItem results-entry{f:if(condition:document.isElevated, then: ' results-elevated')}"
+			data-document-score="{document.score}"
+			data-document-id="{document.id}"
+			data-document-url="{document.url}"
+			data-document-uid="{document.uid}"
+			id="solr-result-{document.id}"
+		>
+<a href="{document.url}">
+<div class="case_img_master"> 
+	<f:if condition="{document.image_textS}">
+		<img src="{document.image_textS}" alt="{document.title}" />
+	</f:if>
+	<f:if condition="{document.photo_textS}">
+		<img src="{document.photo_textS}" alt="{document.title}" />
+	</f:if>
+	<f:if condition="{document.type} == pages">
+		<f:cObject typoscriptObjectPath='lib.imagePage' data='{sourceUid: document.uid}' />
+	</f:if>
+</div>
+<span class="voile"></span>
+<div class="block_text_master">
+	<f:render partial="Result/RelevanceBar" section="RelevanceBar" arguments="{resultSet:resultSet, document:document}" />
+	<f:if condition="{document.created} || {document.date_stringS}">
+		<f:if condition="{document.icon_stringS} == agenda">
+			<f:then>
+				
+			</f:then>
+			<f:else>
+				<f:if condition="{document.icon_stringS} == presse">
+					<f:then>
+						<span class="results-date">Publié le <f:format.date format="%d %B %Y">{document.date_stringS}</f:format.date></span>
+					</f:then>
+					<f:else>
+						<span class="results-date">Publié le <f:format.date format="%d %B %Y">{document.created}</f:format.date></span>
+					</f:else>
+				</f:if>
+			</f:else>
+		</f:if>
+	</f:if>
+	<div class="case_text_master">
+		<v:tag name="p" hideIfEmpty="true" class="cat_projet">
+			<f:if condition="{document.type_stringS}">
+				{document.type_stringS}
+			</f:if>
+		</v:tag>
+		<f:if condition="{document.type} == pages">
+<f:cObject typoscriptObjectPath='lib.imageContent' data='{sourceUid: document.uid}' />
+</f:if>
+    <f:if condition="<f:format.date format='U'>{document.datedebut_stringS}</f:format.date> > 0">
+        <f:then>
+            <f:if condition="<f:format.date format='U'>{document.datefin_stringS}</f:format.date> > 0">
+                <f:then>
+                    <f:if condition="<f:format.date format='U'>{document.datedebut_stringS}</f:format.date> == <f:format.date format='U'>{document.datefin_stringS}</f:format.date>">
+                        <f:then>
+                            <p class="date-agenda-search">Le
+                                <f:format.date format="%a %d %B %Y">{document.datedebut_stringS}</f:format.date>
+                            </p>
+                        </f:then>
+                        <f:else>
+                            <p class="date-agenda-search">Du
+                                <f:format.date format="%d %B %Y">{document.datedebut_stringS}</f:format.date> au
+                                <f:format.date format="%d %B %Y">{document.datefin_stringS}</f:format.date>
+                            </p>
+                        </f:else>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <p class="date-agenda-search">A partir du
+                        <f:format.date format="%d %B %Y">{document.datedebut_stringS}</f:format.date>
+                    </p>
+                </f:else>
+            </f:if>
+        </f:then>
+        <f:else>
+            <f:if condition="<f:format.date format='U'>{document.datefin_stringS}</f:format.date> > 0">
+                <p class="date-agenda-search">Jusqu'au
+                    <f:format.date format="%d %B %Y">{document.datefin_stringS}</f:format.date>
+                </p>
+            </f:if>
+        </f:else>
+    </f:if>
+		<h3>
+			<f:format.crop maxCharacters="70" append="&nbsp;[...]">{document.title}</f:format.crop>
+		</h3>
+	</div>
+	<div class="case_description_master">
+			<f:if condition="{document.teaser_textS}">
+				<f:then>
+					<p class="results-teaser">
+						<f:format.crop maxCharacters="70" append="&nbsp;[...]">{document.teaser_textS}</f:format.crop>
+					</p>
+				</f:then>
+				<f:else>
+					<p class="results-teaser">Accèder au contenu</p> 
+				</f:else>
+			</f:if>
+		<f:if condition="{document.extension_textS}">
+			<p class="results-type">Extension : {document.extension_textS}</p>
+		</f:if>
+		<f:if condition="{document.size_textS}">
+			<p class="results-type">Poids : <f:format.bytes>{document.size_textS}</f:format.bytes></p>
+		</f:if>
+	</div>
+</div>
+	</a>
+		<div class="losange_hover_master">
+			<span></span>
+			<span></span>
+		</div>
+	</li>
+</f:section>

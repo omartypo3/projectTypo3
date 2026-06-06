@@ -1,0 +1,94 @@
+mod.web_list {
+	allowedNewTables = tx_news_domain_model_news
+}
+
+TCEFORM {
+	tx_news_domain_model_news {
+		## ENABLED
+		fal_related_files.disabled = 0
+		fal_media.disabled = 0
+		toptitle.disabled = 0		
+
+		## DISABLED
+		type.disabled = 1		
+		istopnews.disabled = 1		
+		section.disabled = 1
+		author.disabled = 1
+		author_email.disabled = 1
+		archive.disabled = 1
+		tags.disabled = 1
+		content_elements.disabled = 1
+		related_links.disabled = 1
+		related_subject.disabled = 1
+		iframe.disabled = 1
+		fe_group.disabled = 1
+		editlock.disabled = 1
+		keywords.disabled = 1
+		path_segment.disabled = 1
+		is_event.disabled = 1
+		begindate.disabled = 1
+		finishdate.disabled = 1
+		schedules.disabled = 1
+		eventphone.disabled = 1
+		feuser.disabled = 1
+		uservalidation.disabled = 1
+		uservalidationtoken.disabled = 1
+		adminvalidation.disabled = 1
+		adminvalidationtoken.disabled = 1
+		placename.disabled = 1
+		placeadress.disabled = 1
+		eventmail.disabled = 1
+		zipcode.disabled = 1
+		authorpublication.disabled = 1
+		contenttitle1.disabled = 1
+		contenttext1.disabled = 1
+		contenttitle2.disabled = 1
+		contenttext2.disabled = 1
+		contenttitle3.disabled = 1
+		contenttext3.disabled = 1
+		contenttitle4.disabled = 1
+		contenttext4.disabled = 1
+		contenttitle5.disabled = 1
+		contenttext5.disabled = 1
+		og_title.disabled = 1
+		og_description.disabled = 1
+		og_image.disabled = 1
+
+		twitter_title.disabled = 1
+		twitter_description.disabled = 1
+		twitter_image.disabled = 1
+		poi.disabled = 1
+		lat.disabled = 1
+		lng.disabled = 1
+		picto.disabled = 1
+
+		## LABEL
+    	title.label = Titre
+		toptitle.label = Sous-titre
+		datetime.label = Date de publication affichée
+    	teaser.label = Chapeau
+    	bodytext.label = Article		
+		fal_related_files.label = Fichier à télécharger
+		fal_media.label = Image
+    	categories.label = Thématique
+    	hidden.label = Masquer la fiche
+    	starttime.label = Date de début de publication
+    	endtime.label = Date de fin de publication
+
+		# CONFIG
+		fal_media.config.maxitems = 1
+	}
+
+	sys_file_reference {
+		## ENABLED
+		description.disabled = 0
+		title.disabled = 0
+
+		## LABEL
+		title.label = Titre du fichier
+		description.label = URL du fichier à feuilleter
+
+		# CONFIG
+		description.config.rows = 1
+	}
+}

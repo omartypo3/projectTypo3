@@ -1,0 +1,89 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{settings.navigation.navbar.right.uidList}">
+	<f:then>
+		<ul class="nav navbar-nav navbar-right">
+			<f:render section="search" />
+			<f:render section="language" />
+		</ul>
+	</f:then>
+	<f:else>
+		<f:if condition="{settings.navigation.navbar.search.enable}">
+			<f:then>
+				<ul class="nav navbar-nav navbar-right">
+					<f:render section="search" />
+					<f:render section="language" />
+				</ul>
+			</f:then>
+			<f:else>
+				<f:if condition="{settings.navigation.navbar_lang.enable}">
+					<f:if condition="{settings.navigation.navbar_lang.languages}">
+						<ul class="nav navbar-nav navbar-right">
+							<f:render section="language" />
+						</ul>
+					</f:if>
+				</f:if>
+			</f:else>
+		</f:if>
+	</f:else>
+</f:if>
+</html>
+
+
+<f:section name="language">
+<f:if condition="{settings.navigation.navbar_lang.enable}">
+	<f:if condition="{settings.navigation.navbar_lang.languages}">
+		<f:cObject typoscriptObjectPath="lib.navigation.languageswitch" />
+	</f:if>
+</f:if>
+</f:section>
+
+
+<f:section name="search">
+<f:if condition="{settings.navigation.navbar.search.enable}">
+	<f:if condition="{settings.navigation.navbar.search.link}">
+		<f:then>
+			<li>
+				<f:link.typolink parameter="{settings.search.targetPid}">
+					<span class="glyphicon glyphicon-search"></span>
+				</f:link.typolink>
+			</li>
+		</f:then>
+		<f:else>
+			<li class="dropdown">
+				<a id="searchbox" class="dropdown-toggle" href="#" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-search"></span>
+				</a>
+				<div class="dropdown-menu" style="padding: 0 15px; min-width: 260px;">
+				<f:form extensionName="indexedsearch" pluginName="pi2" controller="Search" action="search" method="post" id="tx_indexedsearch" pageUid="{settings.search.targetPid}" class="navbar-form">
+					<div class="tx-indexedsearch-hidden-fields input-group">
+						<f:form.hidden name="search[_sections]" value="0" />
+						<f:form.hidden name="search[_freeIndexUid]" id="tx_indexedsearch_freeIndexUid" value="_" />
+						<f:form.hidden name="search[pointer]" id="tx_indexedsearch_pointer" value="0" />
+						<f:form.hidden name="search[ext]" value="{settings.searchParams.ext}" />
+						<f:form.hidden name="search[searchType]" value="{settings.searchParams.searchType}" />
+						<f:form.hidden name="search[defaultOperand]" value="{settings.searchParams.defaultOperand}" />
+						<f:form.hidden name="search[mediaType]" value="{settings.searchParams.mediaType}" />
+						<f:form.hidden name="search[sortOrder]" value="{settings.searchParams.sortOrder}" />
+						<f:form.hidden name="search[group]" value="{settings.searchParams.group}" />
+						<f:form.hidden name="search[languageUid]" value="{settings.searchParams.languageUid}" />
+						<f:form.hidden name="search[desc]" value="{settings.searchParams.desc}" />
+						<f:form.hidden name="search[numberOfResults]" value="{settings.searchParams.numberOfResults}" />
+						<f:form.hidden name="search[extendedSearch]" value="{settings.searchParams.extendedSearch}" />
+						<f:form.textfield name="search[sword]" value="{sword}" id="tx-indexedsearch-searchbox-sword" class="tx-indexedsearch-searchbox-sword form-control" placeholder="{f:translate(key: 'search-placeholder', extensionName: 't3sbootstrap')}" />
+						<span class="input-group-btn">
+							<button id="tx-indexedsearch-searchbox-button-submit" name="search[submitButton]" class="btn btn-default" type="submit">
+								<span class="glyphicon glyphicon-search tx-indexedsearch-searchbox-button"></span>
+							</button>
+						</span>
+					</div>
+				</f:form>
+				</div>
+			</li>
+		</f:else>
+	</f:if>
+</f:if>
+
+<ul class="nav navbar-nav navbar-right">
+	<f:cObject typoscriptObjectPath="lib.navigation.navbar-right" />
+</ul>
+</f:section>

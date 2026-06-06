@@ -1,0 +1,41 @@
+
+/*=============*/
+/*Firefox*/
+/*=============*/
+.firefox{
+	.content_left .frame ul li{
+		overflow: hidden;
+	}
+
+
+}
+
+
+/*=============*/
+/*internet explorer*/
+/*=============*/
+
+.ie{
+
+
+
+
+
+}
+
+
+/*=============*/
+/*edge*/
+/*=============*/
+
+.ie_edge{
+	.custom-object-fit {
+		position: relative;
+		background-size: cover;
+		background-position: center center;
+		
+		img {
+			opacity: 0;
+		}
+	}
+}

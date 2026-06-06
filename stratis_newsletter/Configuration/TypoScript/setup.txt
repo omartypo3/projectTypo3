@@ -1,0 +1,52 @@
+plugin {
+  tx_stratisnewsletter {
+    view {
+      templateRootPath >
+      templateRootPaths {
+        10 = {$plugin.tx_stratisnewsletter.view.templateRootPath}
+      }
+      partialRootPath >
+      partialRootPaths {
+        10 = {$plugin.tx_stratisnewsletter.view.partialRootPath}
+        20 = EXT:stratis_site/Resources/Private/Partials/
+        30 = EXT:stratis_site/Resources/Private/Partials/Extensions/stratis_newsletter/
+      }
+      layoutRootPath >
+      layoutRootPaths {
+        10 = {$plugin.tx_stratisnewsletter.view.layoutRootPath}
+      }
+    }
+    settings {
+      pathToImages = {$plugin.tx_stratisnewsletter.settings.pathToImages}
+    }
+  }
+}
+
+page.bodyTagCObject = CASE
+page.bodyTagCObject {
+	key.data = levelfield:-1, tx_fed_page_controller_action_sub, slide
+	key.override.field = tx_fed_page_controller_action
+	key.replacement {
+		10 {
+			search = Stratis.StratisNewsletter->
+			replace =
+		}		
+	}
+	newsletter = TEXT
+	newsletter.value = <body style="-moz-box-sizing: border-box; -ms-text-size-adjust: 100%; -webkit-box-sizing: border-box; -webkit-text-size-adjust: 100%; Margin: 0; box-sizing: border-box; color: #0a0a0a; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 400; line-height: 1.5; margin: 0; min-width: 100%; padding: 0; text-align: left; width: 100% !important;">
+}
+
+config.yoast_seo.enabled = 0
+
+page {
+  headerData >
+  shortcutIcon >
+}
+
+lib.canonical >
+
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:stratis_newsletter/Configuration/TypoScript/Library">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:stratis_newsletter/Configuration/TypoScript/Newsletter.typoscript">
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:stratis_newsletter/Configuration/TypoScript/ContentElements.typoscript">

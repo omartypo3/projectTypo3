@@ -1,0 +1,268 @@
+# RTE Configuration - Override stratis_common defaults
+RTE.default.preset = sitefactory
+RTE.tt_content.types.textmedia.bodytext.preset = sitefactory
+RTE.config.tx_news_domain_model_news.bodytext.preset = sitefactory
+# Explicitly override any general bodytext preset (overrides stratis_common)
+RTE.config.tt_content.bodytext.preset = sitefactory
+TCA{
+    tx_jobfair_domain_model_application{
+        columns{
+            attachment{
+                config{
+                    allowed = avi, mp4
+                }
+            }
+        }
+    }
+}
+TCEFORM {
+    tt_content{
+        layout {
+            addItems {
+                4 = [Home] bloc gris
+                5 = [Page] bloc gris foncé
+                6 = [Page] bloc gris clair
+                7 = [Home] bloc avec image en arrière plan
+                8 = [Home] bloc en avant avec fond blanc
+                9 = [Home] bloc en avant avec fond transparent
+                10 = [Home] bloc fond bleu fleche
+                11 = [Page] bloc gris clair avec picto note
+                12 = [HOME] bloc newsletter
+            }
+        }
+        header_layout {
+            addItems {
+                
+                9 = h2 fond couleur principal
+                10 = h3 fond couleur principal
+            }
+        }
+        #Filtrer les gridelements spécifiques selon le site
+        #tx_gridelements_backend_layout.PAGE_TSCONFIG_ID = storageFolderId
+    }
+}
+TCEMAIN {
+    table {
+        #pages.disableHideAtCopy = 1
+        #tt_content.disableHideAtCopy = 1
+        #tx_news_domain_model_news.disableHideAtCopy = 1
+    }
+    linkHandler {
+        tx_news.configuration.pageTreeMountPoints = 3,4
+        tx_eannuaires.pageTreeMountPoints  = 5
+        tx_fsmediagallery.configuration.storagePid = 9
+        tx_eannuairesVids < .tx_eannuaires
+        tx_eannuairesVids.configuration.storagePid = 24
+        egmap.configuration.pageId = 41
+    }
+}
+
+#Position et alignement par défaut de l'image mod.wizards.newContentElement.wizardItems.common.elements.textmedia.tt_content_defValues.imageorient = 0
+
+###  E_GMAP  ####
+tx_egmap_localize{
+  tx_egmap_domain_model_poi{
+    pattern = {adresse}, {code} {ville}
+    lat = lat
+    lng = lng
+  }
+    tx_news_domain_model_news{
+    pattern = {adressetout}, {record.ville.0.title}, {record.ville.0.codePostal}
+    lat = lat
+    lng = lng
+  }
+    tx_eannuaires_domain_model_fiche{
+    pattern = {address}, {record.city.0.title}, {record.city.0.codePostal}
+    lat = lat
+    lng = lng
+  }
+}
+
+###  NEWS  ####
+tx_news {
+    templateLayouts {
+        1 = --div--,Vue liste
+        5 = Liste complète des actualités
+        6 = Liste diapo des actualités [home]
+        7 = Liste des actualités [home]
+        #10 = Carrousel des actualités
+        11 = Toute l'actualité
+        #15 = Mosaïque des actualités
+        20 = Liste complète des agendas
+        21 = Liste simple news ou agendas [home]
+        22 = Liste simple appels a projets [home]
+        #25 = Carrousel des agendas
+        #30 = Mosaïque des agendas
+        35 =  --div--,Vue détail
+        40 = Détail de l'actualité
+        45 = Détail de l'agenda
+        50 =  --div--,Moteur de recherche
+        55 = Recherche Actualité
+        60 = Recherche Agenda
+        70 = --div--,Vue résultat
+        75 = Résultat des actualités
+        80 = Résultat des agendas
+        85 = --div--,Autre
+        90 = FAQ
+        #95 = Liens utiles
+    }
+}
+TCEFORM.tx_news_domain_model_news {
+    author.disabled = 1
+    author_email.disabled = 1
+    feuserid.disabled = 1
+    titreune.disabled = 1
+    teaserune.disabled = 1
+    youngaudience.disabled = 1
+    freeentrance.disabled = 1
+    validation.disabled = 1
+    imagedroit.disabled = 1
+    telephoneevenement.disabled = 1
+    emailevenement.disabled = 1
+    linklist.disabled = 1
+}
+# Suprression des champs agenda pour les actualités
+[3 in tree.rootLineIds]
+    TCEFORM.tx_news_domain_model_news {       
+        is_event.disabled = 1
+        date_debut.disabled = 1
+        horaire_debut.disabled = 1
+        date_fin.disabled = 1
+        horaires.disabled = 1
+        liens.disabled = 1
+        begindate.disabled = 1
+        finishdate.disabled = 1
+        schedules.disabled = 1
+    }
+[end]
+# Faq
+[12 in tree.rootLineIds]
+    TCEFORM.tx_news_domain_model_news {
+        title.label = Question
+        bodytext.label = Réponse
+    }
+    TCEFORM.tx_news_domain_model_news {
+        istopnews.disabled = 1
+        type.disabled = 1
+        teaser.disabled = 1
+        archive.disabled = 1
+        media.disabled = 1
+        related_links.disabled = 1
+        related_from.disabled = 1
+        fal_related_files.disabled = 1
+        related.disabled = 1
+        calameo_html.disabled = 1
+        titre_iframe.disabled = 1
+        iframe.disabled = 1
+        tags.disabled = 1
+        keywords.disabled = 1
+        description.disabled = 1
+        alternative_title.disabled = 1
+        path_segment.disabled = 1
+        nom_lieu.disabled = 1
+        adresse.disabled = 1
+        complement_adresse.disabled = 1
+        ville.disabled = 1
+        is_event.disabled = 1
+        date_debut.disabled = 1
+        horaire_debut.disabled = 1
+        date_fin.disabled = 1
+        horaire_fin.disabled = 1
+        related_fsmediaalbums.disabled = 1
+        datetime.disabled = 1
+        fal_media.disabled = 1  
+        begindate.disabled = 1
+        finishdate.disabled = 1
+        schedules.disabled = 1
+        adressetout.disabled = 1
+        poi.disabled = 1
+        lat.disabled = 1
+        lng.disabled = 1
+        picto.disabled = 1
+    }
+[end]
+# Liens utiles
+[21 in tree.rootLineIds]
+    TCAdefaults.tx_news_domain_model_news.type = 2
+    TCEFORM.tx_news_domain_model_news {
+        istopnews.disabled = 1
+        teaser.disabled = 1
+        archive.disabled = 1
+        media.disabled = 1
+        related_links.disabled = 1
+        related_from.disabled = 1
+        fal_related_files.disabled = 1
+        related.disabled = 1
+        calameo_html.disabled = 1
+        titre_iframe.disabled = 1
+        iframe.disabled = 1
+        tags.disabled = 1
+        keywords.disabled = 1
+        description.disabled = 1
+        alternative_title.disabled = 1
+        path_segment.disabled = 1
+        nom_lieu.disabled = 1
+        adresse.disabled = 1
+        complement_adresse.disabled = 1
+        ville.disabled = 1
+        is_event.disabled = 1
+        date_debut.disabled = 1
+        horaire_debut.disabled = 1
+        date_fin.disabled = 1
+        horaire_fin.disabled = 1
+        related_fsmediaalbums.disabled = 1
+        begindate.disabled = 1
+        finishdate.disabled = 1
+        schedules.disabled = 1
+        adressetout.disabled = 1  
+        poi.disabled = 1
+        lat.disabled = 1
+        lng.disabled = 1
+        picto.disabled = 1
+    }
+[end]
+
+tx_gridelements.setup {
+    # Deux colonnes 50%-50%
+    #101 >
+    # Deux colonnes 25%-75%
+    #102 >
+    # Deux colonnes 75%-25%
+    #103 >
+    #Deux colonnes 33%-66%
+    #104 >
+    #Deux colonnes 66%-33%
+    #105 >
+    #Trois colonnes 33%-33%-33%
+    #106 >
+}
+
+mod.wizards.newContentElement.wizardItems.menu {
+    elements.menu_miniHead {
+        iconIdentifier = menu_miniHead_icon
+        title = Menu mini header
+        description = Menu utilisé dans le plus en haut du site
+        tt_content_defValues.CType = menu_miniHead
+    }
+    show := addToList(menu_miniHead)
+}
+
+mod.wizards.newContentElement.wizardItems.menu {
+    elements.menu_secondaire {
+        iconIdentifier = menu_secondaire_icon
+        title = Menu secondaire
+        description = Menu utilisé à coté du menu principal
+        tt_content_defValues.CType = menu_secondaire
+    }
+    show := addToList(menu_secondaire)
+}
+
+mod.wizards.newContentElement.wizardItems.menu {
+    elements.menu_miniicon {
+        iconIdentifier = menu_miniicon_icon
+        title = Menu mini Icon
+        description = Menu utilisé dans un bloc
+        tt_content_defValues.CType = menu_miniicon
+    }
+    show := addToList(menu_miniicon)
+}

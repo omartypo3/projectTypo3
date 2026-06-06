@@ -1,0 +1,15 @@
+<f:for each="{categories}" as="category">
+	<f:if condition="{category.shortcut}">
+		<f:then>
+			<f:link.page pageUid="{category.shortcut}">
+				<f:if condition="{category.images.0}">
+					<f:image image="{category.images.0}" alt="{category.title}" />
+				</f:if>
+				{category.title}
+			</f:link.page>
+		</f:then>
+		<f:else>
+			{category.title}
+		</f:else>
+	</f:if>
+</f:for>

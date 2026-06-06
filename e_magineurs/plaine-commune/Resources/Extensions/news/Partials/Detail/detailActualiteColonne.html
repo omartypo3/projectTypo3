@@ -1,0 +1,68 @@
+{namespace egmap=Emagineurs\EGmap\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  xmlns:rx="http://typo3.org/ns/Reelworx/RxShariff/ViewHelper"
+	  data-namespace-typo3-fluid="true">
+<f:render partial="Detail/Opengraph" arguments="{newsItem: newsItem, settings:settings}" />
+<div class="col_contenu">
+
+	<f:if condition="{newsItem.contenttitle1} || {newsItem.contenttext1}">
+		<div class="news-related block-left-news">
+			<h4><f:if condition="{newsItem.contenttitle1}">{newsItem.contenttitle1}</f:if></h4>
+			<div class="info">
+				<f:if condition="{newsItem.contenttext1}"><f:format.raw>{newsItem.contenttext1}</f:format.raw></f:if>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.contenttitle2} || {newsItem.contenttext2}">
+		<div class="news-related block-left-news">
+			<h4><f:if condition="{newsItem.contenttitle2}">{newsItem.contenttitle2}</f:if></h4>
+			<div class="info">
+				<f:if condition="{newsItem.contenttext2}"><f:format.raw>{newsItem.contenttext2}</f:format.raw></f:if>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.contenttitle3} || {newsItem.contenttext3}">
+		<div class="news-related block-left-news">
+			<h4><f:if condition="{newsItem.contenttitle3}">{newsItem.contenttitle3}</f:if></h4>
+			<div class="info">
+				<f:if condition="{newsItem.contenttext3}"><f:format.raw>{newsItem.contenttext3}</f:format.raw></f:if>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.contenttitle4} || {newsItem.contenttext4}">
+		<div class="news-related block-left-news">
+			<h4><f:if condition="{newsItem.contenttitle4}">{newsItem.contenttitle4}</f:if></h4>
+			<div class="info">
+				<f:if condition="{newsItem.contenttext4}"><f:format.raw>{newsItem.contenttext4}</f:format.raw></f:if>
+			</div>
+		</div>
+	</f:if>
+	<f:if condition="{newsItem.contenttitle5} || {newsItem.contenttext5}">
+		<div class="news-related block-left-news">
+			<h4><f:if condition="{newsItem.contenttitle5}">{newsItem.contenttitle5}</f:if></h4>
+			<div class="info">
+				<f:if condition="{newsItem.contenttext5}"><f:format.raw>{newsItem.contenttext5}</f:format.raw></f:if>
+			</div>
+		</div>
+	</f:if>
+
+	<f:if condition="{newsItem.eventmail} || {newsItem.placeadress}">
+		<div class="news-related block-left-news">
+			<h4>Lieu</h4>
+			<div class="info">
+				<f:if condition="{newsItem.placename}"><p><strong>{newsItem.placename}</strong></p></f:if>
+				<f:if condition="{newsItem.placeadress}"><f:format.raw>{newsItem.placeadress}</f:format.raw></f:if>
+				<f:if condition="{newsItem.eventmail}"><p>{newsItem.eventmail}</p></f:if>
+				<f:if condition="{newsItem.zipcode} && {newsItem.authorpublication}"><p>{newsItem.zipcode} {newsItem.authorpublication}</p></f:if>
+
+				<f:if condition="{f:cObject(typoscriptObjectPath:'lib.latNews',data:'{sourceUid:newsItem.uid}')}">
+					<div class="text-right">
+						<p class="lien_geoloc"><f:cObject typoscriptObjectPath="lib.paramPoiNews" data="{sourceUid: newsItem.uid}" /></p>
+					</div>
+				</f:if>
+			</div>
+		</div>
+	</f:if>
+
+</div>

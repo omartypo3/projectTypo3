@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	  xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	  xmlns:fpdf="http://typo3.org/ns/CodingMs/FluidFpdf/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+	<!-- Page numbers -->
+	<fpdf:setXY x="160" y="280" />
+	<fpdf:cell text="Seite {fpdf:pageNo()}/|nb|" align="R" width="40" />
+
+	
+	<fpdf:setSourceFile file="{settings.briefpapierExposePdf}" />
+	
+</html>

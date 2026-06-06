@@ -1,0 +1,110 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<f:form controller="Urlaub" action="update" name="urlaub" object="{urlaub}" pluginName="urlaubsliste" extensionName="dslintranet" id="urlaubEditForm" >
+
+<f:render partial="Allgemein/ColorboxFormHeader" arguments="{titel:'Urlaub Bearbeiten'}" />
+
+<script>
+	/*http://wenzhixin.net.cn/p/multiple-select/docs/#with-optgroups*/
+
+	$(document).ready(function() {
+		$.validator.messages.required = '<i class="fa fa-exclamation-circle"></i>';
+		
+
+		
+	
+		$('#urlaubEditForm').validate({
+			invalidHandler: function(event, validator) { validateFormInvalidHandler(validator); },
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
+			ignore: ':hidden:not(".validator_required")', // Tells the validator to check the hidden select */
+			errorClass: 'invalid',
+			submitHandler: function(form) {
+				
+				
+				
+				
+				validateFormInvalidHandlerReset();
+				
+				var urlaubFormBegin = moment($('#urlaubFormBegin').val(),'DD.MM.YYYY');
+				var urlaubFormEnd = moment($('#urlaubFormEnd').val(),'DD.MM.YYYY');
+
+				if(urlaubFormBegin.format('YYYY-MM-DD')>urlaubFormEnd.format('YYYY-MM-DD')){
+					//datum falsch rum!!
+					$('#urlaubFormEnd').removeClass('valid').addClass('invalid');
+				  return false;
+				}
+				
+		
+				if($('#urlaubEditForm').hasClass('formSaves'))	return false;
+				$('#urlaubEditForm').addClass('formSaves');
+				
+				
+				$.ajax({
+					url: $('#urlaubEditForm').attr('action'),
+					type: 'POST',
+					data: $('#urlaubEditForm').serialize(),
+					success: function(data) {
+						dataJson = JSON.parse(data);
+
+						loadUrlaubs(urlaubs_jahr);
+						dataTableReload();
+
+					//	reInitAjaxCalls();
+						
+						
+						
+						$.colorbox.close();
+						/*if(dataJson['newUid']) {
+							
+							$.colorbox.close();
+							//dataTableReload();
+						} else {
+							return true;
+						}*/
+					}
+				});
+				
+
+		
+		  	}
+		});
+		
+		
+		
+	});
+
+
+</script>
+
+
+
+	<f:render partial="FormErrors" arguments="{object:Urlaub}" />
+
+
+	<f:render partial="Urlaub/FormFields" arguments="{_all}" />
+
+
+
+    
+    
+<f:render partial="Allgemein/ColorboxFormFooter" arguments="{titel:'Urlaub Speichern'}" />      
+    
+</f:form>
+
+</f:section>

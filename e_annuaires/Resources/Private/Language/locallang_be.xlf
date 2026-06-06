@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:e_annuaires/Resources/Private/Language/locallang_be.xlf" date="2024-01-01T00:00:00Z" product-name="e_annuaires">
+		<header/>
+		<body>
+			<trans-unit id="flexforms_tab.settings">
+				<source>Paramètre</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode">
+				<source>Vue</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.standard">
+				<source>Vues standard</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_show">
+				<source>Détail</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_listOnly">
+				<source>Liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_detail">
+				<source>Détail</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_catmenu">
+				<source>Menu des catégories</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_recherche">
+				<source>Recherche</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_resultat">
+				<source>Résultat</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_update">
+				<source>Modification</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.e_annuaires_new">
+				<source>Gestion des fiches</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.search">
+				<source>Moteur de recherche</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.form">
+				<source>Formulaire frontend</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.mode.send_mail">
+				<source>Envoi d'email</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutListe">
+				<source>Templates pour la vue liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutDetail">
+				<source>Templates pour la vue détail</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutCatmenu">
+				<source>Templates pour la vue menu des catégories</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutSearch">
+				<source>Templates pour la vue formulaire de recherche</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutResult">
+				<source>Templates pour la vue resultats de la recherche</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutManage">
+				<source>Templates pour la vue gestion des fiches</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayoutEdit">
+				<source>Templates pour la vue édition de fiche annuaire en fe</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.orderBy">
+				<source>Trier par</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.orderBy.tstamp">
+				<source>Date de modification</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.orderBy.crdate">
+				<source>Date de création</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.orderBy.sorting">
+				<source>Ordre du backend</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.orderBy.title">
+				<source>Titre</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.whichMember">
+				<source>Selection Membre</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.categories">
+				<source>Selection Catégorie</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.whichCommune">
+				<source>Selection Ville</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.whichDistrict">
+				<source>Selection Quartier</source>
+			</trans-unit>
+			<trans-unit id="flexforms_tab.filter">
+				<source>Filtres</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.activate">
+				<source>Filtrer les annuaires par date</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.slider">
+				<source>N'afficher que les annuaires de moins de [X] [périodes]</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.range">
+				<source>Type de période</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.range.days">
+				<source>Jours</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.range.weeks">
+				<source>Semaines</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.range.months">
+				<source>Mois</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.filterDate.range.years">
+				<source>Années</source>
+			</trans-unit>
+			<trans-unit id="flexforms_tab.additional">
+				<source>Parametrage du plugin</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.detailPid">
+				<source>Page détail</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.listPid">
+				<source>Page liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.resultPid">
+				<source>Page resultat de recherche</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.ordre">
+				<source>Ordre</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.ordre.asc">
+				<source>Croissant</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.ordre.desc">
+				<source>Décroissant</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.menu_abc">
+				<source>Affichage de l'abécédaire </source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.one_letter">
+				<source>Chargement d'une seule lettre pour l'abécédaire</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.latest">
+				<source>Nombre d'item en mode liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.pageBrowser">
+				<source>Activer la pagination</source>
+			</trans-unit>
+			<trans-unit id="flexforms_tab.editFe">
+				<source>Edition Frontend</source>
+			</trans-unit>
+			<trans-unit id="flexforms_editFe.storagePid">
+				<source>Page de stockage des fiches</source>
+			</trans-unit>
+			<trans-unit id="flexforms_tab.template">
+				<source>Configuration avancée</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.template">
+				<source>Template</source>
+			</trans-unit>
+			<trans-unit id="coord">
+				<source>Coordonnées</source>
+			</trans-unit>
+			<trans-unit id="doc">
+				<source>Documents rattachés</source>
+			</trans-unit>
+			<trans-unit id="cat">
+				<source>Catégories</source>
+			</trans-unit>
+			<trans-unit id="tabs.access">
+				<source>Acces</source>
+			</trans-unit>
+			<trans-unit id="activateJobOfferModule">
+				<source>Afficher le module de gestion des offres d'emploi</source>
+			</trans-unit>
+			<trans-unit id="ext_conf_types">
+				<source>Liste des types d'annuaires(1-nomType1,2-nomType2,3-nomType3 pas d'espace apres les virgules)</source>
+			</trans-unit>
+			<trans-unit id="sortingFields">
+				<source>Champs de tri à ajouté au flexform :</source>
+			</trans-unit>
+			<trans-unit id="typeCanton">
+				<source>Id du type "Canton"</source>
+			</trans-unit>
+			<trans-unit id="flexforms_filter.type">
+				<source>Type d'annuaire : </source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.catAndOr">
+				<source>Affichage des catégorie si :</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.catAndOr.1">
+				<source>Une des catégorie de la fiche est présente dans la liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.catAndOr.2">
+				<source>Toutes les catégories de la fiche sont présente dans la liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.catAndOr.3">
+				<source>La fiche a exactement les catégories de la liste</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.catAnd">
+				<source>OR</source>
+			</trans-unit>
+			<trans-unit id="flexforms_general.catOr">
+				<source>AND</source>
+			</trans-unit>
+			<trans-unit id="flexforms_additional.nbElement">
+				<source>Nombre d'éléments par page :</source>
+			</trans-unit>
+			<trans-unit id="flexforms.tab.ts">
+				<source>Configuration typoscript spécifique au plugin :</source>
+			</trans-unit>
+			<trans-unit id="pi1_title">
+				<source>Annuaires</source>
+			</trans-unit>
+			<trans-unit id="pi1_plus_wiz_description">
+				<source>Système de gestion des annuaires.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

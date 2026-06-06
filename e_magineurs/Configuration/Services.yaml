@@ -1,0 +1,41 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Emagineurs\EMagineurs\Xclass\FileRepository:
+    autowire: true
+    public: true
+
+  Emagineurs\EMagineurs\Xclass\FileCollector:
+    autowire: true
+    public: true
+
+  # Upgrade wizard for migrating HTML content image paths
+  Emagineurs\EMagineurs\Updates\MigrateHtmlContentImagePathsUpgradeWizard:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'migrateHtmlContentImagePaths'
+
+  Emagineurs\EMagineurs\Updates\FixTextmediaImagePathsUpgradeWizard:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'fixTextmediaImagePaths'
+
+  # Upgrade wizard for migrating Solrfluid plugins
+  Emagineurs\EMagineurs\Updates\SolrfluidPluginMigrationUpgradeWizard:
+    public: true
+    tags:
+      - name: 'upgrade.wizard'
+        identifier: 'solrfluidPluginMigration'
+        
+    # Event listener to filter wizard items groups
+  Emagineurs\EMagineurs\Hooks\WizardItemsFilter:
+    tags:
+      - name: event.listener
+        identifier: 'e_magineurs/filter-wizard-items'
+        event: TYPO3\CMS\Backend\Controller\Event\ModifyNewContentElementWizardItemsEvent
+        method: filterWizardItems      

@@ -1,0 +1,92 @@
+plugin.tx_personmanager {
+	view {
+		templateRootPath >
+		partialRootPath >
+		layoutRootPath >
+		templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_personmanager.view.templateRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_personmanager.view.partialRootPath}
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_personmanager.view.layoutRootPath}
+	}
+	_LOCAL_LANG {
+		fr {
+			mail.confirmthx = Merci pour votre inscription à la newsletter d'AISCCUF
+		}
+	}
+
+	persistence {
+		storagePid = {$e_magineurs.tx_personmanager.persistence.storagePid}
+	}
+	options{
+		doubleOptIn = {$e_magineurs.tx_personmanager.options.doubleOptIn}
+		doubleOptOut = {$e_magineurs.tx_personmanager.options.doubleOptOut}
+		path = {$e_magineurs.tx_personmanager.options.path}
+		pathout = {$e_magineurs.tx_personmanager.options.pathout}
+		site = {$e_magineurs.tx_personmanager.options.site}
+		mail = {$e_magineurs.tx_personmanager.options.mail}
+	}
+	settings.flexsitename = {$e_magineurs.tx_personmanager.settings.flexsitename}
+	settings.variables {
+		salutation = {$e_magineurs.tx_personmanager.variables.salutation}
+		titel = {$e_magineurs.tx_personmanager.variables.titel}
+		nachgtitel = {$e_magineurs.tx_personmanager.variables.nachgtitel}
+		geb = {$e_magineurs.tx_personmanager.variables.geb}
+		tel = {$e_magineurs.tx_personmanager.variables.tel}
+		company = {$e_magineurs.tx_personmanager.variables.company}
+		category = {$e_magineurs.tx_personmanager.variables.category}
+		frtxt0 = {$e_magineurs.tx_personmanager.variables.frtxt0}
+		frtxt1 = {$e_magineurs.tx_personmanager.variables.frtxt1}
+		frtxt2 = {$e_magineurs.tx_personmanager.variables.frtxt2}
+		frtxt3 = {$e_magineurs.tx_personmanager.variables.frtxt3}
+		frtxt4 = {$e_magineurs.tx_personmanager.variables.frtxt4}
+		frtxt5 = {$e_magineurs.tx_personmanager.variables.frtxt5}
+		frtxt6 = {$e_magineurs.tx_personmanager.variables.frtxt6}
+		frtxt7 = {$e_magineurs.tx_personmanager.variables.frtxt7}
+		frtxt8 = {$e_magineurs.tx_personmanager.variables.frtxt8}
+		frtxt9 = {$e_magineurs.tx_personmanager.variables.frtxt9}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+ # Module configuration
+module.tx_personmanager {
+	view {
+		templateRootPath >
+		partialRootPath >
+		layoutRootPath >
+		templateRootPaths.1 = {$e_magineurs.conf.dossierSite}{$e_magineurs.tx_personmanager.view.templateRootPath}
+		partialRootPaths.1 = {$e_magineurs.conf.dossierSite}{$e_magineurs.tx_personmanager.view.partialRootPath}
+		layoutRootPaths.1 = {$e_magineurs.conf.dossierSite}{$e_magineurs.tx_personmanager.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$e_magineurs.tx_personmanager.persistence.storagePid}
+	}
+	settings {
+		doubleOptIn = {$e_magineurs.tx_personmanager.options.doubleOptIn}
+		doubleOptOut = {$e_magineurs.tx_personmanager.options.doubleOptOut}
+		path = {$e_magineurs.tx_personmanager.options.path}
+		pathout = {$e_magineurs.tx_personmanager.options.pathout}
+		site = {$e_magineurs.tx_personmanager.options.site}
+		mail = {$e_magineurs.tx_personmanager.options.mail}
+		salutation = {$e_magineurs.tx_personmanager.variables.salutation}
+		titel = {$e_magineurs.tx_personmanager.variables.titel}
+		nachgtitel = {$e_magineurs.tx_personmanager.variables.nachgtitel}
+		geb = {$e_magineurs.tx_personmanager.variables.geb}
+		tel = {$e_magineurs.tx_personmanager.variables.tel}
+		company = {$e_magineurs.tx_personmanager.variables.company}
+		category = {$e_magineurs.tx_personmanager.variables.category}
+		frtxt0 = {$e_magineurs.tx_personmanager.variables.frtxt0}
+		frtxt1 = {$e_magineurs.tx_personmanager.variables.frtxt1}
+		frtxt2 = {$e_magineurs.tx_personmanager.variables.frtxt2}
+		frtxt3 = {$e_magineurs.tx_personmanager.variables.frtxt3}
+		frtxt4 = {$e_magineurs.tx_personmanager.variables.frtxt4}
+		frtxt5 = {$e_magineurs.tx_personmanager.variables.frtxt5}
+		frtxt6 = {$e_magineurs.tx_personmanager.variables.frtxt6}
+		frtxt7 = {$e_magineurs.tx_personmanager.variables.frtxt7}
+		frtxt8 = {$e_magineurs.tx_personmanager.variables.frtxt8}
+		frtxt9 = {$e_magineurs.tx_personmanager.variables.frtxt9}
+	}
+}
+
+plugin.tx_personmanager._CSS_DEFAULT_STYLE >

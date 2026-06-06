@@ -1,0 +1,134 @@
+
+<br>
+<div class="content_container">
+
+<table id="rechnungenList{wartungsvertraege.uid}" class="table table-striped table-bordered zeiteintraege table-condensed table-hover" cellspacing="0" width="100%"><thead>
+    <tr>
+
+        <th>Intervall</th>
+        <th>Abrechnungszeitraum</th>
+        <th>Preis (Pauschale)</th>
+        
+        <th>Typ</th>
+        <th>Status</th>
+        <th>Arbeiten</th>
+        <th>Mehraufwand</th>
+        <th>Zeitraum Status</th>
+    </tr>
+    </thead>
+    <tbody>
+        <f:for each="{wartungsvertraege.zeitraeume}" as="zeitraum">
+            <f:for each="{zeitraum.rechnungen}" as="rechnung">
+            	<f:render partial="WartungRechnungen/ListRow" arguments="{_all}" />
+            </f:for>
+       	</f:for>
+    </tbody>
+  
+    
+</table>
+
+</div>
+<script>
+
+
+
+	$('#rechnungenList'+wartungsvertraegeUid).DataTable({
+		 "dom": '<"top"<"float_left addBtnContainer"><"float_left"><"float_right"<"dataTableResults"i><"dataTableFilter"><"dataTableSearch"f>><"float_clear">>rt<"bottom"p><"clear">', /*http://datatables.net/examples/basic_init/dom.html*/
+		/*"orderFixed": {	"post": [ 0, 'asc' ]},*/
+		"order": [[ 0, "desc" ]],
+		"columnDefs": [
+			{
+				"targets": [ 0 ],
+				"orderable": true
+			},
+			{
+				"targets": [ 1 ],
+				"orderable": false
+			},
+			{
+				"targets": [ 2 ],
+				"orderable": true
+			},
+			{
+				"targets": [ 3 ],
+				"orderable": false
+			},
+			{
+				"targets": [ 4 ],
+				"orderable": false
+			},
+			{
+				"targets": [ 5 ],
+				"orderable": false
+			},
+			{
+				"targets": [ 6 ],
+				"orderable": false
+			},
+			{
+				"targets": [ 7 ],
+				"orderable": false
+			}
+			
+			
+			
+		],
+
+		paging: false,
+		"language": {
+			"decimal":        "",
+			"emptyTable":     "Keine Daten gefunden",
+			"info":           "_TOTAL_ Einträge gefunden",
+			"infoEmpty":      " keine Einträge gefunden",
+			"infoFiltered":   " - gefiltert von _MAX_",
+			"infoPostFix":    "",
+			"thousands":      ",",
+			"lengthMenu":     "Zeige _MENU_ Einträge pro Seite",
+			"loadingRecords": "Lädt...",
+			"processing":     "Processing...",
+			"search":         '<a class="btn tableBtnSuche" aria-label="Suche"><i class="fa fa-lg fa-search" aria-hidden="true"></i></a><a class="clearFilter"><i class="fa fa-lg fa-times"></i></a>',
+			"searchPlaceholder": "Suche",
+			"zeroRecords":    "Keine Ergebnisse gefunden",
+			"paginate": {
+				"first":      "Erste",
+				"last":       "Letzte",
+				"next":       "Nächste",
+				"previous":   "Vorhergehende"
+			},
+			"aria": {
+				"sortAscending":  ": activate to sort column ascending",
+				"sortDescending": ": activate to sort column descending"
+			}
+		}
+		
+		
+	}).on( 'draw.dt', function () {
+
+		reInitAjaxCalls();
+	});
+
+	$('#rechnungenList'+wartungsvertraegeUid+'_wrapper .clearFilter').on('click', function() {
+		
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+
+		setTimeout(function(){ 
+			$(tmpSelector+' input[type="search"]').val('');
+			$(tmpSelector+' .dataTable').DataTable().search( '' ).draw();
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}, 10);
+	}); 
+	$('#rechnungenList'+wartungsvertraegeUid+'_wrapper input[type="search"]').keyup(function() {
+		var tmpSelector = '#'+$(this).closest('.dataTables_wrapper').attr('id');
+		if($(tmpSelector+' input[type="search"]').val()){
+			$(tmpSelector+' .clearFilter').css('opacity',1);
+		} else {
+			$(tmpSelector+' .clearFilter').css('opacity',0);
+		}
+	});
+	$('#rechnungenList'+wartungsvertraegeUid+'_wrapper .clearFilter').insertAfter('#rechnungenList'+wartungsvertraegeUid+'_wrapper input[type="search"]');	
+
+	
+	
+
+
+</script>

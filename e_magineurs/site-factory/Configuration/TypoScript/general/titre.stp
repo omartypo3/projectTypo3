@@ -1,0 +1,82 @@
+lib.titreRubrique = TEXT
+lib.titreRubrique.data = levelfield : 1 , title, slide
+lib.titreRubrique.wrap = <p class="titreRubrique">|</p>
+lib.titreRubrique.stdWrap.htmlSpecialChars = 1
+
+lib.subtitle = TEXT
+lib.subtitle {
+    field = subtitle
+    wrap = <br/><span>|</span>
+}
+lib.titrePage = TEXT
+lib.titrePage{
+    data= page:title
+    brTag = <br />
+    stdWrap.htmlSpecialChars = 1
+    #after.cObject < lib.subtitle
+    wrap = <h1>|</h1>
+}
+[(request.getQueryParams()['tx_news_pi1'] ?? [])['news'] ?? 0 > 0]
+    lib.titrePage = RECORDS
+    lib.titrePage{
+        dontCheckPid = 1
+        tables = tx_news_domain_model_news
+        source.data = GP:tx_news_pi1|news
+        conf.tx_news_domain_model_news = TEXT
+        conf.tx_news_domain_model_news.field = title
+        stdWrap.htmlSpecialChars = 0
+    }
+[end]
+# gestion titre multilangue
+# [globalVar = GP:tx_news_pi1|news > 0] && [globalVar = GP:L > 0] 
+#     lib.titrePage = CONTENT
+#     lib.titrePage {
+#         table =  tx_news_domain_model_news
+#         select {
+#             pidInList = {$e_magineurs.conf.homePage}
+#             recursive = 9999            
+#             where.data = GP:tx_news_pi1|news
+#             where.wrap = (l10n_parent = |)
+#         }
+#         renderObj = TEXT
+#         renderObj {
+#             field = title
+#         }
+#     }
+# [end]
+[(request.getQueryParams()['tx_eannuaires_pi1'] ?? [])['fiche'] ?? 0 > 0]
+    lib.titrePage = RECORDS
+    lib.titrePage{
+        dontCheckPid = 1
+        tables = tx_eannuaires_domain_model_fiche
+        source.data = GP:tx_eannuaires_pi1|fiche
+        conf.tx_eannuaires_domain_model_fiche = TEXT
+        conf.tx_eannuaires_domain_model_fiche.field = title
+        stdWrap.htmlSpecialChars = 0
+    }
+[end]
+[(request.getQueryParams()['tx_fsmediagallery_mediagallery'] ?? [])['mediaAlbum'] ?? 0 > 0]
+    lib.titrePage = RECORDS
+    lib.titrePage{
+        dontCheckPid = 1
+        tables = sys_file_collection
+        source.data = GP:tx_fsmediagallery_mediagallery|mediaAlbum
+        conf.sys_file_collection = TEXT
+        conf.sys_file_collection.field = title
+        stdWrap.htmlSpecialChars = 0
+    }
+[end]
+[(request.getQueryParams()['tx_dpnglossary_glossarydetail'] ?? [])['term'] ?? 0 > 0]
+   lib.titrePage = RECORDS
+   lib.titrePage{
+       dontCheckPid = 1
+       tables = tx_dpnglossary_domain_model_term
+       source.data = GP:tx_dpnglossary_glossarydetail|term
+       conf.tx_dpnglossary_domain_model_term = TEXT
+       conf.tx_dpnglossary_domain_model_term.field = name
+       stdWrap.htmlSpecialChars = 0
+   }
+[end]
+[page|layout = 4]
+    lib.titrePage >
+[end]

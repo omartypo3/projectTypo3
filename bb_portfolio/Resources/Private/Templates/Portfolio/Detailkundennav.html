@@ -1,0 +1,7 @@
+<div class="detailpageHeader whiteContainer">
+	<div class="container">
+		<div class="col-xs-3 col-md-1 navArrowRight"><f:if condition="{kundenPrev}"><f:link.action action="detailkunden" arguments="{kunden : kundenPrev}" title="vorheriger Kunde: {kundenPrev.name}"><i class="bb-arrow-left"></i></f:link.action></f:if></div>
+		<div class="col-xs-6 col-md-10 detailpageNavTitle"><f:link.page pageUid="43"><i class="bb-grid"></i><span class="hidden-xs">Alle Kunden</span></f:link.page><br /></div>
+		<div class="col-xs-3 col-md-1 navArrowLeft"><f:if condition="{kundenNext}"><f:link.action action="detailkunden" arguments="{kunden : kundenNext}" title="nächster Kunde: {kundenNext.name}"><i class="bb-arrow-right"></i></f:link.action></f:if></div>
+	</div>
+</div>

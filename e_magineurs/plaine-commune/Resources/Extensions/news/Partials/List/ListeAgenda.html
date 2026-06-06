@@ -1,0 +1,123 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+<!--
+	=====================
+		Partials/List/Item.html
+-->
+<div class="lazyLoadItem move_scroll col-xl-4 col-lg-6 d-flex justify-content-center article articletype-{newsItem.type}{f:if(condition: newsItem.istopnews, then: ' topnews')} list_agenda" itemscope="itemscope" itemtype="http://schema.org/Article">
+	<div class="inner">
+		<n:excludeDisplayedNews newsItem="{newsItem}"/>
+
+			<div class="news-img-wrap">
+				<f:if condition="{newsItem.falMediaPreviews}">
+					<f:then>
+						<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+							<f:alias map="{mediaElement: '{newsItem.falMediaPreviews.0}'}">
+								<f:if condition="{mediaElement.originalResource.type} == 2">
+									<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" width="367c" height="205c"/>
+								</f:if>
+								<f:if condition="{mediaElement.originalResource.type} == 4">
+									<f:render partial="Detail/FalMediaVideo" arguments="{mediaElement: mediaElement}"/>
+								</f:if>
+								<f:if condition="{mediaElement.originalResource.type} == 5">
+									<f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" width="367c" height="205c"/>
+								</f:if>
+							</f:alias>
+						</n:link>
+					</f:then>
+					<f:else>
+						<span class="no-media-element">
+							<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+								<f:image src="{settings.list.media.dummyImage}" title="" alt="" width="367c" height="205c"/>
+							</n:link>
+						</span>
+					</f:else>
+				</f:if>
+
+				<span class="voile">
+					<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}"></n:link>
+				</span>
+				<div class="teaser-text">
+					<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+						<f:if condition="{newsItem.teaser}">
+							<f:then>
+								<div itemprop="description">{newsItem.teaser -> f:format.crop(maxCharacters: 80, respectWordBoundaries:'1', append:'[...]') -> f:format.raw()}</div>
+							</f:then>
+							<f:else>
+								<div itemprop="description">{newsItem.bodytext -> f:format.crop(maxCharacters: 80, respectWordBoundaries:'1', append:'[...]') -> f:format.raw()}</div>
+							</f:else>
+						</f:if>
+					</n:link>
+				</div>
+
+				<div class="evenement-horaire-liste d-flex align-items-center justify-content-center">
+					<div class="inner">
+						<f:if condition="<f:format.date format='U'>{newsItem.begindate}</f:format.date> > 0">
+							<f:then>
+								<f:if condition="<f:format.date format='U'>{newsItem.finishdate}</f:format.date> > 0">
+									<f:then>
+										<f:if condition="<f:format.date format='U'>{newsItem.begindate}</f:format.date> == <f:format.date format='U'>{newsItem.finishdate}</f:format.date>">
+											<f:then>
+												<span><f:format.date format="%d">{newsItem.begindate}</f:format.date></span> <f:format.date format="%b">{newsItem.begindate}</f:format.date>
+											</f:then>
+											<f:else>
+												<span><f:format.date format="%d">{newsItem.begindate}</f:format.date></span> <f:format.date format="%b">{newsItem.begindate}</f:format.date>
+												<hr>
+												<span><f:format.date format="%d">{newsItem.finishdate}</f:format.date></span> <f:format.date format="%b">{newsItem.finishdate}</f:format.date>
+											</f:else>
+										</f:if>
+									</f:then>
+									<f:else>
+										<span><f:format.date format="%d">{newsItem.begindate}</f:format.date></span> <f:format.date format="%b">{newsItem.begindate}</f:format.date>
+									</f:else>
+								</f:if>
+							</f:then>
+							<f:else>
+								<f:if condition="<f:format.date format='U'>{newsItem.finishdate}</f:format.date> > 0">
+									<span><f:format.date format="%d">{newsItem.finishdate}</f:format.date></span> <f:format.date format="%b">{newsItem.begindate}</f:format.date>
+								</f:if>
+							</f:else>
+						</f:if>
+					</div>
+				</div>
+			</div>
+	    <f:if condition="{newsItem.categories}">
+	        <f:for each="{newsItem.categories}" as="category" key="key" iteration="ite">
+	            <f:if condition="{category.parentcategory.uid} != 19">
+		            <f:if condition="{category.parentcategory.uid} != 256">	
+		            	<f:if condition="{category.parentcategory.uid} != 368">
+		                   <f:if condition="{ite.isLast}">
+			                    <f:then>
+			                        <span class="thematique-liste-news">{category.title}</span>
+			                    </f:then>
+			                    <f:else>
+			                        <span class="thematique-liste-news">{category.title} | </span>
+			                    </f:else>
+		                	</f:if>
+		                </f:if>
+		            </f:if>
+	            </f:if>
+	        </f:for>     
+		</f:if>
+			<h3>
+				<n:link newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+					{newsItem.title}
+				</n:link>
+			</h3>
+		<f:if condition="{newsItem.categories}">
+	        <f:for each="{newsItem.categories}" as="category" key="key">
+	            <f:if condition="{category.parentcategory.uid} == 256">
+	           		<f:if condition="{category.parentcategory.uid} != 368">
+	               		<span class="ville-liste-news"> {category.title}</span>
+	               	</f:if>
+	            </f:if>
+	        </f:for>     
+		</f:if>
+	</div>
+</div>
+
+
+
+
+</html>

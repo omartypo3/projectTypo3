@@ -1,0 +1,163 @@
+module.tx_eannuaires {
+    view {
+        templateRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_eannuaires.view.templateRootPath}
+        partialRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_eannuaires.view.partialRootPath}
+        layoutRootPaths.1 = {$e_magineurs.conf.dossierExtensions}/{$e_magineurs.tx_eannuaires.view.layoutRootPath}
+        widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPaths.10 = {$e_magineurs.conf.dossierExtensions}/paginate/
+    }
+}
+plugin.tx_eannuaires {
+	view {
+		widget {
+			TYPO3\CMS\Fluid\ViewHelpers\Widget\AutocompleteController {
+				templateRootPaths.10 = EXT:e_magineurs/plaine-commune/Resources/Extensions/Autocomplete/
+			}
+		}
+	}
+	settings{
+        list.paginate.addQueryStringMethod = GET,POST
+
+		# Le message sur la connexion frontend est dans Templates/Manage.html 
+		#editFe.jsPath = EXT:e_magineurs/...
+		sendMail {
+			# Ce chiffre correspond à l'id du type d'annuaire pour lequel on fait l'envoi de mail
+
+			5{
+				sendToUser = 1
+				sendToAdmin = 1
+				sendToFicheManager = 0
+				user {
+					mail.field = email
+					#subject.fluid = EXT:e_annuaires/Resources/Private/Templates/Custom/myFluidSubject.html
+					subject.static = LLL:EXT:e_annuaires/Resources/Private/Language/locallang.xlf:user.subject
+					sender.mail = plaine-commune@plaine-commune.fr
+					sender.name = plaine-commune
+					mailPath = EXT:e_magineurs/plaine-commune/Resources/Extensions/e_annuaires/Templates/Custom/AlertUserMail.html
+					attachment {
+						1.field = media
+						2.field = documents.fichier
+					}
+				}
+				admin {
+					mail.field = cdps.email
+					subject.static = LLL:EXT:e_annuaires/Resources/Private/Language/locallang.xlf:admin.subject
+					sender.mail = plaine-commune@plaine-commune.fr
+					sender.name = plaine-commune
+					mailPath = EXT:e_magineurs/plaine-commune/Resources/Extensions/e_annuaires/Templates/Custom/AlertAdminMail.html
+					attachment {
+						1.field = media
+						2.field = documents.fichier
+					}
+				}
+				manager {
+					mail.field = canton.email
+					subject.static = LLL:EXT:e_annuaires/Resources/Private/Language/locallang.xlf:manager.subject
+					sender.mail = xley@e-magineurs.com
+					sender.name = Xavier Ley
+					mailPath = EXT:e_annuaires/Resources/Private/Templates/Custom/AlertManagerMail.html
+					attachment {
+						1.field = media
+						2.field = documents.fichier
+					}
+				}
+			}
+		}
+
+		search{
+			properties{
+				1 = categoryPersonne
+                categoryPersonne < .category
+                categoryPersonne.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryPersonne}
+                    recursive = 1
+                }
+                2 = categoryVideo
+                categoryVideo < .category
+                categoryVideo.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryVideo}
+                    recursive = 2
+                }
+                3 = categoryLieu
+                categoryLieu < .category
+                categoryLieu.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryLieu}
+                    recursive = 2
+                }                
+                4 = categoryGeneral
+                categoryGeneral < .category
+                categoryGeneral.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryGeneral}
+                    recursive = 2
+                }
+                4 = categoryEmploi
+                categoryEmploi < .category
+                categoryEmploi.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryEmploi}
+                    recursive = 2
+                }
+                5 = categoryVideo
+                categoryVideo < .category
+                categoryVideo.array {
+                    noEmptyValue = 1
+                    parentValue = {$e_magineurs.tx_eannuaires.settings.search.properties.categoryVideo}
+                    recursive = 2
+                }
+
+                13 = actions
+                actions{
+                    typeRequete = contains
+                    champFiltre = actions
+                    table = tx_eannuaires_domain_model_actions
+                    array {
+                        table = tx_eannuaires_domain_model_actions
+                        pid = 205
+                        selectFields = uid, titre
+                        inAllSites = 0
+                        noEmptyValue = 1
+                    }
+                }
+
+                14 = objet
+                objet{
+                    typeRequete = contains
+                    champFiltre = objet
+                    table = tx_eannuaires_domain_model_objet
+                    array {
+                        table = tx_eannuaires_domain_model_objet
+                        pid = 205
+                        selectFields = uid, titre
+                        inAllSites = 0
+                        noEmptyValue = 1
+                    }
+                }
+
+                15 = metier
+                metier{
+                    typeRequete = contains
+                    champFiltre = metier
+                    table = tx_emagineurs_domain_model_metier
+                    array {
+                        table = tx_emagineurs_domain_model_metier
+                        pid = 205
+                        selectFields = uid, title
+                        inAllSites = 0
+                        noEmptyValue = 1
+                    }
+                }
+			}
+		}
+	}
+}
+          
+lib.displayStreet = TEXT
+lib.displayStreet.data = GP:tx_eannuaires_pi1|displayStreet
+lib.displayStreet.data.if.isTrue.data = GP:tx_eannuaires_pi1|displayStreet
+
+lib.detailStreet = TEXT
+lib.detailStreet.data = GP:tx_eannuaires_pi1|street
+lib.detailStreet.data.if.isTrue.data = GP:tx_eannuaires_pi1|street

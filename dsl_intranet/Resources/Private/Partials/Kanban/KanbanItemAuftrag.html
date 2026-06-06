@@ -1,0 +1,40 @@
+<div id="kanban-auftrag-{auftrag.uid}" data-kanban-item-uid="{kanbanItem.uid}" class="kanban-item kanban-item-search" draggable="true" ondragstart="dragKanbanItem(event)" ondragend="dragEndKanbanItem(event)" ondragover="dragOverKanbanItem(event)" ondragleave="jQuery(this).removeClass('kanban-item-dragover');" ondrop="dropOnKanbanItem(event);"><f:comment><!-- jQuery(this).removeClass('kanban-item-dragover'); --></f:comment>
+
+    <div class="item-content" data-auftrag-uid="{auftrag.uid}">
+        <div class="board-item-details">
+            <f:if condition="{auftrag.rights.edit}"><f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="show" arguments="{auftraege : auftrag}" class="doAjax withoutHighlighting kanban-item-show-auftrag" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{auftrag.uid}'}" ></f:link.action></f:if>
+            <a href="#" title="Auftrag ausblenden" class="kanban-item-remove" onclick="removeKanbanItem(jQuery(this).closest('.kanban-item'));return false;"><i class="bb-times bb-sm"></i></a>
+            <div class="color-gruen"><strong>{auftrag.titel}</strong> [{auftrag.nr}]</div>
+            <div>{auftrag.kunde.name} [{auftrag.kunde.nummer}] </div>
+        </div>
+        <div class="gesamt-item-details">
+            <div class="layout-table">
+                <div class="layout-table-row">
+                    <f:comment><!-- <div class="layout-table-col"><i class="bb-content-text bb-lg color-grau"></i></div>--></f:comment>
+                    <div class="layout-table-col"><span title="Auftrag vom: {f:format.date(date: auftrag.datum, format: 'd.m.Y - H:i')} Uhr">{f:format.date(date: auftrag.datum, format: 'd.m.y')}</span>
+                        <f:comment><!-- <f:if condition="{auftrag.datumfertigstellung}"><br>- <f:format.date date="{auftrag.datumfertigstellung}" format="d.m.Y" /></f:if>--></f:comment></div>
+                    <div class="layout-table-col"><f:link.action controller="Auftraege" pluginName="auftragsliste" extensionName="dslintranet" action="show" arguments="{auftraege : auftrag}" class="doAjax withoutHighlighting" additionalAttributes="{data-ajax-action: 'showAuftrag', data-ajax-id: '{auftrag.uid}'}" onclick="$('#split-pane-middle').click();" >
+                        
+                        <div><strong>{auftrag.titel}</strong> [{auftrag.nr}]</div>
+                        <f:if condition="{auftrag.kunde}"><div class="auftraegeListKunde">{auftrag.kunde.name} [{auftrag.kunde.nummer}]</div></f:if>
+                        
+                        <div class="filter-kanban-projekte-search">{auftrag.nr} {auftrag.titel}<f:if condition="{auftrag.kunde}"> {auftrag.kunde.name} {auftrag.kunde.nummer}</f:if> {auftrag.ansprechpartner.name} {auftrag.ansprechpartner.initialien}<f:for each="{auftrag.mitarbeiter}" as="auftragMitarbeiter"><f:if condition="{auftrag.ansprechpartner}!={auftragMitarbeiter}"> {auftragMitarbeiter.name} {auftragMitarbeiter.initialien}</f:if></f:for></div>
+                        <div class="filter-kanban-projekte-status">S{auftrag.status}S</div>
+                    </f:link.action></div>
+                    <div class="layout-table-col"><ul class="simple"><li title="{auftrag.ansprechpartner.name}"><strong>{auftrag.ansprechpartner.initialien}</strong></li><f:for each="{auftrag.mitarbeiter}" as="auftragMitarbeiter"><f:if condition="{auftrag.ansprechpartner}!={auftragMitarbeiter}"><li title="{auftragMitarbeiter.name}">{auftragMitarbeiter.initialien}</li></f:if></f:for></ul></div>
+                    <div class="layout-table-col"><f:for each="{auftrag.statuss}" as="status" key="number">{f:if(condition: '{number}=={auftrag.status}', then: '{status}')}</f:for></div>
+                    <div class="layout-table-col">
+                        <a href="#" title="Auftrag ein- / ausblenden" class="kanban-item-toggle" onclick="toggleKanbanAuftrag(jQuery(this).closest('.kanban-item'));return false;">
+                            <i class="bb-times bb-lg icon-ausblenden"></i><i class="fa fa-refresh fa-lg icon-reaktivieren" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+
+

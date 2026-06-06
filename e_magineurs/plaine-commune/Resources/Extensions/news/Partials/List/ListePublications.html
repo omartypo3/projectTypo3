@@ -1,0 +1,73 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers" data-namespace-typo3-fluid="true">    
+    <li class="publications-list__item lazyLoadItem move_scroll article articletype-{newsItem.type}" itemscope="itemscope" itemtype="http://schema.org/Article">
+        <n:excludeDisplayedNews newsItem="{newsItem}" />
+        <article class="publications-item">                                                
+            <picture class="publications-item__image">
+                <f:if condition="{newsItem.falMediaPreviews}">
+                    <f:then>                        
+                        <f:alias map="{mediaElement: '{newsItem.falMediaPreviews.0}'}">
+                            <f:if condition="{mediaElement.originalResource.type} == 2">
+                                <f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" height="250c" width="177c" />
+                            </f:if>
+                            <f:if condition="{mediaElement.originalResource.type} == 4">
+                                <f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" height="250c" width="177c" />
+                            </f:if>
+                            <f:if condition="{mediaElement.originalResource.type} == 5">
+                                <f:image image="{mediaElement}" title="{mediaElement.originalResource.title}" alt="{mediaElement.originalResource.alternative}" maxWidth="177" maxHeight="250" />
+                            </f:if>
+                        </f:alias>                        
+                    </f:then>
+                    <f:else>
+                        <span class="no-media-element">                            
+                            <f:image src="{settings.list.media.dummyImage}" title="" alt="" height="250c" width="177c" />                            
+                        </span>
+                    </f:else>
+                </f:if>
+            </picture>
+
+            <div class="publications-item__content">
+                <h3 class="publications-item__title">
+                    <f:if condition="{newsItem.categories}">
+                        <span class="publications-item__category">
+                            <f:for each="{newsItem.categories}" as="category" key="key" iteration="ite">
+                                <f:if condition="{category.parentcategory.uid} != 19">
+                                    <f:if condition="{category.parentcategory.uid} != 256">
+                                        <f:if condition="{category.parentcategory.uid} != 368">
+                                            <f:if condition="{ite.isLast}">
+                                                <f:then>
+                                                    <span class="cat">{category.title}</span>
+                                                </f:then>
+                                                <f:else>
+                                                    <span class="cat">{category.title} | </span>
+                                                </f:else>
+                                            </f:if>
+                                        </f:if>
+                                    </f:if>
+                                </f:if>
+                            </f:for>
+                        </span>
+                    </f:if>                    
+                    <span class="sr-only">:</span>
+                    <n:link configuration="{additionalParams:'&cat={newsItem.categories.0.uid}&cat2={newsItem.categories.1.uid}&cat3={newsItem.categories.2.uid}'}" class="publications-item__title-link" newsItem="{newsItem}" settings="{settings}" title="{newsItem.title}">
+                        <span class="underline">{newsItem.title}</span>
+                    </n:link>
+                    <f:if condition="{newsItem.toptitle}">
+                        <span class="publications-item__subtitle">{newsItem.toptitle}</span>
+                    </f:if>                    
+                </h3>
+
+                <p class="publications-item__publication">
+                    <v:tag hideIfEmpty="true" name="span" class="publications-item__number">
+                        <f:if condition="{newsItem.falRelatedFiles -> f:count()}">
+                            {newsItem.falRelatedFiles -> f:count()} document<f:if condition="{newsItem.falRelatedFiles -> f:count()}>1">s</f:if>
+                        </f:if>
+                    </v:tag>
+                    <span>Publié le</span>
+                    <time datetime="{f:format.date(format:'%Y-%m-%d',date:newsItem.datetime)}">
+                        <f:format.date format="%d %B %Y">{newsItem.datetime}</f:format.date>
+                    </time>
+                </p>
+            </div>
+        </article>
+    </li>
+</html>

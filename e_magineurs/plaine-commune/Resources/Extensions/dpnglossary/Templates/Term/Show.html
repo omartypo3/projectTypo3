@@ -1,0 +1,15 @@
+<html data-namespace-typo3-fluid="true" lang="en"
+			xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+			xmlns:dpn="http://typo3.org/ns/Featdd/DpnGlossary/ViewHelpers"
+			dpn:schemaLocation="http://schemas.featdd.de/dpn_glossary.xsd">
+
+	<f:layout name="Default"/>
+
+	<f:section name="Main">
+
+		<f:render partial="Term/Properties" arguments="{term: term}"/>		
+		<div class="text-center backlink-wrap"><dpn:backlink absolute="0" class="btn btn-retour btn-vert">Retour glossaire</dpn:backlink></div>
+	</f:section>
+
+</html>

@@ -1,0 +1,188 @@
+/* CSS Document */
+
+#auftraegeList .bootstrap-select button,
+#favoritenAblageList .bootstrap-select button{
+	
+	background-image: linear-gradient(to right, #89e5ca, #89e5ca);
+	background-repeat: no-repeat;
+}
+
+#favoritenAblageList div[data-auftrag-status="10"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="10"] .bootstrap-select button{
+	background-size: 14.28%;
+}
+#favoritenAblageList div[data-auftrag-status="20"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="20"] .bootstrap-select button{
+	background-size: 28.57%;
+}
+
+#favoritenAblageList div[data-auftrag-status="30"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="30"] .bootstrap-select button{
+	background-size: 42.857%;
+}
+
+#favoritenAblageList div[data-auftrag-status="40"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="40"] .bootstrap-select button{
+	background-size: 57.143%;
+}
+
+#favoritenAblageList div[data-auftrag-status="50"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="50"] .bootstrap-select button{
+	background-size: 71.429%;
+}
+
+#favoritenAblageList div[data-auftrag-status="60"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="60"] .bootstrap-select button{
+	background-size: 85.714%;
+}
+
+#favoritenAblageList div[data-auftrag-status="70"] .bootstrap-select button,
+#auftraegeList div[data-auftrag-status="70"] .bootstrap-select button{
+	background-size: 100%;
+}
+
+
+.navbar-header{
+		padding-right: 20px;
+}
+
+/*ablage*/
+.dsl-ablage{
+	/*background-color:#767676;*/
+}
+.dsl-ablage:not(.dsl-ablage-aktiv){
+	/*display:none;*/
+	width:20px;
+}
+.dsl-ablage.dsl-ablage-aktiv .bb-arrow-left,
+.dsl-ablage:not(.dsl-ablage-aktiv) .bb-arrow-right,
+.dsl-ablage:not(.dsl-ablage-aktiv) .dsl-ablage-content{
+	display:none;
+}
+.dsl-ablage .toggleAblage{
+	/*margin-left:-50px;*/
+	text-decoration: none;
+	color:#fff;
+	top:0;
+	bottom:0;
+	position:absolute;
+	width:20px;
+	height:100%;
+	padding-top:53px;
+	padding-left:2px;
+	background-color:#767676;
+	
+}
+.dsl-ablage .toggleAblage:hover{
+	background-color:#464646;
+}
+.dsl-ablage .toggleAblage i{
+	margin-top:15px;
+	top:50%;
+	position:absolute
+}
+.dsl-ablage-aktiv{
+	width:250px;
+}
+
+.dsl-ablage-content{
+	margin-left:20px;
+}
+
+#filterGroup{
+	text-align: center;
+}
+#filterGroupContent,
+#favoritenFilter:not(:disabled) .bb-star-filled,
+#favoritenFilter:disabled .bb-star-empty{
+	display:none;
+}
+
+a.toggleAblage[data-ablage="1"]{
+	color:#14cb96;
+}
+a.toggleAblage[data-ablage="1"] .bb-star-empty{
+	display:none;
+}
+a.toggleAblage[data-ablage=""] .bb-star-filled,
+a.toggleAblage[data-ablage="0"] .bb-star-filled{
+	display:none;
+}
+
+
+@media screen and (max-width: 991px) {
+	.layout-table.table-auftrag-detail > div.layout-table-row, 
+	.layout-table.table-auftrag-detail > div.layout-table-row > div.layout-table-col {
+		display: block;
+	}
+}
+@media screen and (max-width: 1980px) {
+	.split-pane.vertical-percent:not(.split-pane-down-pressed) .layout-table.table-auftrag-detail > div.layout-table-row, 
+	.split-pane.vertical-percent:not(.split-pane-down-pressed) .layout-table.table-auftrag-detail > div.layout-table-row > div.layout-table-col {
+		display: block;
+	}
+}
+
+
+.accordionProtokollePending{
+	padding:20px;
+	
+}
+.accordionProtokollePending .head{
+	cursor:pointer;
+	background-color:#f5f5f5;
+	border:1px solid #dddddd;
+	padding:5px;
+}
+.accordionProtokollePending .accordionContent{
+	border:1px solid #dddddd;
+	border-top:0px;
+	padding:10px;
+}
+.accordionProtokollePending .head .bb-arrow-up,
+.accordionProtokollePending .head .bb-arrow-down{
+	float:right;
+}
+
+.accordionProtokollePending .head.accordionStateHidden .bb-arrow-up{
+	display:none;
+}
+.accordionProtokollePending .head:not(.accordionStateHidden) .bb-arrow-down{
+	display:none;
+}
+.accordionHidden{
+	display: none;
+}
+
+.protokollePendingMailPreview .fa.fa-cog{
+	float:right;
+	margin-top: 2px;
+    margin-right: 5px;
+
+}
+.protokollePendingMailPreview:not(.previewLoading) .fa.fa-cog{
+	display:none;
+}
+
+
+.aufgaben_tabs_navigation>li>a>i.bb-lg{
+	font-size:19px;
+}
+
+.auftraegePhasenAccordion .panel-group{
+	margin-bottom: 0px;
+}
+
+
+
+table.dataTableMitarbeiterKontingent.table-condensed > thead > tr > th{
+	padding:5px !important;
+}
+
+
+.panel-heading > h3.panel-title.titelContent{
+	max-width:235px;
+}
+.panel-heading > i.bb-point-bars.bb-lg{
+	vertical-align:top;
+}
